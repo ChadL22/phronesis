@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phronesis — Technology Law & Policy</title>
+  <meta name="description" content="A research entity dedicated to practical wisdom in technology law and policy." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .hero {
+      padding: clamp(5rem, 12vw, 9rem) clamp(1.5rem, 5vw, 5rem) clamp(4rem, 8vw, 6rem);
+      max-width: 1160px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: end;
+    }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2.2rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--accent);
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(3.4rem, 7vw, 5.8rem);
+      font-weight: 300;
+      line-height: 1.04;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero-right { padding-bottom: 0.4rem; }
+    .hero-right p {
+      font-family: var(--serif);
+      font-size: 1.22rem;
+      font-weight: 300;
+      line-height: 1.72;
+      color: var(--ink-2);
+      border-left: 2px solid var(--accent);
+      padding-left: 1.4rem;
+      margin-bottom: 2.5rem;
+    }
+    .hero-meta { display: flex; gap: 2rem; }
+    .hero-meta-item .num {
+      font-family: var(--serif);
+      font-size: 1.9rem;
+      font-weight: 400;
+      line-height: 1;
+      color: var(--ink);
+    }
+    .hero-meta-item .desc {
+      font-size: 0.67rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-top: 0.3rem;
+    }
+    .formats { padding: 3.5rem clamp(1.5rem, 5vw, 5rem); max-width: 1160px; margin: 0 auto; }
+    .formats-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2.4rem; }
+    .formats-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .format-card { background: var(--paper); padding: 1.6rem 1.3rem 1.8rem; transition: background 0.2s; cursor: default; }
+    .format-card:hover { background: var(--paper-2); }
+    .format-icon {
+      width: 28px; height: 28px;
+      border: 1px solid var(--rule);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.1rem;
+    }
+    .format-icon svg { width: 13px; height: 13px; stroke: var(--ink-2); fill: none; stroke-width: 1.5; }
+    .format-card h3 { font-family: var(--serif); font-size: 1.05rem; font-weight: 500; margin-bottom: 0.4rem; }
+    .format-card p { font-size: 0.75rem; color: var(--ink-3); line-height: 1.5; }
+    .featured { padding: 3.5rem clamp(1.5rem, 5vw, 5rem); max-width: 1160px; margin: 0 auto; }
+    .featured-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2.4rem; }
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .card-secondary-col { display: grid; grid-template-rows: 1fr 1fr; gap: 1px; background: var(--rule); }
+    .card-lead h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); }
+    .mission-band { background: var(--accent); color: #EEE8DA; padding: clamp(3.5rem, 7vw, 5.5rem) clamp(1.5rem, 5vw, 5rem); }
+    .mission-inner { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; align-items: center; }
+    .mission-left .label { color: rgba(238,232,218,0.55); margin-bottom: 0.8rem; }
+    .mission-left h2 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; line-height: 1.1; }
+    .mission-right p { font-family: var(--serif); font-size: 1.18rem; font-weight: 300; line-height: 1.75; color: rgba(238,232,218,0.85); margin-bottom: 1.4rem; }
+    .mission-right p:last-child { margin-bottom: 0; }
+    .recent { padding: 3.5rem clamp(1.5rem, 5vw, 5rem); max-width: 1160px; margin: 0 auto; }
+    .recent-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2.4rem; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-eyebrow { animation: fadeUp 0.6s ease both; }
+    .hero h1 { animation: fadeUp 0.7s 0.1s ease both; }
+    .hero-right { animation: fadeUp 0.7s 0.2s ease both; }
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; gap: 2.5rem; }
+      .formats-grid { grid-template-columns: repeat(3, 1fr); }
+      .featured-grid { grid-template-columns: 1fr; }
+      .mission-inner { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    @media (max-width: 600px) {
+      .formats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-brand">Phronesis <span>Research</span></a>
+    <ul class="nav-links">
+      <li><a href="research.html">Research</a></li>
+      <li><a href="policy.html">Policy</a></li>
+      <li><a href="legal.html">Legal</a></li>
+      <li><a href="essays.html">Essays</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span class="label">Technology · Law & Policy</span>
+      </div>
+      <h1>Practical<br/><em>wisdom</em><br/>in tech&shy;nology<br/>governance.</h1>
+    </div>
+    <div class="hero-right">
+      <p>Phronesis is an independent research entity producing thorough and accessible work at the intersection of technology law and policy, for the casual reader and experts alike.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="num serif">6</div>
+          <div class="desc">Output formats</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="num serif">2</div>
+          <div class="desc">Audiences served</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="num serif">&#x221E;</div>
+          <div class="desc">Appetite for rigor</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-rule"></div>
+
+  <section class="formats">
+    <div class="formats-header"><span class="label">What we publish</span></div>
+    <div class="formats-grid">
+      <div class="format-card">
+        <div class="format-icon"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div>
+        <h3 class="serif">Research Papers</h3>
+        <p>Peer-quality scholarship on technology governance and digital law.</p>
+      </div>
+      <div class="format-card">
+        <div class="format-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg></div>
+        <h3 class="serif">Policy Proposals</h3>
+        <p>Concrete, actionable frameworks for regulators and lawmakers.</p>
+      </div>
+      <div class="format-card">
+        <div class="format-icon"><svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+        <h3 class="serif">Legal Analysis</h3>
+        <p>Close readings of cases, statutes, and regulatory actions shaping tech.</p>
+      </div>
+      <div class="format-card">
+        <div class="format-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+        <h3 class="serif">Essays</h3>
+        <p>Argumentative, idea-driven writing that provokes and persuades.</p>
+      </div>
+      <div class="format-card">
+        <div class="format-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+        <h3 class="serif">Articles</h3>
+        <p>Timely, concise takes on current events in tech policy and litigation.</p>
+      </div>
+      <div class="format-card">
+        <div class="format-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8zM14 2v6h6"/></svg></div>
+        <h3 class="serif">Reports</h3>
+        <p>Comprehensive reference documents synthesizing research for key audiences.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-rule"></div>
+
+  <section class="featured">
+    <div class="featured-header">
+      <span class="label">Featured Work</span>
+      <a href="research.html" class="view-all">All publications</a>
+    </div>
+    <div class="featured-grid">
+      <div class="card card-lead">
+        <span class="card-tag">Research Paper</span>
+        <h2 class="serif">Governing the Stack: Regulatory Jurisdiction in Multi-Layer AI Systems</h2>
+        <p>As AI systems grow architecturally complex, existing regulatory frameworks struggle to assign meaningful accountability. This paper maps jurisdictional gaps and proposes a tiered liability model.</p>
+        <div class="card-footer">
+          <span class="card-date">March 2025</span>
+          <span class="card-read">Read paper</span>
+        </div>
+      </div>
+      <div class="card-secondary-col">
+        <div class="card">
+          <span class="card-tag">Legal Analysis</span>
+          <h2 class="serif">Section 230 After NetChoice: What the Court Left Unsaid</h2>
+          <p>A close reading of the 2024 NetChoice opinions and the doctrine they leave unresolved.</p>
+          <div class="card-footer">
+            <span class="card-date">Jan 2025</span>
+            <span class="card-read">Read</span>
+          </div>
+        </div>
+        <div class="card">
+          <span class="card-tag">Policy Proposal</span>
+          <h2 class="serif">A Federal AI Incident Reporting Framework</h2>
+          <p>Drawing from aviation and nuclear safety, a concrete proposal for mandatory AI incident disclosure.</p>
+          <div class="card-footer">
+            <span class="card-date">Feb 2025</span>
+            <span class="card-read">Read</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mission-band" id="about">
+    <div class="mission-inner">
+      <div class="mission-left">
+        <p class="label">On Phronesis</p>
+        <h2 class="serif">Wisdom, not just knowledge.</h2>
+      </div>
+      <div class="mission-right">
+        <p>The name came from a book that I read not too long ago, but unfortunately the title has already been forgotten, however the word has stayed. <em>Phronesis</em>: Aristotle's term for practical wisdom. Something that is familiar to some, while entirely foreign to others. Which feels like the right kind of name for what we are building.</p>
+        <p>This is a home for a particular perspective, produced by people with backgrounds spanning academia, industry, and government. We publish what we find worth saying, for readers who find it worth reading. Nothing more than that.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="recent">
+    <div class="recent-header">
+      <span class="label">Recent Work</span>
+      <a href="research.html" class="view-all">Archive</a>
+    </div>
+    <div class="list-item">
+      <span class="list-num serif">01</span>
+      <div class="list-content">
+        <h3 class="serif">The FTC's Algorithmic Accountability Agenda: A Two-Year Review</h3>
+        <p>Report · Technology Regulation</p>
+      </div>
+      <div class="list-meta"><span class="label">Mar 2025</span></div>
+    </div>
+    <div class="list-item">
+      <span class="list-num serif">02</span>
+      <div class="list-content">
+        <h3 class="serif">Compelled Speech and Algorithmic Curation After Moody v. NetChoice</h3>
+        <p>Legal Analysis · First Amendment</p>
+      </div>
+      <div class="list-meta"><span class="label">Feb 2025</span></div>
+    </div>
+    <div class="list-item">
+      <span class="list-num serif">03</span>
+      <div class="list-content">
+        <h3 class="serif">Why "AI Safety" and "AI Regulation" Are Not the Same Conversation</h3>
+        <p>Essay · Governance</p>
+      </div>
+      <div class="list-meta"><span class="label">Feb 2025</span></div>
+    </div>
+    <div class="list-item">
+      <span class="list-num serif">04</span>
+      <div class="list-content">
+        <h3 class="serif">Procurement as Policy: How Federal Contracting Could Shape Responsible AI</h3>
+        <p>Policy Proposal · Federal Governance</p>
+      </div>
+      <div class="list-meta"><span class="label">Jan 2025</span></div>
+    </div>
+    <div class="list-item">
+      <span class="list-num serif">05</span>
+      <div class="list-content">
+        <h3 class="serif">Digital Markets Act at One Year: Lessons for U.S. Competition Policy</h3>
+        <p>Article · Competition Law</p>
+      </div>
+      <div class="list-meta"><span class="label">Jan 2025</span></div>
+    </div>
+  </section>
+
+  <section class="newsletter-band">
+    <div class="newsletter-inner">
+      <div class="newsletter-copy">
+        <h3 class="serif">Read Phronesis weekly.</h3>
+        <p>New work delivered directly to your inbox. No noise, no filler.</p>
+      </div>
+      <div class="newsletter-form">
+        <input type="email" placeholder="your@email.com" />
+        <button type="button">Subscribe</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <div class="footer-brand serif">Phronesis</div>
+      <p>An independent research entity at the intersection of technology law and policy.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Publication types</h4>
+      <ul>
+        <li><a href="research.html">Research Papers</a></li>
+        <li><a href="policy.html">Policy Proposals</a></li>
+        <li><a href="legal.html">Legal Analysis</a></li>
+        <li><a href="essays.html">Essays</a></li>
+        <li><a href="reports.html">Reports</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Site</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="research.html">All Publications</a></li>
+        <li><a href="https://chadl22.github.io" target="_blank">Personal Site</a></li>
+      </ul>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Phronesis Research. Independent &amp; non-partisan.</p>
+    <span class="phronesis-greek">&#x03C6;&#x03C1;&#x03CC;&#x03BD;&#x03B7;&#x03C3;&#x03B9;&#x03C2;</span>
+  </div>
+
+</body>
+</html>
