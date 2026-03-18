@@ -27,6 +27,13 @@
     .scope-list { list-style: none; margin-top: 1rem; }
     .scope-list li { display: flex; align-items: baseline; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid var(--rule); font-family: var(--serif); font-size: 1rem; color: var(--ink-2); }
     .scope-list li::before { content: ''; display: block; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 0.4rem; }
+    .key-table { width: 100%; margin-top: 1.2rem; border-collapse: collapse; }
+    .key-table tr { border-bottom: 1px solid var(--rule); }
+    .key-table tr:first-child { border-top: 1px solid var(--rule); }
+    .key-table td { padding: 0.75rem 0; vertical-align: top; }
+    .key-table td:first-child { width: 38%; padding-right: 1.5rem; }
+    .key-table td:last-child { font-family: var(--serif); font-size: 0.95rem; font-weight: 300; color: var(--ink-3); line-height: 1.6; }
+    .key-label { font-family: var(--sans); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-2); }
     @media (max-width: 900px) { .about-body { grid-template-columns: 1fr; gap: 3rem; } .about-sidebar { position: static; } .contributor-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -55,7 +62,7 @@
     <aside class="about-sidebar">
       <span class="label">On this page</span>
       <ul class="about-toc">
-        <li><a href="#the-name">The name</a></li><li><a href="#what-we-do">What we do</a></li><li><a href="#our-scope">Our scope</a></li><li><a href="#contributors">Contributors</a></li><li><a href="#independence">Independence</a></li>
+        <li><a href="#the-name">The name</a></li><li><a href="#what-we-do">What we do</a></li><li><a href="#reading-the-site">Reading the site</a></li><li><a href="#our-scope">Our scope</a></li><li><a href="#contributors">Contributors</a></li><li><a href="#independence">Independence</a></li>
       </ul>
     </aside>
     <div class="about-content">
@@ -69,6 +76,32 @@
         <p>Phronesis publishes research papers, policy proposals, legal analysis, essays, articles, and reports on the governance of technology. Our output is designed to be thorough and accessible, written for the casual reader and experts alike.</p>
         <p>The intention is bite-sized content for daily and weekly readers, alongside more thorough work for contemporaries and specific professional audiences. We are not trying to be a newspaper or a wire service. We are trying to produce work worth returning to.</p>
       </section>
+      <section id="reading-the-site">
+        <h2 class="serif">Reading the site</h2>
+        <p>Every listing on Phronesis carries a few pieces of information beyond the title. Here is what each of them means.</p>
+
+        <p style="margin-top: 1.6rem; margin-bottom: 0.4rem;"><span class="key-label">Output types</span></p>
+        <p>Each piece of work belongs to one of six formats, reflecting how it was written and who it is for.</p>
+        <table class="key-table">
+          <tr><td><a href="research.html" style="font-family: var(--serif); font-size: 1rem; color: var(--ink-2);">Research Papers</a></td><td>Peer-quality scholarship on technology governance and digital law. The most formal output — structured arguments, citations, and original analysis.</td></tr>
+          <tr><td><a href="policy.html" style="font-family: var(--serif); font-size: 1rem; color: var(--ink-2);">Policy Proposals</a></td><td>Concrete, actionable frameworks addressed to regulators, lawmakers, and institutions. Written to be used, not just cited.</td></tr>
+          <tr><td><a href="legal.html" style="font-family: var(--serif); font-size: 1rem; color: var(--ink-2);">Legal Analyses</a></td><td>Close readings of cases, statutes, and regulatory actions. Written for practitioners and informed general readers.</td></tr>
+          <tr><td><a href="essays.html" style="font-family: var(--serif); font-size: 1rem; color: var(--ink-2);">Essays</a></td><td>Argumentative, idea-driven writing that takes a position and defends it. The most opinionated format we publish.</td></tr>
+          <tr><td><a href="articles.html" style="font-family: var(--serif); font-size: 1rem; color: var(--ink-2);">Articles</a></td><td>Timely, concise takes on current events — rulings, decisions, and policy shifts worth paying attention to right now.</td></tr>
+          <tr><td><a href="reports.html" style="font-family: var(--serif); font-size: 1rem; color: var(--ink-2);">Reports</a></td><td>Comprehensive reference documents synthesizing research, case law, and regulatory developments for specific audiences.</td></tr>
+        </table>
+
+        <p style="margin-top: 2rem; margin-bottom: 0.4rem;"><span class="key-label">Category tags</span></p>
+        <p>The small outlined label on each listing (e.g. <span class="archive-tag" style="display: inline; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); border-radius: 2px; padding: 0.15rem 0.45rem;">AI Governance</span>) indicates the subject area the piece falls under. Tags are used to group and filter content within each section. A single piece may sit at the intersection of several topics, but carries the tag most central to its argument.</p>
+
+        <p style="margin-top: 2rem; margin-bottom: 0.4rem;"><span class="key-label">Origin badges</span></p>
+        <p>Each title carries a small badge indicating whether the work was produced by Phronesis or sourced from elsewhere.</p>
+        <table class="key-table">
+          <tr><td><span class="origin-badge origin-badge--original">Original</span></td><td>Written and published by Phronesis. The analysis, argument, and conclusions are our own.</td></tr>
+          <tr><td><span class="origin-badge origin-badge--via">Via [Source]</span></td><td>Sourced from an external publication or institution. We may summarize, excerpt, or contextualize the work, but the underlying material originates elsewhere. The source is named in the badge.</td></tr>
+        </table>
+      </section>
+
       <section id="our-scope">
         <h2 class="serif">Our scope</h2>
         <p>We focus on the intersection of technology with law and policy. Our current areas of focus include, but are not limited to:</p>
