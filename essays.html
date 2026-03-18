@@ -23,7 +23,18 @@
 <body>
   <nav>
     <a href="index.html" class="nav-brand">Phronesis <span>Research</span></a>
-    <ul class="nav-links"><li class="nav-dropdown"><button class="nav-dropdown-trigger active">Publications <span class="nav-chevron">▾</span></button><ul class="nav-dropdown-menu"><li><a href="research.html">Research Papers</a></li><li><a href="policy.html">Policy Proposals</a></li><li><a href="legal.html">Legal Analyses</a></li><li><a href="essays.html" class="active">Essays</a></li><li><a href="articles.html">Articles</a></li><li><a href="reports.html">Reports</a></li></ul></li><li><a href="about.html">About</a></li></ul>
+    <button class="nav-menu-toggle" id="nav-toggle">Menu <span class="nav-chevron">▾</span></button>
+    <ul class="nav-menu" id="nav-menu">
+      <li><span class="nav-menu-section">Publications</span></li>
+      <li><a href="research.html">Research Papers</a></li>
+      <li><a href="policy.html">Policy Proposals</a></li>
+      <li><a href="legal.html">Legal Analyses</a></li>
+      <li><a href="essays.html" class="active">Essays</a></li>
+      <li><a href="articles.html">Articles</a></li>
+      <li><a href="reports.html">Reports</a></li>
+      <li class="nav-menu-divider"></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
   </nav>
   <div class="page-header">
     <div><div class="page-header-eyebrow"><span class="label">Essays</span></div><h1 class="serif">Argument<br/><em>and idea.</em></h1></div>
@@ -49,5 +60,10 @@
   <div class="footer-bottom"><p>&copy; 2025 Phronesis Research. Independent &amp; non-partisan.</p><span class="phronesis-greek">&#x03C6;&#x03C1;&#x03CC;&#x03BD;&#x03B7;&#x03C3;&#x03B9;&#x03C2;</span></div>
   <script>document.querySelectorAll('.filter-btn').forEach(btn => { btn.addEventListener('click', () => { document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); }); });</script>
   <script src="chat.js" defer></script>
+  <script>
+    const t = document.getElementById('nav-toggle'), m = document.getElementById('nav-menu');
+    t.addEventListener('click', e => { e.stopPropagation(); t.classList.toggle('is-open'); m.classList.toggle('is-open'); });
+    document.addEventListener('click', () => { t.classList.remove('is-open'); m.classList.remove('is-open'); });
+  </script>
 </body>
 </html>

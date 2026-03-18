@@ -69,8 +69,8 @@ nav {
   text-transform: uppercase;
   color: var(--ink-3);
 }
-.nav-links { display: flex; gap: 2.2rem; list-style: none; }
-.nav-links a {
+.nav-links { display: flex; gap: 2.2rem; list-style: none; align-items: center; }
+.nav-links > li > a {
   font-size: 0.72rem;
   font-weight: 400;
   letter-spacing: 0.12em;
@@ -78,8 +78,68 @@ nav {
   color: var(--ink-2);
   transition: color 0.2s;
 }
-.nav-links a:hover,
-.nav-links a.active { color: var(--accent); }
+.nav-links > li > a:hover,
+.nav-links > li > a.active { color: var(--accent); }
+
+/* ── NAV MENU (click-toggle) ───────────────────────────── */
+.nav-menu-toggle {
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  transition: color 0.2s, border-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.8rem;
+  line-height: 1;
+}
+.nav-menu-toggle:hover { color: var(--accent); border-color: var(--accent); }
+.nav-menu-toggle.is-open { color: var(--accent); border-color: var(--accent); }
+.nav-chevron { font-size: 0.55rem; display: inline-block; transition: transform 0.2s; }
+.nav-menu-toggle.is-open .nav-chevron { transform: rotate(180deg); }
+.nav-menu {
+  display: none;
+  position: absolute;
+  top: 58px;
+  right: clamp(1.5rem, 5vw, 5rem);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-top: 2px solid var(--accent);
+  min-width: 200px;
+  list-style: none;
+  z-index: 200;
+  padding: 0.4rem 0;
+  box-shadow: 0 4px 16px rgba(26,25,22,0.08);
+}
+.nav-menu.is-open { display: block; }
+.nav-menu li a {
+  display: block;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  transition: color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+.nav-menu li a:hover { color: var(--accent); background: var(--paper-2); }
+.nav-menu li a.active { color: var(--accent); }
+.nav-menu .nav-menu-divider { border-top: 1px solid var(--rule); margin: 0.4rem 0; }
+.nav-menu .nav-menu-section {
+  display: block;
+  padding: 0.5rem 1.4rem 0.2rem;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
 
 /* ── PAGE HEADER ───────────────────────────────────────── */
 .page-header {
