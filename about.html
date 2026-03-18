@@ -1,174 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About — Phronesis</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="shared.css" />
+  <link rel="stylesheet" href="chat.css" />
   <style>
-    .about-body {
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 0 clamp(1.5rem, 5vw, 5rem) 5rem;
-      display: grid;
-      grid-template-columns: 1fr 1.8fr;
-      gap: 6rem;
-      align-items: start;
-    }
+    .about-body { max-width: 1160px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 5rem) 5rem; display: grid; grid-template-columns: 1fr 1.8fr; gap: 6rem; align-items: start; }
     .about-sidebar { position: sticky; top: 90px; }
-    .about-sidebar nav-inner { display: flex; flex-direction: column; gap: 0.6rem; }
     .about-toc { list-style: none; margin-top: 1.4rem; }
     .about-toc li { margin-bottom: 0.5rem; }
-    .about-toc a {
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-3);
-      transition: color 0.2s;
-    }
+    .about-toc a { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); transition: color 0.2s; }
     .about-toc a:hover { color: var(--accent); }
     .about-content section { margin-bottom: 4rem; }
     .about-content section:last-child { margin-bottom: 0; }
-    .about-content h2 {
-      font-family: var(--serif);
-      font-size: 1.9rem;
-      font-weight: 400;
-      line-height: 1.15;
-      margin-bottom: 1.4rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--rule);
-    }
-    .about-content p {
-      font-family: var(--serif);
-      font-size: 1.08rem;
-      font-weight: 300;
-      line-height: 1.8;
-      color: var(--ink-2);
-      margin-bottom: 1.2rem;
-    }
+    .about-content h2 { font-family: var(--serif); font-size: 1.9rem; font-weight: 400; line-height: 1.15; margin-bottom: 1.4rem; padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
+    .about-content p { font-family: var(--serif); font-size: 1.08rem; font-weight: 300; line-height: 1.8; color: var(--ink-2); margin-bottom: 1.2rem; }
     .about-content p:last-child { margin-bottom: 0; }
-    .contributor-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--rule);
-      border: 1px solid var(--rule);
-      margin-top: 2rem;
-    }
-    .contributor-card {
-      background: var(--paper);
-      padding: 1.8rem 1.6rem;
-    }
-    .contributor-card h3 {
-      font-family: var(--serif);
-      font-size: 1.15rem;
-      font-weight: 500;
-      margin-bottom: 0.25rem;
-    }
-    .contributor-card .role {
-      font-size: 0.67rem;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.8rem;
-    }
-    .contributor-card p {
-      font-size: 0.8rem;
-      color: var(--ink-3);
-      line-height: 1.6;
-      font-family: var(--sans);
-      margin-bottom: 0;
-    }
+    .contributor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 2rem; }
+    .contributor-card { background: var(--paper); padding: 1.8rem 1.6rem; }
+    .contributor-card h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; margin-bottom: 0.25rem; }
+    .contributor-card .role { font-size: 0.67rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
+    .contributor-card p { font-size: 0.8rem; color: var(--ink-3); line-height: 1.6; font-family: var(--sans); margin-bottom: 0; }
     .scope-list { list-style: none; margin-top: 1rem; }
-    .scope-list li {
-      display: flex;
-      align-items: baseline;
-      gap: 1rem;
-      padding: 0.75rem 0;
-      border-bottom: 1px solid var(--rule);
-      font-family: var(--serif);
-      font-size: 1rem;
-      color: var(--ink-2);
-    }
-    .scope-list li::before {
-      content: '';
-      display: block;
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--accent);
-      flex-shrink: 0;
-      margin-top: 0.4rem;
-    }
-    @media (max-width: 900px) {
-      .about-body { grid-template-columns: 1fr; gap: 3rem; }
-      .about-sidebar { position: static; }
-      .contributor-grid { grid-template-columns: 1fr; }
-    }
+    .scope-list li { display: flex; align-items: baseline; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid var(--rule); font-family: var(--serif); font-size: 1rem; color: var(--ink-2); }
+    .scope-list li::before { content: ''; display: block; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 0.4rem; }
+    @media (max-width: 900px) { .about-body { grid-template-columns: 1fr; gap: 3rem; } .about-sidebar { position: static; } .contributor-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
-
   <nav>
     <a href="index.html" class="nav-brand">Phronesis <span>Research</span></a>
     <ul class="nav-links">
-      <li><a href="research.html">Research</a></li>
-      <li><a href="policy.html">Policy</a></li>
-      <li><a href="legal.html">Legal</a></li>
-      <li><a href="essays.html">Essays</a></li>
-      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="research.html">Research</a></li><li><a href="policy.html">Policy</a></li><li><a href="legal.html">Legal</a></li><li><a href="essays.html">Essays</a></li><li><a href="about.html" class="active">About</a></li>
     </ul>
   </nav>
-
   <div class="page-header">
-    <div>
-      <div class="page-header-eyebrow"><span class="label">About</span></div>
-      <h1 class="serif">On <em>Phronesis</em></h1>
-    </div>
-    <p class="page-header-desc">
-      A research entity is only as good as its transparency about what it is and who it is for. This page tries to answer both questions plainly.
-    </p>
+    <div><div class="page-header-eyebrow"><span class="label">About</span></div><h1 class="serif">On <em>Phronesis</em></h1></div>
+    <p class="page-header-desc">A research entity is only as good as its transparency about what it is and who it is for. This page tries to answer both questions plainly.</p>
   </div>
-
   <div class="section-rule"></div>
-
   <div class="about-body">
     <aside class="about-sidebar">
       <span class="label">On this page</span>
       <ul class="about-toc">
-        <li><a href="#the-name">The name</a></li>
-        <li><a href="#what-we-do">What we do</a></li>
-        <li><a href="#our-scope">Our scope</a></li>
-        <li><a href="#contributors">Contributors</a></li>
-        <li><a href="#independence">Independence</a></li>
+        <li><a href="#the-name">The name</a></li><li><a href="#what-we-do">What we do</a></li><li><a href="#our-scope">Our scope</a></li><li><a href="#contributors">Contributors</a></li><li><a href="#independence">Independence</a></li>
       </ul>
     </aside>
-
     <div class="about-content">
-
       <section id="the-name">
         <h2 class="serif">The name</h2>
-        <p>
-          The name came from a book that I read not too long ago, but unfortunately the title has already been forgotten, however the word has stayed. <em>Phronesis</em>: Aristotle's term for practical wisdom. Something that is familiar to some, while entirely foreign to others. Which feels like the right kind of name for what we are building.
-        </p>
-        <p>
-          This is a home for a particular perspective, produced by people with backgrounds spanning academia, industry, and government. We publish what we find worth saying, for readers who find it worth reading. Nothing more than that.
-        </p>
+        <p>The name came from a book that I read not too long ago, but unfortunately the title has already been forgotten, however the word has stayed. <em>Phronesis</em>: Aristotle's term for practical wisdom. Something that is familiar to some, while entirely foreign to others. Which feels like the right kind of name for what we are building.</p>
+        <p>This is a home for a particular perspective, produced by people with backgrounds spanning academia, industry, and government. We publish what we find worth saying, for readers who find it worth reading. Nothing more than that.</p>
       </section>
-
       <section id="what-we-do">
         <h2 class="serif">What we do</h2>
-        <p>
-          Phronesis publishes research papers, policy proposals, legal analysis, essays, articles, and reports on the governance of technology. Our output is designed to be thorough and accessible, written for the casual reader and experts alike.
-        </p>
-        <p>
-          The intention is bite-sized content for daily and weekly readers, alongside more thorough work for contemporaries and specific professional audiences. We are not trying to be a newspaper or a wire service. We are trying to produce work worth returning to.
-        </p>
+        <p>Phronesis publishes research papers, policy proposals, legal analysis, essays, articles, and reports on the governance of technology. Our output is designed to be thorough and accessible, written for the casual reader and experts alike.</p>
+        <p>The intention is bite-sized content for daily and weekly readers, alongside more thorough work for contemporaries and specific professional audiences. We are not trying to be a newspaper or a wire service. We are trying to produce work worth returning to.</p>
       </section>
-
       <section id="our-scope">
         <h2 class="serif">Our scope</h2>
         <p>We focus on the intersection of technology with law and policy. Our current areas of focus include, but are not limited to:</p>
@@ -183,80 +74,36 @@
         </ul>
         <p style="margin-top: 1.4rem;">As Phronesis grows, so will its scope. For now, we work in the areas we know best.</p>
       </section>
-
       <section id="contributors">
         <h2 class="serif">Contributors</h2>
-        <p>
-          Our contributors bring backgrounds spanning academia, industry, and government. We are transparent about who we are and deliberate about what we publish.
-        </p>
+        <p>Our contributors bring backgrounds spanning academia, industry, and government. We are transparent about who we are and deliberate about what we publish.</p>
         <div class="contributor-grid">
-          <div class="contributor-card">
-            <h3 class="serif">Sipho C. Langa</h3>
-            <div class="role">Founder &amp; Lead Researcher</div>
-            <p>Research engineer with a background spanning economics, computational sciences, and policy. Affiliated with SAS Institute and MIT Sloan.</p>
-          </div>
-          <div class="contributor-card" style="background: var(--paper-2);">
-            <h3 class="serif" style="color: var(--ink-3);">Open Contributor</h3>
-            <div class="role">Coming soon</div>
-            <p>Phronesis welcomes collaborators. If your work fits this space, get in touch.</p>
-          </div>
+          <div class="contributor-card"><h3 class="serif">Sipho C. Langa</h3><div class="role">Founder &amp; Lead Researcher</div><p>Research engineer with a background spanning economics, computational sciences, and policy. Affiliated with SAS Institute and MIT Sloan.</p></div>
+          <div class="contributor-card" style="background: var(--paper-2);"><h3 class="serif" style="color: var(--ink-3);">Open Contributor</h3><div class="role">Coming soon</div><p>Phronesis welcomes collaborators. If your work fits this space, get in touch.</p></div>
         </div>
       </section>
-
       <section id="independence">
         <h2 class="serif">Independence</h2>
-        <p>
-          Phronesis is an independent, non-partisan research entity. We do not accept funding that conditions or influences our editorial positions. Our work reflects the views of its authors and no one else.
-        </p>
-        <p>
-          We do not compete with the institutions and publications that already exist in this space. We exist alongside them, with our own perspective and our own readers.
-        </p>
+        <p>Phronesis is an independent, non-partisan research entity. We do not accept funding that conditions or influences our editorial positions. Our work reflects the views of its authors and no one else.</p>
+        <p>We do not compete with the institutions and publications that already exist in this space. We exist alongside them, with our own perspective and our own readers.</p>
       </section>
-
     </div>
   </div>
-
   <section class="newsletter-band">
     <div class="newsletter-inner">
-      <div class="newsletter-copy">
-        <h3 class="serif">Read Phronesis weekly.</h3>
-        <p>New work delivered directly to your inbox. No noise, no filler.</p>
-      </div>
-      <div class="newsletter-form">
-        <input type="email" placeholder="your@email.com" />
-        <button type="button">Subscribe</button>
-      </div>
+      <div class="newsletter-copy"><h3 class="serif">Read Phronesis weekly.</h3><p>New work delivered directly to your inbox. No noise, no filler.</p></div>
+      <div class="newsletter-form"><input type="email" placeholder="your@email.com" /><button type="button">Subscribe</button></div>
     </div>
   </section>
-
   <footer>
-    <div>
-      <div class="footer-brand serif">Phronesis</div>
-      <p>An independent research entity at the intersection of technology law and policy.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Publication types</h4>
-      <ul>
-        <li><a href="research.html">Research Papers</a></li>
-        <li><a href="policy.html">Policy Proposals</a></li>
-        <li><a href="legal.html">Legal Analysis</a></li>
-        <li><a href="essays.html">Essays</a></li>
-        <li><a href="reports.html">Reports</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Site</h4>
-      <ul>
-        <li><a href="about.html">About</a></li>
-        <li><a href="research.html">All Publications</a></li>
-        <li><a href="https://chadl22.github.io" target="_blank">Personal Site</a></li>
-      </ul>
-    </div>
+    <div><div class="footer-brand serif">Phronesis</div><p>An independent research entity at the intersection of technology law and policy.</p></div>
+    <div class="footer-col"><h4>Publication types</h4><ul><li><a href="research.html">Research Papers</a></li><li><a href="policy.html">Policy Proposals</a></li><li><a href="legal.html">Legal Analyses</a></li><li><a href="essays.html">Essays</a></li><li><a href="reports.html">Reports</a></li></ul></div>
+    <div class="footer-col"><h4>Site</h4><ul><li><a href="about.html">About</a></li><li><a href="research.html">All Publications</a></li><li><a href="https://chadl22.github.io" target="_blank">Personal Site</a></li></ul></div>
   </footer>
   <div class="footer-bottom">
     <p>&copy; 2025 Phronesis Research. Independent &amp; non-partisan.</p>
     <span class="phronesis-greek">&#x03C6;&#x03C1;&#x03CC;&#x03BD;&#x03B7;&#x03C3;&#x03B9;&#x03C2;</span>
   </div>
-
+  <script src="chat.js" defer></script>
 </body>
 </html>

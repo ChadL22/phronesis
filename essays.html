@@ -1,185 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Essays — Phronesis</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="shared.css" />
+  <link rel="stylesheet" href="shared.css" /><link rel="stylesheet" href="chat.css" />
   <style>
     .archive { max-width: 1160px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 5rem) 5rem; }
-    .essay-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--rule);
-      border: 1px solid var(--rule);
-      margin-top: 2.5rem;
-    }
-    .essay-card {
-      background: var(--paper);
-      padding: 2.2rem 2rem;
-      transition: background 0.18s;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-    }
+    .essay-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 2.5rem; }
+    .essay-card { background: var(--paper); padding: 2.2rem 2rem; transition: background 0.18s; cursor: pointer; display: flex; flex-direction: column; }
     .essay-card:hover { background: var(--paper-2); }
-    .essay-card-tag {
-      display: inline-block; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--accent); border: 1px solid var(--accent); border-radius: 2px;
-      padding: 0.15rem 0.45rem; margin-bottom: 1.1rem; align-self: flex-start;
-    }
-    .essay-card h2 {
-      font-family: var(--serif);
-      font-size: 1.4rem;
-      font-weight: 400;
-      line-height: 1.25;
-      margin-bottom: 0.8rem;
-      flex-grow: 1;
-    }
+    .essay-card-tag { display: inline-block; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); border-radius: 2px; padding: 0.15rem 0.45rem; margin-bottom: 1.1rem; align-self: flex-start; }
+    .essay-card h2 { font-family: var(--serif); font-size: 1.4rem; font-weight: 400; line-height: 1.25; margin-bottom: 0.8rem; flex-grow: 1; }
     .essay-card p { font-size: 0.8rem; color: var(--ink-2); line-height: 1.6; margin-bottom: 1.4rem; }
-    .essay-card-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid var(--rule);
-      padding-top: 0.9rem;
-    }
+    .essay-card-footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--rule); padding-top: 0.9rem; }
     .essay-card-date { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
     .essay-card-read { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
     @media (max-width: 700px) { .essay-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
-
   <nav>
     <a href="index.html" class="nav-brand">Phronesis <span>Research</span></a>
-    <ul class="nav-links">
-      <li><a href="research.html">Research</a></li>
-      <li><a href="policy.html">Policy</a></li>
-      <li><a href="legal.html">Legal</a></li>
-      <li><a href="essays.html" class="active">Essays</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
+    <ul class="nav-links"><li><a href="research.html">Research</a></li><li><a href="policy.html">Policy</a></li><li><a href="legal.html">Legal</a></li><li><a href="essays.html" class="active">Essays</a></li><li><a href="about.html">About</a></li></ul>
   </nav>
-
   <div class="page-header">
-    <div>
-      <div class="page-header-eyebrow"><span class="label">Essays</span></div>
-      <h1 class="serif">Argument<br/><em>and idea.</em></h1>
-    </div>
-    <p class="page-header-desc">
-      Argumentative, idea-driven writing that takes a position and defends it. Essays are where we work through the harder questions that research papers leave open.
-    </p>
+    <div><div class="page-header-eyebrow"><span class="label">Essays</span></div><h1 class="serif">Argument<br/><em>and idea.</em></h1></div>
+    <p class="page-header-desc">Argumentative, idea-driven writing that takes a position and defends it. Essays are where we work through the harder questions that research papers leave open.</p>
   </div>
-
   <div class="filter-bar">
-    <button class="filter-btn active">All</button>
-    <button class="filter-btn">Governance</button>
-    <button class="filter-btn">Technology</button>
-    <button class="filter-btn">Law</button>
-    <button class="filter-btn">Society</button>
+    <button class="filter-btn active">All</button><button class="filter-btn">Governance</button><button class="filter-btn">Technology</button><button class="filter-btn">Law</button><button class="filter-btn">Society</button>
   </div>
-
   <div class="archive">
     <div class="essay-grid">
-
-      <div class="essay-card">
-        <span class="essay-card-tag">Governance</span>
-        <h2 class="serif">Why "AI Safety" and "AI Regulation" Are Not the Same Conversation</h2>
-        <p>The conflation of technical safety research with policy regulation has muddied both fields. They share concerns but operate on different timescales, with different tools, for different audiences.</p>
-        <div class="essay-card-footer">
-          <span class="essay-card-date">Feb 2025</span>
-          <span class="essay-card-read">Read essay</span>
-        </div>
-      </div>
-
-      <div class="essay-card">
-        <span class="essay-card-tag">Law</span>
-        <h2 class="serif">The Problem with "Technology-Neutral" Legal Frameworks</h2>
-        <p>Regulators and courts often aspire to write technology-neutral rules. The argument here is that this aspiration, while understandable, frequently produces worse outcomes than honest technology-specific reasoning.</p>
-        <div class="essay-card-footer">
-          <span class="essay-card-date">Jan 2025</span>
-          <span class="essay-card-read">Read essay</span>
-        </div>
-      </div>
-
-      <div class="essay-card">
-        <span class="essay-card-tag">Society</span>
-        <h2 class="serif">On the Poverty of "Move Fast and Fix It Later" as Governance Philosophy</h2>
-        <p>A critique of the regulatory philosophy that treats market deployment as the primary mechanism for identifying harm, and the populations that approach systematically disadvantages.</p>
-        <div class="essay-card-footer">
-          <span class="essay-card-date">Dec 2024</span>
-          <span class="essay-card-read">Read essay</span>
-        </div>
-      </div>
-
-      <div class="essay-card">
-        <span class="essay-card-tag">Technology</span>
-        <h2 class="serif">What Open Source Actually Means in the Context of AI Models</h2>
-        <p>The word "open" is doing enormous work in AI policy debates. This essay tries to disaggregate the term and ask which version of openness actually matters for accountability and access.</p>
-        <div class="essay-card-footer">
-          <span class="essay-card-date">Nov 2024</span>
-          <span class="essay-card-read">Read essay</span>
-        </div>
-      </div>
-
+      <div class="essay-card"><span class="essay-card-tag">Governance</span><h2 class="serif">Why "AI Safety" and "AI Regulation" Are Not the Same Conversation</h2><p>The conflation of technical safety research with policy regulation has muddied both fields. They share concerns but operate on different timescales, with different tools, for different audiences.</p><div class="essay-card-footer"><span class="essay-card-date">Feb 2025</span><span class="essay-card-read">Read essay</span></div></div>
+      <div class="essay-card"><span class="essay-card-tag">Law</span><h2 class="serif">The Problem with "Technology-Neutral" Legal Frameworks</h2><p>Regulators and courts often aspire to write technology-neutral rules. The argument here is that this aspiration, while understandable, frequently produces worse outcomes than honest technology-specific reasoning.</p><div class="essay-card-footer"><span class="essay-card-date">Jan 2025</span><span class="essay-card-read">Read essay</span></div></div>
+      <div class="essay-card"><span class="essay-card-tag">Society</span><h2 class="serif">On the Poverty of "Move Fast and Fix It Later" as Governance Philosophy</h2><p>A critique of the regulatory philosophy that treats market deployment as the primary mechanism for identifying harm, and the populations that approach systematically disadvantages.</p><div class="essay-card-footer"><span class="essay-card-date">Dec 2024</span><span class="essay-card-read">Read essay</span></div></div>
+      <div class="essay-card"><span class="essay-card-tag">Technology</span><h2 class="serif">What Open Source Actually Means in the Context of AI Models</h2><p>The word "open" is doing enormous work in AI policy debates. This essay tries to disaggregate the term and ask which version of openness actually matters for accountability and access.</p><div class="essay-card-footer"><span class="essay-card-date">Nov 2024</span><span class="essay-card-read">Read essay</span></div></div>
     </div>
   </div>
-
-  <section class="newsletter-band" style="margin-top: 4rem;">
-    <div class="newsletter-inner">
-      <div class="newsletter-copy">
-        <h3 class="serif">Read Phronesis weekly.</h3>
-        <p>New work delivered directly to your inbox. No noise, no filler.</p>
-      </div>
-      <div class="newsletter-form">
-        <input type="email" placeholder="your@email.com" />
-        <button type="button">Subscribe</button>
-      </div>
-    </div>
-  </section>
-
+  <section class="newsletter-band" style="margin-top: 4rem;"><div class="newsletter-inner"><div class="newsletter-copy"><h3 class="serif">Read Phronesis weekly.</h3><p>New work delivered directly to your inbox. No noise, no filler.</p></div><div class="newsletter-form"><input type="email" placeholder="your@email.com" /><button type="button">Subscribe</button></div></div></section>
   <footer>
-    <div>
-      <div class="footer-brand serif">Phronesis</div>
-      <p>An independent research entity at the intersection of technology law and policy.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Publication types</h4>
-      <ul>
-        <li><a href="research.html">Research Papers</a></li>
-        <li><a href="policy.html">Policy Proposals</a></li>
-        <li><a href="legal.html">Legal Analysis</a></li>
-        <li><a href="essays.html">Essays</a></li>
-        <li><a href="reports.html">Reports</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Site</h4>
-      <ul>
-        <li><a href="about.html">About</a></li>
-        <li><a href="research.html">All Publications</a></li>
-        <li><a href="https://chadl22.github.io" target="_blank">Personal Site</a></li>
-      </ul>
-    </div>
+    <div><div class="footer-brand serif">Phronesis</div><p>An independent research entity at the intersection of technology law and policy.</p></div>
+    <div class="footer-col"><h4>Publication types</h4><ul><li><a href="research.html">Research Papers</a></li><li><a href="policy.html">Policy Proposals</a></li><li><a href="legal.html">Legal Analyses</a></li><li><a href="essays.html">Essays</a></li><li><a href="reports.html">Reports</a></li></ul></div>
+    <div class="footer-col"><h4>Site</h4><ul><li><a href="about.html">About</a></li><li><a href="research.html">All Publications</a></li><li><a href="https://chadl22.github.io" target="_blank">Personal Site</a></li></ul></div>
   </footer>
-  <div class="footer-bottom">
-    <p>&copy; 2025 Phronesis Research. Independent &amp; non-partisan.</p>
-    <span class="phronesis-greek">&#x03C6;&#x03C1;&#x03CC;&#x03BD;&#x03B7;&#x03C3;&#x03B9;&#x03C2;</span>
-  </div>
-
-  <script>
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-      });
-    });
-  </script>
-
+  <div class="footer-bottom"><p>&copy; 2025 Phronesis Research. Independent &amp; non-partisan.</p><span class="phronesis-greek">&#x03C6;&#x03C1;&#x03CC;&#x03BD;&#x03B7;&#x03C3;&#x03B9;&#x03C2;</span></div>
+  <script>document.querySelectorAll('.filter-btn').forEach(btn => { btn.addEventListener('click', () => { document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); }); });</script>
+  <script src="chat.js" defer></script>
 </body>
 </html>
