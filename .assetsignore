@@ -5,8 +5,10 @@ node_modules
 .astro
 dist
 public
-*.json
-*.jsonc
+package.json
+package-lock.json
+wrangler.json
+wrangler.jsonc
 worker.js
 .DS_Store
 .env*
