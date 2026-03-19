@@ -1,0 +1,12 @@
+node_modules
+.git
+.github
+.wrangler
+.astro
+dist
+*.jsonc
+*.json
+worker.js
+.DS_Store
+.env*
+.dev.vars*

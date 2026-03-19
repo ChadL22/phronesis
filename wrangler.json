@@ -1,0 +1,12 @@
+{
+  "name": "phronesis",
+  "compatibility_date": "2024-09-27",
+  "main": "worker.js",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS"
+  }
+}
