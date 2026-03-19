@@ -17,46 +17,166 @@
     .archive-subtitle { font-size: 0.78rem; color: var(--ink-3); line-height: 1.5; }
     .archive-tag { display: inline-block; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); border-radius: 2px; padding: 0.15rem 0.45rem; justify-self: end; align-self: start; margin-top: 0.2rem; }
 
-    /* ── POLICY TAB BAR ── */
+    /* ── POLICY CONTROLS ── */
     .policy-controls {
-      border-bottom: 1px solid var(--rule);
       background: var(--paper);
+      border-bottom: 1px solid var(--rule);
     }
-    .policy-tabs {
-      display: flex; align-items: center;
+    .policy-controls-top {
+      display: flex; align-items: center; justify-content: space-between;
       padding: 0 clamp(1.5rem, 5vw, 5rem);
-      gap: 0;
+      border-bottom: 1px solid var(--rule);
     }
+    /* level tabs */
+    .policy-tabs { display: flex; align-items: center; gap: 0; }
     .policy-tab {
       font-family: var(--sans); font-size: 0.68rem; font-weight: 400;
       letter-spacing: 0.13em; text-transform: uppercase;
       color: var(--ink-3); background: none; border: none;
       border-bottom: 2px solid transparent;
-      padding: 0.9rem 1.2rem 0.8rem; cursor: pointer;
-      transition: color 0.18s, border-color 0.18s;
-      margin-bottom: -1px;
+      padding: 0.9rem 1.1rem 0.8rem; cursor: pointer;
+      transition: color 0.18s, border-color 0.18s; margin-bottom: -1px;
     }
     .policy-tab:hover { color: var(--ink); }
     .policy-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-    .policy-tab-divider { width: 1px; height: 1rem; background: var(--rule); margin: 0 0.5rem; align-self: center; }
+    /* view toggle */
+    .policy-view-toggle { display: flex; border: 1px solid var(--rule); border-radius: 2px; overflow: hidden; flex-shrink: 0; }
+    .policy-view-btn {
+      font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.1em;
+      text-transform: uppercase; background: none; border: none;
+      padding: 0.28rem 0.7rem; cursor: pointer; color: var(--ink-3);
+      transition: all 0.18s; display: flex; align-items: center; gap: 0.35rem;
+    }
+    .policy-view-btn + .policy-view-btn { border-left: 1px solid var(--rule); }
+    .policy-view-btn.active { background: var(--accent); color: #EEE8DA; }
+    .policy-view-btn svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+    /* type filters */
     .policy-type-filters {
       display: flex; align-items: center; gap: 0.4rem;
-      padding: 0.7rem clamp(1.5rem, 5vw, 5rem);
-      border-top: 1px solid var(--rule);
+      padding: 0.65rem clamp(1.5rem, 5vw, 5rem);
     }
-    .policy-type-label { font-size: 0.62rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-3); margin-right: 0.25rem; }
+    .policy-type-label { font-size: 0.6rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-3); margin-right: 0.25rem; }
     .policy-type-btn {
-      font-family: var(--sans); font-size: 0.62rem; font-weight: 400;
+      font-family: var(--sans); font-size: 0.6rem; font-weight: 400;
       letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--ink-3); background: none;
       border: 1px solid transparent; border-radius: 2px;
-      padding: 0.22rem 0.6rem; cursor: pointer; transition: all 0.18s;
+      padding: 0.2rem 0.55rem; cursor: pointer; transition: all 0.18s;
     }
     .policy-type-btn:hover { color: var(--ink); border-color: var(--rule); }
     .policy-type-btn.active { color: var(--accent); border-color: var(--accent); }
-    .archive-empty { padding: 3rem 0; font-family: var(--serif); font-size: 1rem; color: var(--ink-3); }
 
-    @media (max-width: 700px) { .archive-list-item { grid-template-columns: 1fr; gap: 0.5rem; } .archive-tag { justify-self: start; } }
+    /* ── CARD VIEW ── */
+    .policy-card-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: var(--rule);
+      border: 1px solid var(--rule);
+      margin-top: 2.5rem;
+    }
+    .policy-card {
+      background: var(--paper); padding: 2rem;
+      display: flex; flex-direction: column;
+      transition: background 0.18s; cursor: pointer;
+    }
+    .policy-card:hover { background: var(--paper-2); }
+    .policy-card.hidden { display: none; }
+    .policy-card-eyebrow {
+      display: flex; align-items: center; gap: 0.5rem;
+      margin-bottom: 1.1rem;
+    }
+    .policy-card-type {
+      font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent); border: 1px solid var(--accent);
+      border-radius: 2px; padding: 0.12rem 0.4rem;
+    }
+    .policy-card-level {
+      font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-3); border: 1px solid var(--rule);
+      border-radius: 2px; padding: 0.12rem 0.4rem;
+    }
+    .policy-card h3 {
+      font-family: var(--serif); font-size: 1.2rem; font-weight: 400;
+      line-height: 1.28; color: var(--ink); margin-bottom: 0.7rem; flex-grow: 1;
+    }
+    .policy-card p {
+      font-size: 0.78rem; color: var(--ink-2); line-height: 1.65;
+      margin-bottom: 1.2rem; flex-grow: 1;
+    }
+    .policy-card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid var(--rule); padding-top: 0.8rem; margin-top: auto;
+    }
+    .policy-card-footer-left { display: flex; flex-direction: column; gap: 0.3rem; }
+    .policy-card-date { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+    .policy-card-read { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); flex-shrink: 0; }
+
+    /* ── LIST VIEW ── */
+    .policy-list-wrap {
+      margin-top: 2.5rem;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .policy-list-header {
+      display: grid; grid-template-columns: 6rem 2fr 1fr 7rem 5rem;
+      gap: 1.5rem; align-items: center;
+      padding: 0.6rem 1.4rem;
+      background: var(--paper-2);
+      border-bottom: 1px solid var(--rule);
+    }
+    .policy-list-col-label {
+      font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3);
+    }
+    .policy-list-scroll {
+      max-height: 520px; overflow-y: auto;
+      scrollbar-width: thin; scrollbar-color: var(--rule) transparent;
+      background: var(--paper);
+    }
+    .policy-list-scroll::-webkit-scrollbar { width: 5px; }
+    .policy-list-scroll::-webkit-scrollbar-track { background: transparent; }
+    .policy-list-scroll::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 3px; }
+    .policy-list-row {
+      display: grid; grid-template-columns: 6rem 2fr 1fr 7rem 5rem;
+      gap: 1.5rem; align-items: center;
+      padding: 1rem 1.4rem;
+      border-bottom: 1px solid var(--rule);
+      transition: background 0.15s; cursor: pointer;
+    }
+    .policy-list-row:last-child { border-bottom: none; }
+    .policy-list-row:hover { background: var(--paper-2); }
+    .policy-list-row.hidden { display: none; }
+    .policy-list-date { font-family: var(--serif); font-size: 0.78rem; color: var(--ink-3); }
+    .policy-list-title {
+      font-family: var(--serif); font-size: 0.95rem; font-weight: 400;
+      line-height: 1.3; color: var(--ink);
+    }
+    .policy-list-row:hover .policy-list-title { color: var(--accent); }
+    .policy-list-subtitle { font-size: 0.72rem; color: var(--ink-3); line-height: 1.4; margin-top: 0.2rem; }
+    .policy-list-level {
+      font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--ink-3); border: 1px solid var(--rule);
+      border-radius: 2px; padding: 0.12rem 0.4rem; align-self: start;
+    }
+    .policy-list-badge { align-self: start; }
+    .policy-list-link {
+      font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent); justify-self: end;
+    }
+    .policy-list-link:hover { text-decoration: underline; }
+    .policy-empty {
+      padding: 3rem 1.4rem; font-family: var(--serif);
+      font-size: 0.95rem; color: var(--ink-3);
+    }
+
+    @media (max-width: 900px) {
+      .policy-card-grid { grid-template-columns: 1fr; }
+      .policy-list-header { display: none; }
+      .policy-list-row { grid-template-columns: 5rem 1fr; gap: 0.75rem; }
+      .policy-list-row > :nth-child(3),
+      .policy-list-row > :nth-child(4),
+      .policy-list-row > :nth-child(5) { display: none; }
+    }
+    @media (max-width: 600px) { .archive-list-item { grid-template-columns: 1fr; gap: 0.5rem; } }
 
     /* ── TRACKER ── */
     .tracker-section {
@@ -244,30 +364,58 @@
     <p class="page-header-desc">Memos, proposals, and policy documents spanning federal, state, and international levels. Written for regulators, lawmakers, and institutions that need work they can actually use.</p>
   </div>
 
-  <!-- tab bar -->
+  <!-- controls -->
   <div class="policy-controls">
-    <div class="policy-tabs">
-      <button class="policy-tab active" data-level="all">All</button>
-      <button class="policy-tab" data-level="federal">Federal</button>
-      <button class="policy-tab" data-level="state">State</button>
-      <button class="policy-tab" data-level="international">International</button>
+    <div class="policy-controls-top">
+      <div class="policy-tabs">
+        <button class="policy-tab active" data-level="all">All</button>
+        <button class="policy-tab" data-level="federal">Federal</button>
+        <button class="policy-tab" data-level="state">State</button>
+        <button class="policy-tab" data-level="international">International</button>
+      </div>
+      <div class="policy-view-toggle">
+        <button class="policy-view-btn active" id="policy-btn-cards" title="Card view">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Cards
+        </button>
+        <button class="policy-view-btn" id="policy-btn-list" title="List view">
+          <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          List
+        </button>
+      </div>
     </div>
     <div class="policy-type-filters">
       <span class="policy-type-label">Type</span>
       <button class="policy-type-btn active" data-type="all">All</button>
-      <button class="policy-type-btn" data-type="memo">Memos</button>
-      <button class="policy-type-btn" data-type="proposal">Proposals</button>
-      <button class="policy-type-btn" data-type="policy">Policies</button>
+      <button class="policy-type-btn" data-type="memo">Memo</button>
+      <button class="policy-type-btn" data-type="proposal">Proposal</button>
+      <button class="policy-type-btn" data-type="policy">Policy</button>
     </div>
   </div>
 
-  <div class="archive" id="policy-archive">
-    <div class="archive-list-item" data-level="federal" data-type="proposal"><div class="archive-date">Feb 2025</div><div><div class="archive-title">A Federal AI Incident Reporting Framework <span class="origin-badge origin-badge--original">Original</span></div><div class="archive-subtitle">Drawing from aviation and nuclear safety models, a concrete proposal for mandatory AI incident disclosure requirements at the federal level.</div></div><span class="archive-tag">Proposal</span></div>
-    <div class="archive-list-item" data-level="federal" data-type="memo"><div class="archive-date">Jan 2025</div><div><div class="archive-title">Procurement as Policy: How Federal Contracting Could Shape Responsible AI <span class="origin-badge origin-badge--via">Via Brookings</span></div><div class="archive-subtitle">A framework for using federal procurement power to establish baseline AI safety and accountability requirements before broader legislation passes.</div></div><span class="archive-tag">Memo</span></div>
-    <div class="archive-list-item" data-level="state" data-type="policy"><div class="archive-date">Nov 2024</div><div><div class="archive-title">Model Algorithmic Impact Assessment Standards for State Agencies <span class="origin-badge origin-badge--original">Original</span></div><div class="archive-subtitle">Draft standards for how state governments should evaluate automated decision systems before deployment in public services.</div></div><span class="archive-tag">Policy</span></div>
-    <div class="archive-list-item" data-level="international" data-type="proposal"><div class="archive-date">Oct 2024</div><div><div class="archive-title">Transatlantic AI Governance: A Framework for U.S.-EU Regulatory Cooperation <span class="origin-badge origin-badge--via">Via CSIS</span></div><div class="archive-subtitle">Proposes a bilateral coordination mechanism to reduce compliance friction and establish shared standards across the Atlantic AI governance divide.</div></div><span class="archive-tag">Proposal</span></div>
-    <p class="archive-empty" id="policy-empty" style="display:none;">No items match the current filters.</p>
+  <!-- data source (hidden) -->
+  <div id="policy-data" style="display:none;">
+    <div data-level="federal" data-type="proposal" data-date="Feb 2025"
+         data-title="A Federal AI Incident Reporting Framework"
+         data-subtitle="Drawing from aviation and nuclear safety models, a concrete proposal for mandatory AI incident disclosure requirements at the federal level."
+         data-origin="original" data-origin-label="Original"></div>
+    <div data-level="federal" data-type="memo" data-date="Jan 2025"
+         data-title="Procurement as Policy: How Federal Contracting Could Shape Responsible AI"
+         data-subtitle="A framework for using federal procurement power to establish baseline AI safety and accountability requirements before broader legislation passes."
+         data-origin="via" data-origin-label="Via Brookings"></div>
+    <div data-level="state" data-type="policy" data-date="Nov 2024"
+         data-title="Model Algorithmic Impact Assessment Standards for State Agencies"
+         data-subtitle="Draft standards for how state governments should evaluate automated decision systems before deployment in public services."
+         data-origin="original" data-origin-label="Original"></div>
+    <div data-level="international" data-type="proposal" data-date="Oct 2024"
+         data-title="Transatlantic AI Governance: A Framework for U.S.-EU Regulatory Cooperation"
+         data-subtitle="Proposes a bilateral coordination mechanism to reduce compliance friction and establish shared standards across the Atlantic AI governance divide."
+         data-origin="via" data-origin-label="Via CSIS"></div>
   </div>
+
+  <!-- rendered views -->
+  <div class="archive" id="policy-card-view"></div>
+  <div class="archive" id="policy-list-view" style="display:none;"></div>
   <!-- ── POLICY TRACKER ── -->
   <section class="tracker-section">
     <div class="tracker-inner">
@@ -398,44 +546,137 @@
       });
     });
 
-    // ── POLICY LEVEL TABS + TYPE FILTERS ──
-    let activeLevel = 'all';
-    let activeType  = 'all';
+    // ── POLICY VIEWS ──
+    const policyItems = Array.from(document.querySelectorAll('#policy-data > div'));
+    let pActiveLevel = 'all';
+    let pActiveType  = 'all';
+    let pActiveView  = 'cards';
 
-    function filterPolicy() {
-      const items = Array.from(document.querySelectorAll('#policy-archive .archive-list-item'));
-      let visible = 0;
-      items.forEach(el => {
-        const levelMatch = activeLevel === 'all' || el.dataset.level === activeLevel;
-        const typeMatch  = activeType  === 'all' || el.dataset.type  === activeType;
-        const show = levelMatch && typeMatch;
-        el.classList.toggle('hidden', !show);
-        if (show) visible++;
+    function pVisible() {
+      return policyItems.filter(el => {
+        const lm = pActiveLevel === 'all' || el.dataset.level === pActiveLevel;
+        const tm = pActiveType  === 'all' || el.dataset.type  === pActiveType;
+        return lm && tm;
       });
-      // fix last-child border — find the last visible item
-      items.forEach(el => el.style.borderBottom = '');
-      const visibleItems = items.filter(el => !el.classList.contains('hidden'));
-      if (visibleItems.length) visibleItems[visibleItems.length - 1].style.borderBottom = '1px solid var(--rule)';
-      document.getElementById('policy-empty').style.display = visible === 0 ? '' : 'none';
+    }
+
+    function badgeHTML(origin, label) {
+      return `<span class="origin-badge origin-badge--${origin}">${label}</span>`;
+    }
+
+    function renderCards() {
+      const cv = document.getElementById('policy-card-view');
+      const visible = pVisible();
+      if (!visible.length) {
+        cv.innerHTML = '<p class="policy-empty">No items match the current filters.</p>';
+        return;
+      }
+      const grid = document.createElement('div');
+      grid.className = 'policy-card-grid';
+      visible.forEach(el => {
+        const d = el.dataset;
+        const card = document.createElement('div');
+        card.className = 'policy-card';
+        card.innerHTML = `
+          <div class="policy-card-eyebrow">
+            <span class="policy-card-type">${d.type}</span>
+            <span class="policy-card-level">${d.level}</span>
+          </div>
+          <h3 class="serif">${d.title}</h3>
+          <p>${d.subtitle}</p>
+          <div class="policy-card-footer">
+            <div class="policy-card-footer-left">
+              <span class="policy-card-date">${d.date}</span>
+              ${badgeHTML(d.origin, d.originLabel)}
+            </div>
+            <span class="policy-card-read">Read</span>
+          </div>`;
+        grid.appendChild(card);
+      });
+      cv.innerHTML = '';
+      cv.appendChild(grid);
+    }
+
+    function renderList() {
+      const lv = document.getElementById('policy-list-view');
+      const visible = pVisible();
+      if (!visible.length) {
+        lv.innerHTML = '<p class="policy-empty">No items match the current filters.</p>';
+        return;
+      }
+      const wrap = document.createElement('div');
+      wrap.className = 'policy-list-wrap';
+      wrap.innerHTML = `
+        <div class="policy-list-header">
+          <span class="policy-list-col-label">Date</span>
+          <span class="policy-list-col-label">Title</span>
+          <span class="policy-list-col-label">Level</span>
+          <span class="policy-list-col-label">Source</span>
+          <span class="policy-list-col-label"></span>
+        </div>
+        <div class="policy-list-scroll" id="policy-list-scroll"></div>`;
+      const scroll = wrap.querySelector('#policy-list-scroll');
+      visible.forEach(el => {
+        const d = el.dataset;
+        const row = document.createElement('div');
+        row.className = 'policy-list-row';
+        row.innerHTML = `
+          <span class="policy-list-date">${d.date}</span>
+          <div>
+            <div class="policy-list-title">${d.title}</div>
+            <div class="policy-list-subtitle">${d.subtitle}</div>
+          </div>
+          <span class="policy-list-level">${d.level}</span>
+          <span class="policy-list-badge">${badgeHTML(d.origin, d.originLabel)}</span>
+          <span class="policy-list-link">Read →</span>`;
+        scroll.appendChild(row);
+      });
+      lv.innerHTML = '';
+      lv.appendChild(wrap);
+    }
+
+    function pRender() {
+      if (pActiveView === 'cards') {
+        document.getElementById('policy-card-view').style.display = '';
+        document.getElementById('policy-list-view').style.display = 'none';
+        renderCards();
+      } else {
+        document.getElementById('policy-card-view').style.display = 'none';
+        document.getElementById('policy-list-view').style.display = '';
+        renderList();
+      }
     }
 
     document.querySelectorAll('.policy-tab').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.policy-tab').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        activeLevel = btn.dataset.level;
-        filterPolicy();
+        pActiveLevel = btn.dataset.level;
+        pRender();
       });
     });
-
     document.querySelectorAll('.policy-type-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.policy-type-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        activeType = btn.dataset.type;
-        filterPolicy();
+        pActiveType = btn.dataset.type;
+        pRender();
       });
     });
+    document.getElementById('policy-btn-cards').addEventListener('click', () => {
+      pActiveView = 'cards';
+      document.getElementById('policy-btn-cards').classList.add('active');
+      document.getElementById('policy-btn-list').classList.remove('active');
+      pRender();
+    });
+    document.getElementById('policy-btn-list').addEventListener('click', () => {
+      pActiveView = 'list';
+      document.getElementById('policy-btn-list').classList.add('active');
+      document.getElementById('policy-btn-cards').classList.remove('active');
+      pRender();
+    });
+
+    pRender(); // init
 
     // search
     document.getElementById('tracker-search').addEventListener('input', function() {
