@@ -41,6 +41,73 @@
     .legal-btn:hover { color: var(--ink); border-color: var(--rule); }
     .legal-btn.active { color: var(--accent); border-color: var(--accent); }
 
+    /* ellipsis overflow button + dropdown */
+    .legal-overflow {
+      position: relative; display: inline-flex; flex-shrink: 0;
+    }
+    .legal-ellipsis {
+      font-family: var(--sans); font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.05em; color: var(--ink-3); background: none;
+      border: 1px solid transparent; border-radius: 2px;
+      padding: 0.18rem 0.5rem; cursor: pointer; transition: all 0.18s;
+      line-height: 1;
+    }
+    .legal-ellipsis:hover { border-color: var(--rule); color: var(--ink); }
+    .legal-ellipsis.has-active { color: var(--accent); border-color: var(--accent); }
+    .legal-dropdown {
+      display: none; position: absolute; top: calc(100% + 4px); left: 0;
+      background: var(--paper); border: 1px solid var(--rule);
+      border-top: 2px solid var(--accent);
+      box-shadow: 0 4px 16px rgba(26,25,22,0.08);
+      z-index: 200; min-width: 160px; padding: 0.35rem 0;
+    }
+    .legal-dropdown.open { display: block; }
+    .legal-dropdown .legal-btn {
+      display: block; width: 100%; text-align: left;
+      padding: 0.45rem 0.9rem; border-radius: 0; border: none;
+      border-bottom: none;
+    }
+    .legal-dropdown .legal-btn:hover { background: var(--paper-2); }
+    .legal-dropdown .legal-btn.active { color: var(--accent); background: var(--paper-2); }
+
+    /* view toggle */
+    .legal-view-toggle { display: flex; border: 1px solid var(--rule); border-radius: 2px; overflow: hidden; flex-shrink: 0; }
+    .legal-view-btn {
+      font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.1em;
+      text-transform: uppercase; background: none; border: none;
+      padding: 0.28rem 0.7rem; cursor: pointer; color: var(--ink-3);
+      transition: all 0.18s; display: flex; align-items: center; gap: 0.35rem;
+    }
+    .legal-view-btn + .legal-view-btn { border-left: 1px solid var(--rule); }
+    .legal-view-btn.active { background: var(--accent); color: #EEE8DA; }
+    .legal-view-btn svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+
+    /* card view */
+    .legal-card-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 2.5rem;
+    }
+    .legal-card {
+      background: var(--paper); padding: 2rem 1.8rem;
+      display: flex; flex-direction: column; cursor: pointer; transition: background 0.18s;
+    }
+    .legal-card:hover { background: var(--paper-2); }
+    .legal-card-eyebrow { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .legal-card h3 {
+      font-family: var(--serif); font-size: 1.2rem; font-weight: 400;
+      line-height: 1.28; color: var(--ink); margin-bottom: 0.7rem; flex-grow: 1;
+    }
+    .legal-card p { font-size: 0.78rem; color: var(--ink-2); line-height: 1.65; margin-bottom: 1.2rem; flex-grow: 1; }
+    .legal-card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid var(--rule); padding-top: 0.8rem; margin-top: auto; gap: 0.5rem;
+    }
+    .legal-card-footer-left { display: flex; flex-direction: column; gap: 0.3rem; }
+    .legal-card-date { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+    .legal-card-read { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); flex-shrink: 0; }
+    .legal-empty { padding: 3rem 0; font-family: var(--serif); font-size: 0.95rem; color: var(--ink-3); }
+
+    @media (max-width: 900px) { .legal-card-grid { grid-template-columns: 1fr; } }
     @media (max-width: 700px) { .archive-list-item { grid-template-columns: 1fr; gap: 0.5rem; } .archive-tags { align-items: flex-start; } }
   </style>
 </head>
@@ -74,15 +141,32 @@
       <button class="legal-btn" data-filter="type" data-value="case">Case</button>
       <button class="legal-btn" data-filter="type" data-value="statutory">Statutory</button>
       <button class="legal-btn" data-filter="type" data-value="regulatory">Regulatory</button>
-      <button class="legal-btn" data-filter="type" data-value="procedural">Procedural</button>
-      <button class="legal-btn" data-filter="type" data-value="litigation">Litigation / Risk</button>
-      <button class="legal-btn" data-filter="type" data-value="policy">Policy</button>
-      <button class="legal-btn" data-filter="type" data-value="comparative">Comparative</button>
-      <span style="margin-left:auto; display:flex; align-items:center; gap:0.4rem; flex-shrink:0;">
-        <span class="legal-filter-label" style="margin-right:0;">Origin</span>
-        <button class="legal-btn active" data-filter="origin" data-value="all">All</button>
-        <button class="legal-btn" data-filter="origin" data-value="original">Original</button>
-        <button class="legal-btn" data-filter="origin" data-value="via">Via</button>
+      <span class="legal-overflow" id="type-overflow">
+        <button class="legal-ellipsis" id="type-ellipsis" aria-label="More types">···</button>
+        <div class="legal-dropdown" id="type-dropdown">
+          <button class="legal-btn" data-filter="type" data-value="procedural">Procedural</button>
+          <button class="legal-btn" data-filter="type" data-value="litigation">Litigation / Risk</button>
+          <button class="legal-btn" data-filter="type" data-value="policy">Policy</button>
+          <button class="legal-btn" data-filter="type" data-value="comparative">Comparative</button>
+        </div>
+      </span>
+      <span style="margin-left:auto; display:flex; align-items:center; gap:0.75rem; flex-shrink:0;">
+        <span style="display:flex; align-items:center; gap:0.4rem;">
+          <span class="legal-filter-label" style="margin-right:0;">Origin</span>
+          <button class="legal-btn active" data-filter="origin" data-value="all">All</button>
+          <button class="legal-btn" data-filter="origin" data-value="original">Original</button>
+          <button class="legal-btn" data-filter="origin" data-value="via">Via</button>
+        </span>
+        <div class="legal-view-toggle">
+          <button class="legal-view-btn active" id="legal-btn-list" title="List view">
+            <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            List
+          </button>
+          <button class="legal-view-btn" id="legal-btn-cards" title="Card view">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            Cards
+          </button>
+        </div>
       </span>
     </div>
     <!-- row 2: topic -->
@@ -92,41 +176,45 @@
       <button class="legal-btn" data-filter="topic" data-value="first-amendment">First Amendment</button>
       <button class="legal-btn" data-filter="topic" data-value="antitrust">Antitrust</button>
       <button class="legal-btn" data-filter="topic" data-value="liability">Liability</button>
-      <button class="legal-btn" data-filter="topic" data-value="administrative">Administrative</button>
-      <button class="legal-btn" data-filter="topic" data-value="ip">IP</button>
-      <button class="legal-btn" data-filter="topic" data-value="privacy">Privacy</button>
-      <button class="legal-btn" data-filter="topic" data-value="competition">Competition</button>
+      <span class="legal-overflow" id="topic-overflow">
+        <button class="legal-ellipsis" id="topic-ellipsis" aria-label="More topics">···</button>
+        <div class="legal-dropdown" id="topic-dropdown">
+          <button class="legal-btn" data-filter="topic" data-value="administrative">Administrative</button>
+          <button class="legal-btn" data-filter="topic" data-value="ip">IP</button>
+          <button class="legal-btn" data-filter="topic" data-value="privacy">Privacy</button>
+          <button class="legal-btn" data-filter="topic" data-value="competition">Competition</button>
+        </div>
+      </span>
     </div>
   </div>
 
-  <div class="archive" id="legal-archive">
-    <div class="archive-list-item" data-type="doctrinal" data-topic="first-amendment" data-origin="original">
-      <div class="archive-date">Jan 2025</div>
-      <div><div class="archive-title">Section 230 After NetChoice: What the Court Left Unsaid <span class="origin-badge origin-badge--original">Original</span></div><div class="archive-subtitle">A close reading of the 2024 NetChoice opinions, the doctrinal questions they resolved, and the larger questions they deliberately avoided.</div></div>
-      <div class="archive-tags"><span class="archive-tag">Doctrinal</span><span class="archive-tag archive-tag--topic">First Amendment</span></div>
-    </div>
-    <div class="archive-list-item" data-type="doctrinal" data-topic="first-amendment" data-origin="original">
-      <div class="archive-date">Feb 2025</div>
-      <div><div class="archive-title">Compelled Speech and Algorithmic Curation After Moody v. NetChoice <span class="origin-badge origin-badge--original">Original</span></div><div class="archive-subtitle">Examines whether must-carry and must-not-carry obligations on platforms constitute compelled speech under the First Amendment as clarified by Moody.</div></div>
-      <div class="archive-tags"><span class="archive-tag">Doctrinal</span><span class="archive-tag archive-tag--topic">First Amendment</span></div>
-    </div>
-    <div class="archive-list-item" data-type="case" data-topic="antitrust" data-origin="via">
-      <div class="archive-date">Dec 2024</div>
-      <div><div class="archive-title">FTC v. Amazon: What the Complaint Reveals About Modern Monopolization Theory <span class="origin-badge origin-badge--via">Via FTC</span></div><div class="archive-subtitle">An analysis of the FTC's Amazon complaint as a window into how enforcement agencies are attempting to modernize Sherman Act Section 2 doctrine.</div></div>
-      <div class="archive-tags"><span class="archive-tag">Case</span><span class="archive-tag archive-tag--topic">Antitrust</span></div>
-    </div>
-    <div class="archive-list-item" data-type="regulatory" data-topic="administrative" data-origin="original">
-      <div class="archive-date">Nov 2024</div>
-      <div><div class="archive-title">Loper Bright and the Future of FCC Rulemaking Authority <span class="origin-badge origin-badge--original">Original</span></div><div class="archive-subtitle">Traces the implications of the Court's Chevron overruling for the FCC's ability to promulgate broadband and platform regulations.</div></div>
-      <div class="archive-tags"><span class="archive-tag">Regulatory</span><span class="archive-tag archive-tag--topic">Administrative</span></div>
-    </div>
-    <div class="archive-list-item" data-type="litigation" data-topic="ip" data-origin="via">
-      <div class="archive-date">Oct 2024</div>
-      <div><div class="archive-title">Copyright and the Training Data Question: Where Courts Are Headed <span class="origin-badge origin-badge--via">Via Harvard Law Review</span></div><div class="archive-subtitle">Surveys pending litigation over AI training data and sketches the likely doctrinal paths courts will take to resolve the fair use question.</div></div>
-      <div class="archive-tags"><span class="archive-tag">Litigation / Risk</span><span class="archive-tag archive-tag--topic">IP</span></div>
-    </div>
-    <p id="legal-empty" style="display:none; padding:3rem 0; font-family:var(--serif); font-size:0.95rem; color:var(--ink-3);">No items match the current filter.</p>
+  <!-- data -->
+  <div id="legal-data" style="display:none;">
+    <div data-type="doctrinal" data-topic="first-amendment" data-origin="original" data-date="Jan 2025"
+         data-title="Section 230 After NetChoice: What the Court Left Unsaid"
+         data-subtitle="A close reading of the 2024 NetChoice opinions, the doctrinal questions they resolved, and the larger questions they deliberately avoided."
+         data-origin-label="Original"></div>
+    <div data-type="doctrinal" data-topic="first-amendment" data-origin="original" data-date="Feb 2025"
+         data-title="Compelled Speech and Algorithmic Curation After Moody v. NetChoice"
+         data-subtitle="Examines whether must-carry and must-not-carry obligations on platforms constitute compelled speech under the First Amendment as clarified by Moody."
+         data-origin-label="Original"></div>
+    <div data-type="case" data-topic="antitrust" data-origin="via" data-date="Dec 2024"
+         data-title="FTC v. Amazon: What the Complaint Reveals About Modern Monopolization Theory"
+         data-subtitle="An analysis of the FTC's Amazon complaint as a window into how enforcement agencies are attempting to modernize Sherman Act Section 2 doctrine."
+         data-origin-label="Via FTC"></div>
+    <div data-type="regulatory" data-topic="administrative" data-origin="original" data-date="Nov 2024"
+         data-title="Loper Bright and the Future of FCC Rulemaking Authority"
+         data-subtitle="Traces the implications of the Court's Chevron overruling for the FCC's ability to promulgate broadband and platform regulations."
+         data-origin-label="Original"></div>
+    <div data-type="litigation" data-topic="ip" data-origin="via" data-date="Oct 2024"
+         data-title="Copyright and the Training Data Question: Where Courts Are Headed"
+         data-subtitle="Surveys pending litigation over AI training data and sketches the likely doctrinal paths courts will take to resolve the fair use question."
+         data-origin-label="Via Harvard Law Review"></div>
   </div>
+
+  <!-- rendered views -->
+  <div class="archive" id="legal-list-view"></div>
+  <div class="archive" id="legal-card-view" style="display:none;"></div>
   <section class="newsletter-band"><div class="newsletter-inner"><div class="newsletter-copy"><h3 class="serif">Read Phronesis weekly.</h3><p>New work delivered directly to your inbox. No noise, no filler.</p></div><div class="newsletter-form"><input type="email" placeholder="your@email.com" /><button type="button">Subscribe</button></div></div></section>
   <footer>
     <div><div class="footer-brand serif">Phronesis</div><p>An independent research entity at the intersection of technology law and policy.</p></div>
@@ -135,25 +223,82 @@
   </footer>
   <div class="footer-bottom"><p>&copy; 2025 Phronesis Research. Independent &amp; non-partisan.</p><span class="phronesis-greek">&#x03C6;&#x03C1;&#x03CC;&#x03BD;&#x03B7;&#x03C3;&#x03B9;&#x03C2;</span></div>
   <script>
+    const legalItems = Array.from(document.querySelectorAll('#legal-data > div'));
     let lActiveType   = 'all';
     let lActiveTopic  = 'all';
     let lActiveOrigin = 'all';
+    let lActiveView   = 'list';
 
-    function lFilter() {
-      const items = Array.from(document.querySelectorAll('#legal-archive .archive-list-item'));
-      let visible = 0;
-      items.forEach(el => {
-        const show =
-          (lActiveType   === 'all' || el.dataset.type   === lActiveType)  &&
-          (lActiveTopic  === 'all' || el.dataset.topic  === lActiveTopic) &&
-          (lActiveOrigin === 'all' || el.dataset.origin === lActiveOrigin);
-        el.style.display = show ? '' : 'none';
-        if (show) visible++;
+    function lVisible() {
+      return legalItems.filter(el =>
+        (lActiveType   === 'all' || el.dataset.type   === lActiveType)  &&
+        (lActiveTopic  === 'all' || el.dataset.topic  === lActiveTopic) &&
+        (lActiveOrigin === 'all' || el.dataset.origin === lActiveOrigin)
+      );
+    }
+
+    function lRenderList() {
+      const lv = document.getElementById('legal-list-view');
+      const visible = lVisible();
+      if (!visible.length) { lv.innerHTML = '<p class="legal-empty">No items match the current filters.</p>'; return; }
+      lv.innerHTML = visible.map((el, i) => {
+        const d = el.dataset;
+        const isLast = i === visible.length - 1;
+        return `<div class="archive-list-item" style="${isLast ? 'border-bottom:1px solid var(--rule);' : ''}">
+          <div class="archive-date">${d.date}</div>
+          <div>
+            <div class="archive-title">${d.title} <span class="origin-badge origin-badge--${d.origin}">${d.originLabel}</span></div>
+            <div class="archive-subtitle">${d.subtitle}</div>
+          </div>
+          <div class="archive-tags">
+            <span class="archive-tag">${d.type.charAt(0).toUpperCase() + d.type.slice(1)}</span>
+            <span class="archive-tag archive-tag--topic">${d.topic.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase())}</span>
+          </div>
+        </div>`;
+      }).join('');
+    }
+
+    function lRenderCards() {
+      const cv = document.getElementById('legal-card-view');
+      const visible = lVisible();
+      if (!visible.length) { cv.innerHTML = '<p class="legal-empty">No items match the current filters.</p>'; return; }
+      const grid = document.createElement('div');
+      grid.className = 'legal-card-grid';
+      visible.forEach(el => {
+        const d = el.dataset;
+        const card = document.createElement('div');
+        card.className = 'legal-card';
+        card.innerHTML = `
+          <div class="legal-card-eyebrow">
+            <span class="archive-tag">${d.type.charAt(0).toUpperCase() + d.type.slice(1)}</span>
+            <span class="archive-tag archive-tag--topic">${d.topic.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase())}</span>
+          </div>
+          <h3 class="serif">${d.title}</h3>
+          <p>${d.subtitle}</p>
+          <div class="legal-card-footer">
+            <div class="legal-card-footer-left">
+              <span class="legal-card-date">${d.date}</span>
+              <span class="origin-badge origin-badge--${d.origin}">${d.originLabel}</span>
+            </div>
+            <span class="legal-card-read">Read</span>
+          </div>`;
+        grid.appendChild(card);
       });
-      items.forEach(el => el.style.borderBottom = '');
-      const shown = items.filter(el => el.style.display !== 'none');
-      if (shown.length) shown[shown.length - 1].style.borderBottom = '1px solid var(--rule)';
-      document.getElementById('legal-empty').style.display = visible === 0 ? '' : 'none';
+      cv.innerHTML = '';
+      cv.appendChild(grid);
+    }
+
+    function lRender() {
+      if (lActiveView === 'list') {
+        document.getElementById('legal-list-view').style.display = 'block';
+        document.getElementById('legal-card-view').style.display = 'none';
+        lRenderList();
+      } else {
+        document.getElementById('legal-list-view').style.display = 'none';
+        document.getElementById('legal-card-view').style.display = 'block';
+        lRenderCards();
+      }
+      if (typeof syncEllipsis === 'function') syncEllipsis();
     }
 
     document.querySelectorAll('.legal-btn').forEach(btn => {
@@ -164,9 +309,53 @@
         if (dim === 'type')   lActiveType   = btn.dataset.value;
         if (dim === 'topic')  lActiveTopic  = btn.dataset.value;
         if (dim === 'origin') lActiveOrigin = btn.dataset.value;
-        lFilter();
+        lRender();
       });
     });
+
+    // ── ELLIPSIS DROPDOWNS ──
+    function setupOverflow(ellipsisId, dropdownId) {
+      const btn = document.getElementById(ellipsisId);
+      const dd  = document.getElementById(dropdownId);
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        // close other dropdowns
+        document.querySelectorAll('.legal-dropdown').forEach(d => { if (d !== dd) d.classList.remove('open'); });
+        dd.classList.toggle('open');
+      });
+    }
+    setupOverflow('type-ellipsis',  'type-dropdown');
+    setupOverflow('topic-ellipsis', 'topic-dropdown');
+
+    // close dropdowns on outside click
+    document.addEventListener('click', () =>
+      document.querySelectorAll('.legal-dropdown').forEach(d => d.classList.remove('open'))
+    );
+
+    // after a filter change, update ellipsis highlight if a hidden option is active
+    function syncEllipsis() {
+      ['type', 'topic'].forEach(dim => {
+        const dd  = document.getElementById(dim + '-dropdown');
+        const btn = document.getElementById(dim + '-ellipsis');
+        const hasActive = dd.querySelector('.legal-btn.active') !== null;
+        btn.classList.toggle('has-active', hasActive);
+      });
+    }
+
+    document.getElementById('legal-btn-list').addEventListener('click', () => {
+      lActiveView = 'list';
+      document.getElementById('legal-btn-list').classList.add('active');
+      document.getElementById('legal-btn-cards').classList.remove('active');
+      lRender();
+    });
+    document.getElementById('legal-btn-cards').addEventListener('click', () => {
+      lActiveView = 'cards';
+      document.getElementById('legal-btn-cards').classList.add('active');
+      document.getElementById('legal-btn-list').classList.remove('active');
+      lRender();
+    });
+
+    lRender();
   </script>
   <script src="chat.js" defer></script>
   <script>
