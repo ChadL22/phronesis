@@ -24,9 +24,7 @@
       display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem;
       padding: 0.65rem clamp(1.5rem, 5vw, 5rem);
     }
-    .legal-filter-row:first-child { flex-wrap: nowrap; overflow-x: auto; }
-    .legal-filter-row:first-child::-webkit-scrollbar { display: none; }
-    .legal-filter-row:first-child { scrollbar-width: none; }
+    .legal-filter-row:first-child { flex-wrap: nowrap; overflow: visible; }
     .legal-filter-label {
       font-size: 0.6rem; letter-spacing: 0.13em; text-transform: uppercase;
       color: var(--ink-3); margin-right: 0.25rem; flex-shrink: 0;
@@ -54,14 +52,29 @@
     }
     .legal-ellipsis:hover { border-color: var(--rule); color: var(--ink); }
     .legal-ellipsis.has-active { color: var(--accent); border-color: var(--accent); }
-    .legal-dropdown {
+    /* type dropdown opens upward (lives on row 1, above row 2) */
+    #type-dropdown {
       display: none; position: absolute; bottom: calc(100% + 4px); left: 0;
       background: var(--paper); border: 1px solid var(--rule);
-      border-bottom: 2px solid var(--accent); border-top: 1px solid var(--rule);
+      border-bottom: 2px solid var(--accent);
+      box-shadow: 0 -4px 16px rgba(26,25,22,0.08);
+      z-index: 200; min-width: 160px; padding: 0.35rem 0;
+    }
+    /* topic dropdown opens downward (lives on row 2, below it) */
+    #topic-dropdown {
+      display: none; position: absolute; top: calc(100% + 4px); left: 0;
+      background: var(--paper); border: 1px solid var(--rule);
+      border-top: 2px solid var(--accent);
       box-shadow: 0 4px 16px rgba(26,25,22,0.08);
       z-index: 200; min-width: 160px; padding: 0.35rem 0;
     }
-    .legal-dropdown.open { display: block; }
+    .legal-dropdown {
+      display: none; position: absolute;
+      background: var(--paper); border: 1px solid var(--rule);
+      box-shadow: 0 4px 16px rgba(26,25,22,0.08);
+      z-index: 200; min-width: 160px; padding: 0.35rem 0;
+    }
+    .legal-dropdown.open, #type-dropdown.open, #topic-dropdown.open { display: block; }
     .legal-dropdown .legal-btn {
       display: block; width: 100%; text-align: left;
       padding: 0.45rem 0.9rem; border-radius: 0; border: none;
@@ -150,13 +163,7 @@
           <button class="legal-btn" data-filter="type" data-value="comparative">Comparative</button>
         </div>
       </span>
-      <span style="margin-left:auto; display:flex; align-items:center; gap:0.75rem; flex-shrink:0;">
-        <span style="display:flex; align-items:center; gap:0.4rem;">
-          <span class="legal-filter-label" style="margin-right:0;">Origin</span>
-          <button class="legal-btn active" data-filter="origin" data-value="all">All</button>
-          <button class="legal-btn" data-filter="origin" data-value="original">Original</button>
-          <button class="legal-btn" data-filter="origin" data-value="via">Via</button>
-        </span>
+      <span style="margin-left:auto; flex-shrink:0;">
         <div class="legal-view-toggle">
           <button class="legal-view-btn active" id="legal-btn-list" title="List view">
             <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -184,6 +191,12 @@
           <button class="legal-btn" data-filter="topic" data-value="privacy">Privacy</button>
           <button class="legal-btn" data-filter="topic" data-value="competition">Competition</button>
         </div>
+      </span>
+      <span style="margin-left:auto; display:flex; align-items:center; gap:0.4rem; flex-shrink:0;">
+        <span class="legal-filter-label" style="margin-right:0;">Origin</span>
+        <button class="legal-btn active" data-filter="origin" data-value="all">All</button>
+        <button class="legal-btn" data-filter="origin" data-value="original">Original</button>
+        <button class="legal-btn" data-filter="origin" data-value="via">Via</button>
       </span>
     </div>
   </div>
