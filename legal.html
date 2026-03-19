@@ -24,6 +24,9 @@
       display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem;
       padding: 0.65rem clamp(1.5rem, 5vw, 5rem);
     }
+    .legal-filter-row:first-child { flex-wrap: nowrap; overflow-x: auto; }
+    .legal-filter-row:first-child::-webkit-scrollbar { display: none; }
+    .legal-filter-row:first-child { scrollbar-width: none; }
     .legal-filter-label {
       font-size: 0.6rem; letter-spacing: 0.13em; text-transform: uppercase;
       color: var(--ink-3); margin-right: 0.25rem; flex-shrink: 0;
@@ -63,7 +66,7 @@
   </div>
   <!-- controls -->
   <div class="legal-controls">
-    <!-- row 1: analysis type -->
+    <!-- row 1: type + origin (right-aligned) -->
     <div class="legal-filter-row">
       <span class="legal-filter-label">Type</span>
       <button class="legal-btn active" data-filter="type" data-value="all">All</button>
@@ -75,8 +78,14 @@
       <button class="legal-btn" data-filter="type" data-value="litigation">Litigation / Risk</button>
       <button class="legal-btn" data-filter="type" data-value="policy">Policy</button>
       <button class="legal-btn" data-filter="type" data-value="comparative">Comparative</button>
+      <span style="margin-left:auto; display:flex; align-items:center; gap:0.4rem; flex-shrink:0;">
+        <span class="legal-filter-label" style="margin-right:0;">Origin</span>
+        <button class="legal-btn active" data-filter="origin" data-value="all">All</button>
+        <button class="legal-btn" data-filter="origin" data-value="original">Original</button>
+        <button class="legal-btn" data-filter="origin" data-value="via">Via</button>
+      </span>
     </div>
-    <!-- row 2: topic tag -->
+    <!-- row 2: topic -->
     <div class="legal-filter-row" style="border-top: 1px solid var(--rule);">
       <span class="legal-filter-label">Topic</span>
       <button class="legal-btn active" data-filter="topic" data-value="all">All</button>
@@ -87,13 +96,6 @@
       <button class="legal-btn" data-filter="topic" data-value="ip">IP</button>
       <button class="legal-btn" data-filter="topic" data-value="privacy">Privacy</button>
       <button class="legal-btn" data-filter="topic" data-value="competition">Competition</button>
-    </div>
-    <!-- row 3: origin -->
-    <div class="legal-filter-row" style="border-top: 1px solid var(--rule);">
-      <span class="legal-filter-label">Origin</span>
-      <button class="legal-btn active" data-filter="origin" data-value="all">All</button>
-      <button class="legal-btn" data-filter="origin" data-value="original">Original</button>
-      <button class="legal-btn" data-filter="origin" data-value="via">Via</button>
     </div>
   </div>
 
