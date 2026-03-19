@@ -484,9 +484,12 @@
       document.getElementById('spot-next').disabled = activeIdx === items.length - 1;
       document.getElementById('spot-pos').textContent = `${activeIdx + 1} of ${items.length}`;
 
-      // sync carousel active thumb
+      // sync carousel active thumb and numbered buttons
       document.querySelectorAll('.essay-thumb').forEach(th =>
         th.classList.toggle('active', parseInt(th.dataset.idx) === activeIdx)
+      );
+      document.querySelectorAll('.carousel-dot').forEach(dot =>
+        dot.classList.toggle('active', parseInt(dot.dataset.idx) === activeIdx)
       );
     }
 
@@ -523,13 +526,18 @@
 
       track.style.transform = 'translateX(0)';
 
-      // dots — one per "page" of CARDS
-      const pages = Math.ceil(items.length / CARDS);
-      dots.innerHTML = Array.from({length: pages}, (_, i) =>
-        `<button class="carousel-dot${i === 0 ? ' active' : ''}" data-page="${i}" aria-label="Page ${i+1}"></button>`
+      // numbered buttons — one per essay
+      dots.innerHTML = items.map((el, i) =>
+        `<button class="carousel-dot${i === activeIdx ? ' active' : ''}" data-idx="${i}" aria-label="Essay ${i+1}">${i + 1}</button>`
       ).join('');
       dots.querySelectorAll('.carousel-dot').forEach(dot => {
-        dot.addEventListener('click', () => scrollCarousel(parseInt(dot.dataset.page) * CARDS - cOffset));
+        dot.addEventListener('click', () => {
+          const idx = parseInt(dot.dataset.idx);
+          renderSpotlight(idx);
+          // scroll carousel so target card is visible
+          const newOffset = Math.floor(idx / CARDS) * CARDS;
+          scrollCarousel(newOffset - cOffset);
+        });
       });
 
       track.querySelectorAll('.essay-thumb').forEach(th => {
@@ -678,7 +686,7 @@
       document.getElementById('btn-grid').classList.add('active');
       document.getElementById('btn-spotlight').classList.remove('active');
       document.getElementById('spotlight-view').style.display = 'none';
-      document.getElementById('grid-view').style.display = '';
+      document.getElementById('grid-view').style.display = 'block';
       renderGrid();
     });
 
