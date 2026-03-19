@@ -38,15 +38,26 @@
     <div><div class="page-header-eyebrow"><span class="label">Legal</span></div><h1 class="serif">Legal<br/><em>Analyses</em></h1></div>
     <p class="page-header-desc">Close readings of cases, statutes, and regulatory actions. We write for practitioners and informed general readers who want to understand what courts and agencies are actually deciding.</p>
   </div>
-  <div class="filter-bar">
-    <button class="filter-btn active">All</button><button class="filter-btn">First Amendment</button><button class="filter-btn">Antitrust</button><button class="filter-btn">Liability</button><button class="filter-btn">Administrative</button><button class="filter-btn">IP</button>
+  <!-- type filter bar -->
+  <div class="filter-bar" id="legal-filter-bar" style="flex-wrap:wrap;">
+    <button class="filter-btn active" data-type="all">All</button>
+    <button class="filter-btn" data-type="doctrinal">Doctrinal</button>
+    <button class="filter-btn" data-type="case">Case</button>
+    <button class="filter-btn" data-type="statutory">Statutory</button>
+    <button class="filter-btn" data-type="regulatory">Regulatory</button>
+    <button class="filter-btn" data-type="procedural">Procedural</button>
+    <button class="filter-btn" data-type="litigation">Litigation / Risk</button>
+    <button class="filter-btn" data-type="policy">Policy</button>
+    <button class="filter-btn" data-type="comparative">Comparative</button>
   </div>
-  <div class="archive">
-    <div class="archive-list-item"><div class="archive-date">Jan 2025</div><div><div class="archive-title">Section 230 After NetChoice: What the Court Left Unsaid <span class="origin-badge origin-badge--original">Original</span></div><div class="archive-subtitle">A close reading of the 2024 NetChoice opinions, the doctrinal questions they resolved, and the larger questions they deliberately avoided.</div></div><span class="archive-tag">First Amendment</span></div>
-    <div class="archive-list-item"><div class="archive-date">Feb 2025</div><div><div class="archive-title">Compelled Speech and Algorithmic Curation After Moody v. NetChoice <span class="origin-badge origin-badge--original">Original</span></div><div class="archive-subtitle">Examines whether must-carry and must-not-carry obligations on platforms constitute compelled speech under the First Amendment as clarified by Moody.</div></div><span class="archive-tag">First Amendment</span></div>
-    <div class="archive-list-item"><div class="archive-date">Dec 2024</div><div><div class="archive-title">FTC v. Amazon: What the Complaint Reveals About Modern Monopolization Theory <span class="origin-badge origin-badge--via">Via FTC</span></div><div class="archive-subtitle">An analysis of the FTC's Amazon complaint as a window into how enforcement agencies are attempting to modernize Sherman Act Section 2 doctrine.</div></div><span class="archive-tag">Antitrust</span></div>
-    <div class="archive-list-item"><div class="archive-date">Nov 2024</div><div><div class="archive-title">Loper Bright and the Future of FCC Rulemaking Authority <span class="origin-badge origin-badge--original">Original</span></div><div class="archive-subtitle">Traces the implications of the Court's Chevron overruling for the FCC's ability to promulgate broadband and platform regulations.</div></div><span class="archive-tag">Administrative</span></div>
-    <div class="archive-list-item"><div class="archive-date">Oct 2024</div><div><div class="archive-title">Copyright and the Training Data Question: Where Courts Are Headed <span class="origin-badge origin-badge--via">Via Harvard Law Review</span></div><div class="archive-subtitle">Surveys pending litigation over AI training data and sketches the likely doctrinal paths courts will take to resolve the fair use question.</div></div><span class="archive-tag">IP</span></div>
+
+  <div class="archive" id="legal-archive">
+    <div class="archive-list-item" data-type="doctrinal"><div class="archive-date">Jan 2025</div><div><div class="archive-title">Section 230 After NetChoice: What the Court Left Unsaid <span class="origin-badge origin-badge--original">Original</span></div><div class="archive-subtitle">A close reading of the 2024 NetChoice opinions, the doctrinal questions they resolved, and the larger questions they deliberately avoided.</div></div><span class="archive-tag">Doctrinal</span></div>
+    <div class="archive-list-item" data-type="doctrinal"><div class="archive-date">Feb 2025</div><div><div class="archive-title">Compelled Speech and Algorithmic Curation After Moody v. NetChoice <span class="origin-badge origin-badge--original">Original</span></div><div class="archive-subtitle">Examines whether must-carry and must-not-carry obligations on platforms constitute compelled speech under the First Amendment as clarified by Moody.</div></div><span class="archive-tag">Doctrinal</span></div>
+    <div class="archive-list-item" data-type="case"><div class="archive-date">Dec 2024</div><div><div class="archive-title">FTC v. Amazon: What the Complaint Reveals About Modern Monopolization Theory <span class="origin-badge origin-badge--via">Via FTC</span></div><div class="archive-subtitle">An analysis of the FTC's Amazon complaint as a window into how enforcement agencies are attempting to modernize Sherman Act Section 2 doctrine.</div></div><span class="archive-tag">Case</span></div>
+    <div class="archive-list-item" data-type="regulatory"><div class="archive-date">Nov 2024</div><div><div class="archive-title">Loper Bright and the Future of FCC Rulemaking Authority <span class="origin-badge origin-badge--original">Original</span></div><div class="archive-subtitle">Traces the implications of the Court's Chevron overruling for the FCC's ability to promulgate broadband and platform regulations.</div></div><span class="archive-tag">Regulatory</span></div>
+    <div class="archive-list-item" data-type="litigation"><div class="archive-date">Oct 2024</div><div><div class="archive-title">Copyright and the Training Data Question: Where Courts Are Headed <span class="origin-badge origin-badge--via">Via Harvard Law Review</span></div><div class="archive-subtitle">Surveys pending litigation over AI training data and sketches the likely doctrinal paths courts will take to resolve the fair use question.</div></div><span class="archive-tag">Litigation / Risk</span></div>
+    <p id="legal-empty" style="display:none; padding:3rem 0; font-family:var(--serif); font-size:0.95rem; color:var(--ink-3);">No items match the current filter.</p>
   </div>
   <section class="newsletter-band"><div class="newsletter-inner"><div class="newsletter-copy"><h3 class="serif">Read Phronesis weekly.</h3><p>New work delivered directly to your inbox. No noise, no filler.</p></div><div class="newsletter-form"><input type="email" placeholder="your@email.com" /><button type="button">Subscribe</button></div></div></section>
   <footer>
@@ -55,7 +66,28 @@
     <div class="footer-col"><h4>Site</h4><ul><li><a href="about.html">About</a></li><li><a href="research.html">All Publications</a></li><li><a href="https://chadl22.github.io" target="_blank">Personal Site</a></li></ul></div>
   </footer>
   <div class="footer-bottom"><p>&copy; 2025 Phronesis Research. Independent &amp; non-partisan.</p><span class="phronesis-greek">&#x03C6;&#x03C1;&#x03CC;&#x03BD;&#x03B7;&#x03C3;&#x03B9;&#x03C2;</span></div>
-  <script>document.querySelectorAll('.filter-btn').forEach(btn => { btn.addEventListener('click', () => { document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); }); });</script>
+  <script>
+    const legalBtns = document.querySelectorAll('#legal-filter-bar .filter-btn');
+    legalBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        legalBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const type = btn.dataset.type;
+        const items = Array.from(document.querySelectorAll('#legal-archive .archive-list-item'));
+        let visible = 0;
+        items.forEach(el => {
+          const show = type === 'all' || el.dataset.type === type;
+          el.style.display = show ? '' : 'none';
+          if (show) visible++;
+        });
+        // restore last-child border on last visible item
+        items.forEach(el => el.style.borderBottom = '');
+        const shown = items.filter(el => el.style.display !== 'none');
+        if (shown.length) shown[shown.length - 1].style.borderBottom = '1px solid var(--rule)';
+        document.getElementById('legal-empty').style.display = visible === 0 ? '' : 'none';
+      });
+    });
+  </script>
   <script src="chat.js" defer></script>
   <script>
     const t = document.getElementById('nav-toggle'), m = document.getElementById('nav-menu');
