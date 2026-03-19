@@ -49,6 +49,9 @@ img { display: block; max-width: 100%; }
   background: transparent;
   color: var(--ink-3);
   border: 1px solid var(--rule);
+  max-width: 14ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* ── UTILITIES ─────────────────────────────────────────── */
