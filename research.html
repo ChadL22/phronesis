@@ -7,105 +7,141 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="shared.css" /><link rel="stylesheet" href="chat.css" />
   <style>
-    /* ── ARCHIVE LAYOUT ── */
     .archive { max-width: 1160px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 5rem) 5rem; }
 
-    /* sort controls */
-    .sort-bar {
-      display: flex; align-items: center; gap: 1.5rem;
-      padding: 1rem clamp(1.5rem, 5vw, 5rem);
+    /* ── CONTROL BAR ── */
+    .control-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 0.75rem;
+      padding: 0.85rem clamp(1.5rem, 5vw, 5rem);
       border-bottom: 1px solid var(--rule);
       background: var(--paper);
     }
-    .sort-bar .sort-label { font-size: 0.68rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-3); }
-    .sort-btn {
-      font-family: var(--sans); font-size: 0.68rem; font-weight: 400;
-      letter-spacing: 0.13em; text-transform: uppercase;
+    .control-group { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+    .control-label {
+      font-size: 0.65rem; letter-spacing: 0.13em;
+      text-transform: uppercase; color: var(--ink-3);
+      margin-right: 0.25rem;
+    }
+    .ctrl-btn {
+      font-family: var(--sans); font-size: 0.65rem; font-weight: 400;
+      letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--ink-3); background: none;
       border: 1px solid transparent; border-radius: 2px;
-      padding: 0.28rem 0.65rem; cursor: pointer; transition: all 0.2s;
+      padding: 0.25rem 0.6rem; cursor: pointer; transition: all 0.18s;
     }
-    .sort-btn:hover { color: var(--ink); border-color: var(--rule); }
-    .sort-btn.active { color: var(--accent); border-color: var(--accent); }
+    .ctrl-btn:hover { color: var(--ink); border-color: var(--rule); }
+    .ctrl-btn.active { color: var(--accent); border-color: var(--accent); }
+    .ctrl-divider { width: 1px; height: 1.1rem; background: var(--rule); margin: 0 0.25rem; }
 
-    /* year group */
+    /* view toggle (cards / list) */
+    .view-toggle { display: flex; border: 1px solid var(--rule); border-radius: 2px; overflow: hidden; }
+    .view-btn {
+      font-family: var(--sans); font-size: 0.63rem; letter-spacing: 0.1em;
+      text-transform: uppercase; background: none; border: none;
+      padding: 0.28rem 0.7rem; cursor: pointer; color: var(--ink-3);
+      transition: all 0.18s; display: flex; align-items: center; gap: 0.35rem;
+    }
+    .view-btn + .view-btn { border-left: 1px solid var(--rule); }
+    .view-btn.active { background: var(--accent); color: #EEE8DA; }
+    .view-btn svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+
+    /* ── CARD VIEW ── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin-top: 2.5rem;
+    }
+    .paper-card {
+      background: var(--paper);
+      padding: 2rem 1.8rem;
+      display: flex; flex-direction: column;
+      transition: background 0.18s;
+      cursor: pointer;
+    }
+    .paper-card:hover { background: var(--paper-2); }
+    .paper-card.hidden { display: none; }
+    .paper-card-top {
+      display: flex; align-items: flex-start;
+      justify-content: space-between; gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .paper-card-tag {
+      font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent); border: 1px solid var(--accent);
+      border-radius: 2px; padding: 0.15rem 0.4rem;
+    }
+    .paper-card h3 {
+      font-family: var(--serif); font-size: 1.25rem; font-weight: 400;
+      line-height: 1.25; color: var(--ink); margin-bottom: 0.75rem;
+      flex-grow: 1;
+    }
+    .paper-card p {
+      font-size: 0.78rem; color: var(--ink-2); line-height: 1.65;
+      margin-bottom: 1.2rem; flex-grow: 1;
+    }
+    .paper-card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid var(--rule); padding-top: 0.85rem;
+      margin-top: auto;
+    }
+    .paper-card-footer-left { display: flex; align-items: center; gap: 0.6rem; }
+    .paper-card-date { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+    .paper-card-read { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+
+    /* ── LIST VIEW ── */
     .year-group { margin-top: 3rem; }
     .year-group.hidden { display: none; }
     .year-heading {
       font-family: var(--serif); font-size: 2.6rem; font-weight: 300;
       color: var(--ink); line-height: 1;
-      padding-bottom: 0.8rem;
-      border-bottom: 1px solid var(--rule);
-      margin-bottom: 0;
+      padding-bottom: 0.8rem; border-bottom: 1px solid var(--rule); margin-bottom: 0;
     }
-
-    /* paper entry */
     .paper-entry {
-      display: grid;
-      grid-template-columns: 9rem 1fr;
-      gap: 0 2rem;
-      padding: 1.4rem 0;
+      display: grid; grid-template-columns: 9rem 1fr;
+      gap: 0 2rem; padding: 1.4rem 0;
       border-bottom: 1px solid var(--rule);
-      transition: background 0.15s;
     }
     .paper-entry.hidden { display: none; }
-
     .paper-tags { display: flex; flex-direction: column; gap: 0.35rem; padding-top: 0.2rem; }
     .paper-tag {
       display: inline-block; font-size: 0.58rem; letter-spacing: 0.14em;
       text-transform: uppercase; color: var(--accent);
       border: 1px solid var(--accent); border-radius: 2px;
-      padding: 0.15rem 0.4rem; align-self: flex-start;
-      white-space: nowrap;
+      padding: 0.15rem 0.4rem; align-self: flex-start; white-space: nowrap;
     }
-
-    .paper-body {}
     .paper-title {
       font-family: var(--serif); font-size: 1.15rem; font-weight: 400;
       line-height: 1.3; color: var(--ink); margin-bottom: 0.4rem;
     }
     .paper-title:hover { color: var(--accent); cursor: pointer; }
-    .paper-abstract {
-      font-size: 0.78rem; color: var(--ink-2); line-height: 1.65;
-      margin-bottom: 0.55rem;
-    }
-    .paper-meta {
-      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
-    }
-    .paper-source {
-      font-size: 0.68rem; letter-spacing: 0.05em;
-      color: var(--ink-3); font-style: italic;
-    }
-    .paper-date {
-      font-size: 0.65rem; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--ink-3);
-    }
-    .paper-link {
-      font-size: 0.65rem; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--accent);
-      margin-left: auto;
-    }
+    .paper-abstract { font-size: 0.78rem; color: var(--ink-2); line-height: 1.65; margin-bottom: 0.55rem; }
+    .paper-meta { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .paper-source { font-size: 0.68rem; letter-spacing: 0.05em; color: var(--ink-3); font-style: italic; }
+    .paper-date { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+    .paper-link { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-left: auto; }
     .paper-link:hover { text-decoration: underline; }
 
-    /* topic-sorted view */
+    /* topic-sorted list */
     .topic-group { margin-top: 3rem; }
     .topic-group.hidden { display: none; }
     .topic-heading {
       font-family: var(--sans); font-size: 0.68rem; font-weight: 500;
       letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--ink-3); padding-bottom: 0.8rem;
-      border-bottom: 1px solid var(--rule);
+      color: var(--ink-3); padding-bottom: 0.8rem; border-bottom: 1px solid var(--rule);
     }
 
-    /* count badge */
-    .archive-count {
-      font-family: var(--serif); font-size: 0.82rem;
-      color: var(--ink-3); margin-top: 2rem; display: block;
-    }
+    .archive-count { font-family: var(--serif); font-size: 0.82rem; color: var(--ink-3); margin-top: 2rem; display: block; }
 
-    @media (max-width: 700px) {
+    @media (max-width: 900px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) {
+      .card-grid { grid-template-columns: 1fr; }
       .paper-entry { grid-template-columns: 1fr; gap: 0.6rem; }
       .paper-tags { flex-direction: row; flex-wrap: wrap; }
+      .control-bar { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -131,117 +167,123 @@
     <p class="page-header-desc">Peer-quality scholarship on technology governance, digital law, and the regulatory frameworks shaping how society interacts with emerging technology.</p>
   </div>
 
-  <!-- filter by topic -->
-  <div class="filter-bar" id="filter-bar">
-    <button class="filter-btn active" data-topic="All">All</button>
-    <button class="filter-btn" data-topic="AI Governance">AI Governance</button>
-    <button class="filter-btn" data-topic="Platform Law">Platform Law</button>
-    <button class="filter-btn" data-topic="Competition">Competition</button>
-    <button class="filter-btn" data-topic="Privacy">Privacy</button>
-    <button class="filter-btn" data-topic="Civil Rights">Civil Rights</button>
-  </div>
-
-  <!-- sort by -->
-  <div class="sort-bar">
-    <span class="sort-label">Sort by</span>
-    <button class="sort-btn active" id="sort-year">Year</button>
-    <button class="sort-btn" id="sort-topic">Topic</button>
+  <!-- unified control bar -->
+  <div class="control-bar">
+    <!-- left: filters -->
+    <div style="display:flex; align-items:center; gap:1.2rem; flex-wrap:wrap;">
+      <div class="control-group">
+        <span class="control-label">Topic</span>
+        <button class="ctrl-btn active" data-topic="All">All</button>
+        <button class="ctrl-btn" data-topic="AI Governance">AI Governance</button>
+        <button class="ctrl-btn" data-topic="Platform Law">Platform Law</button>
+        <button class="ctrl-btn" data-topic="Competition">Competition</button>
+        <button class="ctrl-btn" data-topic="Privacy">Privacy</button>
+        <button class="ctrl-btn" data-topic="Civil Rights">Civil Rights</button>
+      </div>
+      <div class="ctrl-divider"></div>
+      <div class="control-group">
+        <span class="control-label">Origin</span>
+        <button class="ctrl-btn active" data-origin="All">All</button>
+        <button class="ctrl-btn" data-origin="original">Original</button>
+        <button class="ctrl-btn" data-origin="via">Via External</button>
+      </div>
+    </div>
+    <!-- right: view + sort -->
+    <div style="display:flex; align-items:center; gap:1rem;">
+      <div class="control-group">
+        <span class="control-label">Sort</span>
+        <button class="ctrl-btn" id="sort-year" data-sort="year">Year</button>
+        <button class="ctrl-btn" id="sort-topic" data-sort="topic">Topic</button>
+      </div>
+      <div class="ctrl-divider"></div>
+      <div class="view-toggle">
+        <button class="view-btn active" id="view-cards" title="Card view">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Cards
+        </button>
+        <button class="view-btn" id="view-list" title="List view">
+          <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          List
+        </button>
+      </div>
+    </div>
   </div>
 
   <div class="archive">
     <span class="archive-count" id="paper-count"></span>
 
-    <!-- ═══════════════════════════════════════════════════
-         YEAR VIEW (default)
-    ════════════════════════════════════════════════════ -->
-    <div id="view-year">
-
-      <div class="year-group" data-year="2025">
-        <div class="year-heading">2025</div>
-
-        <div class="paper-entry" data-topic="AI Governance">
-          <div class="paper-tags"><span class="paper-tag">AI Governance</span></div>
-          <div class="paper-body">
-            <div class="paper-title">Governing the Stack: Regulatory Jurisdiction in Multi-Layer AI Systems</div>
-            <div class="paper-abstract">Maps jurisdictional gaps across AI model layers, fine-tuning, APIs, and deployment contexts, proposing a tiered liability framework.</div>
-            <div class="paper-meta">
-              <span class="paper-date">Mar 2025</span>
-              <span class="paper-source">Phronesis Research</span>
-              <span class="origin-badge origin-badge--original">Original</span>
-              <a href="#" class="paper-link">Read paper →</a>
-            </div>
+    <!-- master data store (hidden) — single source of truth for all views -->
+    <div id="paper-data" style="display:none;">
+      <div class="paper-entry" data-topic="AI Governance" data-origin="original" data-year="2025" data-month="3">
+        <div class="paper-tags"><span class="paper-tag">AI Governance</span></div>
+        <div class="paper-body">
+          <div class="paper-title">Governing the Stack: Regulatory Jurisdiction in Multi-Layer AI Systems</div>
+          <div class="paper-abstract">Maps jurisdictional gaps across AI model layers, fine-tuning, APIs, and deployment contexts, proposing a tiered liability framework.</div>
+          <div class="paper-meta">
+            <span class="paper-date">Mar 2025</span>
+            <span class="paper-source">Phronesis Research</span>
+            <span class="origin-badge origin-badge--original">Original</span>
+            <a href="#" class="paper-link">Read paper →</a>
           </div>
         </div>
-
-        <div class="paper-entry" data-topic="Civil Rights">
-          <div class="paper-tags"><span class="paper-tag">Civil Rights</span></div>
-          <div class="paper-body">
-            <div class="paper-title">Algorithmic Harm and the Limits of Disparate Impact Theory</div>
-            <div class="paper-abstract">Examines whether Title VII's disparate impact doctrine can bear the weight of automated decision-making in employment contexts.</div>
-            <div class="paper-meta">
-              <span class="paper-date">Feb 2025</span>
-              <span class="paper-source">Stanford Law Review</span>
-              <span class="origin-badge origin-badge--via">Via Stanford Law Review</span>
-              <a href="#" class="paper-link">Read paper →</a>
-            </div>
+      </div>
+      <div class="paper-entry" data-topic="Civil Rights" data-origin="via" data-year="2025" data-month="2">
+        <div class="paper-tags"><span class="paper-tag">Civil Rights</span></div>
+        <div class="paper-body">
+          <div class="paper-title">Algorithmic Harm and the Limits of Disparate Impact Theory</div>
+          <div class="paper-abstract">Examines whether Title VII's disparate impact doctrine can bear the weight of automated decision-making in employment contexts.</div>
+          <div class="paper-meta">
+            <span class="paper-date">Feb 2025</span>
+            <span class="paper-source">Stanford Law Review</span>
+            <span class="origin-badge origin-badge--via">Via Stanford Law Review</span>
+            <a href="#" class="paper-link">Read paper →</a>
           </div>
         </div>
-
-        <div class="paper-entry" data-topic="Privacy">
-          <div class="paper-tags"><span class="paper-tag">Privacy</span></div>
-          <div class="paper-body">
-            <div class="paper-title">The Federal Privacy Gap: Why Sectoral Regulation Has Failed and What Comes Next</div>
-            <div class="paper-abstract">A structural critique of the United States' sector-by-sector approach to data privacy and a framework for comprehensive federal legislation.</div>
-            <div class="paper-meta">
-              <span class="paper-date">Jan 2025</span>
-              <span class="paper-source">Phronesis Research</span>
-              <span class="origin-badge origin-badge--original">Original</span>
-              <a href="#" class="paper-link">Read paper →</a>
-            </div>
+      </div>
+      <div class="paper-entry" data-topic="Privacy" data-origin="original" data-year="2025" data-month="1">
+        <div class="paper-tags"><span class="paper-tag">Privacy</span></div>
+        <div class="paper-body">
+          <div class="paper-title">The Federal Privacy Gap: Why Sectoral Regulation Has Failed and What Comes Next</div>
+          <div class="paper-abstract">A structural critique of the United States' sector-by-sector approach to data privacy and a framework for comprehensive federal legislation.</div>
+          <div class="paper-meta">
+            <span class="paper-date">Jan 2025</span>
+            <span class="paper-source">Phronesis Research</span>
+            <span class="origin-badge origin-badge--original">Original</span>
+            <a href="#" class="paper-link">Read paper →</a>
           </div>
         </div>
-
-      </div><!-- /year-group 2025 -->
-
-      <div class="year-group" data-year="2024">
-        <div class="year-heading">2024</div>
-
-        <div class="paper-entry" data-topic="Competition">
-          <div class="paper-tags"><span class="paper-tag">Competition</span></div>
-          <div class="paper-body">
-            <div class="paper-title">Market Power in the Foundation Model Layer: Early Evidence and Regulatory Implications</div>
-            <div class="paper-abstract">Applies traditional antitrust analysis to the emerging market structure of large language model development and API access.</div>
-            <div class="paper-meta">
-              <span class="paper-date">Dec 2024</span>
-              <span class="paper-source">Yale Journal on Regulation</span>
-              <span class="origin-badge origin-badge--via">Via Yale Journal on Regulation</span>
-              <a href="#" class="paper-link">Read paper →</a>
-            </div>
+      </div>
+      <div class="paper-entry" data-topic="Competition" data-origin="via" data-year="2024" data-month="12">
+        <div class="paper-tags"><span class="paper-tag">Competition</span></div>
+        <div class="paper-body">
+          <div class="paper-title">Market Power in the Foundation Model Layer: Early Evidence and Regulatory Implications</div>
+          <div class="paper-abstract">Applies traditional antitrust analysis to the emerging market structure of large language model development and API access.</div>
+          <div class="paper-meta">
+            <span class="paper-date">Dec 2024</span>
+            <span class="paper-source">Yale Journal on Regulation</span>
+            <span class="origin-badge origin-badge--via">Via Yale Journal on Regulation</span>
+            <a href="#" class="paper-link">Read paper →</a>
           </div>
         </div>
-
-        <div class="paper-entry" data-topic="Platform Law">
-          <div class="paper-tags"><span class="paper-tag">Platform Law</span></div>
-          <div class="paper-body">
-            <div class="paper-title">Intermediary Liability in the Age of Generative AI: Rethinking Platform Responsibility</div>
-            <div class="paper-abstract">Asks whether Section 230's third-party content framework can coherently extend to AI-generated outputs produced at a platform's direction.</div>
-            <div class="paper-meta">
-              <span class="paper-date">Nov 2024</span>
-              <span class="paper-source">Phronesis Research</span>
-              <span class="origin-badge origin-badge--original">Original</span>
-              <a href="#" class="paper-link">Read paper →</a>
-            </div>
+      </div>
+      <div class="paper-entry" data-topic="Platform Law" data-origin="original" data-year="2024" data-month="11">
+        <div class="paper-tags"><span class="paper-tag">Platform Law</span></div>
+        <div class="paper-body">
+          <div class="paper-title">Intermediary Liability in the Age of Generative AI: Rethinking Platform Responsibility</div>
+          <div class="paper-abstract">Asks whether Section 230's third-party content framework can coherently extend to AI-generated outputs produced at a platform's direction.</div>
+          <div class="paper-meta">
+            <span class="paper-date">Nov 2024</span>
+            <span class="paper-source">Phronesis Research</span>
+            <span class="origin-badge origin-badge--original">Original</span>
+            <a href="#" class="paper-link">Read paper →</a>
           </div>
         </div>
+      </div>
+    </div><!-- /paper-data -->
 
-      </div><!-- /year-group 2024 -->
-
-    </div><!-- /view-year -->
-
-    <!-- ═══════════════════════════════════════════════════
-         TOPIC VIEW (toggled by JS)
-    ════════════════════════════════════════════════════ -->
-    <div id="view-topic" style="display:none;"></div>
+    <!-- rendered views (populated by JS) -->
+    <div id="view-cards"></div>
+    <div id="view-list" style="display:none;"></div>
 
   </div><!-- /archive -->
 
@@ -261,20 +303,27 @@
     document.addEventListener('click', () => { t.classList.remove('is-open'); m.classList.remove('is-open'); });
 
     // ── state ──
-    let activeTopic = 'All';
-    let activeSort  = 'year'; // 'year' | 'topic'
+    let activeTopic  = 'All';
+    let activeOrigin = 'All';
+    let activeSort   = null;      // null | 'year' | 'topic'
+    let activeView   = 'cards';   // 'cards' | 'list'
 
-    const viewYear  = document.getElementById('view-year');
-    const viewTopic = document.getElementById('view-topic');
-    const countEl   = document.getElementById('paper-count');
+    const cardViewEl = document.getElementById('view-cards');
+    const listViewEl = document.getElementById('view-list');
+    const countEl    = document.getElementById('paper-count');
 
-    // Collect all paper entries once
-    const allEntries = Array.from(document.querySelectorAll('#view-year .paper-entry'));
+    // source of truth: all entries from hidden data store
+    const allEntries = Array.from(document.querySelectorAll('#paper-data .paper-entry'));
+
+    // ── helpers ──
+    function matchesFilters(e) {
+      const topicOk  = activeTopic  === 'All' || e.dataset.topic  === activeTopic;
+      const originOk = activeOrigin === 'All' || e.dataset.origin === activeOrigin;
+      return topicOk && originOk;
+    }
 
     function getVisible() {
-      return allEntries.filter(e =>
-        activeTopic === 'All' || e.dataset.topic === activeTopic
-      );
+      return allEntries.filter(matchesFilters);
     }
 
     function updateCount() {
@@ -282,87 +331,170 @@
       countEl.textContent = 'Showing ' + n + ' paper' + (n === 1 ? '' : 's');
     }
 
-    // ── FILTER by topic ──
-    function applyFilter() {
-      if (activeSort === 'year') {
-        applyYearView();
+    // ── CARD VIEW ──
+    function renderCards() {
+      cardViewEl.innerHTML = '';
+      const visible = getVisible();
+      if (!visible.length) { cardViewEl.innerHTML = '<p style="color:var(--ink-3);font-family:var(--serif);margin-top:2rem;">No papers match the current filters.</p>'; return; }
+
+      const grid = document.createElement('div');
+      grid.className = 'card-grid';
+
+      visible.forEach(entry => {
+        const title    = entry.querySelector('.paper-title').textContent;
+        const abstract = entry.querySelector('.paper-abstract').textContent;
+        const tag      = entry.dataset.topic;
+        const origin   = entry.dataset.origin;
+        const dateEl   = entry.querySelector('.paper-date');
+        const date     = dateEl ? dateEl.textContent : '';
+        const badgeEl  = entry.querySelector('.origin-badge');
+        const badge    = badgeEl ? badgeEl.outerHTML : '';
+
+        const card = document.createElement('div');
+        card.className = 'paper-card';
+        card.innerHTML = `
+          <div class="paper-card-top">
+            <span class="paper-card-tag">${tag}</span>
+            ${badge}
+          </div>
+          <h3 class="serif">${title}</h3>
+          <p>${abstract}</p>
+          <div class="paper-card-footer">
+            <div class="paper-card-footer-left">
+              <span class="paper-card-date">${date}</span>
+            </div>
+            <span class="paper-card-read">Read paper</span>
+          </div>`;
+        grid.appendChild(card);
+      });
+
+      cardViewEl.appendChild(grid);
+    }
+
+    // ── LIST VIEW (year-grouped) ──
+    function renderListByYear() {
+      listViewEl.innerHTML = '';
+      const visible = getVisible();
+      if (!visible.length) { listViewEl.innerHTML = '<p style="color:var(--ink-3);font-family:var(--serif);margin-top:2rem;">No papers match the current filters.</p>'; return; }
+
+      const years = {};
+      visible.forEach(e => {
+        const yr = e.dataset.year;
+        if (!years[yr]) years[yr] = [];
+        years[yr].push(e);
+      });
+
+      Object.keys(years).sort((a,b) => b - a).forEach(yr => {
+        const grp = document.createElement('div');
+        grp.className = 'year-group';
+        grp.innerHTML = '<div class="year-heading">' + yr + '</div>';
+        years[yr].forEach(e => grp.appendChild(e.cloneNode(true)));
+        listViewEl.appendChild(grp);
+      });
+    }
+
+    // ── LIST VIEW (topic-grouped) ──
+    function renderListByTopic() {
+      listViewEl.innerHTML = '';
+      const visible = getVisible();
+      if (!visible.length) { listViewEl.innerHTML = '<p style="color:var(--ink-3);font-family:var(--serif);margin-top:2rem;">No papers match the current filters.</p>'; return; }
+
+      const topics = {};
+      visible.forEach(e => {
+        const tp = e.dataset.topic;
+        if (!topics[tp]) topics[tp] = [];
+        topics[tp].push(e);
+      });
+
+      Object.keys(topics).sort().forEach(tp => {
+        const grp = document.createElement('div');
+        grp.className = 'topic-group';
+        grp.innerHTML = '<div class="topic-heading">' + tp + '</div>';
+        topics[tp].forEach(e => grp.appendChild(e.cloneNode(true)));
+        listViewEl.appendChild(grp);
+      });
+    }
+
+    // ── master render ──
+    function render() {
+      if (activeView === 'cards') {
+        cardViewEl.style.display = '';
+        listViewEl.style.display = 'none';
+        renderCards();
       } else {
-        applyTopicView();
+        cardViewEl.style.display = 'none';
+        listViewEl.style.display = '';
+        if (activeSort === 'topic') renderListByTopic();
+        else renderListByYear();
       }
       updateCount();
     }
 
-    function applyYearView() {
-      viewTopic.style.display = 'none';
-      viewYear.style.display  = '';
-
-      // show/hide individual entries
-      allEntries.forEach(e => {
-        e.classList.toggle('hidden', activeTopic !== 'All' && e.dataset.topic !== activeTopic);
-      });
-
-      // hide year groups that have no visible entries
-      document.querySelectorAll('#view-year .year-group').forEach(grp => {
-        const anyVisible = Array.from(grp.querySelectorAll('.paper-entry'))
-          .some(e => !e.classList.contains('hidden'));
-        grp.classList.toggle('hidden', !anyVisible);
-      });
-    }
-
-    // ── SORT by topic: rebuild topic-grouped view from DOM data ──
-    function applyTopicView() {
-      viewYear.style.display  = 'none';
-      viewTopic.style.display = '';
-      viewTopic.innerHTML = '';
-
-      const visible = getVisible();
-
-      // group by topic
-      const groups = {};
-      visible.forEach(e => {
-        const topic = e.dataset.topic;
-        if (!groups[topic]) groups[topic] = [];
-        groups[topic].push(e);
-      });
-
-      // render sorted alphabetically
-      Object.keys(groups).sort().forEach(topic => {
-        const grpEl = document.createElement('div');
-        grpEl.className = 'topic-group';
-        grpEl.innerHTML = '<div class="topic-heading">' + topic + '</div>';
-        groups[topic].forEach(entry => {
-          grpEl.appendChild(entry.cloneNode(true));
-        });
-        viewTopic.appendChild(grpEl);
-      });
-    }
-
-    // ── bind filter buttons ──
-    document.querySelectorAll('#filter-bar .filter-btn').forEach(btn => {
+    // ── topic filter ──
+    document.querySelectorAll('[data-topic]').forEach(btn => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('#filter-bar .filter-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('[data-topic]').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         activeTopic = btn.dataset.topic;
-        applyFilter();
+        render();
       });
     });
 
-    // ── bind sort buttons ──
-    document.getElementById('sort-year').addEventListener('click', () => {
-      document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById('sort-year').classList.add('active');
-      activeSort = 'year';
-      applyFilter();
+    // ── origin filter ──
+    document.querySelectorAll('[data-origin]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-origin]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeOrigin = btn.dataset.origin;
+        render();
+      });
     });
-    document.getElementById('sort-topic').addEventListener('click', () => {
-      document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById('sort-topic').classList.add('active');
-      activeSort = 'topic';
-      applyFilter();
+
+    // ── sort buttons (also switch to list view) ──
+    document.querySelectorAll('[data-sort]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const wasActive = btn.classList.contains('active');
+        document.querySelectorAll('[data-sort]').forEach(b => b.classList.remove('active'));
+        if (wasActive) {
+          // toggle off → back to cards
+          activeSort = null;
+          activeView = 'cards';
+          document.getElementById('view-cards').classList.add('active');
+          document.getElementById('view-list').classList.remove('active');
+        } else {
+          btn.classList.add('active');
+          activeSort = btn.dataset.sort;
+          activeView = 'list';
+          document.getElementById('view-cards').classList.remove('active');
+          document.getElementById('view-list').classList.add('active');
+        }
+        render();
+      });
+    });
+
+    // ── view toggle buttons ──
+    document.getElementById('view-cards').addEventListener('click', () => {
+      activeView = 'cards';
+      activeSort = null;
+      document.querySelectorAll('[data-sort]').forEach(b => b.classList.remove('active'));
+      document.getElementById('view-cards').classList.add('active');
+      document.getElementById('view-list').classList.remove('active');
+      render();
+    });
+    document.getElementById('view-list').addEventListener('click', () => {
+      activeView = 'list';
+      if (!activeSort) activeSort = 'year';
+      document.getElementById('view-cards').classList.remove('active');
+      document.getElementById('view-list').classList.add('active');
+      // activate year sort btn if nothing active
+      if (!document.querySelector('[data-sort].active')) {
+        document.querySelector('[data-sort="year"]').classList.add('active');
+      }
+      render();
     });
 
     // ── init ──
-    applyFilter();
+    render();
   </script>
 </body>
 </html>
