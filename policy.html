@@ -186,6 +186,8 @@
           <button class="tracker-filter" data-type="Legislation">Legislation</button>
           <button class="tracker-filter" data-type="Litigation">Litigation</button>
           <button class="tracker-filter" data-type="Executive Order">Executive Order</button>
+          <button class="tracker-filter" data-type="Model Legislation">Model Legislation</button>
+          <button class="tracker-filter" data-type="Civil Action">Civil Action</button>
         </div>
       </div>
 
@@ -236,7 +238,7 @@
     function renderTracker(items) {
       const list = document.getElementById('tracker-list');
       const count = document.getElementById('tracker-count');
-      const visible = activeType === 'All' ? items : items.filter(i => i.type === activeType);
+      const visible = activeType === 'All' ? items : items.filter(i => (i.type || '').trim() === activeType);
       count.textContent = visible.length + ' item' + (visible.length === 1 ? '' : 's') + (activeType !== 'All' ? ' · ' + activeType : '');
 
       if (!visible.length) {
@@ -257,7 +259,7 @@
             <div class="tracker-row-body">
               ${item.status ? '<span class="tracker-status-badge">' + item.status + '</span>' : ''}
               <div class="tracker-row-meta">
-                <div class="tracker-meta-item"><strong>Type</strong><span>${item.type || '—'}</span></div>
+                <div class="tracker-meta-item"><strong>Type</strong><span>${(item.type || '').trim() || '—'}</span></div>
                 <div class="tracker-meta-item"><strong>Government</strong><span>${item.country || 'United States'}</span></div>
                 <div class="tracker-meta-item"><strong>Date Initiated</strong><span>${formatDate(item.dateInitiated)}</span></div>
                 <div class="tracker-meta-item"><strong>Last Updated</strong><span>${formatDate(item.lastUpdate)}</span></div>
