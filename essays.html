@@ -575,8 +575,8 @@
       updateCarouselArrows();
     }
 
-    document.getElementById('c-prev').addEventListener('click', () => scrollCarousel(-CARDS));
-    document.getElementById('c-next').addEventListener('click', () => scrollCarousel(CARDS));
+    document.getElementById('c-prev').addEventListener('click', () => scrollCarousel(-1));
+    document.getElementById('c-next').addEventListener('click', () => scrollCarousel(1));
 
     // ── DRAG / SWIPE ──
     let isDragging = false, startX = 0, startOffset = 0;
