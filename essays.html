@@ -491,12 +491,9 @@
       document.getElementById('spot-next').disabled = activeIdx === items.length - 1;
       document.getElementById('spot-pos').textContent = `${activeIdx + 1} of ${items.length}`;
 
-      // sync carousel active thumb and numbered buttons
+      // sync carousel active thumb
       document.querySelectorAll('.essay-thumb').forEach(th =>
         th.classList.toggle('active', parseInt(th.dataset.idx) === activeIdx)
-      );
-      document.querySelectorAll('.carousel-dot').forEach(dot =>
-        dot.classList.toggle('active', parseInt(dot.dataset.idx) === activeIdx)
       );
     }
 
@@ -533,16 +530,15 @@
 
       track.style.transform = 'translateX(0)';
 
-      // numbered buttons — one per essay
-      dots.innerHTML = items.map((el, i) =>
-        `<button class="carousel-dot${i === activeIdx ? ' active' : ''}" data-idx="${i}" aria-label="Essay ${i+1}">${i + 1}</button>`
+      // window buttons — one per group of CARDS essays
+      const windows = Math.ceil(items.length / CARDS);
+      dots.innerHTML = Array.from({length: windows}, (_, w) =>
+        `<button class="carousel-dot${w === 0 ? ' active' : ''}" data-win="${w}" aria-label="Window ${w+1}">${w + 1}</button>`
       ).join('');
       dots.querySelectorAll('.carousel-dot').forEach(dot => {
         dot.addEventListener('click', () => {
-          const idx = parseInt(dot.dataset.idx);
-          renderSpotlight(idx);
-          // scroll carousel so target card is visible
-          const newOffset = Math.floor(idx / CARDS) * CARDS;
+          const win = parseInt(dot.dataset.win);
+          const newOffset = win * CARDS;
           scrollCarousel(newOffset - cOffset);
         });
       });
@@ -558,9 +554,16 @@
     }
 
     function updateCarouselArrows() {
-      const max = Math.max(0, visible().length - CARDS);
+      const items = visible();
+      const windows = Math.ceil(items.length / CARDS);
+      const maxOffset = Math.max(0, items.length - CARDS);
       document.getElementById('c-prev').disabled = cOffset <= 0;
-      document.getElementById('c-next').disabled = cOffset >= max;
+      document.getElementById('c-next').disabled = cOffset >= maxOffset;
+      // sync active window button
+      const currentWin = Math.round(cOffset / CARDS);
+      document.querySelectorAll('.carousel-dot').forEach(dot =>
+        dot.classList.toggle('active', parseInt(dot.dataset.win) === currentWin)
+      );
     }
 
     function scrollCarousel(delta) {
@@ -572,8 +575,8 @@
       updateCarouselArrows();
     }
 
-    document.getElementById('c-prev').addEventListener('click', () => scrollCarousel(-1));
-    document.getElementById('c-next').addEventListener('click', () => scrollCarousel(1));
+    document.getElementById('c-prev').addEventListener('click', () => scrollCarousel(-CARDS));
+    document.getElementById('c-next').addEventListener('click', () => scrollCarousel(CARDS));
 
     // ── DRAG / SWIPE ──
     let isDragging = false, startX = 0, startOffset = 0;
