@@ -4,9 +4,15 @@ node_modules
 .wrangler
 .astro
 dist
-*.jsonc
+public
 *.json
+*.jsonc
 worker.js
 .DS_Store
 .env*
 .dev.vars*
+*.mjs
+*.d.ts
+*.mov
+*.heic
+*.png

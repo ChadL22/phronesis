@@ -11,10 +11,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+      - name: Remove non-asset directories
+        run: |
+          rm -rf node_modules
+          rm -rf .astro
+          rm -rf dist
+          rm -rf .git
+          rm -rf .github
+          rm -rf .wrangler
 
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
