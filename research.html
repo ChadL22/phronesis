@@ -172,13 +172,13 @@
     <!-- left: filters -->
     <div style="display:flex; align-items:center; gap:1.2rem; flex-wrap:wrap;">
       <div class="control-group">
-        <span class="control-label">Topic</span>
-        <button class="ctrl-btn active" data-topic="All">All</button>
-        <button class="ctrl-btn" data-topic="AI Governance">AI Governance</button>
-        <button class="ctrl-btn" data-topic="Platform Law">Platform Law</button>
-        <button class="ctrl-btn" data-topic="Competition">Competition</button>
-        <button class="ctrl-btn" data-topic="Privacy">Privacy</button>
-        <button class="ctrl-btn" data-topic="Civil Rights">Civil Rights</button>
+        <span class="control-label">Field</span>
+        <button class="ctrl-btn active" data-field="All">All</button>
+        <button class="ctrl-btn" data-field="Computer Science">CS</button>
+        <button class="ctrl-btn" data-field="Public Policy">Public Policy</button>
+        <button class="ctrl-btn" data-field="Economics">Economics</button>
+        <button class="ctrl-btn" data-field="Mathematics">Math</button>
+        <button class="ctrl-btn" data-field="Philosophy">Philosophy</button>
       </div>
       <div class="ctrl-divider"></div>
       <div class="control-group">
@@ -208,8 +208,12 @@
 
     <!-- master data store (hidden) — single source of truth for all views -->
     <div id="paper-data" style="display:none;">
-      <div class="paper-entry" data-topic="AI Governance" data-origin="original" data-year="2025" data-month="3">
-        <div class="paper-tags"><span class="paper-tag">AI Governance</span></div>
+
+      <div class="paper-entry" data-fields="Computer Science|Public Policy" data-origin="original" data-year="2025" data-month="3">
+        <div class="paper-tags">
+          <span class="paper-tag">CS</span>
+          <span class="paper-tag">Public Policy</span>
+        </div>
         <div class="paper-body">
           <div class="paper-title">Governing the Stack: Regulatory Jurisdiction in Multi-Layer AI Systems</div>
           <div class="paper-abstract">Maps jurisdictional gaps across AI model layers, fine-tuning, APIs, and deployment contexts, proposing a tiered liability framework.</div>
@@ -221,8 +225,13 @@
           </div>
         </div>
       </div>
-      <div class="paper-entry" data-topic="Civil Rights" data-origin="via" data-year="2025" data-month="2">
-        <div class="paper-tags"><span class="paper-tag">Civil Rights</span></div>
+
+      <div class="paper-entry" data-fields="Computer Science|Public Policy|Philosophy" data-origin="via" data-year="2025" data-month="2">
+        <div class="paper-tags">
+          <span class="paper-tag">CS</span>
+          <span class="paper-tag">Public Policy</span>
+          <span class="paper-tag">Philosophy</span>
+        </div>
         <div class="paper-body">
           <div class="paper-title">Algorithmic Harm and the Limits of Disparate Impact Theory</div>
           <div class="paper-abstract">Examines whether Title VII's disparate impact doctrine can bear the weight of automated decision-making in employment contexts.</div>
@@ -234,8 +243,12 @@
           </div>
         </div>
       </div>
-      <div class="paper-entry" data-topic="Privacy" data-origin="original" data-year="2025" data-month="1">
-        <div class="paper-tags"><span class="paper-tag">Privacy</span></div>
+
+      <div class="paper-entry" data-fields="Public Policy|Philosophy" data-origin="original" data-year="2025" data-month="1">
+        <div class="paper-tags">
+          <span class="paper-tag">Public Policy</span>
+          <span class="paper-tag">Philosophy</span>
+        </div>
         <div class="paper-body">
           <div class="paper-title">The Federal Privacy Gap: Why Sectoral Regulation Has Failed and What Comes Next</div>
           <div class="paper-abstract">A structural critique of the United States' sector-by-sector approach to data privacy and a framework for comprehensive federal legislation.</div>
@@ -247,8 +260,12 @@
           </div>
         </div>
       </div>
-      <div class="paper-entry" data-topic="Competition" data-origin="via" data-year="2024" data-month="12">
-        <div class="paper-tags"><span class="paper-tag">Competition</span></div>
+
+      <div class="paper-entry" data-fields="Economics|Public Policy" data-origin="via" data-year="2024" data-month="12">
+        <div class="paper-tags">
+          <span class="paper-tag">Economics</span>
+          <span class="paper-tag">Public Policy</span>
+        </div>
         <div class="paper-body">
           <div class="paper-title">Market Power in the Foundation Model Layer: Early Evidence and Regulatory Implications</div>
           <div class="paper-abstract">Applies traditional antitrust analysis to the emerging market structure of large language model development and API access.</div>
@@ -260,8 +277,13 @@
           </div>
         </div>
       </div>
-      <div class="paper-entry" data-topic="Platform Law" data-origin="original" data-year="2024" data-month="11">
-        <div class="paper-tags"><span class="paper-tag">Platform Law</span></div>
+
+      <div class="paper-entry" data-fields="Computer Science|Public Policy|Philosophy" data-origin="original" data-year="2024" data-month="11">
+        <div class="paper-tags">
+          <span class="paper-tag">CS</span>
+          <span class="paper-tag">Public Policy</span>
+          <span class="paper-tag">Philosophy</span>
+        </div>
         <div class="paper-body">
           <div class="paper-title">Intermediary Liability in the Age of Generative AI: Rethinking Platform Responsibility</div>
           <div class="paper-abstract">Asks whether Section 230's third-party content framework can coherently extend to AI-generated outputs produced at a platform's direction.</div>
@@ -273,6 +295,7 @@
           </div>
         </div>
       </div>
+
     </div><!-- /paper-data -->
 
     <!-- rendered views (populated by JS) -->
@@ -282,7 +305,7 @@
       <div id="group-by-bar" style="display:flex; align-items:center; gap:0.6rem; margin-top:2rem;">
         <span class="control-label">Group by</span>
         <button class="ctrl-btn active" id="sort-year" data-sort="year">Year</button>
-        <button class="ctrl-btn" id="sort-topic" data-sort="topic">Topic</button>
+        <button class="ctrl-btn" id="sort-topic" data-sort="topic">Field</button>
       </div>
       <div id="list-content"></div>
     </div>
@@ -305,7 +328,7 @@
     document.addEventListener('click', () => { t.classList.remove('is-open'); m.classList.remove('is-open'); });
 
     // ── state ──
-    let activeTopic  = 'All';
+    let activeField  = 'All';
     let activeOrigin = 'All';
     let activeSort   = null;      // null | 'year' | 'topic'
     let activeView   = 'cards';   // 'cards' | 'list'
@@ -319,9 +342,10 @@
 
     // ── helpers ──
     function matchesFilters(e) {
-      const topicOk  = activeTopic  === 'All' || e.dataset.topic  === activeTopic;
+      const fields   = (e.dataset.fields || '').split('|');
+      const fieldOk  = activeField  === 'All' || fields.includes(activeField);
       const originOk = activeOrigin === 'All' || e.dataset.origin === activeOrigin;
-      return topicOk && originOk;
+      return fieldOk && originOk;
     }
 
     function getVisible() {
@@ -345,18 +369,19 @@
       visible.forEach(entry => {
         const title    = entry.querySelector('.paper-title').textContent;
         const abstract = entry.querySelector('.paper-abstract').textContent;
-        const tag      = entry.dataset.topic;
+        const fields   = (entry.dataset.fields || '').split('|');
         const origin   = entry.dataset.origin;
         const dateEl   = entry.querySelector('.paper-date');
         const date     = dateEl ? dateEl.textContent : '';
         const badgeEl  = entry.querySelector('.origin-badge');
         const badge    = badgeEl ? badgeEl.outerHTML : '';
+        const fieldTags = fields.map(f => `<span class="paper-card-tag">${f}</span>`).join('');
 
         const card = document.createElement('div');
         card.className = 'paper-card';
         card.innerHTML = `
           <div class="paper-card-top">
-            <span class="paper-card-tag">${tag}</span>
+            <div style="display:flex;gap:0.3rem;flex-wrap:wrap;">${fieldTags}</div>
             ${badge}
           </div>
           <h3 class="serif">${title}</h3>
@@ -379,7 +404,7 @@
     function renderListByYear() {
       listContentEl.innerHTML = '';
       const visible = getVisible();
-      if (!visible.length) { listViewEl.innerHTML = '<p style="color:var(--ink-3);font-family:var(--serif);margin-top:2rem;">No papers match the current filters.</p>'; return; }
+      if (!visible.length) { listContentEl.innerHTML = '<p style="color:var(--ink-3);font-family:var(--serif);margin-top:2rem;">No papers match the current filters.</p>'; return; }
 
       const years = {};
       visible.forEach(e => {
@@ -397,24 +422,30 @@
       });
     }
 
-    // ── LIST VIEW (topic-grouped) ──
-    function renderListByTopic() {
+    // ── LIST VIEW (field-grouped) — a paper appears once per field it belongs to ──
+    function renderListByField() {
       listContentEl.innerHTML = '';
       const visible = getVisible();
-      if (!visible.length) { listViewEl.innerHTML = '<p style="color:var(--ink-3);font-family:var(--serif);margin-top:2rem;">No papers match the current filters.</p>'; return; }
+      if (!visible.length) { listContentEl.innerHTML = '<p style="color:var(--ink-3);font-family:var(--serif);margin-top:2rem;">No papers match the current filters.</p>'; return; }
 
-      const topics = {};
+      const fieldOrder = ['Computer Science', 'Public Policy', 'Economics', 'Mathematics', 'Philosophy'];
+      const buckets = {};
+      fieldOrder.forEach(f => { buckets[f] = []; });
+
       visible.forEach(e => {
-        const tp = e.dataset.topic;
-        if (!topics[tp]) topics[tp] = [];
-        topics[tp].push(e);
+        const fields = (e.dataset.fields || '').split('|');
+        fields.forEach(f => {
+          // only bucket fields that are in our defined list
+          if (buckets[f] !== undefined) buckets[f].push(e);
+        });
       });
 
-      Object.keys(topics).sort().forEach(tp => {
+      fieldOrder.forEach(f => {
+        if (!buckets[f].length) return;
         const grp = document.createElement('div');
         grp.className = 'topic-group';
-        grp.innerHTML = '<div class="topic-heading">' + tp + '</div>';
-        topics[tp].forEach(e => grp.appendChild(e.cloneNode(true)));
+        grp.innerHTML = '<div class="topic-heading">' + f + '</div>';
+        buckets[f].forEach(e => grp.appendChild(e.cloneNode(true)));
         listContentEl.appendChild(grp);
       });
     }
@@ -428,18 +459,18 @@
       } else {
         cardViewEl.style.display = 'none';
         listViewEl.style.display = '';
-        if (activeSort === 'topic') renderListByTopic();
+        if (activeSort === 'topic') renderListByField();
         else renderListByYear();
       }
       updateCount();
     }
 
-    // ── topic filter ──
-    document.querySelectorAll('[data-topic]').forEach(btn => {
+    // ── field filter ──
+    document.querySelectorAll('[data-field]').forEach(btn => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('[data-topic]').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('[data-field]').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        activeTopic = btn.dataset.topic;
+        activeField = btn.dataset.field;
         render();
       });
     });
