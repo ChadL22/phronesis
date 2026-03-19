@@ -68,6 +68,7 @@
       display: flex; align-items: flex-start;
       justify-content: space-between; gap: 0.5rem;
       margin-bottom: 1rem;
+      min-height: 5.5rem;
     }
     .paper-card-tag {
       font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
@@ -382,13 +383,13 @@
         card.innerHTML = `
           <div class="paper-card-top">
             <div style="display:flex;gap:0.3rem;flex-wrap:wrap;">${fieldTags}</div>
-            ${badge}
           </div>
           <h3 class="serif">${title}</h3>
           <p>${abstract}</p>
           <div class="paper-card-footer">
             <div class="paper-card-footer-left">
               <span class="paper-card-date">${date}</span>
+              ${badge}
             </div>
             <span class="paper-card-read">Read paper</span>
           </div>`;
