@@ -55,9 +55,9 @@
     .legal-ellipsis:hover { border-color: var(--rule); color: var(--ink); }
     .legal-ellipsis.has-active { color: var(--accent); border-color: var(--accent); }
     .legal-dropdown {
-      display: none; position: absolute; top: calc(100% + 4px); left: 0;
+      display: none; position: absolute; bottom: calc(100% + 4px); left: 0;
       background: var(--paper); border: 1px solid var(--rule);
-      border-top: 2px solid var(--accent);
+      border-bottom: 2px solid var(--accent); border-top: 1px solid var(--rule);
       box-shadow: 0 4px 16px rgba(26,25,22,0.08);
       z-index: 200; min-width: 160px; padding: 0.35rem 0;
     }
