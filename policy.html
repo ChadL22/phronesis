@@ -65,6 +65,15 @@
     }
     .policy-type-btn:hover { color: var(--ink); border-color: var(--rule); }
     .policy-type-btn.active { color: var(--accent); border-color: var(--accent); }
+    .policy-origin-btn {
+      font-family: var(--sans); font-size: 0.6rem; font-weight: 400;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--ink-3); background: none;
+      border: 1px solid transparent; border-radius: 2px;
+      padding: 0.2rem 0.55rem; cursor: pointer; transition: all 0.18s;
+    }
+    .policy-origin-btn:hover { color: var(--ink); border-color: var(--rule); }
+    .policy-origin-btn.active { color: var(--accent); border-color: var(--accent); }
 
     /* ── CARD VIEW ── */
     .policy-card-grid {
@@ -390,6 +399,10 @@
       <button class="policy-type-btn" data-type="memo">Memo</button>
       <button class="policy-type-btn" data-type="proposal">Proposal</button>
       <button class="policy-type-btn" data-type="policy">Policy</button>
+      <span class="policy-type-label" style="margin-left:1rem;">Origin</span>
+      <button class="policy-origin-btn active" data-origin="all">All</button>
+      <button class="policy-origin-btn" data-origin="original">Original</button>
+      <button class="policy-origin-btn" data-origin="via">Via</button>
     </div>
   </div>
 
@@ -548,15 +561,17 @@
 
     // ── POLICY VIEWS ──
     const policyItems = Array.from(document.querySelectorAll('#policy-data > div'));
-    let pActiveLevel = 'all';
-    let pActiveType  = 'all';
-    let pActiveView  = 'cards';
+    let pActiveLevel  = 'all';
+    let pActiveType   = 'all';
+    let pActiveOrigin = 'all';
+    let pActiveView   = 'cards';
 
     function pVisible() {
       return policyItems.filter(el => {
-        const lm = pActiveLevel === 'all' || el.dataset.level === pActiveLevel;
-        const tm = pActiveType  === 'all' || el.dataset.type  === pActiveType;
-        return lm && tm;
+        const lm = pActiveLevel  === 'all' || el.dataset.level   === pActiveLevel;
+        const tm = pActiveType   === 'all' || el.dataset.type    === pActiveType;
+        const om = pActiveOrigin === 'all' || el.dataset.origin  === pActiveOrigin;
+        return lm && tm && om;
       });
     }
 
@@ -674,6 +689,14 @@
       document.getElementById('policy-btn-list').classList.add('active');
       document.getElementById('policy-btn-cards').classList.remove('active');
       pRender();
+    });
+    document.querySelectorAll('.policy-origin-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.policy-origin-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        pActiveOrigin = btn.dataset.origin;
+        pRender();
+      });
     });
 
     pRender(); // init
