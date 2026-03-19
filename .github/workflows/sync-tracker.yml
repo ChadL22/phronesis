@@ -10,24 +10,27 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+
     steps:
       - uses: actions/checkout@v4
 
       - name: Fetch tracker data from Tech Policy Press
         run: |
-          curl -sSf \
-            "https://3tzzh18d.api.sanity.io/v2023-05-03/data/query/production?query=$(python3 -c "import urllib.parse; print(urllib.parse.quote('*[_type == \"policy_action\" && !(_id in path(\"drafts.**\"))]{category, country, dateInitiated, lastUpdate, _id, slug, status, title, relatedTopics[]->{_id, name, slug, displayName}, type}|order(lastUpdate desc)'))")" \
-            -o tracker-data.json
-          echo "Fetched $(cat tracker-data.json | python3 -c "import sys,json; print(len(json.load(sys.stdin).get('result', [])))"  ) tracker items"
+          QUERY='*[_type == "policy_action" && !(_id in path("drafts.**"))]{category, country, dateInitiated, lastUpdate, _id, slug, status, title, relatedTopics[]->{_id, name, slug, displayName}, type}|order(lastUpdate desc)'
+          ENCODED=$(python3 -c "import urllib.parse, sys; print(urllib.parse.quote(sys.argv[1]))" "$QUERY")
+          curl -sSf "https://3tzzh18d.api.sanity.io/v2023-05-03/data/query/production?query=${ENCODED}" -o tracker-data.json
+          COUNT=$(python3 -c "import sys,json; print(len(json.load(open('tracker-data.json')).get('result', [])))")
+          echo "Fetched ${COUNT} tracker items"
 
-      - name: Commit updated data if changed
+      - name: Commit and push (triggers Pages redeploy)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add tracker-data.json
           if git diff --staged --quiet; then
-            echo "No changes to tracker data"
+            echo "No changes — forcing Pages redeploy via empty commit"
+            git commit --allow-empty -m "chore: force pages redeploy [skip ci]"
           else
-            git commit -m "chore: sync tracker data [skip ci]"
-            git push
+            git commit -m "chore: sync tracker data"
           fi
+          git push
