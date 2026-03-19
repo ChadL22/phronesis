@@ -236,8 +236,7 @@
     document.addEventListener('click', () => { t.classList.remove('is-open'); m.classList.remove('is-open'); });
 
     // ── POLICY TRACKER ──
-    const SANITY_URL = 'https://3tzzh18d.api.sanity.io/v2023-05-03/data/query/production?query=' +
-      encodeURIComponent('*[_type == "policy_action" && !(_id in path("drafts.**"))]{category, country, dateInitiated, lastUpdate, _id, slug, status, title, relatedTopics[]->{_id, name, slug, displayName}, type}|order(lastUpdate desc)');
+    const SANITY_URL = '/api/tracker';
 
     let allItems = [];
     let activeType = 'All';
