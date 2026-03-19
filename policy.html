@@ -375,6 +375,7 @@
 
   <!-- controls -->
   <div class="policy-controls">
+    <!-- row 1: level tabs (left) + view toggle (right) -->
     <div class="policy-controls-top">
       <div class="policy-tabs">
         <button class="policy-tab active" data-level="all">All</button>
@@ -382,31 +383,30 @@
         <button class="policy-tab" data-level="state">State</button>
         <button class="policy-tab" data-level="international">International</button>
       </div>
-      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:0.5rem; padding: 0.6rem 0;">
-        <div class="policy-view-toggle">
-          <button class="policy-view-btn active" id="policy-btn-cards" title="Card view">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-            Cards
-          </button>
-          <button class="policy-view-btn" id="policy-btn-list" title="List view">
-            <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-            List
-          </button>
-        </div>
-        <div style="display:flex; align-items:center; gap:0.4rem;">
-          <span class="policy-type-label" style="margin-right:0;">Origin</span>
-          <button class="policy-origin-btn active" data-origin="all">All</button>
-          <button class="policy-origin-btn" data-origin="original">Original</button>
-          <button class="policy-origin-btn" data-origin="via">Via</button>
-        </div>
+      <div class="policy-view-toggle">
+        <button class="policy-view-btn active" id="policy-btn-cards" title="Card view">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Cards
+        </button>
+        <button class="policy-view-btn" id="policy-btn-list" title="List view">
+          <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          List
+        </button>
       </div>
     </div>
+    <!-- row 2: type (left) + origin (right) -->
     <div class="policy-type-filters">
       <span class="policy-type-label">Type</span>
       <button class="policy-type-btn active" data-type="all">All</button>
       <button class="policy-type-btn" data-type="memo">Memo</button>
       <button class="policy-type-btn" data-type="proposal">Proposal</button>
       <button class="policy-type-btn" data-type="policy">Policy</button>
+      <div style="margin-left:auto; display:flex; align-items:center; gap:0.4rem; flex-shrink:0;">
+        <span class="policy-type-label" style="margin-right:0;">Origin</span>
+        <button class="policy-origin-btn active" data-origin="all">All</button>
+        <button class="policy-origin-btn" data-origin="original">Original</button>
+        <button class="policy-origin-btn" data-origin="via">Via</button>
+      </div>
     </div>
   </div>
 
