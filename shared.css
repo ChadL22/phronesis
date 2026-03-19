@@ -37,9 +37,6 @@ img { display: block; max-width: 100%; }
   border-radius: 2px;
   padding: 0.12rem 0.4rem;
   line-height: 1.2;
-  align-self: center;
-  flex-shrink: 0;
-  white-space: nowrap;
 }
 .origin-badge--original {
   background: var(--accent);
@@ -49,9 +46,6 @@ img { display: block; max-width: 100%; }
   background: transparent;
   color: var(--ink-3);
   border: 1px solid var(--rule);
-  max-width: 14ch;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 /* ── UTILITIES ─────────────────────────────────────────── */
