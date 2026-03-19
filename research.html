@@ -86,11 +86,11 @@
     .paper-card-footer {
       display: flex; align-items: center; justify-content: space-between;
       border-top: 1px solid var(--rule); padding-top: 0.85rem;
-      margin-top: auto;
+      margin-top: auto; gap: 0.75rem;
     }
-    .paper-card-footer-left { display: flex; align-items: center; gap: 0.6rem; }
+    .paper-card-footer-left { display: flex; align-items: center; gap: 0.5rem; min-width: 0; overflow: hidden; }
     .paper-card-date { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
-    .paper-card-read { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+    .paper-card-read { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); flex-shrink: 0; white-space: nowrap; }
 
     /* ── LIST VIEW ── */
     .year-group { margin-top: 3rem; }
