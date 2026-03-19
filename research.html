@@ -7,15 +7,106 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="shared.css" /><link rel="stylesheet" href="chat.css" />
   <style>
+    /* ── ARCHIVE LAYOUT ── */
     .archive { max-width: 1160px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 5rem) 5rem; }
-    .archive-list-item { display: grid; grid-template-columns: 8rem 1fr 10rem; gap: 2rem; align-items: start; padding: 1.8rem 0; border-top: 1px solid var(--rule); cursor: pointer; }
-    .archive-list-item:last-child { border-bottom: 1px solid var(--rule); }
-    .archive-list-item:hover .archive-title { color: var(--accent); }
-    .archive-date { font-family: var(--serif); font-size: 0.82rem; color: var(--ink-3); padding-top: 0.2rem; }
-    .archive-title { font-family: var(--serif); font-size: 1.25rem; font-weight: 400; line-height: 1.3; margin-bottom: 0.4rem; transition: color 0.2s; }
-    .archive-subtitle { font-size: 0.78rem; color: var(--ink-3); line-height: 1.5; }
-    .archive-tag { display: inline-block; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); border-radius: 2px; padding: 0.15rem 0.45rem; justify-self: end; align-self: start; margin-top: 0.2rem; }
-    @media (max-width: 700px) { .archive-list-item { grid-template-columns: 1fr; gap: 0.5rem; } .archive-tag { justify-self: start; } }
+
+    /* sort controls */
+    .sort-bar {
+      display: flex; align-items: center; gap: 1.5rem;
+      padding: 1rem clamp(1.5rem, 5vw, 5rem);
+      border-bottom: 1px solid var(--rule);
+      background: var(--paper);
+    }
+    .sort-bar .sort-label { font-size: 0.68rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-3); }
+    .sort-btn {
+      font-family: var(--sans); font-size: 0.68rem; font-weight: 400;
+      letter-spacing: 0.13em; text-transform: uppercase;
+      color: var(--ink-3); background: none;
+      border: 1px solid transparent; border-radius: 2px;
+      padding: 0.28rem 0.65rem; cursor: pointer; transition: all 0.2s;
+    }
+    .sort-btn:hover { color: var(--ink); border-color: var(--rule); }
+    .sort-btn.active { color: var(--accent); border-color: var(--accent); }
+
+    /* year group */
+    .year-group { margin-top: 3rem; }
+    .year-group.hidden { display: none; }
+    .year-heading {
+      font-family: var(--serif); font-size: 2.6rem; font-weight: 300;
+      color: var(--ink); line-height: 1;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 0;
+    }
+
+    /* paper entry */
+    .paper-entry {
+      display: grid;
+      grid-template-columns: 9rem 1fr;
+      gap: 0 2rem;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid var(--rule);
+      transition: background 0.15s;
+    }
+    .paper-entry.hidden { display: none; }
+
+    .paper-tags { display: flex; flex-direction: column; gap: 0.35rem; padding-top: 0.2rem; }
+    .paper-tag {
+      display: inline-block; font-size: 0.58rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent);
+      border: 1px solid var(--accent); border-radius: 2px;
+      padding: 0.15rem 0.4rem; align-self: flex-start;
+      white-space: nowrap;
+    }
+
+    .paper-body {}
+    .paper-title {
+      font-family: var(--serif); font-size: 1.15rem; font-weight: 400;
+      line-height: 1.3; color: var(--ink); margin-bottom: 0.4rem;
+    }
+    .paper-title:hover { color: var(--accent); cursor: pointer; }
+    .paper-abstract {
+      font-size: 0.78rem; color: var(--ink-2); line-height: 1.65;
+      margin-bottom: 0.55rem;
+    }
+    .paper-meta {
+      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .paper-source {
+      font-size: 0.68rem; letter-spacing: 0.05em;
+      color: var(--ink-3); font-style: italic;
+    }
+    .paper-date {
+      font-size: 0.65rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink-3);
+    }
+    .paper-link {
+      font-size: 0.65rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent);
+      margin-left: auto;
+    }
+    .paper-link:hover { text-decoration: underline; }
+
+    /* topic-sorted view */
+    .topic-group { margin-top: 3rem; }
+    .topic-group.hidden { display: none; }
+    .topic-heading {
+      font-family: var(--sans); font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-3); padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    /* count badge */
+    .archive-count {
+      font-family: var(--serif); font-size: 0.82rem;
+      color: var(--ink-3); margin-top: 2rem; display: block;
+    }
+
+    @media (max-width: 700px) {
+      .paper-entry { grid-template-columns: 1fr; gap: 0.6rem; }
+      .paper-tags { flex-direction: row; flex-wrap: wrap; }
+    }
   </style>
 </head>
 <body>
@@ -34,21 +125,126 @@
       <li><a href="about.html">About</a></li>
     </ul>
   </nav>
+
   <div class="page-header">
     <div><div class="page-header-eyebrow"><span class="label">All Publications</span></div><h1 class="serif">Research<br/><em>Papers</em></h1></div>
     <p class="page-header-desc">Peer-quality scholarship on technology governance, digital law, and the regulatory frameworks shaping how society interacts with emerging technology.</p>
   </div>
-  <div class="filter-bar">
-    <button class="filter-btn active">All</button><button class="filter-btn">AI Governance</button><button class="filter-btn">Platform Law</button><button class="filter-btn">Competition</button><button class="filter-btn">Privacy</button><button class="filter-btn">Civil Rights</button>
+
+  <!-- filter by topic -->
+  <div class="filter-bar" id="filter-bar">
+    <button class="filter-btn active" data-topic="All">All</button>
+    <button class="filter-btn" data-topic="AI Governance">AI Governance</button>
+    <button class="filter-btn" data-topic="Platform Law">Platform Law</button>
+    <button class="filter-btn" data-topic="Competition">Competition</button>
+    <button class="filter-btn" data-topic="Privacy">Privacy</button>
+    <button class="filter-btn" data-topic="Civil Rights">Civil Rights</button>
   </div>
+
+  <!-- sort by -->
+  <div class="sort-bar">
+    <span class="sort-label">Sort by</span>
+    <button class="sort-btn active" id="sort-year">Year</button>
+    <button class="sort-btn" id="sort-topic">Topic</button>
+  </div>
+
   <div class="archive">
-    <span class="label" style="margin-top:2rem; display:block;">Showing 5 papers</span>
-    <div class="archive-list-item"><div class="archive-date">March 2025</div><div><div class="archive-title">Governing the Stack: Regulatory Jurisdiction in Multi-Layer AI Systems <span class="origin-badge origin-badge--original">Original</span></div><div class="archive-subtitle">Maps jurisdictional gaps across AI model layers, fine-tuning, APIs, and deployment contexts, proposing a tiered liability framework.</div></div><span class="archive-tag">AI Governance</span></div>
-    <div class="archive-list-item"><div class="archive-date">Feb 2025</div><div><div class="archive-title">Algorithmic Harm and the Limits of Disparate Impact Theory <span class="origin-badge origin-badge--via">Via Stanford Law Review</span></div><div class="archive-subtitle">Examines whether Title VII's disparate impact doctrine can bear the weight of automated decision-making in employment contexts.</div></div><span class="archive-tag">Civil Rights</span></div>
-    <div class="archive-list-item"><div class="archive-date">Jan 2025</div><div><div class="archive-title">The Federal Privacy Gap: Why Sectoral Regulation Has Failed and What Comes Next <span class="origin-badge origin-badge--original">Original</span></div><div class="archive-subtitle">A structural critique of the United States' sector-by-sector approach to data privacy and a framework for comprehensive federal legislation.</div></div><span class="archive-tag">Privacy</span></div>
-    <div class="archive-list-item"><div class="archive-date">Dec 2024</div><div><div class="archive-title">Market Power in the Foundation Model Layer: Early Evidence and Regulatory Implications <span class="origin-badge origin-badge--via">Via Yale Journal on Regulation</span></div><div class="archive-subtitle">Applies traditional antitrust analysis to the emerging market structure of large language model development and API access.</div></div><span class="archive-tag">Competition</span></div>
-    <div class="archive-list-item"><div class="archive-date">Nov 2024</div><div><div class="archive-title">Intermediary Liability in the Age of Generative AI: Rethinking Platform Responsibility <span class="origin-badge origin-badge--original">Original</span></div><div class="archive-subtitle">Asks whether Section 230's third-party content framework can coherently extend to AI-generated outputs produced at a platform's direction.</div></div><span class="archive-tag">Platform Law</span></div>
-  </div>
+    <span class="archive-count" id="paper-count"></span>
+
+    <!-- ═══════════════════════════════════════════════════
+         YEAR VIEW (default)
+    ════════════════════════════════════════════════════ -->
+    <div id="view-year">
+
+      <div class="year-group" data-year="2025">
+        <div class="year-heading">2025</div>
+
+        <div class="paper-entry" data-topic="AI Governance">
+          <div class="paper-tags"><span class="paper-tag">AI Governance</span></div>
+          <div class="paper-body">
+            <div class="paper-title">Governing the Stack: Regulatory Jurisdiction in Multi-Layer AI Systems</div>
+            <div class="paper-abstract">Maps jurisdictional gaps across AI model layers, fine-tuning, APIs, and deployment contexts, proposing a tiered liability framework.</div>
+            <div class="paper-meta">
+              <span class="paper-date">Mar 2025</span>
+              <span class="paper-source">Phronesis Research</span>
+              <span class="origin-badge origin-badge--original">Original</span>
+              <a href="#" class="paper-link">Read paper →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="paper-entry" data-topic="Civil Rights">
+          <div class="paper-tags"><span class="paper-tag">Civil Rights</span></div>
+          <div class="paper-body">
+            <div class="paper-title">Algorithmic Harm and the Limits of Disparate Impact Theory</div>
+            <div class="paper-abstract">Examines whether Title VII's disparate impact doctrine can bear the weight of automated decision-making in employment contexts.</div>
+            <div class="paper-meta">
+              <span class="paper-date">Feb 2025</span>
+              <span class="paper-source">Stanford Law Review</span>
+              <span class="origin-badge origin-badge--via">Via Stanford Law Review</span>
+              <a href="#" class="paper-link">Read paper →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="paper-entry" data-topic="Privacy">
+          <div class="paper-tags"><span class="paper-tag">Privacy</span></div>
+          <div class="paper-body">
+            <div class="paper-title">The Federal Privacy Gap: Why Sectoral Regulation Has Failed and What Comes Next</div>
+            <div class="paper-abstract">A structural critique of the United States' sector-by-sector approach to data privacy and a framework for comprehensive federal legislation.</div>
+            <div class="paper-meta">
+              <span class="paper-date">Jan 2025</span>
+              <span class="paper-source">Phronesis Research</span>
+              <span class="origin-badge origin-badge--original">Original</span>
+              <a href="#" class="paper-link">Read paper →</a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /year-group 2025 -->
+
+      <div class="year-group" data-year="2024">
+        <div class="year-heading">2024</div>
+
+        <div class="paper-entry" data-topic="Competition">
+          <div class="paper-tags"><span class="paper-tag">Competition</span></div>
+          <div class="paper-body">
+            <div class="paper-title">Market Power in the Foundation Model Layer: Early Evidence and Regulatory Implications</div>
+            <div class="paper-abstract">Applies traditional antitrust analysis to the emerging market structure of large language model development and API access.</div>
+            <div class="paper-meta">
+              <span class="paper-date">Dec 2024</span>
+              <span class="paper-source">Yale Journal on Regulation</span>
+              <span class="origin-badge origin-badge--via">Via Yale Journal on Regulation</span>
+              <a href="#" class="paper-link">Read paper →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="paper-entry" data-topic="Platform Law">
+          <div class="paper-tags"><span class="paper-tag">Platform Law</span></div>
+          <div class="paper-body">
+            <div class="paper-title">Intermediary Liability in the Age of Generative AI: Rethinking Platform Responsibility</div>
+            <div class="paper-abstract">Asks whether Section 230's third-party content framework can coherently extend to AI-generated outputs produced at a platform's direction.</div>
+            <div class="paper-meta">
+              <span class="paper-date">Nov 2024</span>
+              <span class="paper-source">Phronesis Research</span>
+              <span class="origin-badge origin-badge--original">Original</span>
+              <a href="#" class="paper-link">Read paper →</a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /year-group 2024 -->
+
+    </div><!-- /view-year -->
+
+    <!-- ═══════════════════════════════════════════════════
+         TOPIC VIEW (toggled by JS)
+    ════════════════════════════════════════════════════ -->
+    <div id="view-topic" style="display:none;"></div>
+
+  </div><!-- /archive -->
+
   <section class="newsletter-band"><div class="newsletter-inner"><div class="newsletter-copy"><h3 class="serif">Read Phronesis weekly.</h3><p>New work delivered directly to your inbox. No noise, no filler.</p></div><div class="newsletter-form"><input type="email" placeholder="your@email.com" /><button type="button">Subscribe</button></div></div></section>
   <footer>
     <div><div class="footer-brand serif">Phronesis</div><p>An independent research entity at the intersection of technology law and policy.</p></div>
@@ -56,12 +252,117 @@
     <div class="footer-col"><h4>Site</h4><ul><li><a href="about.html">About</a></li><li><a href="research.html">All Publications</a></li><li><a href="https://chadl22.github.io" target="_blank">Personal Site</a></li></ul></div>
   </footer>
   <div class="footer-bottom"><p>&copy; 2025 Phronesis Research. Independent &amp; non-partisan.</p><span class="phronesis-greek">&#x03C6;&#x03C1;&#x03CC;&#x03BD;&#x03B7;&#x03C3;&#x03B9;&#x03C2;</span></div>
-  <script>document.querySelectorAll('.filter-btn').forEach(btn => { btn.addEventListener('click', () => { document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); }); });</script>
+
   <script src="chat.js" defer></script>
   <script>
+    // ── nav toggle ──
     const t = document.getElementById('nav-toggle'), m = document.getElementById('nav-menu');
     t.addEventListener('click', e => { e.stopPropagation(); t.classList.toggle('is-open'); m.classList.toggle('is-open'); });
     document.addEventListener('click', () => { t.classList.remove('is-open'); m.classList.remove('is-open'); });
+
+    // ── state ──
+    let activeTopic = 'All';
+    let activeSort  = 'year'; // 'year' | 'topic'
+
+    const viewYear  = document.getElementById('view-year');
+    const viewTopic = document.getElementById('view-topic');
+    const countEl   = document.getElementById('paper-count');
+
+    // Collect all paper entries once
+    const allEntries = Array.from(document.querySelectorAll('#view-year .paper-entry'));
+
+    function getVisible() {
+      return allEntries.filter(e =>
+        activeTopic === 'All' || e.dataset.topic === activeTopic
+      );
+    }
+
+    function updateCount() {
+      const n = getVisible().length;
+      countEl.textContent = 'Showing ' + n + ' paper' + (n === 1 ? '' : 's');
+    }
+
+    // ── FILTER by topic ──
+    function applyFilter() {
+      if (activeSort === 'year') {
+        applyYearView();
+      } else {
+        applyTopicView();
+      }
+      updateCount();
+    }
+
+    function applyYearView() {
+      viewTopic.style.display = 'none';
+      viewYear.style.display  = '';
+
+      // show/hide individual entries
+      allEntries.forEach(e => {
+        e.classList.toggle('hidden', activeTopic !== 'All' && e.dataset.topic !== activeTopic);
+      });
+
+      // hide year groups that have no visible entries
+      document.querySelectorAll('#view-year .year-group').forEach(grp => {
+        const anyVisible = Array.from(grp.querySelectorAll('.paper-entry'))
+          .some(e => !e.classList.contains('hidden'));
+        grp.classList.toggle('hidden', !anyVisible);
+      });
+    }
+
+    // ── SORT by topic: rebuild topic-grouped view from DOM data ──
+    function applyTopicView() {
+      viewYear.style.display  = 'none';
+      viewTopic.style.display = '';
+      viewTopic.innerHTML = '';
+
+      const visible = getVisible();
+
+      // group by topic
+      const groups = {};
+      visible.forEach(e => {
+        const topic = e.dataset.topic;
+        if (!groups[topic]) groups[topic] = [];
+        groups[topic].push(e);
+      });
+
+      // render sorted alphabetically
+      Object.keys(groups).sort().forEach(topic => {
+        const grpEl = document.createElement('div');
+        grpEl.className = 'topic-group';
+        grpEl.innerHTML = '<div class="topic-heading">' + topic + '</div>';
+        groups[topic].forEach(entry => {
+          grpEl.appendChild(entry.cloneNode(true));
+        });
+        viewTopic.appendChild(grpEl);
+      });
+    }
+
+    // ── bind filter buttons ──
+    document.querySelectorAll('#filter-bar .filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#filter-bar .filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeTopic = btn.dataset.topic;
+        applyFilter();
+      });
+    });
+
+    // ── bind sort buttons ──
+    document.getElementById('sort-year').addEventListener('click', () => {
+      document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('sort-year').classList.add('active');
+      activeSort = 'year';
+      applyFilter();
+    });
+    document.getElementById('sort-topic').addEventListener('click', () => {
+      document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('sort-topic').classList.add('active');
+      activeSort = 'topic';
+      applyFilter();
+    });
+
+    // ── init ──
+    applyFilter();
   </script>
 </body>
 </html>
