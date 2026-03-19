@@ -236,11 +236,10 @@
     document.addEventListener('click', () => { t.classList.remove('is-open'); m.classList.remove('is-open'); });
 
     // ── POLICY TRACKER ──
-    // Use the Cloudflare Worker proxy when available, fall back to corsproxy.io for GitHub Pages
     const SANITY_QUERY = '*[_type == "policy_action" && !(_id in path("drafts.**"))]{category, country, dateInitiated, lastUpdate, _id, slug, status, title, relatedTopics[]->{_id, name, slug, displayName}, type}|order(lastUpdate desc)';
     const SANITY_DIRECT = 'https://3tzzh18d.api.sanity.io/v2023-05-03/data/query/production?query=' + encodeURIComponent(SANITY_QUERY);
-    const SANITY_PROXY  = 'https://corsproxy.io/?' + encodeURIComponent(SANITY_DIRECT);
-    const WORKER_URL    = '/api/tracker';
+    const ALLORIGINS_URL = 'https://api.allorigins.win/get?url=' + encodeURIComponent(SANITY_DIRECT);
+    const WORKER_URL = '/api/tracker';
 
     let allItems = [];
     let activeType = 'All';
@@ -317,16 +316,19 @@
       });
     });
 
-    // fetch — try Worker proxy first (Cloudflare), fall back to corsproxy.io (GitHub Pages)
+    // fetch — try Cloudflare Worker first, fall back to allorigins.win proxy
     function loadTracker() {
       fetch(WORKER_URL)
         .then(r => { if (!r.ok) throw new Error('worker miss'); return r.json(); })
         .then(json => { allItems = json.result || []; renderTracker(allItems); })
         .catch(() => {
-          // Worker not available — fall back to corsproxy.io
-          fetch(SANITY_PROXY)
+          fetch(ALLORIGINS_URL)
             .then(r => r.json())
-            .then(json => { allItems = json.result || []; renderTracker(allItems); })
+            .then(wrapper => {
+              const json = JSON.parse(wrapper.contents);
+              allItems = json.result || [];
+              renderTracker(allItems);
+            })
             .catch(() => {
               document.getElementById('tracker-list').innerHTML =
                 '<div class="tracker-error">Unable to load tracker data. <a href="https://www.techpolicy.press/tracker/" target="_blank" rel="noopener" style="color:var(--accent)">View directly on Tech Policy Press →</a></div>';
