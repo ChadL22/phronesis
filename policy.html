@@ -16,6 +16,144 @@
     .archive-subtitle { font-size: 0.78rem; color: var(--ink-3); line-height: 1.5; }
     .archive-tag { display: inline-block; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); border-radius: 2px; padding: 0.15rem 0.45rem; justify-self: end; align-self: start; margin-top: 0.2rem; }
     @media (max-width: 700px) { .archive-list-item { grid-template-columns: 1fr; gap: 0.5rem; } .archive-tag { justify-self: start; } }
+
+    /* ── TRACKER ── */
+    .tracker-section {
+      border-top: 1px solid var(--rule);
+      background: var(--paper-2);
+      padding: clamp(3rem, 6vw, 5rem) 0;
+    }
+    .tracker-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 5vw, 5rem);
+    }
+    .tracker-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem 4rem;
+      align-items: end;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .tracker-header-left .label { display: block; margin-bottom: 0.8rem; }
+    .tracker-header-left h2 {
+      font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300; line-height: 1.1; margin-bottom: 1rem;
+    }
+    .tracker-header-left h2 em { font-style: italic; color: var(--accent); }
+    .tracker-desc {
+      font-size: 0.8rem; color: var(--ink-3); line-height: 1.6;
+    }
+    .tracker-desc a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+    .tracker-filters {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      align-self: end; justify-content: flex-end;
+    }
+    .tracker-filter {
+      font-family: var(--sans); font-size: 0.65rem; font-weight: 400;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--ink-3); background: none;
+      border: 1px solid transparent; border-radius: 2px;
+      padding: 0.3rem 0.7rem; cursor: pointer; transition: all 0.18s;
+    }
+    .tracker-filter:hover { color: var(--ink); border-color: var(--rule); }
+    .tracker-filter.active { color: var(--accent); border-color: var(--accent); }
+
+    /* tracker rows */
+    .tracker-row {
+      border-top: 1px solid var(--rule);
+      overflow: hidden;
+    }
+    .tracker-row:last-child { border-bottom: 1px solid var(--rule); }
+    .tracker-row-header {
+      display: grid;
+      grid-template-columns: 7rem 1fr 14rem 1.8rem;
+      gap: 1.5rem;
+      align-items: center;
+      padding: 1.1rem 0;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .tracker-row-header:hover { background: var(--paper); }
+    .tracker-type-badge {
+      font-size: 0.58rem; letter-spacing: 0.13em; text-transform: uppercase;
+      color: var(--ink-3); border: 1px solid var(--rule);
+      border-radius: 2px; padding: 0.2rem 0.45rem;
+      white-space: nowrap; align-self: center; justify-self: start;
+    }
+    .tracker-type-badge.litigation { color: #7a4a00; border-color: #c8943a; background: #fdf6ed; }
+    .tracker-type-badge.legislation { color: #1a4a2e; border-color: var(--accent); background: #eef5f0; }
+    .tracker-type-badge.executive { color: #2a2a6a; border-color: #7070c0; background: #f0f0fb; }
+    .tracker-row-title {
+      font-family: var(--serif); font-size: 1.05rem; font-weight: 400;
+      line-height: 1.3; color: var(--ink);
+    }
+    .tracker-status {
+      font-size: 0.7rem; color: var(--ink-3); line-height: 1.4; text-align: right;
+    }
+    .tracker-status strong { display: block; color: var(--ink-2); font-weight: 400; font-size: 0.72rem; }
+    .tracker-chevron {
+      width: 1rem; height: 1rem; stroke: var(--ink-3);
+      fill: none; stroke-width: 2; transition: transform 0.2s;
+      justify-self: end;
+    }
+    .tracker-row.open .tracker-chevron { transform: rotate(180deg); }
+    .tracker-row-body {
+      display: none;
+      padding: 0 0 1.4rem 8.5rem;
+      border-top: 1px solid var(--rule);
+      margin-top: -1px;
+    }
+    .tracker-row.open .tracker-row-body { display: block; }
+    .tracker-row-meta {
+      display: flex; gap: 2rem; flex-wrap: wrap;
+      padding-top: 1rem; margin-bottom: 0.8rem;
+    }
+    .tracker-meta-item { font-size: 0.72rem; color: var(--ink-3); }
+    .tracker-meta-item strong { display: block; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; margin-bottom: 0.2rem; }
+    .tracker-meta-item span { color: var(--ink-2); }
+    .tracker-topics { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .tracker-topic-pill {
+      font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase;
+      border: 1px solid var(--rule); border-radius: 2px;
+      padding: 0.15rem 0.4rem; color: var(--ink-3);
+    }
+    .tracker-source-link {
+      font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent);
+    }
+    .tracker-source-link:hover { text-decoration: underline; }
+
+    .tracker-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 1.5rem;
+    }
+
+    /* loading animation */
+    .tracker-loading { display: flex; align-items: center; padding: 3rem 0; }
+    .tracker-loading-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); opacity: 0.3;
+      margin-right: 5px;
+      animation: tracker-pulse 1.2s ease-in-out infinite;
+    }
+    .tracker-loading-dot:nth-child(2) { animation-delay: 0.2s; }
+    .tracker-loading-dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes tracker-pulse {
+      0%, 100% { opacity: 0.15; transform: scale(0.85); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+    .tracker-error { padding: 2rem 0; font-size: 0.8rem; color: var(--ink-3); }
+
+    @media (max-width: 900px) {
+      .tracker-header { grid-template-columns: 1fr; }
+      .tracker-filters { justify-content: flex-start; }
+      .tracker-row-header { grid-template-columns: 6rem 1fr 1.8rem; }
+      .tracker-status { display: none; }
+      .tracker-row-body { padding-left: 0; }
+    }
   </style>
 </head>
 <body>
@@ -47,6 +185,41 @@
     <div class="archive-list-item"><div class="archive-date">Nov 2024</div><div><div class="archive-title">Model Algorithmic Impact Assessment Standards for State Agencies <span class="origin-badge origin-badge--original">Original</span></div><div class="archive-subtitle">Draft standards for how state governments should evaluate automated decision systems before deployment in public services.</div></div><span class="archive-tag">State</span></div>
     <div class="archive-list-item"><div class="archive-date">Oct 2024</div><div><div class="archive-title">Transatlantic AI Governance: A Framework for U.S.-EU Regulatory Cooperation <span class="origin-badge origin-badge--via">Via CSIS</span></div><div class="archive-subtitle">Proposes a bilateral coordination mechanism to reduce compliance friction and establish shared standards across the Atlantic AI governance divide.</div></div><span class="archive-tag">International</span></div>
   </div>
+  <!-- ── POLICY TRACKER ── -->
+  <section class="tracker-section">
+    <div class="tracker-inner">
+
+      <div class="tracker-header">
+        <div class="tracker-header-left">
+          <span class="label">Policy Tracker</span>
+          <h2 class="serif">Laws, litigation,<br/><em>and regulation.</em></h2>
+          <p class="tracker-desc">Live tracking of legislation, litigation, and executive action shaping technology accountability. Data via <a href="https://www.techpolicy.press/tracker/" target="_blank" rel="noopener">Tech Policy Press</a>.</p>
+        </div>
+        <div class="tracker-filters" id="tracker-filters">
+          <button class="tracker-filter active" data-type="All">All</button>
+          <button class="tracker-filter" data-type="Legislation">Legislation</button>
+          <button class="tracker-filter" data-type="Litigation">Litigation</button>
+          <button class="tracker-filter" data-type="Executive Order">Executive Order</button>
+        </div>
+      </div>
+
+      <div id="tracker-list">
+        <div class="tracker-loading">
+          <span class="tracker-loading-dot"></span>
+          <span class="tracker-loading-dot"></span>
+          <span class="tracker-loading-dot"></span>
+          <span style="font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-3);margin-left:0.5rem;">Loading tracker</span>
+        </div>
+      </div>
+
+      <div class="tracker-footer">
+        <span id="tracker-count" class="label"></span>
+        <a href="https://www.techpolicy.press/tracker/" target="_blank" rel="noopener" class="view-all">Full tracker on Tech Policy Press</a>
+      </div>
+
+    </div>
+  </section>
+
   <section class="newsletter-band"><div class="newsletter-inner"><div class="newsletter-copy"><h3 class="serif">Read Phronesis weekly.</h3><p>New work delivered directly to your inbox. No noise, no filler.</p></div><div class="newsletter-form"><input type="email" placeholder="your@email.com" /><button type="button">Subscribe</button></div></div></section>
   <footer>
     <div><div class="footer-brand serif">Phronesis</div><p>An independent research entity at the intersection of technology law and policy.</p></div>
@@ -57,9 +230,101 @@
   <script>document.querySelectorAll('.filter-btn').forEach(btn => { btn.addEventListener('click', () => { document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); }); });</script>
   <script src="chat.js" defer></script>
   <script>
+    // ── nav ──
     const t = document.getElementById('nav-toggle'), m = document.getElementById('nav-menu');
     t.addEventListener('click', e => { e.stopPropagation(); t.classList.toggle('is-open'); m.classList.toggle('is-open'); });
     document.addEventListener('click', () => { t.classList.remove('is-open'); m.classList.remove('is-open'); });
+
+    // ── POLICY TRACKER ──
+    const SANITY_URL = 'https://3tzzh18d.api.sanity.io/v2023-05-03/data/query/production?query=' +
+      encodeURIComponent('*[_type == "policy_action" && !(_id in path("drafts.**"))]{category, country, dateInitiated, lastUpdate, _id, slug, status, title, relatedTopics[]->{_id, name, slug, displayName}, type}|order(lastUpdate desc)');
+
+    let allItems = [];
+    let activeType = 'All';
+
+    function typeBadgeClass(type) {
+      if (!type) return '';
+      const l = type.toLowerCase();
+      if (l.includes('litigation')) return 'litigation';
+      if (l.includes('legislation')) return 'legislation';
+      if (l.includes('executive')) return 'executive';
+      return '';
+    }
+
+    function formatDate(str) {
+      if (!str) return '—';
+      const d = new Date(str);
+      return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    }
+
+    function renderTracker(items) {
+      const list = document.getElementById('tracker-list');
+      const count = document.getElementById('tracker-count');
+      const visible = activeType === 'All' ? items : items.filter(i => i.type === activeType);
+      count.textContent = visible.length + ' item' + (visible.length === 1 ? '' : 's') + (activeType !== 'All' ? ' · ' + activeType : '');
+
+      if (!visible.length) {
+        list.innerHTML = '<div class="tracker-error">No items match the current filter.</div>';
+        return;
+      }
+
+      list.innerHTML = visible.map((item, i) => {
+        const slug = item.slug && item.slug.current ? item.slug.current : '';
+        const href = slug ? 'https://www.techpolicy.press/tracker/' + slug + '/' : 'https://www.techpolicy.press/tracker/';
+        const badgeClass = typeBadgeClass(item.type || '');
+        const topics = (item.relatedTopics || []).map(tp => `<span class="tracker-topic-pill">${tp.displayName || tp.name || ''}</span>`).join('');
+        return `
+          <div class="tracker-row" id="trow-${i}">
+            <div class="tracker-row-header" onclick="toggleRow('trow-${i}')">
+              <span class="tracker-type-badge ${badgeClass}">${item.type || 'Other'}</span>
+              <span class="tracker-row-title">${item.title || ''}</span>
+              <span class="tracker-status">
+                <strong>${item.status || ''}</strong>
+                Updated ${formatDate(item.lastUpdate)}
+              </span>
+              <svg class="tracker-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="tracker-row-body">
+              <div class="tracker-row-meta">
+                <div class="tracker-meta-item"><strong>Type</strong><span>${item.type || '—'}</span></div>
+                <div class="tracker-meta-item"><strong>Government</strong><span>${item.country || 'United States'}</span></div>
+                <div class="tracker-meta-item"><strong>Date Initiated</strong><span>${formatDate(item.dateInitiated)}</span></div>
+                <div class="tracker-meta-item"><strong>Status</strong><span>${item.status || '—'}</span></div>
+                <div class="tracker-meta-item"><strong>Last Updated</strong><span>${formatDate(item.lastUpdate)}</span></div>
+              </div>
+              ${topics ? '<div class="tracker-topics">' + topics + '</div>' : ''}
+              <a href="${href}" target="_blank" rel="noopener" class="tracker-source-link">Full detail on Tech Policy Press →</a>
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    function toggleRow(id) {
+      const row = document.getElementById(id);
+      if (row) row.classList.toggle('open');
+    }
+
+    // filter buttons
+    document.querySelectorAll('.tracker-filter').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tracker-filter').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeType = btn.dataset.type;
+        renderTracker(allItems);
+      });
+    });
+
+    // fetch
+    fetch(SANITY_URL)
+      .then(r => r.json())
+      .then(json => {
+        allItems = json.result || [];
+        renderTracker(allItems);
+      })
+      .catch(() => {
+        document.getElementById('tracker-list').innerHTML =
+          '<div class="tracker-error">Unable to load tracker data. <a href="https://www.techpolicy.press/tracker/" target="_blank" rel="noopener" style="color:var(--accent)">View directly on Tech Policy Press →</a></div>';
+      });
   </script>
 </body>
 </html>
