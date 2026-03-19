@@ -24,7 +24,7 @@
     .formats { padding: 3.5rem clamp(1.5rem, 5vw, 5rem); max-width: 1160px; margin: 0 auto; }
     .formats-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2.4rem; }
     .formats-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
-    .format-card { background: var(--paper); padding: 1.6rem 1.3rem 1.8rem; transition: background 0.2s; cursor: default; }
+    .format-card { background: var(--paper); padding: 1.6rem 1.3rem 1.8rem; transition: background 0.2s; display: block; color: inherit; text-decoration: none; }
     .format-card:hover { background: var(--paper-2); }
     .format-icon { width: 28px; height: 28px; border: 1px solid var(--rule); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.1rem; }
     .format-icon svg { width: 13px; height: 13px; stroke: var(--ink-2); fill: none; stroke-width: 1.5; }
@@ -89,12 +89,12 @@
   <section class="formats">
     <div class="formats-header"><span class="label">What we publish</span></div>
     <div class="formats-grid">
-      <div class="format-card"><div class="format-icon"><svg viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></div><h3 class="serif">Research Papers</h3><p>Peer-quality scholarship on technology governance and digital law.</p></div>
-      <div class="format-card"><div class="format-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 10v11M12 10v11M16 10v11"/></svg></div><h3 class="serif">Policy Proposals</h3><p>Concrete, actionable frameworks for regulators and lawmakers.</p></div>
-      <div class="format-card"><div class="format-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18m0-18l-4 8h8l-4-8zm0 18H6m6 0h6M6 11l-2 4h4l-2-4zm12 0l-2 4h4l-2-4z"/></svg></div><h3 class="serif">Legal Analyses</h3><p>Close readings of cases, statutes, and regulatory actions shaping tech.</p></div>
-      <div class="format-card"><div class="format-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div><h3 class="serif">Essays</h3><p>Argumentative, idea-driven writing that provokes and persuades.</p></div>
-      <div class="format-card"><div class="format-icon"><svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div><h3 class="serif">Articles</h3><p>Timely, concise takes on current events in tech policy and litigation.</p></div>
-      <div class="format-card"><div class="format-icon"><svg viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div><h3 class="serif">Reports</h3><p>Comprehensive reference documents synthesizing research for key audiences.</p></div>
+      <a href="research.html" class="format-card"><div class="format-icon"><svg viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></div><h3 class="serif">Research Papers</h3><p>Peer-quality scholarship on technology governance and digital law.</p></a>
+      <a href="policy.html" class="format-card"><div class="format-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 10v11M12 10v11M16 10v11"/></svg></div><h3 class="serif">Policy Proposals</h3><p>Concrete, actionable frameworks for regulators and lawmakers.</p></a>
+      <a href="legal.html" class="format-card"><div class="format-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18m0-18l-4 8h8l-4-8zm0 18H6m6 0h6M6 11l-2 4h4l-2-4zm12 0l-2 4h4l-2-4z"/></svg></div><h3 class="serif">Legal Analyses</h3><p>Close readings of cases, statutes, and regulatory actions shaping tech.</p></a>
+      <a href="essays.html" class="format-card"><div class="format-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div><h3 class="serif">Essays</h3><p>Argumentative, idea-driven writing that provokes and persuades.</p></a>
+      <a href="articles.html" class="format-card"><div class="format-icon"><svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div><h3 class="serif">Articles</h3><p>Timely, concise takes on current events in tech policy and litigation.</p></a>
+      <a href="reports.html" class="format-card"><div class="format-icon"><svg viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div><h3 class="serif">Reports</h3><p>Comprehensive reference documents synthesizing research for key audiences.</p></a>
     </div>
   </section>
 
