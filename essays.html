@@ -25,73 +25,45 @@
     .essay-btn:hover { color: var(--ink); border-color: var(--rule); }
     .essay-btn.active { color: var(--accent); border-color: var(--accent); }
 
-    /* ── CAROUSEL ── */
-    .carousel-section {
-      padding: 2.5rem 0 0;
-      max-width: 1160px; margin: 0 auto;
-      padding-left: clamp(1.5rem, 5vw, 5rem);
-      padding-right: clamp(1.5rem, 5vw, 5rem);
+    /* ── VIEW TOGGLE ── */
+    .view-toggle-wrap {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0 clamp(1.5rem, 5vw, 5rem);
     }
-    .carousel-header {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 1.2rem;
+    .view-toggle { display: flex; border: 1px solid var(--rule); border-radius: 2px; overflow: hidden; }
+    .view-btn {
+      font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.1em;
+      text-transform: uppercase; background: none; border: none;
+      padding: 0.28rem 0.7rem; cursor: pointer; color: var(--ink-3);
+      transition: all 0.18s; display: flex; align-items: center; gap: 0.35rem;
     }
-    .carousel-label { /* reuse .label */ }
-    .carousel-nav { display: flex; gap: 0.4rem; }
-    .carousel-arrow {
-      width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center;
-      background: none; border: 1px solid var(--rule); border-radius: 2px;
-      cursor: pointer; color: var(--ink-3); transition: all 0.18s;
-    }
-    .carousel-arrow:hover { border-color: var(--accent); color: var(--accent); }
-    .carousel-arrow:disabled { opacity: 0.3; cursor: default; }
-    .carousel-arrow svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; }
-    .carousel-track-wrap { overflow: hidden; }
-    .carousel-track {
-      display: flex; gap: 1px;
-      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      background: var(--rule);
-      border: 1px solid var(--rule);
-    }
-    .essay-thumb {
-      flex: 0 0 calc(33.333% - 1px);
-      background: var(--paper); padding: 1.6rem 1.5rem;
-      cursor: pointer; transition: background 0.18s;
-      display: flex; flex-direction: column;
-      border-bottom: 3px solid transparent;
-      min-width: 0;
-    }
-    .essay-thumb:hover { background: var(--paper-2); }
-    .essay-thumb.active { background: var(--paper-2); border-bottom-color: var(--accent); }
-    .essay-thumb.hidden { display: none; }
-    .essay-thumb-eyebrow { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+    .view-btn + .view-btn { border-left: 1px solid var(--rule); }
+    .view-btn.active { background: var(--accent); color: #EEE8DA; }
+    .view-btn svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+
+    /* ── SHARED ESSAY TAG ── */
     .essay-tag {
       font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase;
       color: var(--accent); border: 1px solid var(--accent);
-      border-radius: 2px; padding: 0.1rem 0.38rem;
+      border-radius: 2px; padding: 0.1rem 0.38rem; display: inline-block;
     }
-    .essay-thumb h3 {
-      font-family: var(--serif); font-size: 1rem; font-weight: 400;
-      line-height: 1.3; color: var(--ink); flex-grow: 1; margin-bottom: 0.6rem;
-    }
-    .essay-thumb-date { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); margin-top: auto; }
 
-    /* ── SPOTLIGHT ── */
-    .spotlight-section {
+    /* ══════════════════════════════════════
+       SPOTLIGHT VIEW
+    ══════════════════════════════════════ */
+    .spotlight-view { display: block; }
+
+    /* spotlight panel */
+    .spotlight-wrap {
       max-width: 1160px; margin: 0 auto;
-      padding: 0 clamp(1.5rem, 5vw, 5rem) 4rem;
-    }
-    .spotlight-empty {
-      padding: 3rem 0; font-family: var(--serif); font-size: 1.1rem;
-      color: var(--ink-3); text-align: center; border-top: 1px solid var(--rule);
+      padding: 0 clamp(1.5rem, 5vw, 5rem);
     }
     .spotlight {
-      display: grid; grid-template-columns: 1fr 380px;
-      gap: 0; border: 1px solid var(--rule); border-top: none;
+      display: grid; grid-template-columns: 1fr 360px;
+      border: 1px solid var(--rule); margin-top: 2.5rem;
     }
-    /* essay pane */
     .spotlight-essay {
-      padding: 3rem 3rem 3rem; border-right: 1px solid var(--rule);
+      padding: 3rem; border-right: 1px solid var(--rule);
       display: flex; flex-direction: column;
     }
     .spotlight-eyebrow { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.8rem; flex-wrap: wrap; }
@@ -109,86 +81,192 @@
     .spotlight-read {
       font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--accent); border: 1px solid var(--accent); border-radius: 2px;
-      padding: 0.35rem 0.8rem; transition: background 0.18s;
+      padding: 0.35rem 0.8rem; transition: background 0.18s; text-decoration: none;
     }
     .spotlight-read:hover { background: var(--accent); color: #EEE8DA; }
 
-    /* notepad pane */
-    .spotlight-notepad {
-      display: flex; flex-direction: column;
-      background: var(--paper-2);
-    }
+    /* notepad */
+    .spotlight-notepad { display: flex; flex-direction: column; background: var(--paper-2); }
     .notepad-header {
-      padding: 1.2rem 1.6rem; border-bottom: 1px solid var(--rule);
+      padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--rule);
       display: flex; align-items: center; justify-content: space-between;
     }
-    .notepad-title {
-      font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3);
-    }
-    .notepad-clear {
-      font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--ink-3); background: none; border: none; cursor: pointer;
-      transition: color 0.18s;
-    }
+    .notepad-title { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
+    .notepad-clear { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); background: none; border: none; cursor: pointer; transition: color 0.18s; }
     .notepad-clear:hover { color: var(--accent); }
     .notepad-textarea {
       flex-grow: 1; resize: none; border: none; outline: none;
       background: var(--paper-2); font-family: var(--serif);
       font-size: 0.9rem; font-weight: 300; line-height: 1.75;
-      color: var(--ink-2); padding: 1.4rem 1.6rem;
-      min-height: 280px;
+      color: var(--ink-2); padding: 1.3rem 1.5rem; min-height: 220px;
     }
     .notepad-textarea::placeholder { color: var(--ink-3); font-style: italic; }
-    .notepad-footer {
-      padding: 1rem 1.6rem; border-top: 1px solid var(--rule);
-      display: flex; flex-direction: column; gap: 0.6rem;
-    }
+    .notepad-footer { padding: 1rem 1.5rem; border-top: 1px solid var(--rule); display: flex; flex-direction: column; gap: 0.55rem; }
     .notepad-email-input {
-      font-family: var(--sans); font-size: 0.78rem;
-      color: var(--ink); background: var(--paper);
-      border: 1px solid var(--rule); border-radius: 2px;
-      padding: 0.55rem 0.8rem; outline: none; transition: border-color 0.18s;
-      width: 100%;
+      font-family: var(--sans); font-size: 0.78rem; color: var(--ink);
+      background: var(--paper); border: 1px solid var(--rule); border-radius: 2px;
+      padding: 0.5rem 0.75rem; outline: none; transition: border-color 0.18s; width: 100%;
     }
     .notepad-email-input:focus { border-color: var(--accent); }
     .notepad-email-input::placeholder { color: var(--ink-3); }
     .notepad-send {
-      font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.12em;
-      text-transform: uppercase; background: var(--accent); color: #EEE8DA;
-      border: none; border-radius: 2px; padding: 0.6rem 1rem;
-      cursor: pointer; transition: background 0.18s; width: 100%;
-      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      font-family: var(--sans); font-size: 0.63rem; letter-spacing: 0.12em; text-transform: uppercase;
+      background: var(--accent); color: #EEE8DA; border: none; border-radius: 2px;
+      padding: 0.6rem 1rem; cursor: pointer; transition: background 0.18s; width: 100%;
+      display: flex; align-items: center; justify-content: center; gap: 0.4rem;
     }
     .notepad-send:hover { background: var(--accent-l); }
-    .notepad-send svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; }
-    .notepad-hint { font-size: 0.6rem; color: var(--ink-3); text-align: center; }
+    .notepad-send svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 2; }
+    .notepad-hint { font-size: 0.58rem; color: var(--ink-3); text-align: center; }
 
+    /* spotlight prev/next bar */
+    .spotlight-nav-bar {
+      max-width: 1160px; margin: 0 auto;
+      padding: 0 clamp(1.5rem, 5vw, 5rem);
+    }
     .spotlight-nav {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0.9rem 0; border-top: 1px solid var(--rule);
-      margin-top: 0; border-left: 1px solid var(--rule);
-      border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
-      padding-left: clamp(1.5rem, 5vw, 5rem);
-      padding-right: clamp(1.5rem, 5vw, 5rem);
-      max-width: 1160px; margin: 0 auto;
+      border: 1px solid var(--rule); border-top: none;
+      padding: 0.75rem 1.4rem;
     }
-    .spotlight-nav-btn {
-      font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
+    .spot-nav-btn {
+      font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
       color: var(--accent); background: none; border: none; cursor: pointer;
       display: flex; align-items: center; gap: 0.4rem; transition: gap 0.18s;
     }
-    .spotlight-nav-btn:hover { gap: 0.7rem; }
-    .spotlight-nav-btn:disabled { opacity: 0.3; cursor: default; }
-    .spotlight-nav-btn:disabled:hover { gap: 0.4rem; }
-    .spotlight-pos { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+    .spot-nav-btn:hover { gap: 0.7rem; }
+    .spot-nav-btn:disabled { opacity: 0.28; cursor: default; }
+    .spot-nav-btn:disabled:hover { gap: 0.4rem; }
+    .spot-nav-pos { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+
+    /* ── CAROUSEL ── */
+    .carousel-wrap {
+      max-width: 1160px; margin: 2rem auto 0;
+      padding: 0 clamp(1.5rem, 5vw, 5rem) 4rem;
+    }
+    .carousel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+    .carousel-nav { display: flex; gap: 0.4rem; }
+    .carousel-arrow {
+      width: 1.9rem; height: 1.9rem; display: flex; align-items: center; justify-content: center;
+      background: none; border: 1px solid var(--rule); border-radius: 2px; cursor: pointer;
+      color: var(--ink-3); transition: all 0.18s;
+    }
+    .carousel-arrow:hover { border-color: var(--accent); color: var(--accent); }
+    .carousel-arrow:disabled { opacity: 0.28; cursor: default; }
+    .carousel-arrow svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* draggable/swipeable track */
+    .carousel-track-outer {
+      overflow: hidden; cursor: grab; user-select: none;
+      border: 1px solid var(--rule);
+    }
+    .carousel-track-outer.dragging { cursor: grabbing; }
+    .carousel-track {
+      display: flex;
+      will-change: transform;
+    }
+    .essay-thumb {
+      flex: 0 0 calc(33.333%);
+      background: var(--paper); padding: 1.5rem 1.4rem;
+      cursor: pointer; transition: background 0.18s;
+      display: flex; flex-direction: column;
+      border-right: 1px solid var(--rule);
+      border-bottom: 3px solid transparent;
+      box-sizing: border-box;
+    }
+    .essay-thumb:last-child { border-right: none; }
+    .essay-thumb:hover { background: var(--paper-2); }
+    .essay-thumb.active { background: var(--paper-2); border-bottom-color: var(--accent); }
+    .essay-thumb-eyebrow { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.7rem; flex-wrap: wrap; }
+    .essay-thumb h3 {
+      font-family: var(--serif); font-size: 0.95rem; font-weight: 400;
+      line-height: 1.3; color: var(--ink); flex-grow: 1; margin-bottom: 0.5rem;
+    }
+    .essay-thumb-date { font-size: 0.56rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); margin-top: auto; }
+    /* dots */
+    .carousel-dots { display: flex; justify-content: center; gap: 0.4rem; margin-top: 0.9rem; }
+    .carousel-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--rule); border: none; cursor: pointer; padding: 0;
+      transition: background 0.18s;
+    }
+    .carousel-dot.active { background: var(--accent); }
+
+    /* ══════════════════════════════════════
+       GRID VIEW
+    ══════════════════════════════════════ */
+    .grid-view { display: none; }
+    .grid-controls {
+      max-width: 1160px; margin: 0 auto;
+      padding: 1.8rem clamp(1.5rem, 5vw, 5rem) 1.2rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .grid-search-wrap { position: relative; flex: 1; }
+    .grid-search {
+      width: 100%; font-family: var(--sans); font-size: 0.8rem;
+      color: var(--ink); background: var(--paper);
+      border: 1px solid var(--rule); border-radius: 2px;
+      padding: 0.65rem 2.4rem 0.65rem 0.9rem;
+      outline: none; transition: border-color 0.18s;
+    }
+    .grid-search:focus { border-color: var(--accent); }
+    .grid-search::placeholder { color: var(--ink-3); }
+    .grid-search-icon {
+      position: absolute; right: 0.8rem; top: 50%; transform: translateY(-50%);
+      width: 14px; height: 14px; stroke: var(--ink-3); fill: none; stroke-width: 2; pointer-events: none;
+    }
+    .grid-count { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; flex-shrink: 0; }
+
+    .essay-grid-outer { max-width: 1160px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 5rem) 2rem; }
+    .essay-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+    }
+    .essay-card {
+      background: var(--paper); padding: 2rem 1.8rem;
+      display: flex; flex-direction: column; cursor: pointer; transition: background 0.18s;
+    }
+    .essay-card:hover { background: var(--paper-2); }
+    .essay-card-eyebrow { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.9rem; flex-wrap: wrap; }
+    .essay-card h3 {
+      font-family: var(--serif); font-size: 1.15rem; font-weight: 400;
+      line-height: 1.28; color: var(--ink); margin-bottom: 0.65rem; flex-grow: 1;
+    }
+    .essay-card-excerpt { font-size: 0.77rem; color: var(--ink-2); line-height: 1.65; margin-bottom: 1.2rem; flex-grow: 1; }
+    .essay-card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid var(--rule); padding-top: 0.8rem; margin-top: auto; gap: 0.5rem;
+    }
+    .essay-card-footer-left { display: flex; flex-direction: column; gap: 0.3rem; }
+    .essay-card-date { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+    .essay-card-read { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); flex-shrink: 0; white-space: nowrap; }
+
+    /* pagination */
+    .pagination {
+      max-width: 1160px; margin: 0 auto;
+      padding: 1.5rem clamp(1.5rem, 5vw, 5rem) 4rem;
+      display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+    }
+    .page-btn {
+      font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink-3); background: none; border: 1px solid transparent;
+      border-radius: 2px; padding: 0.3rem 0.65rem; cursor: pointer; transition: all 0.18s;
+    }
+    .page-btn:hover { color: var(--ink); border-color: var(--rule); }
+    .page-btn.active { color: var(--accent); border-color: var(--accent); }
+    .page-btn:disabled { opacity: 0.28; cursor: default; }
+
+    .essay-empty { padding: 3rem 0; font-family: var(--serif); font-size: 0.95rem; color: var(--ink-3); }
 
     @media (max-width: 1000px) {
       .spotlight { grid-template-columns: 1fr; }
       .spotlight-essay { border-right: none; border-bottom: 1px solid var(--rule); }
-      .essay-thumb { flex: 0 0 calc(50% - 1px); }
+      .essay-thumb { flex: 0 0 50%; }
+      .essay-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 600px) {
-      .essay-thumb { flex: 0 0 calc(100% - 1px); }
+      .essay-thumb { flex: 0 0 100%; }
+      .essay-grid { grid-template-columns: 1fr; }
       .spotlight-essay { padding: 2rem 1.5rem; }
     }
   </style>
@@ -212,10 +290,10 @@
 
   <div class="page-header">
     <div><div class="page-header-eyebrow"><span class="label">Essays</span></div><h1 class="serif">Argument<br/><em>and idea.</em></h1></div>
-    <p class="page-header-desc">Argumentative, idea-driven writing that takes a position and defends it. Essays are where we work through the harder questions that research and analysis leave open. Select any essay to read and take notes.</p>
+    <p class="page-header-desc">Argumentative, idea-driven writing that takes a position and defends it. Essays are where we work through the harder questions that research and analysis leave open. Select any essay to read it and take notes.</p>
   </div>
 
-  <!-- filters -->
+  <!-- controls -->
   <div class="essay-controls">
     <div class="essay-filter-row">
       <span class="essay-filter-label">Topic</span>
@@ -224,70 +302,102 @@
       <button class="essay-btn" data-filter="topic" data-value="technology">Technology</button>
       <button class="essay-btn" data-filter="topic" data-value="law">Law</button>
       <button class="essay-btn" data-filter="topic" data-value="society">Society</button>
-    </div>
-    <div class="essay-filter-row">
-      <span class="essay-filter-label">Origin</span>
-      <button class="essay-btn active" data-filter="origin" data-value="all">All</button>
-      <button class="essay-btn" data-filter="origin" data-value="original">Original</button>
-      <button class="essay-btn" data-filter="origin" data-value="via">Via</button>
-    </div>
-  </div>
-
-  <!-- carousel -->
-  <div class="carousel-section">
-    <div class="carousel-header">
-      <span class="label">Select an essay</span>
-      <div class="carousel-nav">
-        <button class="carousel-arrow" id="carousel-prev" aria-label="Previous">
-          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <button class="carousel-arrow" id="carousel-next" aria-label="Next">
-          <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
-        </button>
-      </div>
-    </div>
-    <div class="carousel-track-wrap">
-      <div class="carousel-track" id="carousel-track">
-        <!-- populated by JS -->
-      </div>
-    </div>
-  </div>
-
-  <!-- spotlight + notepad -->
-  <div class="spotlight-section" id="spotlight-section">
-    <div class="spotlight-empty" id="spotlight-empty">Select an essay above to read it here and take notes.</div>
-    <div class="spotlight" id="spotlight" style="display:none;">
-      <div class="spotlight-essay" id="spotlight-essay">
-        <!-- populated by JS -->
-      </div>
-      <div class="spotlight-notepad">
-        <div class="notepad-header">
-          <span class="notepad-title">Notes</span>
-          <button class="notepad-clear" id="notepad-clear">Clear</button>
-        </div>
-        <textarea class="notepad-textarea" id="notepad-textarea" placeholder="Jot your thoughts on this essay…"></textarea>
-        <div class="notepad-footer">
-          <input class="notepad-email-input" id="notepad-email" type="email" placeholder="your@email.com" autocomplete="email" />
-          <button class="notepad-send" id="notepad-send">
-            <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-            Email notes to myself
+      <div style="margin-left:auto; display:flex; align-items:center; gap:0.5rem;">
+        <span class="essay-filter-label">Origin</span>
+        <button class="essay-btn active" data-filter="origin" data-value="all">All</button>
+        <button class="essay-btn" data-filter="origin" data-value="original">Original</button>
+        <button class="essay-btn" data-filter="origin" data-value="via">Via</button>
+        <div style="width:1px;height:1rem;background:var(--rule);margin:0 0.4rem;"></div>
+        <div class="view-toggle">
+          <button class="view-btn active" id="btn-spotlight" title="Spotlight">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="10" rx="1"/><line x1="3" y1="17" x2="21" y2="17"/><line x1="3" y1="21" x2="21" y2="21"/></svg>
+            Read
           </button>
-          <p class="notepad-hint">Opens your email client with your notes pre-filled.</p>
+          <button class="view-btn" id="btn-grid" title="Grid">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            Browse
+          </button>
         </div>
       </div>
     </div>
-    <div class="spotlight-nav" id="spotlight-nav" style="display:none;">
-      <button class="spotlight-nav-btn" id="spot-prev">← Previous essay</button>
-      <span class="spotlight-pos" id="spot-pos"></span>
-      <button class="spotlight-nav-btn" id="spot-next">Next essay →</button>
+  </div>
+
+  <!-- ══ SPOTLIGHT VIEW ══ -->
+  <div class="spotlight-view" id="spotlight-view">
+
+    <!-- spotlight panel -->
+    <div class="spotlight-wrap">
+      <div class="spotlight" id="spotlight">
+        <div class="spotlight-essay" id="spotlight-essay"><!-- JS --></div>
+        <div class="spotlight-notepad">
+          <div class="notepad-header">
+            <span class="notepad-title">Notes</span>
+            <button class="notepad-clear" id="notepad-clear">Clear</button>
+          </div>
+          <textarea class="notepad-textarea" id="notepad-textarea" placeholder="Jot your thoughts on this essay…"></textarea>
+          <div class="notepad-footer">
+            <input class="notepad-email-input" id="notepad-email" type="email" placeholder="your@email.com" autocomplete="email" />
+            <button class="notepad-send" id="notepad-send">
+              <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Email notes to myself
+            </button>
+            <p class="notepad-hint">Opens your email client with notes pre-filled.</p>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- spotlight nav -->
+    <div class="spotlight-nav-bar">
+      <div class="spotlight-nav">
+        <button class="spot-nav-btn" id="spot-prev">← Previous</button>
+        <span class="spot-nav-pos" id="spot-pos"></span>
+        <button class="spot-nav-btn" id="spot-next">Next →</button>
+      </div>
+    </div>
+
+    <!-- carousel -->
+    <div class="carousel-wrap">
+      <div class="carousel-header">
+        <span class="label">All essays</span>
+        <div class="carousel-nav">
+          <button class="carousel-arrow" id="c-prev" aria-label="Previous">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="carousel-arrow" id="c-next" aria-label="Next">
+            <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="carousel-track-outer" id="carousel-outer">
+        <div class="carousel-track" id="carousel-track"><!-- JS --></div>
+      </div>
+      <div class="carousel-dots" id="carousel-dots"></div>
+    </div>
+
+  </div>
+
+  <!-- ══ GRID VIEW ══ -->
+  <div class="grid-view" id="grid-view">
+    <div class="grid-controls">
+      <div class="grid-search-wrap">
+        <input class="grid-search" id="grid-search" type="text" placeholder="Search essays…" autocomplete="off" />
+        <svg class="grid-search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+      </div>
+      <span class="grid-count" id="grid-count"></span>
+    </div>
+    <div class="essay-grid-outer">
+      <div class="essay-grid" id="essay-grid"><!-- JS --></div>
+      <p class="essay-empty" id="grid-empty" style="display:none;">No essays match the current filters.</p>
+    </div>
+    <div class="pagination" id="pagination"></div>
   </div>
 
   <!-- data -->
   <div id="essay-data" style="display:none;">
     <div data-topic="governance" data-origin="original" data-date="Feb 2025" data-origin-label="Original"
          data-title='Why &ldquo;AI Safety&rdquo; and &ldquo;AI Regulation&rdquo; Are Not the Same Conversation'
-         data-excerpt="The conflation of technical safety research with policy regulation has muddied both fields. They share concerns but operate on different timescales, with different tools, and for different audiences. Technical AI safety asks: how do we build systems that reliably do what we intend? AI regulation asks: who bears responsibility when they don&rsquo;t? These are related but distinct projects, and treating them as identical has real costs for how we allocate attention, assign institutional responsibility, and ultimately govern a technology we do not yet fully understand."></div>
+         data-excerpt="The conflation of technical safety research with policy regulation has muddied both fields. They share concerns but operate on different timescales, with different tools, and for different audiences. Technical AI safety asks: how do we build systems that reliably do what we intend? AI regulation asks: who bears responsibility when they don&rsquo;t? These are related but distinct projects, and treating them as identical has real costs for how we allocate attention, assign institutional responsibility, and govern a technology we do not yet fully understand."></div>
     <div data-topic="law" data-origin="via" data-date="Jan 2025" data-origin-label="Via The Atlantic"
          data-title='The Problem with &ldquo;Technology-Neutral&rdquo; Legal Frameworks'
          data-excerpt="Regulators and courts often aspire to write technology-neutral rules, believing that the law should describe conduct rather than tools. The argument here is that this aspiration, while understandable, frequently produces worse outcomes than honest technology-specific reasoning. When the underlying technology structures the nature of the harm, pretending otherwise in the legal framework doesn&rsquo;t produce neutrality &mdash; it produces confusion."></div>
@@ -297,6 +407,12 @@
     <div data-topic="technology" data-origin="via" data-date="Nov 2024" data-origin-label="Via Wired"
          data-title="What Open Source Actually Means in the Context of AI Models"
          data-excerpt="The word &ldquo;open&rdquo; is doing enormous work in AI policy debates, often without examination. Releasing model weights is not the same as releasing training data. Releasing training data is not the same as releasing architecture decisions. This essay tries to disaggregate the term and ask which version of openness actually matters for accountability, for access, and for the kind of public oversight that motivated open source as a principle in the first place."></div>
+    <div data-topic="governance" data-origin="original" data-date="Oct 2024" data-origin-label="Original"
+         data-title="The Institutional Gap in AI Governance"
+         data-excerpt="Existing regulatory institutions were not designed for general-purpose technologies that operate across every sector simultaneously. The question is not just what rules we need, but what kinds of institutions can credibly enforce them, accumulate the expertise to understand what they are regulating, and adapt fast enough to remain relevant."></div>
+    <div data-topic="law" data-origin="original" data-date="Sep 2024" data-origin-label="Original"
+         data-title="Liability Without Causation: The Challenge of Algorithmic Harm"
+         data-excerpt="Traditional tort doctrine requires a clear causal chain between conduct and harm. Algorithmic systems fracture that chain into statistical correlations, distributed decision-making, and emergent behavior that no single actor chose or foresaw. This essay asks what a liability framework that can handle these properties would actually need to look like."></div>
   </div>
 
   <section class="newsletter-band" style="margin-top:0;">
@@ -315,18 +431,21 @@
   <script src="chat.js" defer></script>
   <script>
     // nav
-    const t = document.getElementById('nav-toggle'), m = document.getElementById('nav-menu');
-    t.addEventListener('click', e => { e.stopPropagation(); t.classList.toggle('is-open'); m.classList.toggle('is-open'); });
-    document.addEventListener('click', () => { t.classList.remove('is-open'); m.classList.remove('is-open'); });
+    const navT = document.getElementById('nav-toggle'), navM = document.getElementById('nav-menu');
+    navT.addEventListener('click', e => { e.stopPropagation(); navT.classList.toggle('is-open'); navM.classList.toggle('is-open'); });
+    document.addEventListener('click', () => { navT.classList.remove('is-open'); navM.classList.remove('is-open'); });
 
-    // ── DATA ──
+    // ── STATE ──
     const allEssays = Array.from(document.querySelectorAll('#essay-data > div'));
-    let eTopic  = 'all';
-    let eOrigin = 'all';
-    let activeIdx = null;   // index into visible()
-    let carouselOffset = 0; // how many cards scrolled
+    let eTopic    = 'all';
+    let eOrigin   = 'all';
+    let activeIdx = 0;
+    let eView     = 'spotlight'; // 'spotlight' | 'grid'
 
-    const CARDS_VISIBLE = 3; // desktop
+    // grid state
+    const PER_PAGE = 6;
+    let gPage      = 1;
+    let gQuery     = '';
 
     function visible() {
       return allEssays.filter(el =>
@@ -334,71 +453,21 @@
         (eOrigin === 'all' || el.dataset.origin === eOrigin)
       );
     }
-
-    // ── CAROUSEL ──
-    function buildCarousel() {
-      const track = document.getElementById('carousel-track');
-      const items = visible();
-      carouselOffset = 0;
-
-      track.innerHTML = items.length === 0
-        ? '<div style="padding:1.8rem 1.5rem;font-family:var(--serif);color:var(--ink-3);background:var(--paper);flex:1;">No essays match the current filters.</div>'
-        : items.map((el, i) => {
-            const d = el.dataset;
-            return `<div class="essay-thumb${i === activeIdx ? ' active' : ''}" data-idx="${i}">
-              <div class="essay-thumb-eyebrow">
-                <span class="essay-tag">${d.topic}</span>
-                <span class="origin-badge origin-badge--${d.origin}">${d.originLabel}</span>
-              </div>
-              <h3>${d.title}</h3>
-              <span class="essay-thumb-date">${d.date}</span>
-            </div>`;
-          }).join('');
-
-      track.style.transform = 'translateX(0)';
-      updateCarouselNav();
-
-      track.querySelectorAll('.essay-thumb').forEach(card => {
-        card.addEventListener('click', () => {
-          const idx = parseInt(card.dataset.idx);
-          selectEssay(idx);
-        });
+    function gridFiltered() {
+      return visible().filter(el => {
+        if (!gQuery) return true;
+        const q = gQuery.toLowerCase();
+        return el.dataset.title.toLowerCase().includes(q) || el.dataset.excerpt.toLowerCase().includes(q);
       });
     }
-
-    function updateCarouselNav() {
-      const items = visible();
-      const maxOffset = Math.max(0, items.length - CARDS_VISIBLE);
-      document.getElementById('carousel-prev').disabled = carouselOffset <= 0;
-      document.getElementById('carousel-next').disabled = carouselOffset >= maxOffset;
-    }
-
-    function scrollCarousel(dir) {
-      const items = visible();
-      const maxOffset = Math.max(0, items.length - CARDS_VISIBLE);
-      carouselOffset = Math.max(0, Math.min(maxOffset, carouselOffset + dir));
-      const pct = (carouselOffset / CARDS_VISIBLE) * 100;
-      document.getElementById('carousel-track').style.transform = `translateX(-${pct}%)`;
-      updateCarouselNav();
-    }
-
-    document.getElementById('carousel-prev').addEventListener('click', () => scrollCarousel(-1));
-    document.getElementById('carousel-next').addEventListener('click', () => scrollCarousel(1));
 
     // ── SPOTLIGHT ──
-    function selectEssay(idx) {
-      activeIdx = idx;
+    function renderSpotlight(idx) {
       const items = visible();
-      const el = items[idx];
-      if (!el) return;
-      const d = el.dataset;
+      if (!items.length) return;
+      activeIdx = Math.max(0, Math.min(idx, items.length - 1));
+      const d = items[activeIdx].dataset;
 
-      // update carousel active state
-      document.querySelectorAll('.essay-thumb').forEach(c => {
-        c.classList.toggle('active', parseInt(c.dataset.idx) === idx);
-      });
-
-      // build spotlight essay pane
       document.getElementById('spotlight-essay').innerHTML = `
         <div class="spotlight-eyebrow">
           <span class="essay-tag">${d.topic}</span>
@@ -411,58 +480,206 @@
           <a href="#" class="spotlight-read">Read full essay</a>
         </div>`;
 
-      // show spotlight, hide empty state
-      document.getElementById('spotlight-empty').style.display = 'none';
-      document.getElementById('spotlight').style.display = '';
-      document.getElementById('spotlight-nav').style.display = '';
+      document.getElementById('spot-prev').disabled = activeIdx === 0;
+      document.getElementById('spot-next').disabled = activeIdx === items.length - 1;
+      document.getElementById('spot-pos').textContent = `${activeIdx + 1} of ${items.length}`;
 
-      // update prev/next nav
-      document.getElementById('spot-prev').disabled = idx === 0;
-      document.getElementById('spot-next').disabled = idx === items.length - 1;
-      document.getElementById('spot-pos').textContent = `${idx + 1} of ${items.length}`;
-
-      // scroll into view smoothly
-      document.getElementById('spotlight-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // sync carousel active thumb
+      document.querySelectorAll('.essay-thumb').forEach(th =>
+        th.classList.toggle('active', parseInt(th.dataset.idx) === activeIdx)
+      );
     }
 
-    document.getElementById('spot-prev').addEventListener('click', () => {
-      if (activeIdx > 0) selectEssay(activeIdx - 1);
-    });
-    document.getElementById('spot-next').addEventListener('click', () => {
+    document.getElementById('spot-prev').addEventListener('click', () => renderSpotlight(activeIdx - 1));
+    document.getElementById('spot-next').addEventListener('click', () => renderSpotlight(activeIdx + 1));
+
+    // ── CAROUSEL ──
+    let cOffset = 0;
+    const CARDS = 3;
+
+    function buildCarousel() {
       const items = visible();
-      if (activeIdx < items.length - 1) selectEssay(activeIdx + 1);
-    });
+      const track = document.getElementById('carousel-track');
+      const dots  = document.getElementById('carousel-dots');
+      cOffset = 0;
 
-    // ── NOTEPAD ──
-    document.getElementById('notepad-clear').addEventListener('click', () => {
-      document.getElementById('notepad-textarea').value = '';
-    });
-
-    document.getElementById('notepad-send').addEventListener('click', () => {
-      const email   = document.getElementById('notepad-email').value.trim();
-      const notes   = document.getElementById('notepad-textarea').value.trim();
-      const items   = visible();
-      const essay   = items[activeIdx];
-      const title   = essay ? essay.dataset.title.replace(/&ldquo;/g,'"').replace(/&rdquo;/g,'"') : 'Essay';
-
-      if (!email) {
-        document.getElementById('notepad-email').focus();
-        document.getElementById('notepad-email').style.borderColor = 'var(--accent)';
-        return;
-      }
-      if (!notes) {
-        document.getElementById('notepad-textarea').focus();
+      if (!items.length) {
+        track.innerHTML = '<div style="flex:1;padding:1.5rem;font-family:var(--serif);color:var(--ink-3);background:var(--paper);">No essays match the current filters.</div>';
+        dots.innerHTML = '';
         return;
       }
 
-      const subject = encodeURIComponent(`Notes: ${title}`);
-      const body    = encodeURIComponent(`My notes on "${title}" from Phronesis Research:\n\n${notes}\n\n—\nphronesisresearch.org`);
-      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+      track.innerHTML = items.map((el, i) => {
+        const d = el.dataset;
+        return `<div class="essay-thumb${i === activeIdx ? ' active' : ''}" data-idx="${i}">
+          <div class="essay-thumb-eyebrow">
+            <span class="essay-tag">${d.topic}</span>
+            <span class="origin-badge origin-badge--${d.origin}">${d.originLabel}</span>
+          </div>
+          <h3>${d.title}</h3>
+          <span class="essay-thumb-date">${d.date}</span>
+        </div>`;
+      }).join('');
+
+      track.style.transform = 'translateX(0)';
+
+      // dots — one per "page" of CARDS
+      const pages = Math.ceil(items.length / CARDS);
+      dots.innerHTML = Array.from({length: pages}, (_, i) =>
+        `<button class="carousel-dot${i === 0 ? ' active' : ''}" data-page="${i}" aria-label="Page ${i+1}"></button>`
+      ).join('');
+      dots.querySelectorAll('.carousel-dot').forEach(dot => {
+        dot.addEventListener('click', () => scrollCarousel(parseInt(dot.dataset.page) * CARDS - cOffset));
+      });
+
+      track.querySelectorAll('.essay-thumb').forEach(th => {
+        th.addEventListener('click', () => {
+          if (!isDragging) renderSpotlight(parseInt(th.dataset.idx));
+        });
+      });
+
+      updateCarouselArrows();
+      setupDrag();
+    }
+
+    function updateCarouselArrows() {
+      const max = Math.max(0, visible().length - CARDS);
+      document.getElementById('c-prev').disabled = cOffset <= 0;
+      document.getElementById('c-next').disabled = cOffset >= max;
+
+      // sync dots
+      const page = Math.floor(cOffset / CARDS);
+      document.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === page));
+    }
+
+    function scrollCarousel(delta) {
+      const max = Math.max(0, visible().length - CARDS);
+      cOffset = Math.max(0, Math.min(max, cOffset + delta));
+      const pct = (cOffset / CARDS) * 100;
+      document.getElementById('carousel-track').style.transition = 'transform 0.32s cubic-bezier(0.4,0,0.2,1)';
+      document.getElementById('carousel-track').style.transform = `translateX(-${pct}%)`;
+      updateCarouselArrows();
+    }
+
+    document.getElementById('c-prev').addEventListener('click', () => scrollCarousel(-1));
+    document.getElementById('c-next').addEventListener('click', () => scrollCarousel(1));
+
+    // ── DRAG / SWIPE ──
+    let isDragging = false, startX = 0, startOffset = 0;
+
+    function setupDrag() {
+      const outer = document.getElementById('carousel-outer');
+      const track = document.getElementById('carousel-track');
+
+      function onStart(clientX) {
+        isDragging = true;
+        startX = clientX;
+        startOffset = cOffset;
+        outer.classList.add('dragging');
+        track.style.transition = 'none';
+      }
+      function onMove(clientX) {
+        if (!isDragging) return;
+        const dx = clientX - startX;
+        const cardWidth = outer.offsetWidth / CARDS;
+        const deltaPct = (dx / outer.offsetWidth) * 100;
+        const basePct = (startOffset / CARDS) * 100;
+        track.style.transform = `translateX(calc(-${basePct}% + ${dx}px))`;
+      }
+      function onEnd(clientX) {
+        if (!isDragging) return;
+        isDragging = false;
+        outer.classList.remove('dragging');
+        const dx = clientX - startX;
+        const cardWidth = outer.offsetWidth / CARDS;
+        const steps = Math.round(-dx / cardWidth);
+        track.style.transition = 'transform 0.32s cubic-bezier(0.4,0,0.2,1)';
+        scrollCarousel(steps);
+      }
+
+      // mouse
+      outer.addEventListener('mousedown', e => { e.preventDefault(); onStart(e.clientX); });
+      window.addEventListener('mousemove', e => { if (isDragging) { e.preventDefault(); onMove(e.clientX); } });
+      window.addEventListener('mouseup',   e => { if (isDragging) onEnd(e.clientX); });
+
+      // touch
+      outer.addEventListener('touchstart', e => onStart(e.touches[0].clientX), { passive: true });
+      outer.addEventListener('touchmove',  e => { if (isDragging) onMove(e.touches[0].clientX); }, { passive: true });
+      outer.addEventListener('touchend',   e => onEnd(e.changedTouches[0].clientX));
+    }
+
+    // ── GRID VIEW ──
+    function renderGrid() {
+      const items = gridFiltered();
+      const total = items.length;
+      const pages = Math.ceil(total / PER_PAGE) || 1;
+      gPage = Math.min(gPage, pages);
+      const start = (gPage - 1) * PER_PAGE;
+      const slice = items.slice(start, start + PER_PAGE);
+
+      document.getElementById('grid-count').textContent = total + ' essay' + (total !== 1 ? 's' : '');
+      document.getElementById('grid-empty').style.display = total === 0 ? '' : 'none';
+
+      const grid = document.getElementById('essay-grid');
+      if (!slice.length) { grid.innerHTML = ''; renderPagination(0, 1); return; }
+
+      grid.innerHTML = slice.map(el => {
+        const d = el.dataset;
+        return `<div class="essay-card">
+          <div class="essay-card-eyebrow">
+            <span class="essay-tag">${d.topic}</span>
+            <span class="origin-badge origin-badge--${d.origin}">${d.originLabel}</span>
+          </div>
+          <h3 class="serif">${d.title}</h3>
+          <p class="essay-card-excerpt">${d.excerpt}</p>
+          <div class="essay-card-footer">
+            <div class="essay-card-footer-left">
+              <span class="essay-card-date">${d.date}</span>
+            </div>
+            <span class="essay-card-read">Read essay</span>
+          </div>
+        </div>`;
+      }).join('');
+
+      renderPagination(total, pages);
+    }
+
+    function renderPagination(total, pages) {
+      const pg = document.getElementById('pagination');
+      if (pages <= 1) { pg.innerHTML = ''; return; }
+      let html = `<button class="page-btn" id="pg-prev" ${gPage === 1 ? 'disabled' : ''}>← Prev</button>`;
+      for (let i = 1; i <= pages; i++) {
+        html += `<button class="page-btn${i === gPage ? ' active' : ''}" data-pg="${i}">${i}</button>`;
+      }
+      html += `<button class="page-btn" id="pg-next" ${gPage === pages ? 'disabled' : ''}>Next →</button>`;
+      pg.innerHTML = html;
+      pg.querySelectorAll('[data-pg]').forEach(btn => {
+        btn.addEventListener('click', () => { gPage = parseInt(btn.dataset.pg); renderGrid(); });
+      });
+      const prev = pg.querySelector('#pg-prev'), next = pg.querySelector('#pg-next');
+      if (prev) prev.addEventListener('click', () => { gPage--; renderGrid(); });
+      if (next) next.addEventListener('click', () => { gPage++; renderGrid(); });
+    }
+
+    document.getElementById('grid-search').addEventListener('input', function() {
+      gQuery = this.value.trim(); gPage = 1; renderGrid();
     });
 
-    // remove red border on input
-    document.getElementById('notepad-email').addEventListener('input', function() {
-      this.style.borderColor = '';
+    // ── VIEW TOGGLE ──
+    document.getElementById('btn-spotlight').addEventListener('click', () => {
+      eView = 'spotlight';
+      document.getElementById('btn-spotlight').classList.add('active');
+      document.getElementById('btn-grid').classList.remove('active');
+      document.getElementById('spotlight-view').style.display = '';
+      document.getElementById('grid-view').style.display = 'none';
+    });
+    document.getElementById('btn-grid').addEventListener('click', () => {
+      eView = 'grid';
+      document.getElementById('btn-grid').classList.add('active');
+      document.getElementById('btn-spotlight').classList.remove('active');
+      document.getElementById('spotlight-view').style.display = 'none';
+      document.getElementById('grid-view').style.display = '';
+      renderGrid();
     });
 
     // ── FILTERS ──
@@ -473,16 +690,31 @@
         btn.classList.add('active');
         if (dim === 'topic')  eTopic  = btn.dataset.value;
         if (dim === 'origin') eOrigin = btn.dataset.value;
-        activeIdx = null;
-        document.getElementById('spotlight-empty').style.display = '';
-        document.getElementById('spotlight').style.display = 'none';
-        document.getElementById('spotlight-nav').style.display = 'none';
-        buildCarousel();
+        activeIdx = 0; gPage = 1;
+        if (eView === 'spotlight') { buildCarousel(); renderSpotlight(0); }
+        else renderGrid();
       });
+    });
+
+    // ── NOTEPAD ──
+    document.getElementById('notepad-clear').addEventListener('click', () => {
+      document.getElementById('notepad-textarea').value = '';
+    });
+    document.getElementById('notepad-send').addEventListener('click', () => {
+      const email = document.getElementById('notepad-email').value.trim();
+      const notes = document.getElementById('notepad-textarea').value.trim();
+      const items = visible();
+      const title = items[activeIdx] ? items[activeIdx].dataset.title.replace(/&[a-z]+;/g, c => ({'&ldquo;':'"','&rdquo;':'"','&rsquo;':"'",'&mdash;':'—'}[c] || c)) : 'Essay';
+      if (!email) { document.getElementById('notepad-email').focus(); return; }
+      if (!notes) { document.getElementById('notepad-textarea').focus(); return; }
+      const sub  = encodeURIComponent(`Notes: ${title}`);
+      const body = encodeURIComponent(`Notes on "${title}" — Phronesis Research:\n\n${notes}\n\nphronesisresearch.org`);
+      window.location.href = `mailto:${email}?subject=${sub}&body=${body}`;
     });
 
     // ── INIT ──
     buildCarousel();
+    renderSpotlight(0);
   </script>
 </body>
 </html>
