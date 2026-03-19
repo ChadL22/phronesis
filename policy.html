@@ -61,69 +61,108 @@
     .tracker-filter:hover { color: var(--ink); border-color: var(--rule); }
     .tracker-filter.active { color: var(--accent); border-color: var(--accent); }
 
-    /* tracker rows */
-    .tracker-row { border-top: 1px solid var(--rule); }
-    .tracker-row:last-child { border-bottom: 1px solid var(--rule); }
-    .tracker-row-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
-      padding: 1.2rem 0;
-      cursor: pointer;
+    /* search bar */
+    .tracker-search-wrap {
+      position: relative; margin-bottom: 0;
     }
+    .tracker-search {
+      width: 100%; font-family: var(--sans); font-size: 0.8rem;
+      color: var(--ink); background: var(--paper);
+      border: 1px solid var(--rule); border-radius: 2px;
+      padding: 0.65rem 2.4rem 0.65rem 0.9rem;
+      outline: none; transition: border-color 0.18s;
+    }
+    .tracker-search:focus { border-color: var(--accent); }
+    .tracker-search::placeholder { color: var(--ink-3); }
+    .tracker-search-icon {
+      position: absolute; right: 0.8rem; top: 50%; transform: translateY(-50%);
+      width: 14px; height: 14px; stroke: var(--ink-3); fill: none; stroke-width: 2;
+      pointer-events: none;
+    }
+
+    /* scrollable list container */
+    .tracker-scroll {
+      height: 480px;
+      overflow-y: auto;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      background: var(--paper);
+      /* custom scrollbar */
+      scrollbar-width: thin;
+      scrollbar-color: var(--rule) transparent;
+    }
+    .tracker-scroll::-webkit-scrollbar { width: 6px; }
+    .tracker-scroll::-webkit-scrollbar-track { background: transparent; }
+    .tracker-scroll::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 3px; }
+
+    /* tracker rows */
+    .tracker-row { border-bottom: 1px solid var(--rule); }
+    .tracker-row:last-child { border-bottom: none; }
+    .tracker-row-header {
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 1.5rem;
+      padding: 1rem 1.2rem; cursor: pointer;
+      transition: background 0.15s;
+    }
+    .tracker-row-header:hover { background: var(--paper-2); }
     .tracker-row-header:hover .tracker-row-title { color: var(--accent); }
     .tracker-row-title {
-      font-family: var(--serif); font-size: 1.05rem; font-weight: 400;
-      line-height: 1.3; color: var(--ink); transition: color 0.18s;
-      flex: 1;
+      font-family: var(--serif); font-size: 1rem; font-weight: 400;
+      line-height: 1.3; color: var(--ink); transition: color 0.18s; flex: 1;
     }
     .tracker-chevron {
-      width: 1rem; height: 1rem; flex-shrink: 0;
-      stroke: var(--ink-3); fill: none; stroke-width: 2;
-      transition: transform 0.2s;
+      width: 0.9rem; height: 0.9rem; flex-shrink: 0;
+      stroke: var(--ink-3); fill: none; stroke-width: 2; transition: transform 0.2s;
     }
     .tracker-row.open .tracker-chevron { transform: rotate(180deg); }
-
     .tracker-row-body {
-      display: none;
-      padding: 1rem 0 1.6rem;
-      border-top: 1px solid var(--rule);
+      display: none; padding: 0.8rem 1.2rem 1.2rem;
+      border-top: 1px solid var(--rule); background: var(--paper-2);
     }
     .tracker-row.open .tracker-row-body { display: block; }
-
-    .tracker-row-meta {
-      display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 1rem;
-    }
-    .tracker-meta-item { font-size: 0.72rem; }
+    .tracker-row-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 0.8rem; }
+    .tracker-meta-item { font-size: 0.7rem; }
     .tracker-meta-item strong {
-      display: block; font-size: 0.58rem; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--ink-3); font-weight: 500; margin-bottom: 0.2rem;
+      display: block; font-size: 0.56rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--ink-3); font-weight: 500; margin-bottom: 0.15rem;
     }
     .tracker-meta-item span { color: var(--ink-2); }
-
     .tracker-status-badge {
-      display: inline-block; font-size: 0.62rem; color: var(--ink-2);
+      display: inline-block; font-size: 0.6rem; color: var(--ink-2);
       border: 1px solid var(--rule); border-radius: 2px;
-      padding: 0.2rem 0.5rem; margin-bottom: 1rem;
+      padding: 0.18rem 0.45rem; margin-bottom: 0.8rem;
     }
-
-    .tracker-topics { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .tracker-topics { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 0.8rem; }
     .tracker-topic-pill {
-      font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase;
+      font-size: 0.56rem; letter-spacing: 0.1em; text-transform: uppercase;
       border: 1px solid var(--rule); border-radius: 2px;
-      padding: 0.15rem 0.4rem; color: var(--ink-3);
+      padding: 0.12rem 0.35rem; color: var(--ink-3);
     }
     .tracker-source-link {
-      font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);
+      font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);
     }
     .tracker-source-link:hover { text-decoration: underline; }
-
-    .tracker-footer {
-      display: flex; align-items: center; justify-content: space-between; margin-top: 1.5rem;
+    .tracker-empty {
+      padding: 2.5rem 1.2rem; font-family: var(--serif);
+      font-size: 0.9rem; color: var(--ink-3); text-align: center;
     }
 
-    .tracker-loading { display: flex; align-items: center; padding: 3rem 0; }
+    /* controls row: search + count */
+    .tracker-controls {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 0.6rem;
+    }
+    .tracker-controls .tracker-search-wrap { flex: 1; }
+    .tracker-count-label {
+      font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink-3); white-space: nowrap; flex-shrink: 0;
+    }
+
+    .tracker-footer {
+      display: flex; align-items: center; justify-content: space-between; margin-top: 1rem;
+    }
+
+    .tracker-loading { display: flex; align-items: center; padding: 2rem 1.2rem; }
     .tracker-loading-dot {
       width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
       opacity: 0.3; margin-right: 5px; animation: tracker-pulse 1.2s ease-in-out infinite;
@@ -134,11 +173,12 @@
       0%, 100% { opacity: 0.15; transform: scale(0.85); }
       50% { opacity: 1; transform: scale(1); }
     }
-    .tracker-error { padding: 2rem 0; font-size: 0.8rem; color: var(--ink-3); }
+    .tracker-error { padding: 2rem 1.2rem; font-size: 0.8rem; color: var(--ink-3); }
 
     @media (max-width: 900px) {
       .tracker-header { grid-template-columns: 1fr; }
       .tracker-filters { justify-content: flex-start; }
+      .tracker-scroll { height: 360px; }
     }
   </style>
 </head>
@@ -191,7 +231,17 @@
         </div>
       </div>
 
-      <div id="tracker-list">
+      <!-- search + count -->
+      <div class="tracker-controls">
+        <div class="tracker-search-wrap">
+          <input class="tracker-search" id="tracker-search" type="text" placeholder="Search legislation, cases, orders…" autocomplete="off" />
+          <svg class="tracker-search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+        </div>
+        <span class="tracker-count-label" id="tracker-count"></span>
+      </div>
+
+      <!-- scrollable list -->
+      <div class="tracker-scroll" id="tracker-list">
         <div class="tracker-loading">
           <span class="tracker-loading-dot"></span>
           <span class="tracker-loading-dot"></span>
@@ -201,7 +251,7 @@
       </div>
 
       <div class="tracker-footer">
-        <span id="tracker-count" class="label"></span>
+        <span class="label" style="color:var(--ink-3);font-size:0.62rem;">Updated every 6 hours · Source: Tech Policy Press</span>
         <a href="https://www.techpolicy.press/tracker/" target="_blank" rel="noopener" class="view-all">Full tracker on Tech Policy Press</a>
       </div>
 
@@ -228,6 +278,7 @@
 
     let allItems = [];
     let activeType = 'All';
+    let searchQuery = '';
 
     function formatDate(str) {
       if (!str) return '—';
@@ -238,11 +289,15 @@
     function renderTracker(items) {
       const list = document.getElementById('tracker-list');
       const count = document.getElementById('tracker-count');
-      const visible = activeType === 'All' ? items : items.filter(i => (i.type || '').trim() === activeType);
-      count.textContent = visible.length + ' item' + (visible.length === 1 ? '' : 's') + (activeType !== 'All' ? ' · ' + activeType : '');
+      let visible = activeType === 'All' ? items : items.filter(i => (i.type || '').trim() === activeType);
+      if (searchQuery) {
+        const q = searchQuery.toLowerCase();
+        visible = visible.filter(i => (i.title || '').toLowerCase().includes(q) || (i.status || '').toLowerCase().includes(q));
+      }
+      count.textContent = visible.length + ' of ' + items.length;
 
       if (!visible.length) {
-        list.innerHTML = '<div class="tracker-error">No items match the current filter.</div>';
+        list.innerHTML = '<div class="tracker-empty">No items match “' + (searchQuery || activeType) + '”</div>';
         return;
       }
 
@@ -284,6 +339,12 @@
         activeType = btn.dataset.type;
         renderTracker(allItems);
       });
+    });
+
+    // search
+    document.getElementById('tracker-search').addEventListener('input', function() {
+      searchQuery = this.value.trim();
+      renderTracker(allItems);
     });
 
     // fetch from static JSON — updated every 6 hours by GitHub Actions
