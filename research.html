@@ -188,14 +188,8 @@
         <button class="ctrl-btn" data-origin="via">Via External</button>
       </div>
     </div>
-    <!-- right: view + sort -->
+    <!-- right: view toggle -->
     <div style="display:flex; align-items:center; gap:1rem;">
-      <div class="control-group">
-        <span class="control-label">Sort</span>
-        <button class="ctrl-btn" id="sort-year" data-sort="year">Year</button>
-        <button class="ctrl-btn" id="sort-topic" data-sort="topic">Topic</button>
-      </div>
-      <div class="ctrl-divider"></div>
       <div class="view-toggle">
         <button class="view-btn active" id="view-cards" title="Card view">
           <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
@@ -283,7 +277,15 @@
 
     <!-- rendered views (populated by JS) -->
     <div id="view-cards"></div>
-    <div id="view-list" style="display:none;"></div>
+    <div id="view-list" style="display:none;">
+      <!-- group-by bar: only visible in list view -->
+      <div id="group-by-bar" style="display:flex; align-items:center; gap:0.6rem; margin-top:2rem;">
+        <span class="control-label">Group by</span>
+        <button class="ctrl-btn active" id="sort-year" data-sort="year">Year</button>
+        <button class="ctrl-btn" id="sort-topic" data-sort="topic">Topic</button>
+      </div>
+      <div id="list-content"></div>
+    </div>
 
   </div><!-- /archive -->
 
@@ -371,9 +373,11 @@
       cardViewEl.appendChild(grid);
     }
 
+    const listContentEl = document.getElementById('list-content');
+
     // ── LIST VIEW (year-grouped) ──
     function renderListByYear() {
-      listViewEl.innerHTML = '';
+      listContentEl.innerHTML = '';
       const visible = getVisible();
       if (!visible.length) { listViewEl.innerHTML = '<p style="color:var(--ink-3);font-family:var(--serif);margin-top:2rem;">No papers match the current filters.</p>'; return; }
 
@@ -389,13 +393,13 @@
         grp.className = 'year-group';
         grp.innerHTML = '<div class="year-heading">' + yr + '</div>';
         years[yr].forEach(e => grp.appendChild(e.cloneNode(true)));
-        listViewEl.appendChild(grp);
+        listContentEl.appendChild(grp);
       });
     }
 
     // ── LIST VIEW (topic-grouped) ──
     function renderListByTopic() {
-      listViewEl.innerHTML = '';
+      listContentEl.innerHTML = '';
       const visible = getVisible();
       if (!visible.length) { listViewEl.innerHTML = '<p style="color:var(--ink-3);font-family:var(--serif);margin-top:2rem;">No papers match the current filters.</p>'; return; }
 
@@ -411,7 +415,7 @@
         grp.className = 'topic-group';
         grp.innerHTML = '<div class="topic-heading">' + tp + '</div>';
         topics[tp].forEach(e => grp.appendChild(e.cloneNode(true)));
-        listViewEl.appendChild(grp);
+        listContentEl.appendChild(grp);
       });
     }
 
@@ -450,24 +454,12 @@
       });
     });
 
-    // ── sort buttons (also switch to list view) ──
+    // ── group-by buttons (inside list view only) ──
     document.querySelectorAll('[data-sort]').forEach(btn => {
       btn.addEventListener('click', () => {
-        const wasActive = btn.classList.contains('active');
         document.querySelectorAll('[data-sort]').forEach(b => b.classList.remove('active'));
-        if (wasActive) {
-          // toggle off → back to cards
-          activeSort = null;
-          activeView = 'cards';
-          document.getElementById('view-cards').classList.add('active');
-          document.getElementById('view-list').classList.remove('active');
-        } else {
-          btn.classList.add('active');
-          activeSort = btn.dataset.sort;
-          activeView = 'list';
-          document.getElementById('view-cards').classList.remove('active');
-          document.getElementById('view-list').classList.add('active');
-        }
+        btn.classList.add('active');
+        activeSort = btn.dataset.sort;
         render();
       });
     });
@@ -483,13 +475,12 @@
     });
     document.getElementById('view-list').addEventListener('click', () => {
       activeView = 'list';
-      if (!activeSort) activeSort = 'year';
-      document.getElementById('view-cards').classList.remove('active');
-      document.getElementById('view-list').classList.add('active');
-      // activate year sort btn if nothing active
-      if (!document.querySelector('[data-sort].active')) {
+      if (!activeSort) {
+        activeSort = 'year';
         document.querySelector('[data-sort="year"]').classList.add('active');
       }
+      document.getElementById('view-cards').classList.remove('active');
+      document.getElementById('view-list').classList.add('active');
       render();
     });
 
