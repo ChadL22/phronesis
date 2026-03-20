@@ -1,0 +1,52 @@
+{
+  "$ref": "#/definitions/legal",
+  "definitions": {
+    "legal": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "isoDate": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "featured": {
+          "type": "boolean",
+          "default": false
+        },
+        "origin": {
+          "type": "string",
+          "enum": [
+            "original",
+            "via"
+          ],
+          "default": "original"
+        },
+        "originLabel": {
+          "type": "string"
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "date",
+        "isoDate",
+        "tag",
+        "summary"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
