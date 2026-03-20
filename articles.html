@@ -77,7 +77,8 @@
     .art-secondary-read { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
 
     /* ── CONTROLS ────────────────────────────── */
-    .art-controls { border-bottom: 1px solid var(--rule); background: var(--paper); margin-top: 2.5rem; }
+    .art-controls { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: var(--paper); }
+    .art-featured-wrap { margin-top: 0; }
     .art-controls-row {
       display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem;
       padding: 0.65rem clamp(1.5rem, 5vw, 5rem);
@@ -258,12 +259,6 @@
          data-featured="false"></div>
   </div>
 
-  <!-- ── FEATURED ── -->
-  <div class="art-featured-wrap">
-    <div class="label" style="margin-bottom:1rem;">Latest</div>
-    <div class="art-featured-grid" id="art-featured-grid"></div>
-  </div>
-
   <!-- ── CONTROLS ── -->
   <div class="art-controls">
     <!-- row 1: topic filters + search + view toggle -->
@@ -306,6 +301,12 @@
       <button class="art-filter-btn" data-origin="via">Via</button>
       <span class="art-count" id="art-count"></span>
     </div>
+  </div>
+
+  <!-- ── FEATURED ── -->
+  <div class="art-featured-wrap">
+    <div class="label" style="margin-bottom:1rem;">Latest</div>
+    <div class="art-featured-grid" id="art-featured-grid"></div>
   </div>
 
   <!-- ── RENDERED VIEWS ── -->

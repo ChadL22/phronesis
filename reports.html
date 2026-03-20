@@ -62,6 +62,22 @@
     .rpt-filter-btn.active { color: var(--accent); border-color: var(--accent); }
     .rpt-filter-divider { width: 1px; height: 1rem; background: var(--rule); margin: 0 0.25rem; }
 
+    /* search */
+    .rpt-search-wrap { position: relative; }
+    .rpt-search {
+      font-family: var(--sans); font-size: 0.72rem; color: var(--ink);
+      background: var(--paper); border: 1px solid var(--rule);
+      border-radius: 2px; padding: 0.32rem 2rem 0.32rem 0.7rem;
+      outline: none; transition: border-color 0.18s; width: 180px;
+    }
+    .rpt-search:focus { border-color: var(--accent); }
+    .rpt-search::placeholder { color: var(--ink-3); }
+    .rpt-search-icon {
+      position: absolute; right: 0.55rem; top: 50%; transform: translateY(-50%);
+      width: 11px; height: 11px; stroke: var(--ink-3); fill: none;
+      stroke-width: 2; pointer-events: none;
+    }
+
     /* count label */
     .rpt-count { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
 
@@ -249,7 +265,12 @@
         <button class="rpt-year-tab" data-year="2025">2025</button>
         <button class="rpt-year-tab" data-year="2024">2024</button>
       </div>
-      <div class="rpt-view-toggle">
+      <div style="display:flex;align-items:center;gap:0.7rem;">
+        <div class="rpt-search-wrap">
+          <input class="rpt-search" id="rpt-search" type="text" placeholder="Search reports…" autocomplete="off" />
+          <svg class="rpt-search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+        </div>
+        <div class="rpt-view-toggle">
         <button class="rpt-view-btn active" id="rpt-btn-cards" title="Card view">
           <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
           Cards
@@ -258,6 +279,7 @@
           <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
           List
         </button>
+        </div>
       </div>
     </div>
     <!-- row 2: type + origin + count -->
@@ -335,13 +357,20 @@
     let activeType   = 'all';
     let activeOrigin = 'all';
     let activeView   = 'cards';
+    let searchQuery  = '';
 
     function visible() {
-      return allReports.filter(el =>
-        (activeYear   === 'all' || el.dataset.year   === activeYear)  &&
-        (activeType   === 'all' || el.dataset.type   === activeType)  &&
-        (activeOrigin === 'all' || el.dataset.origin === activeOrigin)
-      );
+      return allReports.filter(el => {
+        if (activeYear   !== 'all' && el.dataset.year   !== activeYear)   return false;
+        if (activeType   !== 'all' && el.dataset.type   !== activeType)   return false;
+        if (activeOrigin !== 'all' && el.dataset.origin !== activeOrigin) return false;
+        if (searchQuery) {
+          const q = searchQuery.toLowerCase();
+          if (!el.dataset.title.toLowerCase().includes(q) &&
+              !el.dataset.desc.toLowerCase().includes(q)) return false;
+        }
+        return true;
+      });
     }
 
     function updateCount() {
@@ -503,6 +532,10 @@
       activeView = 'list';
       document.getElementById('rpt-btn-list').classList.add('active');
       document.getElementById('rpt-btn-cards').classList.remove('active');
+      render();
+    });
+    document.getElementById('rpt-search').addEventListener('input', function() {
+      searchQuery = this.value.trim();
       render();
     });
 
