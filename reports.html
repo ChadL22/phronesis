@@ -282,37 +282,37 @@
         </div>
       </div>
     </div>
-    <!-- row 2: type + origin + count -->
+    <!-- row 2: category (left) + origin (right) -->
     <div class="rpt-controls-row rpt-controls-bottom">
       <div class="rpt-filter-group">
-        <span class="rpt-filter-label">Type</span>
+        <span class="rpt-filter-label">Category</span>
         <button class="rpt-filter-btn active" data-type="all">All</button>
-        <button class="rpt-filter-btn" data-type="annual">Annual</button>
-        <button class="rpt-filter-btn" data-type="regulatory">Regulatory</button>
         <button class="rpt-filter-btn" data-type="industry">Industry</button>
-        <span class="rpt-filter-divider"></span>
+        <button class="rpt-filter-btn" data-type="government">Government</button>
+        <button class="rpt-filter-btn" data-type="academia">Academia</button>
+      </div>
+      <div style="display:flex;align-items:center;gap:0.4rem;margin-left:auto;">
         <span class="rpt-filter-label">Origin</span>
         <button class="rpt-filter-btn active" data-origin="all">All</button>
         <button class="rpt-filter-btn" data-origin="original">Original</button>
         <button class="rpt-filter-btn" data-origin="via">Via</button>
       </div>
-      <span class="rpt-count" id="rpt-count"></span>
     </div>
   </div>
 
   <!-- ── DATA STORE ── -->
   <div id="rpt-data" style="display:none;">
-    <div data-year="2025" data-type="regulatory" data-date="Mar 2025" data-month="3"
+    <div data-year="2025" data-type="government" data-date="Mar 2025" data-month="3"
          data-title="The FTC&#39;s Algorithmic Accountability Agenda: A Two-Year Review"
          data-desc="A comprehensive review of FTC enforcement actions, policy statements, and rulemaking initiatives related to algorithmic systems from 2023 to 2025."
          data-origin="original" data-origin-label="Original"
          data-pages="48" data-featured="true"></div>
-    <div data-year="2025" data-type="annual" data-date="Jan 2025" data-month="1"
+    <div data-year="2025" data-type="government" data-date="Jan 2025" data-month="1"
          data-title="Digital Markets Act at One Year: Lessons for U.S. Competition Policy"
          data-desc="Evaluates the DMA&#39;s first year of enforcement and draws concrete lessons for U.S. policymakers considering analogous legislation."
          data-origin="via" data-origin-label="Via European Commission"
          data-pages="36" data-featured="false"></div>
-    <div data-year="2024" data-type="annual" data-date="Dec 2024" data-month="12"
+    <div data-year="2024" data-type="academia" data-date="Dec 2024" data-month="12"
          data-title="State AI Legislation Tracker: 2024 Year in Review"
          data-desc="Surveys AI-related legislation introduced and passed across all 50 states in 2024, identifying trends, model bills, and areas of regulatory divergence."
          data-origin="original" data-origin-label="Original"
@@ -336,6 +336,7 @@
     <div id="rpt-list-view" style="display:none;"></div>
   </div>
 
+  <div style="border-top:1px solid var(--rule);padding:1rem clamp(1.5rem,5vw,5rem);display:flex;justify-content:flex-end;"><span style="font-family:var(--sans);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-3);" id="rpt-count"></span></div>
   <section class="newsletter-band"><div class="newsletter-inner"><div class="newsletter-copy"><h3 class="serif">Read Phronesis weekly.</h3><p>New work delivered directly to your inbox. No noise, no filler.</p></div><div class="newsletter-form"><input type="email" placeholder="your@email.com" /><button type="button">Subscribe</button></div></div></section>
   <footer>
     <div><div class="footer-brand serif">Phronesis</div><p>An independent research entity at the intersection of technology law and policy.</p></div>
