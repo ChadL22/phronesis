@@ -7,15 +7,215 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="shared.css" /><link rel="stylesheet" href="chat.css" />
   <style>
-    .archive { max-width: 1160px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 5rem) 5rem; }
-    .archive-list-item { display: grid; grid-template-columns: 8rem 1fr 10rem; gap: 2rem; align-items: start; padding: 1.8rem 0; border-top: 1px solid var(--rule); cursor: pointer; }
-    .archive-list-item:last-child { border-bottom: 1px solid var(--rule); }
-    .archive-list-item:hover .archive-title { color: var(--accent); }
-    .archive-date { font-family: var(--serif); font-size: 0.82rem; color: var(--ink-3); padding-top: 0.2rem; }
-    .archive-title { font-family: var(--serif); font-size: 1.25rem; font-weight: 400; line-height: 1.3; margin-bottom: 0.4rem; transition: color 0.2s; }
-    .archive-subtitle { font-size: 0.78rem; color: var(--ink-3); line-height: 1.5; }
-    .archive-tag { display: inline-block; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); border-radius: 2px; padding: 0.15rem 0.45rem; justify-self: end; align-self: start; margin-top: 0.2rem; }
-    @media (max-width: 700px) { .archive-list-item { grid-template-columns: 1fr; gap: 0.5rem; } .archive-tag { justify-self: start; } }
+
+    /* ── CONTROLS ─────────────────────────────── */
+    .rpt-controls {
+      border-bottom: 1px solid var(--rule);
+      background: var(--paper);
+    }
+    .rpt-controls-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(1.5rem, 5vw, 5rem); flex-wrap: wrap; gap: 0.5rem;
+    }
+    .rpt-controls-top { border-bottom: 1px solid var(--rule); }
+
+    /* year tabs */
+    .rpt-year-tabs { display: flex; }
+    .rpt-year-tab {
+      font-family: var(--sans); font-size: 0.7rem; font-weight: 400;
+      letter-spacing: 0.13em; text-transform: uppercase;
+      color: var(--ink-3); background: none; border: none;
+      border-bottom: 2px solid transparent;
+      padding: 0.9rem 1.1rem 0.8rem; cursor: pointer;
+      transition: color 0.18s, border-color 0.18s; margin-bottom: -1px;
+    }
+    .rpt-year-tab:hover { color: var(--ink); }
+    .rpt-year-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+    /* view toggle */
+    .rpt-view-toggle { display: flex; border: 1px solid var(--rule); border-radius: 2px; overflow: hidden; flex-shrink: 0; }
+    .rpt-view-btn {
+      font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.1em;
+      text-transform: uppercase; background: none; border: none;
+      padding: 0.28rem 0.7rem; cursor: pointer; color: var(--ink-3);
+      transition: all 0.18s; display: flex; align-items: center; gap: 0.35rem;
+    }
+    .rpt-view-btn + .rpt-view-btn { border-left: 1px solid var(--rule); }
+    .rpt-view-btn.active { background: var(--accent); color: #EEE8DA; }
+    .rpt-view-btn svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+
+    /* type + origin filters */
+    .rpt-controls-bottom { padding-top: 0.6rem; padding-bottom: 0.6rem; }
+    .rpt-filter-group { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+    .rpt-filter-label {
+      font-size: 0.6rem; letter-spacing: 0.13em; text-transform: uppercase;
+      color: var(--ink-3); margin-right: 0.15rem; flex-shrink: 0;
+    }
+    .rpt-filter-btn {
+      font-family: var(--sans); font-size: 0.6rem; font-weight: 400;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--ink-3); background: none;
+      border: 1px solid transparent; border-radius: 2px;
+      padding: 0.2rem 0.55rem; cursor: pointer; transition: all 0.18s;
+    }
+    .rpt-filter-btn:hover { color: var(--ink); border-color: var(--rule); }
+    .rpt-filter-btn.active { color: var(--accent); border-color: var(--accent); }
+    .rpt-filter-divider { width: 1px; height: 1rem; background: var(--rule); margin: 0 0.25rem; }
+
+    /* count label */
+    .rpt-count { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+
+    /* ── FEATURED REPORT ──────────────────────── */
+    .rpt-featured-wrap {
+      max-width: 1160px; margin: 0 auto;
+      padding: 2.5rem clamp(1.5rem, 5vw, 5rem) 0;
+    }
+    .rpt-featured {
+      display: grid; grid-template-columns: 1fr 2.2fr;
+      border: 1px solid var(--rule);
+      background: var(--paper); cursor: pointer;
+      transition: background 0.18s;
+    }
+    .rpt-featured:hover { background: var(--paper-2); }
+    .rpt-featured-spine {
+      background: var(--accent); color: #EEE8DA;
+      padding: 2.5rem 1.8rem;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .rpt-featured-type {
+      font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(238,232,218,0.6); margin-bottom: 0.5rem;
+    }
+    .rpt-featured-year {
+      font-family: var(--serif); font-size: 3.5rem; font-weight: 300;
+      line-height: 1; color: rgba(238,232,218,0.85);
+    }
+    .rpt-featured-pages {
+      font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(238,232,218,0.5); margin-top: auto;
+    }
+    .rpt-featured-body {
+      padding: 2.5rem 2.5rem 2rem;
+      display: flex; flex-direction: column;
+    }
+    .rpt-featured-eyebrow {
+      display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.2rem;
+    }
+    .rpt-featured-label {
+      font-size: 0.56rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--accent); border: 1px solid var(--accent);
+      border-radius: 2px; padding: 0.12rem 0.4rem;
+    }
+    .rpt-featured-title {
+      font-family: var(--serif); font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 400; line-height: 1.2; color: var(--ink);
+      margin-bottom: 1rem; flex-grow: 1;
+    }
+    .rpt-featured-desc {
+      font-size: 0.82rem; color: var(--ink-2); line-height: 1.7;
+      margin-bottom: 1.8rem;
+    }
+    .rpt-featured-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid var(--rule); padding-top: 1rem;
+    }
+    .rpt-featured-meta { display: flex; align-items: center; gap: 1.2rem; }
+    .rpt-featured-date { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+    .rpt-featured-read {
+      font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent); display: flex; align-items: center; gap: 0.4rem;
+      transition: gap 0.18s;
+    }
+    .rpt-featured-read:hover { gap: 0.7rem; }
+    .rpt-featured-read::after { content: '→'; }
+
+    /* ── CARD VIEW ────────────────────────────── */
+    .rpt-archive { max-width: 1160px; margin: 0 auto; padding: 2.5rem clamp(1.5rem, 5vw, 5rem) 5rem; }
+    .rpt-archive-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+    .rpt-archive-label { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
+    .rpt-card-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+    }
+    .rpt-card {
+      background: var(--paper); display: flex; flex-direction: column;
+      cursor: pointer; transition: background 0.18s;
+    }
+    .rpt-card:hover { background: var(--paper-2); }
+    .rpt-card.hidden { display: none; }
+    .rpt-card-header {
+      background: var(--paper-2); padding: 1rem 1.6rem;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--rule);
+    }
+    .rpt-card-type {
+      font-size: 0.56rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--ink-3);
+    }
+    .rpt-card-year {
+      font-family: var(--serif); font-size: 0.9rem; color: var(--ink-3);
+    }
+    .rpt-card-body { padding: 1.6rem; flex-grow: 1; display: flex; flex-direction: column; }
+    .rpt-card-title {
+      font-family: var(--serif); font-size: 1.2rem; font-weight: 400;
+      line-height: 1.28; color: var(--ink); margin-bottom: 0.7rem; flex-grow: 1;
+    }
+    .rpt-card-desc { font-size: 0.77rem; color: var(--ink-2); line-height: 1.65; margin-bottom: 1.2rem; }
+    .rpt-card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid var(--rule); padding-top: 0.85rem; margin-top: auto;
+    }
+    .rpt-card-footer-left { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+    .rpt-card-date { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+    .rpt-card-pages { font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+    .rpt-card-read { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); flex-shrink: 0; }
+
+    /* ── LIST VIEW ────────────────────────────── */
+    .rpt-year-group { margin-top: 3rem; }
+    .rpt-year-group:first-child { margin-top: 0; }
+    .rpt-year-group.hidden { display: none; }
+    .rpt-year-heading {
+      font-family: var(--serif); font-size: 2.6rem; font-weight: 300;
+      color: var(--ink); line-height: 1;
+      padding-bottom: 0.8rem; border-bottom: 1px solid var(--rule);
+    }
+    .rpt-list-row {
+      display: grid; grid-template-columns: 7rem 1fr 9rem 8rem 5rem;
+      gap: 1.5rem; align-items: start;
+      padding: 1.3rem 0; border-bottom: 1px solid var(--rule);
+      cursor: pointer; transition: background 0.15s;
+    }
+    .rpt-list-row:hover .rpt-list-title { color: var(--accent); }
+    .rpt-list-date { font-family: var(--serif); font-size: 0.8rem; color: var(--ink-3); padding-top: 0.2rem; }
+    .rpt-list-title {
+      font-family: var(--serif); font-size: 1rem; font-weight: 400;
+      line-height: 1.3; color: var(--ink); margin-bottom: 0.3rem; transition: color 0.18s;
+    }
+    .rpt-list-desc { font-size: 0.72rem; color: var(--ink-3); line-height: 1.5; }
+    .rpt-list-type {
+      font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent); border: 1px solid var(--accent);
+      border-radius: 2px; padding: 0.12rem 0.4rem;
+      align-self: start; white-space: nowrap;
+    }
+    .rpt-list-pages { font-size: 0.62rem; color: var(--ink-3); letter-spacing: 0.06em; padding-top: 0.2rem; }
+    .rpt-list-link { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); justify-self: end; padding-top: 0.2rem; white-space: nowrap; }
+    .rpt-empty { padding: 3rem 0; font-family: var(--serif); font-size: 0.95rem; color: var(--ink-3); }
+
+    @media (max-width: 900px) {
+      .rpt-featured { grid-template-columns: 1fr; }
+      .rpt-featured-spine { flex-direction: row; align-items: center; padding: 1.4rem 1.8rem; }
+      .rpt-featured-pages { margin-top: 0; margin-left: auto; }
+      .rpt-card-grid { grid-template-columns: 1fr; }
+      .rpt-list-row { grid-template-columns: 6rem 1fr; gap: 0.75rem; }
+      .rpt-list-row > :nth-child(3), .rpt-list-row > :nth-child(4), .rpt-list-row > :nth-child(5) { display: none; }
+    }
+    @media (max-width: 600px) {
+      .rpt-controls-bottom { flex-direction: column; align-items: flex-start; }
+    }
   </style>
 </head>
 <body>
@@ -34,32 +234,279 @@
       <li><a href="/about">About</a></li>
     </ul>
   </nav>
+
   <div class="page-header">
     <div><div class="page-header-eyebrow"><span class="label">Reports</span></div><h1 class="serif">In-depth<br/><em>Reports</em></h1></div>
     <p class="page-header-desc">Comprehensive reference documents synthesizing research, case law, and regulatory developments for practitioners, policymakers, and institutions.</p>
   </div>
-  <div class="filter-bar">
-    <button class="filter-btn active">All</button><button class="filter-btn">Annual</button><button class="filter-btn">Regulatory</button><button class="filter-btn">Industry</button>
+
+  <!-- ── CONTROLS ── -->
+  <div class="rpt-controls">
+    <!-- row 1: year tabs + view toggle -->
+    <div class="rpt-controls-row rpt-controls-top">
+      <div class="rpt-year-tabs">
+        <button class="rpt-year-tab active" data-year="all">All Years</button>
+        <button class="rpt-year-tab" data-year="2025">2025</button>
+        <button class="rpt-year-tab" data-year="2024">2024</button>
+      </div>
+      <div class="rpt-view-toggle">
+        <button class="rpt-view-btn active" id="rpt-btn-cards" title="Card view">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Cards
+        </button>
+        <button class="rpt-view-btn" id="rpt-btn-list" title="List view">
+          <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          List
+        </button>
+      </div>
+    </div>
+    <!-- row 2: type + origin + count -->
+    <div class="rpt-controls-row rpt-controls-bottom">
+      <div class="rpt-filter-group">
+        <span class="rpt-filter-label">Type</span>
+        <button class="rpt-filter-btn active" data-type="all">All</button>
+        <button class="rpt-filter-btn" data-type="annual">Annual</button>
+        <button class="rpt-filter-btn" data-type="regulatory">Regulatory</button>
+        <button class="rpt-filter-btn" data-type="industry">Industry</button>
+        <span class="rpt-filter-divider"></span>
+        <span class="rpt-filter-label">Origin</span>
+        <button class="rpt-filter-btn active" data-origin="all">All</button>
+        <button class="rpt-filter-btn" data-origin="original">Original</button>
+        <button class="rpt-filter-btn" data-origin="via">Via</button>
+      </div>
+      <span class="rpt-count" id="rpt-count"></span>
+    </div>
   </div>
-  <div class="archive">
-    <div class="archive-list-item"><div class="archive-date">Mar 2025</div><div><div class="archive-title">The FTC's Algorithmic Accountability Agenda: A Two-Year Review <span class="origin-badge origin-badge--original">Original</span></div><div class="archive-subtitle">A comprehensive review of FTC enforcement actions, policy statements, and rulemaking initiatives related to algorithmic systems from 2023 to 2025.</div></div><span class="archive-tag">Regulatory</span></div>
-    <div class="archive-list-item"><div class="archive-date">Jan 2025</div><div><div class="archive-title">Digital Markets Act at One Year: Lessons for U.S. Competition Policy <span class="origin-badge origin-badge--via">Via European Commission</span></div><div class="archive-subtitle">Evaluates the DMA's first year of enforcement and draws concrete lessons for U.S. policymakers considering analogous legislation.</div></div><span class="archive-tag">Annual</span></div>
-    <div class="archive-list-item"><div class="archive-date">Dec 2024</div><div><div class="archive-title">State AI Legislation Tracker: 2024 Year in Review <span class="origin-badge origin-badge--original">Original</span></div><div class="archive-subtitle">Surveys AI-related legislation introduced and passed across all 50 states in 2024, identifying trends, model bills, and areas of regulatory divergence.</div></div><span class="archive-tag">Annual</span></div>
-    <div class="archive-list-item"><div class="archive-date">Oct 2024</div><div><div class="archive-title">Foundation Model Providers and the Regulatory Landscape: An Industry Overview <span class="origin-badge origin-badge--via">Via RAND Corporation</span></div><div class="archive-subtitle">Maps the current regulatory exposure of major foundation model providers across jurisdictions, including the EU AI Act, U.S. executive orders, and pending state legislation.</div></div><span class="archive-tag">Industry</span></div>
+
+  <!-- ── DATA STORE ── -->
+  <div id="rpt-data" style="display:none;">
+    <div data-year="2025" data-type="regulatory" data-date="Mar 2025" data-month="3"
+         data-title="The FTC&#39;s Algorithmic Accountability Agenda: A Two-Year Review"
+         data-desc="A comprehensive review of FTC enforcement actions, policy statements, and rulemaking initiatives related to algorithmic systems from 2023 to 2025."
+         data-origin="original" data-origin-label="Original"
+         data-pages="48" data-featured="true"></div>
+    <div data-year="2025" data-type="annual" data-date="Jan 2025" data-month="1"
+         data-title="Digital Markets Act at One Year: Lessons for U.S. Competition Policy"
+         data-desc="Evaluates the DMA&#39;s first year of enforcement and draws concrete lessons for U.S. policymakers considering analogous legislation."
+         data-origin="via" data-origin-label="Via European Commission"
+         data-pages="36" data-featured="false"></div>
+    <div data-year="2024" data-type="annual" data-date="Dec 2024" data-month="12"
+         data-title="State AI Legislation Tracker: 2024 Year in Review"
+         data-desc="Surveys AI-related legislation introduced and passed across all 50 states in 2024, identifying trends, model bills, and areas of regulatory divergence."
+         data-origin="original" data-origin-label="Original"
+         data-pages="62" data-featured="false"></div>
+    <div data-year="2024" data-type="industry" data-date="Oct 2024" data-month="10"
+         data-title="Foundation Model Providers and the Regulatory Landscape: An Industry Overview"
+         data-desc="Maps the current regulatory exposure of major foundation model providers across jurisdictions, including the EU AI Act, U.S. executive orders, and pending state legislation."
+         data-origin="via" data-origin-label="Via RAND Corporation"
+         data-pages="44" data-featured="false"></div>
   </div>
-  <section class="newsletter-band" style="margin-top: 4rem;"><div class="newsletter-inner"><div class="newsletter-copy"><h3 class="serif">Read Phronesis weekly.</h3><p>New work delivered directly to your inbox. No noise, no filler.</p></div><div class="newsletter-form"><input type="email" placeholder="your@email.com" /><button type="button">Subscribe</button></div></div></section>
+
+  <!-- ── FEATURED ── -->
+  <div class="rpt-featured-wrap" id="rpt-featured-wrap"></div>
+
+  <!-- ── RENDERED VIEWS ── -->
+  <div class="rpt-archive">
+    <div class="rpt-archive-header">
+      <span class="rpt-archive-label" id="rpt-archive-label">Archive</span>
+    </div>
+    <div id="rpt-card-view"></div>
+    <div id="rpt-list-view" style="display:none;"></div>
+  </div>
+
+  <section class="newsletter-band"><div class="newsletter-inner"><div class="newsletter-copy"><h3 class="serif">Read Phronesis weekly.</h3><p>New work delivered directly to your inbox. No noise, no filler.</p></div><div class="newsletter-form"><input type="email" placeholder="your@email.com" /><button type="button">Subscribe</button></div></div></section>
   <footer>
     <div><div class="footer-brand serif">Phronesis</div><p>An independent research entity at the intersection of technology law and policy.</p></div>
     <div class="footer-col"><h4>Publication types</h4><ul><li><a href="/research">Research Papers</a></li><li><a href="/policy">Policy Proposals</a></li><li><a href="/legal">Legal Analyses</a></li><li><a href="/essays">Essays</a></li><li><a href="/reports">Reports</a></li></ul></div>
     <div class="footer-col"><h4>Site</h4><ul><li><a href="/about">About</a></li><li><a href="/research">All Publications</a></li><li><a href="https://chadl22.github.io" target="_blank">Personal Site</a></li></ul></div>
   </footer>
   <div class="footer-bottom"><p>&copy; 2025 Phronesis Research. Independent &amp; non-partisan.</p><span class="phronesis-greek">&#x03C6;&#x03C1;&#x03CC;&#x03BD;&#x03B7;&#x03C3;&#x03B9;&#x03C2;</span></div>
-  <script>document.querySelectorAll('.filter-btn').forEach(btn => { btn.addEventListener('click', () => { document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); }); });</script>
+
   <script src="chat.js" defer></script>
   <script>
+    // ── nav ──
     const t = document.getElementById('nav-toggle'), m = document.getElementById('nav-menu');
     t.addEventListener('click', e => { e.stopPropagation(); t.classList.toggle('is-open'); m.classList.toggle('is-open'); });
     document.addEventListener('click', () => { t.classList.remove('is-open'); m.classList.remove('is-open'); });
+
+    // ── state ──
+    const allReports = Array.from(document.querySelectorAll('#rpt-data > div'));
+    let activeYear   = 'all';
+    let activeType   = 'all';
+    let activeOrigin = 'all';
+    let activeView   = 'cards';
+
+    function visible() {
+      return allReports.filter(el =>
+        (activeYear   === 'all' || el.dataset.year   === activeYear)  &&
+        (activeType   === 'all' || el.dataset.type   === activeType)  &&
+        (activeOrigin === 'all' || el.dataset.origin === activeOrigin)
+      );
+    }
+
+    function updateCount() {
+      const n = visible().length;
+      document.getElementById('rpt-count').textContent = n + ' report' + (n === 1 ? '' : 's');
+    }
+
+    // ── featured ──
+    function renderFeatured() {
+      const wrap = document.getElementById('rpt-featured-wrap');
+      const feat = allReports.find(el => el.dataset.featured === 'true');
+      if (!feat) { wrap.innerHTML = ''; return; }
+      const d = feat.dataset;
+      const typeLabel = d.type.charAt(0).toUpperCase() + d.type.slice(1);
+      wrap.innerHTML = `
+        <div class="label" style="margin-bottom:1rem;">Latest Report</div>
+        <div class="rpt-featured">
+          <div class="rpt-featured-spine">
+            <div>
+              <div class="rpt-featured-type">${typeLabel}</div>
+              <div class="rpt-featured-year">${d.year}</div>
+            </div>
+            <div class="rpt-featured-pages">${d.pages} pages</div>
+          </div>
+          <div class="rpt-featured-body">
+            <div class="rpt-featured-eyebrow">
+              <span class="rpt-featured-label">${typeLabel}</span>
+              <span class="origin-badge origin-badge--${d.origin}">${d.originLabel}</span>
+            </div>
+            <div class="rpt-featured-title">${d.title}</div>
+            <div class="rpt-featured-desc">${d.desc}</div>
+            <div class="rpt-featured-footer">
+              <div class="rpt-featured-meta">
+                <span class="rpt-featured-date">${d.date}</span>
+                <span class="rpt-card-pages">${d.pages}&thinsp;pp.</span>
+              </div>
+              <span class="rpt-featured-read">Read full report</span>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    // ── card view ──
+    function renderCards() {
+      const cv = document.getElementById('rpt-card-view');
+      const items = visible().filter(el => el.dataset.featured !== 'true');
+      if (!items.length) { cv.innerHTML = '<p class="rpt-empty">No reports match the current filters.</p>'; return; }
+      const grid = document.createElement('div');
+      grid.className = 'rpt-card-grid';
+      items.forEach(el => {
+        const d = el.dataset;
+        const typeLabel = d.type.charAt(0).toUpperCase() + d.type.slice(1);
+        const card = document.createElement('div');
+        card.className = 'rpt-card';
+        card.innerHTML = `
+          <div class="rpt-card-header">
+            <span class="rpt-card-type">${typeLabel}</span>
+            <span class="rpt-card-year">${d.year}</span>
+          </div>
+          <div class="rpt-card-body">
+            <div class="rpt-card-title">${d.title}</div>
+            <div class="rpt-card-desc">${d.desc}</div>
+            <div class="rpt-card-footer">
+              <div class="rpt-card-footer-left">
+                <span class="rpt-card-date">${d.date}</span>
+                <span class="rpt-card-pages">${d.pages}&thinsp;pp.</span>
+                <span class="origin-badge origin-badge--${d.origin}">${d.originLabel}</span>
+              </div>
+              <span class="rpt-card-read">Read &rarr;</span>
+            </div>
+          </div>`;
+        grid.appendChild(card);
+      });
+      cv.innerHTML = '';
+      cv.appendChild(grid);
+    }
+
+    // ── list view ──
+    function renderList() {
+      const lv = document.getElementById('rpt-list-view');
+      const items = visible();
+      if (!items.length) { lv.innerHTML = '<p class="rpt-empty">No reports match the current filters.</p>'; return; }
+      const years = {};
+      items.forEach(el => {
+        const yr = el.dataset.year;
+        if (!years[yr]) years[yr] = [];
+        years[yr].push(el);
+      });
+      lv.innerHTML = Object.keys(years).sort((a,b) => b - a).map(yr => {
+        const rows = years[yr].map(el => {
+          const d = el.dataset;
+          const typeLabel = d.type.charAt(0).toUpperCase() + d.type.slice(1);
+          return `<div class="rpt-list-row">
+            <span class="rpt-list-date">${d.date}</span>
+            <div>
+              <div class="rpt-list-title">${d.title}</div>
+              <div class="rpt-list-desc">${d.desc}</div>
+            </div>
+            <span class="rpt-list-type">${typeLabel}</span>
+            <span class="rpt-list-pages">${d.pages}&thinsp;pp. &middot; <span class="origin-badge origin-badge--${d.origin}">${d.originLabel}</span></span>
+            <span class="rpt-list-link">Read &rarr;</span>
+          </div>`;
+        }).join('');
+        return `<div class="rpt-year-group"><div class="rpt-year-heading">${yr}</div>${rows}</div>`;
+      }).join('');
+    }
+
+    // ── master render ──
+    function render() {
+      renderFeatured();
+      if (activeView === 'cards') {
+        document.getElementById('rpt-card-view').style.display = '';
+        document.getElementById('rpt-list-view').style.display = 'none';
+        renderCards();
+      } else {
+        document.getElementById('rpt-card-view').style.display = 'none';
+        document.getElementById('rpt-list-view').style.display = '';
+        renderList();
+      }
+      // show/hide archive header
+      const archiveItems = visible().filter(el => el.dataset.featured !== 'true');
+      document.getElementById('rpt-archive-label').textContent =
+        archiveItems.length + ' more report' + (archiveItems.length === 1 ? '' : 's') + ' in archive';
+      updateCount();
+    }
+
+    // ── event listeners ──
+    document.querySelectorAll('.rpt-year-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.rpt-year-tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeYear = btn.dataset.year;
+        render();
+      });
+    });
+    document.querySelectorAll('[data-type]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-type]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeType = btn.dataset.type;
+        render();
+      });
+    });
+    document.querySelectorAll('[data-origin]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-origin]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeOrigin = btn.dataset.origin;
+        render();
+      });
+    });
+    document.getElementById('rpt-btn-cards').addEventListener('click', () => {
+      activeView = 'cards';
+      document.getElementById('rpt-btn-cards').classList.add('active');
+      document.getElementById('rpt-btn-list').classList.remove('active');
+      render();
+    });
+    document.getElementById('rpt-btn-list').addEventListener('click', () => {
+      activeView = 'list';
+      document.getElementById('rpt-btn-list').classList.add('active');
+      document.getElementById('rpt-btn-cards').classList.remove('active');
+      render();
+    });
+
+    render();
   </script>
 </body>
 </html>

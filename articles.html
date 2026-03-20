@@ -7,15 +7,194 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="shared.css" /><link rel="stylesheet" href="chat.css" />
   <style>
-    .archive { max-width: 1160px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 5rem) 5rem; }
-    .archive-list-item { display: grid; grid-template-columns: 8rem 1fr 10rem; gap: 2rem; align-items: start; padding: 1.8rem 0; border-top: 1px solid var(--rule); cursor: pointer; }
-    .archive-list-item:last-child { border-bottom: 1px solid var(--rule); }
-    .archive-list-item:hover .archive-title { color: var(--accent); }
-    .archive-date { font-family: var(--serif); font-size: 0.82rem; color: var(--ink-3); padding-top: 0.2rem; }
-    .archive-title { font-family: var(--serif); font-size: 1.25rem; font-weight: 400; line-height: 1.3; margin-bottom: 0.4rem; transition: color 0.2s; }
-    .archive-subtitle { font-size: 0.78rem; color: var(--ink-3); line-height: 1.5; }
-    .archive-tag { display: inline-block; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); border-radius: 2px; padding: 0.15rem 0.45rem; justify-self: end; align-self: start; margin-top: 0.2rem; }
-    @media (max-width: 700px) { .archive-list-item { grid-template-columns: 1fr; gap: 0.5rem; } .archive-tag { justify-self: start; } }
+
+    /* ── FEATURED SECTION ─────────────────────── */
+    .art-featured-wrap {
+      max-width: 1160px; margin: 0 auto;
+      padding: 2.5rem clamp(1.5rem, 5vw, 5rem) 0;
+    }
+    .art-featured-grid {
+      display: grid; grid-template-columns: 1.7fr 1fr;
+      gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+    }
+    /* lead article */
+    .art-lead {
+      background: var(--paper); padding: 2.5rem 2.5rem 2rem;
+      display: flex; flex-direction: column;
+      cursor: pointer; transition: background 0.18s;
+      border-right: 1px solid var(--rule);
+    }
+    .art-lead:hover { background: var(--paper-2); }
+    .art-lead-eyebrow { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.4rem; }
+    .art-topic-pill {
+      font-size: 0.56rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--accent); border: 1px solid var(--accent);
+      border-radius: 2px; padding: 0.12rem 0.4rem; white-space: nowrap;
+    }
+    .art-read-time { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+    .art-lead-title {
+      font-family: var(--serif); font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+      font-weight: 400; line-height: 1.18; color: var(--ink);
+      margin-bottom: 1rem; flex-grow: 1;
+    }
+    .art-lead-excerpt {
+      font-family: var(--serif); font-size: 1rem; font-weight: 300;
+      line-height: 1.75; color: var(--ink-2); margin-bottom: 1.8rem;
+    }
+    .art-lead-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid var(--rule); padding-top: 1rem; margin-top: auto;
+    }
+    .art-lead-meta { display: flex; align-items: center; gap: 1rem; }
+    .art-lead-date { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+    .art-lead-read {
+      font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent); display: flex; align-items: center; gap: 0.4rem; transition: gap 0.18s;
+    }
+    .art-lead-read:hover { gap: 0.7rem; }
+    .art-lead-read::after { content: '→'; }
+
+    /* secondary articles */
+    .art-secondary-col { display: flex; flex-direction: column; }
+    .art-secondary {
+      background: var(--paper); padding: 1.8rem 2rem;
+      cursor: pointer; transition: background 0.18s;
+      flex: 1; display: flex; flex-direction: column;
+    }
+    .art-secondary + .art-secondary { border-top: 1px solid var(--rule); }
+    .art-secondary:hover { background: var(--paper-2); }
+    .art-secondary-eyebrow { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.9rem; }
+    .art-secondary-title {
+      font-family: var(--serif); font-size: 1.1rem; font-weight: 400;
+      line-height: 1.28; color: var(--ink); margin-bottom: 0.6rem; flex-grow: 1;
+    }
+    .art-secondary-excerpt { font-size: 0.75rem; color: var(--ink-2); line-height: 1.6; margin-bottom: 1rem; flex-grow: 1; }
+    .art-secondary-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid var(--rule); padding-top: 0.75rem; margin-top: auto;
+    }
+    .art-secondary-date { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+    .art-secondary-read { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+
+    /* ── CONTROLS ────────────────────────────── */
+    .art-controls { border-bottom: 1px solid var(--rule); background: var(--paper); margin-top: 2.5rem; }
+    .art-controls-row {
+      display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem;
+      padding: 0.65rem clamp(1.5rem, 5vw, 5rem);
+    }
+    .art-controls-row + .art-controls-row { border-top: 1px solid var(--rule); }
+    .art-controls-right { display: flex; align-items: center; gap: 0.8rem; margin-left: auto; flex-shrink: 0; }
+    .art-filter-label { font-size: 0.6rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-3); margin-right: 0.1rem; flex-shrink: 0; }
+    .art-filter-btn {
+      font-family: var(--sans); font-size: 0.6rem; font-weight: 400;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--ink-3); background: none;
+      border: 1px solid transparent; border-radius: 2px;
+      padding: 0.2rem 0.55rem; cursor: pointer; transition: all 0.18s;
+    }
+    .art-filter-btn:hover { color: var(--ink); border-color: var(--rule); }
+    .art-filter-btn.active { color: var(--accent); border-color: var(--accent); }
+    .art-filter-divider { width: 1px; height: 1rem; background: var(--rule); margin: 0 0.25rem; flex-shrink: 0; }
+
+    /* search */
+    .art-search-wrap { position: relative; }
+    .art-search {
+      font-family: var(--sans); font-size: 0.72rem; color: var(--ink);
+      background: var(--paper); border: 1px solid var(--rule);
+      border-radius: 2px; padding: 0.32rem 2rem 0.32rem 0.7rem;
+      outline: none; transition: border-color 0.18s; width: 180px;
+    }
+    .art-search:focus { border-color: var(--accent); }
+    .art-search::placeholder { color: var(--ink-3); }
+    .art-search-icon {
+      position: absolute; right: 0.55rem; top: 50%; transform: translateY(-50%);
+      width: 11px; height: 11px; stroke: var(--ink-3); fill: none;
+      stroke-width: 2; pointer-events: none;
+    }
+
+    /* view toggle */
+    .art-view-toggle { display: flex; border: 1px solid var(--rule); border-radius: 2px; overflow: hidden; flex-shrink: 0; }
+    .art-view-btn {
+      font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.1em;
+      text-transform: uppercase; background: none; border: none;
+      padding: 0.28rem 0.65rem; cursor: pointer; color: var(--ink-3);
+      transition: all 0.18s; display: flex; align-items: center; gap: 0.3rem;
+    }
+    .art-view-btn + .art-view-btn { border-left: 1px solid var(--rule); }
+    .art-view-btn.active { background: var(--accent); color: #EEE8DA; }
+    .art-view-btn svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+
+    /* ── STREAM VIEW ────────────────────────── */
+    .art-archive { max-width: 1160px; margin: 0 auto; padding: 2.5rem clamp(1.5rem, 5vw, 5rem) 5rem; }
+    .art-month-group { margin-bottom: 2.5rem; }
+    .art-month-heading {
+      font-family: var(--sans); font-size: 0.62rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3);
+      padding-bottom: 0.75rem; border-bottom: 1px solid var(--rule); margin-bottom: 0;
+    }
+    .art-stream-item {
+      display: grid; grid-template-columns: 5rem 1fr auto;
+      gap: 1.5rem; align-items: start;
+      padding: 1.2rem 0; border-bottom: 1px solid var(--rule);
+      cursor: pointer; transition: opacity 0.15s;
+    }
+    .art-stream-item:hover .art-stream-title { color: var(--accent); }
+    .art-stream-item.hidden { display: none; }
+    .art-stream-date {
+      font-family: var(--serif); font-size: 0.8rem; color: var(--ink-3); padding-top: 0.15rem;
+    }
+    .art-stream-eyebrow { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.45rem; flex-wrap: wrap; }
+    .art-stream-title {
+      font-family: var(--serif); font-size: 1.05rem; font-weight: 400;
+      line-height: 1.3; color: var(--ink); margin-bottom: 0.35rem; transition: color 0.18s;
+    }
+    .art-stream-excerpt { font-size: 0.74rem; color: var(--ink-2); line-height: 1.6; }
+    .art-stream-aside { display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem; padding-top: 0.15rem; }
+
+    /* ── CARD VIEW ──────────────────────────── */
+    .art-card-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+    }
+    .art-card {
+      background: var(--paper); padding: 1.8rem 1.6rem;
+      display: flex; flex-direction: column;
+      cursor: pointer; transition: background 0.18s;
+    }
+    .art-card:hover { background: var(--paper-2); }
+    .art-card.hidden { display: none; }
+    .art-card-eyebrow { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.9rem; flex-wrap: wrap; }
+    .art-card-title {
+      font-family: var(--serif); font-size: 1.1rem; font-weight: 400;
+      line-height: 1.28; color: var(--ink); margin-bottom: 0.65rem; flex-grow: 1;
+    }
+    .art-card-excerpt { font-size: 0.75rem; color: var(--ink-2); line-height: 1.65; margin-bottom: 1.1rem; flex-grow: 1; }
+    .art-card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid var(--rule); padding-top: 0.8rem; margin-top: auto;
+    }
+    .art-card-meta { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+    .art-card-date { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+    .art-card-read { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); flex-shrink: 0; }
+
+    .art-empty { padding: 3rem 0; font-family: var(--serif); font-size: 0.95rem; color: var(--ink-3); }
+    .art-count { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); margin-left: auto; }
+
+    @media (max-width: 960px) {
+      .art-featured-grid { grid-template-columns: 1fr; }
+      .art-lead { border-right: none; border-bottom: 1px solid var(--rule); }
+      .art-secondary-col { flex-direction: row; }
+      .art-secondary + .art-secondary { border-top: none; border-left: 1px solid var(--rule); }
+      .art-card-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .art-secondary-col { flex-direction: column; }
+      .art-secondary + .art-secondary { border-left: none; border-top: 1px solid var(--rule); }
+      .art-card-grid { grid-template-columns: 1fr; }
+      .art-stream-item { grid-template-columns: 4rem 1fr; }
+      .art-stream-aside { display: none; }
+      .art-search { width: 130px; }
+    }
   </style>
 </head>
 <body>
@@ -34,37 +213,337 @@
       <li><a href="/about">About</a></li>
     </ul>
   </nav>
+
   <div class="page-header">
     <div><div class="page-header-eyebrow"><span class="label">Articles</span></div><h1 class="serif">Timely<br/><em>Takes</em></h1></div>
     <p class="page-header-desc">Concise, current writing on developments in technology law and policy. Articles are where we respond to what is happening now — decisions, rulings, and shifts worth paying attention to.</p>
   </div>
-  <div class="filter-bar">
-    <button class="filter-btn active">All</button>
-    <button class="filter-btn">AI Policy</button>
-    <button class="filter-btn">Competition</button>
-    <button class="filter-btn">Platform Law</button>
-    <button class="filter-btn">Legislation</button>
+
+  <!-- ── DATA STORE ── -->
+  <div id="art-data" style="display:none;">
+    <div data-topic="ai-policy" data-topic-label="AI Policy"
+         data-year="2025" data-month="3" data-date="Mar 2025"
+         data-title="The Executive Order on AI and Federal Procurement: What It Actually Requires"
+         data-excerpt="A close read of the latest executive action on AI in federal contracting, separating the binding requirements from the aspirational language. The order covers procurement standards, audit obligations, and interagency coordination."
+         data-read-time="5"
+         data-origin="original" data-origin-label="Original"
+         data-featured="true"></div>
+    <div data-topic="competition" data-topic-label="Competition"
+         data-year="2025" data-month="2" data-date="Feb 2025"
+         data-title="Digital Markets Act at One Year: Lessons for U.S. Competition Policy"
+         data-excerpt="The DMA&#39;s first year of enforcement offers concrete evidence for U.S. policymakers debating analogous platform legislation &mdash; some of it surprising."
+         data-read-time="6"
+         data-origin="original" data-origin-label="Original"
+         data-featured="true"></div>
+    <div data-topic="competition" data-topic-label="Competition"
+         data-year="2025" data-month="1" data-date="Jan 2025"
+         data-title="What the DOJ&#39;s Google Remedies Brief Actually Proposes"
+         data-excerpt="A plain-language breakdown of the Justice Department&#39;s proposed structural and behavioral remedies in the Google search monopolization case."
+         data-read-time="4"
+         data-origin="via" data-origin-label="Via DOJ"
+         data-featured="true"></div>
+    <div data-topic="legislation" data-topic-label="Legislation"
+         data-year="2024" data-month="12" data-date="Dec 2024"
+         data-title="California&#39;s AB 1008 and the Limits of State AI Liability Frameworks"
+         data-excerpt="California&#39;s latest attempt to assign civil liability for AI-caused harm raises questions about what state law can actually accomplish in this space."
+         data-read-time="5"
+         data-origin="original" data-origin-label="Original"
+         data-featured="false"></div>
+    <div data-topic="platform-law" data-topic-label="Platform Law"
+         data-year="2024" data-month="11" data-date="Nov 2024"
+         data-title="After Loper Bright: How Agencies Are Adjusting Their Rulemaking Strategies"
+         data-excerpt="Six months after the Court&#39;s Chevron overruling, a look at how the FTC, FCC, and CFPB are adapting their approach to technology-related rulemaking."
+         data-read-time="6"
+         data-origin="via" data-origin-label="Via FTC"
+         data-featured="false"></div>
   </div>
-  <div class="archive">
-    <div class="archive-list-item"><div class="archive-date">Mar 2025</div><div><div class="archive-title">The Executive Order on AI and Federal Procurement: What It Actually Requires <span class="origin-badge origin-badge--original">Original</span></div><div class="archive-subtitle">A close read of the latest executive action on AI in federal contracting, separating the binding requirements from the aspirational language.</div></div><span class="archive-tag">AI Policy</span></div>
-    <div class="archive-list-item"><div class="archive-date">Feb 2025</div><div><div class="archive-title">Digital Markets Act at One Year: Lessons for U.S. Competition Policy <span class="origin-badge origin-badge--original">Original</span></div><div class="archive-subtitle">The DMA's first year of enforcement offers concrete evidence for U.S. policymakers debating analogous platform legislation — some of it surprising.</div></div><span class="archive-tag">Competition</span></div>
-    <div class="archive-list-item"><div class="archive-date">Jan 2025</div><div><div class="archive-title">What the DOJ's Google Remedies Brief Actually Proposes <span class="origin-badge origin-badge--via">Via DOJ</span></div><div class="archive-subtitle">A plain-language breakdown of the Justice Department's proposed structural and behavioral remedies in the Google search monopolization case.</div></div><span class="archive-tag">Competition</span></div>
-    <div class="archive-list-item"><div class="archive-date">Dec 2024</div><div><div class="archive-title">California's AB 1008 and the Limits of State AI Liability Frameworks <span class="origin-badge origin-badge--original">Original</span></div><div class="archive-subtitle">California's latest attempt to assign civil liability for AI-caused harm raises questions about what state law can actually accomplish in this space.</div></div><span class="archive-tag">Legislation</span></div>
-    <div class="archive-list-item"><div class="archive-date">Nov 2024</div><div><div class="archive-title">After Loper Bright: How Agencies Are Adjusting Their Rulemaking Strategies <span class="origin-badge origin-badge--via">Via FTC</span></div><div class="archive-subtitle">Six months after the Court's Chevron overruling, a look at how the FTC, FCC, and CFPB are adapting their approach to technology-related rulemaking.</div></div><span class="archive-tag">Platform Law</span></div>
+
+  <!-- ── FEATURED ── -->
+  <div class="art-featured-wrap">
+    <div class="label" style="margin-bottom:1rem;">Latest</div>
+    <div class="art-featured-grid" id="art-featured-grid"></div>
   </div>
-  <section class="newsletter-band" style="margin-top: 4rem;"><div class="newsletter-inner"><div class="newsletter-copy"><h3 class="serif">Read Phronesis weekly.</h3><p>New work delivered directly to your inbox. No noise, no filler.</p></div><div class="newsletter-form"><input type="email" placeholder="your@email.com" /><button type="button">Subscribe</button></div></div></section>
+
+  <!-- ── CONTROLS ── -->
+  <div class="art-controls">
+    <!-- row 1: topic filters + search + view toggle -->
+    <div class="art-controls-row">
+      <div style="display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;">
+        <span class="art-filter-label">Topic</span>
+        <button class="art-filter-btn active" data-topic="all">All</button>
+        <button class="art-filter-btn" data-topic="ai-policy">AI Policy</button>
+        <button class="art-filter-btn" data-topic="competition">Competition</button>
+        <button class="art-filter-btn" data-topic="platform-law">Platform Law</button>
+        <button class="art-filter-btn" data-topic="legislation">Legislation</button>
+      </div>
+      <div class="art-controls-right">
+        <div class="art-search-wrap">
+          <input class="art-search" id="art-search" type="text" placeholder="Search articles…" autocomplete="off" />
+          <svg class="art-search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+        </div>
+        <div class="art-view-toggle">
+          <button class="art-view-btn active" id="art-btn-stream" title="Stream view">
+            <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            Stream
+          </button>
+          <button class="art-view-btn" id="art-btn-cards" title="Card view">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            Cards
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- row 2: date range + origin + count -->
+    <div class="art-controls-row">
+      <span class="art-filter-label">When</span>
+      <button class="art-filter-btn active" data-range="all">All Time</button>
+      <button class="art-filter-btn" data-range="year">This Year</button>
+      <button class="art-filter-btn" data-range="recent">Last 90 Days</button>
+      <span class="art-filter-divider"></span>
+      <span class="art-filter-label">Origin</span>
+      <button class="art-filter-btn active" data-origin="all">All</button>
+      <button class="art-filter-btn" data-origin="original">Original</button>
+      <button class="art-filter-btn" data-origin="via">Via</button>
+      <span class="art-count" id="art-count"></span>
+    </div>
+  </div>
+
+  <!-- ── RENDERED VIEWS ── -->
+  <div class="art-archive">
+    <div id="art-stream-view"></div>
+    <div id="art-card-view" style="display:none;"></div>
+  </div>
+
+  <section class="newsletter-band"><div class="newsletter-inner"><div class="newsletter-copy"><h3 class="serif">Read Phronesis weekly.</h3><p>New work delivered directly to your inbox. No noise, no filler.</p></div><div class="newsletter-form"><input type="email" placeholder="your@email.com" /><button type="button">Subscribe</button></div></div></section>
   <footer>
     <div><div class="footer-brand serif">Phronesis</div><p>An independent research entity at the intersection of technology law and policy.</p></div>
     <div class="footer-col"><h4>Publication types</h4><ul><li><a href="/research">Research Papers</a></li><li><a href="/policy">Policy Proposals</a></li><li><a href="/legal">Legal Analyses</a></li><li><a href="/essays">Essays</a></li><li><a href="/articles">Articles</a></li><li><a href="/reports">Reports</a></li></ul></div>
     <div class="footer-col"><h4>Site</h4><ul><li><a href="/about">About</a></li><li><a href="/research">All Publications</a></li><li><a href="https://chadl22.github.io" target="_blank">Personal Site</a></li></ul></div>
   </footer>
   <div class="footer-bottom"><p>&copy; 2025 Phronesis Research. Independent &amp; non-partisan.</p><span class="phronesis-greek">&#x03C6;&#x03C1;&#x03CC;&#x03BD;&#x03B7;&#x03C3;&#x03B9;&#x03C2;</span></div>
-  <script>document.querySelectorAll('.filter-btn').forEach(btn => { btn.addEventListener('click', () => { document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); }); });</script>
+
   <script src="chat.js" defer></script>
   <script>
+    // ── nav ──
     const t = document.getElementById('nav-toggle'), m = document.getElementById('nav-menu');
     t.addEventListener('click', e => { e.stopPropagation(); t.classList.toggle('is-open'); m.classList.toggle('is-open'); });
     document.addEventListener('click', () => { t.classList.remove('is-open'); m.classList.remove('is-open'); });
+
+    // ── state ──
+    const allArticles = Array.from(document.querySelectorAll('#art-data > div'));
+    let activeTopic  = 'all';
+    let activeOrigin = 'all';
+    let activeRange  = 'all';
+    let activeView   = 'stream';
+    let searchQuery  = '';
+
+    const MONTH_NAMES = ['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const MONTH_FULL  = ['','January','February','March','April','May','June','July','August','September','October','November','December'];
+    const NOW_YEAR    = new Date().getFullYear();
+    const NOW_MONTH   = new Date().getMonth() + 1;
+
+    function isRecent(el) {
+      const yr = parseInt(el.dataset.year);
+      const mo = parseInt(el.dataset.month);
+      const monthsAgo = (NOW_YEAR - yr) * 12 + (NOW_MONTH - mo);
+      return monthsAgo <= 3;
+    }
+    function isThisYear(el) { return el.dataset.year === String(NOW_YEAR); }
+
+    function visible() {
+      return allArticles.filter(el => {
+        if (activeTopic  !== 'all' && el.dataset.topic  !== activeTopic)  return false;
+        if (activeOrigin !== 'all' && el.dataset.origin !== activeOrigin) return false;
+        if (activeRange === 'recent' && !isRecent(el))   return false;
+        if (activeRange === 'year'   && !isThisYear(el)) return false;
+        if (searchQuery) {
+          const q = searchQuery.toLowerCase();
+          const matches = el.dataset.title.toLowerCase().includes(q) ||
+                          el.dataset.excerpt.toLowerCase().includes(q);
+          if (!matches) return false;
+        }
+        return true;
+      });
+    }
+
+    function updateCount() {
+      const n = visible().length;
+      document.getElementById('art-count').textContent = n + ' article' + (n === 1 ? '' : 's');
+    }
+
+    // ── featured section ──
+    function renderFeatured() {
+      const grid = document.getElementById('art-featured-grid');
+      const feat = allArticles.filter(el => el.dataset.featured === 'true').slice(0, 3);
+      if (!feat.length) { grid.innerHTML = ''; return; }
+      const lead = feat[0];
+      const secs  = feat.slice(1);
+      const ld = lead.dataset;
+      const leadHTML = `
+        <div class="art-lead">
+          <div class="art-lead-eyebrow">
+            <span class="art-topic-pill">${ld.topicLabel}</span>
+            <span class="art-read-time">${ld.readTime} min read</span>
+          </div>
+          <div class="art-lead-title">${ld.title}</div>
+          <div class="art-lead-excerpt">${ld.excerpt}</div>
+          <div class="art-lead-footer">
+            <div class="art-lead-meta">
+              <span class="art-lead-date">${ld.date}</span>
+              <span class="origin-badge origin-badge--${ld.origin}">${ld.originLabel}</span>
+            </div>
+            <span class="art-lead-read">Read article</span>
+          </div>
+        </div>`;
+      const secsHTML = `
+        <div class="art-secondary-col">
+          ${secs.map(el => {
+            const d = el.dataset;
+            return `<div class="art-secondary">
+              <div class="art-secondary-eyebrow">
+                <span class="art-topic-pill">${d.topicLabel}</span>
+                <span class="art-read-time">${d.readTime} min read</span>
+              </div>
+              <div class="art-secondary-title">${d.title}</div>
+              <div class="art-secondary-excerpt">${d.excerpt}</div>
+              <div class="art-secondary-footer">
+                <div style="display:flex;align-items:center;gap:0.6rem;">
+                  <span class="art-secondary-date">${d.date}</span>
+                  <span class="origin-badge origin-badge--${d.origin}">${d.originLabel}</span>
+                </div>
+                <span class="art-secondary-read">Read →</span>
+              </div>
+            </div>`;
+          }).join('')}
+        </div>`;
+      grid.innerHTML = leadHTML + secsHTML;
+    }
+
+    // ── stream view ──
+    function renderStream() {
+      const sv = document.getElementById('art-stream-view');
+      const items = visible();
+      if (!items.length) { sv.innerHTML = '<p class="art-empty">No articles match the current filters.</p>'; return; }
+      // group by year-month
+      const groups = {};
+      items.forEach(el => {
+        const key = el.dataset.year + '-' + el.dataset.month.padStart(2,'0');
+        if (!groups[key]) groups[key] = [];
+        groups[key].push(el);
+      });
+      sv.innerHTML = Object.keys(groups).sort((a,b) => b.localeCompare(a)).map(key => {
+        const [yr, mo] = key.split('-');
+        const heading = MONTH_FULL[parseInt(mo)] + ' ' + yr;
+        const rows = groups[key].map(el => {
+          const d = el.dataset;
+          return `<div class="art-stream-item">
+            <span class="art-stream-date">${d.date}</span>
+            <div>
+              <div class="art-stream-eyebrow">
+                <span class="art-topic-pill">${d.topicLabel}</span>
+                <span class="art-read-time">${d.readTime} min read</span>
+              </div>
+              <div class="art-stream-title">${d.title}</div>
+              <div class="art-stream-excerpt">${d.excerpt}</div>
+            </div>
+            <div class="art-stream-aside">
+              <span class="origin-badge origin-badge--${d.origin}">${d.originLabel}</span>
+            </div>
+          </div>`;
+        }).join('');
+        return `<div class="art-month-group"><div class="art-month-heading">${heading}</div>${rows}</div>`;
+      }).join('');
+    }
+
+    // ── card view ──
+    function renderCards() {
+      const cv = document.getElementById('art-card-view');
+      const items = visible();
+      if (!items.length) { cv.innerHTML = '<p class="art-empty">No articles match the current filters.</p>'; return; }
+      const grid = document.createElement('div');
+      grid.className = 'art-card-grid';
+      items.forEach(el => {
+        const d = el.dataset;
+        const card = document.createElement('div');
+        card.className = 'art-card';
+        card.innerHTML = `
+          <div class="art-card-eyebrow">
+            <span class="art-topic-pill">${d.topicLabel}</span>
+            <span class="art-read-time">${d.readTime} min read</span>
+          </div>
+          <div class="art-card-title">${d.title}</div>
+          <div class="art-card-excerpt">${d.excerpt}</div>
+          <div class="art-card-footer">
+            <div class="art-card-meta">
+              <span class="art-card-date">${d.date}</span>
+              <span class="origin-badge origin-badge--${d.origin}">${d.originLabel}</span>
+            </div>
+            <span class="art-card-read">Read →</span>
+          </div>`;
+        grid.appendChild(card);
+      });
+      cv.innerHTML = '';
+      cv.appendChild(grid);
+    }
+
+    // ── master render ──
+    function render() {
+      if (activeView === 'stream') {
+        document.getElementById('art-stream-view').style.display = '';
+        document.getElementById('art-card-view').style.display = 'none';
+        renderStream();
+      } else {
+        document.getElementById('art-stream-view').style.display = 'none';
+        document.getElementById('art-card-view').style.display = '';
+        renderCards();
+      }
+      updateCount();
+    }
+
+    // ── event listeners ──
+    document.querySelectorAll('[data-topic]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-topic]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeTopic = btn.dataset.topic;
+        render();
+      });
+    });
+    document.querySelectorAll('[data-origin]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-origin]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeOrigin = btn.dataset.origin;
+        render();
+      });
+    });
+    document.querySelectorAll('[data-range]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-range]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeRange = btn.dataset.range;
+        render();
+      });
+    });
+    document.getElementById('art-search').addEventListener('input', function() {
+      searchQuery = this.value.trim();
+      render();
+    });
+    document.getElementById('art-btn-stream').addEventListener('click', () => {
+      activeView = 'stream';
+      document.getElementById('art-btn-stream').classList.add('active');
+      document.getElementById('art-btn-cards').classList.remove('active');
+      render();
+    });
+    document.getElementById('art-btn-cards').addEventListener('click', () => {
+      activeView = 'cards';
+      document.getElementById('art-btn-cards').classList.add('active');
+      document.getElementById('art-btn-stream').classList.remove('active');
+      render();
+    });
+
+    renderFeatured();
+    render();
   </script>
 </body>
 </html>
