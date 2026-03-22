@@ -10,7 +10,7 @@
   ],
   "entries": [
     {
-      "placeholder": true,
+      "placeholder": false,
       "id": "an-economy-of-ai-agents-2026",
       "title": "An Economy of AI Agents",
       "subtitle": "A survey of how autonomous AI agents may interact with humans and markets in the coming decade",
