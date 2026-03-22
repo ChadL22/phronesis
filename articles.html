@@ -220,44 +220,7 @@
     <p class="page-header-desc">Concise, current writing on developments in technology law and policy. Articles are where we respond to what is happening now — decisions, rulings, and shifts worth paying attention to.</p>
   </div>
 
-  <!-- ── DATA STORE ── -->
-  <div id="art-data" style="display:none;">
-    <div data-topic="ai-policy" data-topic-label="AI Policy"
-         data-year="2025" data-month="3" data-date="Mar 2025"
-         data-title="The Executive Order on AI and Federal Procurement: What It Actually Requires"
-         data-excerpt="A close read of the latest executive action on AI in federal contracting, separating the binding requirements from the aspirational language. The order covers procurement standards, audit obligations, and interagency coordination."
-         data-read-time="5"
-         data-origin="original" data-origin-label="Original"
-         data-featured="true"></div>
-    <div data-topic="competition" data-topic-label="Competition"
-         data-year="2025" data-month="2" data-date="Feb 2025"
-         data-title="Digital Markets Act at One Year: Lessons for U.S. Competition Policy"
-         data-excerpt="The DMA&#39;s first year of enforcement offers concrete evidence for U.S. policymakers debating analogous platform legislation &mdash; some of it surprising."
-         data-read-time="6"
-         data-origin="original" data-origin-label="Original"
-         data-featured="true"></div>
-    <div data-topic="competition" data-topic-label="Competition"
-         data-year="2025" data-month="1" data-date="Jan 2025"
-         data-title="What the DOJ&#39;s Google Remedies Brief Actually Proposes"
-         data-excerpt="A plain-language breakdown of the Justice Department&#39;s proposed structural and behavioral remedies in the Google search monopolization case."
-         data-read-time="4"
-         data-origin="via" data-origin-label="Via DOJ"
-         data-featured="true"></div>
-    <div data-topic="legislation" data-topic-label="Legislation"
-         data-year="2024" data-month="12" data-date="Dec 2024"
-         data-title="California&#39;s AB 1008 and the Limits of State AI Liability Frameworks"
-         data-excerpt="California&#39;s latest attempt to assign civil liability for AI-caused harm raises questions about what state law can actually accomplish in this space."
-         data-read-time="5"
-         data-origin="original" data-origin-label="Original"
-         data-featured="false"></div>
-    <div data-topic="platform-law" data-topic-label="Platform Law"
-         data-year="2024" data-month="11" data-date="Nov 2024"
-         data-title="After Loper Bright: How Agencies Are Adjusting Their Rulemaking Strategies"
-         data-excerpt="Six months after the Court&#39;s Chevron overruling, a look at how the FTC, FCC, and CFPB are adapting their approach to technology-related rulemaking."
-         data-read-time="6"
-         data-origin="via" data-origin-label="Via FTC"
-         data-featured="false"></div>
-  </div>
+  <!-- data loaded from /content/articles.json -->
 
   <!-- ── CONTROLS ── -->
   <div class="art-controls">
@@ -332,40 +295,76 @@
     document.addEventListener('click', () => { t.classList.remove('is-open'); m.classList.remove('is-open'); });
 
     // ── state ──
-    const allArticles = Array.from(document.querySelectorAll('#art-data > div'));
+    const MONTH_NAMES = ['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const MONTH_FULL  = ['','January','February','March','April','May','June','July','August','September','October','November','December'];
+    const NOW_YEAR    = new Date().getFullYear();
+    const NOW_MONTH   = new Date().getMonth() + 1;
+
+    let allArticles = [];
     let activeTopic  = 'all';
     let activeOrigin = 'all';
     let activeRange  = 'all';
     let activeView   = 'stream';
     let searchQuery  = '';
 
-    const MONTH_NAMES = ['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    const MONTH_FULL  = ['','January','February','March','April','May','June','July','August','September','October','November','December'];
-    const NOW_YEAR    = new Date().getFullYear();
-    const NOW_MONTH   = new Date().getMonth() + 1;
+    async function loadData() {
+      try {
+        const res = await fetch('/content/articles.json');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const json = await res.json();
+        allArticles = (json.entries || [])
+          .filter(e => !e.placeholder)
+          .map(e => {
+            const d = new Date((e.date || '2025-01-01') + 'T00:00:00');
+            return {
+              topic:        e.topic || 'general',
+              topicLabel:   e.topic_label || e.topic || '',
+              year:         String(d.getFullYear()),
+              month:        String(d.getMonth() + 1),
+              date:         MONTH_NAMES[d.getMonth() + 1] + ' ' + d.getFullYear(),
+              title:        e.title || '',
+              excerpt:      e.excerpt || e.subtitle || e.abstract || '',
+              readTime:     e.read_time || '',
+              origin:       e.origin,
+              originLabel:  e.origin === 'original' ? 'Original' : 'Via ' + e.publisher,
+              featured:     e.featured === true,
+              original_url: e.original_url || null,
+              document_url: e.document_url || null,
+            };
+          });
+      } catch(err) {
+        console.error('Could not load articles.json:', err);
+        document.getElementById('art-stream-view').innerHTML = '<p class="art-empty">Could not load articles.</p>';
+        return;
+      }
+      renderFeatured();
+      render();
+    }
 
-    function isRecent(el) {
-      const yr = parseInt(el.dataset.year);
-      const mo = parseInt(el.dataset.month);
-      const monthsAgo = (NOW_YEAR - yr) * 12 + (NOW_MONTH - mo);
+    function isRecent(e) {
+      const monthsAgo = (NOW_YEAR - parseInt(e.year)) * 12 + (NOW_MONTH - parseInt(e.month));
       return monthsAgo <= 3;
     }
-    function isThisYear(el) { return el.dataset.year === String(NOW_YEAR); }
+    function isThisYear(e) { return e.year === String(NOW_YEAR); }
 
     function visible() {
-      return allArticles.filter(el => {
-        if (activeTopic  !== 'all' && el.dataset.topic  !== activeTopic)  return false;
-        if (activeOrigin !== 'all' && el.dataset.origin !== activeOrigin) return false;
-        if (activeRange === 'recent' && !isRecent(el))   return false;
-        if (activeRange === 'year'   && !isThisYear(el)) return false;
+      return allArticles.filter(e => {
+        if (activeTopic  !== 'all' && e.topic  !== activeTopic)  return false;
+        if (activeOrigin !== 'all' && e.origin !== activeOrigin) return false;
+        if (activeRange === 'recent' && !isRecent(e))   return false;
+        if (activeRange === 'year'   && !isThisYear(e)) return false;
         if (searchQuery) {
           const q = searchQuery.toLowerCase();
-          const matches = el.dataset.title.toLowerCase().includes(q) ||
-                          el.dataset.excerpt.toLowerCase().includes(q);
-          if (!matches) return false;
+          if (!e.title.toLowerCase().includes(q) && !e.excerpt.toLowerCase().includes(q)) return false;
         }
         return true;
       });
+    }
+
+    function resolveLink(e) {
+      if (e.origin === 'via' && e.original_url) return { url: e.original_url, external: true };
+      if (e.origin === 'original' && e.document_url) return { url: e.document_url, external: false };
+      return null;
     }
 
     function updateCount() {
@@ -376,48 +375,52 @@
     // ── featured section ──
     function renderFeatured() {
       const grid = document.getElementById('art-featured-grid');
-      const feat = allArticles.filter(el => el.dataset.featured === 'true').slice(0, 3);
+      const feat = allArticles.filter(e => e.featured).slice(0, 3);
       if (!feat.length) { grid.innerHTML = ''; return; }
       const lead = feat[0];
       const secs  = feat.slice(1);
-      const ld = lead.dataset;
+      const ll = resolveLink(lead);
+      const leadTag = ll ? 'a' : 'div';
+      const leadAttrs = ll ? ` href="${ll.url}"${ll.external ? ' target="_blank" rel="noopener"' : ''}` : '';
       const leadHTML = `
-        <div class="art-lead">
+        <${leadTag} class="art-lead"${leadAttrs}>
           <div class="art-lead-eyebrow">
-            <span class="art-topic-pill">${ld.topicLabel}</span>
-            <span class="art-read-time">${ld.readTime} min read</span>
+            <span class="art-topic-pill">${lead.topicLabel}</span>
+            ${lead.readTime ? `<span class="art-read-time">${lead.readTime} min read</span>` : ''}
           </div>
-          <div class="art-lead-title">${ld.title}</div>
-          <div class="art-lead-excerpt">${ld.excerpt}</div>
+          <div class="art-lead-title">${lead.title}</div>
+          <div class="art-lead-excerpt">${lead.excerpt}</div>
           <div class="art-lead-footer">
             <div class="art-lead-meta">
-              <span class="art-lead-date">${ld.date}</span>
-              <span class="origin-badge origin-badge--${ld.origin}">${ld.originLabel}</span>
+              <span class="art-lead-date">${lead.date}</span>
+              <span class="origin-badge origin-badge--${lead.origin}">${lead.originLabel}</span>
             </div>
-            <span class="art-lead-read">Read article</span>
+            ${ll ? '<span class="art-lead-read">Read article</span>' : ''}
           </div>
-        </div>`;
-      const secsHTML = `
+        </${leadTag}>`;
+      const secsHTML = secs.length ? `
         <div class="art-secondary-col">
-          ${secs.map(el => {
-            const d = el.dataset;
-            return `<div class="art-secondary">
+          ${secs.map(e => {
+            const sl = resolveLink(e);
+            const sTag = sl ? 'a' : 'div';
+            const sAttrs = sl ? ` href="${sl.url}"${sl.external ? ' target="_blank" rel="noopener"' : ''}` : '';
+            return `<${sTag} class="art-secondary"${sAttrs}>
               <div class="art-secondary-eyebrow">
-                <span class="art-topic-pill">${d.topicLabel}</span>
-                <span class="art-read-time">${d.readTime} min read</span>
+                <span class="art-topic-pill">${e.topicLabel}</span>
+                ${e.readTime ? `<span class="art-read-time">${e.readTime} min read</span>` : ''}
               </div>
-              <div class="art-secondary-title">${d.title}</div>
-              <div class="art-secondary-excerpt">${d.excerpt}</div>
+              <div class="art-secondary-title">${e.title}</div>
+              <div class="art-secondary-excerpt">${e.excerpt}</div>
               <div class="art-secondary-footer">
                 <div style="display:flex;align-items:center;gap:0.6rem;">
-                  <span class="art-secondary-date">${d.date}</span>
-                  <span class="origin-badge origin-badge--${d.origin}">${d.originLabel}</span>
+                  <span class="art-secondary-date">${e.date}</span>
+                  <span class="origin-badge origin-badge--${e.origin}">${e.originLabel}</span>
                 </div>
-                <span class="art-secondary-read">Read →</span>
+                ${sl ? '<span class="art-secondary-read">Read →</span>' : ''}
               </div>
-            </div>`;
+            </${sTag}>`;
           }).join('')}
-        </div>`;
+        </div>` : '';
       grid.innerHTML = leadHTML + secsHTML;
     }
 
@@ -426,32 +429,33 @@
       const sv = document.getElementById('art-stream-view');
       const items = visible();
       if (!items.length) { sv.innerHTML = '<p class="art-empty">No articles match the current filters.</p>'; return; }
-      // group by year-month
       const groups = {};
-      items.forEach(el => {
-        const key = el.dataset.year + '-' + el.dataset.month.padStart(2,'0');
+      items.forEach(e => {
+        const key = e.year + '-' + e.month.padStart(2,'0');
         if (!groups[key]) groups[key] = [];
-        groups[key].push(el);
+        groups[key].push(e);
       });
       sv.innerHTML = Object.keys(groups).sort((a,b) => b.localeCompare(a)).map(key => {
         const [yr, mo] = key.split('-');
         const heading = MONTH_FULL[parseInt(mo)] + ' ' + yr;
-        const rows = groups[key].map(el => {
-          const d = el.dataset;
-          return `<div class="art-stream-item">
-            <span class="art-stream-date">${d.date}</span>
+        const rows = groups[key].map(e => {
+          const sl = resolveLink(e);
+          const tag = sl ? 'a' : 'div';
+          const attrs = sl ? ` href="${sl.url}"${sl.external ? ' target="_blank" rel="noopener"' : ''}` : '';
+          return `<${tag} class="art-stream-item"${attrs}>
+            <span class="art-stream-date">${e.date}</span>
             <div>
               <div class="art-stream-eyebrow">
-                <span class="art-topic-pill">${d.topicLabel}</span>
-                <span class="art-read-time">${d.readTime} min read</span>
+                <span class="art-topic-pill">${e.topicLabel}</span>
+                ${e.readTime ? `<span class="art-read-time">${e.readTime} min read</span>` : ''}
               </div>
-              <div class="art-stream-title">${d.title}</div>
-              <div class="art-stream-excerpt">${d.excerpt}</div>
+              <div class="art-stream-title">${e.title}</div>
+              <div class="art-stream-excerpt">${e.excerpt}</div>
             </div>
             <div class="art-stream-aside">
-              <span class="origin-badge origin-badge--${d.origin}">${d.originLabel}</span>
+              <span class="origin-badge origin-badge--${e.origin}">${e.originLabel}</span>
             </div>
-          </div>`;
+          </${tag}>`;
         }).join('');
         return `<div class="art-month-group"><div class="art-month-heading">${heading}</div>${rows}</div>`;
       }).join('');
@@ -464,23 +468,24 @@
       if (!items.length) { cv.innerHTML = '<p class="art-empty">No articles match the current filters.</p>'; return; }
       const grid = document.createElement('div');
       grid.className = 'art-card-grid';
-      items.forEach(el => {
-        const d = el.dataset;
-        const card = document.createElement('div');
+      items.forEach(e => {
+        const cl = resolveLink(e);
+        const card = document.createElement(cl ? 'a' : 'div');
         card.className = 'art-card';
+        if (cl) { card.href = cl.url; if (cl.external) { card.target = '_blank'; card.rel = 'noopener'; } }
         card.innerHTML = `
           <div class="art-card-eyebrow">
-            <span class="art-topic-pill">${d.topicLabel}</span>
-            <span class="art-read-time">${d.readTime} min read</span>
+            <span class="art-topic-pill">${e.topicLabel}</span>
+            ${e.readTime ? `<span class="art-read-time">${e.readTime} min read</span>` : ''}
           </div>
-          <div class="art-card-title">${d.title}</div>
-          <div class="art-card-excerpt">${d.excerpt}</div>
+          <div class="art-card-title">${e.title}</div>
+          <div class="art-card-excerpt">${e.excerpt}</div>
           <div class="art-card-footer">
             <div class="art-card-meta">
-              <span class="art-card-date">${d.date}</span>
-              <span class="origin-badge origin-badge--${d.origin}">${d.originLabel}</span>
+              <span class="art-card-date">${e.date}</span>
+              <span class="origin-badge origin-badge--${e.origin}">${e.originLabel}</span>
             </div>
-            <span class="art-card-read">Read →</span>
+            ${cl ? '<span class="art-card-read">Read →</span>' : ''}
           </div>`;
         grid.appendChild(card);
       });
@@ -544,8 +549,7 @@
       render();
     });
 
-    renderFeatured();
-    render();
+    loadData();
   </script>
 </body>
 </html>
