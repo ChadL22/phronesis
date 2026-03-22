@@ -2,13 +2,13 @@
   "_schema": "1.0",
   "_notes": [
     "Reports are longer-form, comprehensive reference documents",
-    "category: government | industry | academia â used for the category filter",
-    "featured: true on the single most recent/prominent report â renders as the hero card",
+    "category: government | industry | academia Ã¢ÂÂ used for the category filter",
+    "featured: true on the single most recent/prominent report Ã¢ÂÂ renders as the hero card",
     "pages: approximate page count"
   ],
   "entries": [
     {
-      "placeholder": true,
+      "placeholder": false,
       "id": "ethical-analysis-of-normothermic-regional-perfusion-nrp-2023",
       "title": "Ethical Analysis of Normothermic Regional Perfusion (NRP) ",
       "subtitle": "",
@@ -23,7 +23,7 @@
       "original_url": "https://www.hrsa.gov/optn/policies-bylaws/public-comment/ethical-analysis-of-normothermic-regional-perfusion",
       "doi": null,
       "venue_type": "report",
-      "abstract": "This paper outlines the ethical principles relevant for review of the new medical transplant procedure, normothermic regional perfusion (NRP). NRP is a new technology that has potential to increase the number of transplantable organs, but it is important to ensure that the donation procedures are transparent and ethical.\n\nNRP involves using a machine to pass blood through organs in a person’s body after the heart has irreversibly stopped beating. Vessels are clamped during this procedure to prevent blood flow to the brain.\n\nAs a surgical procedure NRP shows a positive impact on utility by reducing non-use of organs without negatively impacting patient outcomes. However, the fact that NRP involves recirculation after declaration of death by circulatory criteria raises concerns about compliance with the Dead Donor Rule and nonmaleficence (do no harm). To uphold the ethical principle of respect for persons, the Ethics Committee considers that informed consent procedures should be thorough and include information about the unique and relevant aspects of NRP. Uncontrolled scenarios (as explained, in detail, in the white paper) for NRP raise serious concerns for respect for persons and hastily moving from therapeutic treatment to organ recovery.",
+      "abstract": "This paper outlines the ethical principles relevant for review of the new medical transplant procedure, normothermic regional perfusion (NRP). NRP is a new technology that has potential to increase the number of transplantable organs, but it is important to ensure that the donation procedures are transparent and ethical.\n\nNRP involves using a machine to pass blood through organs in a personâs body after the heart has irreversibly stopped beating. Vessels are clamped during this procedure to prevent blood flow to the brain.\n\nAs a surgical procedure NRP shows a positive impact on utility by reducing non-use of organs without negatively impacting patient outcomes. However, the fact that NRP involves recirculation after declaration of death by circulatory criteria raises concerns about compliance with the Dead Donor Rule and nonmaleficence (do no harm). To uphold the ethical principle of respect for persons, the Ethics Committee considers that informed consent procedures should be thorough and include information about the unique and relevant aspects of NRP. Uncontrolled scenarios (as explained, in detail, in the white paper) for NRP raise serious concerns for respect for persons and hastily moving from therapeutic treatment to organ recovery.",
       "preview": null,
       "body": null
     },
@@ -54,7 +54,7 @@
       "document_url": null,
       "doi": null,
       "venue_type": null,
-      "abstract": "This report surveys the Federal Trade Commission's enforcement and rulemaking activity on algorithmic systems over the 2023â2025 period. It catalogs enforcement actions, maps the policy statements and workshop outputs that defined the agency's agenda, and assesses which initiatives are likely to survive the current administration transition.",
+      "abstract": "This report surveys the Federal Trade Commission's enforcement and rulemaking activity on algorithmic systems over the 2023Ã¢ÂÂ2025 period. It catalogs enforcement actions, maps the policy statements and workshop outputs that defined the agency's agenda, and assesses which initiatives are likely to survive the current administration transition.",
       "preview": null,
       "body": null
     },
@@ -87,7 +87,7 @@
       "document_url": null,
       "doi": null,
       "venue_type": "report",
-      "abstract": "The EU's Digital Markets Act completed its first year of active enforcement in 2024. This report evaluates the Commission's first year of enforcement activity â gatekeeper designations, interoperability rulings, and compliance investigations â and draws structured lessons for U.S. legislators and antitrust enforcers considering comparable regulation.",
+      "abstract": "The EU's Digital Markets Act completed its first year of active enforcement in 2024. This report evaluates the Commission's first year of enforcement activity Ã¢ÂÂ gatekeeper designations, interoperability rulings, and compliance investigations Ã¢ÂÂ and draws structured lessons for U.S. legislators and antitrust enforcers considering comparable regulation.",
       "preview": "The European Commission's assessment of the DMA's first year: gatekeeper designations, early enforcement patterns, and the compliance challenges that reveal where the regulation's design assumptions have held up and where they haven't.",
       "body": null
     },
@@ -118,7 +118,7 @@
       "document_url": null,
       "doi": null,
       "venue_type": null,
-      "abstract": "In 2024, more than 40 states introduced legislation touching on artificial intelligence. This report catalogs that legislation, maps the topical clusters â employment, consumer protection, public sector use, generative AI â and identifies the model bills most likely to shape legislative activity in 2025.",
+      "abstract": "In 2024, more than 40 states introduced legislation touching on artificial intelligence. This report catalogs that legislation, maps the topical clusters Ã¢ÂÂ employment, consumer protection, public sector use, generative AI Ã¢ÂÂ and identifies the model bills most likely to shape legislative activity in 2025.",
       "preview": null,
       "body": null
     },
@@ -150,8 +150,8 @@
       "document_url": null,
       "doi": null,
       "venue_type": "report",
-      "abstract": "This report maps the current regulatory exposure of the major foundation model providers â including obligations under the EU AI Act, U.S. executive orders, and pending state legislation â and analyzes how the compliance landscape differs by provider size, deployment context, and jurisdiction.",
-      "preview": "RAND's mapping of the regulatory exposure facing major foundation model providers across the EU AI Act, U.S. executive orders, and state legislation â a useful compliance landscape survey for developers and deployers.",
+      "abstract": "This report maps the current regulatory exposure of the major foundation model providers Ã¢ÂÂ including obligations under the EU AI Act, U.S. executive orders, and pending state legislation Ã¢ÂÂ and analyzes how the compliance landscape differs by provider size, deployment context, and jurisdiction.",
+      "preview": "RAND's mapping of the regulatory exposure facing major foundation model providers across the EU AI Act, U.S. executive orders, and state legislation Ã¢ÂÂ a useful compliance landscape survey for developers and deployers.",
       "body": null
     }
   ]
