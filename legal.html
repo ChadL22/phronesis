@@ -201,29 +201,7 @@
     </div>
   </div>
 
-  <!-- data -->
-  <div id="legal-data" style="display:none;">
-    <div data-type="doctrinal" data-topic="first-amendment" data-origin="original" data-date="Jan 2025"
-         data-title="Section 230 After NetChoice: What the Court Left Unsaid"
-         data-subtitle="A close reading of the 2024 NetChoice opinions, the doctrinal questions they resolved, and the larger questions they deliberately avoided."
-         data-origin-label="Original"></div>
-    <div data-type="doctrinal" data-topic="first-amendment" data-origin="original" data-date="Feb 2025"
-         data-title="Compelled Speech and Algorithmic Curation After Moody v. NetChoice"
-         data-subtitle="Examines whether must-carry and must-not-carry obligations on platforms constitute compelled speech under the First Amendment as clarified by Moody."
-         data-origin-label="Original"></div>
-    <div data-type="case" data-topic="antitrust" data-origin="via" data-date="Dec 2024"
-         data-title="FTC v. Amazon: What the Complaint Reveals About Modern Monopolization Theory"
-         data-subtitle="An analysis of the FTC's Amazon complaint as a window into how enforcement agencies are attempting to modernize Sherman Act Section 2 doctrine."
-         data-origin-label="Via FTC"></div>
-    <div data-type="regulatory" data-topic="administrative" data-origin="original" data-date="Nov 2024"
-         data-title="Loper Bright and the Future of FCC Rulemaking Authority"
-         data-subtitle="Traces the implications of the Court's Chevron overruling for the FCC's ability to promulgate broadband and platform regulations."
-         data-origin-label="Original"></div>
-    <div data-type="litigation" data-topic="ip" data-origin="via" data-date="Oct 2024"
-         data-title="Copyright and the Training Data Question: Where Courts Are Headed"
-         data-subtitle="Surveys pending litigation over AI training data and sketches the likely doctrinal paths courts will take to resolve the fair use question."
-         data-origin-label="Via Harvard Law Review"></div>
-  </div>
+  <!-- data loaded from /content/legal.json -->
 
   <!-- rendered views -->
   <div class="archive" id="legal-list-view"></div>
@@ -236,17 +214,46 @@
   </footer>
   <div class="footer-bottom"><p>&copy; 2025 Phronesis Research. Independent &amp; non-partisan.</p><span class="phronesis-greek">&#x03C6;&#x03C1;&#x03CC;&#x03BD;&#x03B7;&#x03C3;&#x03B9;&#x03C2;</span></div>
   <script>
-    const legalItems = Array.from(document.querySelectorAll('#legal-data > div'));
+    const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    function fmtDate(s) { if (!s) return ''; const d = new Date(s+'T00:00:00'); return MONTHS[d.getMonth()]+' '+d.getFullYear(); }
+
+    let legalItems = [];
     let lActiveType   = 'all';
     let lActiveTopic  = 'all';
     let lActiveOrigin = 'all';
     let lActiveView   = 'list';
 
+    async function loadData() {
+      try {
+        const res = await fetch('/content/legal.json');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const json = await res.json();
+        legalItems = (json.entries || [])
+          .filter(e => !e.placeholder)
+          .map(e => ({
+            type:        e.analysis_type || 'doctrinal',
+            topic:       e.primary_topic || 'general',
+            origin:      e.origin,
+            originLabel: e.origin === 'original' ? 'Original' : 'Via ' + e.publisher,
+            date:        fmtDate(e.date),
+            title:       e.title || '',
+            subtitle:    e.subtitle || e.abstract || '',
+            original_url: e.original_url || null,
+            document_url: e.document_url || null,
+          }));
+      } catch(err) {
+        console.error('Could not load legal.json:', err);
+        document.getElementById('legal-list-view').innerHTML = '<p class="legal-empty">Could not load content.</p>';
+        return;
+      }
+      lRender();
+    }
+
     function lVisible() {
-      return legalItems.filter(el =>
-        (lActiveType   === 'all' || el.dataset.type   === lActiveType)  &&
-        (lActiveTopic  === 'all' || el.dataset.topic  === lActiveTopic) &&
-        (lActiveOrigin === 'all' || el.dataset.origin === lActiveOrigin)
+      return legalItems.filter(e =>
+        (lActiveType   === 'all' || e.type   === lActiveType)  &&
+        (lActiveTopic  === 'all' || e.topic  === lActiveTopic) &&
+        (lActiveOrigin === 'all' || e.origin === lActiveOrigin)
       );
     }
 
@@ -256,27 +263,29 @@
       return null;
     }
 
+    function capitalize(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : ''; }
+    function titleCase(s) { return (s||'').replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase()); }
+
     function lRenderList() {
       const lv = document.getElementById('legal-list-view');
       const visible = lVisible();
       if (!visible.length) { lv.innerHTML = '<p class="legal-empty">No items match the current filters.</p>'; return; }
-      lv.innerHTML = visible.map((el, i) => {
-        const d = el.dataset;
-        const link = lResolveLink(d);
+      lv.innerHTML = visible.map((e, i) => {
+        const link = lResolveLink(e);
         const isLast = i === visible.length - 1;
         const titleEl = link
-          ? `<a href="${link.url}"${link.external?' target="_blank" rel="noopener"':''} class="archive-title" style="color:inherit;">${d.title}</a>`
-          : `<div class="archive-title">${d.title}</div>`;
+          ? `<a href="${link.url}"${link.external?' target="_blank" rel="noopener"':''} class="archive-title" style="color:inherit;">${e.title}</a>`
+          : `<div class="archive-title">${e.title}</div>`;
         return `<div class="archive-list-item" style="${isLast ? 'border-bottom:1px solid var(--rule);' : ''}">
-          <div class="archive-date">${d.date}</div>
+          <div class="archive-date">${e.date}</div>
           <div>
             ${titleEl}
-            <span class="origin-badge origin-badge--${d.origin}">${d.originLabel}</span>
-            <div class="archive-subtitle">${d.subtitle}</div>
+            <span class="origin-badge origin-badge--${e.origin}">${e.originLabel}</span>
+            <div class="archive-subtitle">${e.subtitle}</div>
           </div>
           <div class="archive-tags">
-            <span class="archive-tag">${d.type.charAt(0).toUpperCase() + d.type.slice(1)}</span>
-            <span class="archive-tag archive-tag--topic">${d.topic.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase())}</span>
+            <span class="archive-tag">${capitalize(e.type)}</span>
+            <span class="archive-tag archive-tag--topic">${titleCase(e.topic)}</span>
           </div>
         </div>`;
       }).join('');
@@ -288,23 +297,22 @@
       if (!visible.length) { cv.innerHTML = '<p class="legal-empty">No items match the current filters.</p>'; return; }
       const grid = document.createElement('div');
       grid.className = 'legal-card-grid';
-      visible.forEach(el => {
-        const d = el.dataset;
-        const link = lResolveLink(d);
+      visible.forEach(e => {
+        const link = lResolveLink(e);
         const card = document.createElement(link ? 'a' : 'div');
         card.className = 'legal-card';
         if (link) { card.href = link.url; if (link.external) { card.target = '_blank'; card.rel = 'noopener'; } }
         card.innerHTML = `
           <div class="legal-card-eyebrow">
-            <span class="archive-tag">${d.type.charAt(0).toUpperCase() + d.type.slice(1)}</span>
-            <span class="archive-tag archive-tag--topic">${d.topic.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase())}</span>
+            <span class="archive-tag">${capitalize(e.type)}</span>
+            <span class="archive-tag archive-tag--topic">${titleCase(e.topic)}</span>
           </div>
-          <h3 class="serif">${d.title}</h3>
-          <p>${d.subtitle}</p>
+          <h3 class="serif">${e.title}</h3>
+          <p>${e.subtitle}</p>
           <div class="legal-card-footer">
             <div class="legal-card-footer-left">
-              <span class="legal-card-date">${d.date}</span>
-              <span class="origin-badge origin-badge--${d.origin}">${d.originLabel}</span>
+              <span class="legal-card-date">${e.date}</span>
+              <span class="origin-badge origin-badge--${e.origin}">${e.originLabel}</span>
             </div>
             ${link ? '<span class="legal-card-read">Read</span>' : ''}
           </div>`;
@@ -381,7 +389,7 @@
       lRender();
     });
 
-    lRender();
+    loadData();
   </script>
   <script src="chat.js" defer></script>
   <script>

@@ -410,25 +410,7 @@
     </div>
   </div>
 
-  <!-- data source (hidden) -->
-  <div id="policy-data" style="display:none;">
-    <div data-level="federal" data-type="proposal" data-date="Feb 2025"
-         data-title="A Federal AI Incident Reporting Framework"
-         data-subtitle="Drawing from aviation and nuclear safety models, a concrete proposal for mandatory AI incident disclosure requirements at the federal level."
-         data-origin="original" data-origin-label="Original"></div>
-    <div data-level="federal" data-type="memo" data-date="Jan 2025"
-         data-title="Procurement as Policy: How Federal Contracting Could Shape Responsible AI"
-         data-subtitle="A framework for using federal procurement power to establish baseline AI safety and accountability requirements before broader legislation passes."
-         data-origin="via" data-origin-label="Via Brookings"></div>
-    <div data-level="state" data-type="policy" data-date="Nov 2024"
-         data-title="Model Algorithmic Impact Assessment Standards for State Agencies"
-         data-subtitle="Draft standards for how state governments should evaluate automated decision systems before deployment in public services."
-         data-origin="original" data-origin-label="Original"></div>
-    <div data-level="international" data-type="proposal" data-date="Oct 2024"
-         data-title="Transatlantic AI Governance: A Framework for U.S.-EU Regulatory Cooperation"
-         data-subtitle="Proposes a bilateral coordination mechanism to reduce compliance friction and establish shared standards across the Atlantic AI governance divide."
-         data-origin="via" data-origin-label="Via CSIS"></div>
-  </div>
+  <!-- data loaded from /content/policy.json -->
 
   <!-- rendered views -->
   <div class="archive" id="policy-card-view"></div>
@@ -564,17 +546,46 @@
     });
 
     // ── POLICY VIEWS ──
-    const policyItems = Array.from(document.querySelectorAll('#policy-data > div'));
+    const MONTHS_P = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    function fmtDateP(s) { if (!s) return ''; const d = new Date(s+'T00:00:00'); return MONTHS_P[d.getMonth()]+' '+d.getFullYear(); }
+
+    let policyItems = [];
     let pActiveLevel  = 'all';
     let pActiveType   = 'all';
     let pActiveOrigin = 'all';
     let pActiveView   = 'cards';
 
+    async function loadPolicyData() {
+      try {
+        const res = await fetch('/content/policy.json');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const json = await res.json();
+        policyItems = (json.entries || [])
+          .filter(e => !e.placeholder)
+          .map(e => ({
+            level:        e.level || e.audience || 'federal',
+            type:         e.document_type || 'proposal',
+            origin:       e.origin,
+            originLabel:  e.origin === 'original' ? 'Original' : 'Via ' + e.publisher,
+            date:         fmtDateP(e.date),
+            title:        e.title || '',
+            subtitle:     e.subtitle || e.abstract || '',
+            original_url: e.original_url || null,
+            document_url: e.document_url || null,
+          }));
+      } catch(err) {
+        console.error('Could not load policy.json:', err);
+        document.getElementById('policy-card-view').innerHTML = '<p class="policy-empty">Could not load content.</p>';
+        return;
+      }
+      pRender();
+    }
+
     function pVisible() {
-      return policyItems.filter(el => {
-        const lm = pActiveLevel  === 'all' || el.dataset.level   === pActiveLevel;
-        const tm = pActiveType   === 'all' || el.dataset.type    === pActiveType;
-        const om = pActiveOrigin === 'all' || el.dataset.origin  === pActiveOrigin;
+      return policyItems.filter(e => {
+        const lm = pActiveLevel  === 'all' || e.level  === pActiveLevel;
+        const tm = pActiveType   === 'all' || e.type   === pActiveType;
+        const om = pActiveOrigin === 'all' || e.origin === pActiveOrigin;
         return lm && tm && om;
       });
     }
@@ -598,23 +609,22 @@
       }
       const grid = document.createElement('div');
       grid.className = 'policy-card-grid';
-      visible.forEach(el => {
-        const d = el.dataset;
-        const link = pResolveLink(d);
+      visible.forEach(e => {
+        const link = pResolveLink(e);
         const card = document.createElement(link ? 'a' : 'div');
         card.className = 'policy-card';
         if (link) { card.href = link.url; if (link.external) { card.target = '_blank'; card.rel = 'noopener'; } }
         card.innerHTML = `
           <div class="policy-card-eyebrow">
-            <span class="policy-card-type">${d.type}</span>
-            <span class="policy-card-level">${d.level}</span>
+            <span class="policy-card-type">${e.type}</span>
+            <span class="policy-card-level">${e.level}</span>
           </div>
-          <h3 class="serif">${d.title}</h3>
-          <p>${d.subtitle}</p>
+          <h3 class="serif">${e.title}</h3>
+          <p>${e.subtitle}</p>
           <div class="policy-card-footer">
             <div class="policy-card-footer-left">
-              <span class="policy-card-date">${d.date}</span>
-              ${badgeHTML(d.origin, d.originLabel)}
+              <span class="policy-card-date">${e.date}</span>
+              ${badgeHTML(e.origin, e.originLabel)}
             </div>
             ${link ? '<span class="policy-card-read">Read</span>' : ''}
           </div>`;
@@ -643,19 +653,18 @@
         </div>
         <div class="policy-list-scroll" id="policy-list-scroll"></div>`;
       const scroll = wrap.querySelector('#policy-list-scroll');
-      visible.forEach(el => {
-        const d = el.dataset;
+      visible.forEach(e => {
         const row = document.createElement('div');
         row.className = 'policy-list-row';
-        const pLink = pResolveLink(d);
+        const pLink = pResolveLink(e);
         row.innerHTML = `
-          <span class="policy-list-date">${d.date}</span>
+          <span class="policy-list-date">${e.date}</span>
           <div>
-            <div class="policy-list-title">${d.title}</div>
-            <div class="policy-list-subtitle">${d.subtitle}</div>
+            <div class="policy-list-title">${e.title}</div>
+            <div class="policy-list-subtitle">${e.subtitle}</div>
           </div>
-          <span class="policy-list-level">${d.level}</span>
-          <span class="policy-list-badge">${badgeHTML(d.origin, d.originLabel)}</span>
+          <span class="policy-list-level">${e.level}</span>
+          <span class="policy-list-badge">${badgeHTML(e.origin, e.originLabel)}</span>
           ${pLink ? `<a href="${pLink.url}"${pLink.external?' target="_blank" rel="noopener"':''} class="policy-list-link">Read →</a>` : '<span></span>'}`;
         scroll.appendChild(row);
       });
@@ -712,7 +721,7 @@
       });
     });
 
-    pRender(); // init
+    loadPolicyData(); // init
 
     // search
     document.getElementById('tracker-search').addEventListener('input', function() {

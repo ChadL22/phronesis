@@ -300,29 +300,7 @@
     </div>
   </div>
 
-  <!-- ── DATA STORE ── -->
-  <div id="rpt-data" style="display:none;">
-    <div data-year="2025" data-type="government" data-date="Mar 2025" data-month="3"
-         data-title="The FTC&#39;s Algorithmic Accountability Agenda: A Two-Year Review"
-         data-desc="A comprehensive review of FTC enforcement actions, policy statements, and rulemaking initiatives related to algorithmic systems from 2023 to 2025."
-         data-origin="original" data-origin-label="Original"
-         data-pages="48" data-featured="true"></div>
-    <div data-year="2025" data-type="government" data-date="Jan 2025" data-month="1"
-         data-title="Digital Markets Act at One Year: Lessons for U.S. Competition Policy"
-         data-desc="Evaluates the DMA&#39;s first year of enforcement and draws concrete lessons for U.S. policymakers considering analogous legislation."
-         data-origin="via" data-origin-label="Via European Commission"
-         data-pages="36" data-featured="false"></div>
-    <div data-year="2024" data-type="academia" data-date="Dec 2024" data-month="12"
-         data-title="State AI Legislation Tracker: 2024 Year in Review"
-         data-desc="Surveys AI-related legislation introduced and passed across all 50 states in 2024, identifying trends, model bills, and areas of regulatory divergence."
-         data-origin="original" data-origin-label="Original"
-         data-pages="62" data-featured="false"></div>
-    <div data-year="2024" data-type="industry" data-date="Oct 2024" data-month="10"
-         data-title="Foundation Model Providers and the Regulatory Landscape: An Industry Overview"
-         data-desc="Maps the current regulatory exposure of major foundation model providers across jurisdictions, including the EU AI Act, U.S. executive orders, and pending state legislation."
-         data-origin="via" data-origin-label="Via RAND Corporation"
-         data-pages="44" data-featured="false"></div>
-  </div>
+  <!-- data loaded from /content/reports.json -->
 
   <!-- ── FEATURED ── -->
   <div class="rpt-featured-wrap" id="rpt-featured-wrap"></div>
@@ -353,22 +331,55 @@
     document.addEventListener('click', () => { t.classList.remove('is-open'); m.classList.remove('is-open'); });
 
     // ── state ──
-    const allReports = Array.from(document.querySelectorAll('#rpt-data > div'));
+    const MONTHS_R = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    function fmtDateR(s) { if (!s) return ''; const d = new Date(s+'T00:00:00'); return MONTHS_R[d.getMonth()]+' '+d.getFullYear(); }
+
+    let allReports = [];
     let activeYear   = 'all';
     let activeType   = 'all';
     let activeOrigin = 'all';
     let activeView   = 'cards';
     let searchQuery  = '';
 
+    async function loadReportData() {
+      try {
+        const res = await fetch('/content/reports.json');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const json = await res.json();
+        allReports = (json.entries || [])
+          .filter(e => !e.placeholder)
+          .map(e => {
+            const d = new Date((e.date||'2024-01-01')+'T00:00:00');
+            return {
+              year:        String(d.getFullYear()),
+              type:        e.category || 'government',
+              date:        fmtDateR(e.date),
+              title:       e.title || '',
+              desc:        e.subtitle || e.abstract || '',
+              origin:      e.origin,
+              originLabel: e.origin === 'original' ? 'Original' : 'Via ' + e.publisher,
+              pages:       e.pages || '—',
+              featured:    e.featured === true,
+              original_url: e.original_url || null,
+              document_url: e.document_url || null,
+            };
+          });
+      } catch(err) {
+        console.error('Could not load reports.json:', err);
+        document.getElementById('rpt-card-view').innerHTML = '<p class="rpt-empty">Could not load content.</p>';
+        return;
+      }
+      render();
+    }
+
     function visible() {
-      return allReports.filter(el => {
-        if (activeYear   !== 'all' && el.dataset.year   !== activeYear)   return false;
-        if (activeType   !== 'all' && el.dataset.type   !== activeType)   return false;
-        if (activeOrigin !== 'all' && el.dataset.origin !== activeOrigin) return false;
+      return allReports.filter(e => {
+        if (activeYear   !== 'all' && e.year   !== activeYear)   return false;
+        if (activeType   !== 'all' && e.type   !== activeType)   return false;
+        if (activeOrigin !== 'all' && e.origin !== activeOrigin) return false;
         if (searchQuery) {
           const q = searchQuery.toLowerCase();
-          if (!el.dataset.title.toLowerCase().includes(q) &&
-              !el.dataset.desc.toLowerCase().includes(q)) return false;
+          if (!e.title.toLowerCase().includes(q) && !e.desc.toLowerCase().includes(q)) return false;
         }
         return true;
       });
@@ -388,9 +399,9 @@
     // ── featured ──
     function renderFeatured() {
       const wrap = document.getElementById('rpt-featured-wrap');
-      const feat = allReports.find(el => el.dataset.featured === 'true');
+      const feat = allReports.find(e => e.featured === true);
       if (!feat) { wrap.innerHTML = ''; return; }
-      const d = feat.dataset;
+      const d = feat;
       const typeLabel = d.type.charAt(0).toUpperCase() + d.type.slice(1);
       const fLink = rptResolveLink(d);
       const featTag = fLink ? 'a' : 'div';
@@ -426,12 +437,12 @@
     // ── card view ──
     function renderCards() {
       const cv = document.getElementById('rpt-card-view');
-      const items = visible().filter(el => el.dataset.featured !== 'true');
+      const items = visible().filter(e => !e.featured);
       if (!items.length) { cv.innerHTML = '<p class="rpt-empty">No reports match the current filters.</p>'; return; }
       const grid = document.createElement('div');
       grid.className = 'rpt-card-grid';
-      items.forEach(el => {
-        const d = el.dataset;
+      items.forEach(e => {
+        const d = e;
         const typeLabel = d.type.charAt(0).toUpperCase() + d.type.slice(1);
         const rLink = rptResolveLink(d);
         const card = document.createElement(rLink ? 'a' : 'div');
@@ -466,24 +477,23 @@
       const items = visible();
       if (!items.length) { lv.innerHTML = '<p class="rpt-empty">No reports match the current filters.</p>'; return; }
       const years = {};
-      items.forEach(el => {
-        const yr = el.dataset.year;
-        if (!years[yr]) years[yr] = [];
-        years[yr].push(el);
+      items.forEach(e => {
+        if (!years[e.year]) years[e.year] = [];
+        years[e.year].push(e);
       });
       lv.innerHTML = Object.keys(years).sort((a,b) => b - a).map(yr => {
-        const rows = years[yr].map(el => {
-          const d = el.dataset;
-          const typeLabel = d.type.charAt(0).toUpperCase() + d.type.slice(1);
+        const rows = years[yr].map(e => {
+          const typeLabel = e.type.charAt(0).toUpperCase() + e.type.slice(1);
+          const rl = rptResolveLink(e);
           return `<div class="rpt-list-row">
-            <span class="rpt-list-date">${d.date}</span>
+            <span class="rpt-list-date">${e.date}</span>
             <div>
-              <div class="rpt-list-title">${d.title}</div>
-              <div class="rpt-list-desc">${d.desc}</div>
+              <div class="rpt-list-title">${e.title}</div>
+              <div class="rpt-list-desc">${e.desc}</div>
             </div>
             <span class="rpt-list-type">${typeLabel}</span>
-            <span class="rpt-list-pages">${d.pages}&thinsp;pp. &middot; <span class="origin-badge origin-badge--${d.origin}">${d.originLabel}</span></span>
-            ${(() => { const rl = rptResolveLink(d); return rl ? `<a href="${rl.url}"${rl.external?' target="_blank" rel="noopener"':''} class="rpt-list-link">Read →</a>` : '<span></span>'; })()}
+            <span class="rpt-list-pages">${e.pages}&thinsp;pp. &middot; <span class="origin-badge origin-badge--${e.origin}">${e.originLabel}</span></span>
+            ${rl ? `<a href="${rl.url}"${rl.external?' target="_blank" rel="noopener"':''} class="rpt-list-link">Read →</a>` : '<span></span>'}
           </div>`;
         }).join('');
         return `<div class="rpt-year-group"><div class="rpt-year-heading">${yr}</div>${rows}</div>`;
@@ -502,8 +512,7 @@
         document.getElementById('rpt-list-view').style.display = '';
         renderList();
       }
-      // show/hide archive header
-      const archiveItems = visible().filter(el => el.dataset.featured !== 'true');
+      const archiveItems = visible().filter(e => !e.featured);
       document.getElementById('rpt-archive-label').textContent =
         archiveItems.length + ' more report' + (archiveItems.length === 1 ? '' : 's') + ' in archive';
       updateCount();
@@ -551,7 +560,7 @@
       render();
     });
 
-    render();
+    loadReportData();
   </script>
 </body>
 </html>

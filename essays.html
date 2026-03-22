@@ -400,27 +400,7 @@
     <div class="pagination" id="pagination"></div>
   </div>
 
-  <!-- data -->
-  <div id="essay-data" style="display:none;">
-    <div data-topic="governance" data-origin="original" data-date="Feb 2025" data-origin-label="Original"
-         data-title='Why &ldquo;AI Safety&rdquo; and &ldquo;AI Regulation&rdquo; Are Not the Same Conversation'
-         data-excerpt="The conflation of technical safety research with policy regulation has muddied both fields. They share concerns but operate on different timescales, with different tools, and for different audiences. Technical AI safety asks: how do we build systems that reliably do what we intend? AI regulation asks: who bears responsibility when they don&rsquo;t? These are related but distinct projects, and treating them as identical has real costs for how we allocate attention, assign institutional responsibility, and govern a technology we do not yet fully understand."></div>
-    <div data-topic="law" data-origin="via" data-date="Jan 2025" data-origin-label="Via The Atlantic"
-         data-title='The Problem with &ldquo;Technology-Neutral&rdquo; Legal Frameworks'
-         data-excerpt="Regulators and courts often aspire to write technology-neutral rules, believing that the law should describe conduct rather than tools. The argument here is that this aspiration, while understandable, frequently produces worse outcomes than honest technology-specific reasoning. When the underlying technology structures the nature of the harm, pretending otherwise in the legal framework doesn&rsquo;t produce neutrality &mdash; it produces confusion."></div>
-    <div data-topic="society" data-origin="original" data-date="Dec 2024" data-origin-label="Original"
-         data-title='On the Poverty of &ldquo;Move Fast and Fix It Later&rdquo; as Governance Philosophy'
-         data-excerpt="A critique of the regulatory philosophy that treats market deployment as the primary mechanism for identifying harm. The populations this approach systematically disadvantages are not random &mdash; they are the ones least positioned to exit the market, least likely to be heard in retrospective processes, and most exposed to the harms that deployment surfaces. Speed has costs that are not borne equally."></div>
-    <div data-topic="technology" data-origin="via" data-date="Nov 2024" data-origin-label="Via Wired"
-         data-title="What Open Source Actually Means in the Context of AI Models"
-         data-excerpt="The word &ldquo;open&rdquo; is doing enormous work in AI policy debates, often without examination. Releasing model weights is not the same as releasing training data. Releasing training data is not the same as releasing architecture decisions. This essay tries to disaggregate the term and ask which version of openness actually matters for accountability, for access, and for the kind of public oversight that motivated open source as a principle in the first place."></div>
-    <div data-topic="governance" data-origin="original" data-date="Oct 2024" data-origin-label="Original"
-         data-title="The Institutional Gap in AI Governance"
-         data-excerpt="Existing regulatory institutions were not designed for general-purpose technologies that operate across every sector simultaneously. The question is not just what rules we need, but what kinds of institutions can credibly enforce them, accumulate the expertise to understand what they are regulating, and adapt fast enough to remain relevant."></div>
-    <div data-topic="law" data-origin="original" data-date="Sep 2024" data-origin-label="Original"
-         data-title="Liability Without Causation: The Challenge of Algorithmic Harm"
-         data-excerpt="Traditional tort doctrine requires a clear causal chain between conduct and harm. Algorithmic systems fracture that chain into statistical correlations, distributed decision-making, and emergent behavior that no single actor chose or foresaw. This essay asks what a liability framework that can handle these properties would actually need to look like."></div>
-  </div>
+  <!-- data loaded from /content/essays.json -->
 
   <section class="newsletter-band" style="margin-top:0;">
     <div class="newsletter-inner">
@@ -443,28 +423,55 @@
     document.addEventListener('click', () => { navT.classList.remove('is-open'); navM.classList.remove('is-open'); });
 
     // ── STATE ──
-    const allEssays = Array.from(document.querySelectorAll('#essay-data > div'));
+    const MONTHS_E = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    function fmtDateE(s) { if (!s) return ''; const d = new Date(s+'T00:00:00'); return MONTHS_E[d.getMonth()]+' '+d.getFullYear(); }
+
+    let allEssays = [];
     let eTopic    = 'all';
     let eOrigin   = 'all';
     let activeIdx = 0;
-    let eView     = 'spotlight'; // 'spotlight' | 'grid'
+    let eView     = 'spotlight';
 
-    // grid state
     const PER_PAGE = 6;
-    let gPage      = 1;
-    let gQuery     = '';
+    let gPage = 1;
+    let gQuery = '';
+
+    async function loadData() {
+      try {
+        const res = await fetch('/content/essays.json');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const json = await res.json();
+        allEssays = (json.entries || [])
+          .filter(e => !e.placeholder)
+          .map(e => ({
+            topic:        e.category || 'governance',
+            origin:       e.origin,
+            originLabel:  e.origin === 'original' ? 'Original' : 'Via ' + e.publisher,
+            date:         fmtDateE(e.date),
+            title:        e.title || '',
+            excerpt:      e.excerpt || e.abstract || '',
+            original_url: e.original_url || null,
+            document_url: e.document_url || null,
+          }));
+      } catch(err) {
+        console.error('Could not load essays.json:', err);
+        return;
+      }
+      buildCarousel();
+      renderSpotlight(0);
+    }
 
     function visible() {
-      return allEssays.filter(el =>
-        (eTopic  === 'all' || el.dataset.topic  === eTopic) &&
-        (eOrigin === 'all' || el.dataset.origin === eOrigin)
+      return allEssays.filter(e =>
+        (eTopic  === 'all' || e.topic  === eTopic) &&
+        (eOrigin === 'all' || e.origin === eOrigin)
       );
     }
     function gridFiltered() {
-      return visible().filter(el => {
+      return visible().filter(e => {
         if (!gQuery) return true;
         const q = gQuery.toLowerCase();
-        return el.dataset.title.toLowerCase().includes(q) || el.dataset.excerpt.toLowerCase().includes(q);
+        return e.title.toLowerCase().includes(q) || e.excerpt.toLowerCase().includes(q);
       });
     }
 
@@ -473,10 +480,10 @@
       const items = visible();
       if (!items.length) return;
       activeIdx = Math.max(0, Math.min(idx, items.length - 1));
-      const d = items[activeIdx].dataset;
+      const d = items[activeIdx];
 
-      const sLink = (d.origin === 'via' && d.originalUrl) ? d.originalUrl
-                     : (d.origin === 'original' && d.documentUrl) ? d.documentUrl : null;
+      const sLink = (d.origin === 'via' && d.original_url) ? d.original_url
+                     : (d.origin === 'original' && d.document_url) ? d.document_url : null;
       document.getElementById('spotlight-essay').innerHTML = `
         <div class="spotlight-eyebrow">
           <span class="essay-tag">${d.topic}</span>
@@ -493,7 +500,6 @@
       document.getElementById('spot-next').disabled = activeIdx === items.length - 1;
       document.getElementById('spot-pos').textContent = `${activeIdx + 1} of ${items.length}`;
 
-      // sync carousel active thumb
       document.querySelectorAll('.essay-thumb').forEach(th =>
         th.classList.toggle('active', parseInt(th.dataset.idx) === activeIdx)
       );
@@ -518,15 +524,14 @@
         return;
       }
 
-      track.innerHTML = items.map((el, i) => {
-        const d = el.dataset;
+      track.innerHTML = items.map((e, i) => {
         return `<div class="essay-thumb${i === activeIdx ? ' active' : ''}" data-idx="${i}">
           <div class="essay-thumb-eyebrow">
-            <span class="essay-tag">${d.topic}</span>
-            <span class="origin-badge origin-badge--${d.origin}">${d.originLabel}</span>
+            <span class="essay-tag">${e.topic}</span>
+            <span class="origin-badge origin-badge--${e.origin}">${e.originLabel}</span>
           </div>
-          <h3>${d.title}</h3>
-          <span class="essay-thumb-date">${d.date}</span>
+          <h3>${e.title}</h3>
+          <span class="essay-thumb-date">${e.date}</span>
         </div>`;
       }).join('');
 
@@ -639,22 +644,21 @@
       const grid = document.getElementById('essay-grid');
       if (!slice.length) { grid.innerHTML = ''; renderPagination(0, 1); return; }
 
-      grid.innerHTML = slice.map(el => {
-        const d = el.dataset;
-        const eLink = (d.origin === 'via' && d.originalUrl) ? d.originalUrl
-                    : (d.origin === 'original' && d.documentUrl) ? d.documentUrl : null;
+      grid.innerHTML = slice.map(e => {
+        const eLink = (e.origin === 'via' && e.original_url) ? e.original_url
+                    : (e.origin === 'original' && e.document_url) ? e.document_url : null;
         const tag   = eLink ? 'a' : 'div';
-        const attrs = eLink ? ` href="${eLink}"${d.origin==='via'?' target="_blank" rel="noopener"':''}` : '';
+        const attrs = eLink ? ` href="${eLink}"${e.origin==='via'?' target="_blank" rel="noopener"':''}` : '';
         return `<${tag} class="essay-card"${attrs}>
           <div class="essay-card-eyebrow">
-            <span class="essay-tag">${d.topic}</span>
-            <span class="origin-badge origin-badge--${d.origin}">${d.originLabel}</span>
+            <span class="essay-tag">${e.topic}</span>
+            <span class="origin-badge origin-badge--${e.origin}">${e.originLabel}</span>
           </div>
-          <h3 class="serif">${d.title}</h3>
-          <p class="essay-card-excerpt">${d.excerpt}</p>
+          <h3 class="serif">${e.title}</h3>
+          <p class="essay-card-excerpt">${e.excerpt}</p>
           <div class="essay-card-footer">
             <div class="essay-card-footer-left">
-              <span class="essay-card-date">${d.date}</span>
+              <span class="essay-card-date">${e.date}</span>
             </div>
             ${eLink ? '<span class="essay-card-read">Read essay</span>' : ''}
           </div>
@@ -724,7 +728,7 @@
       const email = document.getElementById('notepad-email').value.trim();
       const notes = document.getElementById('notepad-textarea').value.trim();
       const items = visible();
-      const title = items[activeIdx] ? items[activeIdx].dataset.title.replace(/&[a-z]+;/g, c => ({'&ldquo;':'"','&rdquo;':'"','&rsquo;':"'",'&mdash;':'—'}[c] || c)) : 'Essay';
+      const title = items[activeIdx] ? items[activeIdx].title : 'Essay';
       if (!email) { document.getElementById('notepad-email').focus(); return; }
       if (!notes) { document.getElementById('notepad-textarea').focus(); return; }
       const sub  = encodeURIComponent(`Notes: ${title}`);
@@ -733,8 +737,7 @@
     });
 
     // ── INIT ──
-    buildCarousel();
-    renderSpotlight(0);
+    loadData();
   </script>
 </body>
 </html>
