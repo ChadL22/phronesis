@@ -11,6 +11,27 @@
   "entries": [
 
     {
+      "placeholder": false,
+      "id": "human-capital-division-of-labor-ai-2026",
+      "title": "A Note on Human Capital, the Division of Labor, and Artificial Intelligence",
+      "subtitle": "Argues that AI has a comparative advantage in coordination tasks, which deepens human specialization rather than replacing specialists.",
+      "date": "2026-03-01",
+      "type": "research",
+      "fields": ["Economics"],
+      "tags": ["Labor Economics", "Division of Labor", "Human Capital", "AI and Work", "Specialization"],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Peter Isztin / Corvinus University of Economics",
+      "publisher_url": "https://x.com/PeterIsztin",
+      "original_url": "https://drive.google.com/file/d/18b-TlcJgaKPYPSeQtuN1d67-C0HiS6YH/view",
+      "doi": null,
+      "venue_type": "working-paper",
+      "abstract": "This paper considers the effects of generative artificial intelligence tools on the division of labor. Following Becker and Murphy (1992), the author posits a team with each member assigned to a task. Specialization is limited not only by the extent of the market, but also by coordination costs, which include the need for knowledge in multiple tasks. AI helps the coordination of the team by being a substitute for human generalist knowledge, resulting in a greater number of specialized fields. The introduction of AI also increases the return to knowledge that is equally productive in all tasks. The paper shows that AI agents would typically have a comparative advantage in coordinating specialists, while human agents perform specialist roles.",
+      "preview": null,
+      "body": null
+    },
+
+    {
       "placeholder": true,
       "id": "governing-the-stack-2025",
       "title": "Governing the Stack: Regulatory Jurisdiction in Multi-Layer AI Systems",
