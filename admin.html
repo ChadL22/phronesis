@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content Intake — Phronesis Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    /* ── ADMIN BANNER ── */
+    .admin-banner {
+      background: var(--ink); color: #EEE8DA;
+      padding: 0.5rem clamp(1.5rem, 5vw, 5rem);
+      display: flex; align-items: center; justify-content: space-between;
+      font-family: var(--sans); font-size: 0.62rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .admin-banner a { color: rgba(238,232,218,0.55); transition: color 0.2s; }
+    .admin-banner a:hover { color: #EEE8DA; }
+
+    /* ── LAYOUT ── */
+    .intake-wrap {
+      max-width: 1280px; margin: 0 auto;
+      padding: 2.5rem clamp(1.5rem, 5vw, 5rem) 5rem;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    /* ── CONTENT TYPE TABS ── */
+    .type-tabs {
+      display: flex; gap: 0; border: 1px solid var(--rule);
+      border-radius: 2px; overflow: hidden; margin-bottom: 2.5rem;
+    }
+    .type-tab {
+      flex: 1; font-family: var(--sans); font-size: 0.63rem;
+      font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--ink-3); background: var(--paper-2);
+      border: none; border-right: 1px solid var(--rule);
+      padding: 0.6rem 0.5rem; cursor: pointer; transition: all 0.18s;
+      text-align: center;
+    }
+    .type-tab:last-child { border-right: none; }
+    .type-tab:hover { color: var(--ink); background: var(--paper); }
+    .type-tab.active { background: var(--accent); color: #EEE8DA; }
+
+    /* ── FORM ── */
+    .form-section { margin-bottom: 2.2rem; }
+    .form-section-title {
+      font-family: var(--sans); font-size: 0.6rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3);
+      padding-bottom: 0.7rem; border-bottom: 1px solid var(--rule);
+      margin-bottom: 1.2rem;
+    }
+    .field-row { margin-bottom: 1.1rem; }
+    .field-row label {
+      display: block; font-family: var(--sans); font-size: 0.63rem;
+      font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--ink-2); margin-bottom: 0.4rem;
+    }
+    .field-row label span {
+      font-weight: 400; color: var(--ink-3); text-transform: none;
+      letter-spacing: 0; font-size: 0.6rem; margin-left: 0.35rem;
+    }
+    .field-input, .field-select, .field-textarea {
+      width: 100%; font-family: var(--sans); font-size: 0.82rem;
+      color: var(--ink); background: var(--paper);
+      border: 1px solid var(--rule); border-radius: 2px;
+      padding: 0.6rem 0.85rem; outline: none;
+      transition: border-color 0.18s;
+    }
+    .field-input:focus, .field-select:focus, .field-textarea:focus { border-color: var(--accent); }
+    .field-input::placeholder, .field-textarea::placeholder { color: var(--ink-3); }
+    .field-textarea { resize: vertical; min-height: 100px; line-height: 1.65; }
+    .field-textarea.body-area { min-height: 240px; font-family: var(--serif); }
+    .field-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238A8880' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.75rem center; padding-right: 2rem; }
+
+    .field-hint { font-size: 0.62rem; color: var(--ink-3); margin-top: 0.3rem; line-height: 1.5; }
+
+    /* origin radio */
+    .origin-options { display: flex; gap: 0.5rem; }
+    .origin-opt {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      gap: 0.5rem; border: 1px solid var(--rule); border-radius: 2px;
+      padding: 0.55rem 0.75rem; cursor: pointer; transition: all 0.18s;
+      font-family: var(--sans); font-size: 0.65rem; font-weight: 400;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3);
+    }
+    .origin-opt:hover { border-color: var(--ink); color: var(--ink); }
+    .origin-opt.active { border-color: var(--accent); color: var(--accent); background: rgba(43,71,54,0.05); }
+    .origin-opt input { display: none; }
+
+    /* field checkboxes */
+    .field-checks { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .field-check {
+      display: flex; align-items: center; gap: 0.35rem;
+      border: 1px solid var(--rule); border-radius: 2px;
+      padding: 0.25rem 0.65rem; cursor: pointer; transition: all 0.18s;
+      font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink-3);
+    }
+    .field-check:hover { border-color: var(--ink); color: var(--ink); }
+    .field-check.checked { border-color: var(--accent); color: var(--accent); background: rgba(43,71,54,0.05); }
+    .field-check input { display: none; }
+
+    /* ── ID PREVIEW ── */
+    .id-preview {
+      font-family: 'Courier New', monospace; font-size: 0.72rem;
+      color: var(--accent); background: var(--paper-2);
+      border: 1px solid var(--rule); border-radius: 2px;
+      padding: 0.45rem 0.75rem; margin-top: 0.4rem;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── CONDITIONAL FIELDS ── */
+    .cond { transition: opacity 0.18s; }
+    .cond.hidden { display: none; }
+
+    /* ── TWO-COL ROW ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    /* ── RIGHT PANEL ── */
+    .output-panel { position: sticky; top: 80px; }
+    .output-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 0.8rem;
+    }
+    .output-header-left { font-family: var(--sans); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); }
+    .output-actions { display: flex; gap: 0.4rem; }
+    .copy-btn {
+      font-family: var(--sans); font-size: 0.62rem; font-weight: 400;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      background: var(--accent); color: #EEE8DA;
+      border: none; border-radius: 2px;
+      padding: 0.4rem 0.9rem; cursor: pointer; transition: background 0.18s;
+    }
+    .copy-btn:hover { background: var(--accent-l); }
+    .copy-btn.copied { background: #3a6b4a; }
+    .clear-btn {
+      font-family: var(--sans); font-size: 0.62rem; font-weight: 400;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      background: none; color: var(--ink-3);
+      border: 1px solid var(--rule); border-radius: 2px;
+      padding: 0.4rem 0.9rem; cursor: pointer; transition: all 0.18s;
+    }
+    .clear-btn:hover { border-color: var(--ink); color: var(--ink); }
+
+    .output-code {
+      background: var(--ink); color: #d4f0e0; border-radius: 2px;
+      padding: 1.4rem; font-family: 'Courier New', monospace;
+      font-size: 0.72rem; line-height: 1.7; white-space: pre; overflow-x: auto;
+      max-height: 520px; overflow-y: auto;
+      border: 1px solid #333;
+    }
+    .output-code .k  { color: #7ec8a4; } /* key */
+    .output-code .s  { color: #f0c87a; } /* string */
+    .output-code .n  { color: #a8d8f0; } /* number */
+    .output-code .b  { color: #d4a8f0; } /* bool/null */
+
+    /* file guidance */
+    .file-guidance {
+      margin-top: 1rem; padding: 1rem 1.1rem;
+      background: var(--paper-2); border: 1px solid var(--rule); border-radius: 2px;
+    }
+    .file-guidance-label { font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 0.45rem; }
+    .file-path { font-family: 'Courier New', monospace; font-size: 0.75rem; color: var(--accent); }
+    .file-instruction { font-size: 0.72rem; color: var(--ink-2); line-height: 1.5; margin-top: 0.5rem; }
+
+    /* ── PLACEHOLDER TOGGLE ── */
+    .placeholder-toggle {
+      display: flex; align-items: center; gap: 0.6rem;
+      margin-top: 1.5rem; padding: 0.75rem 1rem;
+      border: 1px solid var(--rule); border-radius: 2px; background: var(--paper-2);
+    }
+    .toggle-switch { position: relative; width: 32px; height: 18px; flex-shrink: 0; }
+    .toggle-switch input { display: none; }
+    .toggle-track {
+      position: absolute; inset: 0; background: var(--rule);
+      border-radius: 9px; cursor: pointer; transition: background 0.2s;
+    }
+    .toggle-track::after {
+      content: ''; position: absolute; top: 3px; left: 3px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: white; transition: transform 0.2s;
+    }
+    input:checked + .toggle-track { background: var(--accent); }
+    input:checked + .toggle-track::after { transform: translateX(14px); }
+    .toggle-label { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); cursor: pointer; }
+
+    @media (max-width: 1000px) {
+      .intake-wrap { grid-template-columns: 1fr; }
+      .output-panel { position: static; }
+    }
+    @media (max-width: 600px) {
+      .type-tabs { flex-wrap: wrap; }
+      .two-col { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- admin banner -->
+  <div class="admin-banner">
+    <span>⚙ Phronesis Content Intake — Local Admin Tool</span>
+    <a href="/">← Back to site</a>
+  </div>
+
+  <!-- page header (reuses shared styles) -->
+  <div class="page-header">
+    <div>
+      <div class="page-header-eyebrow"><span class="label">Admin</span></div>
+      <h1 class="serif">Content<br/><em>Intake</em></h1>
+    </div>
+    <p class="page-header-desc">
+      Fill in the fields below to generate a properly formatted JSON entry.
+      Copy the output and paste it into the appropriate <code style="font-family:monospace;font-size:0.9em;">content/*.json</code> file
+      under the <code style="font-family:monospace;font-size:0.9em;">entries</code> array.
+    </p>
+  </div>
+
+  <div class="section-rule"></div>
+
+  <div class="intake-wrap">
+
+    <!-- ── LEFT: FORM ── -->
+    <div class="intake-form">
+
+      <!-- content type tabs -->
+      <div class="type-tabs" id="type-tabs">
+        <button class="type-tab active" data-type="research">Research</button>
+        <button class="type-tab" data-type="policy">Policy</button>
+        <button class="type-tab" data-type="legal">Legal</button>
+        <button class="type-tab" data-type="essay">Essay</button>
+        <button class="type-tab" data-type="article">Article</button>
+        <button class="type-tab" data-type="report">Report</button>
+      </div>
+
+      <!-- ── IDENTITY ── -->
+      <div class="form-section">
+        <div class="form-section-title">Identity</div>
+
+        <div class="field-row">
+          <label>Title</label>
+          <input class="field-input" id="f-title" type="text" placeholder="Full title of the piece" />
+        </div>
+
+        <div class="field-row">
+          <label>ID <span>auto-generated from title — edit if needed</span></label>
+          <div class="id-preview" id="id-preview">—</div>
+          <input class="field-input" id="f-id" type="text" placeholder="e.g. governing-the-stack-2025" style="margin-top:0.4rem;" />
+        </div>
+
+        <div class="field-row">
+          <label>Subtitle <span>one sentence</span></label>
+          <input class="field-input" id="f-subtitle" type="text" placeholder="Short descriptive subtitle" />
+        </div>
+
+        <div class="two-col">
+          <div class="field-row">
+            <label>Date</label>
+            <input class="field-input" id="f-date" type="date" />
+          </div>
+          <div class="field-row" id="row-pages" style="display:none;">
+            <label>Pages <span>approx.</span></label>
+            <input class="field-input" id="f-pages" type="number" placeholder="e.g. 42" min="1" />
+          </div>
+          <div class="field-row" id="row-readtime" style="display:none;">
+            <label>Read time <span>minutes</span></label>
+            <input class="field-input" id="f-readtime" type="number" placeholder="e.g. 8" min="1" />
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CLASSIFICATION ── -->
+      <div class="form-section">
+        <div class="form-section-title">Classification</div>
+
+        <div class="field-row" id="row-fields">
+          <label>Academic Fields</label>
+          <div class="field-checks" id="field-checks">
+            <label class="field-check"><input type="checkbox" value="Computer Science" /><span>CS</span></label>
+            <label class="field-check"><input type="checkbox" value="Public Policy" /><span>Public Policy</span></label>
+            <label class="field-check"><input type="checkbox" value="Economics" /><span>Economics</span></label>
+            <label class="field-check"><input type="checkbox" value="Mathematics" /><span>Math</span></label>
+            <label class="field-check"><input type="checkbox" value="Philosophy" /><span>Philosophy</span></label>
+          </div>
+        </div>
+
+        <div class="field-row" id="row-tags">
+          <label>Tags <span>comma separated</span></label>
+          <input class="field-input" id="f-tags" type="text" placeholder="e.g. AI Governance, Liability, Section 230" />
+        </div>
+
+        <!-- type-specific classification fields -->
+        <div id="row-category" class="field-row cond hidden">
+          <label>Category <span>shown in filter bar</span></label>
+          <input class="field-input" id="f-category" type="text" placeholder="e.g. Governance, Law, Society, Technology" />
+        </div>
+
+        <div id="row-report-type" class="field-row cond hidden">
+          <label>Report Type</label>
+          <select class="field-select" id="f-report-type">
+            <option value="">— select —</option>
+            <option value="annual">Annual</option>
+            <option value="regulatory">Regulatory</option>
+            <option value="industry">Industry</option>
+            <option value="legislative">Legislative</option>
+          </select>
+        </div>
+
+        <div id="row-audience" class="field-row cond hidden">
+          <label>Primary Audience</label>
+          <select class="field-select" id="f-audience">
+            <option value="">— select —</option>
+            <option value="federal">Federal</option>
+            <option value="state">State</option>
+            <option value="international">International</option>
+            <option value="institutional">Institutional</option>
+          </select>
+        </div>
+
+        <div id="row-caserefs" class="field-row cond hidden">
+          <label>Case / Statute References <span>comma separated</span></label>
+          <input class="field-input" id="f-caserefs" type="text" placeholder="e.g. Moody v. NetChoice, Sherman Act § 2" />
+        </div>
+
+        <div id="row-court" class="field-row cond hidden">
+          <label>Court / Agency <span>if case-specific</span></label>
+          <input class="field-input" id="f-court" type="text" placeholder="e.g. U.S. Supreme Court" />
+        </div>
+
+        <div id="row-tone" class="field-row cond hidden">
+          <label>Tone</label>
+          <select class="field-select" id="f-tone">
+            <option value="">— select —</option>
+            <option value="argumentative">Argumentative</option>
+            <option value="critical">Critical</option>
+            <option value="exploratory">Exploratory</option>
+            <option value="polemical">Polemical</option>
+          </select>
+        </div>
+
+        <div id="row-stage" class="field-row cond hidden">
+          <label>Stage</label>
+          <select class="field-select" id="f-stage">
+            <option value="published">Published</option>
+            <option value="draft">Draft</option>
+            <option value="submitted">Submitted</option>
+            <option value="adopted">Adopted</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- ── ORIGIN & SOURCE ── -->
+      <div class="form-section">
+        <div class="form-section-title">Origin & Source</div>
+
+        <div class="field-row">
+          <label>Origin</label>
+          <div class="origin-options">
+            <label class="origin-opt active" id="opt-original">
+              <input type="radio" name="origin" value="original" checked />
+              ● Original
+            </label>
+            <label class="origin-opt" id="opt-via">
+              <input type="radio" name="origin" value="via" />
+              ↗ Via External Source
+            </label>
+          </div>
+        </div>
+
+        <!-- shown when origin = via -->
+        <div id="via-fields" class="cond hidden">
+          <div class="field-row">
+            <label>Publisher / Outlet</label>
+            <input class="field-input" id="f-publisher" type="text" placeholder="e.g. Stanford Law Review, The Atlantic" />
+          </div>
+          <div class="field-row">
+            <label>Publisher URL</label>
+            <input class="field-input" id="f-publisher-url" type="url" placeholder="https://review.law.stanford.edu" />
+          </div>
+          <div class="field-row">
+            <label>Original URL</label>
+            <input class="field-input" id="f-original-url" type="url" placeholder="https://…/article-slug" />
+          </div>
+          <div class="two-col">
+            <div class="field-row">
+              <label>DOI <span>if academic</span></label>
+              <input class="field-input" id="f-doi" type="text" placeholder="10.xxxx/…" />
+            </div>
+            <div class="field-row">
+              <label>Venue Type</label>
+              <select class="field-select" id="f-venue-type">
+                <option value="">— select —</option>
+                <option value="journal">Journal</option>
+                <option value="preprint">Preprint (arXiv, SSRN)</option>
+                <option value="working-paper">Working Paper</option>
+                <option value="report">External Report</option>
+                <option value="news">News / Commentary</option>
+              </select>
+            </div>
+          </div>
+          <div class="field-row">
+            <label>Content Type</label>
+            <select class="field-select" id="f-content-type-via">
+              <option value="abstract">Abstract only — open-access paper</option>
+              <option value="preview">Preview only — paywalled or news</option>
+            </select>
+            <p class="field-hint">Abstract: paste their own abstract. Preview: write 1–2 original Phronesis sentences — never reproduce the source's text.</p>
+          </div>
+        </div>
+
+        <!-- document file field (optional for any entry) -->
+        <div class="field-row" style="margin-top:0.5rem;">
+          <label>Document File Path <span>optional — if hosting a PDF on the site</span></label>
+          <input class="field-input" id="f-doc-url" type="text" placeholder="e.g. /content/documents/paper-slug.pdf" />
+          <p class="field-hint">Leave blank if not hosting the file. Add the file to <code style="font-family:monospace;">content/documents/</code> if applicable.</p>
+        </div>
+      </div>
+
+      <!-- ── CONTENT ── -->
+      <div class="form-section">
+        <div class="form-section-title">Content</div>
+
+        <div class="field-row">
+          <label>Abstract <span>editorial description or paper abstract</span></label>
+          <textarea class="field-textarea" id="f-abstract" placeholder="A thorough summary of the piece — used in card and list views."></textarea>
+        </div>
+
+        <!-- body: only for originals -->
+        <div id="row-body" class="field-row cond">
+          <label>Body <span>Markdown — full text for original pieces</span></label>
+          <textarea class="field-textarea body-area" id="f-body" placeholder="Full Markdown body. Leave blank to fill in later — the entry will publish without a body page until this is populated."></textarea>
+        </div>
+
+        <!-- preview: only for via/preview -->
+        <div id="row-preview" class="field-row cond hidden">
+          <label>Preview <span>1–2 sentences, written by Phronesis in our own words</span></label>
+          <textarea class="field-textarea" id="f-preview" placeholder="A short original teaser. Do not reproduce text from the source." style="min-height:70px;"></textarea>
+        </div>
+      </div>
+
+      <!-- placeholder toggle -->
+      <div class="placeholder-toggle">
+        <label class="toggle-switch">
+          <input type="checkbox" id="f-placeholder" checked />
+          <div class="toggle-track"></div>
+        </label>
+        <span class="toggle-label" id="placeholder-label">Mark as placeholder</span>
+      </div>
+
+    </div><!-- /intake-form -->
+
+    <!-- ── RIGHT: OUTPUT ── -->
+    <div class="output-panel">
+      <div class="output-header">
+        <span class="output-header-left">Generated JSON</span>
+        <div class="output-actions">
+          <button class="clear-btn" id="clear-btn">Reset form</button>
+          <button class="copy-btn" id="copy-btn">Copy JSON</button>
+        </div>
+      </div>
+
+      <pre class="output-code" id="output-code"></pre>
+
+      <div class="file-guidance">
+        <div class="file-guidance-label">Paste this entry into</div>
+        <div class="file-path" id="file-path">content/research.json</div>
+        <div class="file-instruction">
+          Open the file, find the <code style="font-family:monospace;">"entries"</code> array,
+          and paste this object as the first item (newest first).
+          Add a comma after it if entries already exist below.
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /intake-wrap -->
+
+  <div class="footer-bottom" style="margin-top:0;">
+    <p>&copy; 2025 Phronesis Research — Admin tools are not linked from the public site.</p>
+    <span class="phronesis-greek">&#x03C6;&#x03C1;&#x03CC;&#x03BD;&#x03B7;&#x03C3;&#x03B9;&#x03C2;</span>
+  </div>
+
+  <script>
+    // ── state ──
+    let activeType   = 'research';
+    let activeOrigin = 'original';
+
+    // ── slugify ──
+    function slugify(str) {
+      return str.toLowerCase()
+        .replace(/[^\w\s-]/g, '')
+        .trim()
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-');
+    }
+
+    // ── field visibility rules ──
+    const TYPE_RULES = {
+      research: { pages: false, readtime: false, category: false, reportType: false,
+                  audience: false, caserefs: false, court: false, tone: false, stage: false },
+      policy:   { pages: false, readtime: false, category: false, reportType: false,
+                  audience: true,  caserefs: false, court: false, tone: false, stage: true },
+      legal:    { pages: false, readtime: false, category: false, reportType: false,
+                  audience: false, caserefs: true,  court: true,  tone: false, stage: false },
+      essay:    { pages: false, readtime: false, category: true,  reportType: false,
+                  audience: false, caserefs: false, court: false, tone: true,  stage: false },
+      article:  { pages: false, readtime: true,  category: true,  reportType: false,
+                  audience: false, caserefs: false, court: false, tone: false, stage: false },
+      report:   { pages: true,  readtime: false, category: false, reportType: true,
+                  audience: false, caserefs: false, court: false, tone: false, stage: false }
+    };
+
+    function applyTypeRules() {
+      const rules = TYPE_RULES[activeType] || {};
+      const m = {
+        pages:      'row-pages',
+        readtime:   'row-readtime',
+        category:   'row-category',
+        reportType: 'row-report-type',
+        audience:   'row-audience',
+        caserefs:   'row-caserefs',
+        court:      'row-court',
+        tone:       'row-tone',
+        stage:      'row-stage'
+      };
+      Object.entries(m).forEach(([key, id]) => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = rules[key] ? '' : 'none';
+      });
+    }
+
+    function applyOriginRules() {
+      const isVia = activeOrigin === 'via';
+      document.getElementById('via-fields').classList.toggle('hidden', !isVia);
+      // body visible for original; preview visible for via + preview content type
+      document.getElementById('row-body').classList.toggle('hidden', isVia);
+      updatePreviewVisibility();
+    }
+
+    function updatePreviewVisibility() {
+      if (activeOrigin !== 'via') {
+        document.getElementById('row-preview').classList.add('hidden');
+        return;
+      }
+      const ct = document.getElementById('f-content-type-via').value;
+      document.getElementById('row-preview').classList.toggle('hidden', ct !== 'preview');
+    }
+
+    // ── get checked fields ──
+    function getCheckedFields() {
+      return Array.from(document.querySelectorAll('#field-checks .field-check.checked input'))
+        .map(i => i.value);
+    }
+
+    // ── get tags array ──
+    function getTags() {
+      return document.getElementById('f-tags').value
+        .split(',').map(t => t.trim()).filter(Boolean);
+    }
+
+    // ── build JSON entry object ──
+    function buildEntry() {
+      const isPlaceholder = document.getElementById('f-placeholder').checked;
+      const isVia         = activeOrigin === 'via';
+      const contentTypeVia = isVia ? document.getElementById('f-content-type-via').value : null;
+      const contentType   = isVia ? (contentTypeVia || 'abstract') : 'full';
+
+      const entry = {
+        placeholder: isPlaceholder,
+        id:          document.getElementById('f-id').value.trim() || slugify(document.getElementById('f-title').value),
+        title:       document.getElementById('f-title').value.trim(),
+        subtitle:    document.getElementById('f-subtitle').value.trim(),
+        date:        document.getElementById('f-date').value || null,
+        type:        activeType,
+        fields:      getCheckedFields(),
+        tags:        getTags(),
+        origin:      activeOrigin,
+        content_type: contentType,
+        publisher:   isVia ? document.getElementById('f-publisher').value.trim() : 'Phronesis Research',
+        publisher_url: isVia ? (document.getElementById('f-publisher-url').value.trim() || null) : null,
+        original_url:  isVia ? (document.getElementById('f-original-url').value.trim() || null) : null,
+        doi:           isVia ? (document.getElementById('f-doi').value.trim() || null) : null,
+        venue_type:    isVia ? (document.getElementById('f-venue-type').value || null) : null
+      };
+
+      // document file
+      const docUrl = document.getElementById('f-doc-url').value.trim();
+      if (docUrl) entry.document_url = docUrl;
+
+      // abstract
+      const abstract = document.getElementById('f-abstract').value.trim();
+      entry.abstract = abstract || null;
+
+      // type-specific
+      if (activeType === 'essay') {
+        const cat = document.getElementById('f-category').value.trim();
+        if (cat) entry.category = cat;
+        const tone = document.getElementById('f-tone').value;
+        if (tone) entry.tone = tone;
+      }
+      if (activeType === 'article') {
+        const cat = document.getElementById('f-category').value.trim();
+        if (cat) entry.category = cat;
+        const rt = parseInt(document.getElementById('f-readtime').value);
+        entry.read_time = rt || null;
+      }
+      if (activeType === 'report') {
+        const rt = document.getElementById('f-report-type').value;
+        if (rt) entry.report_type = rt;
+        const pg = parseInt(document.getElementById('f-pages').value);
+        entry.pages = pg || null;
+      }
+      if (activeType === 'policy') {
+        const aud = document.getElementById('f-audience').value;
+        if (aud) entry.audience = aud;
+        const stage = document.getElementById('f-stage').value;
+        if (stage) entry.stage = stage;
+      }
+      if (activeType === 'legal') {
+        const crefs = document.getElementById('f-caserefs').value
+          .split(',').map(t => t.trim()).filter(Boolean);
+        if (crefs.length) entry.case_refs = crefs;
+        const court = document.getElementById('f-court').value.trim();
+        entry.court = court || null;
+      }
+
+      // content fields
+      if (!isVia) {
+        const body = document.getElementById('f-body').value.trim();
+        entry.preview = null;
+        entry.body    = body || null;
+      } else if (contentType === 'abstract') {
+        entry.preview = null;
+        entry.body    = null;
+      } else {
+        const preview = document.getElementById('f-preview').value.trim();
+        entry.preview = preview || null;
+        entry.body    = null;
+      }
+
+      return entry;
+    }
+
+    // ── JSON syntax highlight ──
+    function highlight(json) {
+      return json
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, match => {
+          let cls = 'n'; // number
+          if (/^"/.test(match)) {
+            cls = /:$/.test(match) ? 'k' : 's';
+          } else if (/true|false/.test(match)) {
+            cls = 'b';
+          } else if (/null/.test(match)) {
+            cls = 'b';
+          }
+          return '<span class="' + cls + '">' + match + '</span>';
+        });
+    }
+
+    // ── update output ──
+    function updateOutput() {
+      const entry  = buildEntry();
+      const json   = JSON.stringify(entry, null, 2);
+      document.getElementById('output-code').innerHTML = highlight(json);
+      document.getElementById('id-preview').textContent = entry.id || '—';
+      document.getElementById('file-path').textContent  = 'content/' + activeType +
+        (activeType === 'essay' ? 's' : activeType === 'policy' ? '' + '' : '') +
+        ({research:'research',policy:'policy',legal:'legal',essay:'essays',article:'articles',report:'reports'}[activeType]) + '.json';
+
+      // simpler: just map type to filename
+      const FILE_MAP = {
+        research: 'content/research.json',
+        policy:   'content/policy.json',
+        legal:    'content/legal.json',
+        essay:    'content/essays.json',
+        article:  'content/articles.json',
+        report:   'content/reports.json'
+      };
+      document.getElementById('file-path').textContent = FILE_MAP[activeType];
+
+      // placeholder label
+      const ph = document.getElementById('f-placeholder').checked;
+      document.getElementById('placeholder-label').textContent = ph
+        ? 'Mark as placeholder (entry will be skipped by page JS until set to false)'
+        : 'Live entry (will appear on the site)';
+    }
+
+    // ── auto-generate ID from title ──
+    document.getElementById('f-title').addEventListener('input', function() {
+      const year = (document.getElementById('f-date').value || '').slice(0, 4);
+      const base = slugify(this.value);
+      const id   = year ? base + '-' + year : base;
+      document.getElementById('f-id').value = id;
+      updateOutput();
+    });
+
+    // ── all inputs trigger output update ──
+    document.querySelectorAll('.field-input, .field-select, .field-textarea')
+      .forEach(el => el.addEventListener('input', updateOutput));
+
+    // ── type tabs ──
+    document.querySelectorAll('.type-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.type-tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeType = btn.dataset.type;
+        applyTypeRules();
+        updateOutput();
+      });
+    });
+
+    // ── origin toggle ──
+    document.querySelectorAll('[name="origin"]').forEach(radio => {
+      radio.closest('.origin-opt').addEventListener('click', () => {
+        activeOrigin = radio.value;
+        document.querySelectorAll('.origin-opt').forEach(o => o.classList.remove('active'));
+        radio.closest('.origin-opt').classList.add('active');
+        applyOriginRules();
+        updateOutput();
+      });
+    });
+
+    // ── content type via dropdown ──
+    document.getElementById('f-content-type-via').addEventListener('change', () => {
+      updatePreviewVisibility();
+      updateOutput();
+    });
+
+    // ── field checkboxes ──
+    document.querySelectorAll('.field-check').forEach(label => {
+      label.addEventListener('click', () => {
+        label.classList.toggle('checked');
+        label.querySelector('input').checked = label.classList.contains('checked');
+        updateOutput();
+      });
+    });
+
+    // ── placeholder toggle ──
+    document.getElementById('f-placeholder').addEventListener('change', updateOutput);
+
+    // ── copy button ──
+    document.getElementById('copy-btn').addEventListener('click', () => {
+      const entry = buildEntry();
+      const json  = JSON.stringify(entry, null, 2);
+      navigator.clipboard.writeText(json).then(() => {
+        const btn = document.getElementById('copy-btn');
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copy JSON'; btn.classList.remove('copied'); }, 2000);
+      });
+    });
+
+    // ── clear / reset ──
+    document.getElementById('clear-btn').addEventListener('click', () => {
+      if (!confirm('Reset all fields?')) return;
+      document.querySelectorAll('.field-input, .field-textarea').forEach(el => el.value = '');
+      document.querySelectorAll('.field-select').forEach(el => el.selectedIndex = 0);
+      document.querySelectorAll('.field-check').forEach(el => {
+        el.classList.remove('checked');
+        el.querySelector('input').checked = false;
+      });
+      document.getElementById('f-placeholder').checked = true;
+      document.getElementById('id-preview').textContent = '—';
+      updateOutput();
+    });
+
+    // ── date default to today ──
+    const today = new Date();
+    document.getElementById('f-date').value =
+      today.getFullYear() + '-' +
+      String(today.getMonth() + 1).padStart(2, '0') + '-' +
+      String(today.getDate()).padStart(2, '0');
+
+    // ── init ──
+    applyTypeRules();
+    applyOriginRules();
+    updateOutput();
+  </script>
+</body>
+</html>

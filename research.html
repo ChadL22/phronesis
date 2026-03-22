@@ -10,117 +10,51 @@
     .archive { max-width: 1160px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 5rem) 5rem; }
 
     /* ── CONTROL BAR ── */
-    .control-bar {
-      display: flex; flex-direction: column;
-      border-bottom: 1px solid var(--rule);
-      background: var(--paper);
-    }
-    .control-bar-row {
-      display: flex; align-items: center;
-      padding: 0.7rem clamp(1.5rem, 5vw, 5rem);
-      gap: 0.5rem; flex-wrap: wrap;
-    }
+    .control-bar { display: flex; flex-direction: column; border-bottom: 1px solid var(--rule); background: var(--paper); }
+    .control-bar-row { display: flex; align-items: center; padding: 0.7rem clamp(1.5rem, 5vw, 5rem); gap: 0.5rem; flex-wrap: wrap; }
     .control-bar-row + .control-bar-row { border-top: 1px solid var(--rule); }
     .control-group { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
-    .control-label {
-      font-size: 0.65rem; letter-spacing: 0.13em;
-      text-transform: uppercase; color: var(--ink-3);
-      margin-right: 0.25rem;
-    }
+    .control-label { font-size: 0.65rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-3); margin-right: 0.25rem; }
     .ctrl-btn {
-      font-family: var(--sans); font-size: 0.65rem; font-weight: 400;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--ink-3); background: none;
-      border: 1px solid transparent; border-radius: 2px;
+      font-family: var(--sans); font-size: 0.65rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--ink-3); background: none; border: 1px solid transparent; border-radius: 2px;
       padding: 0.25rem 0.6rem; cursor: pointer; transition: all 0.18s;
     }
     .ctrl-btn:hover { color: var(--ink); border-color: var(--rule); }
     .ctrl-btn.active { color: var(--accent); border-color: var(--accent); }
-    .ctrl-divider { width: 1px; height: 1.1rem; background: var(--rule); margin: 0 0.25rem; }
-
-    /* view toggle (cards / list) */
     .view-toggle { display: flex; border: 1px solid var(--rule); border-radius: 2px; overflow: hidden; }
     .view-btn {
-      font-family: var(--sans); font-size: 0.63rem; letter-spacing: 0.1em;
-      text-transform: uppercase; background: none; border: none;
-      padding: 0.28rem 0.7rem; cursor: pointer; color: var(--ink-3);
+      font-family: var(--sans); font-size: 0.63rem; letter-spacing: 0.1em; text-transform: uppercase;
+      background: none; border: none; padding: 0.28rem 0.7rem; cursor: pointer; color: var(--ink-3);
       transition: all 0.18s; display: flex; align-items: center; gap: 0.35rem;
     }
     .view-btn + .view-btn { border-left: 1px solid var(--rule); }
     .view-btn.active { background: var(--accent); color: #EEE8DA; }
     .view-btn svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 1.6; }
 
+    /* ── LOADING / ERROR ── */
+    .data-state { padding: 3rem 0; font-family: var(--serif); font-size: 0.95rem; color: var(--ink-3); }
+
     /* ── CARD VIEW ── */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      background: var(--accent);
-      padding: 1rem;
-      margin-top: 2.5rem;
-    }
-    .paper-card {
-      background: var(--paper);
-      padding: 1.8rem;
-      display: flex; flex-direction: column;
-      transition: background 0.18s;
-      cursor: pointer;
-    }
+    .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; background: var(--accent); padding: 1rem; margin-top: 2.5rem; }
+    .paper-card { background: var(--paper); padding: 1.8rem; display: flex; flex-direction: column; transition: background 0.18s; cursor: pointer; }
     .paper-card:hover { background: var(--paper-2); }
-    .paper-card.hidden { display: none; }
-    .paper-card-top {
-      display: flex; align-items: flex-start;
-      justify-content: space-between; gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
-    .paper-card-tag {
-      font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--accent); border: 1px solid var(--accent);
-      border-radius: 2px; padding: 0.15rem 0.4rem;
-    }
-    .paper-card h3 {
-      font-family: var(--serif); font-size: 1.25rem; font-weight: 400;
-      line-height: 1.25; color: var(--ink); margin-bottom: 0.75rem;
-      flex-grow: 1;
-    }
-    .paper-card p {
-      font-size: 0.78rem; color: var(--ink-2); line-height: 1.65;
-      margin-bottom: 1.2rem; flex-grow: 1;
-    }
-    .paper-card-footer {
-      display: flex; align-items: flex-end; justify-content: space-between;
-      border-top: 1px solid var(--rule); padding-top: 0.85rem;
-      margin-top: auto; gap: 1rem;
-    }
+    .paper-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; margin-bottom: 1rem; }
+    .paper-card-tag { font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); border-radius: 2px; padding: 0.15rem 0.4rem; }
+    .paper-card h3 { font-family: var(--serif); font-size: 1.25rem; font-weight: 400; line-height: 1.25; color: var(--ink); margin-bottom: 0.75rem; flex-grow: 1; }
+    .paper-card p { font-size: 0.78rem; color: var(--ink-2); line-height: 1.65; margin-bottom: 1.2rem; flex-grow: 1; }
+    .paper-card-footer { display: flex; align-items: flex-end; justify-content: space-between; border-top: 1px solid var(--rule); padding-top: 0.85rem; margin-top: auto; gap: 1rem; }
     .paper-card-footer-left { display: flex; flex-direction: column; gap: 0.35rem; }
     .paper-card-date { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
     .paper-card-read { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); flex-shrink: 0; white-space: nowrap; }
 
     /* ── LIST VIEW ── */
     .year-group { margin-top: 3rem; }
-    .year-group.hidden { display: none; }
-    .year-heading {
-      font-family: var(--serif); font-size: 2.6rem; font-weight: 300;
-      color: var(--ink); line-height: 1;
-      padding-bottom: 0.8rem; border-bottom: 1px solid var(--rule); margin-bottom: 0;
-    }
-    .paper-entry {
-      display: grid; grid-template-columns: 9rem 1fr;
-      gap: 0 2rem; padding: 1.4rem 0;
-      border-bottom: 1px solid var(--rule);
-    }
-    .paper-entry.hidden { display: none; }
+    .year-heading { font-family: var(--serif); font-size: 2.6rem; font-weight: 300; color: var(--ink); line-height: 1; padding-bottom: 0.8rem; border-bottom: 1px solid var(--rule); margin-bottom: 0; }
+    .paper-entry { display: grid; grid-template-columns: 9rem 1fr; gap: 0 2rem; padding: 1.4rem 0; border-bottom: 1px solid var(--rule); }
     .paper-tags { display: flex; flex-direction: column; gap: 0.35rem; padding-top: 0.2rem; }
-    .paper-tag {
-      display: inline-block; font-size: 0.58rem; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--accent);
-      border: 1px solid var(--accent); border-radius: 2px;
-      padding: 0.15rem 0.4rem; align-self: flex-start; white-space: nowrap;
-    }
-    .paper-title {
-      font-family: var(--serif); font-size: 1.15rem; font-weight: 400;
-      line-height: 1.3; color: var(--ink); margin-bottom: 0.4rem;
-    }
+    .paper-tag { display: inline-block; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); border-radius: 2px; padding: 0.15rem 0.4rem; align-self: flex-start; white-space: nowrap; }
+    .paper-title { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; line-height: 1.3; color: var(--ink); margin-bottom: 0.4rem; }
     .paper-title:hover { color: var(--accent); cursor: pointer; }
     .paper-abstract { font-size: 0.78rem; color: var(--ink-2); line-height: 1.65; margin-bottom: 0.55rem; }
     .paper-meta { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
@@ -131,12 +65,7 @@
 
     /* topic-sorted list */
     .topic-group { margin-top: 3rem; }
-    .topic-group.hidden { display: none; }
-    .topic-heading {
-      font-family: var(--sans); font-size: 0.68rem; font-weight: 500;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--ink-3); padding-bottom: 0.8rem; border-bottom: 1px solid var(--rule);
-    }
+    .topic-heading { font-family: var(--sans); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); padding-bottom: 0.8rem; border-bottom: 1px solid var(--rule); }
 
     .archive-count { font-family: var(--serif); font-size: 0.82rem; color: var(--ink-3); margin-top: 2rem; display: block; }
 
@@ -145,7 +74,6 @@
       .card-grid { grid-template-columns: 1fr; }
       .paper-entry { grid-template-columns: 1fr; gap: 0.6rem; }
       .paper-tags { flex-direction: row; flex-wrap: wrap; }
-      .control-bar { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -173,7 +101,6 @@
 
   <!-- unified control bar -->
   <div class="control-bar">
-    <!-- row 1: field (left) + cards/list toggle (right) -->
     <div class="control-bar-row">
       <div class="control-group">
         <span class="control-label">Field</span>
@@ -197,7 +124,6 @@
         </div>
       </div>
     </div>
-    <!-- row 2: origin -->
     <div class="control-bar-row">
       <div class="control-group">
         <span class="control-label">Origin</span>
@@ -210,112 +136,16 @@
 
   <div class="archive">
     <span class="archive-count" id="paper-count"></span>
-
-    <!-- master data store (hidden) — single source of truth for all views -->
-    <div id="paper-data" style="display:none;">
-
-      <div class="paper-entry" data-fields="Computer Science|Public Policy" data-origin="original" data-year="2025" data-month="3">
-        <div class="paper-tags">
-          <span class="paper-tag">CS</span>
-          <span class="paper-tag">Public Policy</span>
-        </div>
-        <div class="paper-body">
-          <div class="paper-title">Governing the Stack: Regulatory Jurisdiction in Multi-Layer AI Systems</div>
-          <div class="paper-abstract">Maps jurisdictional gaps across AI model layers, fine-tuning, APIs, and deployment contexts, proposing a tiered liability framework.</div>
-          <div class="paper-meta">
-            <span class="paper-date">Mar 2025</span>
-            <span class="paper-source">Phronesis Research</span>
-            <span class="origin-badge origin-badge--original">Original</span>
-            <a href="#" class="paper-link">Read paper →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="paper-entry" data-fields="Computer Science|Public Policy|Philosophy" data-origin="via" data-year="2025" data-month="2">
-        <div class="paper-tags">
-          <span class="paper-tag">CS</span>
-          <span class="paper-tag">Public Policy</span>
-          <span class="paper-tag">Philosophy</span>
-        </div>
-        <div class="paper-body">
-          <div class="paper-title">Algorithmic Harm and the Limits of Disparate Impact Theory</div>
-          <div class="paper-abstract">Examines whether Title VII's disparate impact doctrine can bear the weight of automated decision-making in employment contexts.</div>
-          <div class="paper-meta">
-            <span class="paper-date">Feb 2025</span>
-            <span class="paper-source">Stanford Law Review</span>
-            <span class="origin-badge origin-badge--via">Via Stanford Law Review</span>
-            <a href="#" class="paper-link">Read paper →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="paper-entry" data-fields="Public Policy|Philosophy" data-origin="original" data-year="2025" data-month="1">
-        <div class="paper-tags">
-          <span class="paper-tag">Public Policy</span>
-          <span class="paper-tag">Philosophy</span>
-        </div>
-        <div class="paper-body">
-          <div class="paper-title">The Federal Privacy Gap: Why Sectoral Regulation Has Failed and What Comes Next</div>
-          <div class="paper-abstract">A structural critique of the United States' sector-by-sector approach to data privacy and a framework for comprehensive federal legislation.</div>
-          <div class="paper-meta">
-            <span class="paper-date">Jan 2025</span>
-            <span class="paper-source">Phronesis Research</span>
-            <span class="origin-badge origin-badge--original">Original</span>
-            <a href="#" class="paper-link">Read paper →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="paper-entry" data-fields="Economics|Public Policy" data-origin="via" data-year="2024" data-month="12">
-        <div class="paper-tags">
-          <span class="paper-tag">Economics</span>
-          <span class="paper-tag">Public Policy</span>
-        </div>
-        <div class="paper-body">
-          <div class="paper-title">Market Power in the Foundation Model Layer: Early Evidence and Regulatory Implications</div>
-          <div class="paper-abstract">Applies traditional antitrust analysis to the emerging market structure of large language model development and API access.</div>
-          <div class="paper-meta">
-            <span class="paper-date">Dec 2024</span>
-            <span class="paper-source">Yale Journal on Regulation</span>
-            <span class="origin-badge origin-badge--via">Via Yale Journal on Regulation</span>
-            <a href="#" class="paper-link">Read paper →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="paper-entry" data-fields="Computer Science|Public Policy|Philosophy" data-origin="original" data-year="2024" data-month="11">
-        <div class="paper-tags">
-          <span class="paper-tag">CS</span>
-          <span class="paper-tag">Public Policy</span>
-          <span class="paper-tag">Philosophy</span>
-        </div>
-        <div class="paper-body">
-          <div class="paper-title">Intermediary Liability in the Age of Generative AI: Rethinking Platform Responsibility</div>
-          <div class="paper-abstract">Asks whether Section 230's third-party content framework can coherently extend to AI-generated outputs produced at a platform's direction.</div>
-          <div class="paper-meta">
-            <span class="paper-date">Nov 2024</span>
-            <span class="paper-source">Phronesis Research</span>
-            <span class="origin-badge origin-badge--original">Original</span>
-            <a href="#" class="paper-link">Read paper →</a>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /paper-data -->
-
-    <!-- rendered views (populated by JS) -->
     <div id="view-cards"></div>
     <div id="view-list" style="display:none;">
-      <!-- group-by bar: only visible in list view -->
-      <div id="group-by-bar" style="display:flex; align-items:center; gap:0.6rem; margin-top:2rem;">
+      <div id="group-by-bar" style="display:flex;align-items:center;gap:0.6rem;margin-top:2rem;">
         <span class="control-label">Group by</span>
         <button class="ctrl-btn active" id="sort-year" data-sort="year">Year</button>
         <button class="ctrl-btn" id="sort-topic" data-sort="topic">Field</button>
       </div>
       <div id="list-content"></div>
     </div>
-
-  </div><!-- /archive -->
+  </div>
 
   <section class="newsletter-band"><div class="newsletter-inner"><div class="newsletter-copy"><h3 class="serif">Read Phronesis weekly.</h3><p>New work delivered directly to your inbox. No noise, no filler.</p></div><div class="newsletter-form"><input type="email" placeholder="your@email.com" /><button type="button">Subscribe</button></div></div></section>
   <footer>
@@ -327,130 +157,175 @@
 
   <script src="chat.js" defer></script>
   <script>
-    // ── nav toggle ──
-    const t = document.getElementById('nav-toggle'), m = document.getElementById('nav-menu');
-    t.addEventListener('click', e => { e.stopPropagation(); t.classList.toggle('is-open'); m.classList.toggle('is-open'); });
-    document.addEventListener('click', () => { t.classList.remove('is-open'); m.classList.remove('is-open'); });
+    // ── nav ──
+    const navT = document.getElementById('nav-toggle'), navM = document.getElementById('nav-menu');
+    navT.addEventListener('click', e => { e.stopPropagation(); navT.classList.toggle('is-open'); navM.classList.toggle('is-open'); });
+    document.addEventListener('click', () => { navT.classList.remove('is-open'); navM.classList.remove('is-open'); });
+
+    // ── constants ──
+    const FIELD_SHORT = {
+      'Computer Science': 'CS', 'Public Policy': 'Public Policy',
+      'Economics': 'Economics', 'Mathematics': 'Math', 'Philosophy': 'Philosophy'
+    };
+    const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const FIELD_ORDER = ['Computer Science','Public Policy','Economics','Mathematics','Philosophy'];
 
     // ── state ──
+    let allEntries   = [];
     let activeField  = 'All';
     let activeOrigin = 'All';
-    let activeSort   = null;      // null | 'year' | 'topic'
-    let activeView   = 'cards';   // 'cards' | 'list'
+    let activeSort   = null;
+    let activeView   = 'cards';
 
-    const cardViewEl = document.getElementById('view-cards');
-    const listViewEl = document.getElementById('view-list');
-    const countEl    = document.getElementById('paper-count');
+    const cardViewEl    = document.getElementById('view-cards');
+    const listViewEl    = document.getElementById('view-list');
+    const countEl       = document.getElementById('paper-count');
+    const listContentEl = document.getElementById('list-content');
 
-    // source of truth: all entries from hidden data store
-    const allEntries = Array.from(document.querySelectorAll('#paper-data .paper-entry'));
+    // ── transform JSON entry into a rich object ──
+    function prepare(e) {
+      const d = new Date(e.date + 'T00:00:00');
+      const originLabel = e.origin === 'original' ? 'Original' : 'Via ' + e.publisher;
+      return Object.assign({}, e, {
+        _fields:      (e.fields || []).map(f => FIELD_SHORT[f] || f),
+        _year:        d.getFullYear(),
+        _month:       d.getMonth() + 1,
+        _dateStr:     MONTHS[d.getMonth()] + ' ' + d.getFullYear(),
+        _originLabel: originLabel,
+        _badge:       '<span class="origin-badge origin-badge--' + e.origin + '">' + originLabel + '</span>'
+      });
+    }
 
-    // ── helpers ──
+    // ── fetch data ──
+    async function loadData() {
+      countEl.innerHTML = '<span class="data-state">Loading…</span>';
+      try {
+        const res = await fetch('/content/research.json');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const json = await res.json();
+        allEntries = (json.entries || [])
+          .filter(e => !e.placeholder)
+          .map(prepare);
+      } catch (err) {
+        console.error('Could not load research.json:', err);
+        cardViewEl.innerHTML = '<p class="data-state">Could not load papers. If running locally, open via a local server rather than the file system.</p>';
+        countEl.textContent = '';
+        return;
+      }
+      render();
+    }
+
+    // ── filtering ──
     function matchesFilters(e) {
-      const fields   = (e.dataset.fields || '').split('|');
-      const fieldOk  = activeField  === 'All' || fields.includes(activeField);
-      const originOk = activeOrigin === 'All' || e.dataset.origin === activeOrigin;
+      const fieldOk  = activeField  === 'All' || (e.fields || []).includes(activeField);
+      const originOk = activeOrigin === 'All' || e.origin === activeOrigin;
       return fieldOk && originOk;
     }
-
-    function getVisible() {
-      return allEntries.filter(matchesFilters);
-    }
-
+    function getVisible() { return allEntries.filter(matchesFilters); }
     function updateCount() {
       const n = getVisible().length;
       countEl.textContent = 'Showing ' + n + ' paper' + (n === 1 ? '' : 's');
+    }
+
+    // ── build entry HTML for list views ──
+    function entryHTML(e) {
+      const tags   = e._fields.map(f => '<span class="paper-tag">' + f + '</span>').join('');
+      const url    = e.original_url || '#';
+      const target = e.original_url ? ' target="_blank" rel="noopener"' : '';
+      return '<div class="paper-entry">' +
+        '<div class="paper-tags">' + tags + '</div>' +
+        '<div class="paper-body">' +
+          '<div class="paper-title">' + e.title + '</div>' +
+          '<div class="paper-abstract">' + (e.abstract || '') + '</div>' +
+          '<div class="paper-meta">' +
+            '<span class="paper-date">' + e._dateStr + '</span>' +
+            '<span class="paper-source">' + (e.publisher || 'Phronesis Research') + '</span>' +
+            e._badge +
+            '<a href="' + url + '" class="paper-link"' + target + '>Read paper →</a>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
     }
 
     // ── CARD VIEW ──
     function renderCards() {
       cardViewEl.innerHTML = '';
       const visible = getVisible();
-      if (!visible.length) { cardViewEl.innerHTML = '<p style="color:var(--ink-3);font-family:var(--serif);margin-top:2rem;">No papers match the current filters.</p>'; return; }
-
+      if (!visible.length) {
+        cardViewEl.innerHTML = '<p class="data-state">No papers match the current filters.</p>';
+        return;
+      }
       const grid = document.createElement('div');
       grid.className = 'card-grid';
-
-      visible.forEach(entry => {
-        const title    = entry.querySelector('.paper-title').textContent;
-        const abstract = entry.querySelector('.paper-abstract').textContent;
-        const fields   = (entry.dataset.fields || '').split('|');
-        const origin   = entry.dataset.origin;
-        const dateEl   = entry.querySelector('.paper-date');
-        const date     = dateEl ? dateEl.textContent : '';
-        const badgeEl  = entry.querySelector('.origin-badge');
-        const badge    = badgeEl ? badgeEl.outerHTML : '';
-        const fieldTags = fields.map(f => `<span class="paper-card-tag">${f}</span>`).join('');
-
+      visible.forEach(e => {
+        const fieldTags = e._fields.map(f => '<span class="paper-card-tag">' + f + '</span>').join('');
         const card = document.createElement('div');
         card.className = 'paper-card';
-        card.innerHTML = `
-          <div class="paper-card-top">
-            <div style="display:flex;gap:0.3rem;flex-wrap:wrap;">${fieldTags}</div>
-          </div>
-          <h3 class="serif">${title}</h3>
-          <p>${abstract}</p>
-          <div class="paper-card-footer">
-            <div class="paper-card-footer-left">
-              <span class="paper-card-date">${date}</span>
-              ${badge}
-            </div>
-            <span class="paper-card-read">Read paper</span>
-          </div>`;
+        card.innerHTML =
+          '<div class="paper-card-top"><div style="display:flex;gap:0.3rem;flex-wrap:wrap;">' + fieldTags + '</div></div>' +
+          '<h3 class="serif">' + e.title + '</h3>' +
+          '<p>' + (e.abstract || '') + '</p>' +
+          '<div class="paper-card-footer">' +
+            '<div class="paper-card-footer-left">' +
+              '<span class="paper-card-date">' + e._dateStr + '</span>' +
+              e._badge +
+            '</div>' +
+            '<span class="paper-card-read">Read paper</span>' +
+          '</div>';
         grid.appendChild(card);
       });
-
       cardViewEl.appendChild(grid);
     }
 
-    const listContentEl = document.getElementById('list-content');
-
-    // ── LIST VIEW (year-grouped) ──
+    // ── LIST VIEW — by year ──
     function renderListByYear() {
       listContentEl.innerHTML = '';
       const visible = getVisible();
-      if (!visible.length) { listContentEl.innerHTML = '<p style="color:var(--ink-3);font-family:var(--serif);margin-top:2rem;">No papers match the current filters.</p>'; return; }
-
+      if (!visible.length) {
+        listContentEl.innerHTML = '<p class="data-state">No papers match the current filters.</p>';
+        return;
+      }
       const years = {};
       visible.forEach(e => {
-        const yr = e.dataset.year;
-        if (!years[yr]) years[yr] = [];
-        years[yr].push(e);
+        if (!years[e._year]) years[e._year] = [];
+        years[e._year].push(e);
       });
-
-      Object.keys(years).sort((a,b) => b - a).forEach(yr => {
+      Object.keys(years).sort((a, b) => b - a).forEach(yr => {
         const grp = document.createElement('div');
         grp.className = 'year-group';
         grp.innerHTML = '<div class="year-heading">' + yr + '</div>';
-        years[yr].forEach(e => grp.appendChild(e.cloneNode(true)));
+        years[yr].forEach(e => {
+          const tmp = document.createElement('div');
+          tmp.innerHTML = entryHTML(e);
+          grp.appendChild(tmp.firstElementChild);
+        });
         listContentEl.appendChild(grp);
       });
     }
 
-    // ── LIST VIEW (field-grouped) — a paper appears once per field it belongs to ──
+    // ── LIST VIEW — by field ──
     function renderListByField() {
       listContentEl.innerHTML = '';
       const visible = getVisible();
-      if (!visible.length) { listContentEl.innerHTML = '<p style="color:var(--ink-3);font-family:var(--serif);margin-top:2rem;">No papers match the current filters.</p>'; return; }
-
-      const fieldOrder = ['Computer Science', 'Public Policy', 'Economics', 'Mathematics', 'Philosophy'];
+      if (!visible.length) {
+        listContentEl.innerHTML = '<p class="data-state">No papers match the current filters.</p>';
+        return;
+      }
       const buckets = {};
-      fieldOrder.forEach(f => { buckets[f] = []; });
-
+      FIELD_ORDER.forEach(f => { buckets[f] = []; });
       visible.forEach(e => {
-        const fields = (e.dataset.fields || '').split('|');
-        fields.forEach(f => {
-          // only bucket fields that are in our defined list
-          if (buckets[f] !== undefined) buckets[f].push(e);
-        });
+        (e.fields || []).forEach(f => { if (buckets[f] !== undefined) buckets[f].push(e); });
       });
-
-      fieldOrder.forEach(f => {
+      FIELD_ORDER.forEach(f => {
         if (!buckets[f].length) return;
         const grp = document.createElement('div');
         grp.className = 'topic-group';
         grp.innerHTML = '<div class="topic-heading">' + f + '</div>';
-        buckets[f].forEach(e => grp.appendChild(e.cloneNode(true)));
+        buckets[f].forEach(e => {
+          const tmp = document.createElement('div');
+          tmp.innerHTML = entryHTML(e);
+          grp.appendChild(tmp.firstElementChild);
+        });
         listContentEl.appendChild(grp);
       });
     }
@@ -470,7 +345,7 @@
       updateCount();
     }
 
-    // ── field filter ──
+    // ── filter listeners ──
     document.querySelectorAll('[data-field]').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('[data-field]').forEach(b => b.classList.remove('active'));
@@ -479,8 +354,6 @@
         render();
       });
     });
-
-    // ── origin filter ──
     document.querySelectorAll('[data-origin]').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('[data-origin]').forEach(b => b.classList.remove('active'));
@@ -489,8 +362,6 @@
         render();
       });
     });
-
-    // ── group-by buttons (inside list view only) ──
     document.querySelectorAll('[data-sort]').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('[data-sort]').forEach(b => b.classList.remove('active'));
@@ -500,10 +371,9 @@
       });
     });
 
-    // ── view toggle buttons ──
+    // ── view toggle ──
     document.getElementById('btn-cards').addEventListener('click', () => {
-      activeView = 'cards';
-      activeSort = null;
+      activeView = 'cards'; activeSort = null;
       document.querySelectorAll('[data-sort]').forEach(b => b.classList.remove('active'));
       document.getElementById('btn-cards').classList.add('active');
       document.getElementById('btn-list').classList.remove('active');
@@ -511,17 +381,14 @@
     });
     document.getElementById('btn-list').addEventListener('click', () => {
       activeView = 'list';
-      if (!activeSort) {
-        activeSort = 'year';
-        document.querySelector('[data-sort="year"]').classList.add('active');
-      }
+      if (!activeSort) { activeSort = 'year'; document.querySelector('[data-sort="year"]').classList.add('active'); }
       document.getElementById('btn-cards').classList.remove('active');
       document.getElementById('btn-list').classList.add('active');
       render();
     });
 
     // ── init ──
-    render();
+    loadData();
   </script>
 </body>
 </html>
