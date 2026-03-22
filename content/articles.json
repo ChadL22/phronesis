@@ -1,81 +1,41 @@
 {
   "_schema": "1.0",
   "_notes": [
-    "Articles are timely, concise takes — mix of Phronesis originals and curated external pieces",
-    "For curated news articles: origin 'via', content_type 'preview' — never reproduce the article text",
-    "preview must be written by Phronesis in our own words — 1-2 sentences max",
+    "Articles are timely, concise takes â mix of Phronesis originals and curated external pieces",
+    "For curated news articles: origin 'via', content_type 'preview' â never reproduce the article text",
+    "preview must be written by Phronesis in our own words â 1-2 sentences max",
     "read_time: estimated reading time in minutes"
   ],
   "entries": [
-
     {
-      "placeholder": true,
-      "id": "dma-one-year-us-competition-2025",
-      "title": "Digital Markets Act at One Year: Lessons for U.S. Competition Policy",
-      "subtitle": "What the DMA's first year of enforcement tells American policymakers.",
-      "date": "2025-01-01",
+      "placeholder": false,
+      "id": "the-game-theory-of-how-algorithms-can-drive-up-prices-2025",
+      "title": "The Game Theory of How Algorithms Can Drive Up Prices",
+      "subtitle": "Learning algorithms may achieve tacit collusion and high prices without explicit coordination or threat mechanisms, posing novel regulatory challenges.",
+      "date": "2025-10-22",
       "type": "article",
-      "fields": ["Economics", "Public Policy"],
-      "category": "Competition",
-      "tags": ["DMA", "EU", "Competition Law"],
-      "read_time": 8,
-      "origin": "original",
-      "content_type": "full",
-      "publisher": "Phronesis Research",
-      "publisher_url": null,
-      "original_url": null,
-      "doi": null,
-      "venue_type": null,
-      "abstract": "The EU's Digital Markets Act completed its first year of active enforcement in 2024. This article evaluates what that year revealed about the regulation's design choices — gatekeeper designation, interoperability mandates, data access rights — and draws concrete lessons for U.S. policymakers considering analogous legislation.",
-      "preview": null,
-      "body": null
-    },
-
-    {
-      "placeholder": true,
-      "id": "ftc-algorithmic-agenda-review-2025",
-      "title": "The FTC's Algorithmic Accountability Agenda: A Two-Year Review",
-      "subtitle": "Surveying two years of FTC enforcement and rulemaking on algorithmic systems.",
-      "date": "2025-03-01",
-      "type": "article",
-      "fields": ["Public Policy"],
-      "category": "Regulation",
-      "tags": ["FTC", "Algorithmic Accountability", "Enforcement"],
-      "read_time": 12,
-      "origin": "original",
-      "content_type": "full",
-      "publisher": "Phronesis Research",
-      "publisher_url": null,
-      "original_url": null,
-      "doi": null,
-      "venue_type": null,
-      "abstract": "Since 2023, the FTC has pursued an ambitious agenda on algorithmic accountability — through enforcement actions, policy statements, and rulemaking. This article reviews the full scope of that activity, assesses what it has and has not accomplished, and identifies the enforcement priorities most likely to survive the current political transition.",
-      "preview": null,
-      "body": null
-    },
-
-    {
-      "placeholder": true,
-      "id": "placeholder-via-article-1",
-      "title": "Placeholder: Curated News Article",
-      "subtitle": "Example of a 'via' article entry with preview only.",
-      "date": "2025-01-15",
-      "type": "article",
-      "fields": ["Public Policy"],
-      "category": "Governance",
-      "tags": ["AI Policy"],
-      "read_time": null,
+      "fields": [
+        "Computer Science",
+        "Economics"
+      ],
+      "tags": [
+        "algorithmic pricing",
+        "tacit collusion",
+        "game theory",
+        "machine learning",
+        "antitrust regulation",
+        "dynamic pricing"
+      ],
       "origin": "via",
-      "content_type": "preview",
-      "publisher": "Example News Outlet",
-      "publisher_url": "https://example.com",
-      "original_url": "https://example.com/article-placeholder",
+      "content_type": "abstract",
+      "publisher": "Ben Brubaker/ Quanta Magazine",
+      "publisher_url": null,
+      "original_url": "https://www.quantamagazine.org/the-game-theory-of-how-algorithms-can-drive-up-prices-20251022/",
       "doi": null,
       "venue_type": "news",
-      "abstract": null,
-      "preview": "A one-to-two sentence summary written by Phronesis in our own words — not a quote from the article — describing what the piece covers and why it is worth reading.",
+      "abstract": "This article examines how machine learning algorithms used for dynamic pricing can unexpectedly converge on collusive pricing outcomes without explicit programming or coordination. Recent research demonstrates that algorithms can learn to implement implicit threats and mutual retaliation strategies similar to human cartels, and that even benign profit-optimizing algorithms may produce supracompetitive prices. The findings highlight the limitations of traditional antitrust enforcement, which relies on detecting explicit agreements, and underscore the complexity of regulating algorithmic pricing through game-theoretic analysis.",
+      "preview": null,
       "body": null
     }
-
   ]
 }
