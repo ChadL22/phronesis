@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "on-goodharts-law-with-an-application-to-value-alignment-2024",
+      "title": "On Goodhart’s law, with an application to value alignment",
+      "subtitle": "A formal investigation of Goodhart's law demonstrating its dependence on the tail distribution of discrepancies between goals and optimized metrics.",
+      "date": "2024-10-12",
+      "type": "research",
+      "fields": [
+        "Mathematics",
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "Goodhart's law",
+        "metric optimization",
+        "tail distributions",
+        "algorithmic governance",
+        "policy design",
+        "decision-making systems"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "El-Mahdi El-Mhamdi/ ARXIV",
+      "publisher_url": null,
+      "original_url": "https://arxiv.org/pdf/2410.09638",
+      "doi": null,
+      "venue_type": "preprint",
+      "abstract": "“When a measure becomes a target, it ceases to be a good measure”, this adage is known as Goodhart’s law. In this paper, we investigate formally this law and prove that it critically depends on the tail distribution of the discrepancy between the true goal and the measure that is optimized. Discrepancies with long-tail distributions favor a Goodhart’s law, that is, the optimization of the measure can have a counter-productive effect on the goal. We provide a formal setting to assess Goodhart’s law by studying the asymptotic behavior of the correlation between the goal and the measure, as the measure is optimized. Moreover, we introduce a distinction between a weak Goodhart’s law, when over-optimizing the metric is useless for the true goal, and a strong Goodhart’s law, when over-optimizing the metric is harmful for the true goal. A distinction which we prove to depend on the tail distribution. We stress the implications of this result to large-scale decision making and policies that are (and have to be) based on metrics, and propose numerous research directions to better assess the safety of such policies in general, and to the particularly concerning case where these policies are automated with algorithms.",
+      "preview": null,
+      "body": null
+    },
+    {
+      "placeholder": false,
       "id": "the-coasean-singularity-demand-supply-and-market-design-with-ai-agents-2025",
       "title": "The Coasean Singularity? Demand, Supply, and Market Design with AI Agents",
       "subtitle": "",
