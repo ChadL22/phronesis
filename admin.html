@@ -699,8 +699,8 @@ function openEntry(idx) {
 function startNewEntry() {
   editingEntry = { type: activeType, idx: null };
   formState = {
-    placeholder: true,
-    id: '', title: '', subtitle: '', date: new Date().toISOString().slice(0,10),
+  placeholder: true,
+  id: '', title: '', subtitle: '', date: '',
     type: activeType, fields: [], tags: [],
     origin: 'original', content_type: 'full',
     publisher: 'Phronesis Research', publisher_url: null,
@@ -763,9 +763,9 @@ function renderForm() {
         <input class="field-input" id="f-subtitle" type="text" value="${esc(s.subtitle)}" placeholder="Short descriptive subtitle" oninput="onField('subtitle',this.value)" />
       </div>
       <div class="field-pair">
-        <div class="field-row">
-          <label>Date</label>
-          <input class="field-input" id="f-date" type="date" value="${s.date||''}" oninput="onField('date',this.value); autoId();" />
+      <div class="field-row">
+      <label>Publication Date <em>when the paper was published, not today</em></label>
+      <input class="field-input" id="f-date" type="date" value="${s.date||''}" oninput="onField('date',this.value); autoId();" />
         </div>
         ${type === 'report' ? `<div class="field-row"><label>Pages <em>approx.</em></label><input class="field-input" id="f-pages" type="number" value="${s.pages||''}" placeholder="e.g. 42" oninput="onField('pages',parseInt(this.value)||null)" /></div>` : ''}
         ${type === 'article' ? `<div class="field-row"><label>Read time <em>minutes</em></label><input class="field-input" id="f-readtime" type="number" value="${s.read_time||''}" placeholder="e.g. 8" oninput="onField('read_time',parseInt(this.value)||null)" /></div>` : ''}
