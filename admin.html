@@ -471,7 +471,7 @@ const TYPE_LABELS = {
 // ═══════════════════════════════════════════════════════════
 // STATE
 // ═══════════════════════════════════════════════════════════
-let ghToken      = sessionStorage.getItem('ph_token') || null;
+let ghToken      = localStorage.getItem('ph_token') || sessionStorage.getItem('ph_token') || null;
 let contributorMode = false;
 let activeType   = 'research';
 let contentStore = {}; // type → { entries, sha }
@@ -534,11 +534,15 @@ async function loadFile(type) {
 async function saveFile(type) {
   const store = contentStore[type];
   if (!store) return;
+  // Always re-fetch the current SHA immediately before writing — prevents
+  // stale-SHA conflicts when the file was changed outside the CMS session
+  const current = await ghFetch('/repos/' + REPO + '/contents/' + FILE_MAP[type] + '?ref=' + BRANCH);
+  store.sha = current.sha;
   const meta = { ...store.meta };
   delete meta.entries;
   const updated = { ...meta, entries: store.entries };
   const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(updated, null, 2) + '\n')));
-  await ghFetch('/repos/' + REPO + '/contents/' + FILE_MAP[type], {
+  const result = await ghFetch('/repos/' + REPO + '/contents/' + FILE_MAP[type], {
     method: 'PUT',
     body: JSON.stringify({
       message: 'content: update ' + FILE_MAP[type].split('/').pop(),
@@ -547,9 +551,8 @@ async function saveFile(type) {
       branch: BRANCH,
     })
   });
-  // refresh SHA after write
-  const fresh = await ghFetch('/repos/' + REPO + '/contents/' + FILE_MAP[type] + '?ref=' + BRANCH);
-  store.sha = fresh.sha;
+  // Store the fresh SHA from the write response for any subsequent saves
+  store.sha = result.content.sha;
   dirtyTypes.delete(type);
 }
 
@@ -565,6 +568,7 @@ async function connect() {
     ghToken = tok;
     // verify token by fetching user
     const user = await ghFetch('/user');
+    localStorage.setItem('ph_token', tok);
     sessionStorage.setItem('ph_token', tok);
     onConnected(user.login || 'editor');
   } catch (e) {
@@ -577,7 +581,8 @@ async function connect() {
 
 function disconnect() {
   ghToken = null; contributorMode = false;
-  sessionStorage.removeItem('ph_token');
+  localStorage.removeItem('ph_token');
+    sessionStorage.removeItem('ph_token');
   contentStore = {}; dirtyTypes.clear();
   document.getElementById('connect-screen').style.display = '';
   document.getElementById('form-wrapper').style.display = 'none';
