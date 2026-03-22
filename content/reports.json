@@ -1,0 +1,105 @@
+{
+  "_schema": "1.0",
+  "_notes": [
+    "Reports are longer-form, comprehensive reference documents",
+    "Reports are almost always Phronesis originals — curated external reports use origin 'via', content_type 'preview'",
+    "report_type: 'annual' | 'regulatory' | 'industry' | 'legislative'",
+    "pages: approximate page count if applicable",
+    "For external/curated reports: preview field contains Phronesis-written description of what the report covers"
+  ],
+  "entries": [
+
+    {
+      "placeholder": true,
+      "id": "ftc-algorithmic-accountability-2025",
+      "title": "The FTC's Algorithmic Accountability Agenda: A Two-Year Review",
+      "subtitle": "A comprehensive review of FTC enforcement actions, policy statements, and rulemaking initiatives related to algorithmic systems from 2023 to 2025.",
+      "date": "2025-03-01",
+      "type": "report",
+      "fields": ["Public Policy"],
+      "report_type": "regulatory",
+      "tags": ["FTC", "Algorithmic Accountability", "Regulatory Review"],
+      "pages": null,
+      "origin": "original",
+      "content_type": "full",
+      "publisher": "Phronesis Research",
+      "publisher_url": null,
+      "original_url": null,
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This report surveys the Federal Trade Commission's enforcement and rulemaking activity on algorithmic systems over the 2023–2025 period. It catalogs enforcement actions, maps the policy statements and workshop outputs that defined the agency's agenda, and assesses which initiatives are likely to survive the current administration transition.",
+      "preview": null,
+      "body": null
+    },
+
+    {
+      "placeholder": true,
+      "id": "dma-one-year-2025",
+      "title": "Digital Markets Act at One Year: Lessons for U.S. Competition Policy",
+      "subtitle": "Evaluates the DMA's first year of enforcement and draws concrete lessons for U.S. policymakers considering analogous legislation.",
+      "date": "2025-01-01",
+      "type": "report",
+      "fields": ["Economics", "Public Policy"],
+      "report_type": "regulatory",
+      "tags": ["DMA", "EU", "Competition Policy", "Comparative Law"],
+      "pages": null,
+      "origin": "original",
+      "content_type": "full",
+      "publisher": "Phronesis Research",
+      "publisher_url": null,
+      "original_url": null,
+      "doi": null,
+      "venue_type": null,
+      "abstract": "The EU's Digital Markets Act entered full enforcement in 2024. This report evaluates the Commission's first year of enforcement activity — gatekeeper designations, interoperability rulings, and compliance investigations — and draws structured lessons for U.S. legislators and antitrust enforcers considering comparable regulation.",
+      "preview": null,
+      "body": null
+    },
+
+    {
+      "placeholder": true,
+      "id": "state-ai-legislation-2024",
+      "title": "State AI Legislation Tracker: 2024 Year in Review",
+      "subtitle": "Surveys AI-related legislation introduced and passed across all 50 states in 2024, identifying trends, model bills, and areas of regulatory divergence.",
+      "date": "2024-12-01",
+      "type": "report",
+      "fields": ["Public Policy"],
+      "report_type": "annual",
+      "tags": ["State Legislation", "AI Governance", "Regulatory Landscape"],
+      "pages": null,
+      "origin": "original",
+      "content_type": "full",
+      "publisher": "Phronesis Research",
+      "publisher_url": null,
+      "original_url": null,
+      "doi": null,
+      "venue_type": null,
+      "abstract": "In 2024, more than 40 states introduced legislation touching on artificial intelligence. This report catalogs that legislation, maps the topical clusters — employment, consumer protection, public sector use, generative AI — and identifies the model bills most likely to shape legislative activity in 2025.",
+      "preview": null,
+      "body": null
+    },
+
+    {
+      "placeholder": true,
+      "id": "foundation-model-regulatory-landscape-2024",
+      "title": "Foundation Model Providers and the Regulatory Landscape: An Industry Overview",
+      "subtitle": "Maps the current regulatory exposure of major foundation model providers across jurisdictions.",
+      "date": "2024-10-01",
+      "type": "report",
+      "fields": ["Computer Science", "Public Policy"],
+      "report_type": "industry",
+      "tags": ["Foundation Models", "Regulatory Exposure", "EU AI Act"],
+      "pages": null,
+      "origin": "original",
+      "content_type": "full",
+      "publisher": "Phronesis Research",
+      "publisher_url": null,
+      "original_url": null,
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This report maps the current regulatory exposure of the major foundation model providers — including obligations under the EU AI Act, U.S. executive orders, and pending state legislation — and analyzes how the compliance landscape differs by provider size, deployment context, and jurisdiction.",
+      "preview": null,
+      "body": null
+    }
+
+  ]
+}

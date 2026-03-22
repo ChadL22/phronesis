@@ -1,0 +1,104 @@
+{
+  "_schema": "1.0",
+  "_notes": [
+    "Essays are argumentative, idea-driven pieces — almost always Phronesis originals",
+    "Exception: curated essays from other outlets use origin 'via', content_type 'preview'",
+    "tone: editorial character of the piece — 'argumentative' | 'critical' | 'exploratory' | 'polemical'",
+    "Essays have a single primary 'category' tag used for the filter bar, plus broader 'tags'"
+  ],
+  "entries": [
+
+    {
+      "placeholder": true,
+      "id": "ai-safety-vs-ai-regulation-2025",
+      "title": "Why \"AI Safety\" and \"AI Regulation\" Are Not the Same Conversation",
+      "subtitle": "The conflation of technical safety research with policy regulation has muddied both fields.",
+      "date": "2025-02-01",
+      "type": "essay",
+      "fields": ["Public Policy", "Philosophy"],
+      "category": "Governance",
+      "tags": ["AI Governance", "AI Safety", "Regulation"],
+      "tone": "argumentative",
+      "origin": "original",
+      "content_type": "full",
+      "publisher": "Phronesis Research",
+      "publisher_url": null,
+      "original_url": null,
+      "doi": null,
+      "venue_type": null,
+      "abstract": "The conflation of technical AI safety research with AI policy regulation has muddied both fields. They share concerns — neither wants AI systems that cause catastrophic harm — but they operate on different timescales, with different tools, for different audiences. This essay argues for a cleaner separation, and explains why conflating them produces worse outcomes in both domains.",
+      "preview": null,
+      "body": null
+    },
+
+    {
+      "placeholder": true,
+      "id": "technology-neutral-frameworks-2025",
+      "title": "The Problem with \"Technology-Neutral\" Legal Frameworks",
+      "subtitle": "Regulators and courts often aspire to write technology-neutral rules — this aspiration frequently produces worse outcomes.",
+      "date": "2025-01-01",
+      "type": "essay",
+      "fields": ["Public Policy", "Philosophy"],
+      "category": "Law",
+      "tags": ["Regulatory Design", "Technology Law", "Legal Theory"],
+      "tone": "argumentative",
+      "origin": "original",
+      "content_type": "full",
+      "publisher": "Phronesis Research",
+      "publisher_url": null,
+      "original_url": null,
+      "doi": null,
+      "venue_type": null,
+      "abstract": "Technology-neutral legal drafting is an aspiration with genuine appeal: rules that do not privilege or penalize specific technologies seem fairer and more durable. This essay argues that in practice, the aspiration frequently produces worse outcomes than honest technology-specific reasoning, and that the courts and agencies that invoke it are often using it to avoid making hard choices.",
+      "preview": null,
+      "body": null
+    },
+
+    {
+      "placeholder": true,
+      "id": "move-fast-fix-later-2024",
+      "title": "On the Poverty of \"Move Fast and Fix It Later\" as Governance Philosophy",
+      "subtitle": "A critique of the regulatory philosophy that treats market deployment as the primary mechanism for identifying harm.",
+      "date": "2024-12-01",
+      "type": "essay",
+      "fields": ["Public Policy", "Philosophy"],
+      "category": "Society",
+      "tags": ["Regulatory Philosophy", "Tech Industry", "Harm"],
+      "tone": "critical",
+      "origin": "original",
+      "content_type": "full",
+      "publisher": "Phronesis Research",
+      "publisher_url": null,
+      "original_url": null,
+      "doi": null,
+      "venue_type": null,
+      "abstract": "The \"move fast and fix it later\" philosophy treats market deployment as the primary mechanism for surfacing harm — the assumption being that if something causes serious damage, we will notice and correct it. This essay argues that this assumption is false for a specific and important category of harms: those that are diffuse, slow-moving, or concentrated among populations with limited political voice.",
+      "preview": null,
+      "body": null
+    },
+
+    {
+      "placeholder": true,
+      "id": "open-source-ai-meaning-2024",
+      "title": "What Open Source Actually Means in the Context of AI Models",
+      "subtitle": "The word \"open\" is doing enormous work in AI policy debates.",
+      "date": "2024-11-01",
+      "type": "essay",
+      "fields": ["Computer Science", "Public Policy"],
+      "category": "Technology",
+      "tags": ["Open Source", "AI Policy", "Accountability"],
+      "tone": "exploratory",
+      "origin": "original",
+      "content_type": "full",
+      "publisher": "Phronesis Research",
+      "publisher_url": null,
+      "original_url": null,
+      "doi": null,
+      "venue_type": null,
+      "abstract": "\"Open source\" in the context of AI models can mean releasing weights, releasing training code, releasing training data, releasing evaluation suites, or some combination. This essay tries to disaggregate the term and ask which version of openness actually matters for the policy goals — accountability, access, safety, competition — most commonly invoked in its defense.",
+      "preview": null,
+      "body": null
+    }
+
+  ]
+}

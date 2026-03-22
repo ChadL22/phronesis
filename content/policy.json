@@ -1,0 +1,104 @@
+{
+  "_schema": "1.0",
+  "_notes": [
+    "Policy proposals are almost always Phronesis originals (origin: 'original', content_type: 'full')",
+    "Exception: curated policy briefs from think tanks or government bodies use origin: 'via', content_type: 'preview'",
+    "stage: tracks where a proposal stands — 'draft' | 'published' | 'submitted' | 'adopted'",
+    "audience: primary intended reader — 'federal' | 'state' | 'international' | 'institutional'"
+  ],
+  "entries": [
+
+    {
+      "placeholder": true,
+      "id": "federal-ai-incident-reporting-2025",
+      "title": "A Federal AI Incident Reporting Framework",
+      "subtitle": "Drawing from aviation and nuclear safety models, a concrete proposal for mandatory AI incident disclosure requirements at the federal level.",
+      "date": "2025-02-01",
+      "type": "policy",
+      "fields": ["Public Policy"],
+      "tags": ["AI Policy", "Federal", "Incident Reporting"],
+      "audience": "federal",
+      "stage": "published",
+      "origin": "original",
+      "content_type": "full",
+      "publisher": "Phronesis Research",
+      "publisher_url": null,
+      "original_url": null,
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This proposal draws on the incident-reporting models established in aviation (NASA's ASRS) and nuclear energy (NRC's IRIS) to design a mandatory AI incident disclosure regime. It defines reportable incident categories, proposes a tiered disclosure framework, and addresses the tension between transparency and commercial confidentiality.",
+      "preview": null,
+      "body": null
+    },
+
+    {
+      "placeholder": true,
+      "id": "procurement-as-policy-2025",
+      "title": "Procurement as Policy: How Federal Contracting Could Shape Responsible AI",
+      "subtitle": "A framework for using federal procurement power to establish baseline AI safety and accountability requirements before broader legislation passes.",
+      "date": "2025-01-01",
+      "type": "policy",
+      "fields": ["Public Policy"],
+      "tags": ["Federal", "Procurement", "AI Governance"],
+      "audience": "federal",
+      "stage": "published",
+      "origin": "original",
+      "content_type": "full",
+      "publisher": "Phronesis Research",
+      "publisher_url": null,
+      "original_url": null,
+      "doi": null,
+      "venue_type": null,
+      "abstract": "The federal government spends billions annually on technology procurement. This paper argues that acquisition regulations — specifically FAR and DFARS — can be amended to require AI safety documentation, impact assessments, and audit rights as conditions of federal contracts, establishing baseline norms before Congress acts.",
+      "preview": null,
+      "body": null
+    },
+
+    {
+      "placeholder": true,
+      "id": "algorithmic-impact-assessment-standards-2024",
+      "title": "Model Algorithmic Impact Assessment Standards for State Agencies",
+      "subtitle": "Draft standards for how state governments should evaluate automated decision systems before deployment in public services.",
+      "date": "2024-11-01",
+      "type": "policy",
+      "fields": ["Public Policy"],
+      "tags": ["State", "Algorithmic Accountability", "Impact Assessment"],
+      "audience": "state",
+      "stage": "published",
+      "origin": "original",
+      "content_type": "full",
+      "publisher": "Phronesis Research",
+      "publisher_url": null,
+      "original_url": null,
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This paper proposes model standards for algorithmic impact assessments that state agencies should conduct before deploying automated decision systems in public services. It covers scope, methodology, documentation requirements, public notice obligations, and appeal mechanisms, drawing on existing frameworks in Canada, the EU, and New York City.",
+      "preview": null,
+      "body": null
+    },
+
+    {
+      "placeholder": true,
+      "id": "transatlantic-ai-governance-2024",
+      "title": "Transatlantic AI Governance: A Framework for U.S.-EU Regulatory Cooperation",
+      "subtitle": "Proposes a bilateral coordination mechanism to reduce compliance friction and establish shared standards across the Atlantic AI governance divide.",
+      "date": "2024-10-01",
+      "type": "policy",
+      "fields": ["Public Policy"],
+      "tags": ["International", "EU AI Act", "Regulatory Cooperation"],
+      "audience": "international",
+      "stage": "published",
+      "origin": "original",
+      "content_type": "full",
+      "publisher": "Phronesis Research",
+      "publisher_url": null,
+      "original_url": null,
+      "doi": null,
+      "venue_type": null,
+      "abstract": "The EU AI Act and emerging U.S. federal AI frameworks share broad objectives but diverge significantly in structure, scope, and enforcement. This paper proposes a bilateral coordination mechanism modeled on the EU-U.S. Trade and Technology Council to align definitions, recognize compliant certifications, and reduce duplicative compliance burdens for transatlantic AI developers.",
+      "preview": null,
+      "body": null
+    }
+
+  ]
+}
