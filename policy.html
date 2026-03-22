@@ -583,6 +583,12 @@
       return `<span class="origin-badge origin-badge--${origin}">${label}</span>`;
     }
 
+    function pResolveLink(d) {
+      if (d.origin === 'via' && d.originalUrl) return { url: d.originalUrl, external: true };
+      if (d.origin === 'original' && d.documentUrl) return { url: d.documentUrl, external: false };
+      return null;
+    }
+
     function renderCards() {
       const cv = document.getElementById('policy-card-view');
       const visible = pVisible();
@@ -594,8 +600,10 @@
       grid.className = 'policy-card-grid';
       visible.forEach(el => {
         const d = el.dataset;
-        const card = document.createElement('div');
+        const link = pResolveLink(d);
+        const card = document.createElement(link ? 'a' : 'div');
         card.className = 'policy-card';
+        if (link) { card.href = link.url; if (link.external) { card.target = '_blank'; card.rel = 'noopener'; } }
         card.innerHTML = `
           <div class="policy-card-eyebrow">
             <span class="policy-card-type">${d.type}</span>
@@ -608,7 +616,7 @@
               <span class="policy-card-date">${d.date}</span>
               ${badgeHTML(d.origin, d.originLabel)}
             </div>
-            <span class="policy-card-read">Read</span>
+            ${link ? '<span class="policy-card-read">Read</span>' : ''}
           </div>`;
         grid.appendChild(card);
       });
@@ -639,6 +647,7 @@
         const d = el.dataset;
         const row = document.createElement('div');
         row.className = 'policy-list-row';
+        const pLink = pResolveLink(d);
         row.innerHTML = `
           <span class="policy-list-date">${d.date}</span>
           <div>
@@ -647,7 +656,7 @@
           </div>
           <span class="policy-list-level">${d.level}</span>
           <span class="policy-list-badge">${badgeHTML(d.origin, d.originLabel)}</span>
-          <span class="policy-list-link">Read →</span>`;
+          ${pLink ? `<a href="${pLink.url}"${pLink.external?' target="_blank" rel="noopener"':''} class="policy-list-link">Read →</a>` : '<span></span>'}`;
         scroll.appendChild(row);
       });
       lv.innerHTML = '';

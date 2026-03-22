@@ -227,11 +227,29 @@
       countEl.textContent = 'Showing ' + n + ' paper' + (n === 1 ? '' : 's');
     }
 
+    // ── resolve the best available URL for a content entry ──
+    // via entries  → original_url (external, new tab)
+    // original entries → document_url (hosted PDF/doc) if present
+    // no URL available → null (button is suppressed)
+    function resolveLink(e) {
+      if (e.origin === 'via' && e.original_url) {
+        return { url: e.original_url, external: true,
+          label: e.venue_type === 'news' ? 'Read article' : 'Read paper' };
+      }
+      if (e.origin === 'original' && e.document_url) {
+        return { url: e.document_url, external: false, label: 'Read paper' };
+      }
+      return null;
+    }
+
     // ── build entry HTML for list views ──
     function entryHTML(e) {
       const tags   = e._fields.map(f => '<span class="paper-tag">' + f + '</span>').join('');
-      const url    = e.original_url || '#';
-      const target = e.original_url ? ' target="_blank" rel="noopener"' : '';
+      const link   = resolveLink(e);
+      const linkHTML = link
+        ? '<a href="' + link.url + '" class="paper-link"' +
+          (link.external ? ' target="_blank" rel="noopener"' : '') + '>' + link.label + ' →</a>'
+        : '';
       return '<div class="paper-entry">' +
         '<div class="paper-tags">' + tags + '</div>' +
         '<div class="paper-body">' +
@@ -241,7 +259,7 @@
             '<span class="paper-date">' + e._dateStr + '</span>' +
             '<span class="paper-source">' + (e.publisher || 'Phronesis Research') + '</span>' +
             e._badge +
-            '<a href="' + url + '" class="paper-link"' + target + '>Read paper →</a>' +
+            linkHTML +
           '</div>' +
         '</div>' +
       '</div>';
@@ -259,8 +277,13 @@
       grid.className = 'card-grid';
       visible.forEach(e => {
         const fieldTags = e._fields.map(f => '<span class="paper-card-tag">' + f + '</span>').join('');
-        const card = document.createElement('div');
+        const link = resolveLink(e);
+        const card = document.createElement(link ? 'a' : 'div');
         card.className = 'paper-card';
+        if (link) {
+          card.href = link.url;
+          if (link.external) { card.target = '_blank'; card.rel = 'noopener'; }
+        }
         card.innerHTML =
           '<div class="paper-card-top"><div style="display:flex;gap:0.3rem;flex-wrap:wrap;">' + fieldTags + '</div></div>' +
           '<h3 class="serif">' + e.title + '</h3>' +
@@ -270,7 +293,7 @@
               '<span class="paper-card-date">' + e._dateStr + '</span>' +
               e._badge +
             '</div>' +
-            '<span class="paper-card-read">Read paper</span>' +
+            (link ? '<span class="paper-card-read">' + link.label + '</span>' : '') +
           '</div>';
         grid.appendChild(card);
       });

@@ -250,17 +250,28 @@
       );
     }
 
+    function lResolveLink(d) {
+      if (d.origin === 'via' && d.originalUrl) return { url: d.originalUrl, external: true };
+      if (d.origin === 'original' && d.documentUrl) return { url: d.documentUrl, external: false };
+      return null;
+    }
+
     function lRenderList() {
       const lv = document.getElementById('legal-list-view');
       const visible = lVisible();
       if (!visible.length) { lv.innerHTML = '<p class="legal-empty">No items match the current filters.</p>'; return; }
       lv.innerHTML = visible.map((el, i) => {
         const d = el.dataset;
+        const link = lResolveLink(d);
         const isLast = i === visible.length - 1;
+        const titleEl = link
+          ? `<a href="${link.url}"${link.external?' target="_blank" rel="noopener"':''} class="archive-title" style="color:inherit;">${d.title}</a>`
+          : `<div class="archive-title">${d.title}</div>`;
         return `<div class="archive-list-item" style="${isLast ? 'border-bottom:1px solid var(--rule);' : ''}">
           <div class="archive-date">${d.date}</div>
           <div>
-            <div class="archive-title">${d.title} <span class="origin-badge origin-badge--${d.origin}">${d.originLabel}</span></div>
+            ${titleEl}
+            <span class="origin-badge origin-badge--${d.origin}">${d.originLabel}</span>
             <div class="archive-subtitle">${d.subtitle}</div>
           </div>
           <div class="archive-tags">
@@ -279,8 +290,10 @@
       grid.className = 'legal-card-grid';
       visible.forEach(el => {
         const d = el.dataset;
-        const card = document.createElement('div');
+        const link = lResolveLink(d);
+        const card = document.createElement(link ? 'a' : 'div');
         card.className = 'legal-card';
+        if (link) { card.href = link.url; if (link.external) { card.target = '_blank'; card.rel = 'noopener'; } }
         card.innerHTML = `
           <div class="legal-card-eyebrow">
             <span class="archive-tag">${d.type.charAt(0).toUpperCase() + d.type.slice(1)}</span>
@@ -293,7 +306,7 @@
               <span class="legal-card-date">${d.date}</span>
               <span class="origin-badge origin-badge--${d.origin}">${d.originLabel}</span>
             </div>
-            <span class="legal-card-read">Read</span>
+            ${link ? '<span class="legal-card-read">Read</span>' : ''}
           </div>`;
         grid.appendChild(card);
       });

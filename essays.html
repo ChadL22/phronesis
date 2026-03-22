@@ -475,6 +475,8 @@
       activeIdx = Math.max(0, Math.min(idx, items.length - 1));
       const d = items[activeIdx].dataset;
 
+      const sLink = (d.origin === 'via' && d.originalUrl) ? d.originalUrl
+                     : (d.origin === 'original' && d.documentUrl) ? d.documentUrl : null;
       document.getElementById('spotlight-essay').innerHTML = `
         <div class="spotlight-eyebrow">
           <span class="essay-tag">${d.topic}</span>
@@ -484,7 +486,7 @@
         <p class="spotlight-excerpt">${d.excerpt}</p>
         <div class="spotlight-meta">
           <span class="spotlight-date">${d.date}</span>
-          <a href="#" class="spotlight-read">Read full essay</a>
+          ${sLink ? `<a href="${sLink}"${d.origin==='via'?' target="_blank" rel="noopener"':''} class="spotlight-read">Read full essay</a>` : ''}
         </div>`;
 
       document.getElementById('spot-prev').disabled = activeIdx === 0;
@@ -639,7 +641,11 @@
 
       grid.innerHTML = slice.map(el => {
         const d = el.dataset;
-        return `<div class="essay-card">
+        const eLink = (d.origin === 'via' && d.originalUrl) ? d.originalUrl
+                    : (d.origin === 'original' && d.documentUrl) ? d.documentUrl : null;
+        const tag   = eLink ? 'a' : 'div';
+        const attrs = eLink ? ` href="${eLink}"${d.origin==='via'?' target="_blank" rel="noopener"':''}` : '';
+        return `<${tag} class="essay-card"${attrs}>
           <div class="essay-card-eyebrow">
             <span class="essay-tag">${d.topic}</span>
             <span class="origin-badge origin-badge--${d.origin}">${d.originLabel}</span>
@@ -650,9 +656,9 @@
             <div class="essay-card-footer-left">
               <span class="essay-card-date">${d.date}</span>
             </div>
-            <span class="essay-card-read">Read essay</span>
+            ${eLink ? '<span class="essay-card-read">Read essay</span>' : ''}
           </div>
-        </div>`;
+        </${tag}>`;
       }).join('');
 
       renderPagination(total, pages);

@@ -379,6 +379,12 @@
       document.getElementById('rpt-count').textContent = n + ' report' + (n === 1 ? '' : 's');
     }
 
+    function rptResolveLink(d) {
+      if (d.origin === 'via' && d.originalUrl) return { url: d.originalUrl, external: true };
+      if (d.origin === 'original' && d.documentUrl) return { url: d.documentUrl, external: false };
+      return null;
+    }
+
     // ── featured ──
     function renderFeatured() {
       const wrap = document.getElementById('rpt-featured-wrap');
@@ -386,9 +392,12 @@
       if (!feat) { wrap.innerHTML = ''; return; }
       const d = feat.dataset;
       const typeLabel = d.type.charAt(0).toUpperCase() + d.type.slice(1);
+      const fLink = rptResolveLink(d);
+      const featTag = fLink ? 'a' : 'div';
+      const featAttrs = fLink ? ` href="${fLink.url}"${fLink.external?' target="_blank" rel="noopener"':''}` : '';
       wrap.innerHTML = `
         <div class="label" style="margin-bottom:1rem;">Latest Report</div>
-        <div class="rpt-featured">
+        <${featTag} class="rpt-featured"${featAttrs}>
           <div class="rpt-featured-spine">
             <div>
               <div class="rpt-featured-type">${typeLabel}</div>
@@ -408,10 +417,10 @@
                 <span class="rpt-featured-date">${d.date}</span>
                 <span class="rpt-card-pages">${d.pages}&thinsp;pp.</span>
               </div>
-              <span class="rpt-featured-read">Read full report</span>
+              ${fLink ? '<span class="rpt-featured-read">Read full report</span>' : ''}
             </div>
           </div>
-        </div>`;
+        </${featTag}>`;
     }
 
     // ── card view ──
@@ -424,8 +433,10 @@
       items.forEach(el => {
         const d = el.dataset;
         const typeLabel = d.type.charAt(0).toUpperCase() + d.type.slice(1);
-        const card = document.createElement('div');
+        const rLink = rptResolveLink(d);
+        const card = document.createElement(rLink ? 'a' : 'div');
         card.className = 'rpt-card';
+        if (rLink) { card.href = rLink.url; if (rLink.external) { card.target = '_blank'; card.rel = 'noopener'; } }
         card.innerHTML = `
           <div class="rpt-card-header">
             <span class="rpt-card-type">${typeLabel}</span>
@@ -440,7 +451,7 @@
                 <span class="rpt-card-pages">${d.pages}&thinsp;pp.</span>
                 <span class="origin-badge origin-badge--${d.origin}">${d.originLabel}</span>
               </div>
-              <span class="rpt-card-read">Read &rarr;</span>
+              ${rLink ? '<span class="rpt-card-read">Read &rarr;</span>' : ''}
             </div>
           </div>`;
         grid.appendChild(card);
@@ -472,7 +483,7 @@
             </div>
             <span class="rpt-list-type">${typeLabel}</span>
             <span class="rpt-list-pages">${d.pages}&thinsp;pp. &middot; <span class="origin-badge origin-badge--${d.origin}">${d.originLabel}</span></span>
-            <span class="rpt-list-link">Read &rarr;</span>
+            ${(() => { const rl = rptResolveLink(d); return rl ? `<a href="${rl.url}"${rl.external?' target="_blank" rel="noopener"':''} class="rpt-list-link">Read →</a>` : '<span></span>'; })()}
           </div>`;
         }).join('');
         return `<div class="rpt-year-group"><div class="rpt-year-heading">${yr}</div>${rows}</div>`;
