@@ -1,12 +1,12 @@
 {
   "_schema": "1.0",
   "_notes": [
-    "origin 'original': authored and owned by Phronesis â full body may be stored",
-    "origin 'via': curated from external source â abstract only (open-access) or short original preview (paywalled/news)",
+    "origin 'original': authored and owned by Phronesis Ã¢ÂÂ full body may be stored",
+    "origin 'via': curated from external source Ã¢ÂÂ abstract only (open-access) or short original preview (paywalled/news)",
     "content_type 'full': body field contains full Markdown text",
-    "content_type 'abstract': abstract field only; body is null â used for open-access academic papers",
-    "content_type 'preview': preview field contains 1-2 Phronesis-written sentences; body is null â used for paywalled journals and news",
-    "placeholder: true entries are seed data â set to false and fill fields when real content is ready"
+    "content_type 'abstract': abstract field only; body is null Ã¢ÂÂ used for open-access academic papers",
+    "content_type 'preview': preview field contains 1-2 Phronesis-written sentences; body is null Ã¢ÂÂ used for paywalled journals and news",
+    "placeholder: true entries are seed data Ã¢ÂÂ set to false and fill fields when real content is ready"
   ],
   "entries": [
     {
