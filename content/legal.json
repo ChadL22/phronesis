@@ -2,14 +2,43 @@
   "_schema": "1.0",
   "_notes": [
     "origin 'original': Phronesis analysis, full body stored here",
-    "origin 'via': curated from law reviews or legal blogs — abstract only (open-access) or preview (paywalled)",
+    "origin 'via': curated from law reviews or legal blogs â abstract only (open-access) or preview (paywalled)",
     "analysis_type: doctrinal | case | statutory | regulatory | procedural | litigation | policy | comparative",
     "primary_topic: first-amendment | antitrust | liability | administrative | ip | privacy | competition",
     "case_refs: array of case names or statute citations central to the piece",
     "court: relevant court or agency if analysis is case-specific"
   ],
   "entries": [
-
+    {
+      "placeholder": false,
+      "id": "section-230-and-child-exploitation-restoring-the-original-intent-of-the-communications-decency-act-2025",
+      "title": "Section 230 and Child Exploitation: Restoring the Original Intent of the Communications Decency Act",
+      "subtitle": "A critical analysis of how Section 230 has been distorted from its original child protection purpose to provide near-absolute immunity to tech platforms.",
+      "date": "2025-04-03",
+      "type": "legal",
+      "fields": [
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "Section 230",
+        "child sexual abuse material",
+        "platform liability",
+        "internet regulation",
+        "Communications Decency Act",
+        "tech industry immunity"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Mary Graw Leary / Villanova Law Review",
+      "publisher_url": null,
+      "original_url": "https://digitalcommons.law.villanova.edu/cgi/viewcontent.cgi?article=3672&context=vlr",
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This article examines Section 230 of the Communications Decency Act, arguing that the statute was originally intended to protect children from exploitation online rather than to provide broad platform immunity. Through legislative history analysis and review of contemporaneous media coverage from 1996, the author demonstrates a significant gap between Section 230's original purposes and current internet realities, particularly regarding Child Sexual Abuse Material (CSAM). The article proposes reforms to restore Section 230 to its original intent while addressing contemporary digital harms.",
+      "preview": null,
+      "body": null
+    },
     {
       "placeholder": true,
       "id": "section-230-netchoice-2025",
@@ -19,9 +48,18 @@
       "type": "legal",
       "analysis_type": "doctrinal",
       "primary_topic": "first-amendment",
-      "fields": ["Public Policy"],
-      "tags": ["First Amendment", "Section 230", "Platform Law"],
-      "case_refs": ["Moody v. NetChoice", "NetChoice v. Paxton"],
+      "fields": [
+        "Public Policy"
+      ],
+      "tags": [
+        "First Amendment",
+        "Section 230",
+        "Platform Law"
+      ],
+      "case_refs": [
+        "Moody v. NetChoice",
+        "NetChoice v. Paxton"
+      ],
       "court": "U.S. Supreme Court",
       "origin": "original",
       "content_type": "full",
@@ -31,11 +69,10 @@
       "document_url": null,
       "doi": null,
       "venue_type": null,
-      "abstract": "The Supreme Court's 2024 NetChoice opinions were widely anticipated as a landmark statement on platform speech. This analysis examines what the Court actually held — as opposed to what it was asked to decide — and maps the doctrinal questions left open for lower courts, Congress, and the next wave of platform litigation.",
+      "abstract": "The Supreme Court's 2024 NetChoice opinions were widely anticipated as a landmark statement on platform speech. This analysis examines what the Court actually held â as opposed to what it was asked to decide â and maps the doctrinal questions left open for lower courts, Congress, and the next wave of platform litigation.",
       "preview": null,
       "body": null
     },
-
     {
       "placeholder": true,
       "id": "compelled-speech-algorithmic-curation-2025",
@@ -45,9 +82,19 @@
       "type": "legal",
       "analysis_type": "doctrinal",
       "primary_topic": "first-amendment",
-      "fields": ["Public Policy", "Philosophy"],
-      "tags": ["First Amendment", "Compelled Speech", "Platform Regulation"],
-      "case_refs": ["Moody v. NetChoice", "Hurley v. Irish-American Gay Group"],
+      "fields": [
+        "Public Policy",
+        "Philosophy"
+      ],
+      "tags": [
+        "First Amendment",
+        "Compelled Speech",
+        "Platform Regulation"
+      ],
+      "case_refs": [
+        "Moody v. NetChoice",
+        "Hurley v. Irish-American Gay Group"
+      ],
       "court": "U.S. Supreme Court",
       "origin": "original",
       "content_type": "full",
@@ -57,11 +104,10 @@
       "document_url": null,
       "doi": null,
       "venue_type": null,
-      "abstract": "State statutes requiring platforms to carry certain content — or prohibiting them from removing it — raise compelled speech questions that the Court's NetChoice opinions addressed only obliquely. This analysis applies the Court's reasoning to the must-carry/must-not-carry distinction and assesses the constitutional viability of content moderation mandates.",
+      "abstract": "State statutes requiring platforms to carry certain content â or prohibiting them from removing it â raise compelled speech questions that the Court's NetChoice opinions addressed only obliquely. This analysis applies the Court's reasoning to the must-carry/must-not-carry distinction and assesses the constitutional viability of content moderation mandates.",
       "preview": null,
       "body": null
     },
-
     {
       "placeholder": true,
       "id": "ftc-amazon-monopolization-2024",
@@ -71,9 +117,19 @@
       "type": "legal",
       "analysis_type": "case",
       "primary_topic": "antitrust",
-      "fields": ["Economics", "Public Policy"],
-      "tags": ["Antitrust", "Monopolization", "Sherman Act"],
-      "case_refs": ["FTC v. Amazon.com, Inc.", "Sherman Act § 2"],
+      "fields": [
+        "Economics",
+        "Public Policy"
+      ],
+      "tags": [
+        "Antitrust",
+        "Monopolization",
+        "Sherman Act"
+      ],
+      "case_refs": [
+        "FTC v. Amazon.com, Inc.",
+        "Sherman Act Â§ 2"
+      ],
       "court": "U.S. District Court for the Western District of Washington",
       "origin": "original",
       "content_type": "full",
@@ -83,11 +139,10 @@
       "document_url": null,
       "doi": null,
       "venue_type": null,
-      "abstract": "The FTC's 2023 complaint against Amazon marks an ambitious attempt to apply Section 2 of the Sherman Act to a platform ecosystem rather than a discrete market. This analysis reads the complaint as a doctrinal argument — examining the market definition choices, the conduct theories, and the remedial logic — and assesses their prospects under existing case law.",
+      "abstract": "The FTC's 2023 complaint against Amazon marks an ambitious attempt to apply Section 2 of the Sherman Act to a platform ecosystem rather than a discrete market. This analysis reads the complaint as a doctrinal argument â examining the market definition choices, the conduct theories, and the remedial logic â and assesses their prospects under existing case law.",
       "preview": null,
       "body": null
     },
-
     {
       "placeholder": true,
       "id": "loper-bright-fcc-rulemaking-2024",
@@ -97,9 +152,18 @@
       "type": "legal",
       "analysis_type": "regulatory",
       "primary_topic": "administrative",
-      "fields": ["Public Policy"],
-      "tags": ["Administrative Law", "FCC", "Chevron"],
-      "case_refs": ["Loper Bright Enterprises v. Raimondo", "Chevron U.S.A. v. NRDC"],
+      "fields": [
+        "Public Policy"
+      ],
+      "tags": [
+        "Administrative Law",
+        "FCC",
+        "Chevron"
+      ],
+      "case_refs": [
+        "Loper Bright Enterprises v. Raimondo",
+        "Chevron U.S.A. v. NRDC"
+      ],
       "court": "U.S. Supreme Court",
       "origin": "original",
       "content_type": "full",
@@ -113,7 +177,6 @@
       "preview": null,
       "body": null
     },
-
     {
       "placeholder": true,
       "id": "copyright-training-data-2024",
@@ -123,9 +186,20 @@
       "type": "legal",
       "analysis_type": "litigation",
       "primary_topic": "ip",
-      "fields": ["Computer Science", "Public Policy"],
-      "tags": ["IP", "Copyright", "Fair Use", "AI Training Data"],
-      "case_refs": ["Andersen v. Stability AI", "Authors Guild v. OpenAI"],
+      "fields": [
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "IP",
+        "Copyright",
+        "Fair Use",
+        "AI Training Data"
+      ],
+      "case_refs": [
+        "Andersen v. Stability AI",
+        "Authors Guild v. OpenAI"
+      ],
       "court": null,
       "origin": "via",
       "content_type": "abstract",
@@ -135,10 +209,9 @@
       "document_url": null,
       "doi": null,
       "venue_type": "journal",
-      "abstract": "A wave of copyright litigation targeting AI training practices is working its way through the federal courts. This analysis surveys the pending cases, maps the competing fair use arguments, and sketches the doctrinal paths most likely to produce a stable resolution — including the possibility that Congress will need to act regardless of how courts rule.",
+      "abstract": "A wave of copyright litigation targeting AI training practices is working its way through the federal courts. This analysis surveys the pending cases, maps the competing fair use arguments, and sketches the doctrinal paths most likely to produce a stable resolution â including the possibility that Congress will need to act regardless of how courts rule.",
       "preview": null,
       "body": null
     }
-
   ]
 }
