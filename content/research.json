@@ -13,7 +13,7 @@
       "placeholder": true,
       "id": "an-economy-of-ai-agents-2026",
       "title": "An Economy of AI Agents",
-      "subtitle": "",
+      "subtitle": "A survey of how autonomous AI agents may interact with humans and markets in the coming decade",
       "date": "2026-03-22",
       "type": "research",
       "fields": [
@@ -21,7 +21,12 @@
         "Public Policy"
       ],
       "tags": [
-        "AI Governance"
+        "autonomous AI agents",
+        "economic implications",
+        "market structure",
+        "organizational behavior",
+        "institutional design",
+        "AI oversight"
       ],
       "origin": "via",
       "content_type": "abstract",
@@ -30,7 +35,7 @@
       "original_url": "https://arxiv.org/pdf/2509.01063v1",
       "doi": null,
       "venue_type": "preprint",
-      "abstract": "In the coming decade, artificially intelligent agents with the ability to plan and execute complex tasks over long time horizons with little direct oversight from humans may be deployed across the economy. This chapter surveys recent developments and highlights open questions for economists around how AI agents might interact with humans and with each other, shape markets and organizations, and what institutions might be required for well-functioning markets.",
+      "abstract": "This chapter examines emerging developments in artificially intelligent agents capable of planning and executing complex tasks over extended time horizons with minimal human oversight. It surveys key questions for economists regarding agent interactions with humans and other agents, their effects on market structures and organizational behavior, and the institutional frameworks necessary to maintain well-functioning markets.",
       "preview": null,
       "body": null
     },
