@@ -3,783 +3,1117 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Content Intake — Phronesis Admin</title>
+  <title>Phronesis — Content Manager</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="shared.css" />
   <style>
-    /* ── ADMIN BANNER ── */
-    .admin-banner {
-      background: var(--ink); color: #EEE8DA;
-      padding: 0.5rem clamp(1.5rem, 5vw, 5rem);
-      display: flex; align-items: center; justify-content: space-between;
-      font-family: var(--sans); font-size: 0.62rem;
-      letter-spacing: 0.14em; text-transform: uppercase;
-    }
-    .admin-banner a { color: rgba(238,232,218,0.55); transition: color 0.2s; }
-    .admin-banner a:hover { color: #EEE8DA; }
-
     /* ── LAYOUT ── */
-    .intake-wrap {
-      max-width: 1280px; margin: 0 auto;
-      padding: 2.5rem clamp(1.5rem, 5vw, 5rem) 5rem;
+    body { min-height: 100vh; }
+    .cms-shell {
       display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 3rem;
-      align-items: start;
+      grid-template-rows: 48px 1fr;
+      grid-template-columns: 240px 1fr;
+      height: 100vh;
+      overflow: hidden;
     }
 
-    /* ── CONTENT TYPE TABS ── */
-    .type-tabs {
-      display: flex; gap: 0; border: 1px solid var(--rule);
-      border-radius: 2px; overflow: hidden; margin-bottom: 2.5rem;
+    /* ── TOP BAR ── */
+    .cms-topbar {
+      grid-column: 1 / -1;
+      background: var(--ink); color: #EEE8DA;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 1.4rem;
+      border-bottom: 1px solid #333;
     }
-    .type-tab {
-      flex: 1; font-family: var(--sans); font-size: 0.63rem;
-      font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--ink-3); background: var(--paper-2);
-      border: none; border-right: 1px solid var(--rule);
-      padding: 0.6rem 0.5rem; cursor: pointer; transition: all 0.18s;
-      text-align: center;
+    .cms-topbar-brand {
+      font-family: var(--serif); font-size: 1rem; font-weight: 500;
+      letter-spacing: 0.04em; color: #EEE8DA;
     }
-    .type-tab:last-child { border-right: none; }
-    .type-tab:hover { color: var(--ink); background: var(--paper); }
-    .type-tab.active { background: var(--accent); color: #EEE8DA; }
+    .cms-topbar-brand span {
+      font-family: var(--sans); font-size: 0.55rem; font-weight: 400;
+      letter-spacing: 0.16em; text-transform: uppercase; color: rgba(238,232,218,0.45);
+      margin-left: 0.4rem;
+    }
+    .cms-topbar-right { display: flex; align-items: center; gap: 0.8rem; }
+    .topbar-status {
+      font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(238,232,218,0.45);
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #888; flex-shrink: 0; }
+    .status-dot.connected { background: #5cb878; }
+    .status-dot.error     { background: #e06c75; }
+    .topbar-btn {
+      font-family: var(--sans); font-size: 0.6rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      background: none; border: 1px solid rgba(238,232,218,0.25);
+      color: rgba(238,232,218,0.7); border-radius: 2px;
+      padding: 0.3rem 0.75rem; cursor: pointer; transition: all 0.18s;
+    }
+    .topbar-btn:hover { border-color: rgba(238,232,218,0.6); color: #EEE8DA; }
+    .topbar-btn.primary { background: var(--accent); border-color: var(--accent); color: #EEE8DA; }
+    .topbar-btn.primary:hover { background: var(--accent-l); border-color: var(--accent-l); }
+    .topbar-btn:disabled { opacity: 0.35; cursor: default; }
+    .topbar-btn.publishing { animation: pulse 1.2s ease infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.55; } }
 
-    /* ── FORM ── */
-    .form-section { margin-bottom: 2.2rem; }
-    .form-section-title {
+    /* ── SIDEBAR ── */
+    .cms-sidebar {
+      background: var(--paper-2); border-right: 1px solid var(--rule);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+    }
+    .sidebar-section-label {
+      font-family: var(--sans); font-size: 0.56rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3);
+      padding: 1.1rem 1.1rem 0.4rem;
+    }
+    .sidebar-type-list { flex-shrink: 0; }
+    .sidebar-type-btn {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: 0.55rem 1.1rem; background: none; border: none;
+      font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.05em;
+      color: var(--ink-2); cursor: pointer; transition: all 0.15s;
+      border-left: 2px solid transparent;
+    }
+    .sidebar-type-btn:hover { background: var(--paper); color: var(--ink); }
+    .sidebar-type-btn.active { background: var(--paper); color: var(--accent); border-left-color: var(--accent); font-weight: 500; }
+    .sidebar-count {
+      font-size: 0.58rem; background: var(--rule); color: var(--ink-3);
+      border-radius: 8px; padding: 0.1rem 0.45rem; min-width: 1.4rem; text-align: center;
+    }
+    .sidebar-type-btn.active .sidebar-count { background: rgba(43,71,54,0.15); color: var(--accent); }
+
+    .sidebar-divider { border-top: 1px solid var(--rule); margin: 0.6rem 0; }
+
+    .sidebar-entry-list { flex: 1; overflow-y: auto; }
+    .sidebar-entry {
+      padding: 0.7rem 1.1rem; cursor: pointer; transition: background 0.15s;
+      border-left: 2px solid transparent; border-bottom: 1px solid var(--rule);
+    }
+    .sidebar-entry:hover { background: var(--paper); }
+    .sidebar-entry.active { background: var(--paper); border-left-color: var(--accent); }
+    .sidebar-entry.placeholder-entry { opacity: 0.5; }
+    .sidebar-entry-title {
+      font-family: var(--serif); font-size: 0.82rem; font-weight: 400;
+      color: var(--ink); line-height: 1.3; margin-bottom: 0.2rem;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .sidebar-entry-meta { display: flex; align-items: center; gap: 0.4rem; }
+    .sidebar-entry-date { font-size: 0.58rem; color: var(--ink-3); letter-spacing: 0.06em; }
+    .sidebar-entry-badge {
+      font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase;
+      border-radius: 2px; padding: 0.08rem 0.3rem;
+    }
+    .badge-original { background: var(--accent); color: #EEE8DA; }
+    .badge-via { border: 1px solid var(--rule); color: var(--ink-3); }
+    .badge-placeholder { background: var(--rule); color: var(--ink-3); font-style: italic; }
+
+    .sidebar-add-btn {
+      margin: 0.8rem 1.1rem; width: calc(100% - 2.2rem);
+      background: none; border: 1px dashed var(--rule); border-radius: 2px;
+      font-family: var(--sans); font-size: 0.62rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3);
+      padding: 0.55rem; cursor: pointer; transition: all 0.18s;
+      display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+    }
+    .sidebar-add-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(43,71,54,0.04); }
+
+    /* ── MAIN AREA ── */
+    .cms-main {
+      overflow-y: auto; display: flex; flex-direction: column;
+      background: var(--paper);
+    }
+
+    /* ── CONNECT SCREEN ── */
+    .connect-screen {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      padding: 3rem;
+    }
+    .connect-card {
+      max-width: 480px; width: 100%;
+      border: 1px solid var(--rule); background: var(--paper);
+      padding: 2.5rem;
+    }
+    .connect-eyebrow {
       font-family: var(--sans); font-size: 0.6rem; font-weight: 500;
       letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3);
-      padding-bottom: 0.7rem; border-bottom: 1px solid var(--rule);
-      margin-bottom: 1.2rem;
+      margin-bottom: 0.6rem;
     }
-    .field-row { margin-bottom: 1.1rem; }
+    .connect-title { font-family: var(--serif); font-size: 1.9rem; font-weight: 300; margin-bottom: 1rem; }
+    .connect-desc { font-size: 0.82rem; color: var(--ink-2); line-height: 1.65; margin-bottom: 1.8rem; }
+    .connect-desc a { color: var(--accent); text-decoration: underline; }
+    .connect-input {
+      width: 100%; font-family: var(--sans); font-size: 0.82rem; color: var(--ink);
+      background: var(--paper-2); border: 1px solid var(--rule); border-radius: 2px;
+      padding: 0.7rem 0.9rem; outline: none; transition: border-color 0.18s;
+      margin-bottom: 0.8rem;
+    }
+    .connect-input:focus { border-color: var(--accent); }
+    .connect-input::placeholder { color: var(--ink-3); }
+    .connect-btn {
+      width: 100%; background: var(--accent); color: #EEE8DA; border: none;
+      font-family: var(--sans); font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 0.8rem; border-radius: 2px; cursor: pointer; transition: background 0.18s;
+    }
+    .connect-btn:hover { background: var(--accent-l); }
+    .connect-error { font-size: 0.72rem; color: #c0392b; margin-top: 0.6rem; }
+    .connect-note { font-size: 0.65rem; color: var(--ink-3); margin-top: 1rem; line-height: 1.5; }
+
+    /* Contributor mode (no token) */
+    .connect-divider { border-top: 1px solid var(--rule); margin: 1.6rem 0; display: flex; align-items: center; gap: 0.8rem; }
+    .connect-divider span { font-size: 0.6rem; color: var(--ink-3); letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+    .connect-secondary-btn {
+      width: 100%; background: none; color: var(--ink-2); border: 1px solid var(--rule);
+      font-family: var(--sans); font-size: 0.7rem; font-weight: 400;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.8rem; border-radius: 2px; cursor: pointer; transition: all 0.18s;
+    }
+    .connect-secondary-btn:hover { border-color: var(--ink); color: var(--ink); }
+
+    /* ── FORM AREA ── */
+    .form-area { padding: 2rem 2.4rem; flex: 1; max-width: 820px; }
+    .form-area-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 2rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--rule);
+    }
+    .form-area-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 300; color: var(--ink); }
+    .form-area-actions { display: flex; gap: 0.5rem; align-items: center; }
+
+    /* ── AI ASSIST BOX ── */
+    .ai-assist {
+      background: var(--paper-2); border: 1px solid var(--rule); border-radius: 2px;
+      padding: 1.2rem 1.4rem; margin-bottom: 2rem;
+    }
+    .ai-assist-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 0.7rem;
+    }
+    .ai-assist-label {
+      font-family: var(--sans); font-size: 0.6rem; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent);
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .ai-badge {
+      background: var(--accent); color: #EEE8DA; border-radius: 2px;
+      font-size: 0.52rem; padding: 0.1rem 0.35rem; letter-spacing: 0.1em;
+    }
+    .ai-assist textarea {
+      width: 100%; font-family: var(--sans); font-size: 0.78rem; color: var(--ink);
+      background: var(--paper); border: 1px solid var(--rule); border-radius: 2px;
+      padding: 0.65rem 0.85rem; outline: none; resize: vertical;
+      min-height: 80px; line-height: 1.6; transition: border-color 0.18s;
+    }
+    .ai-assist textarea:focus { border-color: var(--accent); }
+    .ai-assist textarea::placeholder { color: var(--ink-3); }
+    .ai-assist-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 0.6rem; }
+    .ai-hint { font-size: 0.62rem; color: var(--ink-3); }
+    .ai-run-btn {
+      background: var(--accent); color: #EEE8DA; border: none; border-radius: 2px;
+      font-family: var(--sans); font-size: 0.62rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.45rem 1rem; cursor: pointer; transition: background 0.18s;
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .ai-run-btn:hover { background: var(--accent-l); }
+    .ai-run-btn:disabled { opacity: 0.45; cursor: default; }
+    .ai-spinner { width: 10px; height: 10px; border: 1.5px solid rgba(238,232,218,0.4); border-top-color: #EEE8DA; border-radius: 50%; animation: spin 0.7s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── FORM FIELDS ── */
+    .form-section { margin-bottom: 2rem; }
+    .form-section-title {
+      font-family: var(--sans); font-size: 0.58rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3);
+      padding-bottom: 0.65rem; border-bottom: 1px solid var(--rule); margin-bottom: 1.1rem;
+    }
+    .field-row { margin-bottom: 1rem; }
     .field-row label {
-      display: block; font-family: var(--sans); font-size: 0.63rem;
-      font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--ink-2); margin-bottom: 0.4rem;
+      display: block; font-family: var(--sans); font-size: 0.62rem; font-weight: 500;
+      letter-spacing: 0.11em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 0.35rem;
     }
-    .field-row label span {
-      font-weight: 400; color: var(--ink-3); text-transform: none;
-      letter-spacing: 0; font-size: 0.6rem; margin-left: 0.35rem;
-    }
+    .field-row label em { font-style: normal; font-weight: 400; color: var(--ink-3); text-transform: none; letter-spacing: 0; margin-left: 0.35rem; }
     .field-input, .field-select, .field-textarea {
-      width: 100%; font-family: var(--sans); font-size: 0.82rem;
-      color: var(--ink); background: var(--paper);
-      border: 1px solid var(--rule); border-radius: 2px;
-      padding: 0.6rem 0.85rem; outline: none;
-      transition: border-color 0.18s;
+      width: 100%; font-family: var(--sans); font-size: 0.82rem; color: var(--ink);
+      background: var(--paper); border: 1px solid var(--rule); border-radius: 2px;
+      padding: 0.58rem 0.8rem; outline: none; transition: border-color 0.18s;
     }
     .field-input:focus, .field-select:focus, .field-textarea:focus { border-color: var(--accent); }
     .field-input::placeholder, .field-textarea::placeholder { color: var(--ink-3); }
-    .field-textarea { resize: vertical; min-height: 100px; line-height: 1.65; }
-    .field-textarea.body-area { min-height: 240px; font-family: var(--serif); }
+    .field-textarea { resize: vertical; min-height: 90px; line-height: 1.65; }
+    .field-textarea.body-field { min-height: 200px; font-family: var(--serif); }
     .field-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238A8880' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.75rem center; padding-right: 2rem; }
+    .field-hint { font-size: 0.6rem; color: var(--ink-3); margin-top: 0.28rem; line-height: 1.5; }
+    .field-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
-    .field-hint { font-size: 0.62rem; color: var(--ink-3); margin-top: 0.3rem; line-height: 1.5; }
-
-    /* origin radio */
-    .origin-options { display: flex; gap: 0.5rem; }
-    .origin-opt {
-      flex: 1; display: flex; align-items: center; justify-content: center;
-      gap: 0.5rem; border: 1px solid var(--rule); border-radius: 2px;
-      padding: 0.55rem 0.75rem; cursor: pointer; transition: all 0.18s;
-      font-family: var(--sans); font-size: 0.65rem; font-weight: 400;
+    /* origin toggle */
+    .origin-toggle { display: flex; border: 1px solid var(--rule); border-radius: 2px; overflow: hidden; }
+    .origin-btn {
+      flex: 1; font-family: var(--sans); font-size: 0.65rem; font-weight: 400;
       letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3);
+      background: none; border: none; padding: 0.55rem 0.75rem; cursor: pointer;
+      transition: all 0.18s; text-align: center;
     }
-    .origin-opt:hover { border-color: var(--ink); color: var(--ink); }
-    .origin-opt.active { border-color: var(--accent); color: var(--accent); background: rgba(43,71,54,0.05); }
-    .origin-opt input { display: none; }
+    .origin-btn + .origin-btn { border-left: 1px solid var(--rule); }
+    .origin-btn.active { background: var(--accent); color: #EEE8DA; }
 
-    /* field checkboxes */
-    .field-checks { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .field-check {
-      display: flex; align-items: center; gap: 0.35rem;
-      border: 1px solid var(--rule); border-radius: 2px;
-      padding: 0.25rem 0.65rem; cursor: pointer; transition: all 0.18s;
+    /* field chips */
+    .field-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .field-chip {
       font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.1em;
       text-transform: uppercase; color: var(--ink-3);
-    }
-    .field-check:hover { border-color: var(--ink); color: var(--ink); }
-    .field-check.checked { border-color: var(--accent); color: var(--accent); background: rgba(43,71,54,0.05); }
-    .field-check input { display: none; }
-
-    /* ── ID PREVIEW ── */
-    .id-preview {
-      font-family: 'Courier New', monospace; font-size: 0.72rem;
-      color: var(--accent); background: var(--paper-2);
       border: 1px solid var(--rule); border-radius: 2px;
-      padding: 0.45rem 0.75rem; margin-top: 0.4rem;
-      letter-spacing: 0.03em;
+      padding: 0.25rem 0.65rem; cursor: pointer; transition: all 0.18s;
+      user-select: none;
     }
+    .field-chip:hover { border-color: var(--ink); color: var(--ink); }
+    .field-chip.on { border-color: var(--accent); color: var(--accent); background: rgba(43,71,54,0.06); }
 
-    /* ── CONDITIONAL FIELDS ── */
-    .cond { transition: opacity 0.18s; }
-    .cond.hidden { display: none; }
-
-    /* ── TWO-COL ROW ── */
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-    /* ── RIGHT PANEL ── */
-    .output-panel { position: sticky; top: 80px; }
-    .output-header {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 0.8rem;
+    /* placeholder toggle */
+    .placeholder-row {
+      display: flex; align-items: center; gap: 0.7rem;
+      padding: 0.8rem 1rem; background: var(--paper-2);
+      border: 1px solid var(--rule); border-radius: 2px; margin-top: 0.5rem;
     }
-    .output-header-left { font-family: var(--sans); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); }
-    .output-actions { display: flex; gap: 0.4rem; }
-    .copy-btn {
-      font-family: var(--sans); font-size: 0.62rem; font-weight: 400;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      background: var(--accent); color: #EEE8DA;
-      border: none; border-radius: 2px;
-      padding: 0.4rem 0.9rem; cursor: pointer; transition: background 0.18s;
-    }
-    .copy-btn:hover { background: var(--accent-l); }
-    .copy-btn.copied { background: #3a6b4a; }
-    .clear-btn {
-      font-family: var(--sans); font-size: 0.62rem; font-weight: 400;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      background: none; color: var(--ink-3);
-      border: 1px solid var(--rule); border-radius: 2px;
-      padding: 0.4rem 0.9rem; cursor: pointer; transition: all 0.18s;
-    }
-    .clear-btn:hover { border-color: var(--ink); color: var(--ink); }
-
-    .output-code {
-      background: var(--ink); color: #d4f0e0; border-radius: 2px;
-      padding: 1.4rem; font-family: 'Courier New', monospace;
-      font-size: 0.72rem; line-height: 1.7; white-space: pre; overflow-x: auto;
-      max-height: 520px; overflow-y: auto;
-      border: 1px solid #333;
-    }
-    .output-code .k  { color: #7ec8a4; } /* key */
-    .output-code .s  { color: #f0c87a; } /* string */
-    .output-code .n  { color: #a8d8f0; } /* number */
-    .output-code .b  { color: #d4a8f0; } /* bool/null */
-
-    /* file guidance */
-    .file-guidance {
-      margin-top: 1rem; padding: 1rem 1.1rem;
-      background: var(--paper-2); border: 1px solid var(--rule); border-radius: 2px;
-    }
-    .file-guidance-label { font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 0.45rem; }
-    .file-path { font-family: 'Courier New', monospace; font-size: 0.75rem; color: var(--accent); }
-    .file-instruction { font-size: 0.72rem; color: var(--ink-2); line-height: 1.5; margin-top: 0.5rem; }
-
-    /* ── PLACEHOLDER TOGGLE ── */
-    .placeholder-toggle {
-      display: flex; align-items: center; gap: 0.6rem;
-      margin-top: 1.5rem; padding: 0.75rem 1rem;
-      border: 1px solid var(--rule); border-radius: 2px; background: var(--paper-2);
-    }
-    .toggle-switch { position: relative; width: 32px; height: 18px; flex-shrink: 0; }
-    .toggle-switch input { display: none; }
+    .toggle-wrap { position: relative; width: 34px; height: 20px; flex-shrink: 0; }
+    .toggle-wrap input { display: none; }
     .toggle-track {
-      position: absolute; inset: 0; background: var(--rule);
-      border-radius: 9px; cursor: pointer; transition: background 0.2s;
+      position: absolute; inset: 0; background: var(--rule); border-radius: 10px;
+      cursor: pointer; transition: background 0.2s;
     }
     .toggle-track::after {
       content: ''; position: absolute; top: 3px; left: 3px;
-      width: 12px; height: 12px; border-radius: 50%;
-      background: white; transition: transform 0.2s;
+      width: 14px; height: 14px; border-radius: 50%; background: white;
+      transition: transform 0.2s;
     }
     input:checked + .toggle-track { background: var(--accent); }
     input:checked + .toggle-track::after { transform: translateX(14px); }
-    .toggle-label { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); cursor: pointer; }
+    .toggle-label { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
 
-    @media (max-width: 1000px) {
-      .intake-wrap { grid-template-columns: 1fr; }
-      .output-panel { position: static; }
+    /* delete zone */
+    .delete-zone {
+      margin-top: 2.5rem; padding: 1rem 1.2rem;
+      border: 1px dashed #d9534f; border-radius: 2px;
+      display: flex; align-items: center; justify-content: space-between;
     }
-    @media (max-width: 600px) {
-      .type-tabs { flex-wrap: wrap; }
-      .two-col { grid-template-columns: 1fr; }
+    .delete-label { font-size: 0.72rem; color: #c0392b; }
+    .delete-btn {
+      font-family: var(--sans); font-size: 0.62rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      background: none; border: 1px solid #d9534f; border-radius: 2px;
+      color: #c0392b; padding: 0.38rem 0.9rem; cursor: pointer; transition: all 0.18s;
+    }
+    .delete-btn:hover { background: #c0392b; color: white; }
+
+    /* form action btn */
+    .form-save-btn {
+      font-family: var(--sans); font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      background: var(--accent); color: #EEE8DA; border: none; border-radius: 2px;
+      padding: 0.55rem 1.3rem; cursor: pointer; transition: background 0.18s;
+    }
+    .form-save-btn:hover { background: var(--accent-l); }
+    .form-cancel-btn {
+      font-family: var(--sans); font-size: 0.68rem; font-weight: 400;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      background: none; color: var(--ink-3); border: 1px solid var(--rule); border-radius: 2px;
+      padding: 0.55rem 1rem; cursor: pointer; transition: all 0.18s;
+    }
+    .form-cancel-btn:hover { border-color: var(--ink); color: var(--ink); }
+
+    /* hidden conditional blocks */
+    .cond { }
+    .cond.off { display: none; }
+
+    /* ── CONTRIBUTOR BANNER ── */
+    .contributor-banner {
+      background: #fff8e6; border-bottom: 1px solid #f0d070;
+      padding: 0.7rem 1.4rem;
+      font-family: var(--sans); font-size: 0.72rem; color: #7a5c00;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .submit-for-review-btn {
+      background: #c49000; color: white; border: none; border-radius: 2px;
+      font-family: var(--sans); font-size: 0.62rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.4rem 0.9rem; cursor: pointer; flex-shrink: 0;
+      transition: background 0.18s;
+    }
+    .submit-for-review-btn:hover { background: #a07800; }
+
+    /* ── EMPTY / LOADING STATES ── */
+    .state-msg { padding: 3rem 2rem; font-family: var(--serif); font-size: 0.95rem; color: var(--ink-3); text-align: center; }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 999;
+      background: var(--ink); color: #EEE8DA; border-radius: 2px;
+      padding: 0.75rem 1.2rem; font-family: var(--sans); font-size: 0.72rem;
+      display: flex; align-items: center; gap: 0.6rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      transform: translateY(0); opacity: 1;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .toast.hidden { opacity: 0; transform: translateY(8px); pointer-events: none; }
+    .toast.success { background: #2d6a3f; }
+    .toast.error   { background: #8b2e2e; }
+
+    @media (max-width: 900px) {
+      .cms-shell { grid-template-columns: 1fr; grid-template-rows: 48px auto 1fr; height: auto; overflow: visible; }
+      .cms-sidebar { max-height: 260px; }
     }
   </style>
 </head>
 <body>
+<div class="cms-shell">
 
-  <!-- admin banner -->
-  <div class="admin-banner">
-    <span>⚙ Phronesis Content Intake — Local Admin Tool</span>
-    <a href="/">← Back to site</a>
-  </div>
-
-  <!-- page header (reuses shared styles) -->
-  <div class="page-header">
-    <div>
-      <div class="page-header-eyebrow"><span class="label">Admin</span></div>
-      <h1 class="serif">Content<br/><em>Intake</em></h1>
+  <!-- ── TOP BAR ── -->
+  <header class="cms-topbar">
+    <div class="cms-topbar-brand">Phronesis <span>Content Manager</span></div>
+    <div class="cms-topbar-right">
+      <div class="topbar-status">
+        <div class="status-dot" id="status-dot"></div>
+        <span id="status-text">Not connected</span>
+      </div>
+      <button class="topbar-btn" id="btn-disconnect" style="display:none;" onclick="disconnect()">Sign out</button>
+      <button class="topbar-btn primary" id="btn-publish" disabled onclick="publishChanges()">Publish changes</button>
     </div>
-    <p class="page-header-desc">
-      Fill in the fields below to generate a properly formatted JSON entry.
-      Copy the output and paste it into the appropriate <code style="font-family:monospace;font-size:0.9em;">content/*.json</code> file
-      under the <code style="font-family:monospace;font-size:0.9em;">entries</code> array.
-    </p>
-  </div>
+  </header>
 
-  <div class="section-rule"></div>
+  <!-- ── SIDEBAR ── -->
+  <aside class="cms-sidebar">
+    <div class="sidebar-section-label">Content type</div>
+    <div class="sidebar-type-list" id="sidebar-type-list">
+      <button class="sidebar-type-btn active" data-type="research" onclick="switchType('research')">Research Papers <span class="sidebar-count" id="count-research">—</span></button>
+      <button class="sidebar-type-btn" data-type="policy"   onclick="switchType('policy')">Policy Proposals <span class="sidebar-count" id="count-policy">—</span></button>
+      <button class="sidebar-type-btn" data-type="legal"    onclick="switchType('legal')">Legal Analyses <span class="sidebar-count" id="count-legal">—</span></button>
+      <button class="sidebar-type-btn" data-type="essay"    onclick="switchType('essay')">Essays <span class="sidebar-count" id="count-essay">—</span></button>
+      <button class="sidebar-type-btn" data-type="article"  onclick="switchType('article')">Articles <span class="sidebar-count" id="count-article">—</span></button>
+      <button class="sidebar-type-btn" data-type="report"   onclick="switchType('report')">Reports <span class="sidebar-count" id="count-report">—</span></button>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-entry-list" id="sidebar-entry-list">
+      <div class="state-msg" style="padding:1.5rem 1rem;font-size:0.8rem;">Connect to load entries</div>
+    </div>
+    <button class="sidebar-add-btn" id="btn-new-entry" onclick="startNewEntry()">+ New entry</button>
+  </aside>
 
-  <div class="intake-wrap">
+  <!-- ── MAIN ── -->
+  <main class="cms-main" id="cms-main">
 
-    <!-- ── LEFT: FORM ── -->
-    <div class="intake-form">
+    <!-- connect screen (shown when not authenticated) -->
+    <div class="connect-screen" id="connect-screen">
+      <div class="connect-card">
+        <div class="connect-eyebrow">Phronesis Research</div>
+        <h1 class="connect-title">Content Manager</h1>
+        <p class="connect-desc">
+          This tool lets you add, edit, and publish content directly to the site —
+          no code or terminal required.<br><br>
+          <strong>Editors & admins:</strong> enter your GitHub personal access token to publish directly.<br>
+          <a href="https://github.com/settings/tokens/new?scopes=contents&description=Phronesis+CMS" target="_blank">
+            Create a token →
+          </a> (needs <code style="font-family:monospace;font-size:0.85em;">contents: write</code> on the phronesis repo)
+        </p>
+        <input class="connect-input" id="token-input" type="password" placeholder="ghp_xxxxxxxxxxxx" autocomplete="off" />
+        <div class="connect-error" id="connect-error" style="display:none;"></div>
+        <button class="connect-btn" id="connect-btn" onclick="connect()">Connect to GitHub →</button>
+        <p class="connect-note">Your token is stored only in this browser session and never sent anywhere except GitHub's API.</p>
 
-      <!-- content type tabs -->
-      <div class="type-tabs" id="type-tabs">
-        <button class="type-tab active" data-type="research">Research</button>
-        <button class="type-tab" data-type="policy">Policy</button>
-        <button class="type-tab" data-type="legal">Legal</button>
-        <button class="type-tab" data-type="essay">Essay</button>
-        <button class="type-tab" data-type="article">Article</button>
-        <button class="type-tab" data-type="report">Report</button>
+        <div class="connect-divider"><span>or</span></div>
+        <button class="connect-secondary-btn" onclick="enterContributorMode()">Continue as contributor — submit entries for review</button>
       </div>
+    </div>
 
-      <!-- ── IDENTITY ── -->
-      <div class="form-section">
-        <div class="form-section-title">Identity</div>
+    <!-- form area (shown when an entry is selected or being created) -->
+    <div id="form-wrapper" style="display:none;">
+      <!-- contributor banner (shown in contributor mode) -->
+      <div class="contributor-banner" id="contributor-banner" style="display:none;">
+        ✏ Contributor mode — your entry will be sent for review rather than published directly.
+        <button class="submit-for-review-btn" onclick="submitForReview()">Send to editor →</button>
+      </div>
+      <div class="form-area" id="form-area"></div>
+    </div>
 
+    <div class="state-msg" id="main-placeholder">Select an entry from the sidebar, or click "+ New entry" to begin.</div>
+
+  </main>
+</div>
+
+<!-- toast -->
+<div class="toast hidden" id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════════════════════
+// CONFIG
+// ═══════════════════════════════════════════════════════════
+const REPO  = 'chadl22/phronesis';
+const BRANCH = 'main';
+const GH_API = 'https://api.github.com';
+const AI_ENDPOINT = 'https://phronesis.sclanga315.workers.dev/api/ai-intake';
+
+const FILE_MAP = {
+  research: 'content/research.json',
+  policy:   'content/policy.json',
+  legal:    'content/legal.json',
+  essay:    'content/essays.json',
+  article:  'content/articles.json',
+  report:   'content/reports.json',
+};
+
+const TYPE_LABELS = {
+  research: 'Research Paper', policy: 'Policy Proposal', legal: 'Legal Analysis',
+  essay: 'Essay', article: 'Article', report: 'Report',
+};
+
+// ═══════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════
+let ghToken      = sessionStorage.getItem('ph_token') || null;
+let contributorMode = false;
+let activeType   = 'research';
+let contentStore = {}; // type → { entries, sha }
+let dirtyTypes   = new Set();
+let editingEntry = null; // { type, idx } or null (new)
+let formState    = {};
+
+// ═══════════════════════════════════════════════════════════
+// UTILS
+// ═══════════════════════════════════════════════════════════
+function slugify(s) {
+  return s.toLowerCase().replace(/[^\w\s-]/g,'').trim().replace(/\s+/g,'-').replace(/-+/g,'-');
+}
+function fmt(dateStr) {
+  if (!dateStr) return '';
+  const d = new Date(dateStr + 'T00:00:00');
+  return ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()] +
+    ' ' + d.getFullYear();
+}
+function showToast(msg, type='') {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.className = 'toast' + (type ? ' '+type : '');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.add('hidden'), 3200);
+}
+function setStatus(text, connected) {
+  document.getElementById('status-text').textContent = text;
+  const dot = document.getElementById('status-dot');
+  dot.className = 'status-dot' + (connected === true ? ' connected' : connected === false ? ' error' : '');
+}
+
+// ═══════════════════════════════════════════════════════════
+// GITHUB API
+// ═══════════════════════════════════════════════════════════
+async function ghFetch(path, opts={}) {
+  const res = await fetch(GH_API + path, {
+    ...opts,
+    headers: {
+      'Authorization': 'Bearer ' + ghToken,
+      'Accept': 'application/vnd.github+json',
+      'Content-Type': 'application/json',
+      ...(opts.headers || {})
+    }
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.message || 'GitHub error ' + res.status);
+  }
+  return res.json();
+}
+
+async function loadFile(type) {
+  const path = FILE_MAP[type];
+  const data = await ghFetch('/repos/' + REPO + '/contents/' + path + '?ref=' + BRANCH);
+  const content = JSON.parse(atob(data.content.replace(/\n/g,'')));
+  contentStore[type] = { entries: content.entries || [], sha: data.sha, meta: content };
+  return contentStore[type];
+}
+
+async function saveFile(type) {
+  const store = contentStore[type];
+  if (!store) return;
+  const meta = { ...store.meta };
+  delete meta.entries;
+  const updated = { ...meta, entries: store.entries };
+  const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(updated, null, 2) + '\n')));
+  await ghFetch('/repos/' + REPO + '/contents/' + FILE_MAP[type], {
+    method: 'PUT',
+    body: JSON.stringify({
+      message: 'content: update ' + FILE_MAP[type].split('/').pop(),
+      content: encoded,
+      sha: store.sha,
+      branch: BRANCH,
+    })
+  });
+  // refresh SHA after write
+  const fresh = await ghFetch('/repos/' + REPO + '/contents/' + FILE_MAP[type] + '?ref=' + BRANCH);
+  store.sha = fresh.sha;
+  dirtyTypes.delete(type);
+}
+
+// ═══════════════════════════════════════════════════════════
+// AUTH
+// ═══════════════════════════════════════════════════════════
+async function connect() {
+  const tok = document.getElementById('token-input').value.trim();
+  if (!tok) return;
+  document.getElementById('connect-btn').textContent = 'Connecting…';
+  document.getElementById('connect-error').style.display = 'none';
+  try {
+    ghToken = tok;
+    // verify token by fetching user
+    const user = await ghFetch('/user');
+    sessionStorage.setItem('ph_token', tok);
+    onConnected(user.login || 'editor');
+  } catch (e) {
+    document.getElementById('connect-error').textContent = 'Could not connect: ' + e.message;
+    document.getElementById('connect-error').style.display = '';
+    document.getElementById('connect-btn').textContent = 'Connect to GitHub →';
+    ghToken = null;
+  }
+}
+
+function disconnect() {
+  ghToken = null; contributorMode = false;
+  sessionStorage.removeItem('ph_token');
+  contentStore = {}; dirtyTypes.clear();
+  document.getElementById('connect-screen').style.display = '';
+  document.getElementById('form-wrapper').style.display = 'none';
+  document.getElementById('main-placeholder').style.display = '';
+  document.getElementById('btn-disconnect').style.display = 'none';
+  document.getElementById('btn-publish').disabled = true;
+  setStatus('Not connected', null);
+  renderSidebarCounts();
+}
+
+function enterContributorMode() {
+  contributorMode = true;
+  onConnected(null);
+}
+
+async function onConnected(login) {
+  document.getElementById('connect-screen').style.display = 'none';
+  document.getElementById('btn-publish').disabled = contributorMode;
+  if (!contributorMode) {
+    document.getElementById('btn-disconnect').style.display = '';
+    setStatus('Connected as ' + login, true);
+    document.getElementById('btn-publish').disabled = false;
+  } else {
+    setStatus('Contributor mode', null);
+  }
+
+  // load all content files
+  if (!contributorMode) {
+    setStatus('Loading content…', null);
+    try {
+      await Promise.all(Object.keys(FILE_MAP).map(t => loadFile(t)));
+      setStatus('Connected as ' + login, true);
+    } catch(e) {
+      setStatus('Error loading content', false);
+      showToast('Failed to load content: ' + e.message, 'error');
+      return;
+    }
+  } else {
+    // contributor: load from static files via fetch
+    for (const type of Object.keys(FILE_MAP)) {
+      try {
+        const res = await fetch('/content/' + FILE_MAP[type].split('/').pop());
+        if (res.ok) {
+          const json = await res.json();
+          contentStore[type] = { entries: json.entries || [], sha: null, meta: json };
+        }
+      } catch(e) { contentStore[type] = { entries: [], sha: null, meta: {} }; }
+    }
+  }
+
+  renderSidebarCounts();
+  switchType('research');
+}
+
+// ═══════════════════════════════════════════════════════════
+// SIDEBAR
+// ═══════════════════════════════════════════════════════════
+function renderSidebarCounts() {
+  for (const type of Object.keys(FILE_MAP)) {
+    const store = contentStore[type];
+    const n = store ? store.entries.length : '—';
+    document.getElementById('count-' + type).textContent = n;
+  }
+}
+
+function switchType(type) {
+  activeType = type;
+  document.querySelectorAll('.sidebar-type-btn').forEach(b =>
+    b.classList.toggle('active', b.dataset.type === type)
+  );
+  renderEntryList();
+  // close any open form
+  document.getElementById('form-wrapper').style.display = 'none';
+  document.getElementById('main-placeholder').style.display = '';
+  editingEntry = null;
+}
+
+function renderEntryList() {
+  const list = document.getElementById('sidebar-entry-list');
+  const store = contentStore[activeType];
+  if (!store || !store.entries.length) {
+    list.innerHTML = '<div class="state-msg" style="padding:1rem;font-size:0.78rem;text-align:left;">No entries yet.</div>';
+    return;
+  }
+  list.innerHTML = store.entries.map((e, i) => {
+    const isPlaceholder = e.placeholder;
+    const badge = isPlaceholder
+      ? '<span class="sidebar-entry-badge badge-placeholder">Draft</span>'
+      : e.origin === 'original'
+        ? '<span class="sidebar-entry-badge badge-original">Original</span>'
+        : '<span class="sidebar-entry-badge badge-via">Via</span>';
+    const active = editingEntry && editingEntry.type === activeType && editingEntry.idx === i;
+    return `<div class="sidebar-entry${isPlaceholder?' placeholder-entry':''}${active?' active':''}" onclick="openEntry(${i})">
+      <div class="sidebar-entry-title">${e.title || '(Untitled)'}</div>
+      <div class="sidebar-entry-meta">
+        <span class="sidebar-entry-date">${fmt(e.date)}</span>
+        ${badge}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ═══════════════════════════════════════════════════════════
+// FORM
+// ═══════════════════════════════════════════════════════════
+function openEntry(idx) {
+  const store = contentStore[activeType];
+  editingEntry = { type: activeType, idx };
+  formState = JSON.parse(JSON.stringify(store.entries[idx]));
+  renderForm();
+  renderEntryList();
+}
+
+function startNewEntry() {
+  editingEntry = { type: activeType, idx: null };
+  formState = {
+    placeholder: true,
+    id: '', title: '', subtitle: '', date: new Date().toISOString().slice(0,10),
+    type: activeType, fields: [], tags: [],
+    origin: 'original', content_type: 'full',
+    publisher: 'Phronesis Research', publisher_url: null,
+    original_url: null, doi: null, venue_type: null,
+    abstract: '', preview: null, body: null
+  };
+  renderForm();
+  renderEntryList();
+}
+
+function renderForm() {
+  const isNew = editingEntry.idx === null;
+  const type  = activeType;
+  const s     = formState;
+
+  document.getElementById('main-placeholder').style.display = 'none';
+  document.getElementById('form-wrapper').style.display = '';
+  document.getElementById('contributor-banner').style.display = contributorMode ? '' : 'none';
+
+  const typeSpecificFields = buildTypeSpecificHTML(type, s);
+  const isVia = s.origin === 'via';
+
+  document.getElementById('form-area').innerHTML = `
+    <div class="form-area-header">
+      <div class="form-area-title">${isNew ? 'New ' + TYPE_LABELS[type] : 'Edit entry'}</div>
+      <div class="form-area-actions">
+        <button class="form-cancel-btn" onclick="cancelEdit()">Cancel</button>
+        <button class="form-save-btn" onclick="saveEntry()">${contributorMode ? 'Save draft' : 'Save'}</button>
+      </div>
+    </div>
+
+    <!-- AI ASSIST -->
+    <div class="ai-assist">
+      <div class="ai-assist-header">
+        <span class="ai-assist-label"><span class="ai-badge">AI</span> Auto-fill from document text</span>
+      </div>
+      <textarea id="ai-text" placeholder="Paste the abstract, introduction, or full text of the document here. The AI will extract the title, abstract, tags, and other fields for you."></textarea>
+      <div class="ai-assist-footer">
+        <span class="ai-hint">Paste any amount of text — the AI reads it and fills in the form.</span>
+        <button class="ai-run-btn" id="ai-run-btn" onclick="runAI()">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Auto-fill
+        </button>
+      </div>
+    </div>
+
+    <!-- IDENTITY -->
+    <div class="form-section">
+      <div class="form-section-title">Identity</div>
+      <div class="field-row">
+        <label>Title</label>
+        <input class="field-input" id="f-title" type="text" value="${esc(s.title)}" placeholder="Full title of the piece" oninput="onField('title',this.value); autoId();" />
+      </div>
+      <div class="field-row">
+        <label>ID <em>URL slug — auto-generated, edit if needed</em></label>
+        <input class="field-input" id="f-id" type="text" value="${esc(s.id)}" placeholder="e.g. governing-the-stack-2025" oninput="onField('id',this.value)" />
+      </div>
+      <div class="field-row">
+        <label>Subtitle <em>one sentence</em></label>
+        <input class="field-input" id="f-subtitle" type="text" value="${esc(s.subtitle)}" placeholder="Short descriptive subtitle" oninput="onField('subtitle',this.value)" />
+      </div>
+      <div class="field-pair">
         <div class="field-row">
-          <label>Title</label>
-          <input class="field-input" id="f-title" type="text" placeholder="Full title of the piece" />
+          <label>Date</label>
+          <input class="field-input" id="f-date" type="date" value="${s.date||''}" oninput="onField('date',this.value); autoId();" />
         </div>
+        ${type === 'report' ? `<div class="field-row"><label>Pages <em>approx.</em></label><input class="field-input" id="f-pages" type="number" value="${s.pages||''}" placeholder="e.g. 42" oninput="onField('pages',parseInt(this.value)||null)" /></div>` : ''}
+        ${type === 'article' ? `<div class="field-row"><label>Read time <em>minutes</em></label><input class="field-input" id="f-readtime" type="number" value="${s.read_time||''}" placeholder="e.g. 8" oninput="onField('read_time',parseInt(this.value)||null)" /></div>` : ''}
+      </div>
+    </div>
 
-        <div class="field-row">
-          <label>ID <span>auto-generated from title — edit if needed</span></label>
-          <div class="id-preview" id="id-preview">—</div>
-          <input class="field-input" id="f-id" type="text" placeholder="e.g. governing-the-stack-2025" style="margin-top:0.4rem;" />
-        </div>
-
-        <div class="field-row">
-          <label>Subtitle <span>one sentence</span></label>
-          <input class="field-input" id="f-subtitle" type="text" placeholder="Short descriptive subtitle" />
-        </div>
-
-        <div class="two-col">
-          <div class="field-row">
-            <label>Date</label>
-            <input class="field-input" id="f-date" type="date" />
-          </div>
-          <div class="field-row" id="row-pages" style="display:none;">
-            <label>Pages <span>approx.</span></label>
-            <input class="field-input" id="f-pages" type="number" placeholder="e.g. 42" min="1" />
-          </div>
-          <div class="field-row" id="row-readtime" style="display:none;">
-            <label>Read time <span>minutes</span></label>
-            <input class="field-input" id="f-readtime" type="number" placeholder="e.g. 8" min="1" />
-          </div>
+    <!-- CLASSIFICATION -->
+    <div class="form-section">
+      <div class="form-section-title">Classification</div>
+      <div class="field-row">
+        <label>Academic Fields</label>
+        <div class="field-chips" id="field-chips">
+          ${['Computer Science','Public Policy','Economics','Mathematics','Philosophy'].map(f =>
+            `<span class="field-chip${(s.fields||[]).includes(f)?' on':''}" onclick="toggleField('${f}')">${f}</span>`
+          ).join('')}
         </div>
       </div>
+      <div class="field-row">
+        <label>Tags <em>comma separated</em></label>
+        <input class="field-input" id="f-tags" type="text" value="${(s.tags||[]).join(', ')}" placeholder="e.g. AI Governance, Liability, Section 230" oninput="onField('tags', this.value.split(',').map(t=>t.trim()).filter(Boolean))" />
+      </div>
+      ${typeSpecificFields}
+    </div>
 
-      <!-- ── CLASSIFICATION ── -->
-      <div class="form-section">
-        <div class="form-section-title">Classification</div>
-
-        <div class="field-row" id="row-fields">
-          <label>Academic Fields</label>
-          <div class="field-checks" id="field-checks">
-            <label class="field-check"><input type="checkbox" value="Computer Science" /><span>CS</span></label>
-            <label class="field-check"><input type="checkbox" value="Public Policy" /><span>Public Policy</span></label>
-            <label class="field-check"><input type="checkbox" value="Economics" /><span>Economics</span></label>
-            <label class="field-check"><input type="checkbox" value="Mathematics" /><span>Math</span></label>
-            <label class="field-check"><input type="checkbox" value="Philosophy" /><span>Philosophy</span></label>
-          </div>
-        </div>
-
-        <div class="field-row" id="row-tags">
-          <label>Tags <span>comma separated</span></label>
-          <input class="field-input" id="f-tags" type="text" placeholder="e.g. AI Governance, Liability, Section 230" />
-        </div>
-
-        <!-- type-specific classification fields -->
-        <div id="row-category" class="field-row cond hidden">
-          <label>Category <span>shown in filter bar</span></label>
-          <input class="field-input" id="f-category" type="text" placeholder="e.g. Governance, Law, Society, Technology" />
-        </div>
-
-        <div id="row-report-type" class="field-row cond hidden">
-          <label>Report Type</label>
-          <select class="field-select" id="f-report-type">
-            <option value="">— select —</option>
-            <option value="annual">Annual</option>
-            <option value="regulatory">Regulatory</option>
-            <option value="industry">Industry</option>
-            <option value="legislative">Legislative</option>
-          </select>
-        </div>
-
-        <div id="row-audience" class="field-row cond hidden">
-          <label>Primary Audience</label>
-          <select class="field-select" id="f-audience">
-            <option value="">— select —</option>
-            <option value="federal">Federal</option>
-            <option value="state">State</option>
-            <option value="international">International</option>
-            <option value="institutional">Institutional</option>
-          </select>
-        </div>
-
-        <div id="row-caserefs" class="field-row cond hidden">
-          <label>Case / Statute References <span>comma separated</span></label>
-          <input class="field-input" id="f-caserefs" type="text" placeholder="e.g. Moody v. NetChoice, Sherman Act § 2" />
-        </div>
-
-        <div id="row-court" class="field-row cond hidden">
-          <label>Court / Agency <span>if case-specific</span></label>
-          <input class="field-input" id="f-court" type="text" placeholder="e.g. U.S. Supreme Court" />
-        </div>
-
-        <div id="row-tone" class="field-row cond hidden">
-          <label>Tone</label>
-          <select class="field-select" id="f-tone">
-            <option value="">— select —</option>
-            <option value="argumentative">Argumentative</option>
-            <option value="critical">Critical</option>
-            <option value="exploratory">Exploratory</option>
-            <option value="polemical">Polemical</option>
-          </select>
-        </div>
-
-        <div id="row-stage" class="field-row cond hidden">
-          <label>Stage</label>
-          <select class="field-select" id="f-stage">
-            <option value="published">Published</option>
-            <option value="draft">Draft</option>
-            <option value="submitted">Submitted</option>
-            <option value="adopted">Adopted</option>
-          </select>
+    <!-- ORIGIN & SOURCE -->
+    <div class="form-section">
+      <div class="form-section-title">Origin & Source</div>
+      <div class="field-row">
+        <label>Origin</label>
+        <div class="origin-toggle">
+          <button class="origin-btn${!isVia?' active':''}" onclick="setOrigin('original')">● Original — Phronesis authored</button>
+          <button class="origin-btn${isVia?' active':''}" onclick="setOrigin('via')">↗ Via external source</button>
         </div>
       </div>
-
-      <!-- ── ORIGIN & SOURCE ── -->
-      <div class="form-section">
-        <div class="form-section-title">Origin & Source</div>
-
-        <div class="field-row">
-          <label>Origin</label>
-          <div class="origin-options">
-            <label class="origin-opt active" id="opt-original">
-              <input type="radio" name="origin" value="original" checked />
-              ● Original
-            </label>
-            <label class="origin-opt" id="opt-via">
-              <input type="radio" name="origin" value="via" />
-              ↗ Via External Source
-            </label>
-          </div>
-        </div>
-
-        <!-- shown when origin = via -->
-        <div id="via-fields" class="cond hidden">
+      <div id="via-block" class="${isVia?'':'cond off'}">
+        <div class="field-pair">
           <div class="field-row">
             <label>Publisher / Outlet</label>
-            <input class="field-input" id="f-publisher" type="text" placeholder="e.g. Stanford Law Review, The Atlantic" />
+            <input class="field-input" id="f-publisher" type="text" value="${esc(s.publisher||'')}" placeholder="e.g. Stanford Law Review" oninput="onField('publisher',this.value)" />
           </div>
+          <div class="field-row">
+            <label>Venue type</label>
+            <select class="field-select" id="f-venue-type" onchange="onField('venue_type',this.value||null)">
+              <option value="">— select —</option>
+              ${['journal','preprint','working-paper','report','news'].map(v =>
+                `<option value="${v}"${s.venue_type===v?' selected':''}>${v}</option>`
+              ).join('')}
+            </select>
+          </div>
+        </div>
+        <div class="field-row">
+          <label>Original URL</label>
+          <input class="field-input" id="f-original-url" type="url" value="${esc(s.original_url||'')}" placeholder="https://…" oninput="onField('original_url',this.value||null)" />
+        </div>
+        <div class="field-pair">
           <div class="field-row">
             <label>Publisher URL</label>
-            <input class="field-input" id="f-publisher-url" type="url" placeholder="https://review.law.stanford.edu" />
+            <input class="field-input" id="f-publisher-url" type="url" value="${esc(s.publisher_url||'')}" placeholder="https://…" oninput="onField('publisher_url',this.value||null)" />
           </div>
           <div class="field-row">
-            <label>Original URL</label>
-            <input class="field-input" id="f-original-url" type="url" placeholder="https://…/article-slug" />
-          </div>
-          <div class="two-col">
-            <div class="field-row">
-              <label>DOI <span>if academic</span></label>
-              <input class="field-input" id="f-doi" type="text" placeholder="10.xxxx/…" />
-            </div>
-            <div class="field-row">
-              <label>Venue Type</label>
-              <select class="field-select" id="f-venue-type">
-                <option value="">— select —</option>
-                <option value="journal">Journal</option>
-                <option value="preprint">Preprint (arXiv, SSRN)</option>
-                <option value="working-paper">Working Paper</option>
-                <option value="report">External Report</option>
-                <option value="news">News / Commentary</option>
-              </select>
-            </div>
-          </div>
-          <div class="field-row">
-            <label>Content Type</label>
-            <select class="field-select" id="f-content-type-via">
-              <option value="abstract">Abstract only — open-access paper</option>
-              <option value="preview">Preview only — paywalled or news</option>
-            </select>
-            <p class="field-hint">Abstract: paste their own abstract. Preview: write 1–2 original Phronesis sentences — never reproduce the source's text.</p>
+            <label>DOI <em>if academic</em></label>
+            <input class="field-input" id="f-doi" type="text" value="${esc(s.doi||'')}" placeholder="10.xxxx/…" oninput="onField('doi',this.value||null)" />
           </div>
         </div>
-
-        <!-- document file field (optional for any entry) -->
-        <div class="field-row" style="margin-top:0.5rem;">
-          <label>Document File Path <span>optional — if hosting a PDF on the site</span></label>
-          <input class="field-input" id="f-doc-url" type="text" placeholder="e.g. /content/documents/paper-slug.pdf" />
-          <p class="field-hint">Leave blank if not hosting the file. Add the file to <code style="font-family:monospace;">content/documents/</code> if applicable.</p>
-        </div>
-      </div>
-
-      <!-- ── CONTENT ── -->
-      <div class="form-section">
-        <div class="form-section-title">Content</div>
-
         <div class="field-row">
-          <label>Abstract <span>editorial description or paper abstract</span></label>
-          <textarea class="field-textarea" id="f-abstract" placeholder="A thorough summary of the piece — used in card and list views."></textarea>
-        </div>
-
-        <!-- body: only for originals -->
-        <div id="row-body" class="field-row cond">
-          <label>Body <span>Markdown — full text for original pieces</span></label>
-          <textarea class="field-textarea body-area" id="f-body" placeholder="Full Markdown body. Leave blank to fill in later — the entry will publish without a body page until this is populated."></textarea>
-        </div>
-
-        <!-- preview: only for via/preview -->
-        <div id="row-preview" class="field-row cond hidden">
-          <label>Preview <span>1–2 sentences, written by Phronesis in our own words</span></label>
-          <textarea class="field-textarea" id="f-preview" placeholder="A short original teaser. Do not reproduce text from the source." style="min-height:70px;"></textarea>
-        </div>
-      </div>
-
-      <!-- placeholder toggle -->
-      <div class="placeholder-toggle">
-        <label class="toggle-switch">
-          <input type="checkbox" id="f-placeholder" checked />
-          <div class="toggle-track"></div>
-        </label>
-        <span class="toggle-label" id="placeholder-label">Mark as placeholder</span>
-      </div>
-
-    </div><!-- /intake-form -->
-
-    <!-- ── RIGHT: OUTPUT ── -->
-    <div class="output-panel">
-      <div class="output-header">
-        <span class="output-header-left">Generated JSON</span>
-        <div class="output-actions">
-          <button class="clear-btn" id="clear-btn">Reset form</button>
-          <button class="copy-btn" id="copy-btn">Copy JSON</button>
-        </div>
-      </div>
-
-      <pre class="output-code" id="output-code"></pre>
-
-      <div class="file-guidance">
-        <div class="file-guidance-label">Paste this entry into</div>
-        <div class="file-path" id="file-path">content/research.json</div>
-        <div class="file-instruction">
-          Open the file, find the <code style="font-family:monospace;">"entries"</code> array,
-          and paste this object as the first item (newest first).
-          Add a comma after it if entries already exist below.
+          <label>Content type</label>
+          <select class="field-select" id="f-content-type-via" onchange="setContentType(this.value)">
+            <option value="abstract"${s.content_type==='abstract'?' selected':''}>Abstract only — open-access paper (use their abstract)</option>
+            <option value="preview"${s.content_type==='preview'?' selected':''}>Preview only — paywalled or news (write 1–2 original sentences)</option>
+          </select>
+          <p class="field-hint">For paywalled or news content, never reproduce the source's text. Write your own summary.</p>
         </div>
       </div>
     </div>
 
-  </div><!-- /intake-wrap -->
+    <!-- CONTENT -->
+    <div class="form-section">
+      <div class="form-section-title">Content</div>
+      <div class="field-row">
+        <label>Abstract <em>2–4 sentences</em></label>
+        <textarea class="field-textarea" id="f-abstract" oninput="onField('abstract',this.value)">${esc(s.abstract||'')}</textarea>
+      </div>
+      <div id="body-block" class="${isVia?'cond off':''}">
+        <div class="field-row">
+          <label>Body <em>Markdown — full text for original pieces. Leave blank to add later.</em></label>
+          <textarea class="field-textarea body-field" id="f-body" oninput="onField('body',this.value||null)">${esc(s.body||'')}</textarea>
+        </div>
+      </div>
+      <div id="preview-block" class="${(isVia && s.content_type==='preview')?'':'cond off'}">
+        <div class="field-row">
+          <label>Preview <em>1–2 sentences written by Phronesis — not a quote from the source</em></label>
+          <textarea class="field-textarea" id="f-preview" style="min-height:70px;" oninput="onField('preview',this.value||null)">${esc(s.preview||'')}</textarea>
+        </div>
+      </div>
+    </div>
 
-  <div class="footer-bottom" style="margin-top:0;">
-    <p>&copy; 2025 Phronesis Research — Admin tools are not linked from the public site.</p>
-    <span class="phronesis-greek">&#x03C6;&#x03C1;&#x03CC;&#x03BD;&#x03B7;&#x03C3;&#x03B9;&#x03C2;</span>
-  </div>
+    <!-- PLACEHOLDER TOGGLE -->
+    <div class="placeholder-row">
+      <label class="toggle-wrap">
+        <input type="checkbox" id="f-placeholder" ${s.placeholder?'checked':''} onchange="onField('placeholder',this.checked)" />
+        <div class="toggle-track"></div>
+      </label>
+      <span class="toggle-label" id="placeholder-label">${s.placeholder ? 'Draft — not shown on site yet' : 'Live — visible on site'}</span>
+    </div>
 
-  <script>
-    // ── state ──
-    let activeType   = 'research';
-    let activeOrigin = 'original';
+    ${!isNew && !contributorMode ? `
+    <div class="delete-zone">
+      <span class="delete-label">Remove this entry from the site permanently.</span>
+      <button class="delete-btn" onclick="deleteEntry()">Delete entry</button>
+    </div>` : ''}
+  `;
 
-    // ── slugify ──
-    function slugify(str) {
-      return str.toLowerCase()
-        .replace(/[^\w\s-]/g, '')
-        .trim()
-        .replace(/\s+/g, '-')
-        .replace(/-+/g, '-');
+  // sync placeholder label live
+  document.getElementById('f-placeholder').addEventListener('change', function() {
+    document.getElementById('placeholder-label').textContent =
+      this.checked ? 'Draft — not shown on site yet' : 'Live — visible on site';
+  });
+}
+
+function buildTypeSpecificHTML(type, s) {
+  const r = [];
+  if (type === 'essay' || type === 'article') {
+    r.push(`<div class="field-row"><label>Category <em>shown in filter bar</em></label>
+      <input class="field-input" id="f-category" type="text" value="${esc(s.category||'')}" placeholder="e.g. Governance, Law, Society, Technology" oninput="onField('category',this.value)" />
+    </div>`);
+  }
+  if (type === 'essay') {
+    r.push(`<div class="field-row"><label>Tone</label>
+      <select class="field-select" id="f-tone" onchange="onField('tone',this.value||null)">
+        <option value="">— select —</option>
+        ${['argumentative','critical','exploratory','polemical'].map(v =>
+          `<option value="${v}"${s.tone===v?' selected':''}>${v}</option>`).join('')}
+      </select></div>`);
+  }
+  if (type === 'policy') {
+    r.push(`<div class="field-pair">
+      <div class="field-row"><label>Audience</label>
+        <select class="field-select" id="f-audience" onchange="onField('audience',this.value||null)">
+          <option value="">— select —</option>
+          ${['federal','state','international','institutional'].map(v =>
+            `<option value="${v}"${s.audience===v?' selected':''}>${v}</option>`).join('')}
+        </select></div>
+      <div class="field-row"><label>Stage</label>
+        <select class="field-select" id="f-stage" onchange="onField('stage',this.value||null)">
+          ${['published','draft','submitted','adopted'].map(v =>
+            `<option value="${v}"${s.stage===v?' selected':''}>${v}</option>`).join('')}
+        </select></div>
+    </div>`);
+  }
+  if (type === 'legal') {
+    r.push(`<div class="field-row"><label>Case / Statute references <em>comma separated</em></label>
+      <input class="field-input" id="f-caserefs" type="text" value="${esc((s.case_refs||[]).join(', '))}" placeholder="e.g. Moody v. NetChoice, Sherman Act § 2" oninput="onField('case_refs',this.value.split(',').map(t=>t.trim()).filter(Boolean))" />
+    </div>
+    <div class="field-row"><label>Court / Agency</label>
+      <input class="field-input" id="f-court" type="text" value="${esc(s.court||'')}" placeholder="e.g. U.S. Supreme Court" oninput="onField('court',this.value||null)" />
+    </div>`);
+  }
+  if (type === 'report') {
+    r.push(`<div class="field-row"><label>Report type</label>
+      <select class="field-select" id="f-report-type" onchange="onField('report_type',this.value||null)">
+        <option value="">— select —</option>
+        ${['annual','regulatory','industry','legislative'].map(v =>
+          `<option value="${v}"${s.report_type===v?' selected':''}>${v}</option>`).join('')}
+      </select></div>`);
+  }
+  return r.join('');
+}
+
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ═══════════════════════════════════════════════════════════
+// FORM INTERACTIONS
+// ═══════════════════════════════════════════════════════════
+function onField(key, val) {
+  formState[key] = val;
+}
+
+function toggleField(f) {
+  const fields = formState.fields || [];
+  const idx = fields.indexOf(f);
+  if (idx === -1) fields.push(f); else fields.splice(idx, 1);
+  formState.fields = fields;
+  document.querySelectorAll('#field-chips .field-chip').forEach(chip => {
+    chip.classList.toggle('on', fields.includes(chip.textContent.trim()));
+  });
+}
+
+function autoId() {
+  const title = document.getElementById('f-title')?.value || '';
+  const year  = (document.getElementById('f-date')?.value || '').slice(0,4);
+  const id    = year ? slugify(title) + '-' + year : slugify(title);
+  const idEl  = document.getElementById('f-id');
+  if (idEl && (!formState.id || formState.id === formState._prevAutoId)) {
+    idEl.value = id; formState.id = id;
+  }
+  formState._prevAutoId = id;
+}
+
+function setOrigin(val) {
+  formState.origin = val;
+  const isVia = val === 'via';
+  document.querySelectorAll('.origin-btn').forEach(b =>
+    b.classList.toggle('active', b.textContent.startsWith(isVia ? '↗' : '●'))
+  );
+  document.getElementById('via-block').classList.toggle('off', !isVia);
+  document.getElementById('body-block').classList.toggle('off', isVia);
+  if (!isVia) {
+    formState.content_type = 'full';
+    document.getElementById('preview-block').classList.add('off');
+  } else {
+    const ct = document.getElementById('f-content-type-via')?.value || 'abstract';
+    formState.content_type = ct;
+    document.getElementById('preview-block').classList.toggle('off', ct !== 'preview');
+  }
+}
+
+function setContentType(val) {
+  formState.content_type = val;
+  document.getElementById('preview-block').classList.toggle('off', val !== 'preview');
+}
+
+function cancelEdit() {
+  editingEntry = null; formState = {};
+  document.getElementById('form-wrapper').style.display = 'none';
+  document.getElementById('main-placeholder').style.display = '';
+  renderEntryList();
+}
+
+// ═══════════════════════════════════════════════════════════
+// SAVE / DELETE
+// ═══════════════════════════════════════════════════════════
+function saveEntry() {
+  const store = contentStore[activeType];
+  if (!store) return;
+
+  // clean up entry
+  const entry = { ...formState };
+  delete entry._prevAutoId;
+  if (!entry.id) entry.id = slugify(entry.title || 'untitled');
+
+  if (editingEntry.idx === null) {
+    // new entry — prepend (newest first)
+    store.entries.unshift(entry);
+    editingEntry.idx = 0;
+  } else {
+    store.entries[editingEntry.idx] = entry;
+  }
+
+  dirtyTypes.add(activeType);
+  document.getElementById('btn-publish').disabled = contributorMode;
+
+  renderSidebarCounts();
+  renderEntryList();
+  showToast('Entry saved. ' + (contributorMode ? 'Use "Send to editor" to submit.' : 'Click "Publish changes" to go live.'));
+}
+
+function deleteEntry() {
+  if (!confirm('Delete this entry? This cannot be undone after publishing.')) return;
+  const store = contentStore[activeType];
+  store.entries.splice(editingEntry.idx, 1);
+  dirtyTypes.add(activeType);
+  document.getElementById('btn-publish').disabled = false;
+  cancelEdit();
+  renderSidebarCounts();
+  showToast('Entry deleted. Click "Publish changes" to save.');
+}
+
+// ═══════════════════════════════════════════════════════════
+// PUBLISH
+// ═══════════════════════════════════════════════════════════
+async function publishChanges() {
+  if (!dirtyTypes.size) { showToast('Nothing to publish.'); return; }
+  const btn = document.getElementById('btn-publish');
+  btn.textContent = 'Publishing…'; btn.classList.add('publishing'); btn.disabled = true;
+  try {
+    for (const type of dirtyTypes) {
+      await saveFile(type);
     }
+    showToast('Published! The site will update in about 60 seconds.', 'success');
+    btn.textContent = 'Publish changes';
+    btn.classList.remove('publishing');
+    btn.disabled = false;
+  } catch(e) {
+    showToast('Publish failed: ' + e.message, 'error');
+    btn.textContent = 'Publish changes';
+    btn.classList.remove('publishing');
+    btn.disabled = false;
+    setStatus('Publish error', false);
+  }
+}
 
-    // ── field visibility rules ──
-    const TYPE_RULES = {
-      research: { pages: false, readtime: false, category: false, reportType: false,
-                  audience: false, caserefs: false, court: false, tone: false, stage: false },
-      policy:   { pages: false, readtime: false, category: false, reportType: false,
-                  audience: true,  caserefs: false, court: false, tone: false, stage: true },
-      legal:    { pages: false, readtime: false, category: false, reportType: false,
-                  audience: false, caserefs: true,  court: true,  tone: false, stage: false },
-      essay:    { pages: false, readtime: false, category: true,  reportType: false,
-                  audience: false, caserefs: false, court: false, tone: true,  stage: false },
-      article:  { pages: false, readtime: true,  category: true,  reportType: false,
-                  audience: false, caserefs: false, court: false, tone: false, stage: false },
-      report:   { pages: true,  readtime: false, category: false, reportType: true,
-                  audience: false, caserefs: false, court: false, tone: false, stage: false }
-    };
+// ═══════════════════════════════════════════════════════════
+// CONTRIBUTOR SUBMIT
+// ═══════════════════════════════════════════════════════════
+function submitForReview() {
+  const entry = { ...formState }; delete entry._prevAutoId;
+  const json   = JSON.stringify(entry, null, 2);
+  const type   = FILE_MAP[activeType].split('/').pop();
+  const subject = encodeURIComponent('[Phronesis] New entry for ' + type + ': ' + (entry.title || 'Untitled'));
+  const body    = encodeURIComponent(
+    'Please add the following entry to content/' + type + ':\n\n' + json + '\n\n—\nSubmitted via Phronesis Content Manager'
+  );
+  window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
+}
 
-    function applyTypeRules() {
-      const rules = TYPE_RULES[activeType] || {};
-      const m = {
-        pages:      'row-pages',
-        readtime:   'row-readtime',
-        category:   'row-category',
-        reportType: 'row-report-type',
-        audience:   'row-audience',
-        caserefs:   'row-caserefs',
-        court:      'row-court',
-        tone:       'row-tone',
-        stage:      'row-stage'
-      };
-      Object.entries(m).forEach(([key, id]) => {
-        const el = document.getElementById(id);
-        if (el) el.style.display = rules[key] ? '' : 'none';
-      });
-    }
-
-    function applyOriginRules() {
-      const isVia = activeOrigin === 'via';
-      document.getElementById('via-fields').classList.toggle('hidden', !isVia);
-      // body visible for original; preview visible for via + preview content type
-      document.getElementById('row-body').classList.toggle('hidden', isVia);
-      updatePreviewVisibility();
-    }
-
-    function updatePreviewVisibility() {
-      if (activeOrigin !== 'via') {
-        document.getElementById('row-preview').classList.add('hidden');
-        return;
-      }
-      const ct = document.getElementById('f-content-type-via').value;
-      document.getElementById('row-preview').classList.toggle('hidden', ct !== 'preview');
-    }
-
-    // ── get checked fields ──
-    function getCheckedFields() {
-      return Array.from(document.querySelectorAll('#field-checks .field-check.checked input'))
-        .map(i => i.value);
-    }
-
-    // ── get tags array ──
-    function getTags() {
-      return document.getElementById('f-tags').value
-        .split(',').map(t => t.trim()).filter(Boolean);
-    }
-
-    // ── build JSON entry object ──
-    function buildEntry() {
-      const isPlaceholder = document.getElementById('f-placeholder').checked;
-      const isVia         = activeOrigin === 'via';
-      const contentTypeVia = isVia ? document.getElementById('f-content-type-via').value : null;
-      const contentType   = isVia ? (contentTypeVia || 'abstract') : 'full';
-
-      const entry = {
-        placeholder: isPlaceholder,
-        id:          document.getElementById('f-id').value.trim() || slugify(document.getElementById('f-title').value),
-        title:       document.getElementById('f-title').value.trim(),
-        subtitle:    document.getElementById('f-subtitle').value.trim(),
-        date:        document.getElementById('f-date').value || null,
-        type:        activeType,
-        fields:      getCheckedFields(),
-        tags:        getTags(),
-        origin:      activeOrigin,
-        content_type: contentType,
-        publisher:   isVia ? document.getElementById('f-publisher').value.trim() : 'Phronesis Research',
-        publisher_url: isVia ? (document.getElementById('f-publisher-url').value.trim() || null) : null,
-        original_url:  isVia ? (document.getElementById('f-original-url').value.trim() || null) : null,
-        doi:           isVia ? (document.getElementById('f-doi').value.trim() || null) : null,
-        venue_type:    isVia ? (document.getElementById('f-venue-type').value || null) : null
-      };
-
-      // document file
-      const docUrl = document.getElementById('f-doc-url').value.trim();
-      if (docUrl) entry.document_url = docUrl;
-
-      // abstract
-      const abstract = document.getElementById('f-abstract').value.trim();
-      entry.abstract = abstract || null;
-
-      // type-specific
-      if (activeType === 'essay') {
-        const cat = document.getElementById('f-category').value.trim();
-        if (cat) entry.category = cat;
-        const tone = document.getElementById('f-tone').value;
-        if (tone) entry.tone = tone;
-      }
-      if (activeType === 'article') {
-        const cat = document.getElementById('f-category').value.trim();
-        if (cat) entry.category = cat;
-        const rt = parseInt(document.getElementById('f-readtime').value);
-        entry.read_time = rt || null;
-      }
-      if (activeType === 'report') {
-        const rt = document.getElementById('f-report-type').value;
-        if (rt) entry.report_type = rt;
-        const pg = parseInt(document.getElementById('f-pages').value);
-        entry.pages = pg || null;
-      }
-      if (activeType === 'policy') {
-        const aud = document.getElementById('f-audience').value;
-        if (aud) entry.audience = aud;
-        const stage = document.getElementById('f-stage').value;
-        if (stage) entry.stage = stage;
-      }
-      if (activeType === 'legal') {
-        const crefs = document.getElementById('f-caserefs').value
-          .split(',').map(t => t.trim()).filter(Boolean);
-        if (crefs.length) entry.case_refs = crefs;
-        const court = document.getElementById('f-court').value.trim();
-        entry.court = court || null;
-      }
-
-      // content fields
-      if (!isVia) {
-        const body = document.getElementById('f-body').value.trim();
-        entry.preview = null;
-        entry.body    = body || null;
-      } else if (contentType === 'abstract') {
-        entry.preview = null;
-        entry.body    = null;
-      } else {
-        const preview = document.getElementById('f-preview').value.trim();
-        entry.preview = preview || null;
-        entry.body    = null;
-      }
-
-      return entry;
-    }
-
-    // ── JSON syntax highlight ──
-    function highlight(json) {
-      return json
-        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-        .replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, match => {
-          let cls = 'n'; // number
-          if (/^"/.test(match)) {
-            cls = /:$/.test(match) ? 'k' : 's';
-          } else if (/true|false/.test(match)) {
-            cls = 'b';
-          } else if (/null/.test(match)) {
-            cls = 'b';
-          }
-          return '<span class="' + cls + '">' + match + '</span>';
-        });
-    }
-
-    // ── update output ──
-    function updateOutput() {
-      const entry  = buildEntry();
-      const json   = JSON.stringify(entry, null, 2);
-      document.getElementById('output-code').innerHTML = highlight(json);
-      document.getElementById('id-preview').textContent = entry.id || '—';
-      document.getElementById('file-path').textContent  = 'content/' + activeType +
-        (activeType === 'essay' ? 's' : activeType === 'policy' ? '' + '' : '') +
-        ({research:'research',policy:'policy',legal:'legal',essay:'essays',article:'articles',report:'reports'}[activeType]) + '.json';
-
-      // simpler: just map type to filename
-      const FILE_MAP = {
-        research: 'content/research.json',
-        policy:   'content/policy.json',
-        legal:    'content/legal.json',
-        essay:    'content/essays.json',
-        article:  'content/articles.json',
-        report:   'content/reports.json'
-      };
-      document.getElementById('file-path').textContent = FILE_MAP[activeType];
-
-      // placeholder label
-      const ph = document.getElementById('f-placeholder').checked;
-      document.getElementById('placeholder-label').textContent = ph
-        ? 'Mark as placeholder (entry will be skipped by page JS until set to false)'
-        : 'Live entry (will appear on the site)';
-    }
-
-    // ── auto-generate ID from title ──
-    document.getElementById('f-title').addEventListener('input', function() {
-      const year = (document.getElementById('f-date').value || '').slice(0, 4);
-      const base = slugify(this.value);
-      const id   = year ? base + '-' + year : base;
-      document.getElementById('f-id').value = id;
-      updateOutput();
+// ═══════════════════════════════════════════════════════════
+// AI ASSIST
+// ═══════════════════════════════════════════════════════════
+async function runAI() {
+  const text = document.getElementById('ai-text').value.trim();
+  if (!text) return;
+  const btn = document.getElementById('ai-run-btn');
+  btn.innerHTML = '<div class="ai-spinner"></div> Reading…';
+  btn.disabled = true;
+  try {
+    const res = await fetch(AI_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text, type: activeType }),
     });
+    if (!res.ok) throw new Error('AI service error ' + res.status);
+    const data = await res.json();
+    if (!data.ok) throw new Error(data.error || 'AI extraction failed');
+    const f = data.fields;
+    // populate fields
+    if (f.title)     { formState.title     = f.title;     const el = document.getElementById('f-title');    if(el) el.value = f.title; }
+    if (f.subtitle)  { formState.subtitle  = f.subtitle;  const el = document.getElementById('f-subtitle'); if(el) el.value = f.subtitle; }
+    if (f.abstract)  { formState.abstract  = f.abstract;  const el = document.getElementById('f-abstract'); if(el) el.value = f.abstract; }
+    if (f.fields)    { formState.fields    = f.fields;    document.querySelectorAll('#field-chips .field-chip').forEach(chip => chip.classList.toggle('on', (f.fields||[]).includes(chip.textContent.trim()))); }
+    if (f.tags)      { formState.tags      = f.tags;      const el = document.getElementById('f-tags');     if(el) el.value = f.tags.join(', '); }
+    if (f.origin)    { setOrigin(f.origin); }
+    if (f.publisher && f.origin === 'via') { formState.publisher = f.publisher; const el = document.getElementById('f-publisher'); if(el) el.value = f.publisher; }
+    if (f.doi)       { formState.doi = f.doi; const el = document.getElementById('f-doi'); if(el) el.value = f.doi; }
+    // auto ID
+    autoId();
+    showToast('Fields filled — review and adjust as needed.', 'success');
+  } catch(e) {
+    showToast('AI assist unavailable: ' + e.message, 'error');
+  }
+  btn.innerHTML = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg> Auto-fill';
+  btn.disabled = false;
+}
 
-    // ── all inputs trigger output update ──
-    document.querySelectorAll('.field-input, .field-select, .field-textarea')
-      .forEach(el => el.addEventListener('input', updateOutput));
-
-    // ── type tabs ──
-    document.querySelectorAll('.type-tab').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.type-tab').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        activeType = btn.dataset.type;
-        applyTypeRules();
-        updateOutput();
-      });
-    });
-
-    // ── origin toggle ──
-    document.querySelectorAll('[name="origin"]').forEach(radio => {
-      radio.closest('.origin-opt').addEventListener('click', () => {
-        activeOrigin = radio.value;
-        document.querySelectorAll('.origin-opt').forEach(o => o.classList.remove('active'));
-        radio.closest('.origin-opt').classList.add('active');
-        applyOriginRules();
-        updateOutput();
-      });
-    });
-
-    // ── content type via dropdown ──
-    document.getElementById('f-content-type-via').addEventListener('change', () => {
-      updatePreviewVisibility();
-      updateOutput();
-    });
-
-    // ── field checkboxes ──
-    document.querySelectorAll('.field-check').forEach(label => {
-      label.addEventListener('click', () => {
-        label.classList.toggle('checked');
-        label.querySelector('input').checked = label.classList.contains('checked');
-        updateOutput();
-      });
-    });
-
-    // ── placeholder toggle ──
-    document.getElementById('f-placeholder').addEventListener('change', updateOutput);
-
-    // ── copy button ──
-    document.getElementById('copy-btn').addEventListener('click', () => {
-      const entry = buildEntry();
-      const json  = JSON.stringify(entry, null, 2);
-      navigator.clipboard.writeText(json).then(() => {
-        const btn = document.getElementById('copy-btn');
-        btn.textContent = 'Copied ✓';
-        btn.classList.add('copied');
-        setTimeout(() => { btn.textContent = 'Copy JSON'; btn.classList.remove('copied'); }, 2000);
-      });
-    });
-
-    // ── clear / reset ──
-    document.getElementById('clear-btn').addEventListener('click', () => {
-      if (!confirm('Reset all fields?')) return;
-      document.querySelectorAll('.field-input, .field-textarea').forEach(el => el.value = '');
-      document.querySelectorAll('.field-select').forEach(el => el.selectedIndex = 0);
-      document.querySelectorAll('.field-check').forEach(el => {
-        el.classList.remove('checked');
-        el.querySelector('input').checked = false;
-      });
-      document.getElementById('f-placeholder').checked = true;
-      document.getElementById('id-preview').textContent = '—';
-      updateOutput();
-    });
-
-    // ── date default to today ──
-    const today = new Date();
-    document.getElementById('f-date').value =
-      today.getFullYear() + '-' +
-      String(today.getMonth() + 1).padStart(2, '0') + '-' +
-      String(today.getDate()).padStart(2, '0');
-
-    // ── init ──
-    applyTypeRules();
-    applyOriginRules();
-    updateOutput();
-  </script>
+// ═══════════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════════
+if (ghToken) {
+  // resume session
+  document.getElementById('token-input').value = ghToken;
+  connect();
+}
+</script>
 </body>
 </html>
