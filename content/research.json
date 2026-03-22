@@ -11,6 +11,29 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "a-definition-of-agi-2025",
+      "title": "A Definition of AGI",
+      "subtitle": "",
+      "date": "2025-12-03",
+      "type": "research",
+      "fields": [
+        "Computer Science",
+        "Philosophy"
+      ],
+      "tags": [],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Dan Hendrycks/ ArXiv",
+      "publisher_url": null,
+      "original_url": "https://arxiv.org/abs/2510.18212v3",
+      "doi": null,
+      "venue_type": "preprint",
+      "abstract": "The lack of a concrete definition for Artificial General Intelligence (AGI) obscures the gap between today's specialized AI and human-level cognition. This paper introduces a quantifiable framework to address this, defining AGI as matching the cognitive versatility and proficiency of a well-educated adult. To operationalize this, we ground our methodology in Cattell-Horn-Carroll theory, the most empirically validated model of human cognition. The framework dissects general intelligence into ten core cognitive domains-including reasoning, memory, and perception-and adapts established human psychometric batteries to evaluate AI systems. Application of this framework reveals a highly \"jagged\" cognitive profile in contemporary models. While proficient in knowledge-intensive domains, current AI systems have critical deficits in foundational cognitive machinery, particularly long-term memory storage. The resulting AGI scores (e.g., GPT-4 at 27%, GPT-5 at 57%) concretely quantify both rapid progress and the substantial gap remaining before AGI.",
+      "preview": null,
+      "body": null
+    },
+    {
+      "placeholder": false,
       "id": "audits-under-resource-data-and-access-constraints-scaling-laws-for-less-discriminatory-alternatives-2025",
       "title": "Audits Under Resource, Data, and Access Constraints: Scaling Laws For Less Discriminatory Alternatives",
       "subtitle": "",
