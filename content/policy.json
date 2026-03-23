@@ -9,6 +9,38 @@
   ],
   "entries": [
     {
+      "placeholder": true,
+      "id": "trump-administration-national-ai-policy-framework-2026",
+      "title": "Trump Administration National AI Policy Framework",
+      "subtitle": "The Trump Administration proposes a comprehensive national legislative framework for artificial intelligence development and deployment across six key policy objectives.",
+      "date": "2026-03-20",
+      "type": "policy",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Economics"
+      ],
+      "tags": [
+        "artificial intelligence governance",
+        "national policy framework",
+        "federal regulation",
+        "AI innovation",
+        "intellectual property",
+        "content moderation"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Trump Administration",
+      "publisher_url": null,
+      "original_url": "https://www.whitehouse.gov/wp-content/uploads/2026/03/03.20.26-National-Policy-Framework-for-Artificial-Intelligence-Legislative-Recommendations.pdf",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This policy proposal outlines the Trump Administration's national framework for artificial intelligence governance, organized around six primary objectives: child protection and parental empowerment, community and economic safeguarding, intellectual property rights protection, free speech preservation, innovation enablement, and workforce development. The framework emphasizes federal coordination to establish uniform national standards rather than fragmented state-level regulation, with stated goals of maintaining American competitiveness in AI development while addressing public concerns regarding privacy, security, and societal impacts. The proposal calls for Congressional action to implement legislative measures addressing emerging AI policy challenges including data center permitting, AI-enabled fraud prevention, content moderation safeguards, and intellectual property frameworks.",
+      "preview": null,
+      "body": null,
+      "audience": "federal"
+    },
+    {
       "placeholder": false,
       "id": "openai-policy-proposal-to-the-office-of-science-and-technology-policy-2025",
       "title": "OpenAI Policy Proposal to the Office of Science and Technology Policy",
