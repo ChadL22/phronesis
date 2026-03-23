@@ -9,6 +9,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "state-platform-regulation-a-roadmap-to-coming-debates",
+      "title": "State Platform Regulation: A Roadmap to Coming Debates",
+      "subtitle": "An analysis of state-led technology policy development across privacy, content moderation, antitrust, child safety, and taxation.",
+      "date": "",
+      "type": "report",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Economics"
+      ],
+      "tags": [
+        "state technology policy",
+        "platform regulation",
+        "privacy legislation",
+        "content moderation",
+        "antitrust",
+        "child safety online"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "NYU Center for Social Media, AI, and Politics",
+      "publisher_url": null,
+      "original_url": "https://techpolicynyu.org/wp-content/uploads/2022/12/The-State-of-State-Platform-Regulation.pdf",
+      "doi": null,
+      "venue_type": "report",
+      "abstract": "This report examines the emerging role of U.S. states as primary drivers of technology policy development, particularly following Congressional gridlock on sector-wide governance reforms. Drawing on analysis of 28 platform regulation bills enacted over two years, the document maps state legislative activity across five key domains: privacy, content regulation, antitrust enforcement, child safety protections, and digital taxation. The report projects increased state-level technology policymaking in subsequent legislative sessions, driven by political alignment in trifecta governments and anticipated pressure surrounding reproductive rights and online speech regulation.",
+      "preview": null,
+      "body": null
+    },
+    {
+      "placeholder": false,
       "id": "state-technology-policy-in-2023-an-overview-of-legislative-developments",
       "title": "State Technology Policy in 2023: An Overview of Legislative Developments",
       "subtitle": "Analysis of 65 technology policy laws passed by U.S. states during 2023 legislative sessions and emerging state-level policy trends.",
