@@ -9,6 +9,27 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "the-center-on-technology-policy-state-technology-policy-report-2025-2025",
+      "title": "The Center on Technology Policy: State Technology Policy Report 2025",
+      "subtitle": "",
+      "date": "2025-12-11",
+      "type": "report",
+      "fields": [],
+      "tags": [],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Center for Social Media, AI, and Politics",
+      "publisher_url": null,
+      "original_url": "https://csmapnyu.org/impact/policy/state-technology-policy-report-2025",
+      "doi": null,
+      "venue_type": "report",
+      "abstract": "This report provides an overview of developments in state technology policy over the year of 2025. It analyzes the changing political architecture at the state level during the 2025 legislative sessions, reviews key developments in state technology legislation and litigation during that same year, and provides predictions on what the state policy landscape could look like in 2026.",
+      "preview": null,
+      "body": null,
+      "report_type": "annual"
+    },
+    {
+      "placeholder": false,
       "id": "ethical-analysis-of-normothermic-regional-perfusion-nrp-2023",
       "title": "Ethical Analysis of Normothermic Regional Perfusion (NRP) ",
       "subtitle": "",
