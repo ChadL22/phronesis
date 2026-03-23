@@ -2,13 +2,45 @@
   "_schema": "1.0",
   "_notes": [
     "Policy proposals are almost always Phronesis originals",
-    "level: federal | state | international | institutional — used for the level tab filter",
-    "document_type: memo | proposal | policy — used for the type filter",
+    "level: federal | state | international | institutional â used for the level tab filter",
+    "document_type: memo | proposal | policy â used for the type filter",
     "stage: draft | published | submitted | adopted",
     "audience: federal | state | international | institutional"
   ],
   "entries": [
-
+    {
+      "placeholder": false,
+      "id": "openai-policy-proposal-to-the-office-of-science-and-technology-policy-2025",
+      "title": "OpenAI Policy Proposal to the Office of Science and Technology Policy",
+      "subtitle": "OpenAI submits recommendations for the Trump Administration's AI Action Plan emphasizing American leadership, AI education, and economic opportunity.",
+      "date": "2025-05-13",
+      "type": "policy",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Economics"
+      ],
+      "tags": [
+        "AI policy",
+        "AI education",
+        "artificial general intelligence",
+        "geopolitical competition",
+        "workforce development",
+        "regulatory framework"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Office of Science and Technology Policy / OpenAI",
+      "publisher_url": null,
+      "original_url": "https://cdn.openai.com/global-affairs/ostp-rfi/ec680b75-d539-4653-b297-8bcf6e5f7686/openai-response-ostp-nsf-rfi-notice-request-for-information-on-the-development-of-an-artificial-intelligence-ai-action-plan.pdf",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "OpenAI submits policy proposals to the Office of Science and Technology Policy addressing the development of a new AI Action Plan. The submission emphasizes the importance of maintaining American leadership in artificial intelligence development relative to international competitors, particularly the People's Republic of China. The proposal highlights demographic trends in AI adoption among younger populations and argues for increased integration of AI education in schools to prepare students for future economic opportunities.",
+      "preview": null,
+      "body": null,
+      "audience": "federal",
+      "stage": "submitted"
+    },
     {
       "placeholder": true,
       "id": "federal-ai-incident-reporting-2025",
@@ -18,8 +50,14 @@
       "type": "policy",
       "level": "federal",
       "document_type": "proposal",
-      "fields": ["Public Policy"],
-      "tags": ["AI Policy", "Federal", "Incident Reporting"],
+      "fields": [
+        "Public Policy"
+      ],
+      "tags": [
+        "AI Policy",
+        "Federal",
+        "Incident Reporting"
+      ],
       "audience": "federal",
       "stage": "published",
       "origin": "original",
@@ -34,7 +72,6 @@
       "preview": null,
       "body": null
     },
-
     {
       "placeholder": true,
       "id": "procurement-as-policy-2025",
@@ -44,8 +81,14 @@
       "type": "policy",
       "level": "federal",
       "document_type": "memo",
-      "fields": ["Public Policy"],
-      "tags": ["Federal", "Procurement", "AI Governance"],
+      "fields": [
+        "Public Policy"
+      ],
+      "tags": [
+        "Federal",
+        "Procurement",
+        "AI Governance"
+      ],
       "audience": "federal",
       "stage": "published",
       "origin": "via",
@@ -56,11 +99,10 @@
       "document_url": null,
       "doi": null,
       "venue_type": "report",
-      "abstract": "The federal government spends billions annually on technology procurement. This paper argues that acquisition regulations — specifically FAR and DFARS — can be amended to require AI safety documentation, impact assessments, and audit rights as conditions of federal contracts, establishing baseline norms before Congress acts.",
-      "preview": "A framework for using federal acquisition regulations to establish AI accountability baselines as a precursor to comprehensive legislation — making procurement power do the work that statute has not yet done.",
+      "abstract": "The federal government spends billions annually on technology procurement. This paper argues that acquisition regulations â specifically FAR and DFARS â can be amended to require AI safety documentation, impact assessments, and audit rights as conditions of federal contracts, establishing baseline norms before Congress acts.",
+      "preview": "A framework for using federal acquisition regulations to establish AI accountability baselines as a precursor to comprehensive legislation â making procurement power do the work that statute has not yet done.",
       "body": null
     },
-
     {
       "placeholder": true,
       "id": "algorithmic-impact-assessment-standards-2024",
@@ -70,8 +112,14 @@
       "type": "policy",
       "level": "state",
       "document_type": "policy",
-      "fields": ["Public Policy"],
-      "tags": ["State", "Algorithmic Accountability", "Impact Assessment"],
+      "fields": [
+        "Public Policy"
+      ],
+      "tags": [
+        "State",
+        "Algorithmic Accountability",
+        "Impact Assessment"
+      ],
       "audience": "state",
       "stage": "published",
       "origin": "original",
@@ -86,7 +134,6 @@
       "preview": null,
       "body": null
     },
-
     {
       "placeholder": true,
       "id": "transatlantic-ai-governance-2024",
@@ -96,8 +143,14 @@
       "type": "policy",
       "level": "international",
       "document_type": "proposal",
-      "fields": ["Public Policy"],
-      "tags": ["International", "EU AI Act", "Regulatory Cooperation"],
+      "fields": [
+        "Public Policy"
+      ],
+      "tags": [
+        "International",
+        "EU AI Act",
+        "Regulatory Cooperation"
+      ],
       "audience": "international",
       "stage": "published",
       "origin": "via",
@@ -109,9 +162,8 @@
       "doi": null,
       "venue_type": "report",
       "abstract": "The EU AI Act and emerging U.S. federal AI frameworks share broad objectives but diverge significantly in structure, scope, and enforcement. This paper proposes a bilateral coordination mechanism modeled on the EU-U.S. Trade and Technology Council to align definitions, recognize compliant certifications, and reduce duplicative compliance burdens for transatlantic AI developers.",
-      "preview": "A proposed bilateral coordination mechanism between the U.S. and EU that would reduce compliance friction and establish shared standards — modeled on the Trade and Technology Council but focused on AI governance.",
+      "preview": "A proposed bilateral coordination mechanism between the U.S. and EU that would reduce compliance friction and establish shared standards â modeled on the Trade and Technology Council but focused on AI governance.",
       "body": null
     }
-
   ]
 }
