@@ -2,13 +2,44 @@
   "_schema": "1.0",
   "_notes": [
     "origin 'original': Phronesis analysis, full body stored here",
-    "origin 'via': curated from law reviews or legal blogs Ã¢ÂÂ abstract only (open-access) or preview (paywalled)",
+    "origin 'via': curated from law reviews or legal blogs ÃÂ¢ÃÂÃÂ abstract only (open-access) or preview (paywalled)",
     "analysis_type: doctrinal | case | statutory | regulatory | procedural | litigation | policy | comparative",
     "primary_topic: first-amendment | antitrust | liability | administrative | ip | privacy | competition",
     "case_refs: array of case names or statute citations central to the piece",
     "court: relevant court or agency if analysis is case-specific"
   ],
   "entries": [
+    {
+      "placeholder": false,
+      "id": "amazons-dominance-and-the-need-for-antitrust-reform",
+      "title": "Amazon's Dominance and the Need for Antitrust Reform",
+      "subtitle": "A critical analysis of how Amazon's integrated business model and below-cost pricing strategy escape antitrust scrutiny under current consumer welfare doctrine.",
+      "date": "",
+      "type": "legal",
+      "fields": [
+        "Public Policy",
+        "Economics",
+        "Computer Science"
+      ],
+      "tags": [
+        "antitrust law",
+        "platform markets",
+        "predatory pricing",
+        "consumer welfare doctrine",
+        "Amazon",
+        "market power"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Yale Law Journal",
+      "publisher_url": null,
+      "original_url": "https://yalelawjournal.org/pdf/e.710.Khan.805_zuvfyyeh.pdf",
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This legal analysis examines Amazon's multi-sector dominance across retail, logistics, cloud computing, and digital platforms, arguing that the company's predatory pricing and cross-business integration pose significant anticompetitive risks. The author contends that current antitrust doctrine, which prioritizes short-term consumer welfare measured through price and output, is inadequate to address market power in platform-based digital economies. The Note identifies specific vulnerabilities in existing antitrust frameworks and proposes two alternative regulatory regimes: restoration of traditional competition principles or application of common carrier obligations.",
+      "preview": null,
+      "body": null
+    },
     {
       "placeholder": false,
       "id": "in-netchoice-cases-supreme-court-labels-a-surprisingly-narrow-class-of-online-platform-company-activities-as-protected-expression-2024",
@@ -100,7 +131,7 @@
       "document_url": null,
       "doi": null,
       "venue_type": null,
-      "abstract": "The Supreme Court's 2024 NetChoice opinions were widely anticipated as a landmark statement on platform speech. This analysis examines what the Court actually held Ã¢ÂÂ as opposed to what it was asked to decide Ã¢ÂÂ and maps the doctrinal questions left open for lower courts, Congress, and the next wave of platform litigation.",
+      "abstract": "The Supreme Court's 2024 NetChoice opinions were widely anticipated as a landmark statement on platform speech. This analysis examines what the Court actually held ÃÂ¢ÃÂÃÂ as opposed to what it was asked to decide ÃÂ¢ÃÂÃÂ and maps the doctrinal questions left open for lower courts, Congress, and the next wave of platform litigation.",
       "preview": null,
       "body": null
     },
@@ -135,7 +166,7 @@
       "document_url": null,
       "doi": null,
       "venue_type": null,
-      "abstract": "State statutes requiring platforms to carry certain content Ã¢ÂÂ or prohibiting them from removing it Ã¢ÂÂ raise compelled speech questions that the Court's NetChoice opinions addressed only obliquely. This analysis applies the Court's reasoning to the must-carry/must-not-carry distinction and assesses the constitutional viability of content moderation mandates.",
+      "abstract": "State statutes requiring platforms to carry certain content ÃÂ¢ÃÂÃÂ or prohibiting them from removing it ÃÂ¢ÃÂÃÂ raise compelled speech questions that the Court's NetChoice opinions addressed only obliquely. This analysis applies the Court's reasoning to the must-carry/must-not-carry distinction and assesses the constitutional viability of content moderation mandates.",
       "preview": null,
       "body": null
     },
@@ -159,7 +190,7 @@
       ],
       "case_refs": [
         "FTC v. Amazon.com, Inc.",
-        "Sherman Act ÃÂ§ 2"
+        "Sherman Act ÃÂÃÂ§ 2"
       ],
       "court": "U.S. District Court for the Western District of Washington",
       "origin": "original",
@@ -170,7 +201,7 @@
       "document_url": null,
       "doi": null,
       "venue_type": null,
-      "abstract": "The FTC's 2023 complaint against Amazon marks an ambitious attempt to apply Section 2 of the Sherman Act to a platform ecosystem rather than a discrete market. This analysis reads the complaint as a doctrinal argument Ã¢ÂÂ examining the market definition choices, the conduct theories, and the remedial logic Ã¢ÂÂ and assesses their prospects under existing case law.",
+      "abstract": "The FTC's 2023 complaint against Amazon marks an ambitious attempt to apply Section 2 of the Sherman Act to a platform ecosystem rather than a discrete market. This analysis reads the complaint as a doctrinal argument ÃÂ¢ÃÂÃÂ examining the market definition choices, the conduct theories, and the remedial logic ÃÂ¢ÃÂÃÂ and assesses their prospects under existing case law.",
       "preview": null,
       "body": null
     },
@@ -240,7 +271,7 @@
       "document_url": null,
       "doi": null,
       "venue_type": "journal",
-      "abstract": "A wave of copyright litigation targeting AI training practices is working its way through the federal courts. This analysis surveys the pending cases, maps the competing fair use arguments, and sketches the doctrinal paths most likely to produce a stable resolution Ã¢ÂÂ including the possibility that Congress will need to act regardless of how courts rule.",
+      "abstract": "A wave of copyright litigation targeting AI training practices is working its way through the federal courts. This analysis surveys the pending cases, maps the competing fair use arguments, and sketches the doctrinal paths most likely to produce a stable resolution ÃÂ¢ÃÂÃÂ including the possibility that Congress will need to act regardless of how courts rule.",
       "preview": null,
       "body": null
     }
