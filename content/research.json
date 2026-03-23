@@ -1,12 +1,12 @@
 {
   "_schema": "1.0",
   "_notes": [
-    "origin 'original': authored and owned by Phronesis â full body may be stored",
-    "origin 'via': curated from external source â abstract only (open-access) or short original preview (paywalled/news)",
+    "origin 'original': authored and owned by Phronesis Ã¢ÂÂ full body may be stored",
+    "origin 'via': curated from external source Ã¢ÂÂ abstract only (open-access) or short original preview (paywalled/news)",
     "content_type 'full': body field contains full Markdown text",
-    "content_type 'abstract': abstract field only; body is null â used for open-access academic papers",
-    "content_type 'preview': preview field contains 1-2 Phronesis-written sentences; body is null â used for paywalled journals and news",
-    "placeholder: true entries are seed data â set to false and fill fields when real content is ready"
+    "content_type 'abstract': abstract field only; body is null Ã¢ÂÂ used for open-access academic papers",
+    "content_type 'preview': preview field contains 1-2 Phronesis-written sentences; body is null Ã¢ÂÂ used for paywalled journals and news",
+    "placeholder: true entries are seed data Ã¢ÂÂ set to false and fill fields when real content is ready"
   ],
   "entries": [
     {
@@ -62,7 +62,7 @@
       "document_url": null,
       "doi": null,
       "venue_type": "preprint",
-      "abstract": "The lack of a concrete definition for Artificial General Intelligence (AGI) obscures the gap between today's specialized AI and human-level cognition. This paper introduces a quantifiable framework to address this, defining AGI as matching the cognitive versatility and proficiency of a well-educated adult. To operationalize this, we ground our methodology in Cattell-Horn-Carroll theory, the most empirically validated model of human cognition. The framework dissects general intelligence into ten core cognitive domains â including reasoning, memory, and perception â and adapts established human psychometric batteries to rigorously evaluate AI systems. Applying this framework, we find that today's frontier AI models exhibit high but uneven performance, with notable weaknesses in specific cognitive domains.",
+      "abstract": "The lack of a concrete definition for Artificial General Intelligence (AGI) obscures the gap between today's specialized AI and human-level cognition. This paper introduces a quantifiable framework to address this, defining AGI as matching the cognitive versatility and proficiency of a well-educated adult. To operationalize this, we ground our methodology in Cattell-Horn-Carroll theory, the most empirically validated model of human cognition. The framework dissects general intelligence into ten core cognitive domains Ã¢ÂÂ including reasoning, memory, and perception Ã¢ÂÂ and adapts established human psychometric batteries to rigorously evaluate AI systems. Applying this framework, we find that today's frontier AI models exhibit high but uneven performance, with notable weaknesses in specific cognitive domains.",
       "preview": null,
       "body": null
     },
@@ -148,7 +148,7 @@
       "document_url": null,
       "doi": null,
       "venue_type": "preprint",
-      "abstract": "AI agents â autonomous systems that perceive, reason, and act â have the potential to dramatically reduce transaction costs. This paper applies Coasean theory of the firm to the emergence of AI agents and asks how markets will reorganize when the costs of coordinating economic activity approach zero. The paper examines implications for market design, firm boundaries, and the distribution of economic surplus, and considers what regulatory and institutional responses may be required.",
+      "abstract": "AI agents Ã¢ÂÂ autonomous systems that perceive, reason, and act Ã¢ÂÂ have the potential to dramatically reduce transaction costs. This paper applies Coasean theory of the firm to the emergence of AI agents and asks how markets will reorganize when the costs of coordinating economic activity approach zero. The paper examines implications for market design, firm boundaries, and the distribution of economic surplus, and considers what regulatory and institutional responses may be required.",
       "preview": null,
       "body": null
     },
@@ -206,148 +206,6 @@
       "doi": null,
       "venue_type": "working-paper",
       "abstract": "This paper considers the effects of generative artificial intelligence tools on the division of labor. Following Becker and Murphy (1992), the author posits a team with each member assigned to a task. Specialization is limited not only by the extent of the market, but also by coordination costs, which include the need for knowledge in multiple tasks. AI helps the coordination of the team by being a substitute for human generalist knowledge, resulting in a greater number of specialized fields. The introduction of AI also increases the return to knowledge that is equally productive in all tasks. The paper shows that AI agents would typically have a comparative advantage in coordinating specialists, while human agents perform specialist roles.",
-      "preview": null,
-      "body": null
-    },
-    {
-      "placeholder": true,
-      "id": "governing-the-stack-2025",
-      "title": "Governing the Stack: Regulatory Jurisdiction in Multi-Layer AI Systems",
-      "subtitle": "Maps jurisdictional gaps across AI model layers, fine-tuning, APIs, and deployment contexts, proposing a tiered liability framework.",
-      "date": "2025-03-01",
-      "type": "research",
-      "fields": [
-        "Computer Science",
-        "Public Policy"
-      ],
-      "tags": [
-        "AI Governance",
-        "Liability",
-        "Regulatory Frameworks"
-      ],
-      "origin": "original",
-      "content_type": "full",
-      "publisher": "Phronesis Research",
-      "publisher_url": null,
-      "original_url": null,
-      "document_url": null,
-      "doi": null,
-      "venue_type": null,
-      "abstract": "As AI systems grow architecturally complex â spanning foundation models, fine-tuning layers, APIs, and deployment contexts â existing regulatory frameworks struggle to assign meaningful accountability. This paper maps the jurisdictional gaps created by multi-layer AI architectures and proposes a tiered liability framework that allocates responsibility across the stack.",
-      "preview": null,
-      "body": null
-    },
-    {
-      "placeholder": true,
-      "id": "algorithmic-harm-disparate-impact-2025",
-      "title": "Algorithmic Harm and the Limits of Disparate Impact Theory",
-      "subtitle": "Examines whether Title VII's disparate impact doctrine can bear the weight of automated decision-making in employment contexts.",
-      "date": "2025-02-01",
-      "type": "research",
-      "fields": [
-        "Computer Science",
-        "Public Policy",
-        "Philosophy"
-      ],
-      "tags": [
-        "Civil Rights",
-        "Employment Law",
-        "Algorithmic Accountability"
-      ],
-      "origin": "via",
-      "content_type": "abstract",
-      "publisher": "Stanford Law Review",
-      "publisher_url": "https://review.law.stanford.edu",
-      "original_url": "https://review.law.stanford.edu/placeholder",
-      "document_url": null,
-      "doi": null,
-      "venue_type": "journal",
-      "abstract": "This article examines whether Title VII's disparate impact doctrine can bear the weight placed on it by advocates of algorithmic accountability. Drawing on the statute's text, legislative history, and recent lower-court decisions, it argues that the doctrine's core limitations â the business necessity defense, the lack of causation requirements, and its focus on facially neutral practices â create structural obstacles to addressing the most harmful forms of automated discrimination.",
-      "preview": null,
-      "body": null
-    },
-    {
-      "placeholder": true,
-      "id": "federal-privacy-gap-2025",
-      "title": "The Federal Privacy Gap: Why Sectoral Regulation Has Failed and What Comes Next",
-      "subtitle": "A structural critique of the United States' sector-by-sector approach to data privacy and a framework for comprehensive federal legislation.",
-      "date": "2025-01-01",
-      "type": "research",
-      "fields": [
-        "Public Policy",
-        "Philosophy"
-      ],
-      "tags": [
-        "Privacy",
-        "Federal Legislation",
-        "Data Governance"
-      ],
-      "origin": "original",
-      "content_type": "full",
-      "publisher": "Phronesis Research",
-      "publisher_url": null,
-      "original_url": null,
-      "document_url": null,
-      "doi": null,
-      "venue_type": null,
-      "abstract": "The United States has governed data privacy through a patchwork of sector-specific statutes for over three decades. This paper argues that the sectoral approach has produced a governance gap that comprehensive legislation must address, and proposes a framework for what that legislation should contain.",
-      "preview": null,
-      "body": null
-    },
-    {
-      "placeholder": true,
-      "id": "market-power-foundation-models-2024",
-      "title": "Market Power in the Foundation Model Layer: Early Evidence and Regulatory Implications",
-      "subtitle": "Applies traditional antitrust analysis to the emerging market structure of large language model development and API access.",
-      "date": "2024-12-01",
-      "type": "research",
-      "fields": [
-        "Economics",
-        "Public Policy"
-      ],
-      "tags": [
-        "Competition",
-        "Antitrust",
-        "AI Governance"
-      ],
-      "origin": "via",
-      "content_type": "abstract",
-      "publisher": "Yale Journal on Regulation",
-      "publisher_url": "https://www.yalejreg.com",
-      "original_url": "https://www.yalejreg.com/placeholder",
-      "document_url": null,
-      "doi": null,
-      "venue_type": "journal",
-      "abstract": "This article applies traditional antitrust frameworks to the emerging market structure of large language model development. It identifies early evidence of concentration at the foundation model layer, examines the competitive dynamics created by API-based access, and considers the regulatory implications for merger review and abuse-of-dominance enforcement.",
-      "preview": null,
-      "body": null
-    },
-    {
-      "placeholder": true,
-      "id": "intermediary-liability-generative-ai-2024",
-      "title": "Intermediary Liability in the Age of Generative AI: Rethinking Platform Responsibility",
-      "subtitle": "Asks whether Section 230's third-party content framework can coherently extend to AI-generated outputs produced at a platform's direction.",
-      "date": "2024-11-01",
-      "type": "research",
-      "fields": [
-        "Computer Science",
-        "Public Policy",
-        "Philosophy"
-      ],
-      "tags": [
-        "Platform Law",
-        "Section 230",
-        "Liability"
-      ],
-      "origin": "original",
-      "content_type": "full",
-      "publisher": "Phronesis Research",
-      "publisher_url": null,
-      "original_url": null,
-      "document_url": null,
-      "doi": null,
-      "venue_type": null,
-      "abstract": "Section 230's immunity was designed for platforms that passively host third-party content. Generative AI upends this logic: when a platform's model produces content at a user's direction, it is simultaneously third-party (prompted by the user) and first-party (generated by the platform's own system). This paper examines how courts are likely to resolve this tension and what Congress should do if they do not.",
       "preview": null,
       "body": null
     }
