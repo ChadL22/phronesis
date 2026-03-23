@@ -1,13 +1,44 @@
 {
   "_schema": "1.0",
   "_notes": [
-    "Essays are argumentative, idea-driven pieces — almost always Phronesis originals",
-    "category: governance | technology | law | society — used for the topic filter",
+    "Essays are argumentative, idea-driven pieces â almost always Phronesis originals",
+    "category: governance | technology | law | society â used for the topic filter",
     "tone: argumentative | critical | exploratory | polemical",
     "excerpt: 2-4 sentence pull-quote style teaser shown in spotlight and grid views (can differ from abstract)"
   ],
   "entries": [
-
+    {
+      "placeholder": false,
+      "id": "the-silicon-valley-canon-on-the-padea-of-the-american-tech-elite-2024",
+      "title": "The Silicon Valley Canon: On the Paıdeía of the American Tech Elite",
+      "subtitle": "An examination of how educational formation and ruling elites in Silicon Valley differ fundamentally from Washington DC's expert-driven political culture.",
+      "date": "2024-08-21",
+      "type": "essay",
+      "fields": [
+        "Philosophy",
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "tech elite",
+        "political philosophy",
+        "education and culture",
+        "Silicon Valley vs Washington",
+        "expertise and authority",
+        "Aristotelian politics"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Scholar's Stage",
+      "publisher_url": null,
+      "original_url": "https://scholars-stage.org/the-silicon-valley-canon-on-the-paideia-of-the-american-tech-elite/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This essay applies classical Greek political theory—particularly Aristotelian concepts of paıdeía (education and moral formation) and políteuma (ruling order)—to analyze contemporary American tech leadership. The author contrasts the narrow, specialized expertise valued in Washington's political establishment with Silicon Valley's generalist, anti-authoritarian intellectual culture. The piece argues that the composition and character of a polity's ruling class fundamentally determines its values, priorities, and formation of new members.",
+      "preview": null,
+      "body": null,
+      "tone": "critical"
+    },
     {
       "placeholder": true,
       "id": "ai-safety-vs-ai-regulation-2025",
@@ -16,8 +47,15 @@
       "date": "2025-02-01",
       "type": "essay",
       "category": "governance",
-      "fields": ["Public Policy", "Philosophy"],
-      "tags": ["AI Governance", "AI Safety", "Regulation"],
+      "fields": [
+        "Public Policy",
+        "Philosophy"
+      ],
+      "tags": [
+        "AI Governance",
+        "AI Safety",
+        "Regulation"
+      ],
       "tone": "argumentative",
       "origin": "original",
       "content_type": "full",
@@ -28,21 +66,27 @@
       "doi": null,
       "venue_type": null,
       "excerpt": "The conflation of technical safety research with policy regulation has muddied both fields. They share concerns but operate on different timescales, with different tools, and for different audiences. Technical AI safety asks: how do we build systems that reliably do what we intend? AI regulation asks: who bears responsibility when they don't? These are related but distinct projects, and treating them as identical has real costs for how we allocate attention, assign institutional responsibility, and govern a technology we do not yet fully understand.",
-      "abstract": "The conflation of technical AI safety research with AI policy regulation has muddied both fields. They share concerns — neither wants AI systems that cause catastrophic harm — but they operate on different timescales, with different tools, for different audiences. This essay argues for a cleaner separation, and explains why conflating them produces worse outcomes in both domains.",
+      "abstract": "The conflation of technical AI safety research with AI policy regulation has muddied both fields. They share concerns â neither wants AI systems that cause catastrophic harm â but they operate on different timescales, with different tools, for different audiences. This essay argues for a cleaner separation, and explains why conflating them produces worse outcomes in both domains.",
       "preview": null,
       "body": null
     },
-
     {
       "placeholder": true,
       "id": "technology-neutral-frameworks-2025",
       "title": "The Problem with \"Technology-Neutral\" Legal Frameworks",
-      "subtitle": "Regulators and courts often aspire to write technology-neutral rules — this aspiration frequently produces worse outcomes.",
+      "subtitle": "Regulators and courts often aspire to write technology-neutral rules â this aspiration frequently produces worse outcomes.",
       "date": "2025-01-01",
       "type": "essay",
       "category": "law",
-      "fields": ["Public Policy", "Philosophy"],
-      "tags": ["Regulatory Design", "Technology Law", "Legal Theory"],
+      "fields": [
+        "Public Policy",
+        "Philosophy"
+      ],
+      "tags": [
+        "Regulatory Design",
+        "Technology Law",
+        "Legal Theory"
+      ],
       "tone": "argumentative",
       "origin": "via",
       "content_type": "preview",
@@ -52,12 +96,11 @@
       "document_url": null,
       "doi": null,
       "venue_type": "news",
-      "excerpt": "Regulators and courts often aspire to write technology-neutral rules, believing that the law should describe conduct rather than tools. The argument here is that this aspiration, while understandable, frequently produces worse outcomes than honest technology-specific reasoning. When the underlying technology structures the nature of the harm, pretending otherwise in the legal framework doesn't produce neutrality — it produces confusion.",
+      "excerpt": "Regulators and courts often aspire to write technology-neutral rules, believing that the law should describe conduct rather than tools. The argument here is that this aspiration, while understandable, frequently produces worse outcomes than honest technology-specific reasoning. When the underlying technology structures the nature of the harm, pretending otherwise in the legal framework doesn't produce neutrality â it produces confusion.",
       "abstract": "Technology-neutral legal drafting is an aspiration with genuine appeal: rules that do not privilege or penalize specific technologies seem fairer and more durable. This essay argues that in practice, the aspiration frequently produces worse outcomes than honest technology-specific reasoning.",
-      "preview": "A sharp argument that technology-neutral legal drafting often produces worse outcomes than honest technology-specific reasoning — and that courts invoking the principle are frequently using it to avoid hard choices.",
+      "preview": "A sharp argument that technology-neutral legal drafting often produces worse outcomes than honest technology-specific reasoning â and that courts invoking the principle are frequently using it to avoid hard choices.",
       "body": null
     },
-
     {
       "placeholder": true,
       "id": "move-fast-fix-later-2024",
@@ -66,8 +109,15 @@
       "date": "2024-12-01",
       "type": "essay",
       "category": "society",
-      "fields": ["Public Policy", "Philosophy"],
-      "tags": ["Regulatory Philosophy", "Tech Industry", "Harm"],
+      "fields": [
+        "Public Policy",
+        "Philosophy"
+      ],
+      "tags": [
+        "Regulatory Philosophy",
+        "Tech Industry",
+        "Harm"
+      ],
       "tone": "critical",
       "origin": "original",
       "content_type": "full",
@@ -77,12 +127,11 @@
       "document_url": null,
       "doi": null,
       "venue_type": null,
-      "excerpt": "A critique of the regulatory philosophy that treats market deployment as the primary mechanism for identifying harm. The populations this approach systematically disadvantages are not random — they are the ones least positioned to exit the market, least likely to be heard in retrospective processes, and most exposed to the harms that deployment surfaces. Speed has costs that are not borne equally.",
-      "abstract": "The \"move fast and fix it later\" philosophy treats market deployment as the primary mechanism for surfacing harm — the assumption being that if something causes serious damage, we will notice and correct it. This essay argues that this assumption is false for a specific and important category of harms: those that are diffuse, slow-moving, or concentrated among populations with limited political voice.",
+      "excerpt": "A critique of the regulatory philosophy that treats market deployment as the primary mechanism for identifying harm. The populations this approach systematically disadvantages are not random â they are the ones least positioned to exit the market, least likely to be heard in retrospective processes, and most exposed to the harms that deployment surfaces. Speed has costs that are not borne equally.",
+      "abstract": "The \"move fast and fix it later\" philosophy treats market deployment as the primary mechanism for surfacing harm â the assumption being that if something causes serious damage, we will notice and correct it. This essay argues that this assumption is false for a specific and important category of harms: those that are diffuse, slow-moving, or concentrated among populations with limited political voice.",
       "preview": null,
       "body": null
     },
-
     {
       "placeholder": true,
       "id": "open-source-ai-meaning-2024",
@@ -91,8 +140,15 @@
       "date": "2024-11-01",
       "type": "essay",
       "category": "technology",
-      "fields": ["Computer Science", "Public Policy"],
-      "tags": ["Open Source", "AI Policy", "Accountability"],
+      "fields": [
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "Open Source",
+        "AI Policy",
+        "Accountability"
+      ],
       "tone": "exploratory",
       "origin": "via",
       "content_type": "preview",
@@ -107,7 +163,6 @@
       "preview": "A careful disaggregation of what 'open source' actually means when applied to AI models, and which version of openness matters for the policy goals most commonly invoked in its defense.",
       "body": null
     },
-
     {
       "placeholder": true,
       "id": "institutional-gap-ai-governance-2024",
@@ -116,8 +171,14 @@
       "date": "2024-10-01",
       "type": "essay",
       "category": "governance",
-      "fields": ["Public Policy"],
-      "tags": ["AI Governance", "Regulatory Institutions", "Enforcement"],
+      "fields": [
+        "Public Policy"
+      ],
+      "tags": [
+        "AI Governance",
+        "Regulatory Institutions",
+        "Enforcement"
+      ],
       "tone": "exploratory",
       "origin": "original",
       "content_type": "full",
@@ -132,7 +193,6 @@
       "preview": null,
       "body": null
     },
-
     {
       "placeholder": true,
       "id": "liability-without-causation-2024",
@@ -141,8 +201,15 @@
       "date": "2024-09-01",
       "type": "essay",
       "category": "law",
-      "fields": ["Public Policy", "Philosophy"],
-      "tags": ["Liability", "Algorithmic Harm", "Tort Law"],
+      "fields": [
+        "Public Policy",
+        "Philosophy"
+      ],
+      "tags": [
+        "Liability",
+        "Algorithmic Harm",
+        "Tort Law"
+      ],
       "tone": "argumentative",
       "origin": "original",
       "content_type": "full",
@@ -157,6 +224,5 @@
       "preview": null,
       "body": null
     }
-
   ]
 }
