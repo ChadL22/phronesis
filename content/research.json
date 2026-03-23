@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "the-impossibility-of-a-paretian-liberal",
+      "title": "The Impossibility of a Paretian Liberal",
+      "subtitle": "An examination of the logical incompatibility between individual liberty and the Pareto principle in social choice theory.",
+      "date": "",
+      "type": "research",
+      "fields": [
+        "Philosophy",
+        "Economics",
+        "Public Policy",
+        "Mathematics"
+      ],
+      "tags": [
+        "social choice theory",
+        "individual liberty",
+        "Pareto efficiency",
+        "impossibility theorem",
+        "majoritarianism",
+        "welfare economics"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Journal of Political Economy",
+      "publisher_url": null,
+      "original_url": "https://dash.harvard.edu/entities/publication/73120378-8203-6bd4-e053-0100007fdf3b",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This paper presents an impossibility result demonstrating fundamental tensions between liberal principles of individual liberty and conventional social choice mechanisms. The authors formalize a minimalist concept of individual liberty—the notion that individuals should retain absolute freedom over personal decisions regardless of majority preference—and prove its incompatibility with basic economic efficiency principles. The analysis reveals deep structural conflicts in constructing social decision rules that simultaneously respect both individual autonomy and collective welfare optimization.",
+      "preview": null,
+      "body": null
+    },
+    {
+      "placeholder": false,
       "id": "social-choice-and-individual-values-1st-ed",
       "title": "Social Choice and Individual Values, 1st ed.",
       "subtitle": "An examination of the formal conditions required for aggregating individual preferences into rational collective social choices.",
