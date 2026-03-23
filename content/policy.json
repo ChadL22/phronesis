@@ -2,12 +2,44 @@
   "_schema": "1.0",
   "_notes": [
     "Policy proposals are almost always Phronesis originals",
-    "level: federal | state | international | institutional Ã¢ÂÂ used for the level tab filter",
-    "document_type: memo | proposal | policy Ã¢ÂÂ used for the type filter",
+    "level: federal | state | international | institutional ÃÂ¢ÃÂÃÂ used for the level tab filter",
+    "document_type: memo | proposal | policy ÃÂ¢ÃÂÃÂ used for the type filter",
     "stage: draft | published | submitted | adopted",
     "audience: federal | state | international | institutional"
   ],
   "entries": [
+    {
+      "placeholder": false,
+      "id": "blueprint-for-an-ai-bill-of-rights",
+      "title": "Blueprint for an AI Bill of Rights",
+      "subtitle": "A White House framework establishing five principles to guide the design and deployment of automated systems while protecting civil rights and democratic values.",
+      "date": "",
+      "type": "policy",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Philosophy"
+      ],
+      "tags": [
+        "artificial intelligence governance",
+        "algorithmic accountability",
+        "civil rights protection",
+        "automated decision systems",
+        "algorithmic bias",
+        "privacy rights"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "White House Office of Science and Technology Policy",
+      "publisher_url": null,
+      "original_url": "https://bidenwhitehouse.archives.gov/ostp/ai-bill-of-rights/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "The White House Office of Science and Technology Policy proposes a framework of five principles to govern automated systems and artificial intelligence deployment in the United States. The framework addresses documented harms including algorithmic bias in hiring and credit decisions, unsafe medical systems, and unchecked data collection practices that threaten privacy and civil rights. Accompanied by an implementation handbook titled \"From Principles to Practice,\" the framework aims to balance technological innovation with the protection of civil rights, equal opportunity, and foundational American democratic values as directed by presidential executive order.",
+      "preview": null,
+      "body": null,
+      "audience": "federal"
+    },
     {
       "placeholder": false,
       "id": "trump-administration-national-ai-policy-framework-2026",
