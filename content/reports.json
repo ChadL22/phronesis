@@ -2,11 +2,42 @@
   "_schema": "1.0",
   "_notes": [
     "Reports are longer-form, comprehensive reference documents",
-    "category: government | industry | academia ÃÂ¢ÃÂÃÂ used for the category filter",
-    "featured: true on the single most recent/prominent report ÃÂ¢ÃÂÃÂ renders as the hero card",
+    "category: government | industry | academia ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ used for the category filter",
+    "featured: true on the single most recent/prominent report ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ renders as the hero card",
     "pages: approximate page count"
   ],
   "entries": [
+    {
+      "placeholder": false,
+      "id": "regulating-artificial-intelligence-us-and-international-approaches-and-considerations-for-congress-2025",
+      "title": "Regulating Artificial Intelligence: U.S. and International Approaches and Considerations for Congress",
+      "subtitle": "An overview of AI regulation, federal policy approaches, and stakeholder perspectives in the United States",
+      "date": "2025-06-04",
+      "type": "report",
+      "fields": [
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "AI regulation",
+        "federal policy",
+        "AI safety",
+        "AI security",
+        "technology governance",
+        "innovation policy"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "",
+      "publisher_url": null,
+      "original_url": "https://www.congress.gov/crs-product/R48555#_Toc200533422",
+      "doi": null,
+      "venue_type": "report",
+      "abstract": "This document examines the current state of artificial intelligence regulation and policy in the United States, noting the absence of comprehensive federal AI legislation while highlighting targeted provisions passed by recent Congresses. It discusses how different administrations have prioritized AI engagement differently, with the Biden Administration emphasizing AI safety and the Trump Administration focusing on security concerns. The document frames the central policy debate around balancing AI innovation opportunities with risk mitigation regarding bias and accuracy.",
+      "preview": null,
+      "body": null,
+      "report_type": "legislative"
+    },
     {
       "placeholder": false,
       "id": "gptzero-finds-100-new-hallucinations-in-neurips-2025-accepted-papers-2026",
@@ -180,133 +211,6 @@
       "venue_type": "report",
       "abstract": "This paper examines the ethical framework applicable to normothermic regional perfusion (NRP), an emerging medical technology that circulates blood through organs after circulatory death to improve organ viability for transplantation. While NRP demonstrates utility benefits through reduced organ non-use, the procedure raises significant ethical concerns regarding compliance with the Dead Donor Rule and adherence to principles of respect for persons and nonmaleficence. The authors recommend comprehensive informed consent procedures that address the unique aspects of NRP, and caution against uncontrolled implementation that could compromise ethical safeguards in the transition from therapeutic treatment to organ recovery.",
       "preview": null,
-      "body": null
-    },
-    {
-      "placeholder": true,
-      "id": "ftc-algorithmic-accountability-2025",
-      "title": "The FTC's Algorithmic Accountability Agenda: A Two-Year Review",
-      "subtitle": "A comprehensive review of FTC enforcement actions, policy statements, and rulemaking initiatives related to algorithmic systems from 2023 to 2025.",
-      "date": "2025-03-01",
-      "type": "report",
-      "category": "government",
-      "report_type": "regulatory",
-      "fields": [
-        "Public Policy"
-      ],
-      "tags": [
-        "FTC",
-        "Algorithmic Accountability",
-        "Regulatory Review"
-      ],
-      "pages": 48,
-      "featured": true,
-      "origin": "original",
-      "content_type": "full",
-      "publisher": "Phronesis Research",
-      "publisher_url": null,
-      "original_url": null,
-      "document_url": null,
-      "doi": null,
-      "venue_type": null,
-      "abstract": "This report surveys the Federal Trade Commission's enforcement and rulemaking activity on algorithmic systems over the 2023ÃÂ¢ÃÂÃÂ2025 period. It catalogs enforcement actions, maps the policy statements and workshop outputs that defined the agency's agenda, and assesses which initiatives are likely to survive the current administration transition.",
-      "preview": null,
-      "body": null
-    },
-    {
-      "placeholder": true,
-      "id": "dma-one-year-2025",
-      "title": "Digital Markets Act at One Year: Lessons for U.S. Competition Policy",
-      "subtitle": "Evaluates the DMA's first year of enforcement and draws concrete lessons for U.S. policymakers considering analogous legislation.",
-      "date": "2025-01-01",
-      "type": "report",
-      "category": "government",
-      "report_type": "regulatory",
-      "fields": [
-        "Economics",
-        "Public Policy"
-      ],
-      "tags": [
-        "DMA",
-        "EU",
-        "Competition Policy",
-        "Comparative Law"
-      ],
-      "pages": 36,
-      "featured": false,
-      "origin": "via",
-      "content_type": "preview",
-      "publisher": "European Commission",
-      "publisher_url": "https://commission.europa.eu",
-      "original_url": "https://commission.europa.eu/placeholder",
-      "document_url": null,
-      "doi": null,
-      "venue_type": "report",
-      "abstract": "The EU's Digital Markets Act completed its first year of active enforcement in 2024. This report evaluates the Commission's first year of enforcement activity ÃÂ¢ÃÂÃÂ gatekeeper designations, interoperability rulings, and compliance investigations ÃÂ¢ÃÂÃÂ and draws structured lessons for U.S. legislators and antitrust enforcers considering comparable regulation.",
-      "preview": "The European Commission's assessment of the DMA's first year: gatekeeper designations, early enforcement patterns, and the compliance challenges that reveal where the regulation's design assumptions have held up and where they haven't.",
-      "body": null
-    },
-    {
-      "placeholder": true,
-      "id": "state-ai-legislation-2024",
-      "title": "State AI Legislation Tracker: 2024 Year in Review",
-      "subtitle": "Surveys AI-related legislation introduced and passed across all 50 states in 2024, identifying trends, model bills, and areas of regulatory divergence.",
-      "date": "2024-12-01",
-      "type": "report",
-      "category": "academia",
-      "report_type": "annual",
-      "fields": [
-        "Public Policy"
-      ],
-      "tags": [
-        "State Legislation",
-        "AI Governance",
-        "Regulatory Landscape"
-      ],
-      "pages": 62,
-      "featured": false,
-      "origin": "original",
-      "content_type": "full",
-      "publisher": "Phronesis Research",
-      "publisher_url": null,
-      "original_url": null,
-      "document_url": null,
-      "doi": null,
-      "venue_type": null,
-      "abstract": "In 2024, more than 40 states introduced legislation touching on artificial intelligence. This report catalogs that legislation, maps the topical clusters ÃÂ¢ÃÂÃÂ employment, consumer protection, public sector use, generative AI ÃÂ¢ÃÂÃÂ and identifies the model bills most likely to shape legislative activity in 2025.",
-      "preview": null,
-      "body": null
-    },
-    {
-      "placeholder": true,
-      "id": "foundation-model-regulatory-landscape-2024",
-      "title": "Foundation Model Providers and the Regulatory Landscape: An Industry Overview",
-      "subtitle": "Maps the current regulatory exposure of major foundation model providers across jurisdictions.",
-      "date": "2024-10-01",
-      "type": "report",
-      "category": "industry",
-      "report_type": "industry",
-      "fields": [
-        "Computer Science",
-        "Public Policy"
-      ],
-      "tags": [
-        "Foundation Models",
-        "Regulatory Exposure",
-        "EU AI Act"
-      ],
-      "pages": 44,
-      "featured": false,
-      "origin": "via",
-      "content_type": "preview",
-      "publisher": "RAND Corporation",
-      "publisher_url": "https://www.rand.org",
-      "original_url": "https://www.rand.org/placeholder",
-      "document_url": null,
-      "doi": null,
-      "venue_type": "report",
-      "abstract": "This report maps the current regulatory exposure of the major foundation model providers ÃÂ¢ÃÂÃÂ including obligations under the EU AI Act, U.S. executive orders, and pending state legislation ÃÂ¢ÃÂÃÂ and analyzes how the compliance landscape differs by provider size, deployment context, and jurisdiction.",
-      "preview": "RAND's mapping of the regulatory exposure facing major foundation model providers across the EU AI Act, U.S. executive orders, and state legislation ÃÂ¢ÃÂÃÂ a useful compliance landscape survey for developers and deployers.",
       "body": null
     }
   ]
