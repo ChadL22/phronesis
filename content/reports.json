@@ -8,7 +8,7 @@
   ],
   "entries": [
     {
-      "placeholder": true,
+      "placeholder": false,
       "id": "state-technology-policy-developments-third-annual-report-2024",
       "title": "State Technology Policy Developments: Third Annual Report",
       "subtitle": "An overview of state-level technology policy changes, legislative developments, and litigation during 2024.",
@@ -49,7 +49,7 @@
       "tags": [],
       "origin": "via",
       "content_type": "abstract",
-      "publisher": "Center for Social Media, AI, and Politics",
+      "publisher": "NYU Center for Social Media, AI, and Politics",
       "publisher_url": null,
       "original_url": "https://csmapnyu.org/impact/policy/state-technology-policy-report-2025",
       "doi": null,
