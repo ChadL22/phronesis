@@ -1,14 +1,45 @@
 {
   "_schema": "1.0",
   "_notes": [
-    "origin 'original': authored and owned by Phronesis Ã¢ÂÂ full body may be stored",
-    "origin 'via': curated from external source Ã¢ÂÂ abstract only (open-access) or short original preview (paywalled/news)",
+    "origin 'original': authored and owned by Phronesis ÃÂ¢ÃÂÃÂ full body may be stored",
+    "origin 'via': curated from external source ÃÂ¢ÃÂÃÂ abstract only (open-access) or short original preview (paywalled/news)",
     "content_type 'full': body field contains full Markdown text",
-    "content_type 'abstract': abstract field only; body is null Ã¢ÂÂ used for open-access academic papers",
-    "content_type 'preview': preview field contains 1-2 Phronesis-written sentences; body is null Ã¢ÂÂ used for paywalled journals and news",
-    "placeholder: true entries are seed data Ã¢ÂÂ set to false and fill fields when real content is ready"
+    "content_type 'abstract': abstract field only; body is null ÃÂ¢ÃÂÃÂ used for open-access academic papers",
+    "content_type 'preview': preview field contains 1-2 Phronesis-written sentences; body is null ÃÂ¢ÃÂÃÂ used for paywalled journals and news",
+    "placeholder: true entries are seed data ÃÂ¢ÃÂÃÂ set to false and fill fields when real content is ready"
   ],
   "entries": [
+    {
+      "placeholder": false,
+      "id": "social-choice-and-individual-values-1st-ed",
+      "title": "Social Choice and Individual Values, 1st ed.",
+      "subtitle": "An examination of the formal conditions required for aggregating individual preferences into rational collective social choices.",
+      "date": "",
+      "type": "research",
+      "fields": [
+        "Economics",
+        "Philosophy",
+        "Public Policy",
+        "Mathematics"
+      ],
+      "tags": [
+        "social choice theory",
+        "voting paradox",
+        "preference aggregation",
+        "collective rationality",
+        "democratic decision-making"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Cowles Foundation for Research in Economics",
+      "publisher_url": null,
+      "original_url": "https://cowles.yale.edu/sites/default/files/2022-09/m12-all.pdf",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This text investigates whether it is formally possible to construct a procedure for transforming individual preferences into coherent social decision-making that satisfies basic rationality conditions. The author examines four methods of social choice—voting, market mechanisms, dictatorship, and convention—and demonstrates through the paradox of voting that majority preference aggregation fails to produce transitive collective preferences. The study questions whether any method of aggregating diverse individual tastes can produce rational collective behavior, establishing foundational questions for social choice theory.",
+      "preview": null,
+      "body": null
+    },
     {
       "placeholder": false,
       "id": "dna-as-a-universal-chemical-substrate-for-computing-and-data-storage-2024",
@@ -62,7 +93,7 @@
       "document_url": null,
       "doi": null,
       "venue_type": "preprint",
-      "abstract": "The lack of a concrete definition for Artificial General Intelligence (AGI) obscures the gap between today's specialized AI and human-level cognition. This paper introduces a quantifiable framework to address this, defining AGI as matching the cognitive versatility and proficiency of a well-educated adult. To operationalize this, we ground our methodology in Cattell-Horn-Carroll theory, the most empirically validated model of human cognition. The framework dissects general intelligence into ten core cognitive domains Ã¢ÂÂ including reasoning, memory, and perception Ã¢ÂÂ and adapts established human psychometric batteries to rigorously evaluate AI systems. Applying this framework, we find that today's frontier AI models exhibit high but uneven performance, with notable weaknesses in specific cognitive domains.",
+      "abstract": "The lack of a concrete definition for Artificial General Intelligence (AGI) obscures the gap between today's specialized AI and human-level cognition. This paper introduces a quantifiable framework to address this, defining AGI as matching the cognitive versatility and proficiency of a well-educated adult. To operationalize this, we ground our methodology in Cattell-Horn-Carroll theory, the most empirically validated model of human cognition. The framework dissects general intelligence into ten core cognitive domains ÃÂ¢ÃÂÃÂ including reasoning, memory, and perception ÃÂ¢ÃÂÃÂ and adapts established human psychometric batteries to rigorously evaluate AI systems. Applying this framework, we find that today's frontier AI models exhibit high but uneven performance, with notable weaknesses in specific cognitive domains.",
       "preview": null,
       "body": null
     },
@@ -148,7 +179,7 @@
       "document_url": null,
       "doi": null,
       "venue_type": "preprint",
-      "abstract": "AI agents Ã¢ÂÂ autonomous systems that perceive, reason, and act Ã¢ÂÂ have the potential to dramatically reduce transaction costs. This paper applies Coasean theory of the firm to the emergence of AI agents and asks how markets will reorganize when the costs of coordinating economic activity approach zero. The paper examines implications for market design, firm boundaries, and the distribution of economic surplus, and considers what regulatory and institutional responses may be required.",
+      "abstract": "AI agents ÃÂ¢ÃÂÃÂ autonomous systems that perceive, reason, and act ÃÂ¢ÃÂÃÂ have the potential to dramatically reduce transaction costs. This paper applies Coasean theory of the firm to the emergence of AI agents and asks how markets will reorganize when the costs of coordinating economic activity approach zero. The paper examines implications for market design, firm boundaries, and the distribution of economic surplus, and considers what regulatory and institutional responses may be required.",
       "preview": null,
       "body": null
     },
