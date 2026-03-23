@@ -2,11 +2,42 @@
   "_schema": "1.0",
   "_notes": [
     "Reports are longer-form, comprehensive reference documents",
-    "category: government | industry | academia Ã¢ÂÂ used for the category filter",
-    "featured: true on the single most recent/prominent report Ã¢ÂÂ renders as the hero card",
+    "category: government | industry | academia ÃÂ¢ÃÂÃÂ used for the category filter",
+    "featured: true on the single most recent/prominent report ÃÂ¢ÃÂÃÂ renders as the hero card",
     "pages: approximate page count"
   ],
   "entries": [
+    {
+      "placeholder": false,
+      "id": "gptzero-finds-100-new-hallucinations-in-neurips-2025-accepted-papers-2026",
+      "title": "GPTZero finds 100 new hallucinations in NeurIPS 2025 accepted papers",
+      "subtitle": "A comprehensive analysis revealing widespread hallucinated citations in papers accepted at a top-tier machine learning conference despite rigorous peer review processes.",
+      "date": "2026-01-21",
+      "type": "report",
+      "fields": [
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "hallucinated citations",
+        "peer review integrity",
+        "AI-generated content detection",
+        "NeurIPS",
+        "academic publishing",
+        "generative AI"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "GPTZero",
+      "publisher_url": null,
+      "original_url": "https://gptzero.me/news/neurips/",
+      "doi": null,
+      "venue_type": "report",
+      "abstract": "This report documents 100 confirmed hallucinated citations discovered across 51-53 papers accepted and published at NeurIPS 2025, identifying a critical vulnerability in academic peer review systems overwhelmed by AI-generated submissions. The analysis examines the systemic failure of the review pipeline to detect fabricated sources, including fake authors, nonexistent articles, and falsified DOIs and URLs. The authors contextualize these findings within a broader crisis of scale, noting a 220% increase in NeurIPS submissions between 2020 and 2025, and argue that traditional peer review mechanisms were not designed to defend against AI-enabled academic fraud at this scale.",
+      "preview": null,
+      "body": null,
+      "report_type": "industry"
+    },
     {
       "placeholder": false,
       "id": "state-platform-regulation-a-roadmap-to-coming-debates",
@@ -178,7 +209,7 @@
       "document_url": null,
       "doi": null,
       "venue_type": null,
-      "abstract": "This report surveys the Federal Trade Commission's enforcement and rulemaking activity on algorithmic systems over the 2023Ã¢ÂÂ2025 period. It catalogs enforcement actions, maps the policy statements and workshop outputs that defined the agency's agenda, and assesses which initiatives are likely to survive the current administration transition.",
+      "abstract": "This report surveys the Federal Trade Commission's enforcement and rulemaking activity on algorithmic systems over the 2023ÃÂ¢ÃÂÃÂ2025 period. It catalogs enforcement actions, maps the policy statements and workshop outputs that defined the agency's agenda, and assesses which initiatives are likely to survive the current administration transition.",
       "preview": null,
       "body": null
     },
@@ -211,7 +242,7 @@
       "document_url": null,
       "doi": null,
       "venue_type": "report",
-      "abstract": "The EU's Digital Markets Act completed its first year of active enforcement in 2024. This report evaluates the Commission's first year of enforcement activity Ã¢ÂÂ gatekeeper designations, interoperability rulings, and compliance investigations Ã¢ÂÂ and draws structured lessons for U.S. legislators and antitrust enforcers considering comparable regulation.",
+      "abstract": "The EU's Digital Markets Act completed its first year of active enforcement in 2024. This report evaluates the Commission's first year of enforcement activity ÃÂ¢ÃÂÃÂ gatekeeper designations, interoperability rulings, and compliance investigations ÃÂ¢ÃÂÃÂ and draws structured lessons for U.S. legislators and antitrust enforcers considering comparable regulation.",
       "preview": "The European Commission's assessment of the DMA's first year: gatekeeper designations, early enforcement patterns, and the compliance challenges that reveal where the regulation's design assumptions have held up and where they haven't.",
       "body": null
     },
@@ -242,7 +273,7 @@
       "document_url": null,
       "doi": null,
       "venue_type": null,
-      "abstract": "In 2024, more than 40 states introduced legislation touching on artificial intelligence. This report catalogs that legislation, maps the topical clusters Ã¢ÂÂ employment, consumer protection, public sector use, generative AI Ã¢ÂÂ and identifies the model bills most likely to shape legislative activity in 2025.",
+      "abstract": "In 2024, more than 40 states introduced legislation touching on artificial intelligence. This report catalogs that legislation, maps the topical clusters ÃÂ¢ÃÂÃÂ employment, consumer protection, public sector use, generative AI ÃÂ¢ÃÂÃÂ and identifies the model bills most likely to shape legislative activity in 2025.",
       "preview": null,
       "body": null
     },
@@ -274,8 +305,8 @@
       "document_url": null,
       "doi": null,
       "venue_type": "report",
-      "abstract": "This report maps the current regulatory exposure of the major foundation model providers Ã¢ÂÂ including obligations under the EU AI Act, U.S. executive orders, and pending state legislation Ã¢ÂÂ and analyzes how the compliance landscape differs by provider size, deployment context, and jurisdiction.",
-      "preview": "RAND's mapping of the regulatory exposure facing major foundation model providers across the EU AI Act, U.S. executive orders, and state legislation Ã¢ÂÂ a useful compliance landscape survey for developers and deployers.",
+      "abstract": "This report maps the current regulatory exposure of the major foundation model providers ÃÂ¢ÃÂÃÂ including obligations under the EU AI Act, U.S. executive orders, and pending state legislation ÃÂ¢ÃÂÃÂ and analyzes how the compliance landscape differs by provider size, deployment context, and jurisdiction.",
+      "preview": "RAND's mapping of the regulatory exposure facing major foundation model providers across the EU AI Act, U.S. executive orders, and state legislation ÃÂ¢ÃÂÃÂ a useful compliance landscape survey for developers and deployers.",
       "body": null
     }
   ]
