@@ -2,13 +2,44 @@
   "_schema": "1.0",
   "_notes": [
     "origin 'original': Phronesis analysis, full body stored here",
-    "origin 'via': curated from law reviews or legal blogs â abstract only (open-access) or preview (paywalled)",
+    "origin 'via': curated from law reviews or legal blogs Ã¢ÂÂ abstract only (open-access) or preview (paywalled)",
     "analysis_type: doctrinal | case | statutory | regulatory | procedural | litigation | policy | comparative",
     "primary_topic: first-amendment | antitrust | liability | administrative | ip | privacy | competition",
     "case_refs: array of case names or statute citations central to the piece",
     "court: relevant court or agency if analysis is case-specific"
   ],
   "entries": [
+    {
+      "placeholder": false,
+      "id": "in-netchoice-cases-supreme-court-labels-a-surprisingly-narrow-class-of-online-platform-company-activities-as-protected-expression-2024",
+      "title": "In NetChoice Cases, Supreme Court Labels a Surprisingly Narrow Class of Online Platform Company Activities as Protected Expression",
+      "subtitle": "Analysis of the Supreme Court's landmark decision on First Amendment protections for social media platform content curation practices.",
+      "date": "2024-07-10",
+      "type": "legal",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Philosophy"
+      ],
+      "tags": [
+        "First Amendment",
+        "social media platforms",
+        "content moderation",
+        "platform regulation",
+        "editorial discretion",
+        "constitutional law"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Electronic Privacy Information Center",
+      "publisher_url": null,
+      "original_url": "https://epic.org/in-netchoice-cases-supreme-court-labels-a-surprisingly-narrow-class-of-online-platform-company-activities-as-protected-expression/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This article examines the Supreme Court's combined decision in Moody v. NetChoice and NetChoice v. Paxton, which addressed the scope of First Amendment protections for online platform companies' content curation activities. The Court adopted a narrow interpretation, recognizing protected expression primarily in enforcement of platforms' content and community guidelines while signaling skepticism toward broader protections for algorithm-driven or non-content-based curatorial practices. The decision provides guidance that platform curation activities must be evaluated granularly rather than categorically, leaving substantial room for legislative regulation of platform design and content-agnostic practices.",
+      "preview": null,
+      "body": null
+    },
     {
       "placeholder": false,
       "id": "section-230-and-child-exploitation-restoring-the-original-intent-of-the-communications-decency-act-2025",
@@ -69,7 +100,7 @@
       "document_url": null,
       "doi": null,
       "venue_type": null,
-      "abstract": "The Supreme Court's 2024 NetChoice opinions were widely anticipated as a landmark statement on platform speech. This analysis examines what the Court actually held â as opposed to what it was asked to decide â and maps the doctrinal questions left open for lower courts, Congress, and the next wave of platform litigation.",
+      "abstract": "The Supreme Court's 2024 NetChoice opinions were widely anticipated as a landmark statement on platform speech. This analysis examines what the Court actually held Ã¢ÂÂ as opposed to what it was asked to decide Ã¢ÂÂ and maps the doctrinal questions left open for lower courts, Congress, and the next wave of platform litigation.",
       "preview": null,
       "body": null
     },
@@ -104,7 +135,7 @@
       "document_url": null,
       "doi": null,
       "venue_type": null,
-      "abstract": "State statutes requiring platforms to carry certain content â or prohibiting them from removing it â raise compelled speech questions that the Court's NetChoice opinions addressed only obliquely. This analysis applies the Court's reasoning to the must-carry/must-not-carry distinction and assesses the constitutional viability of content moderation mandates.",
+      "abstract": "State statutes requiring platforms to carry certain content Ã¢ÂÂ or prohibiting them from removing it Ã¢ÂÂ raise compelled speech questions that the Court's NetChoice opinions addressed only obliquely. This analysis applies the Court's reasoning to the must-carry/must-not-carry distinction and assesses the constitutional viability of content moderation mandates.",
       "preview": null,
       "body": null
     },
@@ -128,7 +159,7 @@
       ],
       "case_refs": [
         "FTC v. Amazon.com, Inc.",
-        "Sherman Act Â§ 2"
+        "Sherman Act ÃÂ§ 2"
       ],
       "court": "U.S. District Court for the Western District of Washington",
       "origin": "original",
@@ -139,7 +170,7 @@
       "document_url": null,
       "doi": null,
       "venue_type": null,
-      "abstract": "The FTC's 2023 complaint against Amazon marks an ambitious attempt to apply Section 2 of the Sherman Act to a platform ecosystem rather than a discrete market. This analysis reads the complaint as a doctrinal argument â examining the market definition choices, the conduct theories, and the remedial logic â and assesses their prospects under existing case law.",
+      "abstract": "The FTC's 2023 complaint against Amazon marks an ambitious attempt to apply Section 2 of the Sherman Act to a platform ecosystem rather than a discrete market. This analysis reads the complaint as a doctrinal argument Ã¢ÂÂ examining the market definition choices, the conduct theories, and the remedial logic Ã¢ÂÂ and assesses their prospects under existing case law.",
       "preview": null,
       "body": null
     },
@@ -209,7 +240,7 @@
       "document_url": null,
       "doi": null,
       "venue_type": "journal",
-      "abstract": "A wave of copyright litigation targeting AI training practices is working its way through the federal courts. This analysis surveys the pending cases, maps the competing fair use arguments, and sketches the doctrinal paths most likely to produce a stable resolution â including the possibility that Congress will need to act regardless of how courts rule.",
+      "abstract": "A wave of copyright litigation targeting AI training practices is working its way through the federal courts. This analysis surveys the pending cases, maps the competing fair use arguments, and sketches the doctrinal paths most likely to produce a stable resolution Ã¢ÂÂ including the possibility that Congress will need to act regardless of how courts rule.",
       "preview": null,
       "body": null
     }
