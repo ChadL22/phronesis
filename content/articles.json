@@ -1,15 +1,45 @@
 {
   "_schema": "1.0",
   "_notes": [
-    "Articles are timely, concise takes — mix of Phronesis originals and curated external pieces",
+    "Articles are timely, concise takes â mix of Phronesis originals and curated external pieces",
     "topic: ai-policy | competition | platform-law | legislation | privacy | international",
     "topic_label: display label for the topic pill e.g. 'AI Policy'",
     "read_time: estimated reading time in minutes",
-    "featured: true on up to 3 entries — renders in the hero section at top",
+    "featured: true on up to 3 entries â renders in the hero section at top",
     "excerpt: 2-3 sentence teaser shown in the featured panel and stream view"
   ],
   "entries": [
-
+    {
+      "placeholder": true,
+      "id": "walmart-is-putting-digital-labels-that-change-prices-instantly-on-every-store-shelf-in-america-2026",
+      "title": "Walmart Is Putting Digital Labels that Change Prices Instantly on Every Store Shelf in America",
+      "subtitle": "Walmart's rollout of digital shelf labels creates technological infrastructure that could enable dynamic pricing in grocery retail, raising consumer protection concerns.",
+      "date": "2026-03-22",
+      "type": "article",
+      "fields": [
+        "Public Policy",
+        "Economics",
+        "Computer Science"
+      ],
+      "tags": [
+        "dynamic pricing",
+        "digital shelf labels",
+        "retail technology",
+        "consumer protection",
+        "pricing strategy",
+        "grocery retail"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Inc.",
+      "publisher_url": null,
+      "original_url": "https://www.inc.com/jason-aten/walmart-is-putting-digital-labels-that-change-prices-instantly-on-every-store-shelf-in-america/91320526",
+      "doi": null,
+      "venue_type": "news",
+      "abstract": "Walmart announced plans to deploy digital shelf labels (DSLs) across all U.S. stores by end of 2026, replacing paper price tags with remotely updatable digital displays. While marketed as a labor-efficiency measure, DSLs remove the operational friction that previously constrained frequent price changes, making dynamic pricing technically feasible in grocery retail. The article examines how this capability differs from existing dynamic pricing in airlines and hotels, discusses the distinct social contract governing grocery pricing, and references consumer backlash against Wendy's dynamic pricing announcement as evidence of market resistance to such practices.",
+      "preview": null,
+      "body": null
+    },
     {
       "placeholder": false,
       "id": "the-game-theory-of-how-algorithms-can-drive-up-prices-2025",
@@ -21,8 +51,16 @@
       "topic_label": "Competition",
       "read_time": 8,
       "featured": true,
-      "fields": ["Computer Science", "Economics"],
-      "tags": ["algorithmic pricing", "tacit collusion", "game theory", "antitrust regulation"],
+      "fields": [
+        "Computer Science",
+        "Economics"
+      ],
+      "tags": [
+        "algorithmic pricing",
+        "tacit collusion",
+        "game theory",
+        "antitrust regulation"
+      ],
       "origin": "via",
       "content_type": "preview",
       "publisher": "Quanta Magazine",
@@ -31,11 +69,10 @@
       "document_url": null,
       "doi": null,
       "venue_type": "news",
-      "excerpt": "Machine learning algorithms used for dynamic pricing can unexpectedly converge on collusive outcomes without any explicit coordination — learning to implement mutual retaliation strategies similar to human cartels. The findings expose a gap in antitrust enforcement frameworks designed to detect explicit agreements, not emergent algorithmic behavior.",
+      "excerpt": "Machine learning algorithms used for dynamic pricing can unexpectedly converge on collusive outcomes without any explicit coordination â learning to implement mutual retaliation strategies similar to human cartels. The findings expose a gap in antitrust enforcement frameworks designed to detect explicit agreements, not emergent algorithmic behavior.",
       "abstract": "This article examines how machine learning algorithms used for dynamic pricing can unexpectedly converge on collusive pricing outcomes without explicit programming or coordination. Recent research demonstrates that algorithms can learn to implement implicit threats and mutual retaliation strategies similar to human cartels, and that even benign profit-optimizing algorithms may produce supracompetitive prices.",
-      "preview": "A clear-eyed explainer on how pricing algorithms can converge on collusive equilibria without any explicit coordination — and why existing antitrust frameworks are poorly equipped to respond.",
+      "preview": "A clear-eyed explainer on how pricing algorithms can converge on collusive equilibria without any explicit coordination â and why existing antitrust frameworks are poorly equipped to respond.",
       "body": null
     }
-
   ]
 }
