@@ -124,12 +124,22 @@
     {
       "placeholder": false,
       "id": "ethical-analysis-of-normothermic-regional-perfusion-nrp-2023",
-      "title": "Ethical Analysis of Normothermic Regional Perfusion (NRP) ",
-      "subtitle": "",
+      "title": "Ethical Principles for Review of Normothermic Regional Perfusion (NRP) in Medical Transplantation",
+      "subtitle": "An analysis of ethical considerations and compliance concerns for a new organ preservation technology that aims to increase transplant availability.",
       "date": "2023-09-19",
       "type": "report",
-      "fields": [],
-      "tags": [],
+      "fields": [
+        "Public Policy",
+        "Philosophy"
+      ],
+      "tags": [
+        "medical ethics",
+        "organ transplantation",
+        "normothermic regional perfusion",
+        "Dead Donor Rule",
+        "informed consent",
+        "bioethics"
+      ],
       "origin": "via",
       "content_type": "abstract",
       "publisher": "Health Resources and Services Administration",
@@ -137,7 +147,7 @@
       "original_url": "https://www.hrsa.gov/optn/policies-bylaws/public-comment/ethical-analysis-of-normothermic-regional-perfusion",
       "doi": null,
       "venue_type": "report",
-      "abstract": "This paper outlines the ethical principles relevant for review of the new medical transplant procedure, normothermic regional perfusion (NRP). NRP is a new technology that has potential to increase the number of transplantable organs, but it is important to ensure that the donation procedures are transparent and ethical.\n\nNRP involves using a machine to pass blood through organs in a personâs body after the heart has irreversibly stopped beating. Vessels are clamped during this procedure to prevent blood flow to the brain.\n\nAs a surgical procedure NRP shows a positive impact on utility by reducing non-use of organs without negatively impacting patient outcomes. However, the fact that NRP involves recirculation after declaration of death by circulatory criteria raises concerns about compliance with the Dead Donor Rule and nonmaleficence (do no harm). To uphold the ethical principle of respect for persons, the Ethics Committee considers that informed consent procedures should be thorough and include information about the unique and relevant aspects of NRP. Uncontrolled scenarios (as explained, in detail, in the white paper) for NRP raise serious concerns for respect for persons and hastily moving from therapeutic treatment to organ recovery.",
+      "abstract": "This paper examines the ethical framework applicable to normothermic regional perfusion (NRP), an emerging medical technology that circulates blood through organs after circulatory death to improve organ viability for transplantation. While NRP demonstrates utility benefits through reduced organ non-use, the procedure raises significant ethical concerns regarding compliance with the Dead Donor Rule and adherence to principles of respect for persons and nonmaleficence. The authors recommend comprehensive informed consent procedures that address the unique aspects of NRP, and caution against uncontrolled implementation that could compromise ethical safeguards in the transition from therapeutic treatment to organ recovery.",
       "preview": null,
       "body": null
     },
