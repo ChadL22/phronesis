@@ -1,14 +1,44 @@
 {
   "_schema": "1.0",
   "_notes": [
-    "origin 'original': authored and owned by Phronesis ÃÂ¢ÃÂÃÂ full body may be stored",
-    "origin 'via': curated from external source ÃÂ¢ÃÂÃÂ abstract only (open-access) or short original preview (paywalled/news)",
+    "origin 'original': authored and owned by Phronesis ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ full body may be stored",
+    "origin 'via': curated from external source ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ abstract only (open-access) or short original preview (paywalled/news)",
     "content_type 'full': body field contains full Markdown text",
-    "content_type 'abstract': abstract field only; body is null ÃÂ¢ÃÂÃÂ used for open-access academic papers",
-    "content_type 'preview': preview field contains 1-2 Phronesis-written sentences; body is null ÃÂ¢ÃÂÃÂ used for paywalled journals and news",
-    "placeholder: true entries are seed data ÃÂ¢ÃÂÃÂ set to false and fill fields when real content is ready"
+    "content_type 'abstract': abstract field only; body is null ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ used for open-access academic papers",
+    "content_type 'preview': preview field contains 1-2 Phronesis-written sentences; body is null ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ used for paywalled journals and news",
+    "placeholder: true entries are seed data ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ set to false and fill fields when real content is ready"
   ],
   "entries": [
+    {
+      "placeholder": false,
+      "id": "reranking-social-media-feeds-a-practical-guide-for-field-experiments-2026",
+      "title": "Reranking Social Media Feeds: A Practical Guide for Field Experiments",
+      "subtitle": "",
+      "date": "2026-02-17",
+      "type": "research",
+      "fields": [
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "social media algorithms",
+        "feed ranking",
+        "field experiments",
+        "browser extensions",
+        "research methodology",
+        "platform independence"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "ArXiv",
+      "publisher_url": null,
+      "original_url": "https://arxiv.org/abs/2406.19571v2",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "Social media plays a central role in shaping public opinion and behavior, yet performing experiments on these platforms and, in particular, on feed algorithms is becoming increasingly challenging. This guide offers practical recommendations for researchers developing and deploying field experiments focused on real-time reranking of social media feeds. The article is organized around two contributions. First, we provide an overview of an experimental method using web browser extensions that intercepts and reranks content in real time, enabling naturalistic reranking field experiments. We then describe feed interventions and measurements that this paradigm enables on participants' actual feeds, without requiring the involvement of social media platforms. Second, we offer concrete technical recommendations for intercepting and reranking social media feeds with minimal user-facing delay, and provide an open-source implementation. This document aims to summarize lessons learned in running field experiments on social media, provide concrete implementation details, and foster the ecosystem of independent social media research. Finally, we release the source code that serves as a blueprint for implementing future feed-ranking experiments.",
+      "preview": null,
+      "body": null
+    },
     {
       "placeholder": false,
       "id": "the-impossibility-of-a-paretian-liberal",
@@ -37,7 +67,7 @@
       "original_url": "https://dash.harvard.edu/entities/publication/73120378-8203-6bd4-e053-0100007fdf3b",
       "doi": null,
       "venue_type": null,
-      "abstract": "This paper presents an impossibility result demonstrating fundamental tensions between liberal principles of individual liberty and conventional social choice mechanisms. The authors formalize a minimalist concept of individual liberty—the notion that individuals should retain absolute freedom over personal decisions regardless of majority preference—and prove its incompatibility with basic economic efficiency principles. The analysis reveals deep structural conflicts in constructing social decision rules that simultaneously respect both individual autonomy and collective welfare optimization.",
+      "abstract": "This paper presents an impossibility result demonstrating fundamental tensions between liberal principles of individual liberty and conventional social choice mechanisms. The authors formalize a minimalist concept of individual libertyâthe notion that individuals should retain absolute freedom over personal decisions regardless of majority preferenceâand prove its incompatibility with basic economic efficiency principles. The analysis reveals deep structural conflicts in constructing social decision rules that simultaneously respect both individual autonomy and collective welfare optimization.",
       "preview": null,
       "body": null
     },
@@ -68,7 +98,7 @@
       "original_url": "https://cowles.yale.edu/sites/default/files/2022-09/m12-all.pdf",
       "doi": null,
       "venue_type": null,
-      "abstract": "This text investigates whether it is formally possible to construct a procedure for transforming individual preferences into coherent social decision-making that satisfies basic rationality conditions. The author examines four methods of social choice—voting, market mechanisms, dictatorship, and convention—and demonstrates through the paradox of voting that majority preference aggregation fails to produce transitive collective preferences. The study questions whether any method of aggregating diverse individual tastes can produce rational collective behavior, establishing foundational questions for social choice theory.",
+      "abstract": "This text investigates whether it is formally possible to construct a procedure for transforming individual preferences into coherent social decision-making that satisfies basic rationality conditions. The author examines four methods of social choiceâvoting, market mechanisms, dictatorship, and conventionâand demonstrates through the paradox of voting that majority preference aggregation fails to produce transitive collective preferences. The study questions whether any method of aggregating diverse individual tastes can produce rational collective behavior, establishing foundational questions for social choice theory.",
       "preview": null,
       "body": null
     },
@@ -125,7 +155,7 @@
       "document_url": null,
       "doi": null,
       "venue_type": "preprint",
-      "abstract": "The lack of a concrete definition for Artificial General Intelligence (AGI) obscures the gap between today's specialized AI and human-level cognition. This paper introduces a quantifiable framework to address this, defining AGI as matching the cognitive versatility and proficiency of a well-educated adult. To operationalize this, we ground our methodology in Cattell-Horn-Carroll theory, the most empirically validated model of human cognition. The framework dissects general intelligence into ten core cognitive domains ÃÂ¢ÃÂÃÂ including reasoning, memory, and perception ÃÂ¢ÃÂÃÂ and adapts established human psychometric batteries to rigorously evaluate AI systems. Applying this framework, we find that today's frontier AI models exhibit high but uneven performance, with notable weaknesses in specific cognitive domains.",
+      "abstract": "The lack of a concrete definition for Artificial General Intelligence (AGI) obscures the gap between today's specialized AI and human-level cognition. This paper introduces a quantifiable framework to address this, defining AGI as matching the cognitive versatility and proficiency of a well-educated adult. To operationalize this, we ground our methodology in Cattell-Horn-Carroll theory, the most empirically validated model of human cognition. The framework dissects general intelligence into ten core cognitive domains ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ including reasoning, memory, and perception ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ and adapts established human psychometric batteries to rigorously evaluate AI systems. Applying this framework, we find that today's frontier AI models exhibit high but uneven performance, with notable weaknesses in specific cognitive domains.",
       "preview": null,
       "body": null
     },
@@ -211,7 +241,7 @@
       "document_url": null,
       "doi": null,
       "venue_type": "preprint",
-      "abstract": "AI agents—autonomous systems that perceive, reason, and act on behalf of human principals—are poised to transform digital markets by dramatically reducing transaction costs. This chapter evaluates the economic implications of this transition, adopting a consumer-oriented view of agents as market participants that can search, negotiate, and transact directly. From the demand side, agent adoption reflects derived demand: users trade off decision quality against effort reduction, with outcomes mediated by agent capability and task context. On the supply side, firms will design, integrate, and monetize agents, with outcomes hinging on whether agents operate within or across platforms. At the market level, agents create efficiency gains from lower search, communication, and contracting costs, but also introduce frictions such as congestion and price obfuscation. By lowering the costs of preference elicitation, contract enforcement, and identity verification, agents expand the feasible set of market designs but also raise novel regulatory challenges. While the net welfare effects remain an empirical question, the rapid onset of AI-mediated transactions presents a unique opportunity for economic research to inform real-world policy and market design.",
+      "abstract": "AI agentsâautonomous systems that perceive, reason, and act on behalf of human principalsâare poised to transform digital markets by dramatically reducing transaction costs. This chapter evaluates the economic implications of this transition, adopting a consumer-oriented view of agents as market participants that can search, negotiate, and transact directly. From the demand side, agent adoption reflects derived demand: users trade off decision quality against effort reduction, with outcomes mediated by agent capability and task context. On the supply side, firms will design, integrate, and monetize agents, with outcomes hinging on whether agents operate within or across platforms. At the market level, agents create efficiency gains from lower search, communication, and contracting costs, but also introduce frictions such as congestion and price obfuscation. By lowering the costs of preference elicitation, contract enforcement, and identity verification, agents expand the feasible set of market designs but also raise novel regulatory challenges. While the net welfare effects remain an empirical question, the rapid onset of AI-mediated transactions presents a unique opportunity for economic research to inform real-world policy and market design.",
       "preview": null,
       "body": null
     },
