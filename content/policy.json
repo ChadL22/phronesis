@@ -2,12 +2,33 @@
   "_schema": "1.0",
   "_notes": [
     "Policy proposals are almost always Phronesis originals",
-    "level: federal | state | international | institutional ÃÂ¢ÃÂÃÂ used for the level tab filter",
-    "document_type: memo | proposal | policy ÃÂ¢ÃÂÃÂ used for the type filter",
+    "level: federal | state | international | institutional ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ used for the level tab filter",
+    "document_type: memo | proposal | policy ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ used for the type filter",
     "stage: draft | published | submitted | adopted",
     "audience: federal | state | international | institutional"
   ],
   "entries": [
+    {
+      "placeholder": false,
+      "id": "eu-artificial-intelligence-act-2024",
+      "title": "EU Artificial Intelligence Act",
+      "subtitle": "",
+      "date": "2024-07-13",
+      "type": "policy",
+      "fields": [],
+      "tags": [],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "European Union",
+      "publisher_url": null,
+      "original_url": "https://artificialintelligenceact.eu/ai-act-explorer/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "The European Union has introduced new legislation on artificial intelligence: The EU AI Act. It lays the foundations for the regulation of AI in the EU.",
+      "preview": null,
+      "body": null,
+      "audience": "international"
+    },
     {
       "placeholder": false,
       "id": "blueprint-for-an-ai-bill-of-rights",
