@@ -391,9 +391,19 @@
     }
 
     function rptResolveLink(d) {
-      if (d.origin === 'via' && d.originalUrl) return { url: d.originalUrl, external: true };
-      if (d.origin === 'original' && d.documentUrl) return { url: d.documentUrl, external: false };
+      if (d.origin === 'via' && d.original_url) return { url: d.original_url, external: true };
+      if (d.origin === 'original' && d.document_url) return { url: d.document_url, external: false };
       return null;
+    }
+
+    function toggleExpand(e) {
+      e.preventDefault(); e.stopPropagation();
+      const btn = e.currentTarget;
+      const wrap = btn.closest('.expandable-wrap');
+      const text = wrap.querySelector('.expandable-text');
+      const isExpanded = text.classList.toggle('expanded');
+      btn.classList.toggle('expanded', isExpanded);
+      btn.childNodes[0].textContent = isExpanded ? 'Collapse ' : 'Full abstract ';
     }
 
     // ── featured ──
@@ -422,7 +432,10 @@
               <span class="origin-badge origin-badge--${d.origin}">${d.originLabel}</span>
             </div>
             <div class="rpt-featured-title">${d.title}</div>
-            <div class="rpt-featured-desc">${d.desc}</div>
+            <div class="expandable-wrap">
+              <div class="rpt-featured-desc expandable-text">${d.desc}</div>
+              ${(d.desc||'').length > 160 ? '<button class="expand-toggle" onclick="toggleExpand(event)">Full abstract <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>' : ''}
+            </div>
             <div class="rpt-featured-footer">
               <div class="rpt-featured-meta">
                 <span class="rpt-featured-date">${d.date}</span>
@@ -455,7 +468,10 @@
           </div>
           <div class="rpt-card-body">
             <div class="rpt-card-title">${d.title}</div>
-            <div class="rpt-card-desc">${d.desc}</div>
+            <div class="expandable-wrap">
+              <div class="rpt-card-desc expandable-text">${d.desc}</div>
+              ${(d.desc||'').length > 160 ? '<button class="expand-toggle" onclick="toggleExpand(event)">Full abstract <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>' : ''}
+            </div>
             <div class="rpt-card-footer">
               <div class="rpt-card-footer-left">
                 <span class="rpt-card-date">${d.date}</span>
@@ -489,7 +505,10 @@
             <span class="rpt-list-date">${e.date}</span>
             <div>
               <div class="rpt-list-title">${e.title}</div>
-              <div class="rpt-list-desc">${e.desc}</div>
+              <div class="expandable-wrap">
+                <div class="rpt-list-desc expandable-text">${e.desc}</div>
+                ${(e.desc||'').length > 160 ? '<button class="expand-toggle" onclick="toggleExpand(event)">Full abstract <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>' : ''}
+              </div>
             </div>
             <span class="rpt-list-type">${typeLabel}</span>
             <span class="rpt-list-pages">${e.pages}&thinsp;pp. &middot; <span class="origin-badge origin-badge--${e.origin}">${e.originLabel}</span></span>

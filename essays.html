@@ -262,6 +262,62 @@
 
     .essay-empty { padding: 3rem 0; font-family: var(--serif); font-size: 0.95rem; color: var(--ink-3); }
 
+    /* ══════════════════════════════════════
+       READER OVERLAY
+    ══════════════════════════════════════ */
+    .reader-overlay {
+      display: none; position: fixed; inset: 0; z-index: 500;
+      background: rgba(26,25,22,0.45);
+      backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+    }
+    .reader-overlay.open { display: flex; align-items: center; justify-content: center; }
+    .reader-panel {
+      background: var(--paper); border: 1px solid var(--rule);
+      width: min(90vw, 760px); max-height: 88vh;
+      display: flex; flex-direction: column;
+      box-shadow: 0 12px 48px rgba(26,25,22,0.18);
+    }
+    .reader-toolbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.8rem 1.6rem; border-bottom: 1px solid var(--rule);
+      background: var(--paper-2); flex-shrink: 0;
+    }
+    .reader-toolbar-label {
+      font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3);
+    }
+    .reader-close {
+      font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent); background: none;
+      border: 1px solid var(--accent); border-radius: 2px;
+      padding: 0.3rem 0.7rem; cursor: pointer; transition: all 0.18s;
+    }
+    .reader-close:hover { background: var(--accent); color: #EEE8DA; }
+    .reader-scroll {
+      overflow-y: auto; flex: 1;
+      scrollbar-width: thin; scrollbar-color: var(--rule) transparent;
+    }
+    .reader-scroll::-webkit-scrollbar { width: 5px; }
+    .reader-scroll::-webkit-scrollbar-track { background: transparent; }
+    .reader-scroll::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 3px; }
+    .reader-body {
+      padding: 2.5rem 3rem 3rem;
+      font-family: var(--serif); font-size: 1.08rem; font-weight: 300;
+      line-height: 1.85; color: var(--ink-2);
+    }
+    .reader-body h1, .reader-body h2, .reader-body h3 {
+      font-family: var(--serif); font-weight: 400; color: var(--ink);
+      margin: 2rem 0 0.8rem; line-height: 1.2;
+    }
+    .reader-body h1 { font-size: 1.8rem; margin-top: 0; }
+    .reader-body h2 { font-size: 1.35rem; }
+    .reader-body h3 { font-size: 1.1rem; }
+    .reader-body p { margin-bottom: 1.2rem; }
+    .reader-body p:last-child { margin-bottom: 0; }
+    @media (max-width: 600px) {
+      .reader-panel { width: 100vw; max-height: 100vh; }
+      .reader-body { padding: 1.5rem; }
+    }
+
     @media (max-width: 1000px) {
       .spotlight { grid-template-columns: 1fr; }
       .spotlight-essay { border-right: none; border-bottom: 1px solid var(--rule); }
@@ -402,6 +458,19 @@
 
   <!-- data loaded from /content/essays.json -->
 
+  <!-- ══ READER OVERLAY ══ -->
+  <div class="reader-overlay" id="reader-overlay">
+    <div class="reader-panel">
+      <div class="reader-toolbar">
+        <span class="reader-toolbar-label" id="reader-label"></span>
+        <button class="reader-close" id="reader-close">Close ×</button>
+      </div>
+      <div class="reader-scroll" id="reader-scroll">
+        <article class="reader-body" id="reader-body"></article>
+      </div>
+    </div>
+  </div>
+
   <section class="newsletter-band" style="margin-top:0;">
     <div class="newsletter-inner">
       <div class="newsletter-copy"><h3 class="serif">Read Phronesis weekly.</h3><p>New work delivered directly to your inbox. No noise, no filler.</p></div>
@@ -450,6 +519,8 @@
             date:         fmtDateE(e.date),
             title:        e.title || '',
             excerpt:      e.excerpt || e.abstract || '',
+            abstract:     e.abstract || '',
+            body:         e.body || null,
             original_url: e.original_url || null,
             document_url: e.document_url || null,
           }));
@@ -484,6 +555,7 @@
 
       const sLink = (d.origin === 'via' && d.original_url) ? d.original_url
                      : (d.origin === 'original' && d.document_url) ? d.document_url : null;
+      const hasBody = !!d.body;
       document.getElementById('spotlight-essay').innerHTML = `
         <div class="spotlight-eyebrow">
           <span class="essay-tag">${d.topic}</span>
@@ -493,7 +565,8 @@
         <p class="spotlight-excerpt">${d.excerpt}</p>
         <div class="spotlight-meta">
           <span class="spotlight-date">${d.date}</span>
-          ${sLink ? `<a href="${sLink}"${d.origin==='via'?' target="_blank" rel="noopener"':''} class="spotlight-read">Read full essay</a>` : ''}
+          ${hasBody ? '<button class="spotlight-read" onclick="openReader('+activeIdx+')">Read full essay</button>' : ''}
+          ${!hasBody && sLink ? `<a href="${sLink}"${d.origin==='via'?' target="_blank" rel="noopener"':''} class="spotlight-read">Read full essay</a>` : ''}
         </div>`;
 
       document.getElementById('spot-prev').disabled = activeIdx === 0;
@@ -655,7 +728,10 @@
             <span class="origin-badge origin-badge--${e.origin}">${e.originLabel}</span>
           </div>
           <h3 class="serif">${e.title}</h3>
-          <p class="essay-card-excerpt">${e.excerpt}</p>
+          <div class="expandable-wrap">
+            <p class="essay-card-excerpt expandable-text">${e.excerpt}</p>
+            ${(e.excerpt||'').length > 160 ? '<button class="expand-toggle" onclick="toggleExpand(event)">Full abstract <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>' : ''}
+          </div>
           <div class="essay-card-footer">
             <div class="essay-card-footer-left">
               <span class="essay-card-date">${e.date}</span>
@@ -734,6 +810,54 @@
       const sub  = encodeURIComponent(`Notes: ${title}`);
       const body = encodeURIComponent(`Notes on "${title}" — Phronesis Research:\n\n${notes}\n\nphronesisresearch.org`);
       window.location.href = `mailto:${email}?subject=${sub}&body=${body}`;
+    });
+
+    function toggleExpand(e) {
+      e.preventDefault(); e.stopPropagation();
+      const btn = e.currentTarget;
+      const wrap = btn.closest('.expandable-wrap');
+      const text = wrap.querySelector('.expandable-text');
+      const isExpanded = text.classList.toggle('expanded');
+      btn.classList.toggle('expanded', isExpanded);
+      btn.childNodes[0].textContent = isExpanded ? 'Collapse ' : 'Full abstract ';
+    }
+
+    // ── READER OVERLAY ──
+    function bodyToHTML(raw) {
+      if (!raw) return '';
+      // Split into paragraphs on double newlines, wrap each in <p>
+      return raw.split(/\n\n+/).map(p => {
+        p = p.trim();
+        if (!p) return '';
+        // Detect headings (lines that look like titles)
+        if (p.match(/^Works Cited$/i) || p.match(/^References$/i)) return '<h2>' + p + '</h2>';
+        if (p.match(/^By:/)) return '<p style="font-style:italic;color:var(--ink-3);">' + p + '</p>';
+        return '<p>' + p + '</p>';
+      }).join('');
+    }
+
+    function openReader(idx) {
+      const items = visible();
+      const d = items[idx];
+      if (!d || !d.body) return;
+      document.getElementById('reader-label').textContent = 'Essay — ' + d.topic;
+      document.getElementById('reader-body').innerHTML = bodyToHTML(d.body);
+      document.getElementById('reader-scroll').scrollTop = 0;
+      document.getElementById('reader-overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeReader() {
+      document.getElementById('reader-overlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('reader-close').addEventListener('click', closeReader);
+    document.getElementById('reader-overlay').addEventListener('click', function(e) {
+      if (e.target === this) closeReader();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeReader();
     });
 
     // ── INIT ──

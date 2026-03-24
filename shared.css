@@ -361,6 +361,44 @@ footer {
 .footer-bottom p { font-size: 0.68rem; color: var(--ink-3); letter-spacing: 0.06em; }
 .phronesis-greek { font-family: var(--serif); font-style: italic; font-size: 0.78rem; color: var(--ink-3); }
 
+/* ── EXPANDABLE TEXT ────────────────────────────────────── */
+.expandable-wrap { position: relative; }
+.expandable-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.expandable-text.expanded {
+  display: block;
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}
+.expand-toggle {
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem 0 0;
+  transition: color 0.18s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.expand-toggle:hover { color: var(--accent-l); }
+.expand-toggle svg {
+  width: 10px; height: 10px;
+  stroke: currentColor; fill: none; stroke-width: 2;
+  transition: transform 0.2s;
+}
+.expand-toggle.expanded svg { transform: rotate(180deg); }
+
 /* ── RESPONSIVE ────────────────────────────────────────── */
 @media (max-width: 900px) {
   .page-header { grid-template-columns: 1fr; gap: 2rem; }

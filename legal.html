@@ -258,9 +258,19 @@
     }
 
     function lResolveLink(d) {
-      if (d.origin === 'via' && d.originalUrl) return { url: d.originalUrl, external: true };
-      if (d.origin === 'original' && d.documentUrl) return { url: d.documentUrl, external: false };
+      if (d.origin === 'via' && d.original_url) return { url: d.original_url, external: true };
+      if (d.origin === 'original' && d.document_url) return { url: d.document_url, external: false };
       return null;
+    }
+
+    function toggleExpand(e) {
+      e.preventDefault(); e.stopPropagation();
+      const btn = e.currentTarget;
+      const wrap = btn.closest('.expandable-wrap');
+      const text = wrap.querySelector('.expandable-text');
+      const isExpanded = text.classList.toggle('expanded');
+      btn.classList.toggle('expanded', isExpanded);
+      btn.childNodes[0].textContent = isExpanded ? 'Collapse ' : 'Full abstract ';
     }
 
     function capitalize(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : ''; }
@@ -281,7 +291,10 @@
           <div>
             ${titleEl}
             <span class="origin-badge origin-badge--${e.origin}">${e.originLabel}</span>
-            <div class="archive-subtitle">${e.subtitle}</div>
+            <div class="expandable-wrap">
+              <div class="archive-subtitle expandable-text">${e.subtitle}</div>
+              ${(e.subtitle||'').length > 160 ? '<button class="expand-toggle" onclick="toggleExpand(event)">Full abstract <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>' : ''}
+            </div>
           </div>
           <div class="archive-tags">
             <span class="archive-tag">${capitalize(e.type)}</span>
@@ -308,13 +321,16 @@
             <span class="archive-tag archive-tag--topic">${titleCase(e.topic)}</span>
           </div>
           <h3 class="serif">${e.title}</h3>
-          <p>${e.subtitle}</p>
+          <div class="expandable-wrap">
+            <p class="expandable-text">${e.subtitle}</p>
+            ${(e.subtitle||'').length > 160 ? '<button class="expand-toggle" onclick="toggleExpand(event)">Full abstract <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>' : ''}
+          </div>
           <div class="legal-card-footer">
             <div class="legal-card-footer-left">
               <span class="legal-card-date">${e.date}</span>
               <span class="origin-badge origin-badge--${e.origin}">${e.originLabel}</span>
             </div>
-            ${link ? '<span class="legal-card-read">Read</span>' : ''}
+            ${link ? '<span class="legal-card-read">Read →</span>' : ''}
           </div>`;
         grid.appendChild(card);
       });
