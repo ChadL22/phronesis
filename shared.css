@@ -387,10 +387,11 @@ footer {
   cursor: pointer;
   padding: 0.4rem 0 0;
   transition: color 0.18s;
-  display: inline-flex;
+  display: none;
   align-items: center;
   gap: 0.3rem;
 }
+.expand-toggle.visible { display: inline-flex; }
 .expand-toggle:hover { color: var(--accent-l); }
 .expand-toggle svg {
   width: 10px; height: 10px;

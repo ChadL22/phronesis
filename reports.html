@@ -403,7 +403,16 @@
       const text = wrap.querySelector('.expandable-text');
       const isExpanded = text.classList.toggle('expanded');
       btn.classList.toggle('expanded', isExpanded);
-      btn.childNodes[0].textContent = isExpanded ? 'Collapse ' : 'Full abstract ';
+      btn.childNodes[0].textContent = isExpanded ? 'Collapse ' : 'Expand ';
+    }
+
+    function revealToggles(root) {
+      (root || document).querySelectorAll('.expandable-wrap').forEach(wrap => {
+        const text = wrap.querySelector('.expandable-text');
+        const btn  = wrap.querySelector('.expand-toggle');
+        if (!text || !btn) return;
+        btn.classList.toggle('visible', text.scrollHeight > text.clientHeight + 1);
+      });
     }
 
     // ── featured ──
@@ -434,7 +443,7 @@
             <div class="rpt-featured-title">${d.title}</div>
             <div class="expandable-wrap">
               <div class="rpt-featured-desc expandable-text">${d.desc}</div>
-              ${(d.desc||'').length > 160 ? '<button class="expand-toggle" onclick="toggleExpand(event)">Full abstract <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>' : ''}
+              <button class="expand-toggle" onclick="toggleExpand(event)">Expand <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
             </div>
             <div class="rpt-featured-footer">
               <div class="rpt-featured-meta">
@@ -470,7 +479,7 @@
             <div class="rpt-card-title">${d.title}</div>
             <div class="expandable-wrap">
               <div class="rpt-card-desc expandable-text">${d.desc}</div>
-              ${(d.desc||'').length > 160 ? '<button class="expand-toggle" onclick="toggleExpand(event)">Full abstract <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>' : ''}
+              <button class="expand-toggle" onclick="toggleExpand(event)">Expand <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
             </div>
             <div class="rpt-card-footer">
               <div class="rpt-card-footer-left">
@@ -507,7 +516,7 @@
               <div class="rpt-list-title">${e.title}</div>
               <div class="expandable-wrap">
                 <div class="rpt-list-desc expandable-text">${e.desc}</div>
-                ${(e.desc||'').length > 160 ? '<button class="expand-toggle" onclick="toggleExpand(event)">Full abstract <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>' : ''}
+                <button class="expand-toggle" onclick="toggleExpand(event)">Expand <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
               </div>
             </div>
             <span class="rpt-list-type">${typeLabel}</span>
@@ -535,6 +544,7 @@
       document.getElementById('rpt-archive-label').textContent =
         archiveItems.length + ' more report' + (archiveItems.length === 1 ? '' : 's') + ' in archive';
       updateCount();
+      requestAnimationFrame(() => revealToggles());
     }
 
     // ── event listeners ──

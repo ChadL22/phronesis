@@ -270,7 +270,16 @@
       const text = wrap.querySelector('.expandable-text');
       const isExpanded = text.classList.toggle('expanded');
       btn.classList.toggle('expanded', isExpanded);
-      btn.childNodes[0].textContent = isExpanded ? 'Collapse ' : 'Full abstract ';
+      btn.childNodes[0].textContent = isExpanded ? 'Collapse ' : 'Expand ';
+    }
+
+    function revealToggles(root) {
+      (root || document).querySelectorAll('.expandable-wrap').forEach(wrap => {
+        const text = wrap.querySelector('.expandable-text');
+        const btn  = wrap.querySelector('.expand-toggle');
+        if (!text || !btn) return;
+        btn.classList.toggle('visible', text.scrollHeight > text.clientHeight + 1);
+      });
     }
 
     function capitalize(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : ''; }
@@ -293,7 +302,7 @@
             <span class="origin-badge origin-badge--${e.origin}">${e.originLabel}</span>
             <div class="expandable-wrap">
               <div class="archive-subtitle expandable-text">${e.subtitle}</div>
-              ${(e.subtitle||'').length > 160 ? '<button class="expand-toggle" onclick="toggleExpand(event)">Full abstract <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>' : ''}
+              <button class="expand-toggle" onclick="toggleExpand(event)">Expand <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
             </div>
           </div>
           <div class="archive-tags">
@@ -323,7 +332,7 @@
           <h3 class="serif">${e.title}</h3>
           <div class="expandable-wrap">
             <p class="expandable-text">${e.subtitle}</p>
-            ${(e.subtitle||'').length > 160 ? '<button class="expand-toggle" onclick="toggleExpand(event)">Full abstract <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>' : ''}
+            <button class="expand-toggle" onclick="toggleExpand(event)">Expand <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
           </div>
           <div class="legal-card-footer">
             <div class="legal-card-footer-left">
@@ -349,6 +358,7 @@
         lRenderCards();
       }
       if (typeof syncEllipsis === 'function') syncEllipsis();
+      requestAnimationFrame(() => revealToggles());
     }
 
     document.querySelectorAll('.legal-btn').forEach(btn => {

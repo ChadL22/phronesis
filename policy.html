@@ -607,7 +607,16 @@
       const text = wrap.querySelector('.expandable-text');
       const isExpanded = text.classList.toggle('expanded');
       btn.classList.toggle('expanded', isExpanded);
-      btn.childNodes[0].textContent = isExpanded ? 'Collapse ' : 'Full abstract ';
+      btn.childNodes[0].textContent = isExpanded ? 'Collapse ' : 'Expand ';
+    }
+
+    function revealToggles(root) {
+      (root || document).querySelectorAll('.expandable-wrap').forEach(wrap => {
+        const text = wrap.querySelector('.expandable-text');
+        const btn  = wrap.querySelector('.expand-toggle');
+        if (!text || !btn) return;
+        btn.classList.toggle('visible', text.scrollHeight > text.clientHeight + 1);
+      });
     }
 
     function renderCards() {
@@ -632,7 +641,7 @@
           <h3 class="serif">${e.title}</h3>
           <div class="expandable-wrap">
             <p class="expandable-text">${e.subtitle}</p>
-            ${(e.subtitle||'').length > 160 ? '<button class="expand-toggle" onclick="toggleExpand(event)">Full abstract <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>' : ''}
+            <button class="expand-toggle" onclick="toggleExpand(event)">Expand <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
           </div>
           <div class="policy-card-footer">
             <div class="policy-card-footer-left">
@@ -676,7 +685,7 @@
             <div class="policy-list-title">${e.title}</div>
             <div class="expandable-wrap">
               <div class="policy-list-subtitle expandable-text">${e.subtitle}</div>
-              ${(e.subtitle||'').length > 160 ? '<button class="expand-toggle" onclick="toggleExpand(event)">Full abstract <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>' : ''}
+              <button class="expand-toggle" onclick="toggleExpand(event)">Expand <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
             </div>
           </div>
           <span class="policy-list-level">${e.level}</span>
@@ -698,6 +707,7 @@
         document.getElementById('policy-list-view').style.display = '';
         renderList();
       }
+      requestAnimationFrame(() => revealToggles());
     }
 
     document.querySelectorAll('.policy-tab').forEach(btn => {
