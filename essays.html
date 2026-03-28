@@ -513,6 +513,7 @@
         allEssays = (json.entries || [])
           .filter(e => !e.placeholder)
           .map(e => ({
+            id:           e.id || '',
             topic:        e.category || 'governance',
             origin:       e.origin,
             originLabel:  e.origin === 'original' ? 'Original' : 'Via ' + e.publisher,
@@ -529,8 +530,37 @@
         return;
       }
       buildCarousel();
-      renderSpotlight(0);
+      
+      // Check for hash navigation
+      const hash = window.location.hash.slice(1);
+      if (hash) {
+        handleHashNavigation(hash);
+      } else {
+        renderSpotlight(0);
+      }
+      
       requestAnimationFrame(() => revealToggles());
+    }
+
+    function handleHashNavigation(essayId) {
+      // Find essay by ID
+      const idx = allEssays.findIndex(e => e.id === essayId);
+      if (idx === -1) {
+        // Essay not found, render first essay
+        renderSpotlight(0);
+        return;
+      }
+
+      // Check if essay has body content to open in reader
+      const essay = allEssays[idx];
+      if (essay.body) {
+        // Open in reader overlay
+        renderSpotlight(idx);
+        setTimeout(() => openReader(idx), 100);
+      } else {
+        // Just navigate to it in spotlight
+        renderSpotlight(idx);
+      }
     }
 
     function visible() {
