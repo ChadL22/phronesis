@@ -163,6 +163,15 @@
       article: 'Article'
     };
 
+    const TYPE_URLS = {
+      research: 'research',
+      essay: 'essays',
+      legal: 'legal',
+      policy: 'policy',
+      report: 'reports',
+      article: 'articles'
+    };
+
     function fmtDate(s) {
       if (!s) return '';
       const d = new Date(s + 'T00:00:00');
@@ -218,11 +227,12 @@
         return item.original_url;
       }
       // For 'original' entries, link to the content type page with hash
+      const urlPath = TYPE_URLS[item.contentType] || item.contentType;
       if (item.id) {
-        return `/${item.contentType}#${item.id}`;
+        return `/${urlPath}#${item.id}`;
       }
       // Fallback to content type page
-      return `/${item.contentType}`;
+      return `/${urlPath}`;
     }
 
     function renderFeatured(entries) {
