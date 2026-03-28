@@ -9,6 +9,35 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "what-is-agent-communication-protocol-acp",
+      "title": "What is Agent Communication Protocol (ACP)?",
+      "subtitle": "An open standard enabling interoperability and collaboration among siloed software agents.",
+      "date": "",
+      "type": "essay",
+      "fields": [
+        "Computer Science"
+      ],
+      "tags": [
+        "agent communication",
+        "open standards",
+        "interoperability",
+        "Linux Foundation",
+        "A2A protocol",
+        "software architecture"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "IBM",
+      "publisher_url": null,
+      "original_url": "https://www.ibm.com/think/topics/agent-communication-protocol",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This explainer describes the Agent Communication Protocol (ACP), an open standard designed to facilitate agent-to-agent communication and enable interoperability across previously isolated agent systems. The document discusses how ACP can reduce integration barriers and promote collaborative agentic architectures. A prominent note indicates that ACP has been merged into the A2A standard under Linux Foundation stewardship, with the ACP team transitioning its technology and expertise accordingly, suggesting users consult official migration documentation.",
+      "preview": null,
+      "body": null
+    },
+    {
+      "placeholder": false,
       "id": "the-at-protocol-ethos",
       "title": "The AT Protocol Ethos",
       "subtitle": "An examination of the philosophical and design principles underlying AT Protocol, a decentralized social media protocol influenced by the web, peer-to-peer, and open protocols movements.",
