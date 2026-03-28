@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "the-constitutional-way-of-thinking",
+      "title": "The Constitutional Way of Thinking",
+      "subtitle": "",
+      "date": "",
+      "type": "research",
+      "fields": [
+        "Philosophy",
+        "Public Policy",
+        "Economics",
+        "Political Science"
+      ],
+      "tags": [
+        "constitutional theory",
+        "political theory",
+        "reductionist classification",
+        "idealism",
+        "economic analysis",
+        "epistemology"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Supreme Court Economic Review",
+      "publisher_url": null,
+      "original_url": "https://www.journals.uchicago.edu/doi/abs/10.1086/scer.10.1147142",
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This paper examines several elements of \"the constitutional way of thinking\" beginning with a discussion of the commonality problem in patterns of thinking. Later sections address the productivity of reductionist classification schemes and how this is usefully applied to politics. More specifically, the discussion focuses first on why economists, in particular, have difficulty with this approach; second on the general problem of adhering to idealist thinking in political theory; and third on speculation into the conditions necessary to acquire \"the constitutional way of thinking.\"",
+      "preview": null,
+      "body": null
+    },
+    {
+      "placeholder": false,
       "id": "reranking-social-media-feeds-a-practical-guide-for-field-experiments-2026",
       "title": "Reranking Social Media Feeds: A Practical Guide for Field Experiments",
       "subtitle": "",
