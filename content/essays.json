@@ -32,7 +32,6 @@
       "publisher": "Phronesis Research",
       "publisher_url": null,
       "original_url": null,
-      "document_url": "https://docs.google.com/document/d/1rH5M4OVqZPyoP4mOGopqCskwTFv46VHDykg5PSaV_sY/export?format=pdf",
       "doi": null,
       "venue_type": null,
       "abstract": "This essay argues that public discourse on artificial intelligence governance is disordered because it fails to address a prior fundamental question: what do we want artificial intelligence to be for us? The author identifies three broad possibilities for AI's role in society as superior reason/oracle, as reflexive tool subordinate to human knowledge, or as intermediate system stronger in narrow domains but subordinate to collective judgment. The essay contends that governance rules cannot be sensibly established without first clarifying society's intended purpose for these systems and its conception of human flourishing, drawing on philosophical and political theory to demonstrate that technological governance reflects deeper values about authority and the forms of life a society wishes to preserve.",
@@ -42,9 +41,9 @@
     },
     {
       "placeholder": false,
-      "id": "the-silicon-valley-canon-on-the-padea-of-the-american-tech-elite-2024",
-      "title": "The Silicon Valley Canon: On the PaÃÂ±deÃÂ­a of the American Tech Elite",
-      "subtitle": "An examination of how educational formation and ruling elites in Silicon Valley differ fundamentally from Washington DC's expert-driven political culture.",
+      "id": "the-silicon-valley-canon-on-the-padea-of-the-american-tech-elite",
+      "title": "The Silicon Valley Canon: On the Paıdeía of the American Tech Elite",
+      "subtitle": "",
       "date": "2024-08-21",
       "type": "essay",
       "fields": [
@@ -67,7 +66,7 @@
       "original_url": "https://scholars-stage.org/the-silicon-valley-canon-on-the-paideia-of-the-american-tech-elite/",
       "doi": null,
       "venue_type": null,
-      "abstract": "This essay applies classical Greek political theoryÃ¢ÂÂparticularly Aristotelian concepts of paÃÂ±deÃÂ­a (education and moral formation) and polÃÂ­teuma (ruling order)Ã¢ÂÂto analyze contemporary American tech leadership. The author contrasts the narrow, specialized expertise valued in Washington's political establishment with Silicon Valley's generalist, anti-authoritarian intellectual culture. The piece argues that the composition and character of a polity's ruling class fundamentally determines its values, priorities, and formation of new members.",
+      "abstract": "This essay argues that Silicon Valley has a real, if informal, intellectual canon, and that the books its elites read help shape not just their ideas but their moral formation, ambitions, and sense of what kind of people ought to lead society. Framed through the classical idea of paideia—education as the formation of character—the author contrasts Washington’s narrow, credential-driven culture of expertise with Silicon Valley’s self-image as a world of high-agency generalists who prize intelligence, action, and sweeping first-principles thinking. He then uses a crowd-sourced list of influential tech books, from Foundation and Atlas Shrugged to Seeing Like a State, The Sovereign Individual, and Zero to One, to show how the Valley’s reading habits reveal a distinctive worldview: skeptical of authority, fascinated by systems and history-making individuals, and drawn to ideas that feel both grand and actionable. It is a sharp, culturally observant piece that will especially appeal to readers interested in how the reading life of an elite class quietly shapes the politics, instincts, and blind spots of American tech power.",
       "preview": null,
       "body": null,
       "tone": "critical"
