@@ -9,6 +9,35 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "model-context-protocol-mcp-architecture-overview",
+      "title": "Model Context Protocol (MCP) Architecture overview",
+      "subtitle": "Technical documentation explaining the Model Context Protocol's scope, core concepts, and layered architecture for context exchange between AI applications and servers.",
+      "date": "",
+      "type": "essay",
+      "fields": [
+        "Computer Science"
+      ],
+      "tags": [
+        "Model Context Protocol",
+        "client-server architecture",
+        "protocol specification",
+        "AI application integration",
+        "JSON-RPC communication",
+        "context exchange"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "LF Projects, LLC",
+      "publisher_url": null,
+      "original_url": "https://modelcontextprotocol.io/docs/learn/architecture",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This documentation provides a comprehensive overview of the Model Context Protocol (MCP), a specification for enabling AI applications to exchange context with external servers. The document outlines MCP's scope, including its specification, SDKs, development tools, and reference implementations, and explains the protocol's client-server architecture where MCP hosts establish connections to multiple MCP servers through dedicated MCP clients. The architecture consists of two layers: a data layer implementing JSON-RPC 2.0-based communication with lifecycle management and core features (tools, resources, prompts, notifications), and a transport layer managing communication channels and authentication through mechanisms such as Stdio and Streamable HTTP transport.",
+      "preview": null,
+      "body": null
+    },
+    {
+      "placeholder": false,
       "id": "what-is-agent-communication-protocol-acp",
       "title": "What is Agent Communication Protocol (ACP)?",
       "subtitle": "An open standard enabling interoperability and collaboration among siloed software agents.",
