@@ -9,6 +9,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "the-at-protocol-ethos",
+      "title": "The AT Protocol Ethos",
+      "subtitle": "An examination of the philosophical and design principles underlying AT Protocol, a decentralized social media protocol influenced by the web, peer-to-peer, and open protocols movements.",
+      "date": "",
+      "type": "essay",
+      "fields": [
+        "Computer Science",
+        "Philosophy",
+        "Public Policy"
+      ],
+      "tags": [
+        "decentralized social media",
+        "AT Protocol",
+        "peer-to-peer networks",
+        "web architecture",
+        "permissionless systems",
+        "protocol design"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Daniel Holmgren",
+      "publisher_url": null,
+      "original_url": "https://atproto.com/articles/atproto-ethos",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This text analyzes the foundational ethos and design principles of AT Protocol (atproto), a protocol for creating decentralized social applications. The author traces atproto's intellectual lineage to three technological movements: the document-based web with its permissionless architecture, the peer-to-peer movement's reaction against centralized platforms, and open protocol design traditions. The piece examines how atproto synthesizes these influences while introducing novel approaches to decentralized social media architecture, discussing both the innovations atproto contributes and the philosophical commitments underlying its design choices.",
+      "preview": null,
+      "body": null
+    },
+    {
+      "placeholder": false,
       "id": "what-do-we-ask-of-artificial-intelligence",
       "title": "What Do We Ask of Artificial Intelligence?",
       "subtitle": "An examination of how societies must first determine the fundamental purpose and role of artificial intelligence systems before establishing effective governance frameworks.",
