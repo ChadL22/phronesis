@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "united-states-v-google-llc",
+      "title": "United States v. Google, LLC",
+      "subtitle": "An analysis of the District Court's application of a lenient causation standard in finding Google liable for maintaining monopoly power through exclusive distribution agreements.",
+      "date": "",
+      "type": "legal",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Economics"
+      ],
+      "tags": [
+        "antitrust law",
+        "monopolization",
+        "Section 2 Sherman Act",
+        "causation standard",
+        "technology companies",
+        "exclusive dealing"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Harvard Law Review",
+      "publisher_url": null,
+      "original_url": "https://harvardlawreview.org/print/vol-138/united-states-v-google-llc/",
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This legal analysis examines the U.S. District Court for the District of Columbia's landmark decision in United States v. Google, LLC, which found Google liable under Section 2 of the Sherman Act for maintaining monopoly power in general search services and search text advertising markets through exclusive distribution agreements. The court applied the Microsoft causation standard, permitting inference of anticompetitive effects without requiring but-for evidence, and determined that Google's agreements foreclosed 45-50% of relevant markets. The decision clarifies ambiguity surrounding causation standards in antitrust law while expanding enforcement agencies' ability to challenge allegedly anticompetitive conduct by large technology companies.",
+      "preview": null,
+      "body": null
+    },
+    {
+      "placeholder": false,
       "id": "united-states-v-microsoft-corp",
       "title": "United States v. Microsoft Corp.",
       "subtitle": "An analysis of the landmark antitrust case against Microsoft and its implications for technology market regulation.",
