@@ -2,12 +2,42 @@
   "_schema": "1.0",
   "_notes": [
     "Policy proposals are almost always Phronesis originals",
-    "level: federal | state | international | institutional ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ used for the level tab filter",
-    "document_type: memo | proposal | policy ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ used for the type filter",
+    "level: federal | state | international | institutional ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ used for the level tab filter",
+    "document_type: memo | proposal | policy ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ used for the type filter",
     "stage: draft | published | submitted | adopted",
     "audience: federal | state | international | institutional"
   ],
   "entries": [
+    {
+      "placeholder": false,
+      "id": "cfpb-consumer-laws-and-regulations-unfair-deceptive-or-abusive-acts-or-practices",
+      "title": "CFPB Consumer Laws and Regulations: Unfair, Deceptive, or Abusive Acts or Practices",
+      "subtitle": "Examination procedures and regulatory guidance for identifying and assessing unfair, deceptive, or abusive acts and practices under the Dodd-Frank Act.",
+      "date": "",
+      "type": "policy",
+      "fields": [
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "consumer protection",
+        "financial regulation",
+        "CFPB",
+        "Dodd-Frank Act",
+        "unfair practices",
+        "regulatory guidance"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Consumer Financial Protection Bureau",
+      "publisher_url": null,
+      "original_url": "https://files.consumerfinance.gov/f/documents/cfpb_unfair-deceptive-abusive-acts-practices-udaaps_procedures_2023-09.pdf",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This document provides regulatory guidance from the Consumer Financial Protection Bureau (CFPB) on the standards and examination procedures for identifying unfair, deceptive, or abusive acts or practices (UDAAPs) in consumer financial services. It establishes the three-part legal standard for unfairness derived from the Dodd-Frank Act: substantial injury to consumers, non-avoidability of injury, and injury not outweighed by countervailing benefits. The guidance details principles for assessing institutional compliance and risk, including analysis of consumer decision-making, information asymmetries, and market conditions.",
+      "preview": null,
+      "body": null
+    },
     {
       "placeholder": false,
       "id": "eu-artificial-intelligence-act-2024",
