@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "does-ai-have-rights-2026",
+      "title": "Does AI Have Rights?",
+      "subtitle": "An examination of whether AI moral and legal rights depend on the capacity to experience emotions.",
+      "date": "2026-03-27",
+      "type": "legal",
+      "fields": [
+        "Philosophy",
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "artificial intelligence rights",
+        "moral status of AI",
+        "emotion and consciousness",
+        "legal personhood",
+        "AI ethics",
+        "animal and machine sentience"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Harvard Law Review",
+      "publisher_url": null,
+      "original_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6481938",
+      "doi": null,
+      "venue_type": "working-paper",
+      "abstract": "This analysis explores the philosophical and legal question of whether artificial intelligence should be granted moral and legal rights. The author argues that the capacity to experience emotions—such as sadness, pleasure, regret, anxiety, joy, and distress—functions as a necessary and sufficient condition for recognizing and conferring rights upon AI systems. The piece acknowledges alternative frameworks emphasizing self-awareness or reasoning capacity, and identifies remaining questions regarding which specific rights AI might possess and under what circumstances such rights could be limited.",
+      "preview": null,
+      "body": null
+    },
+    {
+      "placeholder": false,
       "id": "united-states-v-google-llc",
       "title": "United States v. Google, LLC",
       "subtitle": "An analysis of the District Court's application of a lenient causation standard in finding Google liable for maintaining monopoly power through exclusive distribution agreements.",
