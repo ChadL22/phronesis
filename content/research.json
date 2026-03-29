@@ -10,7 +10,7 @@
   ],
   "entries": [
     {
-      "placeholder": true,
+      "placeholder": false,
       "id": "dynamic-pricing-algorithms-consumer-harm-and-regulatory-response",
       "title": "Dynamic Pricing Algorithms, Consumer Harm, and Regulatory Response",
       "subtitle": "An analysis of how algorithmic pricing creates consumer harm in competitive markets independent of collusion and proposes pricing regulation as a policy response.",
