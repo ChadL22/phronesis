@@ -2,13 +2,44 @@
   "_schema": "1.0",
   "_notes": [
     "origin 'original': Phronesis analysis, full body stored here",
-    "origin 'via': curated from law reviews or legal blogs ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ abstract only (open-access) or preview (paywalled)",
+    "origin 'via': curated from law reviews or legal blogs ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ abstract only (open-access) or preview (paywalled)",
     "analysis_type: doctrinal | case | statutory | regulatory | procedural | litigation | policy | comparative",
     "primary_topic: first-amendment | antitrust | liability | administrative | ip | privacy | competition",
     "case_refs: array of case names or statute citations central to the piece",
     "court: relevant court or agency if analysis is case-specific"
   ],
   "entries": [
+    {
+      "placeholder": false,
+      "id": "united-states-v-microsoft-corp",
+      "title": "United States v. Microsoft Corp.",
+      "subtitle": "An analysis of the landmark antitrust case against Microsoft and its implications for technology market regulation.",
+      "date": "",
+      "type": "legal",
+      "fields": [
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "antitrust law",
+        "Microsoft",
+        "dominant market position",
+        "information economy",
+        "network effects",
+        "competition policy"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "UC Berkeley Law Library Catalog",
+      "publisher_url": null,
+      "original_url": "https://lawcat.berkeley.edu/record/1117650?v=pdf",
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This legal analysis examines the United States v. Microsoft Corp. antitrust case as a foundational litigation addressing competition policy in information markets characterized by economies of scale and network effects. The paper summarizes the factual and legal issues in the case, addresses the challenges of litigating complex antitrust matters in rapidly evolving technology sectors, and discusses the appropriate scope of antitrust enforcement in digital economies. As the first major case of its kind to be fully litigated, the analysis suggests this litigation will substantially shape the nation's antitrust policy framework for information technology markets.",
+      "preview": null,
+      "body": null,
+      "court": null
+    },
     {
       "placeholder": false,
       "id": "cox-communications-v-sony-music-entertainment",
@@ -36,7 +67,7 @@
       "original_url": "https://www.law.cornell.edu/supct/cert/24-171",
       "doi": null,
       "venue_type": null,
-      "abstract": "This case examines whether internet service providers can be held liable for contributory copyright infringement based solely on knowledge that subscribers are infringing, without affirmative conduct fostering infringement. The Fourth Circuit affirmed that Cox's continued service to known infringers constituted material contribution and willful infringement under 17 U.S.C. § 504(c), vacating only the vicarious liability damages award. The Supreme Court granted certiorari to determine whether passive inaction to terminate service to repeat infringers satisfies the material contribution requirement for secondary copyright liability and whether such knowledge alone meets the willfulness standard.",
+      "abstract": "This case examines whether internet service providers can be held liable for contributory copyright infringement based solely on knowledge that subscribers are infringing, without affirmative conduct fostering infringement. The Fourth Circuit affirmed that Cox's continued service to known infringers constituted material contribution and willful infringement under 17 U.S.C. Â§ 504(c), vacating only the vicarious liability damages award. The Supreme Court granted certiorari to determine whether passive inaction to terminate service to repeat infringers satisfies the material contribution requirement for secondary copyright liability and whether such knowledge alone meets the willfulness standard.",
       "preview": null,
       "body": null
     },
