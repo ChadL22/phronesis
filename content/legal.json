@@ -10,6 +10,36 @@
   ],
   "entries": [
     {
+      "placeholder": true,
+      "id": "ai-and-privilege-after-united-states-v-heppner-2026",
+      "title": "AI and Privilege After United States v. Heppner",
+      "subtitle": "Analysis of Judge Rakoff's ruling in United States v. Heppner regarding AI tool use and legal privilege protections.",
+      "date": "2026-03-30",
+      "type": "legal",
+      "fields": [
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "attorney-client privilege",
+        "AI and law",
+        "work product doctrine",
+        "confidentiality",
+        "legal services",
+        "artificial intelligence regulation"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Lawfare",
+      "publisher_url": null,
+      "original_url": "https://www.lawfaremedia.org/article/ai-and-privilege-after-united-states-v.-heppner",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This analysis examines Judge Jed Rakoff's February 2024 decision in United States v. Heppner, which held that documents created by a criminal defendant using Claude are not protected by attorney-client privilege or work product doctrine. While the court's conclusion is legally sound, the opinion extends beyond necessary grounds by relying on a company's terms of service to find waiver of confidentiality. The analysis demonstrates that existing legal frameworks adequately address AI tool use in legal contexts without requiring novel doctrinal developments, and discusses implications for attorney-client relationships and the accessibility of AI-assisted legal services.",
+      "preview": null,
+      "body": null
+    },
+    {
       "placeholder": false,
       "id": "does-ai-have-rights-2026",
       "title": "Does AI Have Rights?",
