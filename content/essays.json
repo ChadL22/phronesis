@@ -9,6 +9,36 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "anthropic-settles-its-copyright-litigationand-why-that-was-the-right-move-2025",
+      "title": "Anthropic Settles Its Copyright Litigation—and Why That Was the Right Move",
+      "subtitle": "",
+      "date": "2025-09-12",
+      "type": "essay",
+      "fields": [
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "copyright law",
+        "AI training data",
+        "intellectual property litigation",
+        "fair use doctrine",
+        "class action settlements",
+        "technology policy"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Trials & Errors",
+      "publisher_url": null,
+      "original_url": "https://www.trialserrors.ai/p/anthropic-settles-its-respect-copyright",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This essay examines Anthropic's settlement of copyright litigation with book authors for $1.5 billion, arguing that despite the substantial payment, settling was strategically sound for the company. The analysis explains how the settlement leaves Anthropic's existing models intact while establishing a pathway for continued legal data acquisition through used book purchases. The essay contextualizes the settlement within broader copyright-AI litigation trends, compares compensation rates to industry standards, and identifies key remaining legal risks for model creators.",
+      "preview": null,
+      "body": null
+    },
+    {
+      "placeholder": false,
       "id": "model-context-protocol-mcp-architecture-overview",
       "title": "Model Context Protocol (MCP) Architecture overview",
       "subtitle": "Technical documentation explaining the Model Context Protocol's scope, core concepts, and layered architecture for context exchange between AI applications and servers.",
