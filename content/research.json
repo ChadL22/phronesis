@@ -1,14 +1,45 @@
 {
   "_schema": "1.0",
   "_notes": [
-    "origin 'original': authored and owned by Phronesis ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ full body may be stored",
-    "origin 'via': curated from external source ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ abstract only (open-access) or short original preview (paywalled/news)",
+    "origin 'original': authored and owned by Phronesis ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ full body may be stored",
+    "origin 'via': curated from external source ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ abstract only (open-access) or short original preview (paywalled/news)",
     "content_type 'full': body field contains full Markdown text",
-    "content_type 'abstract': abstract field only; body is null ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ used for open-access academic papers",
-    "content_type 'preview': preview field contains 1-2 Phronesis-written sentences; body is null ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ used for paywalled journals and news",
-    "placeholder: true entries are seed data ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ set to false and fill fields when real content is ready"
+    "content_type 'abstract': abstract field only; body is null ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ used for open-access academic papers",
+    "content_type 'preview': preview field contains 1-2 Phronesis-written sentences; body is null ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ used for paywalled journals and news",
+    "placeholder: true entries are seed data ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ set to false and fill fields when real content is ready"
   ],
   "entries": [
+    {
+      "placeholder": false,
+      "id": "ethical-nudging-2026",
+      "title": "Ethical Nudging",
+      "subtitle": "An examination of the ethical dimensions of government nudges through frameworks of welfare, autonomy, and dignity",
+      "date": "2026-04-02",
+      "type": "research",
+      "fields": [
+        "Public Policy",
+        "Philosophy",
+        "Economics"
+      ],
+      "tags": [
+        "behavioral regulation",
+        "nudges",
+        "government ethics",
+        "autonomy",
+        "welfare",
+        "dark patterns"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "SSRN",
+      "publisher_url": null,
+      "original_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6509238",
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This preliminary paper analyzes the ethical permissibility of government-deployed nudges as regulatory tools, arguing that their legitimacy depends on their effects on welfare, autonomy, and dignity. The author contends that many nudges that merit support enhance one or more of these values without undermining them. The analysis demonstrates that nudges can be ethically required on both welfare and autonomy grounds, while cautioning against manipulative applications such as dark patterns.",
+      "preview": null,
+      "body": null
+    },
     {
       "placeholder": false,
       "id": "dynamic-pricing-algorithms-consumer-harm-and-regulatory-response",
@@ -36,7 +67,7 @@
       "original_url": "https://www.hbs.edu/faculty/Pages/item.aspx?num=63125",
       "doi": null,
       "venue_type": "working-paper",
-      "abstract": "This article examines how pricing algorithms transform consumer markets across ride-sharing, travel, and retail sectors, arguing that algorithmic pricing poses broader policy challenges than collusive conduct alone. The author demonstrates that algorithmic pricing can generate higher consumer prices in competitive markets without explicit or tacit collusion, driven by the automated nature of algorithms and superior pricing technology deployed by individual firms. Drawing on historical precedent from early twentieth-century pricing innovation, the article proposes targeted pricing regulation—addressing when and how firms set prices—as a feasible policy solution, since antitrust law cannot address non-collusive algorithmic pricing harms.",
+      "abstract": "This article examines how pricing algorithms transform consumer markets across ride-sharing, travel, and retail sectors, arguing that algorithmic pricing poses broader policy challenges than collusive conduct alone. The author demonstrates that algorithmic pricing can generate higher consumer prices in competitive markets without explicit or tacit collusion, driven by the automated nature of algorithms and superior pricing technology deployed by individual firms. Drawing on historical precedent from early twentieth-century pricing innovation, the article proposes targeted pricing regulationâaddressing when and how firms set pricesâas a feasible policy solution, since antitrust law cannot address non-collusive algorithmic pricing harms.",
       "preview": null,
       "body": null
     },
@@ -161,7 +192,7 @@
       "original_url": "https://dash.harvard.edu/entities/publication/73120378-8203-6bd4-e053-0100007fdf3b",
       "doi": null,
       "venue_type": null,
-      "abstract": "This paper presents an impossibility result demonstrating fundamental tensions between liberal principles of individual liberty and conventional social choice mechanisms. The authors formalize a minimalist concept of individual libertyÃ¢ÂÂthe notion that individuals should retain absolute freedom over personal decisions regardless of majority preferenceÃ¢ÂÂand prove its incompatibility with basic economic efficiency principles. The analysis reveals deep structural conflicts in constructing social decision rules that simultaneously respect both individual autonomy and collective welfare optimization.",
+      "abstract": "This paper presents an impossibility result demonstrating fundamental tensions between liberal principles of individual liberty and conventional social choice mechanisms. The authors formalize a minimalist concept of individual libertyÃÂ¢ÃÂÃÂthe notion that individuals should retain absolute freedom over personal decisions regardless of majority preferenceÃÂ¢ÃÂÃÂand prove its incompatibility with basic economic efficiency principles. The analysis reveals deep structural conflicts in constructing social decision rules that simultaneously respect both individual autonomy and collective welfare optimization.",
       "preview": null,
       "body": null
     },
@@ -192,7 +223,7 @@
       "original_url": "https://cowles.yale.edu/sites/default/files/2022-09/m12-all.pdf",
       "doi": null,
       "venue_type": null,
-      "abstract": "This text investigates whether it is formally possible to construct a procedure for transforming individual preferences into coherent social decision-making that satisfies basic rationality conditions. The author examines four methods of social choiceÃ¢ÂÂvoting, market mechanisms, dictatorship, and conventionÃ¢ÂÂand demonstrates through the paradox of voting that majority preference aggregation fails to produce transitive collective preferences. The study questions whether any method of aggregating diverse individual tastes can produce rational collective behavior, establishing foundational questions for social choice theory.",
+      "abstract": "This text investigates whether it is formally possible to construct a procedure for transforming individual preferences into coherent social decision-making that satisfies basic rationality conditions. The author examines four methods of social choiceÃÂ¢ÃÂÃÂvoting, market mechanisms, dictatorship, and conventionÃÂ¢ÃÂÃÂand demonstrates through the paradox of voting that majority preference aggregation fails to produce transitive collective preferences. The study questions whether any method of aggregating diverse individual tastes can produce rational collective behavior, establishing foundational questions for social choice theory.",
       "preview": null,
       "body": null
     },
@@ -249,7 +280,7 @@
       "document_url": null,
       "doi": null,
       "venue_type": "preprint",
-      "abstract": "The lack of a concrete definition for Artificial General Intelligence (AGI) obscures the gap between today's specialized AI and human-level cognition. This paper introduces a quantifiable framework to address this, defining AGI as matching the cognitive versatility and proficiency of a well-educated adult. To operationalize this, we ground our methodology in Cattell-Horn-Carroll theory, the most empirically validated model of human cognition. The framework dissects general intelligence into ten core cognitive domains ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ including reasoning, memory, and perception ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ and adapts established human psychometric batteries to rigorously evaluate AI systems. Applying this framework, we find that today's frontier AI models exhibit high but uneven performance, with notable weaknesses in specific cognitive domains.",
+      "abstract": "The lack of a concrete definition for Artificial General Intelligence (AGI) obscures the gap between today's specialized AI and human-level cognition. This paper introduces a quantifiable framework to address this, defining AGI as matching the cognitive versatility and proficiency of a well-educated adult. To operationalize this, we ground our methodology in Cattell-Horn-Carroll theory, the most empirically validated model of human cognition. The framework dissects general intelligence into ten core cognitive domains ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ including reasoning, memory, and perception ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ and adapts established human psychometric batteries to rigorously evaluate AI systems. Applying this framework, we find that today's frontier AI models exhibit high but uneven performance, with notable weaknesses in specific cognitive domains.",
       "preview": null,
       "body": null
     },
@@ -335,7 +366,7 @@
       "document_url": null,
       "doi": null,
       "venue_type": "preprint",
-      "abstract": "AI agentsÃ¢ÂÂautonomous systems that perceive, reason, and act on behalf of human principalsÃ¢ÂÂare poised to transform digital markets by dramatically reducing transaction costs. This chapter evaluates the economic implications of this transition, adopting a consumer-oriented view of agents as market participants that can search, negotiate, and transact directly. From the demand side, agent adoption reflects derived demand: users trade off decision quality against effort reduction, with outcomes mediated by agent capability and task context. On the supply side, firms will design, integrate, and monetize agents, with outcomes hinging on whether agents operate within or across platforms. At the market level, agents create efficiency gains from lower search, communication, and contracting costs, but also introduce frictions such as congestion and price obfuscation. By lowering the costs of preference elicitation, contract enforcement, and identity verification, agents expand the feasible set of market designs but also raise novel regulatory challenges. While the net welfare effects remain an empirical question, the rapid onset of AI-mediated transactions presents a unique opportunity for economic research to inform real-world policy and market design.",
+      "abstract": "AI agentsÃÂ¢ÃÂÃÂautonomous systems that perceive, reason, and act on behalf of human principalsÃÂ¢ÃÂÃÂare poised to transform digital markets by dramatically reducing transaction costs. This chapter evaluates the economic implications of this transition, adopting a consumer-oriented view of agents as market participants that can search, negotiate, and transact directly. From the demand side, agent adoption reflects derived demand: users trade off decision quality against effort reduction, with outcomes mediated by agent capability and task context. On the supply side, firms will design, integrate, and monetize agents, with outcomes hinging on whether agents operate within or across platforms. At the market level, agents create efficiency gains from lower search, communication, and contracting costs, but also introduce frictions such as congestion and price obfuscation. By lowering the costs of preference elicitation, contract enforcement, and identity verification, agents expand the feasible set of market designs but also raise novel regulatory challenges. While the net welfare effects remain an empirical question, the rapid onset of AI-mediated transactions presents a unique opportunity for economic research to inform real-world policy and market design.",
       "preview": null,
       "body": null
     },
