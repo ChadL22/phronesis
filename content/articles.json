@@ -11,6 +11,36 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "eli-lilly-insilico-strike-ai-drug-discovery-deal-2026",
+      "title": "Eli Lilly, InSilico Strike AI Drug Discovery Deal",
+      "subtitle": "",
+      "date": "2026-03-29",
+      "type": "article",
+      "fields": [
+        "Computer Science",
+        "Economics",
+        "Public Policy"
+      ],
+      "tags": [
+        "pharmaceutical partnerships",
+        "artificial intelligence drug discovery",
+        "China biotech investment",
+        "international licensing deals",
+        "healthcare technology"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "MarketWatch / Wall Street Journal",
+      "publisher_url": null,
+      "original_url": "https://www.wsj.com/health/pharma/eli-lilly-insilico-strike-ai-drug-discovery-deal-acea2b45?st=GYB1JZ&reflink=article_imessage_share",
+      "doi": null,
+      "venue_type": "news",
+      "abstract": "Eli Lilly announced a drug discovery partnership with Hong Kong-listed InSilico valued at up to $2.75 billion, comprising a $115 million upfront payment and milestone-based compensation. Under the agreement, InSilico will grant Lilly exclusive worldwide rights to oral treatments developed using its Pharma.AI artificial intelligence platform across multiple therapeutic areas. This deal extends an existing partnership begun in 2023 and reflects a broader trend among global pharmaceutical companies—including AstraZeneca and Takeda—establishing licensing agreements and major investments in China's increasingly competitive drug innovation sector.",
+      "preview": null,
+      "body": null
+    },
+    {
+      "placeholder": false,
       "id": "to-repeal-or-not-to-repeal-is-not-the-question-for-section-230-2026",
       "title": "To repeal or not to repeal is not the question for Section 230 ",
       "subtitle": "",
