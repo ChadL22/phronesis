@@ -1,14 +1,44 @@
 {
   "_schema": "1.0",
   "_notes": [
-    "Articles are timely, concise takes â mix of Phronesis originals and curated external pieces",
+    "Articles are timely, concise takes Ã¢ÂÂ mix of Phronesis originals and curated external pieces",
     "topic: ai-policy | competition | platform-law | legislation | privacy | international",
     "topic_label: display label for the topic pill e.g. 'AI Policy'",
     "read_time: estimated reading time in minutes",
-    "featured: true on up to 3 entries â renders in the hero section at top",
+    "featured: true on up to 3 entries Ã¢ÂÂ renders in the hero section at top",
     "excerpt: 2-3 sentence teaser shown in the featured panel and stream view"
   ],
   "entries": [
+    {
+      "placeholder": false,
+      "id": "to-repeal-or-not-to-repeal-is-not-the-question-for-section-230-2026",
+      "title": "To repeal or not to repeal is not the question for Section 230 ",
+      "subtitle": "",
+      "date": "2026-04-01",
+      "type": "article",
+      "fields": [
+        "Public Policy"
+      ],
+      "tags": [
+        "Section 230",
+        "platform regulation",
+        "free speech",
+        "content moderation",
+        "internet policy",
+        "structural reform"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "The Hill",
+      "publisher_url": null,
+      "original_url": "https://thehill.com/opinion/technology/5809261-section-230-reform-needed/",
+      "doi": null,
+      "venue_type": "news",
+      "abstract": "This piece examines the debate surrounding Section 230 of the Communications Decency Act and argues against its repeal as a solution to online harms. The author contends that repealing Section 230 would not effectively address concerns about harmful content and platform accountability because much of the problematic speech remains constitutionally protected. Instead, the author proposes targeted structural reforms including enhanced transparency requirements, privacy protections, researcher access safeguards, and user data portability that would address underlying concerns without incentivizing platforms to suppress lawful speech or concentrating further power among large platforms.",
+      "preview": null,
+      "body": null,
+      "read_time": null
+    },
     {
       "placeholder": false,
       "id": "walmart-is-putting-digital-labels-that-change-prices-instantly-on-every-store-shelf-in-america-2026",
@@ -69,9 +99,9 @@
       "document_url": null,
       "doi": null,
       "venue_type": "news",
-      "excerpt": "Machine learning algorithms used for dynamic pricing can unexpectedly converge on collusive outcomes without any explicit coordination â learning to implement mutual retaliation strategies similar to human cartels. The findings expose a gap in antitrust enforcement frameworks designed to detect explicit agreements, not emergent algorithmic behavior.",
+      "excerpt": "Machine learning algorithms used for dynamic pricing can unexpectedly converge on collusive outcomes without any explicit coordination Ã¢ÂÂ learning to implement mutual retaliation strategies similar to human cartels. The findings expose a gap in antitrust enforcement frameworks designed to detect explicit agreements, not emergent algorithmic behavior.",
       "abstract": "This article examines how machine learning algorithms used for dynamic pricing can unexpectedly converge on collusive pricing outcomes without explicit programming or coordination. Recent research demonstrates that algorithms can learn to implement implicit threats and mutual retaliation strategies similar to human cartels, and that even benign profit-optimizing algorithms may produce supracompetitive prices.",
-      "preview": "A clear-eyed explainer on how pricing algorithms can converge on collusive equilibria without any explicit coordination â and why existing antitrust frameworks are poorly equipped to respond.",
+      "preview": "A clear-eyed explainer on how pricing algorithms can converge on collusive equilibria without any explicit coordination Ã¢ÂÂ and why existing antitrust frameworks are poorly equipped to respond.",
       "body": null
     }
   ]
