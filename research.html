@@ -98,9 +98,12 @@
     
     @media (max-width: 640px) { 
       .card-grid { grid-template-columns: 1fr; }
-      .paper-card { padding: 1.6rem 1.4rem 1.4rem; }
-      .paper-card h3 { font-size: 1.05rem; }
-      .paper-card p { font-size: 0.76rem; }
+      .paper-card { padding: 1.8rem 1.6rem 1.6rem; }
+      .paper-card h3 { font-size: 1.1rem; line-height: 1.35; margin-bottom: 0.65rem; }
+      .paper-card p, .paper-card .expandable-text { font-size: 0.8rem; line-height: 1.7; }
+      .paper-card .expand-toggle { font-size: 0.62rem; padding-top: 0.5rem; }
+      .paper-card-footer { flex-direction: column; align-items: flex-start; gap: 0.6rem; padding-top: 0.8rem; }
+      .paper-card-read { margin-left: 0; }
     }
     
     @media (min-width: 769px) and (max-width: 1024px) {
