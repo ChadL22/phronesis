@@ -36,7 +36,7 @@
     .data-state { padding: 3rem 0; font-family: var(--serif); font-size: 0.95rem; color: var(--ink-3); }
 
     /* ── CARD VIEW ── */
-    .card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 2.5rem; }
+    .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 2.5rem; }
     .paper-card { background: var(--paper); padding: 1.2rem 1.3rem 1.1rem; display: flex; flex-direction: column; transition: background 0.18s; cursor: pointer; }
     .paper-card:hover { background: var(--paper-2); }
     .paper-card-top { display: flex; align-items: flex-start; gap: 0.3rem; flex-wrap: wrap; margin-bottom: 0.65rem; }
@@ -69,6 +69,20 @@
     .topic-heading { font-family: var(--sans); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); padding-bottom: 0.8rem; border-bottom: 1px solid var(--rule); }
 
     .archive-count { font-family: var(--serif); font-size: 0.82rem; color: var(--ink-3); margin-top: 2rem; display: block; }
+
+    /* ── PAGINATION ── */
+    .pagination {
+      display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+      padding: 2rem 0 1rem; flex-wrap: wrap;
+    }
+    .page-btn {
+      font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink-3); background: none; border: 1px solid transparent;
+      border-radius: 2px; padding: 0.3rem 0.65rem; cursor: pointer; transition: all 0.18s;
+    }
+    .page-btn:hover { color: var(--ink); border-color: var(--rule); }
+    .page-btn.active { color: var(--accent); border-color: var(--accent); }
+    .page-btn:disabled { opacity: 0.28; cursor: default; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) { 
@@ -155,6 +169,7 @@
   <div class="archive">
     <span class="archive-count" id="paper-count"></span>
     <div id="view-cards"></div>
+    <div class="pagination" id="card-pagination"></div>
     <div id="view-list" style="display:none;">
       <div id="group-by-bar" style="display:flex;align-items:center;gap:0.6rem;margin-top:2rem;">
         <span class="control-label">Group by</span>
@@ -207,6 +222,7 @@
     };
     const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     const FIELD_ORDER = ['Computer Science','Public Policy','Economics','Mathematics','Philosophy'];
+    const CARDS_PER_PAGE = 9; // 3x3 grid
 
     // ── state ──
     let allEntries   = [];
@@ -214,6 +230,7 @@
     let activeOrigin = 'All';
     let activeSort   = null;
     let activeView   = 'cards';
+    let currentPage  = 1;
 
     const cardViewEl    = document.getElementById('view-cards');
     const listViewEl    = document.getElementById('view-list');
@@ -312,11 +329,20 @@
       const visible = getVisible();
       if (!visible.length) {
         cardViewEl.innerHTML = '<p class="data-state">No papers match the current filters.</p>';
+        renderCardPagination(0, 1);
         return;
       }
+      
+      // Pagination logic
+      const totalPages = Math.ceil(visible.length / CARDS_PER_PAGE);
+      currentPage = Math.min(currentPage, totalPages); // Ensure current page is valid
+      const startIdx = (currentPage - 1) * CARDS_PER_PAGE;
+      const endIdx = startIdx + CARDS_PER_PAGE;
+      const pageItems = visible.slice(startIdx, endIdx);
+      
       const grid = document.createElement('div');
       grid.className = 'card-grid';
-      visible.forEach(e => {
+      pageItems.forEach(e => {
         const fieldTags = e._fields.map(f => '<span class="paper-card-tag">' + f + '</span>').join('');
         const link = resolveLink(e);
         const card = document.createElement(link ? 'a' : 'div');
@@ -343,6 +369,42 @@
         grid.appendChild(card);
       });
       cardViewEl.appendChild(grid);
+      renderCardPagination(visible.length, totalPages);
+    }
+
+    // ── CARD PAGINATION ──
+    function renderCardPagination(total, totalPages) {
+      const paginationEl = document.getElementById('card-pagination');
+      if (!paginationEl) return;
+      
+      if (totalPages <= 1) {
+        paginationEl.innerHTML = '';
+        return;
+      }
+      
+      let html = `<button class="page-btn" id="card-pg-prev" ${currentPage === 1 ? 'disabled' : ''}>← Prev</button>`;
+      
+      // Show page numbers
+      for (let i = 1; i <= totalPages; i++) {
+        html += `<button class="page-btn${i === currentPage ? ' active' : ''}" data-pg="${i}">${i}</button>`;
+      }
+      
+      html += `<button class="page-btn" id="card-pg-next" ${currentPage === totalPages ? 'disabled' : ''}>Next →</button>`;
+      paginationEl.innerHTML = html;
+      
+      // Attach event listeners
+      paginationEl.querySelectorAll('[data-pg]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          currentPage = parseInt(btn.dataset.pg);
+          render();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      });
+      
+      const prevBtn = paginationEl.querySelector('#card-pg-prev');
+      const nextBtn = paginationEl.querySelector('#card-pg-next');
+      if (prevBtn) prevBtn.addEventListener('click', () => { currentPage--; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+      if (nextBtn) nextBtn.addEventListener('click', () => { currentPage++; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
     }
 
     // ── LIST VIEW — by year ──
@@ -420,6 +482,7 @@
         document.querySelectorAll('[data-field]').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         activeField = btn.dataset.field;
+        currentPage = 1; // Reset to page 1 when filtering
         render();
       });
     });
@@ -428,6 +491,7 @@
         document.querySelectorAll('[data-origin]').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         activeOrigin = btn.dataset.origin;
+        currentPage = 1; // Reset to page 1 when filtering
         render();
       });
     });
