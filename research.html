@@ -70,12 +70,28 @@
 
     .archive-count { font-family: var(--serif); font-size: 0.82rem; color: var(--ink-3); margin-top: 2rem; display: block; }
 
-    @media (max-width: 1100px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 700px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 480px) {
-      .card-grid { grid-template-columns: 1fr; }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) { 
+      .card-grid { grid-template-columns: repeat(3, 1fr); } 
+    }
+    
+    @media (max-width: 768px) { 
+      .card-grid { grid-template-columns: repeat(2, 1fr); }
+      .paper-card { padding: 1.4rem 1.2rem 1.3rem; }
       .paper-entry { grid-template-columns: 1fr; gap: 0.6rem; }
       .paper-tags { flex-direction: row; flex-wrap: wrap; }
+    }
+    
+    @media (max-width: 640px) { 
+      .card-grid { grid-template-columns: 1fr; }
+      .paper-card { padding: 1.6rem 1.4rem 1.4rem; }
+      .paper-card h3 { font-size: 1.05rem; }
+      .paper-card p { font-size: 0.76rem; }
+    }
+    
+    @media (min-width: 769px) and (max-width: 1024px) {
+      /* iPad landscape optimization */
+      .paper-card h3 { font-size: 0.98rem; }
     }
   </style>
 </head>
