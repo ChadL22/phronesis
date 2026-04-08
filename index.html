@@ -32,9 +32,7 @@
     .format-card p { font-size: 0.75rem; color: var(--ink-3); line-height: 1.5; }
     .featured { padding: 3.5rem clamp(1.5rem, 5vw, 5rem); max-width: 1160px; margin: 0 auto; }
     .featured-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2.4rem; }
-    .featured-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
-    .card-secondary-col { display: grid; grid-template-rows: 1fr 1fr; gap: 1px; background: var(--rule); }
-    .card-lead h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); }
+    .featured-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
     .mission-band { background: var(--accent); color: #EEE8DA; padding: clamp(3.5rem, 7vw, 5.5rem) clamp(1.5rem, 5vw, 5rem); }
     .mission-inner { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; align-items: center; }
     .mission-left .label { color: rgba(238,232,218,0.55); margin-bottom: 0.8rem; }
@@ -47,7 +45,8 @@
     .hero-eyebrow { animation: fadeUp 0.6s ease both; }
     .hero h1 { animation: fadeUp 0.7s 0.1s ease both; }
     .hero-right { animation: fadeUp 0.7s 0.2s ease both; }
-    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; gap: 2.5rem; } .formats-grid { grid-template-columns: repeat(3, 1fr); } .featured-grid { grid-template-columns: 1fr; } .mission-inner { grid-template-columns: 1fr; gap: 2rem; } }
+    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; gap: 2.5rem; } .formats-grid { grid-template-columns: repeat(3, 1fr); } .featured-grid { grid-template-columns: 1fr 1fr; } .mission-inner { grid-template-columns: 1fr; gap: 2rem; } }
+    @media (max-width: 640px) { .featured-grid { grid-template-columns: 1fr; } }
     @media (max-width: 600px) { .formats-grid { grid-template-columns: repeat(2, 1fr); } }
   </style>
 </head>
@@ -242,23 +241,22 @@
         return;
       }
 
-      const top3 = entries.slice(0, 3);
-      const lead = top3[0];
-      const secondary = top3.slice(1, 3);
+      // Get the most recent item from each content type
+      const types = ['research', 'policy', 'legal', 'essay', 'article', 'report'];
+      const featured = [];
+      
+      types.forEach(type => {
+        const item = entries.find(e => e.type === type);
+        if (item) featured.push(item);
+      });
 
-      const leadUrl = getPublicationUrl(lead);
-      const leadTarget = lead.origin === 'via' ? ' target="_blank" rel="noopener"' : '';
+      if (featured.length === 0) {
+        grid.innerHTML = '<div style="grid-column: 1 / -1; padding: 2rem; text-align: center; color: var(--ink-3);">No recent publications found.</div>';
+        return;
+      }
 
-      let html = `
-        <a href="${leadUrl}"${leadTarget} class="card card-lead" style="text-decoration:none;color:inherit;">
-          <span class="card-tag">${lead.typeLabel}</span>
-          <h2 class="serif">${lead.title}</h2>
-          <p>${lead.subtitle || lead.abstract || ''}</p>
-          <div class="card-footer"><span class="card-date">${lead.dateStr}</span><span class="card-read">Read</span></div>
-        </a>
-        <div class="card-secondary-col">`;
-
-      secondary.forEach(item => {
+      let html = '';
+      featured.forEach(item => {
         const url = getPublicationUrl(item);
         const target = item.origin === 'via' ? ' target="_blank" rel="noopener"' : '';
         html += `
@@ -270,7 +268,6 @@
           </a>`;
       });
 
-      html += '</div>';
       grid.innerHTML = html;
     }
 
