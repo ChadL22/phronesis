@@ -307,9 +307,6 @@
 
   <!-- ── RENDERED VIEWS ── -->
   <div class="rpt-archive">
-    <div class="rpt-archive-header">
-      <span class="rpt-archive-label" id="rpt-archive-label">Archive</span>
-    </div>
     <div id="rpt-card-view"></div>
     <div id="rpt-list-view" style="display:none;"></div>
   </div>
@@ -541,8 +538,6 @@
         renderList();
       }
       const archiveItems = visible().filter(e => !e.featured);
-      document.getElementById('rpt-archive-label').textContent =
-        archiveItems.length + ' more report' + (archiveItems.length === 1 ? '' : 's') + ' in archive';
       updateCount();
       requestAnimationFrame(() => revealToggles());
     }
