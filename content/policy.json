@@ -2,12 +2,43 @@
   "_schema": "1.0",
   "_notes": [
     "Policy proposals are almost always Phronesis originals",
-    "level: federal | state | international | institutional ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ used for the level tab filter",
-    "document_type: memo | proposal | policy ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ used for the type filter",
+    "level: federal | state | international | institutional ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ used for the level tab filter",
+    "document_type: memo | proposal | policy ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ used for the type filter",
     "stage: draft | published | submitted | adopted",
     "audience: federal | state | international | institutional"
   ],
   "entries": [
+    {
+      "placeholder": false,
+      "id": "forecasting-the-economic-effects-of-ai-predictions-from-economists-ai-experts-and-the-public",
+      "title": "Forecasting the Economic Effects of AI: Predictions From Economists, AI Experts, and the Public",
+      "subtitle": "A large-scale forecasting exercise examining expert and public predictions of AI's economic impact through 2050.",
+      "date": "",
+      "type": "policy",
+      "fields": [
+        "Economics",
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "artificial intelligence",
+        "economic forecasting",
+        "labor force participation",
+        "GDP growth",
+        "technology policy",
+        "expert elicitation"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Forecasting Research Institute, Federal Reserve Bank of Chicago, Yale School of Management, Stanford University, University of Pennsylvania",
+      "publisher_url": null,
+      "original_url": "https://forecastingresearch.org/economic-effects-of-ai",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This working paper presents results from a comprehensive forecasting exercise surveying 69 leading economists, 52 AI industry and policy experts, 38 superforecasters, and 401 members of the general public regarding AI's economic impacts. While respondents predict significant AI capability improvements by 2030, they forecast that key economic indicators including GDP, total factor productivity, and labor force participation will remain close to historical trends. The analysis identifies factors explaining this apparent disconnect, including uneven sectoral diffusion, time-lagged technology adoption, and geopolitical headwinds, and evaluates policy interventions such as job retraining.",
+      "preview": null,
+      "body": null
+    },
     {
       "placeholder": false,
       "id": "cfpb-consumer-laws-and-regulations-unfair-deceptive-or-abusive-acts-or-practices",
