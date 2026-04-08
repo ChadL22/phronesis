@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "forecasting-the-economic-effects-of-ai",
+      "title": "Forecasting the Economic Effects of AI",
+      "subtitle": "",
+      "date": "",
+      "type": "research",
+      "fields": [
+        "Economics",
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "AI economic impact",
+        "labor force forecasting",
+        "expert elicitation",
+        "policy preferences",
+        "GDP growth projections",
+        "technological unemployment"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Forecasting Research Institute",
+      "publisher_url": null,
+      "original_url": "https://forecastingresearch.org/economic-effects-of-ai",
+      "doi": null,
+      "venue_type": "working-paper",
+      "abstract": "This study elicits probabilistic forecasts from five distinct groups—academic economists, AI company employees, AI policy researchers, superforecasters, and the general public—regarding AI's impact on the U.S. economy. All groups expect substantial AI capability advances by 2030 and modest labor force participation declines, with median GDP growth forecasts of 2.5% exceeding baseline government projections. Under a rapid AI progress scenario, experts predict annualized GDP growth around 4% and labor force participation declining to 55% by 2050, with approximately 10 million jobs lost to AI. The study finds that expert disagreement stems primarily from differing beliefs about highly capable AI systems' economic effects rather than disagreement on AI progress timelines, and reveals substantial divergence in policy preferences, with experts favoring targeted interventions while the public supports both targeted and broad redistributive programs.",
+      "preview": null,
+      "body": null
+    },
+    {
+      "placeholder": false,
       "id": "ethical-nudging-2026",
       "title": "Ethical Nudging",
       "subtitle": "An examination of the ethical dimensions of government nudges through frameworks of welfare, autonomy, and dignity",
