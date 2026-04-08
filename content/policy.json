@@ -10,6 +10,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "californias-sb-53-the-first-frontier-ai-law-explained-2026",
+      "title": "California’s SB 53: The First Frontier AI Law, Explained",
+      "subtitle": "",
+      "date": "2026-02-04",
+      "type": "policy",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Philosophy"
+      ],
+      "tags": [
+        "frontier AI regulation",
+        "AI safety",
+        "state legislation",
+        "transparency requirements",
+        "AI governance",
+        "catastrophic risk"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Phronesis Research",
+      "publisher_url": null,
+      "original_url": "https://fpf.org/blog/californias-sb-53-the-first-frontier-ai-law-explained/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "California's SB 53, signed by Governor Newsom on September 29, establishes the first state statute specifically targeting frontier artificial intelligence safety and transparency. The law imposes disclosure and transparency obligations on advanced AI developers, including published governance frameworks, pre-deployment transparency reports, critical safety incident reporting mechanisms, and whistleblower protections. This analysis examines SB 53's scope, requirements, and enforcement mechanisms, contrasting its broader catastrophic risk standard with New York's narrower liability framework in the RAISE Act.",
+      "preview": null,
+      "body": null,
+      "audience": "state"
+    },
+    {
+      "placeholder": false,
       "id": "forecasting-the-economic-effects-of-ai-predictions-from-economists-ai-experts-and-the-public",
       "title": "Forecasting the Economic Effects of AI: Predictions From Economists, AI Experts, and the Public",
       "subtitle": "A large-scale forecasting exercise examining expert and public predictions of AI's economic impact through 2050.",
