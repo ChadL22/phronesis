@@ -1,0 +1,276 @@
+/* ═══════════════════════════════════════════════════════════
+   UNIFIED FILTER SYSTEM — Shared Component
+   Used across all publication type pages
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── CONTAINER ── */
+.unified-filter-controls {
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+}
+
+/* ── PRIMARY ROW ── */
+.filter-primary-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem clamp(1.5rem, 5vw, 5rem);
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filter-primary-section {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── LABELS & BUTTONS ── */
+.filter-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-right: 0.25rem;
+  flex-shrink: 0;
+}
+
+.filter-btn {
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  padding: 0.2rem 0.55rem;
+  cursor: pointer;
+  transition: all 0.18s;
+  white-space: nowrap;
+}
+
+.filter-btn:hover {
+  color: var(--ink);
+  border-color: var(--rule);
+}
+
+.filter-btn.active {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ── MORE FILTERS TOGGLE ── */
+.filter-more-toggle {
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 0.32rem 0.75rem;
+  cursor: pointer;
+  transition: all 0.18s;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-shrink: 0;
+}
+
+.filter-more-toggle:hover {
+  color: var(--ink);
+  border-color: var(--accent);
+}
+
+.filter-more-toggle.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--paper-2);
+}
+
+.filter-more-toggle svg {
+  width: 9px;
+  height: 9px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2.2;
+  transition: transform 0.2s ease;
+}
+
+.filter-more-toggle.active svg {
+  transform: rotate(180deg);
+}
+
+/* ── VIEW TOGGLE ── */
+.filter-view-toggle {
+  display: flex;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.filter-view-btn {
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  padding: 0.32rem 0.75rem;
+  cursor: pointer;
+  color: var(--ink-3);
+  transition: all 0.18s;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+
+.filter-view-btn + .filter-view-btn {
+  border-left: 1px solid var(--rule);
+}
+
+.filter-view-btn.active {
+  background: var(--accent);
+  color: #EEE8DA;
+}
+
+.filter-view-btn svg {
+  width: 11px;
+  height: 11px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.6;
+}
+
+/* ── SECONDARY FILTERS (Collapsible) ── */
+.filter-secondary {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--paper-2);
+  border-top: 1px solid var(--rule);
+}
+
+.filter-secondary.open {
+  max-height: 600px;
+}
+
+.filter-secondary-inner {
+  padding: 0.9rem clamp(1.5rem, 5vw, 5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+/* ── MOBILE RESPONSIVE ── */
+@media (max-width: 900px) {
+  .filter-primary-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .filter-primary-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-label {
+    margin-bottom: 0.3rem;
+    margin-right: 0;
+  }
+
+  .filter-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Buttons within groups wrap horizontally on mobile */
+  .filter-group > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .filter-more-toggle {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .filter-view-toggle {
+    width: 100%;
+  }
+
+  .filter-view-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 0.5rem;
+  }
+
+  .filter-secondary-inner {
+    gap: 0.75rem;
+  }
+}
+
+/* ── SEARCH INPUT (optional, for pages that need it) ── */
+.filter-search-wrap {
+  position: relative;
+  flex: 1;
+  max-width: 280px;
+}
+
+.filter-search {
+  width: 100%;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 0.35rem 2rem 0.35rem 0.75rem;
+  outline: none;
+  transition: border-color 0.18s;
+}
+
+.filter-search:focus {
+  border-color: var(--accent);
+}
+
+.filter-search::placeholder {
+  color: var(--ink-3);
+}
+
+.filter-search-icon {
+  position: absolute;
+  right: 0.65rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 11px;
+  height: 11px;
+  stroke: var(--ink-3);
+  fill: none;
+  stroke-width: 2;
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .filter-search-wrap {
+    max-width: none;
+  }
+}

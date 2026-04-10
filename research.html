@@ -6,6 +6,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="shared.css" /><link rel="stylesheet" href="chat.css" />
+  <link rel="stylesheet" href="filter-system.css" />
   <style>
     .archive { max-width: 1160px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 5rem) 5rem; }
 
@@ -134,37 +135,44 @@
     <p class="page-header-desc">Preprints, working papers, and peer-reviewed publications drawn from the fields of computer science, public policy, economics, mathematics, and philosophy. Selected for their relevance to technology, law, and governance.</p>
   </div>
 
-  <!-- unified control bar -->
-  <div class="control-bar">
-    <div class="control-bar-row">
-      <div class="control-group">
-        <span class="control-label">Field</span>
-        <button class="ctrl-btn active" data-field="All">All</button>
-        <button class="ctrl-btn" data-field="Computer Science">CS</button>
-        <button class="ctrl-btn" data-field="Public Policy">Public Policy</button>
-        <button class="ctrl-btn" data-field="Economics">Economics</button>
-        <button class="ctrl-btn" data-field="Mathematics">Math</button>
-        <button class="ctrl-btn" data-field="Philosophy">Philosophy</button>
+  <!-- unified filter controls -->
+  <div class="unified-filter-controls">
+    <div class="filter-primary-row">
+      <div class="filter-primary-section">
+        <span class="filter-label">Field</span>
+        <button class="filter-btn active" data-field="All">All</button>
+        <button class="filter-btn" data-field="Computer Science">CS</button>
+        <button class="filter-btn" data-field="Public Policy">Public Policy</button>
+        <button class="filter-btn" data-field="Economics">Economics</button>
+        <button class="filter-btn" data-field="Mathematics">Math</button>
+        <button class="filter-btn" data-field="Philosophy">Philosophy</button>
       </div>
-      <div style="margin-left:auto; flex-shrink:0;">
-        <div class="view-toggle">
-          <button class="view-btn active" id="btn-cards" title="Card view">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-            Cards
-          </button>
-          <button class="view-btn" id="btn-list" title="List view">
-            <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-            List
-          </button>
-        </div>
+
+      <button class="filter-more-toggle" id="toggle-secondary">
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        More Filters
+      </button>
+
+      <div class="filter-view-toggle">
+        <button class="filter-view-btn active" id="btn-cards" title="Card view">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Cards
+        </button>
+        <button class="filter-view-btn" id="btn-list" title="List view">
+          <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          List
+        </button>
       </div>
     </div>
-    <div class="control-bar-row">
-      <div class="control-group">
-        <span class="control-label">Origin</span>
-        <button class="ctrl-btn active" data-origin="All">All</button>
-        <button class="ctrl-btn" data-origin="original">Original</button>
-        <button class="ctrl-btn" data-origin="via">Via External</button>
+
+    <div class="filter-secondary" id="secondary-filters">
+      <div class="filter-secondary-inner">
+        <div class="filter-group">
+          <span class="filter-label">Origin</span>
+          <button class="filter-btn active" data-origin="All">All</button>
+          <button class="filter-btn" data-origin="original">Original</button>
+          <button class="filter-btn" data-origin="via">Via External</button>
+        </div>
       </div>
     </div>
   </div>
@@ -505,6 +513,12 @@
         activeSort = btn.dataset.sort;
         render();
       });
+    });
+
+    // ── more filters toggle ──
+    document.getElementById('toggle-secondary').addEventListener('click', function() {
+      this.classList.toggle('active');
+      document.getElementById('secondary-filters').classList.toggle('open');
     });
 
     // ── view toggle ──
