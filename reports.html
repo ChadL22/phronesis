@@ -327,45 +327,52 @@
   </div>
 
   <!-- ── CONTROLS ── -->
-  <div class="rpt-controls">
-    <!-- row 1: year tabs + view toggle -->
-    <div class="rpt-controls-row rpt-controls-top">
-      <div class="rpt-year-tabs">
-        <button class="rpt-year-tab active" data-year="all">All Years</button>
-        <button class="rpt-year-tab" data-year="2025">2025</button>
-        <button class="rpt-year-tab" data-year="2024">2024</button>
+  <div class="unified-filter-controls">
+    <div class="filter-primary-row">
+      <div class="filter-primary-section">
+        <span class="filter-label">Year</span>
+        <button class="filter-btn active" data-year="all">All Years</button>
+        <button class="filter-btn" data-year="2025">2025</button>
+        <button class="filter-btn" data-year="2024">2024</button>
       </div>
-      <div style="display:flex;align-items:center;gap:0.7rem;">
-        <div class="rpt-search-wrap">
-          <input class="rpt-search" id="rpt-search" type="text" placeholder="Search reports…" autocomplete="off" />
-          <svg class="rpt-search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
-        </div>
-        <div class="rpt-view-toggle">
-        <button class="rpt-view-btn active" id="rpt-btn-cards" title="Card view">
+
+      <button class="filter-more-toggle" id="toggle-secondary-reports">
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        More Filters
+      </button>
+
+      <div class="filter-view-toggle">
+        <button class="filter-view-btn active" id="rpt-btn-cards" title="Card view">
           <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
           Cards
         </button>
-        <button class="rpt-view-btn" id="rpt-btn-list" title="List view">
+        <button class="filter-view-btn" id="rpt-btn-list" title="List view">
           <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
           List
         </button>
-        </div>
+      </div>
+
+      <div class="filter-search-wrap">
+        <input class="filter-search" id="rpt-search" type="text" placeholder="Search reports…" autocomplete="off" />
+        <svg class="filter-search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
       </div>
     </div>
-    <!-- row 2: category (left) + origin (right) -->
-    <div class="rpt-controls-row rpt-controls-bottom">
-      <div class="rpt-filter-group">
-        <span class="rpt-filter-label">Category</span>
-        <button class="rpt-filter-btn active" data-type="all">All</button>
-        <button class="rpt-filter-btn" data-type="industry">Industry</button>
-        <button class="rpt-filter-btn" data-type="government">Government</button>
-        <button class="rpt-filter-btn" data-type="academia">Academia</button>
-      </div>
-      <div style="display:flex;align-items:center;gap:0.4rem;margin-left:auto;">
-        <span class="rpt-filter-label">Origin</span>
-        <button class="rpt-filter-btn active" data-origin="all">All</button>
-        <button class="rpt-filter-btn" data-origin="original">Original</button>
-        <button class="rpt-filter-btn" data-origin="via">Via</button>
+
+    <div class="filter-secondary" id="secondary-filters-reports">
+      <div class="filter-secondary-inner">
+        <div class="filter-group">
+          <span class="filter-label">Category</span>
+          <button class="filter-btn active" data-type="all">All</button>
+          <button class="filter-btn" data-type="industry">Industry</button>
+          <button class="filter-btn" data-type="government">Government</button>
+          <button class="filter-btn" data-type="academia">Academia</button>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">Origin</span>
+          <button class="filter-btn active" data-origin="all">All</button>
+          <button class="filter-btn" data-origin="original">Original</button>
+          <button class="filter-btn" data-origin="via">Via</button>
+        </div>
       </div>
     </div>
   </div>
@@ -613,9 +620,9 @@
     }
 
     // ── event listeners ──
-    document.querySelectorAll('.rpt-year-tab').forEach(btn => {
+    document.querySelectorAll('[data-year]').forEach(btn => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.rpt-year-tab').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('[data-year]').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         activeYear = btn.dataset.year;
         render();
@@ -652,6 +659,12 @@
     document.getElementById('rpt-search').addEventListener('input', function() {
       searchQuery = this.value.trim();
       render();
+    });
+
+    // ── MORE FILTERS TOGGLE ──
+    document.getElementById('toggle-secondary-reports').addEventListener('click', function() {
+      this.classList.toggle('active');
+      document.getElementById('secondary-filters-reports').classList.toggle('open');
     });
 
     loadReportData();

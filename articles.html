@@ -267,45 +267,53 @@
   <!-- data loaded from /content/articles.json -->
 
   <!-- ── CONTROLS ── -->
-  <div class="art-controls">
-    <!-- row 1: topic filters + view toggle + search -->
-    <div class="art-controls-row">
-      <div style="display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;">
-        <span class="art-filter-label">Topic</span>
-        <button class="art-filter-btn active" data-topic="all">All</button>
-        <button class="art-filter-btn" data-topic="ai-policy">AI Policy</button>
-        <button class="art-filter-btn" data-topic="competition">Competition</button>
-        <button class="art-filter-btn" data-topic="platform-law">Platform Law</button>
-        <button class="art-filter-btn" data-topic="legislation">Legislation</button>
+  <div class="unified-filter-controls">
+    <div class="filter-primary-row">
+      <div class="filter-primary-section">
+        <span class="filter-label">Topic</span>
+        <button class="filter-btn active" data-topic="all">All</button>
+        <button class="filter-btn" data-topic="ai-policy">AI Policy</button>
+        <button class="filter-btn" data-topic="competition">Competition</button>
+        <button class="filter-btn" data-topic="platform-law">Platform Law</button>
+        <button class="filter-btn" data-topic="legislation">Legislation</button>
       </div>
-      <div class="art-controls-right">
-        <div class="art-view-toggle">
-          <button class="art-view-btn active" id="art-btn-stream" title="Stream view">
-            <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-            Stream
-          </button>
-          <button class="art-view-btn" id="art-btn-cards" title="Card view">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-            Cards
-          </button>
-        </div>
-        <div class="art-search-wrap">
-          <input class="art-search" id="art-search" type="text" placeholder="Search articles…" autocomplete="off" />
-          <svg class="art-search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
-        </div>
+
+      <button class="filter-more-toggle" id="toggle-secondary-articles">
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        More Filters
+      </button>
+
+      <div class="filter-view-toggle">
+        <button class="filter-view-btn active" id="art-btn-stream" title="Stream view">
+          <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          Stream
+        </button>
+        <button class="filter-view-btn" id="art-btn-cards" title="Card view">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Cards
+        </button>
+      </div>
+
+      <div class="filter-search-wrap">
+        <input class="filter-search" id="art-search" type="text" placeholder="Search articles…" autocomplete="off" />
+        <svg class="filter-search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
       </div>
     </div>
-    <!-- row 2: date range (left) + origin (right) + count -->
-    <div class="art-controls-row">
-      <span class="art-filter-label">When</span>
-      <button class="art-filter-btn active" data-range="all">All Time</button>
-      <button class="art-filter-btn" data-range="year">This Year</button>
-      <button class="art-filter-btn" data-range="recent">Last 90 Days</button>
-      <div style="margin-left:auto;display:flex;align-items:center;gap:0.4rem;">
-        <span class="art-filter-label">Origin</span>
-        <button class="art-filter-btn active" data-origin="all">All</button>
-        <button class="art-filter-btn" data-origin="original">Original</button>
-        <button class="art-filter-btn" data-origin="via">Via</button>
+
+    <div class="filter-secondary" id="secondary-filters-articles">
+      <div class="filter-secondary-inner">
+        <div class="filter-group">
+          <span class="filter-label">When</span>
+          <button class="filter-btn active" data-range="all">All Time</button>
+          <button class="filter-btn" data-range="year">This Year</button>
+          <button class="filter-btn" data-range="recent">Last 90 Days</button>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">Origin</span>
+          <button class="filter-btn active" data-origin="all">All</button>
+          <button class="filter-btn" data-origin="original">Original</button>
+          <button class="filter-btn" data-origin="via">Via</button>
+        </div>
       </div>
     </div>
   </div>
@@ -591,6 +599,12 @@
       document.getElementById('art-btn-cards').classList.add('active');
       document.getElementById('art-btn-stream').classList.remove('active');
       render();
+    });
+
+    // ── MORE FILTERS TOGGLE ──
+    document.getElementById('toggle-secondary-articles').addEventListener('click', function() {
+      this.classList.toggle('active');
+      document.getElementById('secondary-filters-articles').classList.toggle('open');
     });
 
     loadData();
