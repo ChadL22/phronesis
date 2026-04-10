@@ -184,6 +184,49 @@
       .policy-list-row > :nth-child(3),
       .policy-list-row > :nth-child(4),
       .policy-list-row > :nth-child(5) { display: none; }
+      /* Mobile-specific control fixes */
+      .policy-controls-top {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+      .policy-tabs {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .policy-tabs::-webkit-scrollbar { display: none; }
+      .policy-tab {
+        white-space: nowrap;
+        padding: 0.9rem 0.9rem 0.8rem;
+        font-size: 0.62rem;
+      }
+      .policy-view-toggle {
+        margin: 0.75rem clamp(1.5rem, 5vw, 5rem) 0.75rem;
+        width: calc(100% - clamp(3rem, 10vw, 10rem));
+      }
+      .policy-view-btn {
+        flex: 1;
+        justify-content: center;
+        padding: 0.5rem;
+      }
+      .policy-type-filters {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+        padding: 0.85rem clamp(1.5rem, 5vw, 5rem);
+      }
+      .policy-type-filters > div {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.4rem;
+      }
+      .policy-type-label {
+        width: 100%;
+        margin-bottom: 0.25rem;
+      }
     }
     @media (max-width: 600px) { .archive-list-item { grid-template-columns: 1fr; gap: 0.5rem; } }
 
