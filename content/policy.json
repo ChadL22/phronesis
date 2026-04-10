@@ -9,6 +9,38 @@
   ],
   "entries": [
     {
+      "placeholder": true,
+      "id": "ftc-surveillance-pricing-6b-study-research-summaries-a-staff-perspective",
+      "title": "FTC Surveillance Pricing 6(b) Study: Research Summaries A Staff Perspective ",
+      "subtitle": "",
+      "date": "",
+      "type": "policy",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Economics"
+      ],
+      "tags": [
+        "surveillance pricing",
+        "algorithmic pricing",
+        "price discrimination",
+        "FTC regulation",
+        "data intermediaries",
+        "consumer protection"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Federal Trade Commission",
+      "publisher_url": null,
+      "original_url": "chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://www.ftc.gov/system/files/ftc_gov/pdf/p246202_surveillancepricing6bstudy_researchsummaries_redacted.pdf",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This document presents initial findings from the Federal Trade Commission's Surveillance Pricing 6(b) study launched in July 2024, which examines how companies use personal data and algorithmic technologies to implement targeted pricing strategies. The study focuses on intermediary firms that enable algorithmic price discrimination through data collection, analysis, and segmentation. The FTC seeks to understand the types of data fueling these algorithms, their sources, affected industries, and the technical mechanisms enabling surveillance pricing. The document emphasizes this represents preliminary work requiring further research and collaboration.",
+      "preview": null,
+      "body": null,
+      "audience": "federal"
+    },
+    {
       "placeholder": false,
       "id": "californias-sb-53-the-first-frontier-ai-law-explained-2026",
       "title": "California’s SB 53: The First Frontier AI Law, Explained",
