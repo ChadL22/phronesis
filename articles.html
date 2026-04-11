@@ -284,13 +284,13 @@
       </button>
 
       <div class="filter-view-toggle">
-        <button class="filter-view-btn active" id="art-btn-stream" title="Stream view">
-          <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-          Stream
-        </button>
-        <button class="filter-view-btn" id="art-btn-cards" title="Card view">
+        <button class="filter-view-btn active" id="art-btn-cards" title="Card view">
           <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
           Cards
+        </button>
+        <button class="filter-view-btn" id="art-btn-stream" title="Stream view">
+          <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          Stream
         </button>
       </div>
 
@@ -326,8 +326,8 @@
 
   <!-- ── RENDERED VIEWS ── -->
   <div class="art-archive">
-    <div id="art-stream-view"></div>
-    <div id="art-card-view" style="display:none;"></div>
+    <div id="art-card-view"></div>
+    <div id="art-stream-view" style="display:none;"></div>
   </div>
 
   <div style="border-top:1px solid var(--rule);padding:1rem clamp(1.5rem,5vw,5rem);display:flex;justify-content:flex-end;"><span style="font-family:var(--sans);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-3);" id="art-count"></span></div>
@@ -356,7 +356,7 @@
     let activeTopic  = 'all';
     let activeOrigin = 'all';
     let activeRange  = 'all';
-    let activeView   = 'stream';
+    let activeView   = 'cards';
     let searchQuery  = '';
 
     async function loadData() {
@@ -547,14 +547,14 @@
 
     // ── master render ──
     function render() {
-      if (activeView === 'stream') {
-        document.getElementById('art-stream-view').style.display = '';
-        document.getElementById('art-card-view').style.display = 'none';
-        renderStream();
-      } else {
+      if (activeView === 'cards') {
         document.getElementById('art-stream-view').style.display = 'none';
         document.getElementById('art-card-view').style.display = '';
         renderCards();
+      } else {
+        document.getElementById('art-stream-view').style.display = '';
+        document.getElementById('art-card-view').style.display = 'none';
+        renderStream();
       }
       updateCount();
     }

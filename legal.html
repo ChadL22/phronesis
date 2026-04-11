@@ -224,59 +224,52 @@
     <p class="page-header-desc">Close readings of cases, statutes, and regulatory actions. We write for practitioners and informed general readers who want to understand what courts and agencies are actually deciding.</p>
   </div>
   <!-- controls -->
-  <div class="legal-controls">
-    <!-- row 1: type + origin (right-aligned) -->
-    <div class="legal-filter-row">
-      <span class="legal-filter-label">Type</span>
-      <button class="legal-btn active" data-filter="type" data-value="all">All</button>
-      <button class="legal-btn" data-filter="type" data-value="doctrinal">Doctrinal</button>
-      <button class="legal-btn" data-filter="type" data-value="case">Case</button>
-      <button class="legal-btn" data-filter="type" data-value="statutory">Statutory</button>
-      <button class="legal-btn" data-filter="type" data-value="regulatory">Regulatory</button>
-      <span class="legal-overflow" id="type-overflow">
-        <button class="legal-ellipsis" id="type-ellipsis" aria-label="More types">···</button>
-        <div class="legal-dropdown" id="type-dropdown">
-          <button class="legal-btn" data-filter="type" data-value="procedural">Procedural</button>
-          <button class="legal-btn" data-filter="type" data-value="litigation">Litigation / Risk</button>
-          <button class="legal-btn" data-filter="type" data-value="policy">Policy</button>
-          <button class="legal-btn" data-filter="type" data-value="comparative">Comparative</button>
-        </div>
-      </span>
-      <span style="margin-left:auto; flex-shrink:0;">
-        <div class="legal-view-toggle">
-          <button class="legal-view-btn" id="legal-btn-cards" title="Card view">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-            Cards
-          </button>
-          <button class="legal-view-btn active" id="legal-btn-list" title="List view">
-            <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-            List
-          </button>
-        </div>
-      </span>
+  <div class="unified-filter-controls">
+    <div class="filter-primary-row">
+      <div class="filter-primary-section">
+        <span class="filter-label">Type</span>
+        <button class="filter-btn active" data-filter="type" data-value="all">All</button>
+        <button class="filter-btn" data-filter="type" data-value="doctrinal">Doctrinal</button>
+        <button class="filter-btn" data-filter="type" data-value="case">Case</button>
+        <button class="filter-btn" data-filter="type" data-value="statutory">Statutory</button>
+        <button class="filter-btn" data-filter="type" data-value="regulatory">Regulatory</button>
+      </div>
+
+      <button class="filter-more-toggle" id="toggle-secondary-legal">
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        More Filters
+      </button>
+
+      <div class="filter-view-toggle">
+        <button class="filter-view-btn" id="legal-btn-cards" title="Card view">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Cards
+        </button>
+        <button class="filter-view-btn active" id="legal-btn-list" title="List view">
+          <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          List
+        </button>
+      </div>
     </div>
-    <!-- row 2: topic -->
-    <div class="legal-filter-row" style="border-top: 1px solid var(--rule);">
-      <span class="legal-filter-label">Topic</span>
-      <button class="legal-btn active" data-filter="topic" data-value="all">All</button>
-      <button class="legal-btn" data-filter="topic" data-value="first-amendment">First Amendment</button>
-      <button class="legal-btn" data-filter="topic" data-value="antitrust">Antitrust</button>
-      <button class="legal-btn" data-filter="topic" data-value="liability">Liability</button>
-      <span class="legal-overflow" id="topic-overflow">
-        <button class="legal-ellipsis" id="topic-ellipsis" aria-label="More topics">···</button>
-        <div class="legal-dropdown" id="topic-dropdown">
-          <button class="legal-btn" data-filter="topic" data-value="administrative">Administrative</button>
-          <button class="legal-btn" data-filter="topic" data-value="ip">IP</button>
-          <button class="legal-btn" data-filter="topic" data-value="privacy">Privacy</button>
-          <button class="legal-btn" data-filter="topic" data-value="competition">Competition</button>
+
+    <div class="filter-secondary" id="secondary-filters-legal">
+      <div class="filter-secondary-inner">
+        <div class="filter-group">
+          <span class="filter-label">Topic</span>
+          <button class="filter-btn active" data-filter="topic" data-value="all">All</button>
+          <button class="filter-btn" data-filter="topic" data-value="first-amendment">First Amendment</button>
+          <button class="filter-btn" data-filter="topic" data-value="antitrust">Antitrust</button>
+          <button class="filter-btn" data-filter="topic" data-value="liability">Liability</button>
+          <button class="filter-btn" data-filter="topic" data-value="administrative">Administrative</button>
+          <button class="filter-btn" data-filter="topic" data-value="ip">IP</button>
         </div>
-      </span>
-      <span style="margin-left:auto; display:flex; align-items:center; gap:0.4rem; flex-shrink:0;">
-        <span class="legal-filter-label" style="margin-right:0;">Origin</span>
-        <button class="legal-btn active" data-filter="origin" data-value="all">All</button>
-        <button class="legal-btn" data-filter="origin" data-value="original">Original</button>
-        <button class="legal-btn" data-filter="origin" data-value="via">Via</button>
-      </span>
+        <div class="filter-group">
+          <span class="filter-label">Origin</span>
+          <button class="filter-btn active" data-filter="origin" data-value="all">All</button>
+          <button class="filter-btn" data-filter="origin" data-value="original">Original</button>
+          <button class="filter-btn" data-filter="origin" data-value="via">Via</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -436,14 +429,13 @@
         document.getElementById('legal-card-view').style.display = 'block';
         lRenderCards();
       }
-      if (typeof syncEllipsis === 'function') syncEllipsis();
       requestAnimationFrame(() => revealToggles());
     }
 
-    document.querySelectorAll('.legal-btn').forEach(btn => {
+    document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const dim = btn.dataset.filter;
-        document.querySelectorAll(`.legal-btn[data-filter="${dim}"]`).forEach(b => b.classList.remove('active'));
+        document.querySelectorAll(`.filter-btn[data-filter="${dim}"]`).forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         if (dim === 'type')   lActiveType   = btn.dataset.value;
         if (dim === 'topic')  lActiveTopic  = btn.dataset.value;
@@ -452,34 +444,11 @@
       });
     });
 
-    // ── ELLIPSIS DROPDOWNS ──
-    function setupOverflow(ellipsisId, dropdownId) {
-      const btn = document.getElementById(ellipsisId);
-      const dd  = document.getElementById(dropdownId);
-      btn.addEventListener('click', e => {
-        e.stopPropagation();
-        // close other dropdowns
-        document.querySelectorAll('.legal-dropdown').forEach(d => { if (d !== dd) d.classList.remove('open'); });
-        dd.classList.toggle('open');
-      });
-    }
-    setupOverflow('type-ellipsis',  'type-dropdown');
-    setupOverflow('topic-ellipsis', 'topic-dropdown');
-
-    // close dropdowns on outside click
-    document.addEventListener('click', () =>
-      document.querySelectorAll('.legal-dropdown').forEach(d => d.classList.remove('open'))
-    );
-
-    // after a filter change, update ellipsis highlight if a hidden option is active
-    function syncEllipsis() {
-      ['type', 'topic'].forEach(dim => {
-        const dd  = document.getElementById(dim + '-dropdown');
-        const btn = document.getElementById(dim + '-ellipsis');
-        const hasActive = dd.querySelector('.legal-btn.active') !== null;
-        btn.classList.toggle('has-active', hasActive);
-      });
-    }
+    // ── MORE FILTERS TOGGLE ──
+    document.getElementById('toggle-secondary-legal').addEventListener('click', function() {
+      this.classList.toggle('active');
+      document.getElementById('secondary-filters-legal').classList.toggle('open');
+    });
 
     document.getElementById('legal-btn-list').addEventListener('click', () => {
       lActiveView = 'list';
