@@ -1,0 +1,103 @@
+<!-- 
+  Newsletter Subscription Handler
+  Add this script to the bottom of each HTML page (before </body>)
+  Replace YOUR_WORKER_URL with your actual Cloudflare Worker URL
+-->
+<script>
+(function() {
+  // Configuration
+  const WORKER_URL = 'https://phronesis-newsletter.YOUR_SUBDOMAIN.workers.dev/subscribe';
+  
+  // Initialize all newsletter forms on the page
+  document.querySelectorAll('.newsletter-form').forEach(form => {
+    const input = form.querySelector('input[type="email"]');
+    const button = form.querySelector('button');
+    
+    if (!input || !button) return;
+    
+    // Handle button click
+    button.addEventListener('click', () => handleSubscribe(form, input, button));
+    
+    // Handle Enter key in input
+    input.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        handleSubscribe(form, input, button);
+      }
+    });
+  });
+  
+  async function handleSubscribe(form, input, button) {
+    const email = input.value.trim();
+    
+    // Validate email format
+    if (!email || !isValidEmail(email)) {
+      showMessage(form, 'Please enter a valid email address', 'error');
+      input.focus();
+      return;
+    }
+    
+    // Disable button and show loading state
+    const originalText = button.textContent;
+    button.disabled = true;
+    button.textContent = 'Subscribing...';
+    
+    try {
+      const response = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+      
+      const data = await response.json();
+      
+      if (response.ok && data.success) {
+        showMessage(form, data.message || 'Successfully subscribed!', 'success');
+        input.value = '';
+      } else {
+        showMessage(form, data.error || 'Subscription failed. Please try again.', 'error');
+      }
+    } catch (error) {
+      console.error('Newsletter subscription error:', error);
+      showMessage(form, 'Network error. Please try again later.', 'error');
+    } finally {
+      button.disabled = false;
+      button.textContent = originalText;
+    }
+  }
+  
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+  
+  function showMessage(form, message, type) {
+    // Remove existing message
+    const existing = form.querySelector('.newsletter-message');
+    if (existing) existing.remove();
+    
+    // Create new message
+    const msg = document.createElement('div');
+    msg.className = 'newsletter-message newsletter-message--' + type;
+    msg.textContent = message;
+    
+    // Add styling
+    Object.assign(msg.style, {
+      marginTop: '0.75rem',
+      padding: '0.65rem 1rem',
+      borderRadius: '4px',
+      fontSize: '0.8rem',
+      fontFamily: 'var(--sans)',
+      backgroundColor: type === 'success' ? '#d4edda' : '#f8d7da',
+      color: type === 'success' ? '#155724' : '#721c24',
+      border: type === 'success' ? '1px solid #c3e6cb' : '1px solid #f5c6cb'
+    });
+    
+    form.appendChild(msg);
+    
+    // Auto-remove after 5 seconds
+    setTimeout(() => msg.remove(), 5000);
+  }
+})();
+</script>
