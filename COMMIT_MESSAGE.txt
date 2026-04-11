@@ -1,156 +1,20 @@
-feat: implement unified filter system across publication pages
+feat: add newsletter subscription integration
 
-Created a reusable filter-system.css component with progressive disclosure
-pattern (primary filters + collapsible secondary filters). Implemented across
-all 6 publication pages with consistent UX and mobile-responsive design.
+Added newsletter subscription functionality to all 8 pages with:
+- Backend: Cloudflare Worker at https://phronesis.sclanga315.workers.dev/subscribe
+- Frontend: JavaScript form handler with email validation
+- UX: Loading states, success/error messages, auto-dismiss
+- Enter key support for form submission
+- Styled inline feedback messages
 
-## New Files
+Files modified:
+- index.html
+- research.html
+- policy.html
+- legal.html
+- essays.html
+- articles.html
+- reports.html
+- about.html
 
-- **filter-system.css**: Shared CSS component for unified filter controls
-  * Progressive disclosure pattern (primary + collapsible secondary)
-  * Smooth expand/collapse animations (0.28s cubic-bezier)
-  * Mobile responsive (@900px breakpoint with vertical stacking)
-  * Design tokens: --accent, --paper, --rule colors
-  
-- **filter-prototype.html**: Interactive visual prototype
-  * Demonstrates all 6 page filter configurations
-  * Working expand/collapse, filter selection, view toggles
-  * Complete reference implementation for each page
-
-## Files Modified
-
-### research.html (✅ FULLY IMPLEMENTED)
-- Added filter-system.css link
-- Replaced old control-bar with unified filter structure
-  * Primary: Field filters (All, CS, Public Policy, Economics, Math, Philosophy)
-  * Collapsible: Origin filters (All, Original, Via External)
-- Added toggle JavaScript for More Filters button
-- Updated button selectors from `.ctrl-btn` to `.filter-btn`
-- View toggle buttons remain functional (Cards/List)
-
-### policy.html
-- Added filter-system.css link
-- Note: Has complex custom control system (tabs + filters + view toggle)
-- Custom system retained (already sophisticated and working well)
-
-### legal.html
-- Added filter-system.css link
-- Note: Has ellipsis dropdown system for Type and Topic filters
-- Custom dropdown system retained (working overflow pattern)
-
-### essays.html
-- Added filter-system.css link
-- Ready for unified filter implementation
-- Current: Two-row filter system (Topic + Origin)
-
-### articles.html
-- Added filter-system.css link
-- Ready for unified filter implementation  
-- Current: Topic filters + search + view toggle
-
-### reports.html
-- Added filter-system.css link
-- Ready for unified filter implementation
-- Current: Year tabs + category filters + search
-
-## Design Patterns Established
-
-### HTML Structure
-```html
-<div class="unified-filter-controls">
-  <div class="filter-primary-row">
-    <div class="filter-primary-section">
-      <span class="filter-label">Category</span>
-      <button class="filter-btn active">All</button>
-      <button class="filter-btn">Option 1</button>
-    </div>
-
-    <button class="filter-more-toggle" id="toggle-secondary">
-      <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
-      More Filters
-    </button>
-
-    <div class="filter-view-toggle">
-      <button class="filter-view-btn active">Cards</button>
-      <button class="filter-view-btn">List</button>
-    </div>
-  </div>
-
-  <div class="filter-secondary" id="secondary-filters">
-    <div class="filter-secondary-inner">
-      <div class="filter-group">
-        <span class="filter-label">Secondary</span>
-        <button class="filter-btn active">All</button>
-      </div>
-    </div>
-  </div>
-</div>
-```
-
-### JavaScript Pattern
-```javascript
-document.getElementById('toggle-secondary').addEventListener('click', function() {
-  this.classList.toggle('active');
-  document.getElementById('secondary-filters').classList.toggle('open');
-});
-```
-
-### CSS Behavior
-- max-height: 0 (collapsed) → max-height: 600px (open)
-- Chevron rotation: transform: rotate(180deg)
-- Filter buttons: 0.6rem uppercase with accent color on active
-- Smooth 0.28s cubic-bezier(0.4,0,0.2,1) transition
-
-### Mobile Responsive (@900px)
-- Primary row: flex-direction: column
-- Labels: margin-bottom: 0.3rem (above buttons)
-- Buttons wrap horizontally within groups
-- More Filters button: width: 100%, centered
-- View toggle: width: 100%, flex: 1 on buttons
-
-## Page-Specific Filter Configurations
-
-1. **Research Papers** - Primary: FIELD • Collapsible: ORIGIN
-2. **Policy Artifacts** - Primary: LEVEL tabs • Collapsible: TYPE + ORIGIN
-3. **Legal Analyses** - Primary: TYPE • Collapsible: TOPIC + ORIGIN
-4. **Essays** - Primary: TOPIC • Collapsible: ORIGIN
-5. **Articles** - Primary: TOPIC + Search • No collapsible (simple)
-6. **Reports** - Primary: YEAR + Search • Collapsible: CATEGORY + ORIGIN
-
-## Implementation Status
-
-✅ **Completed:**
-- filter-system.css component created
-- filter-prototype.html visual reference created
-- research.html fully implemented with unified filters
-- CSS links added to all 6 pages
-
-⏳ **Remaining Work:**
-- essays.html: Convert two-row system to unified (Topic primary, Origin collapsible)
-- articles.html: Keep simple (Topic + Search, no collapsible needed)
-- reports.html: Convert year tabs to unified (Year primary, Category + Origin collapsible)
-- policy.html: Evaluate if worth converting (has sophisticated custom system)
-- legal.html: Evaluate if worth converting (has working ellipsis dropdowns)
-
-## Key Learnings
-
-- Always verify live file state before editing (local/deployed can diverge)
-- Incremental changes over wholesale rewrites (per user preference)
-- DOM-based detection over character-count heuristics for UI behavior
-- Prototype first, then implement systematically page-by-page
-- Reusable components save time and ensure consistency
-
-## Testing
-
-- Prototype tested in browser: file:///Users/sipho/Desktop/Phronesis/filter-prototype.html
-- User approved prototype design
-- research.html implemented and ready for live deployment
-- Mobile responsive behavior verified in prototype
-
-## Next Steps
-
-1. Test research.html on live site after deployment
-2. Complete remaining page implementations (essays, articles, reports)
-3. Consider keeping custom systems for policy/legal if they work well
-4. Git commit and push to GitHub Pages
-5. Verify ~60 second propagation delay for live site updates
+The newsletter forms now collect email addresses to a Cloudflare D1 database.

@@ -1,12 +1,27 @@
 {
-  "name": "phronesis",
-  "compatibility_date": "2024-09-27",
-  "main": "worker.js",
-  "observability": {
-    "enabled": true
-  },
-  "assets": {
-    "directory": ".",
-    "binding": "ASSETS"
-  }
+	"name": "phronesis",
+	"compatibility_date": "2024-09-27",
+	"main": "worker.js",
+	"observability": {
+		"enabled": true
+	},
+	"assets": {
+		"directory": ".",
+		"binding": "ASSETS"
+	},
+	"d1_databases": [
+		{
+			"binding": "phronesis_subscribers",
+			"database_name": "phronesis-subscribers",
+			"database_id": "22859605-c354-456a-b3f3-e7f661ec49a5",
+			"remote": true
+		}
+	],
+	"kv_namespaces": [
+		{
+			"binding": "SUBSCRIBERS",
+			"id": "5161e71f059041f4a134d59310953896",
+			"remote": true
+		}
+	]
 }
