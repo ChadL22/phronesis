@@ -7,3 +7,9 @@
 
 # old config
 wrangler.jsonc
+
+# cloudflare worker (deployed separately, not part of static site)
+cloudflare-worker/
+
+# local databases
+databases/
