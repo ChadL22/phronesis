@@ -13,5 +13,11 @@
   },
   "compatibility_flags": [
     "nodejs_compat"
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "SUBSCRIBERS",
+      "id": "5161e71f059041f4a134d59310953896"
+    }
   ]
 }

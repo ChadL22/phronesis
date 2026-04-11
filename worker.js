@@ -130,6 +130,50 @@ Respond ONLY with a valid JSON object. No preamble, no markdown fences. Include 
       }
     }
 
+    // Newsletter subscribe
+    if (url.pathname === '/api/subscribe' && request.method === 'POST') {
+      try {
+        const body = await request.json();
+        const email = (body.email || '').trim().toLowerCase();
+
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          return new Response(JSON.stringify({ success: false, error: 'Please enter a valid email address.' }), {
+            status: 400, headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+          });
+        }
+
+        // Check if already subscribed
+        const existing = await env.SUBSCRIBERS.get(email);
+        if (existing) {
+          return new Response(JSON.stringify({ success: true, message: 'You are already subscribed!' }), {
+            headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+          });
+        }
+
+        // Store in KV with timestamp
+        await env.SUBSCRIBERS.put(email, JSON.stringify({
+          email,
+          subscribedAt: new Date().toISOString(),
+          source: request.headers.get('Referer') || 'direct',
+        }));
+
+        return new Response(JSON.stringify({ success: true, message: 'Successfully subscribed! Welcome to Phronesis.' }), {
+          headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+        });
+      } catch (err) {
+        return new Response(JSON.stringify({ success: false, error: 'Something went wrong. Please try again.' }), {
+          status: 500, headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+        });
+      }
+    }
+
+    // Handle CORS preflight for subscribe
+    if (url.pathname === '/api/subscribe' && request.method === 'OPTIONS') {
+      return new Response(null, {
+        headers: { ...CORS_HEADERS, 'Access-Control-Allow-Methods': 'POST, OPTIONS' },
+      });
+    }
+
     // All other requests: serve static assets
     return env.ASSETS.fetch(request);
   },
