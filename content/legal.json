@@ -2,7 +2,7 @@
   "_schema": "1.0",
   "_notes": [
     "origin 'original': Phronesis analysis, full body stored here",
-    "origin 'via': curated from law reviews or legal blogs ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ abstract only (open-access) or preview (paywalled)",
+    "origin 'via': curated from law reviews or legal blogs ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ abstract only (open-access) or preview (paywalled)",
     "analysis_type: doctrinal | case | statutory | regulatory | procedural | litigation | policy | comparative",
     "primary_topic: first-amendment | antitrust | liability | administrative | ip | privacy | competition",
     "case_refs: array of case names or statute citations central to the piece",
@@ -159,7 +159,7 @@
       "original_url": "https://www.law.cornell.edu/supct/cert/24-171",
       "doi": null,
       "venue_type": null,
-      "abstract": "This case examines whether internet service providers can be held liable for contributory copyright infringement based solely on knowledge that subscribers are infringing, without affirmative conduct fostering infringement. The Fourth Circuit affirmed that Cox's continued service to known infringers constituted material contribution and willful infringement under 17 U.S.C. Â§ 504(c), vacating only the vicarious liability damages award. The Supreme Court granted certiorari to determine whether passive inaction to terminate service to repeat infringers satisfies the material contribution requirement for secondary copyright liability and whether such knowledge alone meets the willfulness standard.",
+      "abstract": "This case examines whether internet service providers can be held liable for contributory copyright infringement based solely on knowledge that subscribers are infringing, without affirmative conduct fostering infringement. The Fourth Circuit affirmed that Cox's continued service to known infringers constituted material contribution and willful infringement under 17 U.S.C. § 504(c), vacating only the vicarious liability damages award. The Supreme Court granted certiorari to determine whether passive inaction to terminate service to repeat infringers satisfies the material contribution requirement for secondary copyright liability and whether such knowledge alone meets the willfulness standard.",
       "preview": null,
       "body": null
     },
