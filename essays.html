@@ -52,7 +52,7 @@
     /* ══════════════════════════════════════
        SPOTLIGHT VIEW
     ══════════════════════════════════════ */
-    .spotlight-view { display: none; }
+    .spotlight-view { display: block; }
 
     /* spotlight panel */
     .spotlight-wrap {
@@ -200,7 +200,7 @@
     /* ══════════════════════════════════════
        GRID VIEW
     ══════════════════════════════════════ */
-    .grid-view { display: block; }
+    .grid-view { display: none; }
     .grid-controls {
       max-width: 1160px; margin: 0 auto;
       padding: 1.8rem clamp(1.5rem, 5vw, 5rem) 1.2rem;
@@ -388,11 +388,11 @@
       </button>
 
       <div class="filter-view-toggle">
-        <button class="filter-view-btn active" id="btn-grid" title="Grid">
+        <button class="filter-view-btn" id="btn-grid" title="Grid">
           <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
           Cards
         </button>
-        <button class="filter-view-btn" id="btn-spotlight" title="Spotlight">
+        <button class="filter-view-btn active" id="btn-spotlight" title="Spotlight">
           <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="10" rx="1"/><line x1="3" y1="17" x2="21" y2="17"/><line x1="3" y1="21" x2="21" y2="21"/></svg>
           Read
         </button>
@@ -525,7 +525,7 @@
     let eTopic    = 'all';
     let eOrigin   = 'all';
     let activeIdx = 0;
-    let eView     = 'grid';
+    let eView     = 'spotlight';
 
     const PER_PAGE = 6;
     let gPage = 1;
@@ -563,7 +563,6 @@
         handleHashNavigation(hash);
       } else {
         renderSpotlight(0);
-        if (eView === 'grid') renderGrid();
       }
       
       requestAnimationFrame(() => revealToggles());
