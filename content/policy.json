@@ -2,12 +2,43 @@
   "_schema": "1.0",
   "_notes": [
     "Policy proposals are almost always Phronesis originals",
-    "level: federal | state | international | institutional ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ used for the level tab filter",
-    "document_type: memo | proposal | policy ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ used for the type filter",
+    "level: federal | state | international | institutional ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ used for the level tab filter",
+    "document_type: memo | proposal | policy ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ used for the type filter",
     "stage: draft | published | submitted | adopted",
     "audience: federal | state | international | institutional"
   ],
   "entries": [
+    {
+      "placeholder": false,
+      "id": "comments-to-il-lawmakers-regarding-the-consumer-protection-group-1-proposals-sb-3384-sb-3444-2026",
+      "title": "Comments to IL Lawmakers Regarding the Consumer Protection (Group 1) Proposals (SB 3384 / SB 3444)",
+      "subtitle": "Chamber of Progress submits testimony to the Illinois Subcommittee on AI and Social Media regarding proposed AI liability and consumer protection frameworks.",
+      "date": "2026-04-09",
+      "type": "policy",
+      "fields": [
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "AI regulation",
+        "consumer protection",
+        "liability frameworks",
+        "safe harbors",
+        "Illinois legislation",
+        "technology policy"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Chamber of Progress",
+      "publisher_url": null,
+      "original_url": "https://progresschamber.org/resources/comments-to-il-lawmakers-regarding-the-consumer-protection-group-1-proposals-sb-3384-sb-3444/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This document presents formal comments from the Chamber of Progress, a technology industry association, to the Illinois legislature regarding proposed consumer protection bills addressing artificial intelligence systems. The submission argues that overly broad AI liability frameworks risk creating legal uncertainty and limiting beneficial technology access, while advocating for standards-based approaches with safe harbor provisions as exemplified by California's SB 534 and New York's RAISE Act. The comments contend that existing consumer protection laws and tort principles provide adequate protection without AI-specific liability regimes.",
+      "preview": null,
+      "body": null,
+      "audience": "state"
+    },
     {
       "placeholder": false,
       "id": "ftc-surveillance-pricing-6b-study-research-summaries-a-staff-perspective",
