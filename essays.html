@@ -831,6 +831,8 @@
       document.getElementById('btn-grid').classList.remove('active');
       document.getElementById('spotlight-view').style.display = '';
       document.getElementById('grid-view').style.display = 'none';
+      buildCarousel();
+      renderSpotlight(activeIdx);
     });
     document.getElementById('btn-grid').addEventListener('click', () => {
       eView = 'grid';
