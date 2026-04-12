@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phronesis — Newsletter Composer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    body { min-height: 100vh; background: var(--paper); }
+
+    /* ── TOP BAR ── */
+    .nl-topbar {
+      background: var(--ink); color: #EEE8DA;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 1.4rem; height: 48px;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nl-topbar-brand {
+      font-family: var(--serif); font-size: 1rem; font-weight: 500;
+      letter-spacing: 0.04em; color: #EEE8DA;
+      display: flex; align-items: baseline; gap: 0.5rem;
+    }
+    .nl-topbar-brand span {
+      font-family: var(--sans); font-size: 0.55rem; font-weight: 400;
+      letter-spacing: 0.16em; text-transform: uppercase; color: rgba(238,232,218,0.45);
+    }
+    .nl-topbar-right { display: flex; align-items: center; gap: 0.8rem; }
+    .nl-topbar-progress {
+      font-family: var(--sans); font-size: 0.58rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(238,232,218,0.45);
+    }
+    .nl-btn {
+      font-family: var(--sans); font-size: 0.6rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      background: none; border: 1px solid rgba(238,232,218,0.25);
+      color: rgba(238,232,218,0.7); border-radius: 2px;
+      padding: 0.3rem 0.75rem; cursor: pointer; transition: all 0.18s;
+    }
+    .nl-btn:hover { border-color: rgba(238,232,218,0.6); color: #EEE8DA; }
+    .nl-btn.primary { background: var(--accent); border-color: var(--accent); color: #EEE8DA; }
+    .nl-btn.primary:hover { background: var(--accent-l); border-color: var(--accent-l); }
+
+    /* ── LAYOUT ── */
+    .nl-shell {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 2.5rem clamp(1.5rem, 5vw, 3rem) 5rem;
+    }
+
+    /* ── MONTH PICKER ── */
+    .nl-month-row {
+      display: flex; gap: 0.8rem; margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule);
+    }
+    .nl-month-row label {
+      display: block; font-family: var(--sans); font-size: 0.62rem;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3);
+      margin-bottom: 0.35rem;
+    }
+    .nl-month-row select, .nl-month-row input[type="number"] {
+      width: 100%; padding: 0.55rem 0.75rem;
+      font-family: var(--sans); font-size: 0.82rem; color: var(--ink);
+      background: var(--paper); border: 1px solid var(--rule); border-radius: 2px;
+      outline: none; transition: border-color 0.2s;
+    }
+    .nl-month-row select:focus, .nl-month-row input:focus { border-color: var(--accent); }
+
+    /* ── REFERENCE BOX ── */
+    .nl-ref-box {
+      background: var(--paper-2); border: 1px solid var(--rule);
+      padding: 1.2rem; margin-bottom: 2.5rem; border-radius: 2px;
+    }
+    .nl-ref-label {
+      font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--ink-3); margin-bottom: 0.8rem;
+    }
+    .nl-ref-item {
+      padding: 0.4rem 0; display: flex; gap: 0.6rem; align-items: baseline;
+    }
+    .nl-ref-item + .nl-ref-item { border-top: 1px solid var(--rule); }
+    .nl-ref-tag {
+      font-family: var(--sans); font-size: 0.55rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent);
+      border: 1px solid var(--accent); border-radius: 2px;
+      padding: 0.08rem 0.35rem; flex-shrink: 0;
+    }
+    .nl-ref-title {
+      font-family: var(--serif); font-size: 0.88rem; color: var(--ink);
+    }
+
+    /* ── SECTION HEADERS ── */
+    .nl-section-hdr {
+      display: flex; align-items: center; gap: 0.8rem;
+      margin: 2.5rem 0 1.2rem; padding-bottom: 0.7rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .nl-section-num {
+      font-family: var(--serif); font-size: 1.4rem; font-weight: 300; color: var(--accent);
+    }
+    .nl-section-title {
+      font-family: var(--serif); font-size: 1.25rem; font-weight: 400; color: var(--ink);
+    }
+
+    /* ── FIELDS ── */
+    .nl-field { margin-bottom: 1.2rem; }
+    .nl-field-label {
+      display: block; font-family: var(--serif); font-size: 0.95rem;
+      font-weight: 500; color: var(--ink); margin-bottom: 0.35rem;
+    }
+    .nl-field-hint {
+      font-family: var(--sans); font-size: 0.68rem; color: var(--ink-3);
+      margin-bottom: 0.4rem; letter-spacing: 0.02em;
+    }
+    textarea.nl-input, input.nl-input {
+      width: 100%; padding: 0.7rem 0.85rem;
+      font-family: var(--sans); font-size: 0.82rem; font-weight: 300;
+      line-height: 1.65; color: var(--ink);
+      background: var(--paper); border: 1px solid var(--rule); border-radius: 2px;
+      resize: vertical; outline: none; transition: border-color 0.2s;
+    }
+    textarea.nl-input:focus, input.nl-input:focus { border-color: var(--accent); }
+
+    /* ── REPEATING FIELDS ── */
+    .nl-repeat-label {
+      font-family: var(--serif); font-size: 0.95rem; font-weight: 500;
+      color: var(--ink); margin-bottom: 0.5rem;
+    }
+    .nl-repeat-row {
+      display: flex; gap: 0.5rem; align-items: flex-start; margin-bottom: 0.5rem;
+    }
+    .nl-repeat-num {
+      font-family: var(--serif); font-size: 0.8rem; color: var(--ink-3);
+      margin-top: 0.65rem; flex-shrink: 0; width: 1.2rem;
+    }
+    .nl-repeat-fields { flex: 1; display: flex; flex-direction: column; gap: 0.35rem; }
+    .nl-repeat-remove {
+      background: none; border: none; color: var(--ink-3);
+      cursor: pointer; font-size: 1rem; margin-top: 0.45rem; padding: 0 0.3rem;
+    }
+    .nl-repeat-remove:hover { color: var(--ink); }
+    .nl-add-btn {
+      background: none; border: 1px solid var(--rule); border-radius: 2px;
+      padding: 0.35rem 0.8rem; font-family: var(--sans); font-size: 0.62rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent); cursor: pointer; margin-top: 0.3rem;
+      transition: all 0.15s;
+    }
+    .nl-add-btn:hover { background: var(--paper-2); border-color: var(--accent); }
+
+    /* ── ACTIONS ── */
+    .nl-actions {
+      display: flex; gap: 0.8rem; margin-top: 2.5rem;
+      padding-top: 1.5rem; border-top: 1px solid var(--rule);
+    }
+    .nl-action-btn {
+      font-family: var(--sans); font-size: 0.68rem; font-weight: 400;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      border-radius: 2px; padding: 0.75rem 1.5rem; cursor: pointer;
+      transition: all 0.18s;
+    }
+    .nl-action-btn.primary {
+      flex: 1; background: var(--accent); color: #EEE8DA; border: none;
+    }
+    .nl-action-btn.primary:hover { background: var(--accent-l); }
+    .nl-action-btn.secondary {
+      background: none; border: 1px solid var(--rule); color: var(--ink-3);
+    }
+    .nl-action-btn.secondary:hover { border-color: var(--ink-3); color: var(--ink-2); }
+
+    /* ── PREVIEW ── */
+    .nl-preview-bar {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .nl-preview-label {
+      font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--ink-3);
+    }
+    .nl-copy-btn {
+      font-family: var(--sans); font-size: 0.62rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      background: var(--paper); color: var(--accent);
+      border: 1px solid var(--accent); border-radius: 2px;
+      padding: 0.5rem 1.2rem; cursor: pointer; min-width: 140px;
+      transition: all 0.2s;
+    }
+    .nl-copy-btn:hover { background: var(--accent); color: #EEE8DA; }
+    .nl-copy-btn.copied { background: var(--accent); color: #EEE8DA; }
+    .nl-preview-output {
+      background: var(--paper); border: 1px solid var(--rule); border-radius: 2px;
+      padding: 2rem; font-family: monospace; font-size: 0.78rem;
+      line-height: 1.7; white-space: pre-wrap; color: var(--ink);
+      overflow-x: auto;
+    }
+    .nl-back-btn {
+      font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.12em;
+      text-transform: uppercase; background: none; border: 1px solid var(--rule);
+      border-radius: 2px; padding: 0.6rem 1.2rem; color: var(--ink-2);
+      cursor: pointer; margin-top: 1.5rem; transition: all 0.15s;
+    }
+    .nl-back-btn:hover { border-color: var(--ink-3); color: var(--ink); }
+
+    /* ── NAV LINK ── */
+    .nl-admin-link {
+      font-family: var(--sans); font-size: 0.58rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(238,232,218,0.35);
+      transition: color 0.2s;
+    }
+    .nl-admin-link:hover { color: rgba(238,232,218,0.7); }
+
+    /* ── FOOTER ── */
+    .nl-footer {
+      text-align: center; padding: 2rem;
+      font-family: var(--serif); font-style: italic;
+      font-size: 0.78rem; color: var(--ink-3);
+    }
+
+    @media (max-width: 600px) {
+      .nl-topbar-progress { display: none; }
+      .nl-repeat-row { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── TOP BAR ── -->
+  <div class="nl-topbar">
+    <div class="nl-topbar-brand">
+      Phronesis <span>Newsletter</span>
+    </div>
+    <div class="nl-topbar-right">
+      <a href="admin.html" class="nl-admin-link">Content Manager</a>
+      <span class="nl-topbar-progress" id="progress">0 / 6 sections</span>
+      <button class="nl-btn" id="toggle-view">Preview</button>
+    </div>
+  </div>
+
+  <!-- ── COMPOSE VIEW ── -->
+  <div class="nl-shell" id="compose-view">
+
+    <!-- Month picker -->
+    <div class="nl-month-row">
+      <div style="flex:1">
+        <label>Month</label>
+        <select id="sel-month"></select>
+      </div>
+      <div style="width:100px">
+        <label>Year</label>
+        <input type="number" id="sel-year" />
+      </div>
+    </div>
+
+    <!-- Recent publications -->
+    <div class="nl-ref-box" id="ref-box">
+      <div class="nl-ref-label">Recent Publications (for reference)</div>
+      <div id="ref-list"><span style="font-size:0.75rem;color:var(--ink-3)">Loading...</span></div>
+    </div>
+
+    <!-- 1. At Phronesis -->
+    <div class="nl-section-hdr"><span class="nl-section-num">1.</span><span class="nl-section-title">At Phronesis</span></div>
+    <div class="nl-field">
+      <label class="nl-field-label">Major Project Update</label>
+      <textarea class="nl-input" id="f-project" rows="3" placeholder="What's the big-picture update this month?"></textarea>
+    </div>
+    <div class="nl-field">
+      <label class="nl-field-label">Research Progress</label>
+      <textarea class="nl-input" id="f-research" rows="2" placeholder="What moved forward in your research?"></textarea>
+    </div>
+    <div class="nl-field">
+      <label class="nl-field-label">Publications / Milestones</label>
+      <textarea class="nl-input" id="f-pubs" rows="2" placeholder="New publications, launches, or milestones"></textarea>
+    </div>
+
+    <!-- 2. Signals -->
+    <div class="nl-section-hdr"><span class="nl-section-num">2.</span><span class="nl-section-title">Signals</span></div>
+    <div class="nl-field" id="sig-academia">
+      <div class="nl-repeat-label">Academia</div>
+      <div class="repeat-rows"></div>
+      <button class="nl-add-btn" data-target="sig-academia">+ Add signal</button>
+    </div>
+    <div class="nl-field" id="sig-policy">
+      <div class="nl-repeat-label">Policy</div>
+      <div class="repeat-rows"></div>
+      <button class="nl-add-btn" data-target="sig-policy">+ Add signal</button>
+    </div>
+    <div class="nl-field" id="sig-law">
+      <div class="nl-repeat-label">Law</div>
+      <div class="repeat-rows"></div>
+      <button class="nl-add-btn" data-target="sig-law">+ Add signal</button>
+    </div>
+
+    <!-- 3. Synthesis -->
+    <div class="nl-section-hdr"><span class="nl-section-num">3.</span><span class="nl-section-title">Synthesis</span></div>
+    <div class="nl-field">
+      <label class="nl-field-label">Connecting the Dots</label>
+      <div class="nl-field-hint">This is the heart of the newsletter. 5–8 sentences connecting patterns across academia, policy, and law.</div>
+      <textarea class="nl-input" id="f-synthesis" rows="6" placeholder="What patterns are emerging? What is being misunderstood? Where are gaps forming?"></textarea>
+    </div>
+
+    <!-- 4. Opportunities -->
+    <div class="nl-section-hdr"><span class="nl-section-num">4.</span><span class="nl-section-title">Opportunities & Deadlines</span></div>
+    <div class="nl-field" id="opps">
+      <div class="repeat-rows"></div>
+      <button class="nl-add-btn" data-target="opps">+ Add opportunity</button>
+    </div>
+
+    <!-- 5. Worth Reading -->
+    <div class="nl-section-hdr"><span class="nl-section-num">5.</span><span class="nl-section-title">Worth Reading</span></div>
+    <div class="nl-field" id="reading">
+      <div class="repeat-rows"></div>
+      <button class="nl-add-btn" data-target="reading">+ Add reading</button>
+    </div>
+
+    <!-- 6. Closing -->
+    <div class="nl-section-hdr"><span class="nl-section-num">6.</span><span class="nl-section-title">Closing Note</span></div>
+    <div class="nl-field">
+      <textarea class="nl-input" id="f-closing" rows="3" placeholder="1–3 sentences. One clear idea, observation, or open question."></textarea>
+    </div>
+
+    <!-- Actions -->
+    <div class="nl-actions">
+      <button class="nl-action-btn primary" id="btn-preview">Preview & Copy</button>
+      <button class="nl-action-btn secondary" id="btn-clear">Clear</button>
+    </div>
+  </div>
+
+  <!-- ── PREVIEW VIEW ── -->
+  <div class="nl-shell" id="preview-view" style="display:none">
+    <div class="nl-preview-bar">
+      <span class="nl-preview-label">Ready to copy into Substack</span>
+      <button class="nl-copy-btn" id="btn-copy">Copy to Clipboard</button>
+    </div>
+    <div class="nl-preview-output" id="preview-output"></div>
+    <button class="nl-back-btn" id="btn-back">← Back to edit</button>
+  </div>
+
+  <div class="nl-footer">φρόνησις</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════
+// CONSTANTS
+// ═══════════════════════════════════════════════════════════
+const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const CONTENT_URLS = {
+  research: 'content/research.json',
+  policy: 'content/policy.json',
+  legal: 'content/legal.json',
+  essays: 'content/essays.json',
+  articles: 'content/articles.json',
+  reports: 'content/reports.json',
+};
+
+// Repeating field configs: [placeholder1, placeholder2]
+const REPEAT_CFG = {
+  'sig-academia': ['Paper / research trend', 'Why it matters'],
+  'sig-policy':   ['Legislation / agency movement', 'Implication'],
+  'sig-law':      ['Case / doctrine / litigation trend', 'Impact'],
+  'opps':         ['Conference, CFP, fellowship, grant, or public comment', 'Deadline or note'],
+  'reading':      ['Title', 'One line on why it matters'],
+};
+
+// ═══════════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════════
+const selMonth = document.getElementById('sel-month');
+const selYear  = document.getElementById('sel-year');
+const now = new Date();
+
+MONTHS.forEach((m, i) => {
+  const opt = document.createElement('option');
+  opt.value = m; opt.textContent = m;
+  if (i === now.getMonth()) opt.selected = true;
+  selMonth.appendChild(opt);
+});
+selYear.value = now.getFullYear();
+
+// Seed one row per repeating field
+Object.keys(REPEAT_CFG).forEach(id => addRow(id));
+
+// ═══════════════════════════════════════════════════════════
+// REPEATING FIELDS
+// ═══════════════════════════════════════════════════════════
+function addRow(containerId) {
+  const cfg = REPEAT_CFG[containerId];
+  const container = document.querySelector(`#${containerId} .repeat-rows`);
+  const idx = container.children.length + 1;
+
+  const row = document.createElement('div');
+  row.className = 'nl-repeat-row';
+  row.innerHTML = `
+    <span class="nl-repeat-num">${idx}.</span>
+    <div class="nl-repeat-fields">
+      <input class="nl-input" type="text" placeholder="${cfg[0]}" data-field="a" />
+      <input class="nl-input" type="text" placeholder="${cfg[1]}" data-field="b" />
+    </div>
+    <button class="nl-repeat-remove" title="Remove">×</button>
+  `;
+
+  row.querySelector('.nl-repeat-remove').addEventListener('click', () => {
+    row.remove();
+    renumber(containerId);
+    updateProgress();
+  });
+
+  row.querySelectorAll('input').forEach(inp => inp.addEventListener('input', updateProgress));
+  container.appendChild(row);
+}
+
+function renumber(containerId) {
+  const rows = document.querySelectorAll(`#${containerId} .nl-repeat-row`);
+  rows.forEach((r, i) => r.querySelector('.nl-repeat-num').textContent = `${i + 1}.`);
+}
+
+// Wire add buttons
+document.querySelectorAll('.nl-add-btn').forEach(btn => {
+  btn.addEventListener('click', () => addRow(btn.dataset.target));
+});
+
+// ═══════════════════════════════════════════════════════════
+// PROGRESS
+// ═══════════════════════════════════════════════════════════
+function getRepeatValues(containerId) {
+  const rows = document.querySelectorAll(`#${containerId} .nl-repeat-row`);
+  const out = [];
+  rows.forEach(r => {
+    const a = r.querySelector('[data-field="a"]').value.trim();
+    const b = r.querySelector('[data-field="b"]').value.trim();
+    if (a) out.push({ a, b });
+  });
+  return out;
+}
+
+function filledSections() {
+  let n = 0;
+  const v = id => document.getElementById(id)?.value.trim();
+  if (v('f-project') || v('f-research') || v('f-pubs')) n++;
+  if (getRepeatValues('sig-academia').length || getRepeatValues('sig-policy').length || getRepeatValues('sig-law').length) n++;
+  if (v('f-synthesis')) n++;
+  if (getRepeatValues('opps').length) n++;
+  if (getRepeatValues('reading').length) n++;
+  if (v('f-closing')) n++;
+  return n;
+}
+
+function updateProgress() {
+  document.getElementById('progress').textContent = `${filledSections()} / 6 sections`;
+}
+
+// Attach progress listeners to all textareas
+document.querySelectorAll('textarea.nl-input').forEach(t => t.addEventListener('input', updateProgress));
+
+// ═══════════════════════════════════════════════════════════
+// GENERATE NEWSLETTER
+// ═══════════════════════════════════════════════════════════
+function generate() {
+  const v = id => document.getElementById(id)?.value.trim() || '';
+  const month = selMonth.value;
+  const year  = selYear.value;
+
+  let out = '';
+  out += `The Phronesis Brief — ${month} ${year}\n`;
+  out += `A monthly briefing from Phronesis Research on developments at the intersection of technology, law, and policy. Focused on signal over noise.\n\n`;
+
+  out += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+  out += `1. AT PHRONESIS\n\n`;
+  if (v('f-project'))  out += `${v('f-project')}\n\n`;
+  if (v('f-research')) out += `${v('f-research')}\n\n`;
+  if (v('f-pubs'))     out += `${v('f-pubs')}\n\n`;
+
+  out += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+  out += `2. SIGNALS\n\n`;
+
+  const acad = getRepeatValues('sig-academia');
+  if (acad.length) {
+    out += `Academia\n`;
+    acad.forEach(s => out += `  • ${s.a}${s.b ? ' — ' + s.b : ''}\n`);
+    out += `\n`;
+  }
+
+  const pol = getRepeatValues('sig-policy');
+  if (pol.length) {
+    out += `Policy\n`;
+    pol.forEach(s => out += `  • ${s.a}${s.b ? ' — ' + s.b : ''}\n`);
+    out += `\n`;
+  }
+
+  const law = getRepeatValues('sig-law');
+  if (law.length) {
+    out += `Law\n`;
+    law.forEach(s => out += `  • ${s.a}${s.b ? ' — ' + s.b : ''}\n`);
+    out += `\n`;
+  }
+
+  out += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+  out += `3. SYNTHESIS\n\n`;
+  if (v('f-synthesis')) out += `${v('f-synthesis')}\n\n`;
+
+  out += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+  out += `4. OPPORTUNITIES & DEADLINES\n\n`;
+  getRepeatValues('opps').forEach(o => out += `  • ${o.a}${o.b ? ' — ' + o.b : ''}\n`);
+  if (getRepeatValues('opps').length) out += `\n`;
+
+  out += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+  out += `5. WORTH READING\n\n`;
+  getRepeatValues('reading').forEach(r => out += `  • ${r.a}${r.b ? ' — ' + r.b : ''}\n`);
+  if (getRepeatValues('reading').length) out += `\n`;
+
+  out += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+  out += `6. CLOSING NOTE\n\n`;
+  if (v('f-closing')) out += `${v('f-closing')}\n\n`;
+
+  out += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+  out += `Phronesis Research · phronesisresearch.org\n`;
+  out += `An independent research entity at the intersection of technology, law, and policy.\n`;
+
+  return out;
+}
+
+// ═══════════════════════════════════════════════════════════
+// VIEW TOGGLE
+// ═══════════════════════════════════════════════════════════
+const composeView = document.getElementById('compose-view');
+const previewView = document.getElementById('preview-view');
+const toggleBtn   = document.getElementById('toggle-view');
+
+function showPreview() {
+  document.getElementById('preview-output').textContent = generate();
+  composeView.style.display = 'none';
+  previewView.style.display = 'block';
+  toggleBtn.textContent = 'Edit';
+  window.scrollTo(0, 0);
+}
+
+function showCompose() {
+  composeView.style.display = 'block';
+  previewView.style.display = 'none';
+  toggleBtn.textContent = 'Preview';
+}
+
+toggleBtn.addEventListener('click', () => {
+  if (composeView.style.display === 'none') showCompose();
+  else showPreview();
+});
+document.getElementById('btn-preview').addEventListener('click', showPreview);
+document.getElementById('btn-back').addEventListener('click', showCompose);
+
+// ═══════════════════════════════════════════════════════════
+// COPY
+// ═══════════════════════════════════════════════════════════
+document.getElementById('btn-copy').addEventListener('click', () => {
+  const btn = document.getElementById('btn-copy');
+  navigator.clipboard.writeText(generate()).then(() => {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copy to Clipboard';
+      btn.classList.remove('copied');
+    }, 2500);
+  });
+});
+
+// ═══════════════════════════════════════════════════════════
+// CLEAR
+// ═══════════════════════════════════════════════════════════
+document.getElementById('btn-clear').addEventListener('click', () => {
+  if (!confirm('Clear all fields and start over?')) return;
+  document.querySelectorAll('textarea.nl-input').forEach(t => t.value = '');
+  Object.keys(REPEAT_CFG).forEach(id => {
+    const container = document.querySelector(`#${id} .repeat-rows`);
+    container.innerHTML = '';
+    addRow(id);
+  });
+  updateProgress();
+});
+
+// ═══════════════════════════════════════════════════════════
+// LOAD RECENT PUBLICATIONS
+// ═══════════════════════════════════════════════════════════
+async function loadPubs() {
+  const list = document.getElementById('ref-list');
+  try {
+    const all = [];
+    for (const [type, url] of Object.entries(CONTENT_URLS)) {
+      try {
+        const res = await fetch(url);
+        if (res.ok) {
+          const data = await res.json();
+          (Array.isArray(data) ? data : []).forEach(item => {
+            all.push({ type, title: item.title, date: item.date });
+          });
+        }
+      } catch {}
+    }
+    all.sort((a, b) => new Date(b.date) - new Date(a.date));
+    const recent = all.slice(0, 8);
+
+    if (!recent.length) {
+      list.innerHTML = '<span style="font-size:0.75rem;color:var(--ink-3)">No publications found</span>';
+      return;
+    }
+
+    list.innerHTML = recent.map(p =>
+      `<div class="nl-ref-item">
+        <span class="nl-ref-tag">${p.type}</span>
+        <span class="nl-ref-title">${p.title}</span>
+      </div>`
+    ).join('');
+  } catch {
+    list.innerHTML = '<span style="font-size:0.75rem;color:var(--ink-3)">Could not load publications</span>';
+  }
+}
+
+loadPubs();
+</script>
+</body>
+</html>
