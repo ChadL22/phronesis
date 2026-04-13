@@ -365,6 +365,77 @@
       .cms-shell { grid-template-columns: 1fr; grid-template-rows: 48px auto 1fr; height: auto; overflow: visible; }
       .cms-sidebar { max-height: 260px; }
     }
+
+    /* ── CORPUS EDITOR ── */
+    .canon-path-section { margin-bottom: 1.5rem; }
+    .canon-path-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.6rem 0; border-bottom: 1px solid var(--rule); margin-bottom: 0.8rem;
+    }
+    .canon-path-audience {
+      font-family: var(--sans); font-size: 0.62rem; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
+    }
+    .canon-path-desc {
+      font-size: 0.72rem; color: var(--ink-2); margin-bottom: 0.8rem; line-height: 1.5;
+    }
+    .canon-seq-list { list-style: none; }
+    .canon-seq-item {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.55rem 0.7rem; border: 1px solid var(--rule); border-radius: 2px;
+      margin-bottom: 0.35rem; background: var(--paper); cursor: grab;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .canon-seq-item:active { cursor: grabbing; }
+    .canon-seq-item.dragging { opacity: 0.4; background: var(--paper-2); }
+    .canon-seq-item.drag-over { border-color: var(--accent); background: rgba(43,71,54,0.04); }
+    .canon-seq-grip {
+      font-size: 0.7rem; color: var(--ink-3); cursor: grab; flex-shrink: 0;
+      line-height: 1; user-select: none;
+    }
+    .canon-seq-num {
+      font-family: var(--serif); font-size: 0.7rem; color: var(--ink-3);
+      min-width: 1.2rem; text-align: center; flex-shrink: 0;
+    }
+    .canon-seq-body { flex: 1; min-width: 0; }
+    .canon-seq-title {
+      font-family: var(--serif); font-size: 0.8rem; font-weight: 400;
+      color: var(--ink); line-height: 1.3;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .canon-seq-id { font-size: 0.58rem; color: var(--ink-3); letter-spacing: 0.05em; }
+    .canon-seq-note-input {
+      font-family: var(--sans); font-size: 0.7rem; color: var(--ink-2);
+      background: var(--paper-2); border: 1px solid transparent; border-radius: 2px;
+      padding: 0.2rem 0.5rem; width: 100%; margin-top: 0.2rem;
+      outline: none; transition: border-color 0.18s;
+    }
+    .canon-seq-note-input:focus { border-color: var(--accent); }
+    .canon-seq-remove {
+      font-size: 0.55rem; color: var(--ink-3); background: none; border: none;
+      cursor: pointer; padding: 0.2rem 0.4rem; flex-shrink: 0; transition: color 0.18s;
+    }
+    .canon-seq-remove:hover { color: #c0392b; }
+    .canon-seq-add {
+      display: flex; align-items: center; gap: 0.4rem;
+      padding: 0.45rem 0.7rem; margin-top: 0.35rem;
+      font-family: var(--sans); font-size: 0.6rem; font-weight: 400;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3);
+      background: none; border: 1px dashed var(--rule); border-radius: 2px;
+      cursor: pointer; transition: all 0.18s; width: 100%;
+    }
+    .canon-seq-add:hover { border-color: var(--accent); color: var(--accent); }
+    .canon-audience-tabs {
+      display: flex; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 1rem;
+    }
+    .canon-aud-tab {
+      font-family: var(--sans); font-size: 0.6rem; font-weight: 400;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3);
+      background: none; border: 1px solid var(--rule); border-radius: 2px;
+      padding: 0.3rem 0.7rem; cursor: pointer; transition: all 0.18s;
+    }
+    .canon-aud-tab:hover { color: var(--ink); border-color: var(--ink-3); }
+    .canon-aud-tab.active { color: var(--accent); border-color: var(--accent); background: rgba(43,71,54,0.04); }
   </style>
 </head>
 <body>
@@ -393,6 +464,10 @@
       <button class="sidebar-type-btn" data-type="essay"    onclick="switchType('essay')">Essays <span class="sidebar-count" id="count-essay">—</span></button>
       <button class="sidebar-type-btn" data-type="article"  onclick="switchType('article')">Articles <span class="sidebar-count" id="count-article">—</span></button>
       <button class="sidebar-type-btn" data-type="report"   onclick="switchType('report')">Reports <span class="sidebar-count" id="count-report">—</span></button>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-type-list">
+      <button class="sidebar-type-btn" data-type="corpus" onclick="switchType('corpus')">Corpus (Canons) <span class="sidebar-count" id="count-corpus">—</span></button>
     </div>
     <div class="sidebar-divider"></div>
     <div class="sidebar-entry-list" id="sidebar-entry-list">
@@ -461,6 +536,7 @@ const FILE_MAP = {
   essay:    'content/essays.json',
   article:  'content/articles.json',
   report:   'content/reports.json',
+  corpus:   'content/topics.json',
 };
 
 const TYPE_LABELS = {
@@ -527,7 +603,11 @@ async function loadFile(type) {
   const path = FILE_MAP[type];
   const data = await ghFetch('/repos/' + REPO + '/contents/' + path + '?ref=' + BRANCH);
   const content = JSON.parse(atob(data.content.replace(/\n/g,'')));
-  contentStore[type] = { entries: content.entries || [], sha: data.sha, meta: content };
+  if (type === 'corpus') {
+    contentStore[type] = { entries: content.topics || [], sha: data.sha, meta: content };
+  } else {
+    contentStore[type] = { entries: content.entries || [], sha: data.sha, meta: content };
+  }
   return contentStore[type];
 }
 
@@ -540,7 +620,10 @@ async function saveFile(type) {
   store.sha = current.sha;
   const meta = { ...store.meta };
   delete meta.entries;
-  const updated = { ...meta, entries: store.entries };
+  delete meta.topics;
+  const updated = type === 'corpus'
+    ? { ...meta, topics: store.entries }
+    : { ...meta, entries: store.entries };
   const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(updated, null, 2) + '\n')));
   const result = await ghFetch('/repos/' + REPO + '/contents/' + FILE_MAP[type], {
     method: 'PUT',
@@ -644,7 +727,8 @@ function renderSidebarCounts() {
   for (const type of Object.keys(FILE_MAP)) {
     const store = contentStore[type];
     const n = store ? store.entries.length : '—';
-    document.getElementById('count-' + type).textContent = n;
+    const el = document.getElementById('count-' + type);
+    if (el) el.textContent = n;
   }
 }
 
@@ -654,9 +738,9 @@ function switchType(type) {
     b.classList.toggle('active', b.dataset.type === type)
   );
   renderEntryList();
-  // close any open form
   document.getElementById('form-wrapper').style.display = 'none';
   document.getElementById('main-placeholder').style.display = '';
+  document.getElementById('btn-new-entry').textContent = type === 'corpus' ? '+ New canon' : '+ New entry';
   editingEntry = null;
 }
 
@@ -665,6 +749,20 @@ function renderEntryList() {
   const store = contentStore[activeType];
   if (!store || !store.entries.length) {
     list.innerHTML = '<div class="state-msg" style="padding:1rem;font-size:0.78rem;text-align:left;">No entries yet.</div>';
+    return;
+  }
+  if (activeType === 'corpus') {
+    list.innerHTML = store.entries.map((e, i) => {
+      const active = editingEntry && editingEntry.type === activeType && editingEntry.idx === i;
+      const pathCount = Object.keys(e.reading_paths || {}).length;
+      return `<div class="sidebar-entry${active?' active':''}" onclick="openEntry(${i})">
+        <div class="sidebar-entry-title">${e.name || '(Untitled canon)'}</div>
+        <div class="sidebar-entry-meta">
+          <span class="sidebar-entry-date">${pathCount} paths</span>
+          <span class="sidebar-entry-badge badge-original">Canon</span>
+        </div>
+      </div>`;
+    }).join('');
     return;
   }
   list.innerHTML = store.entries.map((e, i) => {
@@ -692,11 +790,34 @@ function openEntry(idx) {
   const store = contentStore[activeType];
   editingEntry = { type: activeType, idx };
   formState = JSON.parse(JSON.stringify(store.entries[idx]));
-  renderForm();
+  if (activeType === 'corpus') {
+    renderCorpusForm();
+  } else {
+    renderForm();
+  }
   renderEntryList();
 }
 
 function startNewEntry() {
+  if (activeType === 'corpus') {
+    editingEntry = { type: 'corpus', idx: null };
+    formState = {
+      id: '', name: '', icon: 'governance',
+      description: '',
+      match_tags: [], match_fields: [],
+      reading_paths: {
+        student:  { label: 'Student', description: '', sequence: [] },
+        general:  { label: 'General Reader', description: '', sequence: [] },
+        policy:   { label: 'Policy Professional', description: '', sequence: [] },
+        legal:    { label: 'Legal Professional', description: '', sequence: [] },
+        economist:{ label: 'Economist', description: '', sequence: [] },
+        technologist:{ label: 'Technologist', description: '', sequence: [] }
+      }
+    };
+    renderCorpusForm();
+    renderEntryList();
+    return;
+  }
   editingEntry = { type: activeType, idx: null };
   formState = {
   placeholder: true,
@@ -1109,6 +1230,168 @@ async function runAI() {
   }
   btn.innerHTML = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg> Auto-fill';
   btn.disabled = false;
+}
+
+// ═══════════════════════════════════════════════════════════
+// CORPUS (CANON) EDITOR
+// ═══════════════════════════════════════════════════════════
+let activeCorpusAudience = 'student';
+
+const ICON_OPTIONS = ['governance','platform','competition','privacy','economy','accountability','ip','legislation'];
+const AUDIENCE_KEYS = ['student','general','policy','legal','economist','technologist'];
+const AUDIENCE_LABELS_CORPUS = { student:'Student', general:'General Reader', policy:'Policy Professional', legal:'Legal Professional', economist:'Economist', technologist:'Technologist' };
+
+function renderCorpusForm() {
+  const isNew = editingEntry.idx === null;
+  const s = formState;
+  if (!s.reading_paths) s.reading_paths = {};
+  AUDIENCE_KEYS.forEach(k => {
+    if (!s.reading_paths[k]) s.reading_paths[k] = { label: AUDIENCE_LABELS_CORPUS[k], description: '', sequence: [] };
+  });
+
+  document.getElementById('main-placeholder').style.display = 'none';
+  document.getElementById('form-wrapper').style.display = '';
+  document.getElementById('contributor-banner').style.display = 'none';
+
+  document.getElementById('form-area').innerHTML = `
+    <div class="form-area-header">
+      <div class="form-area-title">${isNew ? 'New Canon' : 'Edit Canon'}</div>
+      <div class="form-area-actions">
+        <button class="form-cancel-btn" onclick="cancelEdit()">Cancel</button>
+        <button class="form-save-btn" onclick="saveEntry()">Save</button>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title">Canon Identity</div>
+      <div class="field-row">
+        <label>Name</label>
+        <input class="field-input" id="f-canon-name" type="text" value="${esc(s.name)}" placeholder="e.g. AI Governance" oninput="formState.name=this.value; if(!formState.id||formState.id===formState._prevAutoId){formState.id=slugify(this.value);document.getElementById('f-canon-id').value=formState.id;} formState._prevAutoId=slugify(this.value);" />
+      </div>
+      <div class="field-row">
+        <label>ID <em>URL slug</em></label>
+        <input class="field-input" id="f-canon-id" type="text" value="${esc(s.id)}" placeholder="e.g. ai-governance" oninput="formState.id=this.value" />
+      </div>
+      <div class="field-row">
+        <label>Description <em>shown on the corpus page and at the top of the canon page</em></label>
+        <textarea class="field-textarea" style="min-height:70px;" oninput="formState.description=this.value">${esc(s.description)}</textarea>
+      </div>
+      <div class="field-row">
+        <label>Icon</label>
+        <div class="field-chips" id="f-icon-chips">
+          ${ICON_OPTIONS.map(ic =>
+            `<span class="field-chip${s.icon===ic?' on':''}" onclick="formState.icon='${ic}';document.querySelectorAll('#f-icon-chips .field-chip').forEach(c=>c.classList.remove('on'));this.classList.add('on')">${ic}</span>`
+          ).join('')}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title">Content Matching</div>
+      <div class="field-row">
+        <label>Match Tags <em>comma separated — entries with any of these tags appear in this canon</em></label>
+        <input class="field-input" id="f-canon-tags" type="text" value="${(s.match_tags||[]).join(', ')}" oninput="formState.match_tags=this.value.split(',').map(t=>t.trim()).filter(Boolean)" />
+        <p class="field-hint">Case-insensitive partial match against entry tags across all content types.</p>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title">Reading Paths</div>
+      <div class="canon-audience-tabs" id="corpus-aud-tabs">
+        ${AUDIENCE_KEYS.map(k =>
+          `<button class="canon-aud-tab${activeCorpusAudience===k?' active':''}" onclick="activeCorpusAudience='${k}';renderCorpusPathEditor()">${AUDIENCE_LABELS_CORPUS[k]}</button>`
+        ).join('')}
+      </div>
+      <div id="corpus-path-editor"></div>
+    </div>
+
+    ${!isNew && !contributorMode ? `
+    <div class="delete-zone">
+      <span class="delete-label">Remove this canon from the corpus permanently.</span>
+      <button class="delete-btn" onclick="deleteEntry()">Delete canon</button>
+    </div>` : ''}
+  `;
+
+  renderCorpusPathEditor();
+}
+
+function renderCorpusPathEditor() {
+  const s = formState;
+  const aud = activeCorpusAudience;
+  const path = s.reading_paths[aud];
+  if (!path) return;
+
+  document.querySelectorAll('#corpus-aud-tabs .canon-aud-tab').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.trim() === AUDIENCE_LABELS_CORPUS[aud]);
+  });
+
+  function resolveTitle(id) {
+    for (const type of Object.keys(FILE_MAP)) {
+      if (type === 'corpus') continue;
+      const store = contentStore[type];
+      if (!store) continue;
+      const entry = store.entries.find(e => e.id === id);
+      if (entry) return entry.title || id;
+    }
+    return id;
+  }
+
+  const container = document.getElementById('corpus-path-editor');
+  container.innerHTML = `
+    <div class="field-row">
+      <label>Path Description <em>shown to ${AUDIENCE_LABELS_CORPUS[aud]} readers</em></label>
+      <input class="field-input" type="text" value="${esc(path.description)}" oninput="formState.reading_paths['${aud}'].description=this.value" placeholder="e.g. Start with the foundational question, then see how governance works in practice." />
+    </div>
+    <label style="display:block;font-family:var(--sans);font-size:0.62rem;font-weight:500;letter-spacing:0.11em;text-transform:uppercase;color:var(--ink-2);margin-bottom:0.5rem;">Reading Sequence <em>drag to reorder</em></label>
+    <div class="canon-seq-list" id="corpus-seq-list">
+      ${path.sequence.map((item, i) => `
+        <div class="canon-seq-item" draggable="true" data-idx="${i}"
+          ondragstart="corpusDragStart(event,${i})" ondragover="corpusDragOver(event)" ondragenter="corpusDragEnter(event)" ondragleave="corpusDragLeave(event)" ondrop="corpusDrop(event,${i})" ondragend="corpusDragEnd(event)">
+          <span class="canon-seq-grip">≡</span>
+          <span class="canon-seq-num">${i+1}</span>
+          <div class="canon-seq-body">
+            <div class="canon-seq-title">${esc(resolveTitle(item.id))}</div>
+            <div class="canon-seq-id">${esc(item.id)}</div>
+            <input class="canon-seq-note-input" type="text" value="${esc(item.note||'')}" placeholder="Reading note for this step…" oninput="formState.reading_paths['${aud}'].sequence[${i}].note=this.value" />
+          </div>
+          <button class="canon-seq-remove" onclick="corpusRemoveItem('${aud}',${i})">✕</button>
+        </div>
+      `).join('')}
+    </div>
+    <div style="display:flex;gap:0.5rem;margin-top:0.5rem;">
+      <input class="field-input" id="corpus-add-id" type="text" placeholder="Entry ID to add (e.g. pausing-isnt-policy-2026)" style="flex:1;font-size:0.72rem;" onkeypress="if(event.key==='Enter'){event.preventDefault();corpusAddItem('${aud}');}" />
+      <button class="canon-seq-add" style="width:auto;flex-shrink:0;" onclick="corpusAddItem('${aud}')">+ Add</button>
+    </div>
+    <p class="field-hint">Enter the ID of any content entry. You can find IDs in the sidebar when viewing other content types.</p>
+  `;
+}
+
+let corpusDragIdx = null;
+function corpusDragStart(e, idx) { corpusDragIdx = idx; e.target.classList.add('dragging'); e.dataTransfer.effectAllowed = 'move'; }
+function corpusDragOver(e) { e.preventDefault(); e.dataTransfer.dropEffect = 'move'; }
+function corpusDragEnter(e) { const item = e.target.closest('.canon-seq-item'); if (item) item.classList.add('drag-over'); }
+function corpusDragLeave(e) { const item = e.target.closest('.canon-seq-item'); if (item) item.classList.remove('drag-over'); }
+function corpusDrop(e, targetIdx) {
+  e.preventDefault();
+  const item = e.target.closest('.canon-seq-item'); if (item) item.classList.remove('drag-over');
+  if (corpusDragIdx === null || corpusDragIdx === targetIdx) return;
+  const seq = formState.reading_paths[activeCorpusAudience].sequence;
+  const [moved] = seq.splice(corpusDragIdx, 1);
+  seq.splice(targetIdx, 0, moved);
+  renderCorpusPathEditor();
+}
+function corpusDragEnd(e) { corpusDragIdx = null; document.querySelectorAll('.canon-seq-item').forEach(el => el.classList.remove('dragging','drag-over')); }
+
+function corpusRemoveItem(aud, idx) { formState.reading_paths[aud].sequence.splice(idx, 1); renderCorpusPathEditor(); }
+
+function corpusAddItem(aud) {
+  const input = document.getElementById('corpus-add-id');
+  const id = (input.value || '').trim();
+  if (!id) { showToast('Enter an entry ID to add.', 'error'); return; }
+  formState.reading_paths[aud].sequence.push({ id, note: '' });
+  input.value = '';
+  renderCorpusPathEditor();
+  showToast('Added to reading path.', 'success');
 }
 
 // ═══════════════════════════════════════════════════════════
