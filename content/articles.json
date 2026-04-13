@@ -10,7 +10,7 @@
   ],
   "entries": [
     {
-      "placeholder": true,
+      "placeholder": false,
       "id": "the-future-of-data-centers-2025",
       "title": "The future of data centers",
       "subtitle": "An examination of data center infrastructure requirements, challenges, and policy considerations for supporting AI growth and economic competitiveness.",
