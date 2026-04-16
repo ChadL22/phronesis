@@ -9,10 +9,10 @@
   "entries": [
     {
       "placeholder": false,
-      "id": "the-2025-ai-index-report",
+      "id": "the-2025-ai-index-report-2025",
       "title": "The 2025 AI Index Report",
       "subtitle": "",
-      "date": "",
+      "date": "2025-04-08",
       "type": "report",
       "fields": [
         "Computer Science",
@@ -44,7 +44,7 @@
       "id": "the-2024-ai-index-report",
       "title": "The 2024 AI Index Report",
       "subtitle": "A comprehensive annual analysis of trends in AI research, development, economy, governance, and societal impact across multiple dimensions.",
-      "date": "",
+      "date": "2024-04-15",
       "type": "report",
       "fields": [
         "Computer Science",
@@ -76,7 +76,7 @@
       "id": "the-2023-ai-index-report",
       "title": "The 2023 AI Index Report",
       "subtitle": "An independent comprehensive analysis of artificial intelligence trends across research, development, economics, policy, and society.",
-      "date": "",
+      "date": "2023-08-05",
       "type": "report",
       "fields": [
         "Computer Science",
@@ -108,7 +108,7 @@
       "id": "the-2022-ai-index-report",
       "title": "The 2022 AI Index Report",
       "subtitle": "An annual comprehensive assessment of artificial intelligence progress, adoption, and governance across research, technology, economy, policy, and ethics dimensions.",
-      "date": "",
+      "date": "2022-05-02",
       "type": "report",
       "fields": [
         "Computer Science",
@@ -141,7 +141,7 @@
       "id": "the-2021-ai-index-report",
       "title": "The 2021 AI Index Report",
       "subtitle": "",
-      "date": "",
+      "date": "2021-03-09",
       "type": "report",
       "fields": [
         "Computer Science",
@@ -173,7 +173,7 @@
       "id": "the-2019-ai-index-report",
       "title": "The 2019 AI Index Report",
       "subtitle": "A comprehensive data-driven analysis tracking artificial intelligence research, development, economics, and societal impacts across global metrics.",
-      "date": "",
+      "date": "2019-12-12",
       "type": "report",
       "fields": [
         "Computer Science",
@@ -205,7 +205,7 @@
       "id": "the-2018-ai-index-report",
       "title": "The 2018 AI Index Report",
       "subtitle": "A comprehensive data-driven report aggregating metrics on artificial intelligence progress across academic and industry sectors.",
-      "date": "",
+      "date": "2018-12-12",
       "type": "report",
       "fields": [
         "Computer Science",
@@ -236,7 +236,7 @@
       "id": "the-2017-ai-index-report",
       "title": "The 2017 AI Index Report",
       "subtitle": "",
-      "date": "",
+      "date": "2017-12-06",
       "type": "report",
       "fields": [
         "Computer Science",
