@@ -333,8 +333,11 @@
       <div class="filter-primary-section">
         <span class="filter-label">Year</span>
         <button class="filter-btn active" data-year="all">All Years</button>
+        <button class="filter-btn" data-year="2026">2026</button>
         <button class="filter-btn" data-year="2025">2025</button>
         <button class="filter-btn" data-year="2024">2024</button>
+        <button class="filter-btn" data-year="2023">2023</button>
+        <button class="filter-btn" data-year="Undated">Undated</button>
       </div>
 
       <button class="filter-more-toggle" id="toggle-secondary-reports">
@@ -362,11 +365,12 @@
     <div class="filter-secondary" id="secondary-filters-reports">
       <div class="filter-secondary-inner">
         <div class="filter-group">
-          <span class="filter-label">Category</span>
+          <span class="filter-label">Type</span>
           <button class="filter-btn active" data-type="all">All</button>
+          <button class="filter-btn" data-type="annual">Annual</button>
+          <button class="filter-btn" data-type="legislative">Legislative</button>
           <button class="filter-btn" data-type="industry">Industry</button>
-          <button class="filter-btn" data-type="government">Government</button>
-          <button class="filter-btn" data-type="academia">Academia</button>
+          <button class="filter-btn" data-type="other">Other</button>
         </div>
         <div class="filter-group">
           <span class="filter-label">Origin</span>
@@ -424,11 +428,12 @@
         allReports = (json.entries || [])
           .filter(e => !e.placeholder)
           .map(e => {
-            const d = new Date((e.date||'2024-01-01')+'T00:00:00');
+            const hasDate = e.date && e.date.trim() !== '';
+            const d = hasDate ? new Date(e.date+'T00:00:00') : null;
             return {
-              year:        String(d.getFullYear()),
-              type:        e.category || 'government',
-              date:        fmtDateR(e.date),
+              year:        d ? String(d.getFullYear()) : 'Undated',
+              type:        e.report_type || 'other',
+              date:        hasDate ? fmtDateR(e.date) : 'Undated',
               title:       e.title || '',
               desc:        e.subtitle || e.abstract || '',
               origin:      e.origin,
