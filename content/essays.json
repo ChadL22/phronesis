@@ -9,6 +9,37 @@
   "entries": [
     {
       "placeholder": true,
+      "id": "how-should-ai-liability-work-part-ii-2025",
+      "title": "How Should AI Liability Work? (Part II)",
+      "subtitle": "An examination of how tort liability frameworks are beginning to penetrate software and AI development despite historical exemptions.",
+      "date": "2025-02-26",
+      "type": "essay",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Economics"
+      ],
+      "tags": [
+        "tort liability",
+        "product liability",
+        "artificial intelligence",
+        "software regulation",
+        "risk allocation",
+        "legal frameworks"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "FAI",
+      "publisher_url": null,
+      "original_url": "https://www.thefai.org/posts/how-should-ai-liability-work-part-ii",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This essay argues that software has historically benefited from an implicit liability wall due to the difficulty of applying traditional tort law to intangible goods and the lack of established standards of care for developers. However, this protection is eroding as courts have begun imposing liability on software companies (exemplified by Apple's battery management case and Snap's speed filter case). The author contends that AI systems, being both more powerful and more dangerous than traditional software, may accelerate this trend and force the AI community to develop proactive liability frameworks rather than awaiting legislative intervention.",
+      "preview": null,
+      "body": null
+    },
+    {
+      "placeholder": true,
       "id": "how-should-ai-liability-work-part-i-2025",
       "title": "How Should AI Liability Work? (Part I)",
       "subtitle": "A historical examination of how American tort liability evolved from contract-based frameworks to an expansive system of product and service accountability, with implications for AI regulation.",
