@@ -2,7 +2,7 @@
   "_schema": "1.0",
   "_notes": [
     "origin 'original': Phronesis analysis, full body stored here",
-    "origin 'via': curated from law reviews or legal blogs ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ abstract only (open-access) or preview (paywalled)",
+    "origin 'via': curated from law reviews or legal blogs ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ abstract only (open-access) or preview (paywalled)",
     "analysis_type: doctrinal | case | statutory | regulatory | procedural | litigation | policy | comparative",
     "primary_topic: first-amendment | antitrust | liability | administrative | ip | privacy | competition",
     "case_refs: array of case names or statute citations central to the piece",
@@ -10,7 +10,68 @@
   ],
   "entries": [
     {
-      "placeholder": true,
+      "placeholder": false,
+      "id": "justice-department-sues-live-nation-ticketmaster-for-monopolizing-markets-across-the-live-concert-industry-2024",
+      "title": "Justice Department Sues Live Nation-Ticketmaster for Monopolizing Markets Across the Live Concert Industry",
+      "subtitle": "The U.S. Department of Justice and 30 state attorneys general filed a civil antitrust lawsuit against Live Nation Entertainment Inc. and Ticketmaster LLC alleging unlawful monopolization and exclusionary conduct in the live concert industry.",
+      "date": "2024-05-23",
+      "type": "legal",
+      "fields": [
+        "Public Policy",
+        "Economics",
+        "Computer Science"
+      ],
+      "tags": [
+        "antitrust law",
+        "monopolization",
+        "live entertainment",
+        "ticketing markets",
+        "Sherman Act Section 2",
+        "exclusionary conduct"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "U.S. Department of Justice, Office of Public Affairs",
+      "publisher_url": null,
+      "original_url": "https://www.justice.gov/archives/opa/pr/justice-department-sues-live-nation-ticketmaster-monopolizing-markets-across-live-concert",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "On May 23, 2024, the Justice Department and 30 state and district attorneys general filed a civil antitrust action against Live Nation-Ticketmaster for alleged violations of Section 2 of the Sherman Act. The complaint alleges that Live Nation-Ticketmaster maintains unlawful monopolies in concert promotions and primary ticketing markets through exclusionary conduct including retaliatory threats against competitors, exclusive venue contracts, and exploitation of relationships with potential competitors. The lawsuit seeks structural relief and aims to restore competition, lower prices for consumers, and increase opportunities for artists and independent promoters.",
+      "preview": null,
+      "body": null
+    },
+    {
+      "placeholder": false,
+      "id": "how-generative-ai-cos-can-navigate-product-liability-claims-2026",
+      "title": "How Generative AI Cos. Can Navigate Product Liability Claims",
+      "subtitle": "An analysis of product-liability litigation against generative AI and chatbot platforms, examining legal theories, regulatory frameworks, and strategic considerations for AI companies.",
+      "date": "2026-01-20",
+      "type": "legal",
+      "fields": [
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "product liability",
+        "generative AI",
+        "chatbots",
+        "tort law",
+        "Section 230",
+        "AI regulation"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Arnold & Porter",
+      "publisher_url": null,
+      "original_url": "https://www.arnoldporter.com/en/perspectives/publications/2026/01/how-generative-ai-cos-can-navigate-product-liability-claims",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This analysis examines the emerging trend of product-liability claims against generative AI and chatbot platforms, where plaintiffs characterize these systems as consumer products subject to traditional tort principles. The piece traces the evolution of legal theories from social media litigation to contemporary AI cases, addressing the unsettled application of Section 230 and First Amendment protections in this context. It evaluates how established tort doctrines—including injury, causation, and feasible alternative design—constrain these claims while providing defense-side guidance for risk evaluation, discovery preparation, and strategic positioning as regulatory scrutiny intensifies.",
+      "preview": null,
+      "body": null
+    },
+    {
+      "placeholder": false,
       "id": "ai-and-privilege-after-united-states-v-heppner-2026",
       "title": "AI and Privilege After United States v. Heppner",
       "subtitle": "Analysis of Judge Rakoff's ruling in United States v. Heppner regarding AI tool use and legal privilege protections.",
@@ -66,7 +127,7 @@
       "original_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6481938",
       "doi": null,
       "venue_type": "working-paper",
-      "abstract": "This analysis explores the philosophical and legal question of whether artificial intelligence should be granted moral and legal rights. The author argues that the capacity to experience emotions—such as sadness, pleasure, regret, anxiety, joy, and distress—functions as a necessary and sufficient condition for recognizing and conferring rights upon AI systems. The piece acknowledges alternative frameworks emphasizing self-awareness or reasoning capacity, and identifies remaining questions regarding which specific rights AI might possess and under what circumstances such rights could be limited.",
+      "abstract": "This analysis explores the philosophical and legal question of whether artificial intelligence should be granted moral and legal rights. The author argues that the capacity to experience emotionsâsuch as sadness, pleasure, regret, anxiety, joy, and distressâfunctions as a necessary and sufficient condition for recognizing and conferring rights upon AI systems. The piece acknowledges alternative frameworks emphasizing self-awareness or reasoning capacity, and identifies remaining questions regarding which specific rights AI might possess and under what circumstances such rights could be limited.",
       "preview": null,
       "body": null
     },
@@ -159,7 +220,7 @@
       "original_url": "https://www.law.cornell.edu/supct/cert/24-171",
       "doi": null,
       "venue_type": null,
-      "abstract": "This case examines whether internet service providers can be held liable for contributory copyright infringement based solely on knowledge that subscribers are infringing, without affirmative conduct fostering infringement. The Fourth Circuit affirmed that Cox's continued service to known infringers constituted material contribution and willful infringement under 17 U.S.C. § 504(c), vacating only the vicarious liability damages award. The Supreme Court granted certiorari to determine whether passive inaction to terminate service to repeat infringers satisfies the material contribution requirement for secondary copyright liability and whether such knowledge alone meets the willfulness standard.",
+      "abstract": "This case examines whether internet service providers can be held liable for contributory copyright infringement based solely on knowledge that subscribers are infringing, without affirmative conduct fostering infringement. The Fourth Circuit affirmed that Cox's continued service to known infringers constituted material contribution and willful infringement under 17 U.S.C. Â§ 504(c), vacating only the vicarious liability damages award. The Supreme Court granted certiorari to determine whether passive inaction to terminate service to repeat infringers satisfies the material contribution requirement for secondary copyright liability and whether such knowledge alone meets the willfulness standard.",
       "preview": null,
       "body": null
     },
