@@ -2,11 +2,43 @@
   "_schema": "1.0",
   "_notes": [
     "Reports are longer-form, comprehensive reference documents",
-    "category: government | industry | academia ÃÂ¢ÃÂÃÂ used for the category filter",
-    "featured: true on the single most recent/prominent report ÃÂ¢ÃÂÃÂ renders as the hero card",
+    "category: government | industry | academia ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ used for the category filter",
+    "featured: true on the single most recent/prominent report ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ renders as the hero card",
     "pages: approximate page count"
   ],
   "entries": [
+    {
+      "placeholder": false,
+      "id": "ai-index-report-2026-2026",
+      "title": "AI Index Report 2026",
+      "subtitle": "",
+      "date": "2026-04-13",
+      "type": "report",
+      "fields": [
+        "Computer Science",
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "artificial intelligence",
+        "frontier models",
+        "AI governance",
+        "responsible AI",
+        "global AI competition",
+        "AI adoption"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Stanford HAI",
+      "publisher_url": null,
+      "original_url": "https://hai.stanford.edu/ai-index/2026-ai-index-report",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This report from Stanford HAI presents findings on AI's accelerating capabilities, competitive landscape, and societal adoption. It documents that AI capability continues to advance with industry-produced frontier models achieving human-level performance on complex tasks, while highlighting critical gaps in responsible AI development and uneven global adoption patterns. The analysis covers technical performance, infrastructure concentration, economic investment, workforce dynamics, and policy responses across global markets.",
+      "preview": null,
+      "body": null,
+      "report_type": "annual"
+    },
     {
       "placeholder": false,
       "id": "regulating-artificial-intelligence-us-and-international-approaches-and-considerations-for-congress-2025",
