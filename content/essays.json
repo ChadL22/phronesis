@@ -8,7 +8,7 @@
   ],
   "entries": [
     {
-      "placeholder": true,
+      "placeholder": false,
       "id": "how-should-ai-liability-work-part-ii-2025",
       "title": "How Should AI Liability Work? (Part II)",
       "subtitle": "An examination of how tort liability frameworks are beginning to penetrate software and AI development despite historical exemptions.",
@@ -39,7 +39,7 @@
       "body": null
     },
     {
-      "placeholder": true,
+      "placeholder": false,
       "id": "how-should-ai-liability-work-part-i-2025",
       "title": "How Should AI Liability Work? (Part I)",
       "subtitle": "A historical examination of how American tort liability evolved from contract-based frameworks to an expansive system of product and service accountability, with implications for AI regulation.",
