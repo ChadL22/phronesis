@@ -2,12 +2,42 @@
   "_schema": "1.0",
   "_notes": [
     "Policy proposals are almost always Phronesis originals",
-    "level: federal | state | international | institutional ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ used for the level tab filter",
-    "document_type: memo | proposal | policy ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ used for the type filter",
+    "level: federal | state | international | institutional ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ used for the level tab filter",
+    "document_type: memo | proposal | policy ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ used for the type filter",
     "stage: draft | published | submitted | adopted",
     "audience: federal | state | international | institutional"
   ],
   "entries": [
+    {
+      "placeholder": false,
+      "id": "artificial-intelligence-enabled-device-software-functions-lifecycle-management-and-marketing-submission-recommendations-2025",
+      "title": "Artificial Intelligence-Enabled Device Software Functions: Lifecycle Management and Marketing Submission Recommendations",
+      "subtitle": "",
+      "date": "2025-01-15",
+      "type": "policy",
+      "fields": [
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "artificial intelligence",
+        "medical devices",
+        "FDA regulation",
+        "software documentation",
+        "regulatory guidance",
+        "product life cycle management"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "U.S. Food and Drug Administration",
+      "publisher_url": null,
+      "original_url": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/artificial-intelligence-enabled-device-software-functions-lifecycle-management-and-marketing",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This draft guidance document establishes recommendations for manufacturers submitting marketing applications for medical devices that incorporate artificial intelligence-enabled software functions. It outlines required documentation and information necessary for FDA evaluation of device safety and effectiveness, while proposing design, development, and implementation recommendations for AI-enabled devices. The guidance reflects a comprehensive risk management approach applicable across the device total product life cycle. The document aims to standardize submission contents and support appropriate regulatory assessment of AI-integrated medical technologies.",
+      "preview": null,
+      "body": null
+    },
     {
       "placeholder": false,
       "id": "comments-to-il-lawmakers-regarding-the-consumer-protection-group-1-proposals-sb-3384-sb-3444-2026",
@@ -74,7 +104,7 @@
     {
       "placeholder": false,
       "id": "californias-sb-53-the-first-frontier-ai-law-explained-2026",
-      "title": "California’s SB 53: The First Frontier AI Law, Explained",
+      "title": "Californiaâs SB 53: The First Frontier AI Law, Explained",
       "subtitle": "",
       "date": "2026-02-04",
       "type": "policy",
