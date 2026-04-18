@@ -11,6 +11,36 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "class-action-alleges-that-grammarly-misappropriated-the-names-of-journalists-and-authors-through-its-expert-review-that-lets-users-get-feedback-on-writing-from-experts-2026",
+      "title": "Class Action Alleges That Grammarly Misappropriated the Names of Journalists and Authors Through its “Expert Review” That Lets Users Get Feedback on Writing From Experts",
+      "subtitle": "Angwin v. Superhuman Platform, Inc., No. 26 Civ. 02005-JGK (S.D.N.Y)",
+      "date": "2026-03-11",
+      "type": "legal",
+      "fields": [
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "right of publicity",
+        "AI and privacy",
+        "class action litigation",
+        "unauthorized commercial use of identity",
+        "state privacy law",
+        "artificial intelligence ethics"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Peter Romer-Friedman Law PLLC",
+      "publisher_url": null,
+      "original_url": "https://prf-law.com/current-cases/class-action-alleges-that-grammarly-misappropriated-the-names-of-journalists-and-authors-through-its-expert-review",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "Julia Angwin, an award-winning journalist, filed a class action lawsuit in the U.S. District Court for the Southern District of New York against Grammarly (owned by Superhuman Platform, Inc.) alleging violations of New York and California privacy and publicity laws. The complaint contends that Grammarly unlawfully misappropriated the names and identities of journalists, authors, and editors—including Stephen King—to commercially market its \"Expert Review\" tool without obtaining prior consent. The lawsuit seeks class certification, injunctive relief prohibiting further unauthorized use of plaintiffs' names, and monetary compensation for the unauthorized commercial exploitation of their identities.",
+      "preview": null,
+      "body": null
+    },
+    {
+      "placeholder": false,
       "id": "justice-department-sues-live-nation-ticketmaster-for-monopolizing-markets-across-the-live-concert-industry-2024",
       "title": "Justice Department Sues Live Nation-Ticketmaster for Monopolizing Markets Across the Live Concert Industry",
       "subtitle": "The U.S. Department of Justice and 30 state attorneys general filed a civil antitrust lawsuit against Live Nation Entertainment Inc. and Ticketmaster LLC alleging unlawful monopolization and exclusionary conduct in the live concert industry.",
