@@ -10,6 +10,36 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "the-foreign-intelligence-surveillance-act-of-1978-fisa",
+      "title": "The Foreign Intelligence Surveillance Act of 1978 (FISA)",
+      "subtitle": "",
+      "date": "",
+      "type": "policy",
+      "fields": [
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "foreign intelligence surveillance",
+        "FISA",
+        "electronic surveillance",
+        "FISC",
+        "warrant procedures",
+        "civil liberties"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "DOJ",
+      "publisher_url": null,
+      "original_url": "https://bja.ojp.gov/program/it/privacy-civil-liberties/authorities/statutes/1286",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This document provides a comprehensive summary of the Foreign Intelligence Surveillance Act (FISA) of 1978 and its subsequent amendments through 2011. It details the statutory procedures established for electronic surveillance, physical searches, pen registers and trap & trace devices, and business records acquisition in foreign intelligence contexts. The document outlines the creation and role of the Foreign Intelligence Surveillance Court (FISC), differential standards for U.S. persons versus foreign targets, exceptions to warrant requirements, record destruction obligations, and civil rights protections. Major amendments by the USA PATRIOT Act and FISA Amendments Act of 2008 expanded surveillance authorities while the framework maintains judicial and congressional oversight mechanisms.",
+      "preview": null,
+      "body": null
+    },
+    {
+      "placeholder": false,
       "id": "artificial-intelligence-enabled-device-software-functions-lifecycle-management-and-marketing-submission-recommendations-2025",
       "title": "Artificial Intelligence-Enabled Device Software Functions: Lifecycle Management and Marketing Submission Recommendations",
       "subtitle": "",
