@@ -315,8 +315,10 @@
     .reader-body p { margin-bottom: 1.2rem; }
     .reader-body p:last-child { margin-bottom: 0; }
     @media (max-width: 600px) {
-      .reader-panel { width: 100vw; max-height: 100vh; }
+      .reader-panel { width: 100vw; max-height: 100vh; height: 100vh; border-radius: 0; }
       .reader-body { padding: 1.5rem; }
+      .reader-toolbar { position: sticky; top: 0; z-index: 10; padding: 1rem 1.2rem; }
+      .reader-close { padding: 0.5rem 1rem; font-size: 0.7rem; }
     }
 
     /* ── RESPONSIVE ── */
@@ -641,7 +643,12 @@
 
     // ── CAROUSEL ──
     let cOffset = 0;
-    const CARDS = 3;
+    function getCardsPerView() {
+      const w = window.innerWidth;
+      if (w <= 640) return 1;
+      if (w <= 768) return 2;
+      return 3;
+    }
 
     function buildCarousel() {
       const items = visible();
@@ -668,7 +675,8 @@
 
       track.style.transform = 'translateX(0)';
 
-      // window buttons — one per group of CARDS essays
+      // window buttons — one per group of visible cards
+      const CARDS = getCardsPerView();
       const windows = Math.ceil(items.length / CARDS);
       dots.innerHTML = Array.from({length: windows}, (_, w) =>
         `<button class="carousel-dot${w === 0 ? ' active' : ''}" data-win="${w}" aria-label="Window ${w+1}">${w + 1}</button>`
@@ -693,7 +701,7 @@
 
     function updateCarouselArrows() {
       const items = visible();
-      const windows = Math.ceil(items.length / CARDS);
+      const CARDS = getCardsPerView();
       const maxOffset = Math.max(0, items.length - CARDS);
       document.getElementById('c-prev').disabled = cOffset <= 0;
       document.getElementById('c-next').disabled = cOffset >= maxOffset;
@@ -705,6 +713,7 @@
     }
 
     function scrollCarousel(delta) {
+      const CARDS = getCardsPerView();
       const max = Math.max(0, visible().length - CARDS);
       cOffset = Math.max(0, Math.min(max, cOffset + delta));
       const pct = (cOffset / CARDS) * 100;
@@ -713,8 +722,18 @@
       updateCarouselArrows();
     }
 
-    document.getElementById('c-prev').addEventListener('click', () => scrollCarousel(-1));
-    document.getElementById('c-next').addEventListener('click', () => scrollCarousel(1));
+    document.getElementById('c-prev').addEventListener('click', () => scrollCarousel(-getCardsPerView()));
+    document.getElementById('c-next').addEventListener('click', () => scrollCarousel(getCardsPerView()));
+
+    // Re-render carousel on resize to update CARDS calculation
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        cOffset = 0;
+        buildCarousel();
+      }, 150);
+    });
 
     // ── DRAG / SWIPE ──
     let isDragging = false, startX = 0, startOffset = 0;
@@ -733,6 +752,7 @@
       function onMove(clientX) {
         if (!isDragging) return;
         const dx = clientX - startX;
+        const CARDS = getCardsPerView();
         const cardWidth = outer.offsetWidth / CARDS;
         const deltaPct = (dx / outer.offsetWidth) * 100;
         const basePct = (startOffset / CARDS) * 100;
@@ -743,6 +763,7 @@
         isDragging = false;
         outer.classList.remove('dragging');
         const dx = clientX - startX;
+        const CARDS = getCardsPerView();
         const cardWidth = outer.offsetWidth / CARDS;
         const steps = Math.round(-dx / cardWidth);
         track.style.transition = 'transform 0.32s cubic-bezier(0.4,0,0.2,1)';
@@ -775,12 +796,21 @@
       const grid = document.getElementById('essay-grid');
       if (!slice.length) { grid.innerHTML = ''; renderPagination(0, 1); return; }
 
-      grid.innerHTML = slice.map(e => {
+      grid.innerHTML = slice.map((e, sliceIdx) => {
+        // Determine link: external URL for via, document_url for original with PDF, or body content for reader
         const eLink = (e.origin === 'via' && e.original_url) ? e.original_url
                     : (e.origin === 'original' && e.document_url) ? e.document_url : null;
-        const tag   = eLink ? 'a' : 'div';
+        const hasBody = !!e.body;
+        // Find actual index in full gridFiltered() array for reader
+        const actualIdx = start + sliceIdx;
+        
+        // For cards with external links, use <a> tag; for body content or no link, use <div>
+        const tag = eLink ? 'a' : 'div';
         const attrs = eLink ? ` href="${eLink}"${e.origin==='via'?' target="_blank" rel="noopener"':''}` : '';
-        return `<${tag} class="essay-card"${attrs}>
+        // For cards with body content (originals), add data attribute and click handler
+        const bodyAttrs = hasBody ? ` data-reader-idx="${actualIdx}" onclick="openReaderFromGrid(${actualIdx})"` : '';
+        
+        return `<${tag} class="essay-card"${attrs}${!eLink ? bodyAttrs : ''}>
           <div class="essay-card-eyebrow">
             <span class="essay-tag">${e.topic}</span>
             <span class="origin-badge origin-badge--${e.origin}">${e.originLabel}</span>
@@ -795,6 +825,7 @@
               <span class="essay-card-date">${e.date}</span>
             </div>
             ${eLink ? '<span class="essay-card-read">Read essay</span>' : ''}
+            ${hasBody && !eLink ? '<span class="essay-card-read">Read essay</span>' : ''}
           </div>
         </${tag}>`;
       }).join('');
@@ -914,6 +945,17 @@
 
     function openReader(idx) {
       const items = visible();
+      const d = items[idx];
+      if (!d || !d.body) return;
+      document.getElementById('reader-label').textContent = 'Essay — ' + d.topic;
+      document.getElementById('reader-body').innerHTML = bodyToHTML(d.body);
+      document.getElementById('reader-scroll').scrollTop = 0;
+      document.getElementById('reader-overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function openReaderFromGrid(idx) {
+      const items = gridFiltered();
       const d = items[idx];
       if (!d || !d.body) return;
       document.getElementById('reader-label').textContent = 'Essay — ' + d.topic;
