@@ -10,6 +10,36 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "12-us-code-5531-prohibiting-unfair-deceptive-or-abusive-acts-or-practices-udaap",
+      "title": "12 U.S. Code § 5531 - Prohibiting unfair, deceptive, or abusive acts or practices (UDAAP)",
+      "subtitle": "Federal statutory authority establishing the Consumer Financial Protection Bureau's power to regulate unfair, deceptive, and abusive acts or practices in consumer financial services.",
+      "date": "",
+      "type": "policy",
+      "fields": [
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "consumer financial protection",
+        "CFPB regulatory authority",
+        "unfair deceptive abusive practices",
+        "financial services regulation",
+        "consumer protection law"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Cornell Legal Information Institute",
+      "publisher_url": null,
+      "original_url": "https://www.law.cornell.edu/uscode/text/12/5531",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This statutory provision grants the Consumer Financial Protection Bureau (CFPB) authority to prevent covered persons and service providers from engaging in unfair, deceptive, or abusive acts or practices in connection with consumer financial products and services. The statute establishes specific criteria for determining unfairness (substantial consumer injury not reasonably avoidable and not outweighed by countervailing benefits) and abusiveness (material interference with consumer understanding or unreasonable advantage-taking). The provision also mandates CFPB consultation with banking and other federal agencies and includes specific provisions regarding consideration of seasonal income in residential real estate lending.",
+      "preview": null,
+      "body": null,
+      "audience": "federal"
+    },
+    {
+      "placeholder": false,
       "id": "dodd-frank-wall-street-reform-and-consumer-protection-act",
       "title": "Dodd-Frank Wall Street Reform and Consumer Protection Act",
       "subtitle": "An overview of the major provisions of the 2010 financial regulation reform legislation signed into law in July 2010.",
