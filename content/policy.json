@@ -10,6 +10,36 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "antitrust-laws-2024",
+      "title": "Antitrust Laws",
+      "subtitle": "An overview of federal antitrust statutes and the legal frameworks for analyzing anticompetitive business practices.",
+      "date": "2024-10-15",
+      "type": "policy",
+      "fields": [
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "Sherman Act",
+        "Clayton Act",
+        "merger guidelines",
+        "horizontal agreements",
+        "predatory pricing",
+        "rule of reason"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Cornell Legal Information Institute",
+      "publisher_url": null,
+      "original_url": "https://www.law.cornell.edu/wex/antitrust_laws",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This page provides a comprehensive overview of the three key federal antitrust statutes: Sherman Act Section 1, Sherman Act Section 2, and the Clayton Act. It explains the distinction between per se violations and rule of reason analysis, the treatment of horizontal versus vertical agreements, and specific prohibited practices including price-fixing, predatory pricing, tying arrangements, and exclusive dealing. The document also covers merger review standards established by the FTC and DOJ, including the 2010 horizontal merger guidelines and 2023 revised merger guidelines that emphasize unilateral and coordination effects analysis.",
+      "preview": null,
+      "body": null
+    },
+    {
+      "placeholder": false,
       "id": "the-foreign-intelligence-surveillance-act-of-1978-fisa-1978",
       "title": "The Foreign Intelligence Surveillance Act of 1978 (FISA)",
       "subtitle": "",
