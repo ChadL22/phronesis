@@ -10,6 +10,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "dodd-frank-wall-street-reform-and-consumer-protection-act",
+      "title": "Dodd-Frank Wall Street Reform and Consumer Protection Act",
+      "subtitle": "An overview of the major provisions of the 2010 financial regulation reform legislation signed into law in July 2010.",
+      "date": "",
+      "type": "policy",
+      "fields": [
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "financial regulation",
+        "consumer protection",
+        "banking reform",
+        "securities markets",
+        "derivatives oversight",
+        "systemic risk"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Cornell Law School Securities Law Clinic",
+      "publisher_url": null,
+      "original_url": "https://www.law.cornell.edu/wex/dodd-frank",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "The Dodd-Frank Wall Street Reform and Consumer Protection Act represents comprehensive federal legislation enacted in July 2010 to reform financial regulations in response to the 2008 financial crisis. The Act comprises sixteen titles addressing financial stability, consumer protection, securities regulation, banking oversight, and derivatives markets. Major provisions establish the Financial Stability Oversight Council, create the Bureau of Consumer Financial Protection, implement orderly liquidation authority for systemically important institutions, and impose new requirements on hedge fund advisers, mortgage lending, and derivatives trading.",
+      "preview": null,
+      "body": null,
+      "audience": "federal"
+    },
+    {
+      "placeholder": false,
       "id": "antitrust-laws-2024",
       "title": "Antitrust Laws",
       "subtitle": "An overview of federal antitrust statutes and the legal frameworks for analyzing anticompetitive business practices.",
