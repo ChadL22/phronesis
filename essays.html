@@ -314,6 +314,30 @@
     .reader-body h3 { font-size: 1.1rem; }
     .reader-body p { margin-bottom: 1.2rem; }
     .reader-body p:last-child { margin-bottom: 0; }
+    .reader-body figure {
+      margin: 2rem 0; text-align: center;
+    }
+    .reader-body figure img {
+      max-width: 100%; height: auto; border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .reader-body figcaption {
+      font-family: var(--sans); font-size: 0.78rem; color: var(--ink-3);
+      font-style: italic; margin-top: 0.6rem;
+    }
+    .reader-body img:not(figure img) {
+      max-width: 100%; height: auto; margin: 1.5rem 0;
+      border-radius: 4px;
+    }
+    .reader-body blockquote {
+      border-left: 3px solid var(--accent); margin: 1.5rem 0;
+      padding-left: 1.2rem; font-style: italic; color: var(--ink-2);
+    }
+    .reader-body ul, .reader-body ol {
+      margin: 1rem 0; padding-left: 1.5rem;
+    }
+    .reader-body li { margin-bottom: 0.4rem; }
+    .reader-body a { color: var(--accent); text-decoration: underline; }
     @media (max-width: 600px) {
       .reader-panel { width: 100vw; max-height: 100vh; height: 100vh; border-radius: 0; }
       .reader-body { padding: 1.5rem; }
@@ -551,6 +575,7 @@
             excerpt:      e.excerpt || e.abstract || '',
             abstract:     e.abstract || '',
             body:         e.body || null,
+            body_html:    e.body_html || null,
             original_url: e.original_url || null,
             document_url: e.document_url || null,
           }));
@@ -930,17 +955,51 @@
     }
 
     // ── READER OVERLAY ──
-    function bodyToHTML(raw) {
+    function bodyToHTML(raw, bodyHtml) {
+      // If we have stored HTML, use that directly (sanitized)
+      if (bodyHtml) {
+        return sanitizeHtml(bodyHtml);
+      }
       if (!raw) return '';
+      // Legacy: convert plain text to HTML
+      // Handle image markers: [IMAGE: alt](url)
+      raw = raw.replace(/\[IMAGE: ([^\]]*)\]\(([^)]+)\)/g, '<figure><img src="$2" alt="$1" /><figcaption>$1</figcaption></figure>');
       // Split into paragraphs on double newlines, wrap each in <p>
       return raw.split(/\n\n+/).map(p => {
         p = p.trim();
         if (!p) return '';
+        // Check if it's already a figure/image tag
+        if (p.startsWith('<figure>') || p.startsWith('<img')) return p;
         // Detect headings (lines that look like titles)
         if (p.match(/^Works Cited$/i) || p.match(/^References$/i)) return '<h2>' + p + '</h2>';
         if (p.match(/^By:/)) return '<p style="font-style:italic;color:var(--ink-3);">' + p + '</p>';
+        // Handle markdown-style headings from plain text
+        if (p.startsWith('### ')) return '<h3>' + p.slice(4) + '</h3>';
+        if (p.startsWith('## ')) return '<h2>' + p.slice(3) + '</h2>';
+        if (p.startsWith('# ')) return '<h1>' + p.slice(2) + '</h1>';
         return '<p>' + p + '</p>';
       }).join('');
+    }
+
+    function sanitizeHtml(html) {
+      // Basic sanitization - allow safe tags only
+      const allowed = ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'br', 'hr', 'em', 'i', 'strong', 'b', 'a', 'ul', 'ol', 'li', 'blockquote', 'figure', 'figcaption', 'img', 'span', 'div'];
+      const div = document.createElement('div');
+      div.innerHTML = html;
+      // Remove script tags and event handlers
+      div.querySelectorAll('script').forEach(s => s.remove());
+      div.querySelectorAll('*').forEach(el => {
+        // Remove event handlers
+        Array.from(el.attributes).forEach(attr => {
+          if (attr.name.startsWith('on')) el.removeAttribute(attr.name);
+        });
+        // Ensure links open in new tab
+        if (el.tagName === 'A') {
+          el.setAttribute('target', '_blank');
+          el.setAttribute('rel', 'noopener');
+        }
+      });
+      return div.innerHTML;
     }
 
     function openReader(idx) {
@@ -948,7 +1007,7 @@
       const d = items[idx];
       if (!d || !d.body) return;
       document.getElementById('reader-label').textContent = 'Essay — ' + d.topic;
-      document.getElementById('reader-body').innerHTML = bodyToHTML(d.body);
+      document.getElementById('reader-body').innerHTML = bodyToHTML(d.body, d.body_html);
       document.getElementById('reader-scroll').scrollTop = 0;
       document.getElementById('reader-overlay').classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -959,7 +1018,7 @@
       const d = items[idx];
       if (!d || !d.body) return;
       document.getElementById('reader-label').textContent = 'Essay — ' + d.topic;
-      document.getElementById('reader-body').innerHTML = bodyToHTML(d.body);
+      document.getElementById('reader-body').innerHTML = bodyToHTML(d.body, d.body_html);
       document.getElementById('reader-scroll').scrollTop = 0;
       document.getElementById('reader-overlay').classList.add('open');
       document.body.style.overflow = 'hidden';

@@ -17,3 +17,22 @@ the module (for instance, using `npm rebuild` or `npm install`).
     at main (/Users/sipho/Desktop/Phronesis/sync-subscribers.js:28:14) {
   code: 'ERR_DLOPEN_FAILED'
 }
+Fetching subscribers from Cloudflare KV...
+Found 5 subscriber(s).
+Error: The module '/Users/sipho/Desktop/Phronesis/node_modules/better-sqlite3/build/Release/better_sqlite3.node'
+was compiled against a different Node.js version using
+NODE_MODULE_VERSION 115. This version of Node.js requires
+NODE_MODULE_VERSION 127. Please try re-compiling or re-installing
+the module (for instance, using `npm rebuild` or `npm install`).
+    at Object..node (node:internal/modules/cjs/loader:1725:18)
+    at Module.load (node:internal/modules/cjs/loader:1313:32)
+    at Function._load (node:internal/modules/cjs/loader:1123:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:217:24)
+    at Module.require (node:internal/modules/cjs/loader:1335:12)
+    at require (node:internal/modules/helpers:136:16)
+    at bindings (/Users/sipho/Desktop/Phronesis/node_modules/bindings/bindings.js:112:48)
+    at new Database (/Users/sipho/Desktop/Phronesis/node_modules/better-sqlite3/lib/database.js:48:64)
+    at main (/Users/sipho/Desktop/Phronesis/sync-subscribers.js:28:14) {
+  code: 'ERR_DLOPEN_FAILED'
+}

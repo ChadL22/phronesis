@@ -244,6 +244,163 @@
     .field-input:focus, .field-select:focus, .field-textarea:focus { border-color: var(--accent); }
     .field-input::placeholder, .field-textarea::placeholder { color: var(--ink-3); }
     .field-textarea { resize: vertical; min-height: 90px; line-height: 1.65; }
+    /* ── RICH TEXT EDITOR ── */
+    .rich-editor-wrap {
+      border: 1px solid var(--rule); border-radius: 2px;
+      background: var(--paper); overflow: hidden;
+    }
+    .rich-toolbar {
+      display: flex; align-items: center; gap: 0.3rem; flex-wrap: wrap;
+      padding: 0.5rem 0.7rem; background: var(--paper-2); border-bottom: 1px solid var(--rule);
+    }
+    .rich-toolbar-divider {
+      width: 1px; height: 20px; background: var(--rule); margin: 0 0.3rem;
+    }
+    .rich-btn {
+      width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      background: none; border: 1px solid transparent; border-radius: 2px;
+      cursor: pointer; color: var(--ink-2); transition: all 0.15s;
+    }
+    .rich-btn:hover { background: var(--paper); border-color: var(--rule); color: var(--ink); }
+    .rich-btn.active { background: var(--accent); color: #EEE8DA; border-color: var(--accent); }
+    .rich-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; }
+    .rich-btn-text {
+      font-family: var(--sans); font-size: 0.65rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.35rem 0.7rem; height: auto; width: auto;
+    }
+    .rich-body {
+      min-height: 300px; padding: 1.2rem 1.4rem;
+      font-family: var(--serif); font-size: 1.05rem; font-weight: 300;
+      line-height: 1.85; color: var(--ink-2);
+      outline: none; overflow-y: auto; max-height: 500px;
+    }
+    .rich-body:empty::before {
+      content: attr(data-placeholder);
+      color: var(--ink-3); font-style: italic;
+    }
+    .rich-body h1, .rich-body h2, .rich-body h3 {
+      font-family: var(--serif); font-weight: 400; color: var(--ink);
+      margin: 1.5rem 0 0.8rem; line-height: 1.25;
+    }
+    .rich-body h1 { font-size: 1.6rem; }
+    .rich-body h2 { font-size: 1.35rem; }
+    .rich-body h3 { font-size: 1.15rem; }
+    .rich-body p { margin-bottom: 1rem; }
+    .rich-body blockquote {
+      border-left: 3px solid var(--accent); margin: 1rem 0;
+      padding-left: 1rem; font-style: italic; color: var(--ink-2);
+    }
+    .rich-body img {
+      max-width: 100%; height: auto; margin: 1rem 0;
+      border-radius: 2px; cursor: pointer;
+    }
+    .rich-body img.selected {
+      outline: 2px solid var(--accent); outline-offset: 2px;
+    }
+    .rich-body a { color: var(--accent); text-decoration: underline; }
+    .rich-body ul, .rich-body ol { margin: 1rem 0; padding-left: 1.5rem; }
+    .rich-body li { margin-bottom: 0.4rem; }
+    .rich-body hr {
+      border: none; border-top: 1px solid var(--rule); margin: 2rem 0;
+    }
+
+    /* Image upload modal */
+    .image-modal {
+      display: none; position: fixed; inset: 0; z-index: 1000;
+      background: rgba(26,25,22,0.6); backdrop-filter: blur(4px);
+      align-items: center; justify-content: center;
+    }
+    .image-modal.open { display: flex; }
+    .image-modal-panel {
+      background: var(--paper); border: 1px solid var(--rule);
+      padding: 2rem; width: min(90vw, 500px); border-radius: 2px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+    .image-modal-title {
+      font-family: var(--serif); font-size: 1.3rem; font-weight: 400;
+      margin-bottom: 1rem;
+    }
+    .image-modal-tabs {
+      display: flex; gap: 0; margin-bottom: 1.2rem;
+      border: 1px solid var(--rule); border-radius: 2px; overflow: hidden;
+    }
+    .image-modal-tab {
+      flex: 1; padding: 0.6rem; font-family: var(--sans);
+      font-size: 0.68rem; font-weight: 400; letter-spacing: 0.1em;
+      text-transform: uppercase; background: none; border: none;
+      color: var(--ink-3); cursor: pointer; transition: all 0.15s;
+    }
+    .image-modal-tab + .image-modal-tab { border-left: 1px solid var(--rule); }
+    .image-modal-tab.active { background: var(--accent); color: #EEE8DA; }
+    .image-tab-content { display: none; }
+    .image-tab-content.active { display: block; }
+    .image-drop-zone {
+      border: 2px dashed var(--rule); border-radius: 2px;
+      padding: 2rem; text-align: center; cursor: pointer;
+      transition: all 0.18s; margin-bottom: 1rem;
+    }
+    .image-drop-zone:hover, .image-drop-zone.dragover {
+      border-color: var(--accent); background: rgba(43,71,54,0.04);
+    }
+    .image-drop-zone svg {
+      width: 32px; height: 32px; stroke: var(--ink-3); margin-bottom: 0.6rem;
+    }
+    .image-drop-zone p { font-size: 0.78rem; color: var(--ink-3); margin: 0; }
+    .image-drop-zone input { display: none; }
+    .image-preview-wrap {
+      display: none; margin-bottom: 1rem; text-align: center;
+    }
+    .image-preview-wrap.has-image { display: block; }
+    .image-preview-wrap img {
+      max-width: 100%; max-height: 200px; border-radius: 2px;
+    }
+    .image-url-input {
+      width: 100%; font-family: var(--sans); font-size: 0.82rem;
+      padding: 0.6rem 0.8rem; border: 1px solid var(--rule);
+      border-radius: 2px; outline: none; margin-bottom: 0.6rem;
+    }
+    .image-url-input:focus { border-color: var(--accent); }
+    .image-alt-input {
+      width: 100%; font-family: var(--sans); font-size: 0.78rem;
+      padding: 0.5rem 0.7rem; border: 1px solid var(--rule);
+      border-radius: 2px; outline: none; margin-bottom: 1rem;
+    }
+    .image-modal-actions {
+      display: flex; justify-content: flex-end; gap: 0.5rem;
+    }
+    .image-progress {
+      display: none; margin-bottom: 1rem;
+    }
+    .image-progress.uploading { display: block; }
+    .image-progress-bar {
+      height: 4px; background: var(--rule); border-radius: 2px; overflow: hidden;
+    }
+    .image-progress-fill {
+      height: 100%; background: var(--accent); width: 0%;
+      transition: width 0.3s;
+    }
+    .image-progress-text {
+      font-size: 0.68rem; color: var(--ink-3); margin-top: 0.4rem; text-align: center;
+    }
+
+    /* Link modal */
+    .link-modal {
+      display: none; position: fixed; inset: 0; z-index: 1000;
+      background: rgba(26,25,22,0.6); backdrop-filter: blur(4px);
+      align-items: center; justify-content: center;
+    }
+    .link-modal.open { display: flex; }
+    .link-modal-panel {
+      background: var(--paper); border: 1px solid var(--rule);
+      padding: 1.5rem; width: min(90vw, 400px); border-radius: 2px;
+    }
+    .link-modal-title {
+      font-family: var(--serif); font-size: 1.1rem; font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
     .field-textarea.body-field { min-height: 200px; font-family: var(--serif); }
     .field-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238A8880' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.75rem center; padding-right: 2rem; }
     .field-hint { font-size: 0.6rem; color: var(--ink-3); margin-top: 0.28rem; line-height: 1.5; }
@@ -519,6 +676,54 @@
 
 <!-- toast -->
 <div class="toast hidden" id="toast"></div>
+
+<!-- Image Modal -->
+<div class="image-modal" id="image-modal">
+  <div class="image-modal-panel">
+    <h3 class="image-modal-title">Insert Image</h3>
+    <div class="image-modal-tabs">
+      <button class="image-modal-tab active" onclick="switchImageTab('upload')">Upload</button>
+      <button class="image-modal-tab" onclick="switchImageTab('url')">URL</button>
+    </div>
+    <div class="image-tab-content active" id="image-tab-upload">
+      <div class="image-drop-zone" id="image-drop-zone" onclick="document.getElementById('image-file-input').click()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <p>Drop an image here or click to browse</p>
+        <input type="file" id="image-file-input" accept="image/*" onchange="handleImageSelect(event)" />
+      </div>
+      <div class="image-preview-wrap" id="image-preview-wrap">
+        <img id="image-preview" src="" alt="Preview" />
+      </div>
+      <div class="image-progress" id="image-progress">
+        <div class="image-progress-bar"><div class="image-progress-fill" id="image-progress-fill"></div></div>
+        <p class="image-progress-text" id="image-progress-text">Uploading...</p>
+      </div>
+    </div>
+    <div class="image-tab-content" id="image-tab-url">
+      <input class="image-url-input" id="image-url-input" type="url" placeholder="https://example.com/image.jpg" />
+      <p class="field-hint" style="margin-bottom:1rem;">Enter the full URL of an image hosted elsewhere.</p>
+    </div>
+    <input class="image-alt-input" id="image-alt-input" type="text" placeholder="Alt text (describe the image)" />
+    <input class="image-alt-input" id="image-caption-input" type="text" placeholder="Caption (optional)" style="margin-bottom:1rem;" />
+    <div class="image-modal-actions">
+      <button class="form-cancel-btn" onclick="closeImageModal()">Cancel</button>
+      <button class="form-save-btn" id="image-insert-btn" onclick="insertImage()">Insert Image</button>
+    </div>
+  </div>
+</div>
+
+<!-- Link Modal -->
+<div class="link-modal" id="link-modal">
+  <div class="link-modal-panel">
+    <h3 class="link-modal-title">Insert Link</h3>
+    <input class="image-url-input" id="link-url-input" type="url" placeholder="https://example.com" style="margin-bottom:0.8rem;" />
+    <input class="image-alt-input" id="link-text-input" type="text" placeholder="Link text (optional)" style="margin-bottom:1rem;" />
+    <div class="image-modal-actions">
+      <button class="form-cancel-btn" onclick="closeLinkModal()">Cancel</button>
+      <button class="form-save-btn" onclick="insertLink()">Insert Link</button>
+    </div>
+  </div>
+</div>
 
 <script>
 // ═══════════════════════════════════════════════════════════
@@ -826,7 +1031,7 @@ function startNewEntry() {
     origin: 'original', content_type: 'full',
     publisher: 'Phronesis Research', publisher_url: null,
     original_url: null, doi: null, venue_type: null,
-    abstract: '', preview: null, body: null
+    abstract: '', preview: null, body: null, body_html: null
   };
   renderForm();
   renderEntryList();
@@ -971,8 +1176,46 @@ function renderForm() {
       </div>
       <div id="body-block" class="${isVia?'cond off':''}">
         <div class="field-row">
-          <label>Body <em>Markdown — full text for original pieces. Leave blank to add later.</em></label>
-          <textarea class="field-textarea body-field" id="f-body" oninput="onField('body',this.value||null)">${esc(s.body||'')}</textarea>
+          <label>Body <em>Full text for original pieces. Use toolbar to format and add images.</em></label>
+          <div class="rich-editor-wrap" id="rich-editor-wrap">
+            <div class="rich-toolbar">
+              <button type="button" class="rich-btn" onclick="richExec('formatBlock','<h2>')" title="Heading 2">
+                <svg viewBox="0 0 24 24"><path d="M4 12h8M4 18V6M12 18V6M20 18v-8a4 4 0 0 0-4-4M16 18v-4h4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <button type="button" class="rich-btn" onclick="richExec('formatBlock','<h3>')" title="Heading 3">
+                <svg viewBox="0 0 24 24"><path d="M4 12h8M4 18V6M12 18V6M18 14a2 2 0 1 0 0-4M18 18a2 2 0 1 0 0-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="rich-toolbar-divider"></div>
+              <button type="button" class="rich-btn" onclick="richExec('bold')" title="Bold">
+                <svg viewBox="0 0 24 24"><path d="M6 4h8a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 12h9a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <button type="button" class="rich-btn" onclick="richExec('italic')" title="Italic">
+                <svg viewBox="0 0 24 24"><line x1="19" y1="4" x2="10" y2="4"/><line x1="14" y1="20" x2="5" y2="20"/><line x1="15" y1="4" x2="9" y2="20"/></svg>
+              </button>
+              <div class="rich-toolbar-divider"></div>
+              <button type="button" class="rich-btn" onclick="richExec('insertUnorderedList')" title="Bullet list">
+                <svg viewBox="0 0 24 24"><line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/><circle cx="4" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="4" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="4" cy="18" r="1.5" fill="currentColor" stroke="none"/></svg>
+              </button>
+              <button type="button" class="rich-btn" onclick="richExec('insertOrderedList')" title="Numbered list">
+                <svg viewBox="0 0 24 24"><line x1="10" y1="6" x2="21" y2="6"/><line x1="10" y1="12" x2="21" y2="12"/><line x1="10" y1="18" x2="21" y2="18"/><text x="3" y="8" font-size="6" fill="currentColor" stroke="none" font-family="sans-serif">1</text><text x="3" y="14" font-size="6" fill="currentColor" stroke="none" font-family="sans-serif">2</text><text x="3" y="20" font-size="6" fill="currentColor" stroke="none" font-family="sans-serif">3</text></svg>
+              </button>
+              <button type="button" class="rich-btn" onclick="richExec('formatBlock','<blockquote>')" title="Quote">
+                <svg viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V21z" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="rich-toolbar-divider"></div>
+              <button type="button" class="rich-btn" onclick="openLinkModal()" title="Insert link">
+                <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <button type="button" class="rich-btn" onclick="openImageModal()" title="Insert image">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              </button>
+              <button type="button" class="rich-btn" onclick="richExec('insertHorizontalRule')" title="Horizontal line">
+                <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/></svg>
+              </button>
+            </div>
+            <div class="rich-body" id="rich-body" contenteditable="true" data-placeholder="Write your full essay text here. Use the toolbar to format text and insert images..." oninput="syncRichToForm()"></div>
+          </div>
+          <input type="hidden" id="f-body" />
         </div>
       </div>
       <div id="preview-block" class="${(isVia && s.content_type==='preview')?'':'cond off'}">
@@ -1004,6 +1247,9 @@ function renderForm() {
     document.getElementById('placeholder-label').textContent =
       this.checked ? 'Draft — not shown on site yet' : 'Live — visible on site';
   });
+
+  // Load rich editor content
+  loadRichEditor();
 }
 
 function buildTypeSpecificHTML(type, s) {
@@ -1123,6 +1369,9 @@ function cancelEdit() {
 function saveEntry() {
   const store = contentStore[activeType];
   if (!store) return;
+
+  // Make sure we sync the rich editor before saving
+  syncRichToForm();
 
   // clean up entry
   const entry = { ...formState };
@@ -1392,6 +1641,313 @@ function corpusAddItem(aud) {
   input.value = '';
   renderCorpusPathEditor();
   showToast('Added to reading path.', 'success');
+}
+
+// ═══════════════════════════════════════════════════════════
+// RICH TEXT EDITOR
+// ═══════════════════════════════════════════════════════════
+let savedSelection = null;
+let pendingImageData = null;
+
+function richExec(command, value = null) {
+  document.execCommand(command, false, value);
+  const richBody = document.getElementById('rich-body');
+  if (richBody) richBody.focus();
+  syncRichToForm();
+}
+
+function syncRichToForm() {
+  const richBody = document.getElementById('rich-body');
+  if (!richBody) return;
+  const html = richBody.innerHTML;
+  // Store HTML version
+  formState.body_html = html;
+  // Convert HTML to plain text with paragraph breaks for JSON storage
+  formState.body = htmlToPlainText(html);
+}
+
+function htmlToPlainText(html) {
+  if (!html || html === '<br>' || html === '<p><br></p>') return null;
+  // Create a temp element to parse HTML
+  const temp = document.createElement('div');
+  temp.innerHTML = html;
+  
+  let text = '';
+  function walk(node) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      text += node.textContent;
+    } else if (node.nodeType === Node.ELEMENT_NODE) {
+      const tag = node.tagName.toLowerCase();
+      // Add breaks before block elements
+      if (['p', 'div', 'h1', 'h2', 'h3', 'h4', 'blockquote', 'li', 'hr', 'br'].includes(tag)) {
+        if (text && !text.endsWith('\n\n')) {
+          text += text.endsWith('\n') ? '\n' : '\n\n';
+        }
+      }
+      // Handle images - embed as markdown-style reference
+      if (tag === 'img') {
+        const src = node.getAttribute('src') || '';
+        const alt = node.getAttribute('alt') || '';
+        text += `[IMAGE: ${alt}](${src})\n\n`;
+        return;
+      }
+      // Handle headings
+      if (tag === 'h1') text += '# ';
+      if (tag === 'h2') text += '## ';
+      if (tag === 'h3') text += '### ';
+      // Walk children
+      for (const child of node.childNodes) {
+        walk(child);
+      }
+      // Add break after block elements
+      if (['p', 'div', 'h1', 'h2', 'h3', 'h4', 'blockquote', 'ul', 'ol'].includes(tag)) {
+        if (!text.endsWith('\n\n')) text += '\n\n';
+      }
+    }
+  }
+  walk(temp);
+  return text.trim() || null;
+}
+
+function loadRichEditor() {
+  const richBody = document.getElementById('rich-body');
+  if (!richBody) return;
+  // If we have body_html stored, use that; otherwise convert body text to HTML
+  if (formState.body_html) {
+    richBody.innerHTML = formState.body_html;
+  } else if (formState.body) {
+    // Convert plain text to HTML paragraphs
+    richBody.innerHTML = plainTextToHtml(formState.body);
+  } else {
+    richBody.innerHTML = '';
+  }
+}
+
+function plainTextToHtml(text) {
+  if (!text) return '';
+  // Handle image references
+  text = text.replace(/\[IMAGE: ([^\]]*)]\(([^)]+)\)/g, '<img src="$2" alt="$1" />');
+  // Split into paragraphs
+  const paragraphs = text.split(/\n\n+/);
+  return paragraphs.map(p => {
+    p = p.trim();
+    if (!p) return '';
+    // Handle headings
+    if (p.startsWith('### ')) return '<h3>' + escapeHtml(p.slice(4)) + '</h3>';
+    if (p.startsWith('## ')) return '<h2>' + escapeHtml(p.slice(3)) + '</h2>';
+    if (p.startsWith('# ')) return '<h1>' + escapeHtml(p.slice(2)) + '</h1>';
+    // Handle Works Cited/References headings
+    if (p.match(/^Works Cited$/i) || p.match(/^References$/i)) return '<h2>' + p + '</h2>';
+    if (p.match(/^By:/)) return '<p><em>' + escapeHtml(p) + '</em></p>';
+    // Check if it's already an image tag
+    if (p.startsWith('<img')) return p;
+    return '<p>' + escapeHtml(p).replace(/\n/g, '<br>') + '</p>';
+  }).join('');
+}
+
+function escapeHtml(text) {
+  return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// ── IMAGE MODAL ──
+function openImageModal() {
+  // Save current selection for later insertion
+  const sel = window.getSelection();
+  if (sel.rangeCount > 0) {
+    savedSelection = sel.getRangeAt(0).cloneRange();
+  }
+  // Reset modal
+  document.getElementById('image-url-input').value = '';
+  document.getElementById('image-alt-input').value = '';
+  document.getElementById('image-caption-input').value = '';
+  document.getElementById('image-preview-wrap').classList.remove('has-image');
+  document.getElementById('image-progress').classList.remove('uploading');
+  document.getElementById('image-file-input').value = '';
+  pendingImageData = null;
+  switchImageTab('upload');
+  document.getElementById('image-modal').classList.add('open');
+}
+
+function closeImageModal() {
+  document.getElementById('image-modal').classList.remove('open');
+  pendingImageData = null;
+}
+
+function switchImageTab(tab) {
+  document.querySelectorAll('.image-modal-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.image-tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelector(`[onclick="switchImageTab('${tab}')"]`).classList.add('active');
+  document.getElementById('image-tab-' + tab).classList.add('active');
+}
+
+function handleImageSelect(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  if (!file.type.startsWith('image/')) {
+    showToast('Please select an image file.', 'error');
+    return;
+  }
+  if (file.size > 10 * 1024 * 1024) {
+    showToast('Image must be under 10MB.', 'error');
+    return;
+  }
+  
+  // Show preview
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    document.getElementById('image-preview').src = e.target.result;
+    document.getElementById('image-preview-wrap').classList.add('has-image');
+    pendingImageData = {
+      file: file,
+      base64: e.target.result.split(',')[1],
+      type: file.type
+    };
+  };
+  reader.readAsDataURL(file);
+}
+
+// Drag and drop handling
+document.addEventListener('DOMContentLoaded', function() {
+  const dropZone = document.getElementById('image-drop-zone');
+  if (dropZone) {
+    dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+    dropZone.addEventListener('drop', e => {
+      e.preventDefault();
+      dropZone.classList.remove('dragover');
+      const files = e.dataTransfer.files;
+      if (files.length > 0) {
+        document.getElementById('image-file-input').files = files;
+        handleImageSelect({ target: { files: files } });
+      }
+    });
+  }
+});
+
+async function insertImage() {
+  const altText = document.getElementById('image-alt-input').value.trim();
+  const caption = document.getElementById('image-caption-input').value.trim();
+  let imageUrl = '';
+  
+  // Check which tab is active
+  const isUploadTab = document.getElementById('image-tab-upload').classList.contains('active');
+  
+  if (isUploadTab && pendingImageData) {
+    // Upload to GitHub
+    if (!ghToken) {
+      showToast('GitHub connection required to upload images.', 'error');
+      return;
+    }
+    
+    const progressEl = document.getElementById('image-progress');
+    const progressFill = document.getElementById('image-progress-fill');
+    const progressText = document.getElementById('image-progress-text');
+    progressEl.classList.add('uploading');
+    progressFill.style.width = '20%';
+    progressText.textContent = 'Uploading to GitHub...';
+    
+    try {
+      // Generate filename
+      const ext = pendingImageData.type.split('/')[1] || 'png';
+      const timestamp = Date.now();
+      const filename = `content/images/${formState.id || 'image'}-${timestamp}.${ext}`;
+      
+      progressFill.style.width = '50%';
+      
+      // Upload to GitHub
+      const result = await ghFetch('/repos/' + REPO + '/contents/' + filename, {
+        method: 'PUT',
+        body: JSON.stringify({
+          message: 'content: add image ' + filename.split('/').pop(),
+          content: pendingImageData.base64,
+          branch: BRANCH,
+        })
+      });
+      
+      progressFill.style.width = '100%';
+      progressText.textContent = 'Upload complete!';
+      
+      // Use raw.githubusercontent URL for the image
+      imageUrl = `https://raw.githubusercontent.com/${REPO}/${BRANCH}/${filename}`;
+      
+      setTimeout(() => progressEl.classList.remove('uploading'), 500);
+    } catch (err) {
+      progressEl.classList.remove('uploading');
+      showToast('Failed to upload image: ' + err.message, 'error');
+      return;
+    }
+  } else {
+    // URL tab
+    imageUrl = document.getElementById('image-url-input').value.trim();
+    if (!imageUrl) {
+      showToast('Please enter an image URL or upload an image.', 'error');
+      return;
+    }
+  }
+  
+  // Create image HTML
+  let imgHtml = '';
+  if (caption) {
+    imgHtml = `<figure><img src="${imageUrl}" alt="${altText}" /><figcaption>${caption}</figcaption></figure>`;
+  } else {
+    imgHtml = `<img src="${imageUrl}" alt="${altText}" />`;
+  }
+  
+  // Insert into editor
+  const richBody = document.getElementById('rich-body');
+  richBody.focus();
+  
+  // Try to restore selection
+  if (savedSelection) {
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(savedSelection);
+  }
+  
+  document.execCommand('insertHTML', false, imgHtml);
+  syncRichToForm();
+  closeImageModal();
+  showToast('Image inserted!', 'success');
+}
+
+// ── LINK MODAL ──
+function openLinkModal() {
+  const sel = window.getSelection();
+  if (sel.rangeCount > 0) {
+    savedSelection = sel.getRangeAt(0).cloneRange();
+    document.getElementById('link-text-input').value = sel.toString();
+  } else {
+    document.getElementById('link-text-input').value = '';
+  }
+  document.getElementById('link-url-input').value = '';
+  document.getElementById('link-modal').classList.add('open');
+}
+
+function closeLinkModal() {
+  document.getElementById('link-modal').classList.remove('open');
+}
+
+function insertLink() {
+  const url = document.getElementById('link-url-input').value.trim();
+  let text = document.getElementById('link-text-input').value.trim();
+  if (!url) {
+    showToast('Please enter a URL.', 'error');
+    return;
+  }
+  if (!text) text = url;
+  
+  const richBody = document.getElementById('rich-body');
+  richBody.focus();
+  
+  if (savedSelection) {
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(savedSelection);
+  }
+  
+  document.execCommand('insertHTML', false, `<a href="${url}" target="_blank" rel="noopener">${text}</a>`);
+  syncRichToForm();
+  closeLinkModal();
 }
 
 // ═══════════════════════════════════════════════════════════
