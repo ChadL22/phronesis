@@ -136,7 +136,7 @@
       "title": "Artificial Intelligence-Enabled Device Software Functions: Lifecycle Management and Marketing Submission Recommendations",
       "subtitle": "",
       "date": "2025-01-15",
-      "type": "policy",
+      "type": "proposal",
       "fields": [
         "Computer Science",
         "Public Policy"
@@ -158,7 +158,8 @@
       "venue_type": null,
       "abstract": "This draft guidance document establishes recommendations for manufacturers submitting marketing applications for medical devices that incorporate artificial intelligence-enabled software functions. It outlines required documentation and information necessary for FDA evaluation of device safety and effectiveness, while proposing design, development, and implementation recommendations for AI-enabled devices. The guidance reflects a comprehensive risk management approach applicable across the device total product life cycle. The document aims to standardize submission contents and support appropriate regulatory assessment of AI-integrated medical technologies.",
       "preview": null,
-      "body": null
+      "body": null,
+      "body_html": ""
     },
     {
       "placeholder": false,
@@ -166,7 +167,7 @@
       "title": "Comments to IL Lawmakers Regarding the Consumer Protection (Group 1) Proposals (SB 3384 / SB 3444)",
       "subtitle": "Chamber of Progress submits testimony to the Illinois Subcommittee on AI and Social Media regarding proposed AI liability and consumer protection frameworks.",
       "date": "2026-04-09",
-      "type": "policy",
+      "type": "proposal",
       "fields": [
         "Public Policy",
         "Computer Science"
@@ -189,7 +190,8 @@
       "abstract": "This document presents formal comments from the Chamber of Progress, a technology industry association, to the Illinois legislature regarding proposed consumer protection bills addressing artificial intelligence systems. The submission argues that overly broad AI liability frameworks risk creating legal uncertainty and limiting beneficial technology access, while advocating for standards-based approaches with safe harbor provisions as exemplified by California's SB 534 and New York's RAISE Act. The comments contend that existing consumer protection laws and tort principles provide adequate protection without AI-specific liability regimes.",
       "preview": null,
       "body": null,
-      "audience": "state"
+      "audience": "state",
+      "body_html": ""
     },
     {
       "placeholder": false,
@@ -197,7 +199,7 @@
       "title": "FTC Surveillance Pricing 6(b) Study: Research Summaries A Staff Perspective ",
       "subtitle": "",
       "date": "",
-      "type": "policy",
+      "type": "memo",
       "fields": [
         "Public Policy",
         "Computer Science",
@@ -221,7 +223,8 @@
       "abstract": "This document presents initial findings from the Federal Trade Commission's Surveillance Pricing 6(b) study launched in July 2024, which examines how companies use personal data and algorithmic technologies to implement targeted pricing strategies. The study focuses on intermediary firms that enable algorithmic price discrimination through data collection, analysis, and segmentation. The FTC seeks to understand the types of data fueling these algorithms, their sources, affected industries, and the technical mechanisms enabling surveillance pricing. The document emphasizes this represents preliminary work requiring further research and collaboration.",
       "preview": null,
       "body": null,
-      "audience": "federal"
+      "audience": "federal",
+      "body_html": ""
     },
     {
       "placeholder": false,
@@ -261,7 +264,7 @@
       "title": "Forecasting the Economic Effects of AI: Predictions From Economists, AI Experts, and the Public",
       "subtitle": "A large-scale forecasting exercise examining expert and public predictions of AI's economic impact through 2050.",
       "date": "",
-      "type": "policy",
+      "type": "memo",
       "fields": [
         "Economics",
         "Public Policy",
@@ -284,7 +287,8 @@
       "venue_type": null,
       "abstract": "This working paper presents results from a comprehensive forecasting exercise surveying 69 leading economists, 52 AI industry and policy experts, 38 superforecasters, and 401 members of the general public regarding AI's economic impacts. While respondents predict significant AI capability improvements by 2030, they forecast that key economic indicators including GDP, total factor productivity, and labor force participation will remain close to historical trends. The analysis identifies factors explaining this apparent disconnect, including uneven sectoral diffusion, time-lagged technology adoption, and geopolitical headwinds, and evaluates policy interventions such as job retraining.",
       "preview": null,
-      "body": null
+      "body": null,
+      "body_html": ""
     },
     {
       "placeholder": false,
@@ -292,7 +296,7 @@
       "title": "CFPB Consumer Laws and Regulations: Unfair, Deceptive, or Abusive Acts or Practices",
       "subtitle": "Examination procedures and regulatory guidance for identifying and assessing unfair, deceptive, or abusive acts and practices under the Dodd-Frank Act.",
       "date": "",
-      "type": "policy",
+      "type": "proposal",
       "fields": [
         "Public Policy",
         "Economics"
@@ -314,7 +318,8 @@
       "venue_type": null,
       "abstract": "This document provides regulatory guidance from the Consumer Financial Protection Bureau (CFPB) on the standards and examination procedures for identifying unfair, deceptive, or abusive acts or practices (UDAAPs) in consumer financial services. It establishes the three-part legal standard for unfairness derived from the Dodd-Frank Act: substantial injury to consumers, non-avoidability of injury, and injury not outweighed by countervailing benefits. The guidance details principles for assessing institutional compliance and risk, including analysis of consumer decision-making, information asymmetries, and market conditions.",
       "preview": null,
-      "body": null
+      "body": null,
+      "body_html": ""
     },
     {
       "placeholder": false,
@@ -343,7 +348,7 @@
       "title": "Blueprint for an AI Bill of Rights",
       "subtitle": "A White House framework establishing five principles to guide the design and deployment of automated systems while protecting civil rights and democratic values.",
       "date": "",
-      "type": "policy",
+      "type": "proposal",
       "fields": [
         "Public Policy",
         "Computer Science",
@@ -367,7 +372,8 @@
       "abstract": "The White House Office of Science and Technology Policy proposes a framework of five principles to govern automated systems and artificial intelligence deployment in the United States. The framework addresses documented harms including algorithmic bias in hiring and credit decisions, unsafe medical systems, and unchecked data collection practices that threaten privacy and civil rights. Accompanied by an implementation handbook titled \"From Principles to Practice,\" the framework aims to balance technological innovation with the protection of civil rights, equal opportunity, and foundational American democratic values as directed by presidential executive order.",
       "preview": null,
       "body": null,
-      "audience": "federal"
+      "audience": "federal",
+      "body_html": ""
     },
     {
       "placeholder": false,
@@ -375,7 +381,7 @@
       "title": "Trump Administration National AI Policy Framework",
       "subtitle": "The Trump Administration proposes a comprehensive national legislative framework for artificial intelligence development and deployment across six key policy objectives.",
       "date": "2026-03-20",
-      "type": "policy",
+      "type": "proposal",
       "fields": [
         "Public Policy",
         "Computer Science",
@@ -399,7 +405,8 @@
       "abstract": "This policy proposal outlines the Trump Administration's national framework for artificial intelligence governance, organized around six primary objectives: child protection and parental empowerment, community and economic safeguarding, intellectual property rights protection, free speech preservation, innovation enablement, and workforce development. The framework emphasizes federal coordination to establish uniform national standards rather than fragmented state-level regulation, with stated goals of maintaining American competitiveness in AI development while addressing public concerns regarding privacy, security, and societal impacts. The proposal calls for Congressional action to implement legislative measures addressing emerging AI policy challenges including data center permitting, AI-enabled fraud prevention, content moderation safeguards, and intellectual property frameworks.",
       "preview": null,
       "body": null,
-      "audience": "federal"
+      "audience": "federal",
+      "body_html": ""
     },
     {
       "placeholder": false,
@@ -407,7 +414,7 @@
       "title": "OpenAI Policy Proposal to the Office of Science and Technology Policy",
       "subtitle": "OpenAI submits recommendations for the Trump Administration's AI Action Plan emphasizing American leadership, AI education, and economic opportunity.",
       "date": "2025-05-13",
-      "type": "policy",
+      "type": "proposal",
       "fields": [
         "Public Policy",
         "Computer Science",
@@ -432,7 +439,8 @@
       "preview": null,
       "body": null,
       "audience": "federal",
-      "stage": "submitted"
+      "stage": "submitted",
+      "body_html": ""
     }
   ]
 }
