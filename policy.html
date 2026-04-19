@@ -621,7 +621,7 @@
           .filter(e => !e.placeholder)
           .map(e => ({
             level:        e.level || e.audience || 'federal',
-            type:         e.document_type || 'proposal',
+            type:         e.type || e.document_type || 'policy',
             origin:       e.origin,
             originLabel:  e.origin === 'original' ? 'Original' : 'Via ' + e.publisher,
             date:         fmtDateP(e.date),
