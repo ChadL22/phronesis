@@ -1027,7 +1027,8 @@ function startNewEntry() {
   formState = {
   placeholder: true,
   id: '', title: '', subtitle: '', date: '',
-    type: activeType, fields: [], tags: [],
+    type: activeType === 'policy' ? 'policy' : activeType,
+    fields: [], tags: [],
     origin: 'original', content_type: 'full',
     publisher: 'Phronesis Research', publisher_url: null,
     original_url: null, doi: null, venue_type: null,
@@ -1268,7 +1269,14 @@ function buildTypeSpecificHTML(type, s) {
       </select></div>`);
   }
   if (type === 'policy') {
-    r.push(`<div class="field-pair">
+    r.push(`<div class="field-row"><label>Document Type</label>
+      <select class="field-select" id="f-type" onchange="onField('type',this.value||'policy')">
+        ${['policy','proposal','memo'].map(v =>
+          `<option value="${v}"${s.type===v?' selected':''}>${v.charAt(0).toUpperCase()+v.slice(1)}</option>`).join('')}
+      </select>
+      <p class="field-hint">Policy = existing statute/regulation. Proposal = actionable framework. Memo = internal analysis.</p>
+    </div>
+    <div class="field-pair">
       <div class="field-row"><label>Audience</label>
         <select class="field-select" id="f-audience" onchange="onField('audience',this.value||null)">
           <option value="">— select —</option>
