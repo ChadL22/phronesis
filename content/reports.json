@@ -2,11 +2,44 @@
   "_schema": "1.0",
   "_notes": [
     "Reports are longer-form, comprehensive reference documents",
-    "category: government | industry | academia ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ used for the category filter",
-    "featured: true on the single most recent/prominent report ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ renders as the hero card",
+    "category: government | industry | academia ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ used for the category filter",
+    "featured: true on the single most recent/prominent report ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ renders as the hero card",
     "pages: approximate page count"
   ],
   "entries": [
+    {
+      "placeholder": false,
+      "id": "the-stanford-emerging-technology-review-2026-2026",
+      "title": "THE STANFORD EMERGING TECHNOLOGY REVIEW 2026",
+      "subtitle": "A comprehensive reference guide examining ten emerging technologies and their policy implications across critical domains.",
+      "date": "2026-01-01",
+      "type": "report",
+      "fields": [
+        "Computer Science",
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "emerging technologies",
+        "technology policy",
+        "artificial intelligence",
+        "biotechnology",
+        "national security",
+        "technology governance"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Stanford University",
+      "publisher_url": null,
+      "original_url": "https://setr.stanford.edu/news/executive-summary/2026",
+      "doi": null,
+      "venue_type": "report",
+      "abstract": "The Stanford Emerging Technology Review (SETR) 2026 is a reference tool designed to help policymakers understand complex technological developments across ten major fields: Artificial Intelligence, Biotechnology and Synthetic Biology, Cryptography and Computer Security, Energy Technologies, Materials Science, Neuroscience, Quantum Technologies, Robotics, Semiconductors, and Space. The report balances technical depth with accessibility while examining technological convergence and cross-cutting applications to five policy domains: economic growth, national security, environmental sustainability, health and medicine, and civil society. Each chapter provides field overviews, key developments, future considerations, and policy implications informed by Stanford University's science and engineering expertise.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "report_type": "annual"
+    },
     {
       "placeholder": false,
       "id": "the-2025-ai-index-report-2025",
