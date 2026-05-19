@@ -6,7 +6,7 @@
   <title>Newsletter — Phronesis</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300,1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="shared.css" />
   <style>
     /* ── NAV MENU STYLES ── */
@@ -100,7 +100,7 @@
     }
 
     .newsletter-container {
-      max-width: 800px;
+      max-width: 700px;
       margin: 0 auto;
       padding: 0 clamp(1.5rem, 5vw, 5rem) 5rem;
     }
@@ -120,114 +120,96 @@
       border-bottom: 1px solid var(--rule);
     }
 
-    .form-group {
+    /* ── SUBSCRIPTION FORM ── */
+    .subscription-form {
+      margin-bottom: 2rem;
+    }
+
+    .form-input-group {
+      display: flex;
+      gap: 0;
       margin-bottom: 1.8rem;
     }
 
-    .form-group label {
-      display: block;
-      font-family: var(--sans);
-      font-size: 0.72rem;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: var(--ink-3);
-      margin-bottom: 0.6rem;
-      font-weight: 500;
-    }
-
-    .form-group input[type="email"],
-    .form-group textarea {
-      width: 100%;
-      padding: 0.85rem 1.1rem;
+    .form-input-group input[type="email"] {
+      flex: 1;
+      padding: 0.95rem 1.2rem;
       font-family: var(--sans);
       font-size: 0.95rem;
       color: var(--ink);
       background: var(--paper);
       border: 1px solid var(--rule);
-      border-radius: 2px;
+      border-right: none;
+      border-radius: 2px 0 0 2px;
       outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
     }
 
-    .form-group input[type="email"]:focus,
-    .form-group textarea:focus {
+    .form-input-group input[type="email"]:focus {
       border-color: var(--accent);
       box-shadow: 0 0 0 3px rgba(43, 71, 54, 0.08);
     }
 
-    .form-group input[type="email"]::placeholder,
-    .form-group textarea::placeholder {
+    .form-input-group input[type="email"]::placeholder {
       color: var(--ink-3);
     }
 
-    .radio-group {
-      margin-bottom: 1.8rem;
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .radio-option {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .radio-option input[type="radio"] {
-      cursor: pointer;
-      accent-color: var(--accent);
-    }
-
-    .radio-option label {
-      display: inline;
-      margin: 0;
-      font-size: 0.9rem;
-      color: var(--ink-2);
-      cursor: pointer;
-      font-weight: 400;
-      text-transform: none;
-      letter-spacing: normal;
-    }
-
-    .button-group {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    button {
-      padding: 0.75rem 1.8rem;
+    .subscription-btn {
+      padding: 0.95rem 1.8rem;
       font-family: var(--sans);
       font-size: 0.7rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      border: 1px solid transparent;
-      border-radius: 2px;
+      background: var(--accent);
+      color: #EEE8DA;
+      border: 1px solid var(--accent);
+      border-radius: 0 2px 2px 0;
       cursor: pointer;
       transition: all 0.2s;
       font-weight: 500;
+      white-space: nowrap;
     }
 
-    .btn-primary {
-      background: var(--accent);
-      color: #EEE8DA;
-      border-color: var(--accent);
-    }
-
-    .btn-primary:hover {
+    .subscription-btn:hover {
       background: var(--accent-l);
       border-color: var(--accent-l);
     }
 
-    .btn-secondary {
+    .subscription-btn.unsubscribe {
       background: transparent;
       color: var(--accent);
       border-color: var(--accent);
     }
 
-    .btn-secondary:hover {
+    .subscription-btn.unsubscribe:hover {
       background: var(--paper-2);
-      border-color: var(--accent-l);
       color: var(--accent-l);
+      border-color: var(--accent-l);
+    }
+
+    .subscription-status {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.8rem;
+      color: var(--ink-2);
+      margin-bottom: 1.4rem;
+    }
+
+    .subscription-status-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--ink-3);
+    }
+
+    .subscription-status-dot.subscribed {
+      background: #4CAF50;
+    }
+
+    .subscription-status-dot.unsubscribed {
+      background: var(--ink-3);
     }
 
     .status-message {
@@ -330,17 +312,18 @@
     }
 
     @media (max-width: 700px) {
-      .button-group {
+      .form-input-group {
         flex-direction: column;
       }
 
-      button {
+      .form-input-group input[type="email"] {
+        border-right: 1px solid var(--rule);
+        border-radius: 2px 2px 0 0;
+      }
+
+      .subscription-btn {
+        border-radius: 0 0 2px 2px;
         width: 100%;
-      }
-
-      .radio-group {
-        flex-direction: column;
-        gap: 1rem;
       }
     }
   </style>
@@ -382,10 +365,14 @@
     <div class="newsletter-section">
       <div id="statusMessage" class="status-message"></div>
 
-      <h2 class="serif">Manage Your Subscription</h2>
-      <form id="newsletterForm">
-        <div class="form-group">
-          <label for="email">Email Address</label>
+      <h2 class="serif">Subscribe</h2>
+      <form id="newsletterForm" class="subscription-form">
+        <div id="subscriptionStatus" class="subscription-status" style="display: none;">
+          <span class="subscription-status-dot"></span>
+          <span id="statusText"></span>
+        </div>
+
+        <div class="form-input-group">
           <input
             type="email"
             id="email"
@@ -393,24 +380,9 @@
             placeholder="your@email.com"
             required
           />
-          <div class="validation-error" id="emailError"></div>
+          <button type="submit" class="subscription-btn" id="submitBtn">Subscribe</button>
         </div>
-
-        <div class="radio-group">
-          <div class="radio-option">
-            <input type="radio" id="subscribe" name="action" value="subscribe" checked />
-            <label for="subscribe">Subscribe</label>
-          </div>
-          <div class="radio-option">
-            <input type="radio" id="unsubscribe" name="action" value="unsubscribe" />
-            <label for="unsubscribe">Unsubscribe</label>
-          </div>
-        </div>
-
-        <div class="button-group">
-          <button type="submit" class="btn-primary" id="submitBtn">Subscribe</button>
-          <button type="reset" class="btn-secondary">Clear</button>
-        </div>
+        <div class="validation-error" id="emailError"></div>
       </form>
 
       <div class="info-box">
@@ -524,23 +496,63 @@
       return re.test(email);
     }
 
-    // Update button text when action changes
-    document.querySelectorAll('input[name="action"]').forEach(radio => {
-      radio.addEventListener('change', () => {
-        const submitBtn = document.getElementById('submitBtn');
-        const action = document.querySelector('input[name="action"]:checked').value;
-        submitBtn.textContent = action === 'subscribe' ? 'Subscribe' : 'Unsubscribe';
-      });
+    function updateSubscriptionStatus(email, isSubscribed) {
+      const statusEl = document.getElementById('subscriptionStatus');
+      const statusDot = statusEl.querySelector('.subscription-status-dot');
+      const statusText = document.getElementById('statusText');
+      const submitBtn = document.getElementById('submitBtn');
+
+      if (isSubscribed) {
+        statusDot.classList.add('subscribed');
+        statusDot.classList.remove('unsubscribed');
+        statusText.textContent = `Subscribed as ${email}`;
+        submitBtn.textContent = 'Unsubscribe';
+        submitBtn.classList.add('unsubscribe');
+      } else {
+        statusDot.classList.remove('subscribed');
+        statusDot.classList.add('unsubscribed');
+        statusText.textContent = `Not subscribed`;
+        submitBtn.textContent = 'Subscribe';
+        submitBtn.classList.remove('unsubscribe');
+      }
+
+      statusEl.style.display = 'flex';
+    }
+
+    function hideSubscriptionStatus() {
+      const statusEl = document.getElementById('subscriptionStatus');
+      statusEl.style.display = 'none';
+    }
+
+    // Check subscription status when email is entered
+    document.getElementById('email').addEventListener('blur', async () => {
+      const email = document.getElementById('email').value.trim();
+
+      if (!email || !validateEmail(email)) {
+        hideSubscriptionStatus();
+        return;
+      }
+
+      try {
+        const response = await fetch(`${API_ENDPOINT}/status?email=${encodeURIComponent(email)}`);
+        if (response.ok) {
+          const data = await response.json();
+          updateSubscriptionStatus(email, data.subscribed);
+        } else {
+          hideSubscriptionStatus();
+        }
+      } catch (error) {
+        hideSubscriptionStatus();
+      }
     });
 
-    /* Handle Form Submission */
+    // Handle Form Submission
     document.getElementById('newsletterForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       clearValidationErrors();
       hideStatus();
 
       const email = document.getElementById('email').value.trim();
-      const action = document.querySelector('input[name="action"]:checked').value;
 
       if (!email) {
         showValidationError('emailError', 'Email is required');
@@ -552,15 +564,18 @@
         return;
       }
 
-      if (action === 'unsubscribe') {
+      const submitBtn = document.getElementById('submitBtn');
+      const isUnsubscribe = submitBtn.classList.contains('unsubscribe');
+
+      if (isUnsubscribe) {
         if (!confirm('Are you sure you want to unsubscribe from The Phronesis Brief?')) {
           return;
         }
       }
 
       try {
-        const endpoint = action === 'subscribe' ? '/subscribe' : '/unsubscribe';
-        showStatus(action === 'subscribe' ? 'Subscribing...' : 'Unsubscribing...', 'info');
+        const endpoint = isUnsubscribe ? '/unsubscribe' : '/subscribe';
+        showStatus(isUnsubscribe ? 'Unsubscribing...' : 'Subscribing...', 'info');
 
         const response = await fetch(`${API_ENDPOINT}${endpoint}`, {
           method: 'POST',
@@ -571,13 +586,13 @@
         const data = await response.json();
 
         if (response.ok) {
-          const message = action === 'subscribe'
-            ? (data.message || 'Successfully subscribed! Check your email for confirmation.')
-            : (data.message || 'Successfully unsubscribed.');
+          const message = isUnsubscribe
+            ? (data.message || 'Successfully unsubscribed. We'll miss you.')
+            : (data.message || 'Successfully subscribed! Check your email for confirmation.');
           showStatus(message, 'success');
-          document.getElementById('newsletterForm').reset();
+          updateSubscriptionStatus(email, !isUnsubscribe);
         } else {
-          showStatus(data.error || `${action === 'subscribe' ? 'Subscription' : 'Unsubscription'} failed. Please try again.`, 'error');
+          showStatus(data.error || `${isUnsubscribe ? 'Unsubscription' : 'Subscription'} failed. Please try again.`, 'error');
         }
       } catch (error) {
         showStatus('Network error. Please try again later.', 'error');
