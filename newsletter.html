@@ -433,10 +433,35 @@
 
   <script src="chat.js" defer></script>
   <script>
-    // ── nav ──
-    const navT = document.getElementById('nav-toggle'), navM = document.getElementById('nav-menu');
-    navT.addEventListener('click', e => { e.stopPropagation(); navT.classList.toggle('is-open'); navM.classList.toggle('is-open'); });
-    document.addEventListener('click', () => { navT.classList.remove('is-open'); navM.classList.remove('is-open'); });
+    // ── Nav Menu Toggle ──
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    // Toggle menu open/closed
+    navToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navToggle.classList.toggle('is-open');
+      navMenu.classList.toggle('is-open');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', () => {
+      navToggle.classList.remove('is-open');
+      navMenu.classList.remove('is-open');
+    });
+
+    // Close menu when a link is clicked
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('is-open');
+        navMenu.classList.remove('is-open');
+      });
+    });
+
+    // Prevent menu from closing when clicking inside it
+    navMenu.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
 
     const API_ENDPOINT = 'https://phronesis-newsletter.sclanga315.workers.dev';
 
