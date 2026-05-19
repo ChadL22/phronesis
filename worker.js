@@ -167,10 +167,64 @@ Respond ONLY with a valid JSON object. No preamble, no markdown fences. Include 
       }
     }
 
-    // Handle CORS preflight for subscribe
-    if (url.pathname === '/api/subscribe' && request.method === 'OPTIONS') {
+    // Newsletter unsubscribe
+    if (url.pathname === '/api/unsubscribe' && request.method === 'POST') {
+      try {
+        const body = await request.json();
+        const email = (body.email || '').trim().toLowerCase();
+
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          return new Response(JSON.stringify({ success: false, error: 'Please enter a valid email address.' }), {
+            status: 400, headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+          });
+        }
+
+        const existing = await env.SUBSCRIBERS.get(email);
+        if (!existing) {
+          return new Response(JSON.stringify({ success: false, error: 'This email is not subscribed.' }), {
+            status: 404, headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+          });
+        }
+
+        await env.SUBSCRIBERS.delete(email);
+
+        return new Response(JSON.stringify({ success: true, message: 'Successfully unsubscribed. We\'ll miss you.' }), {
+          headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+        });
+      } catch (err) {
+        return new Response(JSON.stringify({ success: false, error: 'Something went wrong. Please try again.' }), {
+          status: 500, headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+        });
+      }
+    }
+
+    // Newsletter subscription status check
+    if (url.pathname === '/api/status' && request.method === 'GET') {
+      try {
+        const email = (url.searchParams.get('email') || '').trim().toLowerCase();
+
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          return new Response(JSON.stringify({ subscribed: false }), {
+            headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+          });
+        }
+
+        const existing = await env.SUBSCRIBERS.get(email);
+
+        return new Response(JSON.stringify({ subscribed: !!existing }), {
+          headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+        });
+      } catch (err) {
+        return new Response(JSON.stringify({ subscribed: false }), {
+          status: 500, headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+        });
+      }
+    }
+
+    // Handle CORS preflight for API routes
+    if ((url.pathname === '/api/subscribe' || url.pathname === '/api/unsubscribe' || url.pathname === '/api/status') && request.method === 'OPTIONS') {
       return new Response(null, {
-        headers: { ...CORS_HEADERS, 'Access-Control-Allow-Methods': 'POST, OPTIONS' },
+        headers: { ...CORS_HEADERS, 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS' },
       });
     }
 
