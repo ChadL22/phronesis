@@ -17,6 +17,7 @@
 
     .newsletter-section {
       margin-bottom: 4rem;
+      margin-top: 2rem;
     }
 
     .newsletter-section h2 {
@@ -385,6 +386,11 @@
   </div>
 
   <script>
+    // ── NAVIGATION MENU TOGGLE ──
+    const t = document.getElementById('nav-toggle'), m = document.getElementById('nav-menu');
+    t.addEventListener('click', e => { e.stopPropagation(); t.classList.toggle('is-open'); m.classList.toggle('is-open'); });
+    document.addEventListener('click', () => { t.classList.remove('is-open'); m.classList.remove('is-open'); });
+
     const API_ENDPOINT = 'https://phronesis-newsletter.sclanga315.workers.dev';
 
     function showStatus(message, type = 'info') {
