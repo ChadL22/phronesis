@@ -6,148 +6,25 @@
   <title>Newsletter — Phronesis</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300,1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="shared.css" />
+  <link rel="stylesheet" href="chat.css" />
   <style>
-    /* ── NAV MENU STYLES ── */
-    .nav-menu-toggle {
-      display: none;
-      background: none;
-      border: 1px solid var(--rule);
-      padding: 0.4rem 0.8rem;
-      border-radius: 2px;
-      cursor: pointer;
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-3);
-      transition: all 0.2s;
-    }
-    .nav-menu-toggle:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-    .nav-menu-toggle.is-open {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-    .nav-chevron {
-      display: inline-block;
-      transition: transform 0.2s;
-      margin-left: 0.3rem;
-    }
-    .nav-menu-toggle.is-open .nav-chevron {
-      transform: rotate(180deg);
-    }
-    .nav-menu {
-      display: flex;
-      gap: 2.2rem;
-      list-style: none;
-      align-items: center;
-    }
-    .nav-menu a {
-      font-size: 0.72rem;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-2);
-      transition: color 0.2s;
-    }
-    .nav-menu a:hover,
-    .nav-menu a.active {
-      color: var(--accent);
-    }
-    .nav-menu-section {
-      font-size: 0.62rem;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: var(--ink-3);
-      font-weight: 500;
-    }
-    .nav-menu-divider {
-      height: 1px;
-      background: var(--rule);
-      margin: 0.5rem 0;
-    }
-    @media (max-width: 700px) {
-      .nav-menu-toggle {
-        display: block;
-      }
-      .nav-menu {
-        position: absolute;
-        top: 58px;
-        left: 0;
-        right: 0;
-        background: var(--paper);
-        border-bottom: 1px solid var(--rule);
-        flex-direction: column;
-        gap: 0;
-        align-items: flex-start;
-        padding: 1.5rem clamp(1.5rem, 5vw, 5rem);
-        display: none;
-      }
-      .nav-menu.is-open {
-        display: flex;
-      }
-      .nav-menu li {
-        width: 100%;
-      }
-      .nav-menu a,
-      .nav-menu-section {
-        display: block;
-        padding: 0.5rem 0;
-      }
-    }
-
-    /* ── HERO SECTION ── */
-    .newsletter-hero {
-      padding: clamp(3.5rem, 8vw, 6rem) clamp(1.5rem, 5vw, 5rem) 3rem;
-      max-width: 1160px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 4rem;
-      align-items: end;
-    }
-
-    .newsletter-hero h1 {
-      font-family: var(--serif);
-      font-size: clamp(2.6rem, 5vw, 4.2rem);
-      font-weight: 300;
-      line-height: 1.06;
-      letter-spacing: -0.01em;
-    }
-
-    .newsletter-hero h1 em {
-      font-style: italic;
-      color: var(--accent);
-    }
-
-    .newsletter-hero-desc {
-      font-family: var(--serif);
-      font-size: 1.1rem;
-      font-weight: 300;
-      line-height: 1.7;
-      color: var(--ink-2);
-      border-left: 2px solid var(--accent);
-      padding-left: 1.4rem;
-    }
-
-    /* ── SUBSCRIPTION SECTION ── */
     .newsletter-container {
       max-width: 1160px;
       margin: 0 auto;
-      padding: 3.5rem clamp(1.5rem, 5vw, 5rem) 5rem;
+      padding: 0 clamp(1.5rem, 5vw, 5rem) 5rem;
     }
 
-    .subscription-wrapper {
+    .newsletter-content {
       display: grid;
       grid-template-columns: 1fr 1.4fr;
       gap: 4rem;
       align-items: start;
+      margin-bottom: 4rem;
     }
 
-    .subscription-form {
+    .newsletter-form {
       margin-bottom: 0;
     }
 
@@ -234,10 +111,6 @@
       background: #4CAF50;
     }
 
-    .subscription-status-dot.unsubscribed {
-      background: var(--ink-3);
-    }
-
     .status-message {
       padding: 1.2rem 1.4rem;
       border-radius: 2px;
@@ -299,11 +172,9 @@
       color: var(--accent-l);
     }
 
-    /* ── FAQ SECTION ── */
     .faq-section {
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 3.5rem clamp(1.5rem, 5vw, 5rem) 5rem;
+      border-top: 1px solid var(--rule);
+      padding-top: 3.5rem;
     }
 
     .faq-section h2 {
@@ -354,9 +225,10 @@
     }
 
     @media (max-width: 900px) {
-      .newsletter-hero { grid-template-columns: 1fr; gap: 2rem; }
-      .subscription-wrapper { grid-template-columns: 1fr; gap: 2rem; }
-      .faq-grid { grid-template-columns: 1fr; }
+      .newsletter-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
     }
 
     @media (max-width: 700px) {
@@ -373,11 +245,14 @@
         border-radius: 0 0 2px 2px;
         width: 100%;
       }
+
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-
   <nav>
     <a href="/" class="nav-brand">Phronesis <span>Research</span></a>
     <button class="nav-menu-toggle" id="nav-toggle">Menu <span class="nav-chevron">▾</span></button>
@@ -396,12 +271,12 @@
     </ul>
   </nav>
 
-  <div class="newsletter-hero">
+  <div class="page-header">
     <div>
       <div class="page-header-eyebrow"><span class="label">Newsletter</span></div>
       <h1 class="serif">The Phronesis<br/><em>Brief</em></h1>
     </div>
-    <p class="newsletter-hero-desc">
+    <p class="page-header-desc">
       A monthly briefing on developments at the intersection of technology, law, and policy. Produced in collaboration with the University of Maryland's Tech Policy Hub. Signal over noise.
     </p>
   </div>
@@ -409,11 +284,11 @@
   <div class="section-rule"></div>
 
   <div class="newsletter-container">
-    <div class="subscription-wrapper">
+    <div class="newsletter-content">
       <div>
         <div id="statusMessage" class="status-message"></div>
 
-        <form id="newsletterForm" class="subscription-form">
+        <form id="newsletterForm" class="newsletter-form">
           <div id="subscriptionStatus" class="subscription-status" style="display: none;">
             <span class="subscription-status-dot"></span>
             <span id="statusText"></span>
@@ -440,42 +315,40 @@
         <p><strong>Archive:</strong> All past issues are available on our <a href="#" id="substackLink">Substack page</a>.</p>
       </div>
     </div>
-  </div>
 
-  <div class="section-rule"></div>
+    <div class="faq-section">
+      <h2 class="serif">Frequently Asked Questions</h2>
 
-  <div class="faq-section">
-    <h2 class="serif">Frequently Asked Questions</h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <div class="faq-question">How often do you send The Brief?</div>
+          <div class="faq-answer">We send one email per month, typically on the first Monday of the month. Each issue covers the prior month's key developments in technology law and policy.</div>
+        </div>
 
-    <div class="faq-grid">
-      <div class="faq-item">
-        <div class="faq-question">How often do you send The Brief?</div>
-        <div class="faq-answer">We send one email per month, typically on the first Monday of the month. Each issue covers the prior month's key developments in technology law and policy.</div>
-      </div>
+        <div class="faq-item">
+          <div class="faq-question">What are the six sections?</div>
+          <div class="faq-answer"><strong>At Phronesis:</strong> New research and analysis. <strong>Signals:</strong> Emerging trends. <strong>Synthesis:</strong> Expert analysis. <strong>Opportunities & Deadlines:</strong> Upcoming events and key dates. <strong>Worth Reading:</strong> Curated sources. <strong>Closing Note:</strong> Reflections.</div>
+        </div>
 
-      <div class="faq-item">
-        <div class="faq-question">What are the six sections?</div>
-        <div class="faq-answer"><strong>At Phronesis:</strong> New research and analysis. <strong>Signals:</strong> Emerging trends. <strong>Synthesis:</strong> Expert analysis. <strong>Opportunities & Deadlines:</strong> Upcoming events and key dates. <strong>Worth Reading:</strong> Curated sources. <strong>Closing Note:</strong> Reflections.</div>
-      </div>
+        <div class="faq-item">
+          <div class="faq-question">What if I miss an issue?</div>
+          <div class="faq-answer">All past issues of The Brief are archived on our Substack page. You can browse the complete archive, search by topic, and read previous months at your convenience.</div>
+        </div>
 
-      <div class="faq-item">
-        <div class="faq-question">What if I miss an issue?</div>
-        <div class="faq-answer">All past issues of The Brief are archived on our Substack page. You can browse the complete archive, search by topic, and read previous months at your convenience.</div>
-      </div>
+        <div class="faq-item">
+          <div class="faq-question">Who produces The Brief?</div>
+          <div class="faq-answer">The Phronesis Brief is produced in collaboration with the University of Maryland's Tech Policy Hub, combining perspectives from independent research and academic expertise.</div>
+        </div>
 
-      <div class="faq-item">
-        <div class="faq-question">Who produces The Brief?</div>
-        <div class="faq-answer">The Phronesis Brief is produced in collaboration with the University of Maryland's Tech Policy Hub, combining perspectives from independent research and academic expertise.</div>
-      </div>
+        <div class="faq-item">
+          <div class="faq-question">Is my email private?</div>
+          <div class="faq-answer">Your email address is stored securely and used only for sending you The Phronesis Brief. We do not sell, trade, or share your information with third parties.</div>
+        </div>
 
-      <div class="faq-item">
-        <div class="faq-question">Is my email private?</div>
-        <div class="faq-answer">Your email address is stored securely and used only for sending you The Phronesis Brief. We do not sell, trade, or share your information with third parties.</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">Can I change my email?</div>
-        <div class="faq-answer">If you need to update your email, simply enter your new email address and click subscribe. You can then unsubscribe from the old address using the same form.</div>
+        <div class="faq-item">
+          <div class="faq-question">Can I change my email?</div>
+          <div class="faq-answer">If you need to update your email, simply enter your new email address and click subscribe. You can then unsubscribe from the old address using the same form.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -511,9 +384,8 @@
     <div class="footer-col">
       <h4>Site</h4>
       <ul>
+        <li><a href="/corpus">Corpus</a></li>
         <li><a href="/about">About</a></li>
-        <li><a href="/research">All Publications</a></li>
-        <li><a href="https://chadl22.github.io" target="_blank">Personal Site</a></li>
       </ul>
     </div>
   </footer>
@@ -522,11 +394,12 @@
     <span class="phronesis-greek">&#x03C6;&#x03C1;&#x03CC;&#x03BD;&#x03B7;&#x03C3;&#x03B9;&#x03C2;</span>
   </div>
 
+  <script src="chat.js" defer></script>
   <script>
-    // ── NAVIGATION MENU TOGGLE ──
-    const t = document.getElementById('nav-toggle'), m = document.getElementById('nav-menu');
-    t.addEventListener('click', e => { e.stopPropagation(); t.classList.toggle('is-open'); m.classList.toggle('is-open'); });
-    document.addEventListener('click', () => { t.classList.remove('is-open'); m.classList.remove('is-open'); });
+    // ── nav ──
+    const navT = document.getElementById('nav-toggle'), navM = document.getElementById('nav-menu');
+    navT.addEventListener('click', e => { e.stopPropagation(); navT.classList.toggle('is-open'); navM.classList.toggle('is-open'); });
+    document.addEventListener('click', () => { navT.classList.remove('is-open'); navM.classList.remove('is-open'); });
 
     const API_ENDPOINT = 'https://phronesis-newsletter.sclanga315.workers.dev';
 
@@ -570,13 +443,11 @@
 
       if (isSubscribed) {
         statusDot.classList.add('subscribed');
-        statusDot.classList.remove('unsubscribed');
         statusText.textContent = `Subscribed as ${email}`;
         submitBtn.textContent = 'Unsubscribe';
         submitBtn.classList.add('unsubscribe');
       } else {
         statusDot.classList.remove('subscribed');
-        statusDot.classList.add('unsubscribed');
         statusText.textContent = `Not subscribed`;
         submitBtn.textContent = 'Subscribe';
         submitBtn.classList.remove('unsubscribe');
@@ -665,5 +536,38 @@
     });
   </script>
 
+  <!-- Newsletter Subscription Script for bottom form -->
+  <script>
+  (function() {
+    const WORKER_URL = 'https://phronesis-newsletter.sclanga315.workers.dev/subscribe';
+    document.querySelectorAll('.newsletter-form').forEach(form => {
+      const input = form.querySelector('input[type="email"]');
+      const button = form.querySelector('button');
+      if (!input || !button) return;
+      button.addEventListener('click', () => handleSubscribe(form, input, button));
+      input.addEventListener('keypress', (e) => { if (e.key === 'Enter') { e.preventDefault(); handleSubscribe(form, input, button); }});
+    });
+    async function handleSubscribe(form, input, button) {
+      const email = input.value.trim();
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showMessage(form, 'Please enter a valid email address', 'error'); return; }
+      const originalText = button.textContent; button.disabled = true; button.textContent = 'Subscribing...';
+      try {
+        const response = await fetch(WORKER_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email }) });
+        const data = await response.json();
+        if (response.ok && data.success) { showMessage(form, data.message || 'Successfully subscribed!', 'success'); input.value = ''; }
+        else { showMessage(form, data.error || 'Subscription failed', 'error'); }
+      } catch (error) { console.error('Newsletter error:', error); showMessage(form, 'Network error. Please try again.', 'error'); }
+      finally { button.disabled = false; button.textContent = originalText; }
+    }
+    function showMessage(form, message, type) {
+      const existing = form.querySelector('.newsletter-message'); if (existing) existing.remove();
+      const msg = document.createElement('div'); msg.className = 'newsletter-message newsletter-message--' + type; msg.textContent = message;
+      Object.assign(msg.style, { marginTop: '0.75rem', padding: '0.65rem 1rem', borderRadius: '4px', fontSize: '0.8rem', fontFamily: 'var(--sans)',
+        backgroundColor: type === 'success' ? '#d4edda' : '#f8d7da', color: type === 'success' ? '#155724' : '#721c24',
+        border: type === 'success' ? '1px solid #c3e6cb' : '1px solid #f5c6cb' });
+      form.appendChild(msg); setTimeout(() => msg.remove(), 5000);
+    }
+  })();
+  </script>
 </body>
 </html>
