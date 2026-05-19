@@ -17,8 +17,8 @@
 
     .newsletter-content {
       display: grid;
-      grid-template-columns: 1.4fr 0.6fr;
-      gap: 6rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
       align-items: start;
       margin-bottom: 4rem;
       padding: 3.5rem 0;
@@ -33,21 +33,21 @@
 
     .info-box {
       background: var(--paper-2);
-      padding: 2.5rem;
+      padding: 2rem;
       border-left: 2px solid var(--accent);
       border-radius: 2px;
     }
 
     .info-box h3 {
       font-family: var(--serif);
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 400;
       line-height: 1.2;
       color: var(--ink);
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
     }
 
-    .info-box-section { margin-bottom: 1.5rem; }
+    .info-box-section { margin-bottom: 1rem; }
     .info-box-section:last-child { margin-bottom: 0; }
 
     .info-box-label {
@@ -59,9 +59,9 @@
 
     .info-box p {
       font-family: var(--serif);
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       font-weight: 300;
-      line-height: 1.7;
+      line-height: 1.65;
       color: var(--ink-2);
       margin: 0;
     }
@@ -223,7 +223,7 @@
     }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 1024px) { .newsletter-content { gap: 4rem; } }
+    @media (max-width: 1024px) { .newsletter-content { gap: 3rem; } }
     @media (max-width: 900px)  { .newsletter-content { grid-template-columns: 1fr; gap: 2.5rem; } }
     @media (max-width: 700px)  {
       .newsletter-right h2 { font-size: 1.2rem; }
