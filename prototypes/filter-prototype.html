@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unified Filter System — Prototype</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1A1916;
+      --ink-2: #4A4944;
+      --ink-3: #8A8880;
+      --paper: #F6F3EC;
+      --paper-2: #EDE9DF;
+      --accent: #2B4736;
+      --accent-l: #3D6B50;
+      --rule: #D9D5CA;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Outfit', system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--ink);
+      padding: 2rem;
+      line-height: 1.6;
+    }
+
+    .demo-header {
+      max-width: 1160px;
+      margin: 0 auto 3rem;
+      text-align: center;
+    }
+
+    .demo-header h1 {
+      font-family: var(--serif);
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .demo-header p {
+      font-size: 0.9rem;
+      color: var(--ink-3);
+      margin-bottom: 1.5rem;
+    }
+
+    .demo-tabs {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .demo-tab {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.5rem 1rem;
+      background: none;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      color: var(--ink-3);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .demo-tab:hover {
+      border-color: var(--accent);
+      color: var(--ink);
+    }
+
+    .demo-tab.active {
+      background: var(--accent);
+      color: #EEE8DA;
+      border-color: var(--accent);
+    }
+
+    .demo-section {
+      display: none;
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .demo-section.active {
+      display: block;
+    }
+
+    .demo-title {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+
+    .demo-desc {
+      font-size: 0.85rem;
+      color: var(--ink-3);
+      margin-bottom: 1.5rem;
+    }
+
+    .filter-demo {
+      background: white;
+      border: 1px solid var(--rule);
+      box-shadow: 0 2px 12px rgba(26, 25, 22, 0.08);
+      margin-bottom: 2rem;
+    }
+
+    .sample-content {
+      padding: 3rem 2rem;
+      text-align: center;
+      color: var(--ink-3);
+      font-style: italic;
+      border-top: 1px solid var(--rule);
+    }
+  </style>
+  <link rel="stylesheet" href="filter-system.css">
+</head>
+<body>
+  
+  <div class="demo-header">
+    <h1>Unified Filter System</h1>
+    <p>Interactive prototype showing the consistent filter design across all publication pages</p>
+    
+    <div class="demo-tabs">
+      <button class="demo-tab active" data-page="research">Research Papers</button>
+      <button class="demo-tab" data-page="policy">Policy Artifacts</button>
+      <button class="demo-tab" data-page="legal">Legal Analyses</button>
+      <button class="demo-tab" data-page="essays">Essays</button>
+      <button class="demo-tab" data-page="articles">Articles</button>
+      <button class="demo-tab" data-page="reports">Reports</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       RESEARCH PAPERS
+  ═══════════════════════════════════════════════════════ -->
+  <div class="demo-section active" data-page="research">
+    <h2 class="demo-title">Research Papers</h2>
+    <p class="demo-desc">Primary: FIELD • Collapsible: ORIGIN</p>
+    
+    <div class="filter-demo">
+      <div class="unified-filter-controls">
+        <div class="filter-primary-row">
+          <div class="filter-primary-section">
+            <span class="filter-label">Field</span>
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">CS</button>
+            <button class="filter-btn">Public Policy</button>
+            <button class="filter-btn">Economics</button>
+            <button class="filter-btn">Math</button>
+            <button class="filter-btn">Philosophy</button>
+          </div>
+
+          <button class="filter-more-toggle" onclick="toggleSecondary(this)">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            More Filters
+          </button>
+
+          <div class="filter-view-toggle">
+            <button class="filter-view-btn active">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+              Cards
+            </button>
+            <button class="filter-view-btn">
+              <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+              List
+            </button>
+          </div>
+        </div>
+
+        <div class="filter-secondary">
+          <div class="filter-secondary-inner">
+            <div class="filter-group">
+              <span class="filter-label">Origin</span>
+              <button class="filter-btn active">All</button>
+              <button class="filter-btn">Original</button>
+              <button class="filter-btn">Via External</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sample-content">Sample content area — papers would appear here</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       POLICY ARTIFACTS
+  ═══════════════════════════════════════════════════════ -->
+  <div class="demo-section" data-page="policy">
+    <h2 class="demo-title">Policy Artifacts</h2>
+    <p class="demo-desc">Primary: LEVEL • Collapsible: TYPE + ORIGIN</p>
+    
+    <div class="filter-demo">
+      <div class="unified-filter-controls">
+        <div class="filter-primary-row">
+          <div class="filter-primary-section">
+            <span class="filter-label">Level</span>
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Federal</button>
+            <button class="filter-btn">State</button>
+            <button class="filter-btn">International</button>
+          </div>
+
+          <button class="filter-more-toggle" onclick="toggleSecondary(this)">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            More Filters
+          </button>
+
+          <div class="filter-view-toggle">
+            <button class="filter-view-btn active">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+              Cards
+            </button>
+            <button class="filter-view-btn">
+              <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+              List
+            </button>
+          </div>
+        </div>
+
+        <div class="filter-secondary">
+          <div class="filter-secondary-inner">
+            <div class="filter-group">
+              <span class="filter-label">Type</span>
+              <button class="filter-btn active">All</button>
+              <button class="filter-btn">Memo</button>
+              <button class="filter-btn">Proposal</button>
+              <button class="filter-btn">Policy</button>
+            </div>
+            <div class="filter-group">
+              <span class="filter-label">Origin</span>
+              <button class="filter-btn active">All</button>
+              <button class="filter-btn">Original</button>
+              <button class="filter-btn">Via</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sample-content">Sample content area — policy artifacts would appear here</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       LEGAL ANALYSES
+  ═══════════════════════════════════════════════════════ -->
+  <div class="demo-section" data-page="legal">
+    <h2 class="demo-title">Legal Analyses</h2>
+    <p class="demo-desc">Primary: TYPE • Collapsible: TOPIC + ORIGIN</p>
+    
+    <div class="filter-demo">
+      <div class="unified-filter-controls">
+        <div class="filter-primary-row">
+          <div class="filter-primary-section">
+            <span class="filter-label">Type</span>
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Doctrinal</button>
+            <button class="filter-btn">Case</button>
+            <button class="filter-btn">Statutory</button>
+            <button class="filter-btn">Regulatory</button>
+          </div>
+
+          <button class="filter-more-toggle" onclick="toggleSecondary(this)">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            More Filters
+          </button>
+
+          <div class="filter-view-toggle">
+            <button class="filter-view-btn active">
+              <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+              List
+            </button>
+            <button class="filter-view-btn">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+              Cards
+            </button>
+          </div>
+        </div>
+
+        <div class="filter-secondary">
+          <div class="filter-secondary-inner">
+            <div class="filter-group">
+              <span class="filter-label">Topic</span>
+              <button class="filter-btn active">All</button>
+              <button class="filter-btn">First Amendment</button>
+              <button class="filter-btn">Antitrust</button>
+              <button class="filter-btn">Liability</button>
+              <button class="filter-btn">Administrative</button>
+              <button class="filter-btn">IP</button>
+            </div>
+            <div class="filter-group">
+              <span class="filter-label">Origin</span>
+              <button class="filter-btn active">All</button>
+              <button class="filter-btn">Original</button>
+              <button class="filter-btn">Via</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sample-content">Sample content area — legal analyses would appear here</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       ESSAYS
+  ═══════════════════════════════════════════════════════ -->
+  <div class="demo-section" data-page="essays">
+    <h2 class="demo-title">Essays</h2>
+    <p class="demo-desc">Primary: TOPIC • Collapsible: ORIGIN</p>
+    
+    <div class="filter-demo">
+      <div class="unified-filter-controls">
+        <div class="filter-primary-row">
+          <div class="filter-primary-section">
+            <span class="filter-label">Topic</span>
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Governance</button>
+            <button class="filter-btn">Technology</button>
+            <button class="filter-btn">Law</button>
+            <button class="filter-btn">Society</button>
+          </div>
+
+          <button class="filter-more-toggle" onclick="toggleSecondary(this)">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            More Filters
+          </button>
+
+          <div class="filter-view-toggle">
+            <button class="filter-view-btn active">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="10" rx="1"/><line x1="3" y1="17" x2="21" y2="17"/><line x1="3" y1="21" x2="21" y2="21"/></svg>
+              Read
+            </button>
+            <button class="filter-view-btn">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+              Browse
+            </button>
+          </div>
+        </div>
+
+        <div class="filter-secondary">
+          <div class="filter-secondary-inner">
+            <div class="filter-group">
+              <span class="filter-label">Origin</span>
+              <button class="filter-btn active">All</button>
+              <button class="filter-btn">Original</button>
+              <button class="filter-btn">Via</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sample-content">Sample content area — essays would appear here</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       ARTICLES
+  ═══════════════════════════════════════════════════════ -->
+  <div class="demo-section" data-page="articles">
+    <h2 class="demo-title">Articles</h2>
+    <p class="demo-desc">Primary: TOPIC + Search • No collapsible (simple)</p>
+    
+    <div class="filter-demo">
+      <div class="unified-filter-controls">
+        <div class="filter-primary-row">
+          <div class="filter-primary-section">
+            <span class="filter-label">Topic</span>
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">AI Policy</button>
+            <button class="filter-btn">Competition</button>
+            <button class="filter-btn">Platform Law</button>
+            <button class="filter-btn">Legislation</button>
+          </div>
+
+          <div class="filter-search-wrap">
+            <input class="filter-search" type="text" placeholder="Search articles…">
+            <svg class="filter-search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+          </div>
+
+          <div class="filter-view-toggle">
+            <button class="filter-view-btn active">
+              <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+              Stream
+            </button>
+            <button class="filter-view-btn">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+              Cards
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="sample-content">Sample content area — articles would appear here (no collapsible filters)</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       REPORTS
+  ═══════════════════════════════════════════════════════ -->
+  <div class="demo-section" data-page="reports">
+    <h2 class="demo-title">Reports</h2>
+    <p class="demo-desc">Primary: YEAR + Search • Collapsible: CATEGORY + ORIGIN</p>
+    
+    <div class="filter-demo">
+      <div class="unified-filter-controls">
+        <div class="filter-primary-row">
+          <div class="filter-primary-section">
+            <span class="filter-label">Year</span>
+            <button class="filter-btn active">All Years</button>
+            <button class="filter-btn">2025</button>
+            <button class="filter-btn">2024</button>
+          </div>
+
+          <div class="filter-search-wrap">
+            <input class="filter-search" type="text" placeholder="Search reports…">
+            <svg class="filter-search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+          </div>
+
+          <button class="filter-more-toggle" onclick="toggleSecondary(this)">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            More Filters
+          </button>
+
+          <div class="filter-view-toggle">
+            <button class="filter-view-btn active">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+              Cards
+            </button>
+            <button class="filter-view-btn">
+              <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+              List
+            </button>
+          </div>
+        </div>
+
+        <div class="filter-secondary">
+          <div class="filter-secondary-inner">
+            <div class="filter-group">
+              <span class="filter-label">Category</span>
+              <button class="filter-btn active">All</button>
+              <button class="filter-btn">Government</button>
+              <button class="filter-btn">Industry</button>
+              <button class="filter-btn">Academia</button>
+            </div>
+            <div class="filter-group">
+              <span class="filter-label">Origin</span>
+              <button class="filter-btn active">All</button>
+              <button class="filter-btn">Original</button>
+              <button class="filter-btn">Via</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sample-content">Sample content area — reports would appear here</div>
+    </div>
+  </div>
+
+  <script>
+    // Page switching
+    document.querySelectorAll('.demo-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const page = tab.dataset.page;
+        
+        // Update tabs
+        document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        
+        // Update sections
+        document.querySelectorAll('.demo-section').forEach(s => s.classList.remove('active'));
+        document.querySelector(`.demo-section[data-page="${page}"]`).classList.add('active');
+      });
+    });
+
+    // Toggle secondary filters
+    function toggleSecondary(btn) {
+      btn.classList.toggle('active');
+      const container = btn.closest('.unified-filter-controls');
+      const secondary = container.querySelector('.filter-secondary');
+      secondary.classList.toggle('open');
+    }
+
+    // Filter button clicks (demo only)
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const group = btn.parentElement;
+        group.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    // View toggle clicks (demo only)
+    document.querySelectorAll('.filter-view-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const toggle = btn.parentElement;
+        toggle.querySelectorAll('.filter-view-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
