@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="shared.css" />
-  <link rel="stylesheet" href="chat.css" />
   <style>
     .newsletter-container {
       max-width: 1160px;
@@ -16,52 +15,114 @@
       padding: 0 clamp(1.5rem, 5vw, 5rem) 5rem;
     }
 
+    /* ── NEWSLETTER MAIN CONTENT ── */
     .newsletter-content {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.4fr 0.6fr;
       gap: 6rem;
-      align-items: center;
+      align-items: start;
       margin-bottom: 4rem;
       padding: 3.5rem 0;
     }
 
+    /* ── LEFT COLUMN: LARGE INFO BOX ── */
     .newsletter-left {
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
     }
 
-    .newsletter-left h2 {
+    .info-box {
+      background: var(--paper-2);
+      padding: 2.5rem;
+      border-left: 2px solid var(--accent);
+      border-radius: 2px;
+    }
+
+    .info-box h3 {
       font-family: var(--serif);
-      font-size: 1.6rem;
+      font-size: 1.2rem;
       font-weight: 400;
       line-height: 1.2;
       color: var(--ink);
+      margin-bottom: 1.2rem;
     }
 
-    .newsletter-left p {
+    .info-box-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .info-box-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-box-label {
       font-family: var(--serif);
-      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+
+    .info-box p {
+      font-family: var(--serif);
+      font-size: 0.95rem;
       font-weight: 300;
       line-height: 1.7;
       color: var(--ink-2);
+      margin: 0;
+    }
+
+    .info-box a {
+      color: var(--accent);
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+
+    .info-box a:hover {
+      color: var(--accent-l);
+    }
+
+    /* ── RIGHT COLUMN: SUBSCRIPTION FORM ── */
+    .newsletter-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .newsletter-right h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--ink);
+      margin: 0;
+    }
+
+    .newsletter-right p {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--ink-2);
+      margin: 0;
     }
 
     .newsletter-form {
-      margin-bottom: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
     }
 
     .form-input-group {
       display: flex;
       flex-direction: column;
       gap: 0.8rem;
-      margin-bottom: 0;
     }
 
     .form-input-group input[type="email"] {
-      padding: 1rem 1.2rem;
+      padding: 0.9rem 1rem;
       font-family: var(--sans);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--ink);
       background: var(--paper);
       border: 1px solid var(--rule);
@@ -81,9 +142,9 @@
     }
 
     .subscription-btn {
-      padding: 1rem 2rem;
+      padding: 0.8rem 1.2rem;
       font-family: var(--sans);
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       background: var(--accent);
@@ -93,13 +154,17 @@
       cursor: pointer;
       transition: all 0.2s;
       font-weight: 500;
-      white-space: nowrap;
-      align-self: flex-start;
+      width: 100%;
     }
 
     .subscription-btn:hover {
       background: var(--accent-l);
       border-color: var(--accent-l);
+    }
+
+    .subscription-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
     }
 
     .subscription-btn.unsubscribe {
@@ -118,15 +183,15 @@
       display: flex;
       align-items: center;
       gap: 0.6rem;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: var(--ink-2);
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.6rem;
     }
 
     .subscription-status-dot {
       display: inline-block;
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background: var(--ink-3);
     }
@@ -136,10 +201,10 @@
     }
 
     .status-message {
-      padding: 1.2rem 1.4rem;
+      padding: 1rem 1.2rem;
       border-radius: 2px;
-      margin-bottom: 1.2rem;
-      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      font-size: 0.85rem;
       line-height: 1.6;
       display: none;
     }
@@ -167,9 +232,9 @@
     }
 
     .validation-error {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       color: #B71C1C;
-      margin-top: 0.3rem;
+      margin-top: 0.2rem;
       display: none;
     }
 
@@ -177,42 +242,7 @@
       display: block;
     }
 
-    .newsletter-right {
-      display: flex;
-      flex-direction: column;
-      gap: 1.8rem;
-    }
-
-    .info-box {
-      background: var(--paper-2);
-      padding: 1.8rem 2rem;
-      border-left: 2px solid var(--accent);
-      border-radius: 2px;
-    }
-
-    .info-box p {
-      font-family: var(--serif);
-      font-size: 0.95rem;
-      font-weight: 300;
-      line-height: 1.7;
-      color: var(--ink-2);
-      margin-bottom: 0.8rem;
-    }
-
-    .info-box p:last-child {
-      margin-bottom: 0;
-    }
-
-    .info-box a {
-      color: var(--accent);
-      text-decoration: underline;
-      transition: color 0.2s;
-    }
-
-    .info-box a:hover {
-      color: var(--accent-l);
-    }
-
+    /* ── FAQ SECTION ── */
     .faq-section {
       border-top: 1px solid var(--rule);
       padding-top: 3.5rem;
@@ -254,6 +284,7 @@
       color: var(--ink-2);
     }
 
+    /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       .newsletter-content {
         gap: 4rem;
@@ -265,15 +296,19 @@
         grid-template-columns: 1fr;
         gap: 2.5rem;
       }
-
-      .newsletter-right {
-        gap: 1.5rem;
-      }
     }
 
     @media (max-width: 700px) {
-      .newsletter-left h2 {
-        font-size: 1.4rem;
+      .newsletter-right h2 {
+        font-size: 1.2rem;
+      }
+
+      .info-box {
+        padding: 2rem;
+      }
+
+      .info-box h3 {
+        font-size: 1.1rem;
       }
 
       .faq-grid {
@@ -315,9 +350,37 @@
 
   <div class="newsletter-container">
     <div class="newsletter-content">
+      <!-- LEFT: Large info box -->
       <div class="newsletter-left">
+        <div class="info-box">
+          <h3>About The Brief</h3>
+          
+          <div class="info-box-section">
+            <div class="info-box-label">What you'll receive</div>
+            <p>Each month, a curated briefing on key developments in technology law and policy. Organized around six recurring sections: At Phronesis, Signals, Synthesis, Opportunities & Deadlines, Worth Reading, and a Closing Note.</p>
+          </div>
+
+          <div class="info-box-section">
+            <div class="info-box-label">Frequency</div>
+            <p>One email per month, typically sent on the first Monday of the month.</p>
+          </div>
+
+          <div class="info-box-section">
+            <div class="info-box-label">Collaboration</div>
+            <p>Produced in partnership with the <a href="https://techpolicy.ischool.umd.edu/" target="_blank">University of Maryland's Tech Policy Hub</a>.</p>
+          </div>
+
+          <div class="info-box-section">
+            <div class="info-box-label">Archive</div>
+            <p>All past issues are available on our <a href="#" id="substackLink">Substack page</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Subscription form -->
+      <div class="newsletter-right">
         <h2>Get The Brief</h2>
-        <p>Join readers who follow developments in technology law and policy each month. One email, thoughtfully curated.</p>
+        <p>Join readers who follow developments in technology law and policy each month.</p>
 
         <div id="statusMessage" class="status-message"></div>
 
@@ -340,19 +403,9 @@
           <div class="validation-error" id="emailError"></div>
         </form>
       </div>
-
-      <div class="newsletter-right">
-        <div class="info-box">
-          <p><strong>What you'll receive:</strong> Each month, a curated briefing on key developments in technology law and policy. Organized around six recurring sections: At Phronesis, Signals, Synthesis, Opportunities & Deadlines, Worth Reading, and a Closing Note.</p>
-        </div>
-        <div class="info-box">
-          <p><strong>Frequency:</strong> One email per month, typically sent on the first Monday of the month.</p>
-          <p><strong>Collaboration:</strong> Produced in partnership with the <a href="https://techpolicy.ischool.umd.edu/" target="_blank">University of Maryland's Tech Policy Hub</a>.</p>
-          <p><strong>Archive:</strong> All past issues are available on our <a href="#" id="substackLink">Substack page</a>.</p>
-        </div>
-      </div>
     </div>
 
+    <!-- FAQ Section -->
     <div class="faq-section">
       <h2 class="serif">Frequently Asked Questions</h2>
 
@@ -383,8 +436,8 @@
         </div>
 
         <div class="faq-item">
-          <div class="faq-question">Can I change my email?</div>
-          <div class="faq-answer">If you need to update your email, simply enter your new email address and click subscribe. You can then unsubscribe from the old address using the same form.</div>
+          <div class="faq-question">Can I change my email or unsubscribe?</div>
+          <div class="faq-answer">If you're already subscribed, enter your email above and click unsubscribe. To update your email, simply enter your new email address and click subscribe. You can then unsubscribe from the old address.</div>
         </div>
       </div>
     </div>
@@ -431,49 +484,17 @@
     <span class="phronesis-greek">&#x03C6;&#x03C1;&#x03CC;&#x03BD;&#x03B7;&#x03C3;&#x03B9;&#x03C2;</span>
   </div>
 
+  <script src="chat.js" defer></script>
   <script>
-    // ── Nav Menu Toggle ──
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
-
-    // Toggle menu open/closed
-    navToggle.addEventListener('click', (e) => {
-      e.stopPropagation();
-      navToggle.classList.toggle('is-open');
-      navMenu.classList.toggle('is-open');
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', () => {
-      navToggle.classList.remove('is-open');
-      navMenu.classList.remove('is-open');
-    });
-
-    // Close menu when a link is clicked
-    navMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navToggle.classList.remove('is-open');
-        navMenu.classList.remove('is-open');
-      });
-    });
-
-    // Prevent menu from closing when clicking inside it
-    navMenu.addEventListener('click', (e) => {
-      e.stopPropagation();
-    });
-
+    // ═══════════════════════════════════════════════════════════════
+    // NEWSLETTER SUBSCRIPTION FORM
+    // ═══════════════════════════════════════════════════════════════
     const API_ENDPOINT = 'https://phronesis-newsletter.sclanga315.workers.dev';
 
     function showStatus(message, type = 'info') {
       const statusEl = document.getElementById('statusMessage');
       statusEl.textContent = message;
       statusEl.className = `status-message show status-${type}`;
-      window.scrollTo({ top: statusEl.offsetTop - 100, behavior: 'smooth' });
-    }
-
-    function hideStatus() {
-      const statusEl = document.getElementById('statusMessage');
-      statusEl.classList.remove('show');
     }
 
     function clearValidationErrors() {
@@ -522,6 +543,7 @@
       statusEl.style.display = 'none';
     }
 
+    // Check subscription status when email loses focus
     document.getElementById('email').addEventListener('blur', async () => {
       const email = document.getElementById('email').value.trim();
 
@@ -539,14 +561,15 @@
           hideSubscriptionStatus();
         }
       } catch (error) {
+        console.error('Status check error:', error);
         hideSubscriptionStatus();
       }
     });
 
+    // Handle form submission (subscribe/unsubscribe)
     document.getElementById('newsletterForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       clearValidationErrors();
-      hideStatus();
 
       const email = document.getElementById('email').value.trim();
 
@@ -583,7 +606,7 @@
 
         if (response.ok) {
           const message = isUnsubscribe
-            ? (data.message || 'Successfully unsubscribed. We'll miss you.')
+            ? (data.message || 'Successfully unsubscribed. We\'ll miss you.')
             : (data.message || 'Successfully subscribed! Check your email for confirmation.');
           showStatus(message, 'success');
           updateSubscriptionStatus(email, !isUnsubscribe);
@@ -592,43 +615,90 @@
         }
       } catch (error) {
         showStatus('Network error. Please try again later.', 'error');
-        console.error('Newsletter error:', error);
+        console.error('Subscription error:', error);
       }
     });
-  </script>
 
-  <!-- Newsletter Subscription Script for bottom form -->
-  <script>
-  (function() {
-    const WORKER_URL = 'https://phronesis-newsletter.sclanga315.workers.dev/subscribe';
-    document.querySelectorAll('.newsletter-form').forEach(form => {
-      const input = form.querySelector('input[type="email"]');
-      const button = form.querySelector('button');
-      if (!input || !button) return;
-      button.addEventListener('click', () => handleSubscribe(form, input, button));
-      input.addEventListener('keypress', (e) => { if (e.key === 'Enter') { e.preventDefault(); handleSubscribe(form, input, button); }});
-    });
-    async function handleSubscribe(form, input, button) {
-      const email = input.value.trim();
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showMessage(form, 'Please enter a valid email address', 'error'); return; }
-      const originalText = button.textContent; button.disabled = true; button.textContent = 'Subscribing...';
-      try {
-        const response = await fetch(WORKER_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email }) });
-        const data = await response.json();
-        if (response.ok && data.success) { showMessage(form, data.message || 'Successfully subscribed!', 'success'); input.value = ''; }
-        else { showMessage(form, data.error || 'Subscription failed', 'error'); }
-      } catch (error) { console.error('Newsletter error:', error); showMessage(form, 'Network error. Please try again.', 'error'); }
-      finally { button.disabled = false; button.textContent = originalText; }
-    }
-    function showMessage(form, message, type) {
-      const existing = form.querySelector('.newsletter-message'); if (existing) existing.remove();
-      const msg = document.createElement('div'); msg.className = 'newsletter-message newsletter-message--' + type; msg.textContent = message;
-      Object.assign(msg.style, { marginTop: '0.75rem', padding: '0.65rem 1rem', borderRadius: '4px', fontSize: '0.8rem', fontFamily: 'var(--sans)',
-        backgroundColor: type === 'success' ? '#d4edda' : '#f8d7da', color: type === 'success' ? '#155724' : '#721c24',
-        border: type === 'success' ? '1px solid #c3e6cb' : '1px solid #f5c6cb' });
-      form.appendChild(msg); setTimeout(() => msg.remove(), 5000);
-    }
-  })();
+    // ═══════════════════════════════════════════════════════════════
+    // BOTTOM NEWSLETTER BAND SUBSCRIPTION FORM
+    // ═══════════════════════════════════════════════════════════════
+    (function() {
+      const WORKER_URL = 'https://phronesis-newsletter.sclanga315.workers.dev/subscribe';
+      
+      document.querySelectorAll('.newsletter-form').forEach(form => {
+        const input = form.querySelector('input[type="email"]');
+        const button = form.querySelector('button');
+        
+        if (!input || !button) return;
+        if (button.textContent === 'Subscribe' || button.textContent === 'Unsubscribe') return; // Skip main form
+        
+        button.addEventListener('click', () => handleSubscribe(form, input, button));
+        input.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            handleSubscribe(form, input, button);
+          }
+        });
+      });
+
+      async function handleSubscribe(form, input, button) {
+        const email = input.value.trim();
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          showMessage(form, 'Please enter a valid email address', 'error');
+          return;
+        }
+
+        const originalText = button.textContent;
+        button.disabled = true;
+        button.textContent = 'Subscribing...';
+
+        try {
+          const response = await fetch(WORKER_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email })
+          });
+
+          const data = await response.json();
+
+          if (response.ok && data.success) {
+            showMessage(form, data.message || 'Successfully subscribed!', 'success');
+            input.value = '';
+          } else {
+            showMessage(form, data.error || 'Subscription failed', 'error');
+          }
+        } catch (error) {
+          console.error('Newsletter error:', error);
+          showMessage(form, 'Network error. Please try again.', 'error');
+        } finally {
+          button.disabled = false;
+          button.textContent = originalText;
+        }
+      }
+
+      function showMessage(form, message, type) {
+        const existing = form.querySelector('.newsletter-message');
+        if (existing) existing.remove();
+
+        const msg = document.createElement('div');
+        msg.className = 'newsletter-message newsletter-message--' + type;
+        msg.textContent = message;
+
+        Object.assign(msg.style, {
+          marginTop: '0.75rem',
+          padding: '0.65rem 1rem',
+          borderRadius: '4px',
+          fontSize: '0.8rem',
+          fontFamily: 'var(--sans)',
+          backgroundColor: type === 'success' ? '#d4edda' : '#f8d7da',
+          color: type === 'success' ? '#155724' : '#721c24',
+          border: type === 'success' ? '1px solid #c3e6cb' : '1px solid #f5c6cb'
+        });
+
+        form.appendChild(msg);
+        setTimeout(() => msg.remove(), 5000);
+      }
+    })();
   </script>
 </body>
 </html>
