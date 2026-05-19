@@ -18,10 +18,33 @@
 
     .newsletter-content {
       display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 4rem;
-      align-items: start;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
       margin-bottom: 4rem;
+      padding: 3.5rem 0;
+    }
+
+    .newsletter-left {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .newsletter-left h2 {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    .newsletter-left p {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--ink-2);
     }
 
     .newsletter-form {
@@ -30,22 +53,22 @@
 
     .form-input-group {
       display: flex;
-      gap: 0;
-      margin-bottom: 1.8rem;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom: 0;
     }
 
     .form-input-group input[type="email"] {
-      flex: 1;
-      padding: 0.95rem 1.2rem;
+      padding: 1rem 1.2rem;
       font-family: var(--sans);
       font-size: 0.95rem;
       color: var(--ink);
       background: var(--paper);
       border: 1px solid var(--rule);
-      border-right: none;
-      border-radius: 2px 0 0 2px;
+      border-radius: 2px;
       outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
     }
 
     .form-input-group input[type="email"]:focus {
@@ -58,7 +81,7 @@
     }
 
     .subscription-btn {
-      padding: 0.95rem 1.8rem;
+      padding: 1rem 2rem;
       font-family: var(--sans);
       font-size: 0.7rem;
       letter-spacing: 0.12em;
@@ -66,11 +89,12 @@
       background: var(--accent);
       color: #EEE8DA;
       border: 1px solid var(--accent);
-      border-radius: 0 2px 2px 0;
+      border-radius: 2px;
       cursor: pointer;
       transition: all 0.2s;
       font-weight: 500;
       white-space: nowrap;
+      align-self: flex-start;
     }
 
     .subscription-btn:hover {
@@ -96,7 +120,7 @@
       gap: 0.6rem;
       font-size: 0.8rem;
       color: var(--ink-2);
-      margin-bottom: 1.4rem;
+      margin-bottom: 0.8rem;
     }
 
     .subscription-status-dot {
@@ -114,7 +138,7 @@
     .status-message {
       padding: 1.2rem 1.4rem;
       border-radius: 2px;
-      margin-bottom: 1.8rem;
+      margin-bottom: 1.2rem;
       font-size: 0.9rem;
       line-height: 1.6;
       display: none;
@@ -142,9 +166,26 @@
       border-left: 3px solid #2196F3;
     }
 
+    .validation-error {
+      font-size: 0.75rem;
+      color: #B71C1C;
+      margin-top: 0.3rem;
+      display: none;
+    }
+
+    .validation-error.show {
+      display: block;
+    }
+
+    .newsletter-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
     .info-box {
       background: var(--paper-2);
-      padding: 1.5rem 1.8rem;
+      padding: 1.8rem 2rem;
       border-left: 2px solid var(--accent);
       border-radius: 2px;
     }
@@ -213,37 +254,26 @@
       color: var(--ink-2);
     }
 
-    .validation-error {
-      font-size: 0.75rem;
-      color: #B71C1C;
-      margin-top: 0.4rem;
-      display: none;
-    }
-
-    .validation-error.show {
-      display: block;
+    @media (max-width: 1024px) {
+      .newsletter-content {
+        gap: 4rem;
+      }
     }
 
     @media (max-width: 900px) {
       .newsletter-content {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 2.5rem;
+      }
+
+      .newsletter-right {
+        gap: 1.5rem;
       }
     }
 
     @media (max-width: 700px) {
-      .form-input-group {
-        flex-direction: column;
-      }
-
-      .form-input-group input[type="email"] {
-        border-right: 1px solid var(--rule);
-        border-radius: 2px 2px 0 0;
-      }
-
-      .subscription-btn {
-        border-radius: 0 0 2px 2px;
-        width: 100%;
+      .newsletter-left h2 {
+        font-size: 1.4rem;
       }
 
       .faq-grid {
@@ -285,7 +315,10 @@
 
   <div class="newsletter-container">
     <div class="newsletter-content">
-      <div>
+      <div class="newsletter-left">
+        <h2>Get The Brief</h2>
+        <p>Join readers who follow developments in technology law and policy each month. One email, thoughtfully curated.</p>
+
         <div id="statusMessage" class="status-message"></div>
 
         <form id="newsletterForm" class="newsletter-form">
@@ -308,11 +341,15 @@
         </form>
       </div>
 
-      <div class="info-box">
-        <p><strong>What you'll receive:</strong> Each month, a curated briefing on key developments in technology law and policy. Organized around six recurring sections: At Phronesis, Signals, Synthesis, Opportunities & Deadlines, Worth Reading, and a Closing Note.</p>
-        <p><strong>Frequency:</strong> One email per month, typically sent on the first Monday of the month.</p>
-        <p><strong>Collaboration:</strong> Produced in partnership with the <a href="https://techpolicy.ischool.umd.edu/" target="_blank">University of Maryland's Tech Policy Hub</a>.</p>
-        <p><strong>Archive:</strong> All past issues are available on our <a href="#" id="substackLink">Substack page</a>.</p>
+      <div class="newsletter-right">
+        <div class="info-box">
+          <p><strong>What you'll receive:</strong> Each month, a curated briefing on key developments in technology law and policy. Organized around six recurring sections: At Phronesis, Signals, Synthesis, Opportunities & Deadlines, Worth Reading, and a Closing Note.</p>
+        </div>
+        <div class="info-box">
+          <p><strong>Frequency:</strong> One email per month, typically sent on the first Monday of the month.</p>
+          <p><strong>Collaboration:</strong> Produced in partnership with the <a href="https://techpolicy.ischool.umd.edu/" target="_blank">University of Maryland's Tech Policy Hub</a>.</p>
+          <p><strong>Archive:</strong> All past issues are available on our <a href="#" id="substackLink">Substack page</a>.</p>
+        </div>
       </div>
     </div>
 
