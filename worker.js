@@ -130,7 +130,7 @@ Respond ONLY with a valid JSON object. No preamble, no markdown fences. Include 
       }
     }
 
-    // Newsletter subscribe
+    // Newsletter subscribe (dual: KV + Substack)
     if (url.pathname === '/api/subscribe' && request.method === 'POST') {
       try {
         const body = await request.json();
@@ -142,7 +142,7 @@ Respond ONLY with a valid JSON object. No preamble, no markdown fences. Include 
           });
         }
 
-        // Check if already subscribed
+        // Check if already subscribed in KV
         const existing = await env.SUBSCRIBERS.get(email);
         if (existing) {
           return new Response(JSON.stringify({ success: true, message: 'You are already subscribed!' }), {
@@ -156,6 +156,29 @@ Respond ONLY with a valid JSON object. No preamble, no markdown fences. Include 
           subscribedAt: new Date().toISOString(),
           source: request.headers.get('Referer') || 'direct',
         }));
+
+        // Also subscribe to Substack (fire-and-forget)
+        try {
+          await fetch('https://sclanga.substack.com/api/v1/free', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'User-Agent': 'PhronesisResearch/1.0',
+            },
+            body: JSON.stringify({
+              first_url: 'https://phronesisresearch.org/newsletter',
+              first_referrer: 'https://phronesisresearch.org/',
+              current_url: 'https://phronesisresearch.org/newsletter',
+              current_referrer: 'https://phronesisresearch.org/',
+              referral_code: '',
+              source: 'embed',
+              email: email,
+            }),
+          });
+        } catch (substackErr) {
+          // Substack sync is best-effort; don't fail the main subscription
+          console.error('Substack sync failed:', substackErr);
+        }
 
         return new Response(JSON.stringify({ success: true, message: 'Successfully subscribed! Welcome to Phronesis.' }), {
           headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
