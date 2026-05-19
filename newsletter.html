@@ -344,18 +344,7 @@
     </div>
   </div>
 
-  <section class="newsletter-band">
-    <div class="newsletter-inner">
-      <div class="newsletter-copy">
-        <h3 class="serif">Deep dives available.</h3>
-        <p>Explore our research, policy proposals, and analysis across all publication types.</p>
-      </div>
-      <div class="newsletter-form">
-        <input type="email" placeholder="your@email.com" />
-        <button type="button">Browse publications</button>
-      </div>
-    </div>
-  </section>
+
 
   <footer>
     <div>
@@ -474,41 +463,5 @@
     });
   </script>
 
-  <!-- bottom band subscription -->
-  <script>
-  (function() {
-    document.querySelectorAll('.newsletter-form').forEach(form => {
-      const input = form.querySelector('input[type="email"]');
-      const button = form.querySelector('button');
-      if (!input || !button) return;
-
-      button.addEventListener('click', () => sub(form, input, button));
-      input.addEventListener('keypress', e => { if (e.key === 'Enter') { e.preventDefault(); sub(form, input, button); }});
-    });
-
-    async function sub(form, input, button) {
-      const email = input.value.trim();
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg(form, 'Please enter a valid email', 'error'); return; }
-      const orig = button.textContent; button.disabled = true; button.textContent = 'Subscribing...';
-      try {
-        const r = await fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email }) });
-        const d = await r.json();
-        msg(form, d.message || d.error || 'Done.', r.ok ? 'success' : 'error');
-        if (r.ok) input.value = '';
-      } catch { msg(form, 'Network error.', 'error'); }
-      finally { button.disabled = false; button.textContent = orig; }
-    }
-
-    function msg(form, text, type) {
-      let m = form.querySelector('.newsletter-message'); if (m) m.remove();
-      m = document.createElement('div'); m.className = 'newsletter-message';
-      m.textContent = text;
-      Object.assign(m.style, { marginTop: '0.75rem', padding: '0.65rem 1rem', borderRadius: '4px', fontSize: '0.8rem', fontFamily: 'var(--sans)',
-        background: type === 'success' ? '#d4edda' : '#f8d7da', color: type === 'success' ? '#155724' : '#721c24',
-        border: type === 'success' ? '1px solid #c3e6cb' : '1px solid #f5c6cb' });
-      form.appendChild(m); setTimeout(() => m.remove(), 5000);
-    }
-  })();
-  </script>
 </body>
 </html>
