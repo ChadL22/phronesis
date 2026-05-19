@@ -3,617 +3,499 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Phronesis — Newsletter Composer</title>
+  <title>Newsletter — Phronesis</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="shared.css" />
   <style>
-    body { min-height: 100vh; background: var(--paper); }
-
-    /* ── TOP BAR ── */
-    .nl-topbar {
-      background: var(--ink); color: #EEE8DA;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 1.4rem; height: 48px;
-      position: sticky; top: 0; z-index: 100;
-    }
-    .nl-topbar-brand {
-      font-family: var(--serif); font-size: 1rem; font-weight: 500;
-      letter-spacing: 0.04em; color: #EEE8DA;
-      display: flex; align-items: baseline; gap: 0.5rem;
-    }
-    .nl-topbar-brand span {
-      font-family: var(--sans); font-size: 0.55rem; font-weight: 400;
-      letter-spacing: 0.16em; text-transform: uppercase; color: rgba(238,232,218,0.45);
-    }
-    .nl-topbar-right { display: flex; align-items: center; gap: 0.8rem; }
-    .nl-topbar-progress {
-      font-family: var(--sans); font-size: 0.58rem; letter-spacing: 0.12em;
-      text-transform: uppercase; color: rgba(238,232,218,0.45);
-    }
-    .nl-btn {
-      font-family: var(--sans); font-size: 0.6rem; font-weight: 500;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      background: none; border: 1px solid rgba(238,232,218,0.25);
-      color: rgba(238,232,218,0.7); border-radius: 2px;
-      padding: 0.3rem 0.75rem; cursor: pointer; transition: all 0.18s;
-    }
-    .nl-btn:hover { border-color: rgba(238,232,218,0.6); color: #EEE8DA; }
-    .nl-btn.primary { background: var(--accent); border-color: var(--accent); color: #EEE8DA; }
-    .nl-btn.primary:hover { background: var(--accent-l); border-color: var(--accent-l); }
-
-    /* ── LAYOUT ── */
-    .nl-shell {
-      max-width: 780px;
+    .newsletter-container {
+      max-width: 800px;
       margin: 0 auto;
-      padding: 2.5rem clamp(1.5rem, 5vw, 3rem) 5rem;
+      padding: 0 clamp(1.5rem, 5vw, 5rem) 5rem;
     }
 
-    /* ── MONTH PICKER ── */
-    .nl-month-row {
-      display: flex; gap: 0.8rem; margin-bottom: 2.5rem;
-      padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule);
-    }
-    .nl-month-row label {
-      display: block; font-family: var(--sans); font-size: 0.62rem;
-      letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3);
-      margin-bottom: 0.35rem;
-    }
-    .nl-month-row select, .nl-month-row input[type="number"] {
-      width: 100%; padding: 0.55rem 0.75rem;
-      font-family: var(--sans); font-size: 0.82rem; color: var(--ink);
-      background: var(--paper); border: 1px solid var(--rule); border-radius: 2px;
-      outline: none; transition: border-color 0.2s;
-    }
-    .nl-month-row select:focus, .nl-month-row input:focus { border-color: var(--accent); }
-
-    /* ── REFERENCE BOX ── */
-    .nl-ref-box {
-      background: var(--paper-2); border: 1px solid var(--rule);
-      padding: 1.2rem; margin-bottom: 2.5rem; border-radius: 2px;
-    }
-    .nl-ref-label {
-      font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--ink-3); margin-bottom: 0.8rem;
-    }
-    .nl-ref-item {
-      padding: 0.4rem 0; display: flex; gap: 0.6rem; align-items: baseline;
-    }
-    .nl-ref-item + .nl-ref-item { border-top: 1px solid var(--rule); }
-    .nl-ref-tag {
-      font-family: var(--sans); font-size: 0.55rem; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--accent);
-      border: 1px solid var(--accent); border-radius: 2px;
-      padding: 0.08rem 0.35rem; flex-shrink: 0;
-    }
-    .nl-ref-title {
-      font-family: var(--serif); font-size: 0.88rem; color: var(--ink);
+    .newsletter-section {
+      margin-bottom: 4rem;
     }
 
-    /* ── SECTION HEADERS ── */
-    .nl-section-hdr {
-      display: flex; align-items: center; gap: 0.8rem;
-      margin: 2.5rem 0 1.2rem; padding-bottom: 0.7rem;
+    .newsletter-section h2 {
+      font-family: var(--serif);
+      font-size: 1.9rem;
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 1.4rem;
+      padding-bottom: 1rem;
       border-bottom: 1px solid var(--rule);
     }
-    .nl-section-num {
-      font-family: var(--serif); font-size: 1.4rem; font-weight: 300; color: var(--accent);
-    }
-    .nl-section-title {
-      font-family: var(--serif); font-size: 1.25rem; font-weight: 400; color: var(--ink);
+
+    .form-group {
+      margin-bottom: 1.8rem;
     }
 
-    /* ── FIELDS ── */
-    .nl-field { margin-bottom: 1.2rem; }
-    .nl-field-label {
-      display: block; font-family: var(--serif); font-size: 0.95rem;
-      font-weight: 500; color: var(--ink); margin-bottom: 0.35rem;
+    .form-group label {
+      display: block;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 0.6rem;
+      font-weight: 500;
     }
-    .nl-field-hint {
-      font-family: var(--sans); font-size: 0.68rem; color: var(--ink-3);
-      margin-bottom: 0.4rem; letter-spacing: 0.02em;
-    }
-    textarea.nl-input, input.nl-input {
-      width: 100%; padding: 0.7rem 0.85rem;
-      font-family: var(--sans); font-size: 0.82rem; font-weight: 300;
-      line-height: 1.65; color: var(--ink);
-      background: var(--paper); border: 1px solid var(--rule); border-radius: 2px;
-      resize: vertical; outline: none; transition: border-color 0.2s;
-    }
-    textarea.nl-input:focus, input.nl-input:focus { border-color: var(--accent); }
 
-    /* ── REPEATING FIELDS ── */
-    .nl-repeat-label {
-      font-family: var(--serif); font-size: 0.95rem; font-weight: 500;
-      color: var(--ink); margin-bottom: 0.5rem;
+    .form-group input[type="email"],
+    .form-group textarea {
+      width: 100%;
+      padding: 0.85rem 1.1rem;
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      color: var(--ink);
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .nl-repeat-row {
-      display: flex; gap: 0.5rem; align-items: flex-start; margin-bottom: 0.5rem;
-    }
-    .nl-repeat-num {
-      font-family: var(--serif); font-size: 0.8rem; color: var(--ink-3);
-      margin-top: 0.65rem; flex-shrink: 0; width: 1.2rem;
-    }
-    .nl-repeat-fields { flex: 1; display: flex; flex-direction: column; gap: 0.35rem; }
-    .nl-repeat-remove {
-      background: none; border: none; color: var(--ink-3);
-      cursor: pointer; font-size: 1rem; margin-top: 0.45rem; padding: 0 0.3rem;
-    }
-    .nl-repeat-remove:hover { color: var(--ink); }
-    .nl-add-btn {
-      background: none; border: 1px solid var(--rule); border-radius: 2px;
-      padding: 0.35rem 0.8rem; font-family: var(--sans); font-size: 0.62rem;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--accent); cursor: pointer; margin-top: 0.3rem;
-      transition: all 0.15s;
-    }
-    .nl-add-btn:hover { background: var(--paper-2); border-color: var(--accent); }
 
-    /* ── ACTIONS ── */
-    .nl-actions {
-      display: flex; gap: 0.8rem; margin-top: 2.5rem;
-      padding-top: 1.5rem; border-top: 1px solid var(--rule);
+    .form-group input[type="email"]:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(43, 71, 54, 0.08);
     }
-    .nl-action-btn {
-      font-family: var(--sans); font-size: 0.68rem; font-weight: 400;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      border-radius: 2px; padding: 0.75rem 1.5rem; cursor: pointer;
-      transition: all 0.18s;
-    }
-    .nl-action-btn.primary {
-      flex: 1; background: var(--accent); color: #EEE8DA; border: none;
-    }
-    .nl-action-btn.primary:hover { background: var(--accent-l); }
-    .nl-action-btn.secondary {
-      background: none; border: 1px solid var(--rule); color: var(--ink-3);
-    }
-    .nl-action-btn.secondary:hover { border-color: var(--ink-3); color: var(--ink-2); }
 
-    /* ── PREVIEW ── */
-    .nl-preview-bar {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 1.5rem;
+    .form-group input[type="email"]::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--ink-3);
     }
-    .nl-preview-label {
-      font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--ink-3);
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+      font-size: 0.9rem;
     }
-    .nl-copy-btn {
-      font-family: var(--sans); font-size: 0.62rem; font-weight: 500;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      background: var(--paper); color: var(--accent);
-      border: 1px solid var(--accent); border-radius: 2px;
-      padding: 0.5rem 1.2rem; cursor: pointer; min-width: 140px;
+
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 0.75rem 1.8rem;
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      border-radius: 2px;
+      cursor: pointer;
       transition: all 0.2s;
+      font-weight: 500;
     }
-    .nl-copy-btn:hover { background: var(--accent); color: #EEE8DA; }
-    .nl-copy-btn.copied { background: var(--accent); color: #EEE8DA; }
-    .nl-preview-output {
-      background: var(--paper); border: 1px solid var(--rule); border-radius: 2px;
-      padding: 2rem; font-family: monospace; font-size: 0.78rem;
-      line-height: 1.7; white-space: pre-wrap; color: var(--ink);
-      overflow-x: auto;
-    }
-    .nl-back-btn {
-      font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.12em;
-      text-transform: uppercase; background: none; border: 1px solid var(--rule);
-      border-radius: 2px; padding: 0.6rem 1.2rem; color: var(--ink-2);
-      cursor: pointer; margin-top: 1.5rem; transition: all 0.15s;
-    }
-    .nl-back-btn:hover { border-color: var(--ink-3); color: var(--ink); }
 
-    /* ── NAV LINK ── */
-    .nl-admin-link {
-      font-family: var(--sans); font-size: 0.58rem; letter-spacing: 0.1em;
-      text-transform: uppercase; color: rgba(238,232,218,0.35);
+    .btn-primary {
+      background: var(--accent);
+      color: #EEE8DA;
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-l);
+      border-color: var(--accent-l);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .btn-secondary:hover {
+      background: var(--paper-2);
+      border-color: var(--accent-l);
+      color: var(--accent-l);
+    }
+
+    .status-message {
+      padding: 1.2rem 1.4rem;
+      border-radius: 2px;
+      margin-bottom: 1.8rem;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      display: none;
+    }
+
+    .status-message.show {
+      display: block;
+    }
+
+    .status-success {
+      background: #E8F5E9;
+      color: #1B5E20;
+      border-left: 3px solid #4CAF50;
+    }
+
+    .status-error {
+      background: #FFEBEE;
+      color: #B71C1C;
+      border-left: 3px solid #F44336;
+    }
+
+    .status-info {
+      background: #E3F2FD;
+      color: #0D47A1;
+      border-left: 3px solid #2196F3;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 3rem 0;
+    }
+
+    .info-box {
+      background: var(--paper-2);
+      padding: 1.5rem 1.8rem;
+      border-left: 2px solid var(--accent);
+      border-radius: 2px;
+      margin-top: 2rem;
+    }
+
+    .info-box p {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--ink-2);
+      margin-bottom: 0.8rem;
+    }
+
+    .info-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-box a {
+      color: var(--accent);
+      text-decoration: underline;
       transition: color 0.2s;
     }
-    .nl-admin-link:hover { color: rgba(238,232,218,0.7); }
 
-    /* ── FOOTER ── */
-    .nl-footer {
-      text-align: center; padding: 2rem;
-      font-family: var(--serif); font-style: italic;
-      font-size: 0.78rem; color: var(--ink-3);
+    .info-box a:hover {
+      color: var(--accent-l);
     }
 
-    @media (max-width: 600px) {
-      .nl-topbar-progress { display: none; }
-      .nl-repeat-row { flex-wrap: wrap; }
+    .faq-item {
+      margin-bottom: 2rem;
+    }
+
+    .faq-question {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+      color: var(--ink);
+    }
+
+    .faq-answer {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--ink-2);
+    }
+
+    .validation-error {
+      font-size: 0.75rem;
+      color: #B71C1C;
+      margin-top: 0.4rem;
+      display: none;
+    }
+
+    .validation-error.show {
+      display: block;
+    }
+
+    @media (max-width: 700px) {
+      .button-group {
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- ── TOP BAR ── -->
-  <div class="nl-topbar">
-    <div class="nl-topbar-brand">
-      Phronesis <span>Newsletter</span>
+  <nav>
+    <a href="index.html" class="nav-brand">Phronesis <span>Research</span></a>
+    <ul class="nav-links">
+      <li><a href="research.html">Research</a></li>
+      <li><a href="policy.html">Policy</a></li>
+      <li><a href="legal.html">Legal</a></li>
+      <li><a href="essays.html">Essays</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <div>
+      <div class="page-header-eyebrow"><span class="label">Newsletter</span></div>
+      <h1 class="serif">Phronesis<br/><em>Weekly</em></h1>
     </div>
-    <div class="nl-topbar-right">
-      <a href="admin.html" class="nl-admin-link">Content Manager</a>
-      <span class="nl-topbar-progress" id="progress">0 / 6 sections</span>
-      <button class="nl-btn" id="toggle-view">Preview</button>
-    </div>
+    <p class="page-header-desc">
+      New research, analysis, and essays delivered directly to your inbox. Curated work from Phronesis, no noise, no filler.
+    </p>
   </div>
 
-  <!-- ── COMPOSE VIEW ── -->
-  <div class="nl-shell" id="compose-view">
+  <div class="section-rule"></div>
 
-    <!-- Month picker -->
-    <div class="nl-month-row">
-      <div style="flex:1">
-        <label>Month</label>
-        <select id="sel-month"></select>
+  <div class="newsletter-container">
+
+    <div class="newsletter-section">
+      <div id="statusMessage" class="status-message"></div>
+
+      <h2 class="serif">Subscribe</h2>
+      <form id="subscribeForm">
+        <div class="form-group">
+          <label for="subscribeEmail">Email Address</label>
+          <input
+            type="email"
+            id="subscribeEmail"
+            name="email"
+            placeholder="your@email.com"
+            required
+          />
+          <div class="validation-error" id="subscribeEmailError"></div>
+        </div>
+        <div class="button-group">
+          <button type="submit" class="btn-primary">Subscribe to Newsletter</button>
+        </div>
+      </form>
+
+      <div class="info-box">
+        <p><strong>What you'll receive:</strong> Weekly dispatches of new Phronesis research, policy analysis, and essays. We publish across six formats—research papers, policy proposals, legal analysis, essays, articles, and reports.</p>
+        <p><strong>Frequency:</strong> One email per week, sent on Mondays at 9 AM ET.</p>
+        <p><strong>Archive:</strong> All past issues are available on our <a href="#" id="substackLink">Substack page</a> (coming soon).</p>
       </div>
-      <div style="width:100px">
-        <label>Year</label>
-        <input type="number" id="sel-year" />
+    </div>
+
+    <hr class="divider" />
+
+    <div class="newsletter-section">
+      <h2 class="serif">Manage Subscription</h2>
+      <p style="font-family: var(--serif); font-size: 0.95rem; color: var(--ink-2); margin-bottom: 1.6rem;">
+        Already subscribed? You can update your email or unsubscribe below.
+      </p>
+
+      <form id="manageForm">
+        <div class="form-group">
+          <label for="manageEmail">Email Address</label>
+          <input
+            type="email"
+            id="manageEmail"
+            name="email"
+            placeholder="your@email.com"
+            required
+          />
+          <div class="validation-error" id="manageEmailError"></div>
+        </div>
+        <div class="button-group">
+          <button type="button" class="btn-primary" id="unsubscribeBtn">Unsubscribe</button>
+          <button type="reset" class="btn-secondary">Clear</button>
+        </div>
+      </form>
+
+      <div class="info-box">
+        <p><strong>Note:</strong> Unsubscribing will remove your email from our mailing list. You can re-subscribe at any time.</p>
       </div>
     </div>
 
-    <!-- Recent publications -->
-    <div class="nl-ref-box" id="ref-box">
-      <div class="nl-ref-label">Recent Publications (for reference)</div>
-      <div id="ref-list"><span style="font-size:0.75rem;color:var(--ink-3)">Loading...</span></div>
+    <hr class="divider" />
+
+    <div class="newsletter-section">
+      <h2 class="serif">Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">How often do you send newsletters?</div>
+        <div class="faq-answer">We send one email per week, typically on Monday mornings at 9 AM ET. Each issue includes the latest Phronesis research, analysis, and essays across all six publication formats.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">What if I miss an issue?</div>
+        <div class="faq-answer">All past newsletters are archived on our Substack page. You can browse the complete archive, search by topic, and read previous issues at your convenience.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Can I change my email address?</div>
+        <div class="faq-answer">Yes. Simply unsubscribe using your current email address, then subscribe again with your new email.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Is my email private?</div>
+        <div class="faq-answer">Your email address is stored securely and used only for sending you the Phronesis newsletter. We do not sell, trade, or share your information with third parties.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">How do I contact Phronesis?</div>
+        <div class="faq-answer">You can reach us through our <a href="about.html" style="color: var(--accent); text-decoration: underline;">About page</a> or send an email with questions or feedback about our work.</div>
+      </div>
+
     </div>
 
-    <!-- 1. At Phronesis -->
-    <div class="nl-section-hdr"><span class="nl-section-num">1.</span><span class="nl-section-title">At Phronesis</span></div>
-    <div class="nl-field">
-      <label class="nl-field-label">Major Project Update</label>
-      <textarea class="nl-input" id="f-project" rows="3" placeholder="What's the big-picture update this month?"></textarea>
-    </div>
-    <div class="nl-field">
-      <label class="nl-field-label">Research Progress</label>
-      <textarea class="nl-input" id="f-research" rows="2" placeholder="What moved forward in your research?"></textarea>
-    </div>
-    <div class="nl-field">
-      <label class="nl-field-label">Publications / Milestones</label>
-      <textarea class="nl-input" id="f-pubs" rows="2" placeholder="New publications, launches, or milestones"></textarea>
-    </div>
-
-    <!-- 2. Signals -->
-    <div class="nl-section-hdr"><span class="nl-section-num">2.</span><span class="nl-section-title">Signals</span></div>
-    <div class="nl-field" id="sig-academia">
-      <div class="nl-repeat-label">Academia</div>
-      <div class="repeat-rows"></div>
-      <button class="nl-add-btn" data-target="sig-academia">+ Add signal</button>
-    </div>
-    <div class="nl-field" id="sig-policy">
-      <div class="nl-repeat-label">Policy</div>
-      <div class="repeat-rows"></div>
-      <button class="nl-add-btn" data-target="sig-policy">+ Add signal</button>
-    </div>
-    <div class="nl-field" id="sig-law">
-      <div class="nl-repeat-label">Law</div>
-      <div class="repeat-rows"></div>
-      <button class="nl-add-btn" data-target="sig-law">+ Add signal</button>
-    </div>
-
-    <!-- 3. Synthesis -->
-    <div class="nl-section-hdr"><span class="nl-section-num">3.</span><span class="nl-section-title">Synthesis</span></div>
-    <div class="nl-field">
-      <label class="nl-field-label">Connecting the Dots</label>
-      <div class="nl-field-hint">This is the heart of the newsletter. 5–8 sentences connecting patterns across academia, policy, and law.</div>
-      <textarea class="nl-input" id="f-synthesis" rows="6" placeholder="What patterns are emerging? What is being misunderstood? Where are gaps forming?"></textarea>
-    </div>
-
-    <!-- 4. Opportunities -->
-    <div class="nl-section-hdr"><span class="nl-section-num">4.</span><span class="nl-section-title">Opportunities & Deadlines</span></div>
-    <div class="nl-field" id="opps">
-      <div class="repeat-rows"></div>
-      <button class="nl-add-btn" data-target="opps">+ Add opportunity</button>
-    </div>
-
-    <!-- 5. Worth Reading -->
-    <div class="nl-section-hdr"><span class="nl-section-num">5.</span><span class="nl-section-title">Worth Reading</span></div>
-    <div class="nl-field" id="reading">
-      <div class="repeat-rows"></div>
-      <button class="nl-add-btn" data-target="reading">+ Add reading</button>
-    </div>
-
-    <!-- 6. Closing -->
-    <div class="nl-section-hdr"><span class="nl-section-num">6.</span><span class="nl-section-title">Closing Note</span></div>
-    <div class="nl-field">
-      <textarea class="nl-input" id="f-closing" rows="3" placeholder="1–3 sentences. One clear idea, observation, or open question."></textarea>
-    </div>
-
-    <!-- Actions -->
-    <div class="nl-actions">
-      <button class="nl-action-btn primary" id="btn-preview">Preview & Copy</button>
-      <button class="nl-action-btn secondary" id="btn-clear">Clear</button>
-    </div>
   </div>
 
-  <!-- ── PREVIEW VIEW ── -->
-  <div class="nl-shell" id="preview-view" style="display:none">
-    <div class="nl-preview-bar">
-      <span class="nl-preview-label">Ready to copy into Substack</span>
-      <button class="nl-copy-btn" id="btn-copy">Copy to Clipboard</button>
+  <footer>
+    <div>
+      <div class="footer-brand serif">Phronesis</div>
+      <p>An independent research entity at the intersection of technology law and policy.</p>
     </div>
-    <div class="nl-preview-output" id="preview-output"></div>
-    <button class="nl-back-btn" id="btn-back">← Back to edit</button>
+    <div class="footer-col">
+      <h4>Publication types</h4>
+      <ul>
+        <li><a href="research.html">Research Papers</a></li>
+        <li><a href="policy.html">Policy Proposals</a></li>
+        <li><a href="legal.html">Legal Analysis</a></li>
+        <li><a href="essays.html">Essays</a></li>
+        <li><a href="reports.html">Reports</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Site</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="research.html">All Publications</a></li>
+        <li><a href="https://chadl22.github.io" target="_blank">Personal Site</a></li>
+      </ul>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Phronesis Research. Independent &amp; non-partisan.</p>
+    <span class="phronesis-greek">&#x03C6;&#x03C1;&#x03CC;&#x03BD;&#x03B7;&#x03C3;&#x03B9;&#x03C2;</span>
   </div>
 
-  <div class="nl-footer">φρόνησις</div>
+  <script>
+    const API_ENDPOINT = 'https://phronesis-newsletter.sclanga315.workers.dev';
 
-<script>
-// ═══════════════════════════════════════════════════════════
-// CONSTANTS
-// ═══════════════════════════════════════════════════════════
-const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-const CONTENT_URLS = {
-  research: 'content/research.json',
-  policy: 'content/policy.json',
-  legal: 'content/legal.json',
-  essays: 'content/essays.json',
-  articles: 'content/articles.json',
-  reports: 'content/reports.json',
-};
+    function showStatus(message, type = 'info') {
+      const statusEl = document.getElementById('statusMessage');
+      statusEl.textContent = message;
+      statusEl.className = `status-message show status-${type}`;
+      window.scrollTo({ top: statusEl.offsetTop - 100, behavior: 'smooth' });
+    }
 
-// Repeating field configs: [placeholder1, placeholder2]
-const REPEAT_CFG = {
-  'sig-academia': ['Paper / research trend', 'Why it matters'],
-  'sig-policy':   ['Legislation / agency movement', 'Implication'],
-  'sig-law':      ['Case / doctrine / litigation trend', 'Impact'],
-  'opps':         ['Conference, CFP, fellowship, grant, or public comment', 'Deadline or note'],
-  'reading':      ['Title', 'One line on why it matters'],
-};
+    function hideStatus() {
+      const statusEl = document.getElementById('statusMessage');
+      statusEl.classList.remove('show');
+    }
 
-// ═══════════════════════════════════════════════════════════
-// INIT
-// ═══════════════════════════════════════════════════════════
-const selMonth = document.getElementById('sel-month');
-const selYear  = document.getElementById('sel-year');
-const now = new Date();
+    function clearValidationErrors() {
+      document.querySelectorAll('.validation-error').forEach(el => {
+        el.classList.remove('show');
+        el.textContent = '';
+      });
+    }
 
-MONTHS.forEach((m, i) => {
-  const opt = document.createElement('option');
-  opt.value = m; opt.textContent = m;
-  if (i === now.getMonth()) opt.selected = true;
-  selMonth.appendChild(opt);
-});
-selYear.value = now.getFullYear();
+    function showValidationError(elementId, message) {
+      const errorEl = document.getElementById(elementId);
+      if (errorEl) {
+        errorEl.textContent = message;
+        errorEl.classList.add('show');
+      }
+    }
 
-// Seed one row per repeating field
-Object.keys(REPEAT_CFG).forEach(id => addRow(id));
+    function validateEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email);
+    }
 
-// ═══════════════════════════════════════════════════════════
-// REPEATING FIELDS
-// ═══════════════════════════════════════════════════════════
-function addRow(containerId) {
-  const cfg = REPEAT_CFG[containerId];
-  const container = document.querySelector(`#${containerId} .repeat-rows`);
-  const idx = container.children.length + 1;
+    /* Subscribe Form */
+    document.getElementById('subscribeForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      clearValidationErrors();
+      hideStatus();
 
-  const row = document.createElement('div');
-  row.className = 'nl-repeat-row';
-  row.innerHTML = `
-    <span class="nl-repeat-num">${idx}.</span>
-    <div class="nl-repeat-fields">
-      <input class="nl-input" type="text" placeholder="${cfg[0]}" data-field="a" />
-      <input class="nl-input" type="text" placeholder="${cfg[1]}" data-field="b" />
-    </div>
-    <button class="nl-repeat-remove" title="Remove">×</button>
-  `;
+      const email = document.getElementById('subscribeEmail').value.trim();
 
-  row.querySelector('.nl-repeat-remove').addEventListener('click', () => {
-    row.remove();
-    renumber(containerId);
-    updateProgress();
-  });
+      if (!email) {
+        showValidationError('subscribeEmailError', 'Email is required');
+        return;
+      }
 
-  row.querySelectorAll('input').forEach(inp => inp.addEventListener('input', updateProgress));
-  container.appendChild(row);
-}
+      if (!validateEmail(email)) {
+        showValidationError('subscribeEmailError', 'Please enter a valid email address');
+        return;
+      }
 
-function renumber(containerId) {
-  const rows = document.querySelectorAll(`#${containerId} .nl-repeat-row`);
-  rows.forEach((r, i) => r.querySelector('.nl-repeat-num').textContent = `${i + 1}.`);
-}
-
-// Wire add buttons
-document.querySelectorAll('.nl-add-btn').forEach(btn => {
-  btn.addEventListener('click', () => addRow(btn.dataset.target));
-});
-
-// ═══════════════════════════════════════════════════════════
-// PROGRESS
-// ═══════════════════════════════════════════════════════════
-function getRepeatValues(containerId) {
-  const rows = document.querySelectorAll(`#${containerId} .nl-repeat-row`);
-  const out = [];
-  rows.forEach(r => {
-    const a = r.querySelector('[data-field="a"]').value.trim();
-    const b = r.querySelector('[data-field="b"]').value.trim();
-    if (a) out.push({ a, b });
-  });
-  return out;
-}
-
-function filledSections() {
-  let n = 0;
-  const v = id => document.getElementById(id)?.value.trim();
-  if (v('f-project') || v('f-research') || v('f-pubs')) n++;
-  if (getRepeatValues('sig-academia').length || getRepeatValues('sig-policy').length || getRepeatValues('sig-law').length) n++;
-  if (v('f-synthesis')) n++;
-  if (getRepeatValues('opps').length) n++;
-  if (getRepeatValues('reading').length) n++;
-  if (v('f-closing')) n++;
-  return n;
-}
-
-function updateProgress() {
-  document.getElementById('progress').textContent = `${filledSections()} / 6 sections`;
-}
-
-// Attach progress listeners to all textareas
-document.querySelectorAll('textarea.nl-input').forEach(t => t.addEventListener('input', updateProgress));
-
-// ═══════════════════════════════════════════════════════════
-// GENERATE NEWSLETTER
-// ═══════════════════════════════════════════════════════════
-function generate() {
-  const v = id => document.getElementById(id)?.value.trim() || '';
-  const month = selMonth.value;
-  const year  = selYear.value;
-
-  let out = '';
-  out += `The Phronesis Brief — ${month} ${year}\n`;
-  out += `A monthly briefing from Phronesis Research on developments at the intersection of technology, law, and policy. Focused on signal over noise.\n\n`;
-
-  out += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-  out += `1. AT PHRONESIS\n\n`;
-  if (v('f-project'))  out += `${v('f-project')}\n\n`;
-  if (v('f-research')) out += `${v('f-research')}\n\n`;
-  if (v('f-pubs'))     out += `${v('f-pubs')}\n\n`;
-
-  out += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-  out += `2. SIGNALS\n\n`;
-
-  const acad = getRepeatValues('sig-academia');
-  if (acad.length) {
-    out += `Academia\n`;
-    acad.forEach(s => out += `  • ${s.a}${s.b ? ' — ' + s.b : ''}\n`);
-    out += `\n`;
-  }
-
-  const pol = getRepeatValues('sig-policy');
-  if (pol.length) {
-    out += `Policy\n`;
-    pol.forEach(s => out += `  • ${s.a}${s.b ? ' — ' + s.b : ''}\n`);
-    out += `\n`;
-  }
-
-  const law = getRepeatValues('sig-law');
-  if (law.length) {
-    out += `Law\n`;
-    law.forEach(s => out += `  • ${s.a}${s.b ? ' — ' + s.b : ''}\n`);
-    out += `\n`;
-  }
-
-  out += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-  out += `3. SYNTHESIS\n\n`;
-  if (v('f-synthesis')) out += `${v('f-synthesis')}\n\n`;
-
-  out += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-  out += `4. OPPORTUNITIES & DEADLINES\n\n`;
-  getRepeatValues('opps').forEach(o => out += `  • ${o.a}${o.b ? ' — ' + o.b : ''}\n`);
-  if (getRepeatValues('opps').length) out += `\n`;
-
-  out += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-  out += `5. WORTH READING\n\n`;
-  getRepeatValues('reading').forEach(r => out += `  • ${r.a}${r.b ? ' — ' + r.b : ''}\n`);
-  if (getRepeatValues('reading').length) out += `\n`;
-
-  out += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-  out += `6. CLOSING NOTE\n\n`;
-  if (v('f-closing')) out += `${v('f-closing')}\n\n`;
-
-  out += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-  out += `Phronesis Research · phronesisresearch.org\n`;
-  out += `An independent research entity at the intersection of technology, law, and policy.\n`;
-
-  return out;
-}
-
-// ═══════════════════════════════════════════════════════════
-// VIEW TOGGLE
-// ═══════════════════════════════════════════════════════════
-const composeView = document.getElementById('compose-view');
-const previewView = document.getElementById('preview-view');
-const toggleBtn   = document.getElementById('toggle-view');
-
-function showPreview() {
-  document.getElementById('preview-output').textContent = generate();
-  composeView.style.display = 'none';
-  previewView.style.display = 'block';
-  toggleBtn.textContent = 'Edit';
-  window.scrollTo(0, 0);
-}
-
-function showCompose() {
-  composeView.style.display = 'block';
-  previewView.style.display = 'none';
-  toggleBtn.textContent = 'Preview';
-}
-
-toggleBtn.addEventListener('click', () => {
-  if (composeView.style.display === 'none') showCompose();
-  else showPreview();
-});
-document.getElementById('btn-preview').addEventListener('click', showPreview);
-document.getElementById('btn-back').addEventListener('click', showCompose);
-
-// ═══════════════════════════════════════════════════════════
-// COPY
-// ═══════════════════════════════════════════════════════════
-document.getElementById('btn-copy').addEventListener('click', () => {
-  const btn = document.getElementById('btn-copy');
-  navigator.clipboard.writeText(generate()).then(() => {
-    btn.textContent = 'Copied!';
-    btn.classList.add('copied');
-    setTimeout(() => {
-      btn.textContent = 'Copy to Clipboard';
-      btn.classList.remove('copied');
-    }, 2500);
-  });
-});
-
-// ═══════════════════════════════════════════════════════════
-// CLEAR
-// ═══════════════════════════════════════════════════════════
-document.getElementById('btn-clear').addEventListener('click', () => {
-  if (!confirm('Clear all fields and start over?')) return;
-  document.querySelectorAll('textarea.nl-input').forEach(t => t.value = '');
-  Object.keys(REPEAT_CFG).forEach(id => {
-    const container = document.querySelector(`#${id} .repeat-rows`);
-    container.innerHTML = '';
-    addRow(id);
-  });
-  updateProgress();
-});
-
-// ═══════════════════════════════════════════════════════════
-// LOAD RECENT PUBLICATIONS
-// ═══════════════════════════════════════════════════════════
-async function loadPubs() {
-  const list = document.getElementById('ref-list');
-  try {
-    const all = [];
-    for (const [type, url] of Object.entries(CONTENT_URLS)) {
       try {
-        const res = await fetch(url);
-        if (res.ok) {
-          const data = await res.json();
-          (Array.isArray(data) ? data : []).forEach(item => {
-            all.push({ type, title: item.title, date: item.date });
-          });
+        showStatus('Subscribing...', 'info');
+
+        const response = await fetch(`${API_ENDPOINT}/subscribe`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          showStatus(data.message || 'Successfully subscribed! Check your email for confirmation.', 'success');
+          document.getElementById('subscribeForm').reset();
+        } else {
+          showStatus(data.error || 'Subscription failed. Please try again.', 'error');
         }
-      } catch {}
-    }
-    all.sort((a, b) => new Date(b.date) - new Date(a.date));
-    const recent = all.slice(0, 8);
+      } catch (error) {
+        showStatus('Network error. Please try again later.', 'error');
+        console.error('Subscription error:', error);
+      }
+    });
 
-    if (!recent.length) {
-      list.innerHTML = '<span style="font-size:0.75rem;color:var(--ink-3)">No publications found</span>';
-      return;
-    }
+    /* Unsubscribe Button */
+    document.getElementById('unsubscribeBtn').addEventListener('click', async () => {
+      clearValidationErrors();
+      hideStatus();
 
-    list.innerHTML = recent.map(p =>
-      `<div class="nl-ref-item">
-        <span class="nl-ref-tag">${p.type}</span>
-        <span class="nl-ref-title">${p.title}</span>
-      </div>`
-    ).join('');
-  } catch {
-    list.innerHTML = '<span style="font-size:0.75rem;color:var(--ink-3)">Could not load publications</span>';
-  }
-}
+      const email = document.getElementById('manageEmail').value.trim();
 
-loadPubs();
-</script>
+      if (!email) {
+        showValidationError('manageEmailError', 'Email is required');
+        return;
+      }
+
+      if (!validateEmail(email)) {
+        showValidationError('manageEmailError', 'Please enter a valid email address');
+        return;
+      }
+
+      if (!confirm('Are you sure you want to unsubscribe from the Phronesis newsletter?')) {
+        return;
+      }
+
+      try {
+        showStatus('Processing unsubscribe...', 'info');
+
+        const response = await fetch(`${API_ENDPOINT}/unsubscribe`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          showStatus(data.message || 'Successfully unsubscribed.', 'success');
+          document.getElementById('manageForm').reset();
+        } else {
+          showStatus(data.error || 'Unsubscribe failed. Please try again.', 'error');
+        }
+      } catch (error) {
+        showStatus('Network error. Please try again later.', 'error');
+        console.error('Unsubscribe error:', error);
+      }
+    });
+  </script>
+
 </body>
 </html>
