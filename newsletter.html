@@ -99,30 +99,56 @@
       }
     }
 
-    .newsletter-container {
-      max-width: 700px;
+    /* ── HERO SECTION ── */
+    .newsletter-hero {
+      padding: clamp(3.5rem, 8vw, 6rem) clamp(1.5rem, 5vw, 5rem) 3rem;
+      max-width: 1160px;
       margin: 0 auto;
-      padding: 0 clamp(1.5rem, 5vw, 5rem) 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: end;
     }
 
-    .newsletter-section {
-      margin-bottom: 4rem;
-      margin-top: 2rem;
-    }
-
-    .newsletter-section h2 {
+    .newsletter-hero h1 {
       font-family: var(--serif);
-      font-size: 1.9rem;
-      font-weight: 400;
-      line-height: 1.15;
-      margin-bottom: 1.4rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--rule);
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.06;
+      letter-spacing: -0.01em;
     }
 
-    /* ── SUBSCRIPTION FORM ── */
+    .newsletter-hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .newsletter-hero-desc {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--ink-2);
+      border-left: 2px solid var(--accent);
+      padding-left: 1.4rem;
+    }
+
+    /* ── SUBSCRIPTION SECTION ── */
+    .newsletter-container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 3.5rem clamp(1.5rem, 5vw, 5rem) 5rem;
+    }
+
+    .subscription-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
     .subscription-form {
-      margin-bottom: 2rem;
+      margin-bottom: 0;
     }
 
     .form-input-group {
@@ -243,18 +269,11 @@
       border-left: 3px solid #2196F3;
     }
 
-    .divider {
-      border: none;
-      border-top: 1px solid var(--rule);
-      margin: 3rem 0;
-    }
-
     .info-box {
       background: var(--paper-2);
       padding: 1.5rem 1.8rem;
       border-left: 2px solid var(--accent);
       border-radius: 2px;
-      margin-top: 2rem;
     }
 
     .info-box p {
@@ -280,13 +299,36 @@
       color: var(--accent-l);
     }
 
+    /* ── FAQ SECTION ── */
+    .faq-section {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 3.5rem clamp(1.5rem, 5vw, 5rem) 5rem;
+    }
+
+    .faq-section h2 {
+      font-family: var(--serif);
+      font-size: 1.9rem;
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 2.4rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
     .faq-item {
-      margin-bottom: 2rem;
+      margin-bottom: 0;
     }
 
     .faq-question {
       font-family: var(--serif);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 500;
       margin-bottom: 0.6rem;
       color: var(--ink);
@@ -309,6 +351,12 @@
 
     .validation-error.show {
       display: block;
+    }
+
+    @media (max-width: 900px) {
+      .newsletter-hero { grid-template-columns: 1fr; gap: 2rem; }
+      .subscription-wrapper { grid-template-columns: 1fr; gap: 2rem; }
+      .faq-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 700px) {
@@ -348,12 +396,12 @@
     </ul>
   </nav>
 
-  <div class="page-header">
+  <div class="newsletter-hero">
     <div>
       <div class="page-header-eyebrow"><span class="label">Newsletter</span></div>
       <h1 class="serif">The Phronesis<br/><em>Brief</em></h1>
     </div>
-    <p class="page-header-desc">
+    <p class="newsletter-hero-desc">
       A monthly briefing on developments at the intersection of technology, law, and policy. Produced in collaboration with the University of Maryland's Tech Policy Hub. Signal over noise.
     </p>
   </div>
@@ -361,29 +409,29 @@
   <div class="section-rule"></div>
 
   <div class="newsletter-container">
+    <div class="subscription-wrapper">
+      <div>
+        <div id="statusMessage" class="status-message"></div>
 
-    <div class="newsletter-section">
-      <div id="statusMessage" class="status-message"></div>
+        <form id="newsletterForm" class="subscription-form">
+          <div id="subscriptionStatus" class="subscription-status" style="display: none;">
+            <span class="subscription-status-dot"></span>
+            <span id="statusText"></span>
+          </div>
 
-      <h2 class="serif">Subscribe</h2>
-      <form id="newsletterForm" class="subscription-form">
-        <div id="subscriptionStatus" class="subscription-status" style="display: none;">
-          <span class="subscription-status-dot"></span>
-          <span id="statusText"></span>
-        </div>
-
-        <div class="form-input-group">
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="your@email.com"
-            required
-          />
-          <button type="submit" class="subscription-btn" id="submitBtn">Subscribe</button>
-        </div>
-        <div class="validation-error" id="emailError"></div>
-      </form>
+          <div class="form-input-group">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="your@email.com"
+              required
+            />
+            <button type="submit" class="subscription-btn" id="submitBtn">Subscribe</button>
+          </div>
+          <div class="validation-error" id="emailError"></div>
+        </form>
+      </div>
 
       <div class="info-box">
         <p><strong>What you'll receive:</strong> Each month, a curated briefing on key developments in technology law and policy. Organized around six recurring sections: At Phronesis, Signals, Synthesis, Opportunities & Deadlines, Worth Reading, and a Closing Note.</p>
@@ -392,12 +440,14 @@
         <p><strong>Archive:</strong> All past issues are available on our <a href="#" id="substackLink">Substack page</a>.</p>
       </div>
     </div>
+  </div>
 
-    <hr class="divider" />
+  <div class="section-rule"></div>
 
-    <div class="newsletter-section">
-      <h2 class="serif">Frequently Asked Questions</h2>
+  <div class="faq-section">
+    <h2 class="serif">Frequently Asked Questions</h2>
 
+    <div class="faq-grid">
       <div class="faq-item">
         <div class="faq-question">How often do you send The Brief?</div>
         <div class="faq-answer">We send one email per month, typically on the first Monday of the month. Each issue covers the prior month's key developments in technology law and policy.</div>
@@ -405,7 +455,7 @@
 
       <div class="faq-item">
         <div class="faq-question">What are the six sections?</div>
-        <div class="faq-answer"><strong>At Phronesis:</strong> New research and analysis from Phronesis. <strong>Signals:</strong> Emerging trends and developments to watch. <strong>Synthesis:</strong> Expert analysis connecting disparate issues. <strong>Opportunities & Deadlines:</strong> Upcoming events, comment deadlines, and key dates. <strong>Worth Reading:</strong> Curated external sources worth your time. <strong>Closing Note:</strong> Reflections on the month ahead.</div>
+        <div class="faq-answer"><strong>At Phronesis:</strong> New research and analysis. <strong>Signals:</strong> Emerging trends. <strong>Synthesis:</strong> Expert analysis. <strong>Opportunities & Deadlines:</strong> Upcoming events and key dates. <strong>Worth Reading:</strong> Curated sources. <strong>Closing Note:</strong> Reflections.</div>
       </div>
 
       <div class="faq-item">
@@ -423,9 +473,25 @@
         <div class="faq-answer">Your email address is stored securely and used only for sending you The Phronesis Brief. We do not sell, trade, or share your information with third parties.</div>
       </div>
 
+      <div class="faq-item">
+        <div class="faq-question">Can I change my email?</div>
+        <div class="faq-answer">If you need to update your email, simply enter your new email address and click subscribe. You can then unsubscribe from the old address using the same form.</div>
+      </div>
     </div>
-
   </div>
+
+  <section class="newsletter-band">
+    <div class="newsletter-inner">
+      <div class="newsletter-copy">
+        <h3 class="serif">Deep dives available.</h3>
+        <p>Explore our research, policy proposals, and analysis across all publication types.</p>
+      </div>
+      <div class="newsletter-form">
+        <input type="email" placeholder="your@email.com" />
+        <button type="button">Browse publications</button>
+      </div>
+    </div>
+  </section>
 
   <footer>
     <div>
@@ -524,7 +590,6 @@
       statusEl.style.display = 'none';
     }
 
-    // Check subscription status when email is entered
     document.getElementById('email').addEventListener('blur', async () => {
       const email = document.getElementById('email').value.trim();
 
@@ -546,7 +611,6 @@
       }
     });
 
-    // Handle Form Submission
     document.getElementById('newsletterForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       clearValidationErrors();
