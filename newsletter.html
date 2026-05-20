@@ -376,10 +376,7 @@
 
   <script src="chat.js" defer></script>
   <script>
-    // nav — same pattern as essays.html
-    const navT = document.getElementById('nav-toggle'), navM = document.getElementById('nav-menu');
-    navT.addEventListener('click', e => { e.stopPropagation(); navT.classList.toggle('is-open'); navM.classList.toggle('is-open'); });
-    document.addEventListener('click', () => { navT.classList.remove('is-open'); navM.classList.remove('is-open'); });
+    // nav handled by chat.js
 
     // ── helpers ──
     function showStatus(msg, type) {

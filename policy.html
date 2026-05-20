@@ -530,10 +530,7 @@
   <script>document.querySelectorAll('.filter-btn').forEach(btn => { btn.addEventListener('click', () => { document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); }); });</script>
   <script src="chat.js" defer></script>
   <script>
-    // ── nav ──
-    const t = document.getElementById('nav-toggle'), m = document.getElementById('nav-menu');
-    t.addEventListener('click', e => { e.stopPropagation(); t.classList.toggle('is-open'); m.classList.toggle('is-open'); });
-    document.addEventListener('click', () => { t.classList.remove('is-open'); m.classList.remove('is-open'); });
+    // ── nav handled by chat.js ──
 
     // ── POLICY TRACKER ──
     const TRACKER_URL = '/tracker-data.json';

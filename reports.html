@@ -405,10 +405,7 @@
 
   <script src="chat.js" defer></script>
   <script>
-    // ── nav ──
-    const t = document.getElementById('nav-toggle'), m = document.getElementById('nav-menu');
-    t.addEventListener('click', e => { e.stopPropagation(); t.classList.toggle('is-open'); m.classList.toggle('is-open'); });
-    document.addEventListener('click', () => { t.classList.remove('is-open'); m.classList.remove('is-open'); });
+    // ── nav handled by chat.js ──
 
     // ── state ──
     const MONTHS_R = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
