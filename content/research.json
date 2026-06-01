@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "the-economics-of-algorithmic-selection-on-the-internet-2021",
+      "title": "The Economics of Algorithmic Selection on the Internet",
+      "subtitle": "An examination of how algorithms shape information consumption, economic markets, and society while creating risks to privacy, fairness, and welfare",
+      "date": "2021-07-09",
+      "type": "research",
+      "fields": [
+        "Computer Science",
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "algorithmic systems",
+        "content recommendation",
+        "algorithmic bias",
+        "privacy",
+        "platform economics",
+        "information filtering"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "SSRN",
+      "publisher_url": null,
+      "original_url": null,
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This text discusses the pervasive role of algorithms in contemporary society, examining their function in shaping media consumption, influencing consumer behavior, and determining economic outcomes across various sectors. While algorithms provide essential organizational functions by filtering information and enabling new business models, they simultaneously create significant social and economic risks including manipulation, bias, privacy violations, and intellectual property concerns. The piece frames algorithmic systems as having both technofunctional utility and problematic impacts on economic and social welfare.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "legal-policies-on-platform-liability-an-economic-approach",
       "title": "Legal Policies on Platform Liability: An Economic Approach",
       "subtitle": "An examination of platform liability policies and their economic implications for online marketplaces",
