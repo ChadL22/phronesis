@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "legal-policies-on-platform-liability-an-economic-approach-2025",
+      "title": "Legal Policies on Platform Liability: An Economic Approach",
+      "subtitle": "An economic analysis of how holding online platforms accountable for third-party seller defects affects consumer welfare, seller incentives, and market efficiency.",
+      "date": "2025-03-28",
+      "type": "article",
+      "fields": [
+        "Economics",
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "platform liability",
+        "e-commerce regulation",
+        "product defects and consumer harm",
+        "online marketplaces",
+        "EU Product Liability Directive",
+        "seller safety incentives"
+      ],
+      "origin": "original",
+      "content_type": "full",
+      "publisher": "Oxford Business Law Blog",
+      "publisher_url": null,
+      "original_url": "https://blogs.law.ox.ac.uk/oblb/blog-post/2025/03/legal-policies-platform-liability-economic-approach",
+      "doi": null,
+      "venue_type": "news",
+      "abstract": "This paper examines the evolving legal landscape of platform liability for defective products sold through online marketplaces like Amazon and Airbnb, using the Oberdorf v. Amazon case as a primary example. The authors present a theoretical economic model to assess how increased platform liability impacts seller behavior, consumer welfare, and market efficiency, finding that liability effects vary significantly depending on product value. The analysis reveals that while platform liability can enhance consumer compensation, it may reduce sellers' safety investment incentives for low-value goods while potentially improving safety outcomes for high-value goods.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "how-do-recommender-systems-work-on-digital-platforms-2022",
       "title": "How do recommender systems work on digital platforms?",
       "subtitle": "An examination of how recommender systems have become central to information distribution and the mechanisms underlying modern recommendation algorithms.",
