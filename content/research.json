@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "legal-policies-on-platform-liability-an-economic-approach",
+      "title": "Legal Policies on Platform Liability: An Economic Approach",
+      "subtitle": "An examination of platform liability policies and their economic implications for online marketplaces",
+      "date": "",
+      "type": "research",
+      "fields": [
+        "Public Policy",
+        "Economics",
+        "Computer Science"
+      ],
+      "tags": [
+        "platform liability",
+        "digital services regulation",
+        "consumer protection",
+        "product liability",
+        "online marketplaces",
+        "regulatory policy"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "The Department of Economics of the Universitat de Barcelona",
+      "publisher_url": null,
+      "original_url": "https://drive.google.com/file/d/13stT4p-tD9LfvNGOyrNwXy4XznNfq2Ln/view",
+      "doi": null,
+      "venue_type": "working-paper",
+      "abstract": "This paper analyzes evolving platform liability policies in the United States and European Union, examining the economic implications of holding online platforms liable for harm from third-party seller transactions. The authors review relevant case law and regulatory frameworks including the 2022 Digital Services Act, 2024 Product Liability Directive, and 2019 ELI Model Rules. Using theoretical modeling, they assess how platform liability affects seller behavior, consumer welfare, and market efficiency, finding that increased liability can enhance consumer protection but may reduce seller safety investments for low-value goods. The authors propose subsidiary platform liability for significant harm and extended return policies to balance consumer protection with marketplace innovation.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "platform-liability-with-reputational-sanctions-2025",
       "title": "Platform Liability with Reputational Sanctions",
       "subtitle": "An analysis of how legal liability imposed on monopoly platforms affects safety investments, consumer welfare, and seller participation.",
