@@ -10,6 +10,37 @@
   ],
   "entries": [
     {
+      "placeholder": true,
+      "id": "product-liability-and-online-marketplaces-comparison-and-reform-2024",
+      "title": "PRODUCT LIABILITY AND ONLINE MARKETPLACES: COMPARISON AND REFORM",
+      "subtitle": "Examining the legal accountability of e-commerce platforms for defective products sold through their services across multiple jurisdictions.",
+      "date": "2024-04-30",
+      "type": "research",
+      "fields": [
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "product liability",
+        "e-commerce platforms",
+        "online marketplaces",
+        "consumer protection",
+        "comparative law",
+        "platform accountability"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "International & Comparative Law Quarterly",
+      "publisher_url": null,
+      "original_url": "https://www.cambridge.org/core/journals/international-and-comparative-law-quarterly/article/product-liability-and-online-marketplaces-comparison-and-reform/1CB76B1CD3951B6AF767A71E9BE5D032",
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This article examines the applicability of traditional product liability doctrines to online marketplaces and e-commerce platforms. Through comparative analysis across multiple jurisdictions, the paper investigates whether online platforms can be held liable for defective products sold on their platforms and analyzes how product liability law has been adapted to address these challenges. The study evaluates the roles of both litigation and regulation, with particular focus on Europe and the United States, and proposes reforms to increase marketplace accountability.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
       "placeholder": false,
       "id": "holding-platforms-liable-2025",
       "title": "Holding Platforms Liable",
