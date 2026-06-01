@@ -10,6 +10,37 @@
   ],
   "entries": [
     {
+      "placeholder": true,
+      "id": "barnes-v-yahoo-inc-ninth-circuit-court-of-appeals-considers-internet-service-providers-liability-for-fake-profiles-2009",
+      "title": "Barnes v. Yahoo!, Inc.: Ninth Circuit Court of Appeals Considers Internet Service Provider's Liability for Fake Profiles",
+      "subtitle": "The Ninth Circuit affirmed Section 230 immunity for negligence claims against ISPs but reversed to allow promissory estoppel claims based on promised content removal.",
+      "date": "2009-05-23",
+      "type": "legal",
+      "fields": [
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "Section 230 immunity",
+        "internet service provider liability",
+        "promissory estoppel",
+        "content moderation",
+        "Communications Decency Act",
+        "platform accountability"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "The Harvard Journal of Law & Technology (“JOLT”)",
+      "publisher_url": null,
+      "original_url": "https://jolt.law.harvard.edu/digest/barnes-v-yahoo-inc",
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This analysis examines the Ninth Circuit's May 2009 decision in Barnes v. Yahoo!, Inc., which clarifies the scope of Section 230(c)(1) immunity for internet service providers. The court upheld ISP immunity from negligence liability for third-party tortious content but held that Section 230 does not protect ISPs from promissory estoppel claims when they make explicit promises to remove harmful material and subsequently breach those promises. The decision raises important questions about incentives for ISPs to voluntarily moderate content and the appropriate balance between platform immunity and accountability.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
       "placeholder": false,
       "id": "fair-housing-council-of-san-fernando-valley-v-roommatescom",
       "title": "Fair Housing Council of San Fernando Valley v. Roommates.com",
