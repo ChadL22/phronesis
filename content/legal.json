@@ -10,6 +10,38 @@
   ],
   "entries": [
     {
+      "placeholder": true,
+      "id": "nyt-v-openai-the-timess-about-face-2024",
+      "title": "NYT v. OpenAI: The Times’s About-Face",
+      "subtitle": "An analysis of the Times's apparent contradiction between its defense in Tasini and its current copyright complaint against AI companies.",
+      "date": "2024-04-10",
+      "type": "legal",
+      "fields": [
+        "Computer Science",
+        "Public Policy",
+        "Philosophy"
+      ],
+      "tags": [
+        "generative AI",
+        "copyright law",
+        "fair use",
+        "romantic authorship",
+        "large language models",
+        "New York Times v. Tasini"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Harvard Law Review",
+      "publisher_url": null,
+      "original_url": "https://harvardlawreview.org/blog/2024/04/nyt-v-openai-the-timess-about-face/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This legal analysis examines the New York Times's copyright infringement suit against OpenAI and Microsoft, focusing on the use of Times articles in training large language models. The piece highlights a significant doctrinal shift by comparing the Times's current complaint to its defense in New York Times Co. v. Tasini, where the publisher previously prioritized financial interests over author protections. The analysis demonstrates how the Times now invokes romantic authorship narratives while simultaneously seeking to limit relief for AI developers, suggesting the publisher should adopt a more flexible position given its inconsistent historical stance on copyright protections.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
       "placeholder": false,
       "id": "transformative-training-an-analysis-of-ai-training-data-and-fair-use-in-authors-guild-v-openai-inc-2025",
       "title": "Transformative training: an analysis of AI training data and fair use in Authors Guild v. OpenAI Inc.",
