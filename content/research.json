@@ -10,7 +10,39 @@
   ],
   "entries": [
     {
-      "placeholder": true,
+      "placeholder": false,
+      "id": "holding-platforms-liable-2025",
+      "title": "Holding Platforms Liable",
+      "subtitle": "An economic analysis of platform liability under conditions of firm solvency constraints and information asymmetry.",
+      "date": "2025-11-04",
+      "type": "research",
+      "fields": [
+        "Economics",
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "platform liability",
+        "digital markets",
+        "firm accountability",
+        "regulatory design",
+        "market efficiency",
+        "information asymmetry"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "American Economic Journal: Microeconomics",
+      "publisher_url": null,
+      "original_url": "https://www.aeaweb.org/articles?id=10.1257/mic.20230282",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This paper examines the economic rationale for imposing liability on digital platforms for harms caused by firms conducting transactions with users. The analysis demonstrates that when firms face limited liability constraints, platform liability creates incentives for platforms to increase interaction prices and invest in monitoring and enforcement mechanisms. The optimal level of platform liability depends critically on three factors: whether user participation requires explicit consent, the degree to which users bear the costs of harms, and the extent to which platform mitigation efforts are observable to regulators.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "seller-liability-versus-platform-liability-optimal-liability-rule-and-law-enforcement-in-the-platform-economy-2024",
       "title": "Seller liability versus platform liability: optimal liability rule and law enforcement in the platform economy",
       "subtitle": "An analysis of optimal liability allocation between platforms and sellers for intellectual property rights violations.",
