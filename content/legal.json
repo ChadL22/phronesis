@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "transformative-training-an-analysis-of-ai-training-data-and-fair-use-in-authors-guild-v-openai-inc-2025",
+      "title": "Transformative training: an analysis of AI training data and fair use in Authors Guild v. OpenAI Inc.",
+      "subtitle": "A technical and legal analysis of how copyright law applies to AI training on copyrighted materials.",
+      "date": "2025-09-25",
+      "type": "legal",
+      "fields": [
+        "Computer Science",
+        "Public Policy",
+        "Philosophy"
+      ],
+      "tags": [
+        "generative AI",
+        "copyright law",
+        "fair use",
+        "transformative use",
+        "training datasets",
+        "Authors Guild v. OpenAI"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Maximum Academic Press",
+      "publisher_url": null,
+      "original_url": "https://www.maxapress.com/article/id/68d49ee4fa6c582eb21fa59c",
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This paper examines the landmark case Authors Guild v. OpenAI Inc., which explores whether the use of copyrighted material in training datasets for generative AI constitutes copyright infringement or qualifies as fair use. Through technical analysis of GPT model architecture and training processes, the authors argue that AI training could be considered transformative use. However, ChatGPT's capacity to reproduce verbatim excerpts from training data complicates this argument and creates legal uncertainty. The court's decision will clarify how transformative use doctrine applies to artificial intelligence and likely establish precedent for future disputes.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "getty-images-us-inc-and-others-v-stability-ai-limited-2025",
       "title": "Getty Images (US) Inc (and others) v Stability AI Limited.",
       "subtitle": "",
