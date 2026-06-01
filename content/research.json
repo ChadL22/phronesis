@@ -10,7 +10,101 @@
   ],
   "entries": [
     {
-      "placeholder": true,
+      "placeholder": false,
+      "id": "the-economics-of-two-sided-markets-2009",
+      "title": "The Economics of Two-Sided Markets",
+      "subtitle": "",
+      "date": "2009-06-01",
+      "type": "research",
+      "fields": [
+        "Economics",
+        "Public Policy"
+      ],
+      "tags": [
+        "two-sided markets",
+        "platform economics",
+        "network externalities",
+        "antitrust policy",
+        "payment systems",
+        "digital markets"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Journal of Economic Perspectives",
+      "publisher_url": null,
+      "original_url": null,
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This paper provides a comprehensive overview of two-sided markets, defined as markets in which two sets of agents interact through a platform or intermediary, and the decisions of each group affect the outcomes of the other through externalities. The paper explains the economic principles underlying two-sided markets, discusses firm strategies within such markets, and examines puzzling market outcomes. The work concludes by analyzing policy implications for antitrust and regulatory frameworks, with particular attention to recent issues in media, computer operating systems, and payment card industries.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
+      "id": "a-leverage-theory-of-tying-in-markets-with-network-effects-2026",
+      "title": "A Leverage Theory of Tying in Markets with Network Effects",
+      "subtitle": "",
+      "date": "2026-01-01",
+      "type": "research",
+      "fields": [
+        "Economics",
+        "Public Policy"
+      ],
+      "tags": [
+        "antitrust law",
+        "tying arrangements",
+        "network effects",
+        "monopoly leverage",
+        "consumer surplus",
+        "market competition"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "American Economic Review",
+      "publisher_url": null,
+      "original_url": null,
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This paper develops a theoretical framework explaining how monopolists leverage unexploited consumer surplus through tying arrangements to establish quasi-installed base advantages in markets characterized by network effects. The analysis demonstrates that tying emerges as an optimal strategy without requiring precommitment, functioning as a mechanism that reduces the quality of competitors in tied markets. While tying may result in rival exclusion, it can simultaneously expand consumption of the tying product, generating ambiguous welfare implications for overall market efficiency.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
+      "id": "the-economics-of-attention-2025",
+      "title": "The Economics of Attention",
+      "subtitle": "",
+      "date": "2025-09-01",
+      "type": "research",
+      "fields": [
+        "Economics",
+        "Computer Science",
+        "Philosophy"
+      ],
+      "tags": [
+        "attention economy",
+        "behavioral economics",
+        "digital technology externalities",
+        "artificial intelligence",
+        "economic theory",
+        "attentional allocation"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Journal of Economic Literature",
+      "publisher_url": null,
+      "original_url": null,
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This paper synthesizes interdisciplinary research on attention from psychology and economics to explain documented violations of classical economic theory. The authors identify attention as a critical economic resource and examine emerging research directions including attention-based utility functions, attentional externalities created by digital technologies, artificial intelligence's impact on attention economics, and the role of motivational states such as boredom and curiosity in attention allocation.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "a-literature-review-on-the-theory-of-asymmetric-information-2024",
       "title": "A Literature Review on the Theory of Asymmetric Information",
       "subtitle": "",
