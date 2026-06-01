@@ -10,7 +10,39 @@
   ],
   "entries": [
     {
-      "placeholder": true,
+      "placeholder": false,
+      "id": "platform-liability-with-reputational-sanctions-2025",
+      "title": "Platform Liability with Reputational Sanctions",
+      "subtitle": "An analysis of how legal liability imposed on monopoly platforms affects safety investments, consumer welfare, and seller participation.",
+      "date": "2025-03-12",
+      "type": "research",
+      "fields": [
+        "Economics",
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "platform liability",
+        "online marketplaces",
+        "consumer protection",
+        "seller selection",
+        "regulatory economics",
+        "digital platform governance"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Department of Economics, Universitat de Barcelona, and Barcelona Economic Analysis Team (BEAT)",
+      "publisher_url": null,
+      "original_url": "https://drive.google.com/file/d/1rBo0ZZ5S9k3b-DZ4coNYeuAbxHs5ZX2v/view",
+      "doi": null,
+      "venue_type": "working-paper",
+      "abstract": "This paper examines the interaction between platform legal liability, consumer reputation sanctions, and internal platform enforcement mechanisms in online marketplaces where a monopoly platform intermediates between sellers and consumers. The authors find that direct legal liability on platforms produces ambiguous effects on safety investments but generally increases overall welfare, except when legal costs are substantial. Furthermore, platform liability affects the composition of participating sellers differently depending on their heterogeneous sensitivities to consumer and platform sanctions, with the direction and magnitude of effects contingent on specific parameter values.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "product-liability-and-online-marketplaces-comparison-and-reform-2024",
       "title": "PRODUCT LIABILITY AND ONLINE MARKETPLACES: COMPARISON AND REFORM",
       "subtitle": "Examining the legal accountability of e-commerce platforms for defective products sold through their services across multiple jurisdictions.",
