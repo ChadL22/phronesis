@@ -10,7 +10,38 @@
   ],
   "entries": [
     {
-      "placeholder": true,
+      "placeholder": false,
+      "id": "zeran-v-america-online-inc-4th-cir-1997-2009",
+      "title": " Zeran v. America Online, Inc. (4th Cir.) (1997)",
+      "subtitle": "Analysis of the Fourth Circuit's foundational interpretation of Communications Decency Act Section 230 and its protection of ISPs from defamation liability.",
+      "date": "2009-01-01",
+      "type": "legal",
+      "fields": [
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "Section 230 immunity",
+        "internet libel",
+        "Communications Decency Act",
+        "ISP liability",
+        "online speech",
+        "defamation law"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Free Speech Center at Middle Tennessee State University",
+      "publisher_url": null,
+      "original_url": "https://firstamendment.mtsu.edu/article/zeran-v-america-online-inc-4th-cir/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This case study examines Zeran v. America Online, Inc., 129 F.3d 327 (4th Cir. 1997), a seminal decision establishing broad immunity for internet service providers under Section 230 of the Communications Decency Act of 1996. The Fourth Circuit held that ISPs cannot be treated as publishers of third-party defamatory content and affirmed that Congress intended to prioritize free speech protection over liability for user-generated posts. The decision has become foundational precedent for online libel jurisprudence, with numerous federal courts adopting its interpretive framework in subsequent cases.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "barnes-v-yahoo-inc-ninth-circuit-court-of-appeals-considers-internet-service-providers-liability-for-fake-profiles-2009",
       "title": "Barnes v. Yahoo!, Inc.: Ninth Circuit Court of Appeals Considers Internet Service Provider's Liability for Fake Profiles",
       "subtitle": "The Ninth Circuit affirmed Section 230 immunity for negligence claims against ISPs but reversed to allow promissory estoppel claims based on promised content removal.",
