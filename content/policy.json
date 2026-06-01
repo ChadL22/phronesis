@@ -9,33 +9,32 @@
   ],
   "entries": [
     {
-      "placeholder": false,
+      "placeholder": true,
       "id": "artificial-intelligence-risk-management-framework-generative-artificial-intelligence-profile-2024",
       "title": "Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile",
-      "subtitle": "",
+      "subtitle": "A companion resource implementing the AI RMF for generative AI systems pursuant to Executive Order 14110.",
       "date": "2024-07-01",
       "type": "policy",
       "fields": [
         "Computer Science",
-        "Public Policy",
-        "Philosophy"
+        "Public Policy"
       ],
       "tags": [
-        "generative AI risk management",
-        "AI governance frameworks",
-        "large language models",
-        "trustworthy AI",
-        "cross-sectoral AI policy",
-        "AI lifecycle management"
+        "generative AI",
+        "risk management",
+        "AI governance",
+        "AI frameworks",
+        "trustworthiness",
+        "lifecycle management"
       ],
       "origin": "via",
       "content_type": "abstract",
       "publisher": "National Institute of Standards and Technology (NIST)",
       "publisher_url": null,
-      "original_url": null,
+      "original_url": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf",
       "doi": null,
       "venue_type": null,
-      "abstract": "This document presents a cross-sectoral profile of the AI Risk Management Framework (AI RMF 1.0) specifically tailored for generative AI applications. Developed pursuant to President Biden's Executive Order 14110, the profile provides organizations with guidance on incorporating trustworthiness considerations into the design, development, use, and evaluation of AI products and services. The framework identifies risks novel to or exacerbated by generative AI technologies, including large language models, and offers suggested actions for governing, mapping, measuring, and managing these risks across the AI lifecycle.",
+      "abstract": "This document presents a cross-sectoral implementation profile of the AI Risk Management Framework (AI RMF 1.0) specifically tailored for generative AI systems. Released in January 2023 as a voluntary resource, the profile guides organizations in incorporating trustworthiness considerations into the design, development, use, and evaluation of generative AI products and services across multiple sectors. The framework identifies risks novel to or exacerbated by generative AI and provides suggested actions for governing, mapping, measuring, and managing these risks throughout the AI lifecycle, applicable to common cross-sectoral activities such as large language model deployment and cloud-based AI services.",
       "preview": null,
       "body": null,
       "body_html": "",
