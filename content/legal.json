@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "fair-housing-council-of-san-fernando-valley-v-roommatescom",
+      "title": "Fair Housing Council of San Fernando Valley v. Roommates.com",
+      "subtitle": "En banc decision establishing that website operators cannot claim CDA § 230 immunity when they affirmatively require users to input discriminatory content through pre-populated forms.",
+      "date": "",
+      "type": "legal",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Philosophy"
+      ],
+      "tags": [
+        "CDA Section 230",
+        "Fair Housing Act",
+        "platform immunity",
+        "discriminatory content",
+        "neutral tools doctrine",
+        "co-developer liability"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Electric Frontier Foundation",
+      "publisher_url": null,
+      "original_url": "https://www.eff.org/issues/cda230/cases/fair-housing-council-san-fernando-valley-v-roommatescom",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "The Ninth Circuit held that Roommates.com forfeited CDA § 230 immunity by requiring users to select from pre-populated answers regarding protected characteristics and discriminatory roommate preferences in violation of the Fair Housing Act. The court distinguished between passive hosting of user-generated content and active co-development, establishing that websites providing neutral tools without affirmative promotion of unlawful conduct retain immunity protection. The decision articulates a framework distinguishing permissible platform neutrality from prohibited conduct that induces illegal expression through mandatory user participation.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "the-new-york-timess-about-face-copyright-romantic-authorship-and-the-generative-ai-debate-2024",
       "title": "The New York Times's About-Face: Copyright, Romantic Authorship, and the Generative AI Debate",
       "subtitle": "",
