@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "meta-verdict-poised-to-shift-platform-liability-and-sexual-abuse-litigation-2026",
+      "title": "Meta Verdict Poised to Shift Platform Liability and Sexual Abuse Litigation",
+      "subtitle": "State of New Mexico v. Meta Platforms, Inc. ",
+      "date": "2026-04-23",
+      "type": "legal",
+      "fields": [
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "Section 230 immunity",
+        "platform liability",
+        "consumer protection law",
+        "algorithmic recommendation systems",
+        "corporate misrepresentation",
+        "child safety online"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "National Law Review",
+      "publisher_url": null,
+      "original_url": "https://natlawreview.com/article/meta-verdict-poised-shift-platform-liability-and-sexual-abuse-litigation",
+      "doi": null,
+      "venue_type": "news",
+      "abstract": "This legal analysis examines a March 24, 2026 New Mexico jury verdict holding Meta Platforms liable for $375 million in civil penalties under the state's Unfair Practices Act. Rather than pursuing publisher liability claims subject to Section 230 immunity, New Mexico framed the case as a consumer protection matter involving deceptive trade practices, algorithmic harm, and corporate misrepresentation. The verdict establishes that platform recommendation algorithms constitute active conduct rather than passive hosting, and that discrepancies between public safety representations and internal research can support unfair and unconscionable trade practice claims. The decision potentially creates a replicable legal framework for both state attorneys general and private plaintiffs seeking platform accountability for child safety harms.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "the-case-was-settled-but-chatgpt-thought-otherwise-a-dispute-poised-to-define-ai-legal-liability-2026",
       "title": "The Case Was Settled, But ChatGPT Thought Otherwise: A Dispute Poised to Define AI Legal Liability",
       "subtitle": "Nippon Life v. OpenAI ",
