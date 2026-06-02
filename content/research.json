@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "a-survey-on-adversarial-recommender-systems-from-attackdefense-strategies-to-generative-adversarial-networks-2020",
+      "title": "A survey on Adversarial Recommender Systems: from Attack/Defense strategies to Generative Adversarial Networks",
+      "subtitle": "A comprehensive review of adversarial attacks, defenses, and generative applications in recommendation systems and collaborative filtering models.",
+      "date": "2020-05-20",
+      "type": "research",
+      "fields": [
+        "Computer Science",
+        "Mathematics"
+      ],
+      "tags": [
+        "adversarial machine learning",
+        "recommender systems",
+        "collaborative filtering",
+        "matrix factorization",
+        "generative adversarial networks",
+        "robustness and security"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "ArXiv",
+      "publisher_url": null,
+      "original_url": "https://arxiv.org/abs/2005.10322",
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This survey examines the vulnerability of latent-factor models and collaborative filtering methods used in modern recommender systems to adversarial examples and perturbations. The paper provides a comprehensive literature review of 74 articles covering two primary areas: (1) adversarial machine learning techniques for attacking and defending recommendation models, and (2) the application of generative adversarial networks (GANs) for improving generative recommendation applications. The survey serves as a reference for researchers addressing security challenges in recommender systems and developing generative models.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "a-survey-of-deep-reinforcement-learning-in-recommender-systems-a-systematic-review-and-future-directions-2021",
       "title": "A Survey of Deep Reinforcement Learning in Recommender Systems: A Systematic Review and Future Directions",
       "subtitle": "A comprehensive overview of recent trends and applications of deep reinforcement learning techniques in recommender systems research.",
