@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "force-v-facebook-inc-2018",
+      "title": "Force v. Facebook, Inc.",
+      "subtitle": "Section 230 Immunity Shields Facebook from Civil Antiterrorism Claims",
+      "date": "2018-08-02",
+      "type": "legal",
+      "fields": [
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "Section 230 immunity",
+        "social media liability",
+        "antiterrorism law",
+        "platform moderation",
+        "user-generated content",
+        "extraterritoriality"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Justia Law",
+      "publisher_url": null,
+      "original_url": "https://law.justia.com/cases/federal/appellate-courts/ca2/18-397/18-397-2019-07-31.html",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "In this appellate decision, the DC Circuit upheld dismissal of civil antiterrorism claims brought by U.S. citizens against Facebook for allegedly facilitating Hamas terrorist attacks through the platform's hosting of terrorist-generated content. The court held that Section 230(c)(1) of the Communications Decency Act provides broad immunity to interactive computer service providers who do not develop third-party content. The decision further clarified that Section 230 immunity is not implicitly narrowed by the Anti-Terrorism Act's civil remedies provision and that applying immunity does not create impermissible extraterritorial effects. The court declined supplemental jurisdiction over foreign law claims.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "doe-no-1-v-backpagecom-llc-2016",
       "title": "Doe No. 1 v. Backpage.com, LLC",
       "subtitle": "A First Circuit case examining claims against Backpage.com for alleged facilitation of sex trafficking of minors.",
