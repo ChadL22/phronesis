@@ -10,6 +10,39 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "internet-freedom-and-family-empowerment-act-1995",
+      "title": "Internet Freedom and Family Empowerment Act",
+      "subtitle": "H.R. 1978 (104th Congress) proposes federal protections for private sector content filtering and blocking services while prohibiting FCC regulation of interactive computer services.",
+      "date": "1995-06-30",
+      "type": "policy",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Economics"
+      ],
+      "tags": [
+        "internet regulation",
+        "content filtering",
+        "section 230",
+        "platform liability",
+        "parental controls",
+        "free speech online"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "U.S. Government Printing Office - 104th Congress",
+      "publisher_url": null,
+      "original_url": "https://www.congress.gov/bill/104th-congress/house-bill/1978",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "Introduced in the House on June 30, 1995, this legislative proposal seeks to establish a regulatory framework that encourages private sector development of user control technologies for online content while limiting government intervention in internet regulation. The bill establishes liability protections for service providers and users who voluntarily implement blocking or filtering technologies, while explicitly prohibiting FCC content and economic regulation of interactive computer services. The proposal maintains that internet services have flourished under minimal government regulation and aims to preserve competitive market conditions while ensuring enforcement of existing criminal laws.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "audience": "federal"
+    },
+    {
+      "placeholder": false,
       "id": "telecommunications-act-of-1996",
       "title": "Telecommunications Act of 1996",
       "subtitle": "A comprehensive overview of the first major telecommunications law overhaul in 62 years and the Federal Communications Commission's implementation framework.",
