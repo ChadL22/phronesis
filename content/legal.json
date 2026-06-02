@@ -11,6 +11,68 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "enigma-software-group-usa-llc-v-malwarebytes-inc-2024",
+      "title": "Enigma Software Group USA, LLC v. Malwarebytes, Inc.",
+      "subtitle": "Analysis of how courts apply First Amendment doctrine to cybersecurity filtering determinations in the context of Enigma Software Group v. Malwarebytes.",
+      "date": "2024-03-01",
+      "type": "legal",
+      "fields": [
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "First Amendment",
+        "Lanham Act",
+        "cybersecurity",
+        "commercial speech",
+        "Section 230",
+        "false advertising"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Harvard Law Review",
+      "publisher_url": null,
+      "original_url": "https://harvardlawreview.org/print/vol-137/enigma-software-group-usa-llc-v-malwarebytes-inc/",
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This legal analysis examines the Ninth Circuit's decision in Enigma Software Group v. Malwarebytes, which addresses whether cybersecurity companies' product classification determinations constitute protected speech under the First Amendment or actionable false advertising under the Lanham Act. The case raises fundamental questions about how existing commercial speech doctrine applies to technology platforms, specifically whether designations of software as malware constitute statements of opinion or verifiable fact. The court held that in the cybersecurity context, malware determinations are factual assertions due to the objective nature of the classification and the company's expertise, complicating liability assessments for cybersecurity firms.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
+      "id": "gonzalez-v-google-llc-2023",
+      "title": "Gonzalez v. Google LLC",
+      "subtitle": "Supreme Court case analyzing whether online platforms can be held liable for algorithmically recommending harmful third-party content and the scope of Section 230 immunity.",
+      "date": "2023-02-21",
+      "type": "legal",
+      "fields": [
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "Section 230 immunity",
+        "algorithmic recommendation",
+        "online platform liability",
+        "terrorist content",
+        "First Amendment",
+        "internet regulation"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Legal Information Institute (LII)",
+      "publisher_url": null,
+      "original_url": "https://www.law.cornell.edu/supct/cert/21-1333",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "Gonzalez v. Google LLC addresses whether online platforms such as YouTube qualify for immunity under Section 230 of the Communications Decency Act when they use algorithms to recommend third-party content, specifically ISIS-related videos. The case arose from a 2015 terrorist attack in Paris that killed Nohemi Gonzalez, whose father subsequently sued Google for secondary liability under the Antiterrorism Act. The central legal question concerns whether Section 230 immunity extends to targeted algorithmic recommendations or only to traditional editorial functions such as displaying or removing content.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "twitter-inc-v-taamneh-2023",
       "title": "Twitter, Inc. v. Taamneh",
       "subtitle": "Analysis of how the Supreme Court's decision in Taamneh v. Twitter avoided establishing precedent on Section 230 of the Communications Decency Act despite significant opportunity to clarify internet service provider liability.",
