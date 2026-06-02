@@ -804,10 +804,20 @@ async function ghFetch(path, opts={}) {
   return res.json();
 }
 
+// Decode a base64 payload from the GitHub API as UTF-8. This MUST mirror the
+// UTF-8 encoding used in saveFile() — atob() alone yields a Latin-1 byte string,
+// which mangles multibyte characters (em dashes, curly quotes, accents) and
+// re-corrupts the file a little more on every publish.
+function b64DecodeUtf8(b64) {
+  const binary = atob(b64.replace(/\n/g, ''));
+  const bytes = Uint8Array.from(binary, ch => ch.charCodeAt(0));
+  return new TextDecoder('utf-8').decode(bytes);
+}
+
 async function loadFile(type) {
   const path = FILE_MAP[type];
   const data = await ghFetch('/repos/' + REPO + '/contents/' + path + '?ref=' + BRANCH);
-  const content = JSON.parse(atob(data.content.replace(/\n/g,'')));
+  const content = JSON.parse(b64DecodeUtf8(data.content));
   if (type === 'corpus') {
     contentStore[type] = { entries: content.topics || [], sha: data.sha, meta: content };
   } else {

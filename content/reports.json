@@ -2,8 +2,8 @@
   "_schema": "1.0",
   "_notes": [
     "Reports are longer-form, comprehensive reference documents",
-    "category: government | industry | academia ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ used for the category filter",
-    "featured: true on the single most recent/prominent report ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ renders as the hero card",
+    "category: government | industry | academia — used for the category filter",
+    "featured: true on the single most recent/prominent report — renders as the hero card",
     "pages: approximate page count"
   ],
   "entries": [
