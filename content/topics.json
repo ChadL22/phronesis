@@ -27,7 +27,7 @@
       "reading_paths": {
         "student": {
           "label": "Student",
-          "description": "Understand how traditional liability doctrine struggles with algorithmic systems.",
+          "description": "Given the ever-evolving nature of the internet, this canon explores what role Section 230 has played, currently plays, and could play going forward. It traces how questions of platform liability have shifted from early internet defamation and content moderation to algorithmic amplification, recommender systems, and the growing entanglement of the internet with artificial intelligence.",
           "sequence": [
             {
               "id": "liability-without-causation-2024",
@@ -45,7 +45,7 @@
         },
         "general": {
           "label": "General Reader",
-          "description": "Who pays when AI goes wrong â and why it's complicated.",
+          "description": "Section 230 has quietly shaped much of the internet as we know it, from comment sections and social media platforms to search engines and online marketplaces. This canon introduces readers to the law’s origins, its role in protecting online platforms, and the new questions raised by algorithms, recommender systems, and generative AI.",
           "sequence": [
             {
               "id": "liability-without-causation-2024",
@@ -59,7 +59,7 @@
         },
         "policy": {
           "label": "Policy Professional",
-          "description": "Liability frameworks, safe harbors, and the state legislative landscape.",
+          "description": "This path examines Section 230 as a policy tool for governing platform liability, speech moderation, innovation, and online harm. It traces how the statute’s original intermediary-liability framework is being tested by algorithmic amplification, recommender systems, online marketplaces, and generative AI, while highlighting the tradeoffs policymakers must weigh when considering reform.",
           "sequence": [
             {
               "id": "comments-to-il-lawmakers-regarding-the-consumer-protection-group-1-proposals-sb-3384-sb-3444-2026",
@@ -77,7 +77,7 @@
         },
         "legal": {
           "label": "Legal Professional",
-          "description": "Doctrinal analysis of causation, duty, and emerging liability frameworks.",
+          "description": "This path traces the legal evolution of Section 230 from its common-law roots in defamation and distributor liability to contemporary disputes involving recommender systems, platform design, and generative AI. It is designed to help legal professionals understand the doctrine’s origins, its major interpretive turning points, and the emerging cases and reform proposals testing the boundaries of platform immunity.",
           "sequence": [
             {
               "id": "liability-without-causation-2024",
@@ -95,7 +95,7 @@
         },
         "economist": {
           "label": "Economist",
-          "description": "Economic analysis of liability regimes and harm allocation.",
+          "description": "This path examines Section 230 through the lens of incentives, market design, and platform economics. It explores how liability rules shape the behavior of platforms, users, advertisers, and victims in markets increasingly defined by recommender systems, attention competition, asymmetric information, network effects, and generative AI.",
           "sequence": [
             {
               "id": "dynamic-pricing-algorithms-consumer-harm-and-regulatory-response",
@@ -109,7 +109,7 @@
         },
         "technologist": {
           "label": "Technologist",
-          "description": "Technical dimensions of traceability, auditability, and liability.",
+          "description": "This path helps technologists understand how Section 230 intersects with the design of modern internet and AI systems. It traces how choices around content moderation, recommender systems, algorithmic amplification, marketplace architecture, and generative AI outputs can affect platform liability, user safety, and governance obligations.",
           "sequence": [
             {
               "id": "audits-under-resource-data-and-access-constraints-2025",
