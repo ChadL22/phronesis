@@ -593,6 +593,41 @@
     }
     .canon-aud-tab:hover { color: var(--ink); border-color: var(--ink-3); }
     .canon-aud-tab.active { color: var(--accent); border-color: var(--accent); background: rgba(43,71,54,0.04); }
+
+    /* canon path: copy-from + id autocomplete */
+    .canon-copy-row {
+      display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
+      padding: 0.6rem 0.7rem; margin-bottom: 1rem;
+      background: var(--paper-2); border: 1px solid var(--rule); border-radius: 2px;
+    }
+    .canon-copy-label {
+      font-family: var(--sans); font-size: 0.6rem; font-weight: 500;
+      letter-spacing: 0.11em; text-transform: uppercase; color: var(--ink-3);
+    }
+    .canon-copy-btn {
+      font-family: var(--sans); font-size: 0.6rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2);
+      background: none; border: 1px solid var(--rule); border-radius: 2px;
+      padding: 0.32rem 0.7rem; cursor: pointer; transition: all 0.18s;
+    }
+    .canon-copy-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .corpus-add-wrap { position: relative; flex: 1; }
+    .corpus-suggest {
+      display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 50;
+      background: var(--paper); border: 1px solid var(--rule); border-top: none;
+      border-radius: 0 0 2px 2px; max-height: 240px; overflow-y: auto;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    }
+    .corpus-suggest-item {
+      padding: 0.5rem 0.7rem; cursor: pointer;
+      border-bottom: 1px solid var(--rule); transition: background 0.12s;
+    }
+    .corpus-suggest-item:last-child { border-bottom: none; }
+    .corpus-suggest-item:hover { background: var(--paper-2); }
+    .corpus-suggest-title { font-family: var(--serif); font-size: 0.82rem; color: var(--ink); line-height: 1.25; }
+    .corpus-suggest-meta { font-size: 0.58rem; color: var(--ink-3); letter-spacing: 0.04em; margin-top: 0.15rem; }
+    .corpus-suggest-type { color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; }
+    .corpus-suggest-empty { padding: 0.6rem 0.7rem; font-size: 0.72rem; color: var(--ink-3); font-style: italic; }
   </style>
 </head>
 <body>
@@ -1609,6 +1644,15 @@ function renderCorpusPathEditor() {
       <label>Path Description <em>shown to ${AUDIENCE_LABELS_CORPUS[aud]} readers</em></label>
       <input class="field-input" type="text" value="${esc(path.description)}" oninput="formState.reading_paths['${aud}'].description=this.value" placeholder="e.g. Start with the foundational question, then see how governance works in practice." />
     </div>
+    <div class="canon-copy-row">
+      <span class="canon-copy-label">Start from another path</span>
+      <select class="field-select" id="corpus-copy-src" style="width:auto;font-size:0.72rem;padding:0.32rem 1.8rem 0.32rem 0.6rem;">
+        <option value="">Choose a path to copy</option>
+        ${AUDIENCE_KEYS.filter(k => k !== aud).map(k => `<option value="${k}">${AUDIENCE_LABELS_CORPUS[k]} (${(formState.reading_paths[k] && formState.reading_paths[k].sequence ? formState.reading_paths[k].sequence.length : 0)})</option>`).join('')}
+      </select>
+      <button class="canon-copy-btn" onclick="corpusCopyFrom('replace')">Replace</button>
+      <button class="canon-copy-btn" onclick="corpusCopyFrom('append')">Append</button>
+    </div>
     <label style="display:block;font-family:var(--sans);font-size:0.62rem;font-weight:500;letter-spacing:0.11em;text-transform:uppercase;color:var(--ink-2);margin-bottom:0.5rem;">Reading Sequence <em>drag to reorder</em></label>
     <div class="canon-seq-list" id="corpus-seq-list">
       ${path.sequence.map((item, i) => `
@@ -1625,11 +1669,14 @@ function renderCorpusPathEditor() {
         </div>
       `).join('')}
     </div>
-    <div style="display:flex;gap:0.5rem;margin-top:0.5rem;">
-      <input class="field-input" id="corpus-add-id" type="text" placeholder="Entry ID to add (e.g. pausing-isnt-policy-2026)" style="flex:1;font-size:0.72rem;" onkeypress="if(event.key==='Enter'){event.preventDefault();corpusAddItem('${aud}');}" />
-      <button class="canon-seq-add" style="width:auto;flex-shrink:0;" onclick="corpusAddItem('${aud}')">+ Add</button>
+    <div style="display:flex;gap:0.5rem;margin-top:0.5rem;align-items:flex-start;">
+      <div class="corpus-add-wrap">
+        <input class="field-input" id="corpus-add-id" type="text" placeholder="Search by title or ID to add..." autocomplete="off" style="width:100%;font-size:0.72rem;" oninput="corpusSuggest('${aud}',this.value)" onfocus="corpusSuggest('${aud}',this.value)" onblur="corpusSuggestHide()" onkeypress="if(event.key==='Enter'){event.preventDefault();corpusAddItem('${aud}');}" />
+        <div class="corpus-suggest" id="corpus-suggest"></div>
+      </div>
+      <button class="canon-seq-add" style="width:auto;flex-shrink:0;margin-top:0;" onclick="corpusAddItem('${aud}')">+ Add</button>
     </div>
-    <p class="field-hint">Enter the ID of any content entry. You can find IDs in the sidebar when viewing other content types.</p>
+    <p class="field-hint">Start typing a title or ID to see matching entries from all content types, then click a suggestion. You can also paste an ID directly and press Enter.</p>
   `;
 }
 
@@ -1657,8 +1704,89 @@ function corpusAddItem(aud) {
   if (!id) { showToast('Enter an entry ID to add.', 'error'); return; }
   formState.reading_paths[aud].sequence.push({ id, note: '' });
   input.value = '';
+  corpusSuggestHide();
   renderCorpusPathEditor();
   showToast('Added to reading path.', 'success');
+}
+
+// Build a flat index of every content entry (id, title, type) for autocomplete.
+function allContentEntries() {
+  const out = [];
+  for (const type of Object.keys(FILE_MAP)) {
+    if (type === 'corpus') continue;
+    const store = contentStore[type];
+    if (!store || !store.entries) continue;
+    for (const e of store.entries) {
+      if (e && e.id) out.push({ id: e.id, title: e.title || e.id, type });
+    }
+  }
+  return out;
+}
+
+// Live suggestions as the editor types an ID/title to add.
+function corpusSuggest(aud, query) {
+  const box = document.getElementById('corpus-suggest');
+  if (!box) return;
+  const q = (query || '').trim().toLowerCase();
+  if (!q) { box.style.display = 'none'; box.innerHTML = ''; return; }
+  const inPath = new Set((formState.reading_paths[aud].sequence || []).map(i => i.id));
+  const matches = allContentEntries()
+    .filter(e => !inPath.has(e.id))
+    .filter(e => e.id.toLowerCase().includes(q) || e.title.toLowerCase().includes(q))
+    .slice(0, 8);
+  if (!matches.length) {
+    box.innerHTML = '<div class="corpus-suggest-empty">No matching entries.</div>';
+    box.style.display = 'block';
+    return;
+  }
+  box.innerHTML = matches.map(e => {
+    const safeId = e.id.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+    return `<div class="corpus-suggest-item" onmousedown="event.preventDefault();corpusPickSuggestion('${aud}','${safeId}')">
+      <div class="corpus-suggest-title">${esc(e.title)}</div>
+      <div class="corpus-suggest-meta"><span class="corpus-suggest-type">${TYPE_LABELS[e.type] || e.type}</span> &middot; ${esc(e.id)}</div>
+    </div>`;
+  }).join('');
+  box.style.display = 'block';
+}
+
+function corpusSuggestHide() {
+  setTimeout(() => {
+    const box = document.getElementById('corpus-suggest');
+    if (box) box.style.display = 'none';
+  }, 150);
+}
+
+function corpusPickSuggestion(aud, id) {
+  formState.reading_paths[aud].sequence.push({ id, note: '' });
+  renderCorpusPathEditor();
+  const input = document.getElementById('corpus-add-id');
+  if (input) input.focus();
+  showToast('Added to reading path.', 'success');
+}
+
+// Copy another audience's sequence into the current one (replace or append).
+function corpusCopyFrom(mode) {
+  const sel = document.getElementById('corpus-copy-src');
+  const sourceAud = sel ? sel.value : '';
+  if (!sourceAud) { showToast('Choose a path to copy from.', 'error'); return; }
+  const targetAud = activeCorpusAudience;
+  if (sourceAud === targetAud) { showToast('Pick a different path.', 'error'); return; }
+  const src = formState.reading_paths[sourceAud];
+  const tgt = formState.reading_paths[targetAud];
+  if (!src || !src.sequence || !src.sequence.length) {
+    showToast('That path has no entries to copy.', 'error');
+    return;
+  }
+  const copy = src.sequence.map(it => ({ id: it.id, note: it.note || '' }));
+  if (mode === 'replace') {
+    if (tgt.sequence.length && !confirm('Replace the ' + AUDIENCE_LABELS_CORPUS[targetAud] + ' sequence (' + tgt.sequence.length + ' items) with a copy of the ' + AUDIENCE_LABELS_CORPUS[sourceAud] + ' sequence (' + copy.length + ' items)?')) return;
+    tgt.sequence = copy;
+  } else {
+    const existing = new Set(tgt.sequence.map(i => i.id));
+    tgt.sequence = tgt.sequence.concat(copy.filter(i => !existing.has(i.id)));
+  }
+  renderCorpusPathEditor();
+  showToast((mode === 'replace' ? 'Replaced with' : 'Appended') + ' the ' + AUDIENCE_LABELS_CORPUS[sourceAud] + ' path.', 'success');
 }
 
 // ═══════════════════════════════════════════════════════════
