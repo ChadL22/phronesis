@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "state-of-new-mexico-v-meta-platforms-inc-2023",
+      "title": "State of New Mexico v. Meta Platforms, Inc. ",
+      "subtitle": "New Mexico Attorney General's civil complaint against Meta Platforms alleging design-based facilitation of child sexual exploitation and trafficking through Instagram and Facebook.",
+      "date": "2023-12-05",
+      "type": "legal",
+      "fields": [
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "child sexual exploitation",
+        "social media platform design",
+        "algorithmic harms",
+        "civil litigation",
+        "human trafficking",
+        "consumer protection"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "First Judicial District Court, County of Santa Fe, State of New Mexico",
+      "publisher_url": null,
+      "original_url": "https://nmag.gov/wp-content/uploads/2024/01/2023-12-05-NM-v.-Meta-et-al.-COMPLAINT-REDACTED.pdf",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This complaint filed in New Mexico First Judicial District Court alleges that Meta Platforms, Instagram LLC, Meta Payments Inc., Meta Platforms Technologies LLC, and Mark Zuckerberg engaged in unlawful trade or commerce by designing and operating social media platforms that knowingly enabled sexual exploitation and trafficking of children. The complaint presents six detailed case studies of New Mexico residents harmed through the platforms and argues that Meta's algorithmic design features—including engagement-based feeds, infinite scroll, push notifications, and targeted youth marketing—were deliberately engineered to maximize user addiction while facilitating child exploitation. The filing contends Meta maintained knowledge of these harms but failed to implement adequate safeguards, instead profiting from child sexual abuse material distribution.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "meta-verdict-poised-to-shift-platform-liability-and-sexual-abuse-litigation-2026",
       "title": "Meta Verdict Poised to Shift Platform Liability and Sexual Abuse Litigation",
       "subtitle": "State of New Mexico v. Meta Platforms, Inc. ",
