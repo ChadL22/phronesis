@@ -4,7 +4,7 @@
     "Application-oriented taxonomy: categories describe what AI systems DO, not abstract policy domains",
     "match_tags: entries with ANY of these tags (case-insensitive partial match) are pulled into the topic",
     "match_fields: entries with ANY of these fields are also considered relevant",
-    "reading_paths: curated sequences per audience â each entry references an id from any content JSON",
+    "reading_paths: curated sequences per audience Ã¢ÂÂ each entry references an id from any content JSON",
     "audience keys: student | general | policy | legal | economist | technologist"
   ],
   "topics": [
@@ -59,23 +59,27 @@
             },
             {
               "id": "allow-states-and-victims-to-fight-online-sex-trafficking-act-of-2017-fosta-2018",
-              "note": "Shows Congress’s first major Section 230 carveout."
+              "note": "Shows Congressâs first major Section 230 carveout."
+            },
+            {
+              "id": "force-v-facebook-inc-2018",
+              "note": "In this case we see tests  around the question of whether algorithmic recommendation counts as protected intermediation."
             }
           ]
         },
         "general": {
           "label": "General Reader",
-          "description": "Section 230 has quietly shaped much of the internet as we know it, from comment sections and social media platforms to search engines and online marketplaces. This canon introduces readers to the law’s origins, its role in protecting online platforms, and the new questions raised by algorithms, recommender systems, and generative AI.",
+          "description": "Section 230 has quietly shaped much of the internet as we know it, from comment sections and social media platforms to search engines and online marketplaces. This canon introduces readers to the lawâs origins, its role in protecting online platforms, and the new questions raised by algorithms, recommender systems, and generative AI.",
           "sequence": []
         },
         "policy": {
           "label": "Policy Professional",
-          "description": "This path examines Section 230 as a policy tool for governing platform liability, speech moderation, innovation, and online harm. It traces how the statute’s original intermediary-liability framework is being tested by algorithmic amplification, recommender systems, online marketplaces, and generative AI, while highlighting the tradeoffs policymakers must weigh when considering reform.",
+          "description": "This path examines Section 230 as a policy tool for governing platform liability, speech moderation, innovation, and online harm. It traces how the statuteâs original intermediary-liability framework is being tested by algorithmic amplification, recommender systems, online marketplaces, and generative AI, while highlighting the tradeoffs policymakers must weigh when considering reform.",
           "sequence": []
         },
         "legal": {
           "label": "Legal Professional",
-          "description": "This path traces the legal evolution of Section 230 from its common-law roots in defamation and distributor liability to contemporary disputes involving recommender systems, platform design, and generative AI. It is designed to help legal professionals understand the doctrine’s origins, its major interpretive turning points, and the emerging cases and reform proposals testing the boundaries of platform immunity.",
+          "description": "This path traces the legal evolution of Section 230 from its common-law roots in defamation and distributor liability to contemporary disputes involving recommender systems, platform design, and generative AI. It is designed to help legal professionals understand the doctrineâs origins, its major interpretive turning points, and the emerging cases and reform proposals testing the boundaries of platform immunity.",
           "sequence": []
         },
         "economist": {
@@ -93,7 +97,7 @@
     {
       "id": "moderation-detection-enforcement",
       "name": "Moderation, Detection, & Enforcement",
-      "description": "How platforms identify, filter, and remove content â and the legal frameworks governing these decisions. This canon covers Section 230, content moderation systems, automated detection, and the First Amendment dimensions of platform speech.",
+      "description": "How platforms identify, filter, and remove content Ã¢ÂÂ and the legal frameworks governing these decisions. This canon covers Section 230, content moderation systems, automated detection, and the First Amendment dimensions of platform speech.",
       "match_tags": [
         "Section 230",
         "content moderation",
@@ -115,7 +119,7 @@
           "sequence": [
             {
               "id": "to-repeal-or-not-to-repeal-is-not-the-question-for-section-230-2026",
-              "note": "Start here â why repeal isn't the right question"
+              "note": "Start here Ã¢ÂÂ why repeal isn't the right question"
             },
             {
               "id": "in-netchoice-cases-supreme-court-labels-a-surprisingly-narrow-class-of-online-platform-company-activities-as-protected-expression-2024",
@@ -123,7 +127,7 @@
             },
             {
               "id": "section-230-and-child-exploitation-restoring-the-original-intent-of-the-communications-decency-act-2025",
-              "note": "The original purpose of Section 230 â and how it drifted"
+              "note": "The original purpose of Section 230 Ã¢ÂÂ and how it drifted"
             }
           ]
         },
@@ -165,7 +169,7 @@
         },
         "legal": {
           "label": "Legal Professional",
-          "description": "The doctrine â NetChoice, Moody, and what comes next.",
+          "description": "The doctrine Ã¢ÂÂ NetChoice, Moody, and what comes next.",
           "sequence": [
             {
               "id": "in-netchoice-cases-supreme-court-labels-a-surprisingly-narrow-class-of-online-platform-company-activities-as-protected-expression-2024",
@@ -218,7 +222,7 @@
     {
       "id": "identification-authentication-biometrics",
       "name": "Identification, Authentication, & Biometrics",
-      "description": "AI systems that identify, verify, and track individuals â from facial recognition to behavioral biometrics to identity verification. This canon covers the privacy, civil liberties, and data governance dimensions of identification technologies.",
+      "description": "AI systems that identify, verify, and track individuals Ã¢ÂÂ from facial recognition to behavioral biometrics to identity verification. This canon covers the privacy, civil liberties, and data governance dimensions of identification technologies.",
       "match_tags": [
         "privacy",
         "data privacy",
@@ -255,7 +259,7 @@
         },
         "general": {
           "label": "General Reader",
-          "description": "How your data is being used â and what's being done about it.",
+          "description": "How your data is being used Ã¢ÂÂ and what's being done about it.",
           "sequence": [
             {
               "id": "walmart-is-putting-digital-labels-that-change-prices-instantly-on-every-store-shelf-in-america-2026",
@@ -269,11 +273,11 @@
         },
         "policy": {
           "label": "Policy Professional",
-          "description": "The regulatory landscape for data privacy â federal, state, and international.",
+          "description": "The regulatory landscape for data privacy Ã¢ÂÂ federal, state, and international.",
           "sequence": [
             {
               "id": "cfpb-consumer-laws-and-regulations-unfair-deceptive-or-abusive-acts-or-practices",
-              "note": "CFPB's UDAAP framework â the enforcement baseline"
+              "note": "CFPB's UDAAP framework Ã¢ÂÂ the enforcement baseline"
             },
             {
               "id": "ftc-surveillance-pricing-6b-study-research-summaries-a-staff-perspective",
@@ -331,7 +335,7 @@
           "sequence": [
             {
               "id": "a-comprehensive-guide-to-differential-privacy-from-theory-to-user-expectations-2025",
-              "note": "Differential privacy â from theory to implementation"
+              "note": "Differential privacy Ã¢ÂÂ from theory to implementation"
             },
             {
               "id": "ftc-surveillance-pricing-6b-study-research-summaries-a-staff-perspective",
@@ -344,7 +348,7 @@
     {
       "id": "generative-synthetic-media",
       "name": "Generative & Synthetic Media",
-      "description": "AI systems that create text, images, audio, and video â and the intellectual property, authenticity, and trust questions they raise. This canon covers copyright and training data, deepfakes, synthetic content provenance, and the liability regimes for generative outputs.",
+      "description": "AI systems that create text, images, audio, and video Ã¢ÂÂ and the intellectual property, authenticity, and trust questions they raise. This canon covers copyright and training data, deepfakes, synthetic content provenance, and the liability regimes for generative outputs.",
       "match_tags": [
         "copyright",
         "intellectual property",
@@ -364,7 +368,7 @@
       "reading_paths": {
         "student": {
           "label": "Student",
-          "description": "How copyright law collides with AI training â the basics.",
+          "description": "How copyright law collides with AI training Ã¢ÂÂ the basics.",
           "sequence": [
             {
               "id": "anthropic-settles-its-copyright-litigationand-why-that-was-the-right-move-2025",
@@ -372,7 +376,7 @@
             },
             {
               "id": "cox-communications-v-sony-music-entertainment",
-              "note": "Secondary liability â when does knowing about infringement make you liable?"
+              "note": "Secondary liability Ã¢ÂÂ when does knowing about infringement make you liable?"
             },
             {
               "id": "open-source-ai-meaning-2024",
@@ -382,7 +386,7 @@
         },
         "general": {
           "label": "General Reader",
-          "description": "AI companies are training on copyrighted work â what's happening.",
+          "description": "AI companies are training on copyrighted work Ã¢ÂÂ what's happening.",
           "sequence": [
             {
               "id": "anthropic-settles-its-copyright-litigationand-why-that-was-the-right-move-2025",
@@ -390,7 +394,7 @@
             },
             {
               "id": "gptzero-finds-100-new-hallucinations-in-neurips-2025-accepted-papers-2026",
-              "note": "When AI makes things up â hallucinations in academic papers"
+              "note": "When AI makes things up Ã¢ÂÂ hallucinations in academic papers"
             },
             {
               "id": "open-source-ai-meaning-2024",
@@ -418,7 +422,7 @@
         },
         "legal": {
           "label": "Legal Professional",
-          "description": "The doctrine â fair use, secondary liability, and pending litigation.",
+          "description": "The doctrine Ã¢ÂÂ fair use, secondary liability, and pending litigation.",
           "sequence": [
             {
               "id": "cox-communications-v-sony-music-entertainment",
@@ -440,7 +444,7 @@
           "sequence": [
             {
               "id": "anthropic-settles-its-copyright-litigationand-why-that-was-the-right-move-2025",
-              "note": "The economics of a $1.5B settlement â compensation rates and market signals"
+              "note": "The economics of a $1.5B settlement Ã¢ÂÂ compensation rates and market signals"
             },
             {
               "id": "eli-lilly-insilico-strike-ai-drug-discovery-deal-2026",
@@ -454,7 +458,7 @@
           "sequence": [
             {
               "id": "open-source-ai-meaning-2024",
-              "note": "Disaggregating 'open source' â weights, data, architecture"
+              "note": "Disaggregating 'open source' Ã¢ÂÂ weights, data, architecture"
             },
             {
               "id": "gptzero-finds-100-new-hallucinations-in-neurips-2025-accepted-papers-2026",
@@ -471,7 +475,7 @@
     {
       "id": "cyber-physical-embodied-ai",
       "name": "Cyber-Physical & Embodied AI",
-      "description": "AI systems that interact with the physical world â autonomous vehicles, robotics, drones, and infrastructure. This canon covers safety standards, physical harm liability, and the governance challenges unique to systems that can cause tangible damage.",
+      "description": "AI systems that interact with the physical world Ã¢ÂÂ autonomous vehicles, robotics, drones, and infrastructure. This canon covers safety standards, physical harm liability, and the governance challenges unique to systems that can cause tangible damage.",
       "match_tags": [
         "autonomous vehicles",
         "robotics",
@@ -496,7 +500,7 @@
             },
             {
               "id": "the-future-of-data-centers-2025",
-              "note": "The physical infrastructure underlying AI â energy, land, and policy"
+              "note": "The physical infrastructure underlying AI Ã¢ÂÂ energy, land, and policy"
             },
             {
               "id": "liability-without-causation-2024",
@@ -506,7 +510,7 @@
         },
         "general": {
           "label": "General Reader",
-          "description": "AI in the real world â data centers, infrastructure, and physical systems.",
+          "description": "AI in the real world Ã¢ÂÂ data centers, infrastructure, and physical systems.",
           "sequence": [
             {
               "id": "the-future-of-data-centers-2025",
@@ -528,7 +532,7 @@
             },
             {
               "id": "pausing-isnt-policy-2026",
-              "note": "Why compute moratoria can't work â and what might"
+              "note": "Why compute moratoria can't work Ã¢ÂÂ and what might"
             },
             {
               "id": "trump-administration-national-ai-policy-framework-2026",
@@ -546,7 +550,7 @@
             },
             {
               "id": "ethical-analysis-of-normothermic-regional-perfusion-nrp-2023",
-              "note": "Bioethics case study â physical AI in medical contexts"
+              "note": "Bioethics case study Ã¢ÂÂ physical AI in medical contexts"
             }
           ]
         },
@@ -574,7 +578,7 @@
             },
             {
               "id": "dna-as-a-universal-chemical-substrate-for-computing-and-data-storage-2024",
-              "note": "Alternative computing substrates â beyond silicon"
+              "note": "Alternative computing substrates Ã¢ÂÂ beyond silicon"
             },
             {
               "id": "pausing-isnt-policy-2026",
@@ -587,7 +591,7 @@
     {
       "id": "recommender-targeting",
       "name": "Recommender & Targeting",
-      "description": "AI systems that curate, rank, and personalize what you see â news feeds, search results, advertisements, and recommendations. This canon covers algorithmic curation, attention economics, filter bubbles, and the regulatory responses to personalization at scale.",
+      "description": "AI systems that curate, rank, and personalize what you see Ã¢ÂÂ news feeds, search results, advertisements, and recommendations. This canon covers algorithmic curation, attention economics, filter bubbles, and the regulatory responses to personalization at scale.",
       "match_tags": [
         "social media algorithms",
         "feed ranking",
@@ -604,7 +608,7 @@
       "reading_paths": {
         "student": {
           "label": "Student",
-          "description": "How recommendation systems shape what you see â and why it matters.",
+          "description": "How recommendation systems shape what you see Ã¢ÂÂ and why it matters.",
           "sequence": [
             {
               "id": "reranking-social-media-feeds-a-practical-guide-for-field-experiments-2026",
@@ -616,17 +620,17 @@
             },
             {
               "id": "ethical-nudging-2026",
-              "note": "When platforms nudge you â and when that crosses a line"
+              "note": "When platforms nudge you Ã¢ÂÂ and when that crosses a line"
             }
           ]
         },
         "general": {
           "label": "General Reader",
-          "description": "Why you see what you see online â and who decides.",
+          "description": "Why you see what you see online Ã¢ÂÂ and who decides.",
           "sequence": [
             {
               "id": "reranking-social-media-feeds-a-practical-guide-for-field-experiments-2026",
-              "note": "How feeds actually work â from researchers who study them"
+              "note": "How feeds actually work Ã¢ÂÂ from researchers who study them"
             },
             {
               "id": "ethical-nudging-2026",
@@ -682,7 +686,7 @@
         },
         "technologist": {
           "label": "Technologist",
-          "description": "How recommendation systems work â and how to study them.",
+          "description": "How recommendation systems work Ã¢ÂÂ and how to study them.",
           "sequence": [
             {
               "id": "reranking-social-media-feeds-a-practical-guide-for-field-experiments-2026",
@@ -694,7 +698,7 @@
             },
             {
               "id": "model-context-protocol-mcp-architecture-overview",
-              "note": "Protocols for AI application context â relevant to agents and recommenders"
+              "note": "Protocols for AI application context Ã¢ÂÂ relevant to agents and recommenders"
             }
           ]
         }
@@ -703,7 +707,7 @@
     {
       "id": "scoring-ranking-eligibility",
       "name": "Scoring, Ranking, & Eligibility",
-      "description": "AI systems that evaluate people for consequential decisions â hiring algorithms, credit scoring, benefits eligibility, and risk assessment. This canon covers algorithmic accountability, discrimination law, auditing requirements, and the disparate impact framework.",
+      "description": "AI systems that evaluate people for consequential decisions Ã¢ÂÂ hiring algorithms, credit scoring, benefits eligibility, and risk assessment. This canon covers algorithmic accountability, discrimination law, auditing requirements, and the disparate impact framework.",
       "match_tags": [
         "algorithmic accountability",
         "algorithmic harm",
@@ -723,7 +727,7 @@
       "reading_paths": {
         "student": {
           "label": "Student",
-          "description": "How algorithms can discriminate â and what the law says about it.",
+          "description": "How algorithms can discriminate Ã¢ÂÂ and what the law says about it.",
           "sequence": [
             {
               "id": "audits-under-resource-data-and-access-constraints-2025",
@@ -745,7 +749,7 @@
         },
         "general": {
           "label": "General Reader",
-          "description": "How automated decisions affect you â and what protections exist.",
+          "description": "How automated decisions affect you Ã¢ÂÂ and what protections exist.",
           "sequence": [
             {
               "id": "move-fast-fix-later-2024",
@@ -757,7 +761,7 @@
             },
             {
               "id": "ethical-nudging-2026",
-              "note": "When governments use nudges â and when that crosses a line"
+              "note": "When governments use nudges Ã¢ÂÂ and when that crosses a line"
             }
           ]
         },
@@ -833,7 +837,7 @@
             },
             {
               "id": "a-definition-of-agi-2025",
-              "note": "Cognitive benchmarking â measuring what AI can actually do"
+              "note": "Cognitive benchmarking Ã¢ÂÂ measuring what AI can actually do"
             }
           ]
         }
@@ -842,7 +846,7 @@
     {
       "id": "pricing-resource-allocation",
       "name": "Pricing & Resource Allocation",
-      "description": "AI systems that set prices, allocate resources, and structure markets â from surge pricing to algorithmic collusion to market design. This canon covers antitrust doctrine, consumer harm, dynamic pricing, and the economic theory of AI-mediated markets.",
+      "description": "AI systems that set prices, allocate resources, and structure markets Ã¢ÂÂ from surge pricing to algorithmic collusion to market design. This canon covers antitrust doctrine, consumer harm, dynamic pricing, and the economic theory of AI-mediated markets.",
       "match_tags": [
         "antitrust",
         "competition",
@@ -864,7 +868,7 @@
       "reading_paths": {
         "student": {
           "label": "Student",
-          "description": "Understand how competition law applies to tech â from Amazon to algorithmic pricing.",
+          "description": "Understand how competition law applies to tech Ã¢ÂÂ from Amazon to algorithmic pricing.",
           "sequence": [
             {
               "id": "amazons-dominance-and-the-need-for-antitrust-reform",
