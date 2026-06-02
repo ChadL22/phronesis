@@ -140,6 +140,14 @@
           "description": "Section 230 has quietly shaped much of the internet as we know it, from comment sections and social media platforms to search engines and online marketplaces. This canon introduces readers to the law’s origins, its role in protecting online platforms, and the new questions raised by algorithms, recommender systems, and generative AI.",
           "sequence": [
             {
+              "id": "enigma-software-group-usa-llc-v-malwarebytes-inc-2024",
+              "note": "Signals Supreme Court skepticism about boundless immunity."
+            },
+            {
+              "id": "gonzalez-v-google-llc-2023",
+              "note": "Puts recommender systems before the Supreme Court."
+            },
+            {
               "id": "twitter-inc-v-taamneh-2023",
               "note": "Tests aiding-and-abetting limits adjacent to Section 230."
             },
