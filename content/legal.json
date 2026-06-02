@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "twitter-inc-v-taamneh-2023",
+      "title": "Twitter, Inc. v. Taamneh",
+      "subtitle": "Analysis of how the Supreme Court's decision in Taamneh v. Twitter avoided establishing precedent on Section 230 of the Communications Decency Act despite significant opportunity to clarify internet service provider liability.",
+      "date": "2023-11-01",
+      "type": "legal",
+      "fields": [
+        "Public Policy",
+        "Philosophy"
+      ],
+      "tags": [
+        "Section 230",
+        "Communications Decency Act",
+        "internet liability",
+        "Supreme Court",
+        "social media platforms",
+        "terrorism law"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "The Harvard Law Review",
+      "publisher_url": null,
+      "original_url": "https://harvardlawreview.org/print/vol-137/twitter-inc-v-taamneh/",
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This legal analysis examines the Supreme Court's handling of two consolidated cases (Taamneh v. Twitter and Gonzalez v. Google) concerning social media platforms' liability under terrorism statutes. The piece critiques the Court's decision to resolve the cases on narrow grounds while avoiding substantive interpretation of Section 230 of the Communications Decency Act, despite granting certiorari on this contentious issue. The author argues that this approach constitutes 'judicial ventriloquism' that fails to fulfill the judicial duty to clarify the law while simultaneously amplifying uncertainties regarding internet service provider liability under the Antiterrorism Act and the Justice Against Sponsors of Terrorism Act.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "kg-et-al-v-meta-platforms-inc-et-al-2025",
       "title": "K.G. et al v. Meta Platforms, Inc. et al",
       "subtitle": "Multi-defendant product liability case against major social media platforms filed in U.S. District Court for the Northern District of California.",
