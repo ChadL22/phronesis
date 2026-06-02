@@ -10,6 +10,36 @@
   ],
   "entries": [
     {
+      "placeholder": true,
+      "id": "a-review-of-modern-recommender-systems-using-generative-models-gen-recsys-2024",
+      "title": "A Review of Modern Recommender Systems Using Generative Models (Gen-RecSys)",
+      "subtitle": "A multidisciplinary survey examining the integration of deep generative models, large language models, and multimodal approaches in modern recommendation systems.",
+      "date": "2024-03-31",
+      "type": "research",
+      "fields": [
+        "Computer Science"
+      ],
+      "tags": [
+        "recommender systems",
+        "generative models",
+        "large language models",
+        "multimodal learning",
+        "natural language processing",
+        "evaluation frameworks"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "ArXiv",
+      "publisher_url": null,
+      "original_url": "https://arxiv.org/abs/2404.00579",
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This survey comprehensively examines the application of generative models in recommender systems (Gen-RecSys), moving beyond traditional user-item rating histories to leverage complex data distributions. The work covers three primary areas: interaction-driven generative models, natural language recommendation using large language models and textual data, and multimodal models for image and video generation and processing. The survey identifies necessary evaluation paradigms for assessing the impact and potential harms of generative model-based recommendation systems and outlines open research challenges in the field.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
       "placeholder": false,
       "id": "recommender-systems-techniques-applications-and-challenges-2021",
       "title": "Recommender Systems: Techniques, Applications, and Challenges",
