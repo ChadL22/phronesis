@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "kg-et-al-v-meta-platforms-inc-et-al-2025",
+      "title": "K.G. et al v. Meta Platforms, Inc. et al",
+      "subtitle": "Multi-defendant product liability case against major social media platforms filed in U.S. District Court for the Northern District of California.",
+      "date": "2025-01-06",
+      "type": "legal",
+      "fields": [
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "social media liability",
+        "product liability",
+        "platform regulation",
+        "multi-district litigation",
+        "tech industry defendants",
+        "consumer protection"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Justia Law",
+      "publisher_url": null,
+      "original_url": "https://dockets.justia.com/docket/california/candce/4:2025cv00163/442339",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This case consolidates personal injury and product liability claims against thirteen defendants including Meta Platforms, Google, TikTok, YouTube, Snap, and ByteDance entities. Filed January 6, 2025, in the Northern District of California under diversity jurisdiction (28 U.S.C. § 1332), the complaint represents claims by plaintiffs L.K. and K.G. The case has been assigned to Judge Yvonne Gonzalez Rogers and associated with MDL 3047, indicating multi-district litigation status. The nature of suit classification as personal injury product liability suggests claims related to alleged harms caused by social media platform design or operation.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "state-of-new-mexico-v-meta-platforms-inc-2023",
       "title": "State of New Mexico v. Meta Platforms, Inc. ",
       "subtitle": "New Mexico Attorney General's civil complaint against Meta Platforms alleging design-based facilitation of child sexual exploitation and trafficking through Instagram and Facebook.",
