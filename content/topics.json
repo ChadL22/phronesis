@@ -140,16 +140,28 @@
           "description": "Section 230 has quietly shaped much of the internet as we know it, from comment sections and social media platforms to search engines and online marketplaces. This canon introduces readers to the law’s origins, its role in protecting online platforms, and the new questions raised by algorithms, recommender systems, and generative AI.",
           "sequence": [
             {
+              "id": "30-years-of-section-230-why-we-still-need-it-for-a-safer-internet-2026",
+              "note": "Adds a contemporary defense of retaining Section 230."
+            },
+            {
+              "id": "how-do-recommender-systems-work-on-digital-platforms-2022",
+              "note": "Explains recommendation mechanics for nontechnical readers."
+            },
+            {
+              "id": "zeran-v-america-online-inc-4th-cir-1997-2009",
+              "note": "Foundational—appears late. Canonical case for broad intermediary immunity."
+            },
+            {
+              "id": "fair-housing-council-of-san-fernando-valley-v-roommatescom-2008",
+              "note": "Foundational—appears late. Marks the material-contribution boundary."
+            },
+            {
               "id": "risk-management-framework-for-information-systems-and-organizations-a-system-life-cycle-approach-for-security-and-privacy-2018",
               "note": "Offers a practical risk-management framework for governance."
             },
             {
               "id": "artificial-intelligence-risk-management-framework-generative-artificial-intelligence-profile-2024",
               "note": "Applies AI RMF concepts specifically to generative AI."
-            },
-            {
-              "id": "fair-housing-council-of-san-fernando-valley-v-roommatescom-2008",
-              "note": "Foundational—appears late. Marks the material-contribution boundary."
             }
           ]
         },
