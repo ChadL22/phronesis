@@ -138,7 +138,100 @@
         "general": {
           "label": "General Reader",
           "description": "Section 230 has quietly shaped much of the internet as we know it, from comment sections and social media platforms to search engines and online marketplaces. This canon introduces readers to the law’s origins, its role in protecting online platforms, and the new questions raised by algorithms, recommender systems, and generative AI.",
-          "sequence": []
+          "sequence": [
+            {
+              "id": "communications-decency-act-and-section-230-1996-2024",
+              "note": "Defines the broader statute from which Section 230 emerged."
+            },
+            {
+              "id": "mark-foster-et-al-v-richard-h-churchill-jr-et-al-1996",
+              "note": "Shows the defamation elements Section 230 later displaced online."
+            },
+            {
+              "id": "cubby-v-compuserve-1990",
+              "note": "Introduces distributor liability before broad internet immunity."
+            },
+            {
+              "id": "stratton-oakmont-v-prodigy-1995",
+              "note": "Creates the moderation dilemma that Congress answered."
+            },
+            {
+              "id": "internet-freedom-and-family-empowerment-act-1995",
+              "note": "Shows Cox-Wyden’s original market-and-moderation design."
+            },
+            {
+              "id": "47-us-code-230-protection-for-private-blocking-and-screening-of-offensive-material",
+              "note": "Provides the operative text, definitions, and policy clauses."
+            },
+            {
+              "id": "doe-no-1-v-backpagecom-llc-2016",
+              "note": "Exposes harms broad immunity struggled to address."
+            },
+            {
+              "id": "allow-states-and-victims-to-fight-online-sex-trafficking-act-of-2017-fosta-2018",
+              "note": "Shows Congress’s first major Section 230 carveout."
+            },
+            {
+              "id": "force-v-facebook-inc-2018",
+              "note": "Tests whether algorithmic recommendation counts as protected intermediation."
+            },
+            {
+              "id": "no-section-230-immunity-for-ai-act-2023",
+              "note": "Shows Congress translating Section 230 concerns into AI-specific reform."
+            },
+            {
+              "id": "generative-ai-meets-section-230-the-future-of-liability-and-its-implications-for-startup-innovation-2025",
+              "note": "Bridges classic platform immunity to generative-AI liability."
+            },
+            {
+              "id": "enigma-software-group-usa-llc-v-malwarebytes-inc-2024",
+              "note": "Signals Supreme Court skepticism about boundless immunity."
+            },
+            {
+              "id": "gonzalez-v-google-llc-2023",
+              "note": "Puts recommender systems before the Supreme Court."
+            },
+            {
+              "id": "twitter-inc-v-taamneh-2023",
+              "note": "Tests aiding-and-abetting limits adjacent to Section 230."
+            },
+            {
+              "id": "state-of-new-mexico-v-meta-platforms-inc-2023",
+              "note": "Focuses on child-safety and design-based platform claims."
+            },
+            {
+              "id": "the-case-was-settled-but-chatgpt-thought-otherwise-a-dispute-poised-to-define-ai-legal-liability-2026",
+              "note": "Shows hallucination and AI output liability in practice."
+            },
+            {
+              "id": "moody-v-netchoice-and-netchoice-v-paxton-a-narrow-path-to-platform-first-amendment-protections-2024",
+              "note": "Connects platform moderation to First Amendment doctrine."
+            },
+            {
+              "id": "30-years-of-section-230-why-we-still-need-it-for-a-safer-internet-2026",
+              "note": "Adds a contemporary defense of retaining Section 230."
+            },
+            {
+              "id": "how-do-recommender-systems-work-on-digital-platforms-2022",
+              "note": "Explains recommendation mechanics for nontechnical readers."
+            },
+            {
+              "id": "zeran-v-america-online-inc-4th-cir-1997-2009",
+              "note": "Foundational—appears late. Canonical case for broad intermediary immunity."
+            },
+            {
+              "id": "fair-housing-council-of-san-fernando-valley-v-roommatescom-2008",
+              "note": "Foundational—appears late. Marks the material-contribution boundary."
+            },
+            {
+              "id": "risk-management-framework-for-information-systems-and-organizations-a-system-life-cycle-approach-for-security-and-privacy-2018",
+              "note": "Offers a practical risk-management framework for governance."
+            },
+            {
+              "id": "artificial-intelligence-risk-management-framework-generative-artificial-intelligence-profile-2024",
+              "note": "Applies AI RMF concepts specifically to generative AI."
+            }
+          ]
         },
         "policy": {
           "label": "Policy Professional",
