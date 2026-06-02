@@ -140,6 +140,30 @@
           "description": "Section 230 has quietly shaped much of the internet as we know it, from comment sections and social media platforms to search engines and online marketplaces. This canon introduces readers to the law’s origins, its role in protecting online platforms, and the new questions raised by algorithms, recommender systems, and generative AI.",
           "sequence": [
             {
+              "id": "47-us-code-230-protection-for-private-blocking-and-screening-of-offensive-material",
+              "note": "Provides the operative text, definitions, and policy clauses."
+            },
+            {
+              "id": "doe-no-1-v-backpagecom-llc-2016",
+              "note": "Exposes harms broad immunity struggled to address."
+            },
+            {
+              "id": "allow-states-and-victims-to-fight-online-sex-trafficking-act-of-2017-fosta-2018",
+              "note": "Shows Congress’s first major Section 230 carveout."
+            },
+            {
+              "id": "force-v-facebook-inc-2018",
+              "note": "Tests whether algorithmic recommendation counts as protected intermediation."
+            },
+            {
+              "id": "no-section-230-immunity-for-ai-act-2023",
+              "note": "Shows Congress translating Section 230 concerns into AI-specific reform."
+            },
+            {
+              "id": "generative-ai-meets-section-230-the-future-of-liability-and-its-implications-for-startup-innovation-2025",
+              "note": "Bridges classic platform immunity to generative-AI liability."
+            },
+            {
               "id": "enigma-software-group-usa-llc-v-malwarebytes-inc-2024",
               "note": "Signals Supreme Court skepticism about boundless immunity."
             },
