@@ -11,6 +11,68 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "individual-and-group-decision-making-and-recommender-systems-2022",
+      "title": "Individual and Group Decision Making and Recommender Systems",
+      "subtitle": "A framework for understanding how recommender systems can support human choice-making by integrating psychological models of decision-making.",
+      "date": "2022-04-22",
+      "type": "research",
+      "fields": [
+        "Computer Science",
+        "Philosophy"
+      ],
+      "tags": [
+        "recommender systems",
+        "human-computer interaction",
+        "decision support",
+        "choice architecture",
+        "group decision-making",
+        "behavioral design"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Springer Recommender Systems Handbook 3rd Edition",
+      "publisher_url": null,
+      "original_url": "https://link.springer.com/chapter/10.1007/978-1-0716-2197-4_21",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This chapter examines the role of recommender systems in supporting human decision-making by synthesizing knowledge from psychology and related fields. It presents two foundational models—the Aspect model identifying six choice patterns and the Arcades model distinguishing seven choice support strategies—to guide the design of recommender systems. The analysis extends from individual choice behavior to group decision-making, demonstrating how recommender systems can implement both established and novel approaches to choice support.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
+      "id": "trust-your-neighbors-a-comprehensive-survey-of-neighborhood-based-methods-for-recommender-systems-2021",
+      "title": "Trust your neighbors: A comprehensive survey of neighborhood-based methods for recommender systems",
+      "subtitle": "A comprehensive survey of neighborhood-based methods for item recommendation systems.",
+      "date": "2021-09-09",
+      "type": "research",
+      "fields": [
+        "Computer Science",
+        "Mathematics"
+      ],
+      "tags": [
+        "collaborative filtering",
+        "neighborhood-based methods",
+        "item recommendation",
+        "k-nearest neighbors",
+        "matrix factorization",
+        "recommender systems"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "arXiv",
+      "publisher_url": null,
+      "original_url": "https://arxiv.org/abs/2109.04584",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This chapter provides a comprehensive survey of neighborhood-based collaborative filtering methods for item recommendation. It examines the main characteristics and implementation choices for neighborhood-based recommender systems, covering traditional algorithms such as k-nearest neighbors alongside advanced approaches based on matrix factorization, sparse coding, and random walks. The work offers practical guidance on design decisions and presents both classical and contemporary methodologies in the field.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "deep-neural-networks-for-youtube-recommendations-2016",
       "title": "Deep Neural Networks for YouTube Recommendations",
       "subtitle": "A two-stage deep learning system for large-scale video recommendation combining candidate generation and ranking neural networks.",
