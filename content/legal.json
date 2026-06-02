@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "moody-v-netchoice-and-netchoice-v-paxton-a-narrow-path-to-platform-first-amendment-protections-2024",
+      "title": "Moody v. NetChoice and NetChoice v. Paxton: A Narrow Path to Platform First Amendment Protections",
+      "subtitle": "The Supreme Court narrowly constrains First Amendment protections for social media platforms to guideline-based content moderation while leaving other curation practices subject to regulation.",
+      "date": "2024-07-10",
+      "type": "legal",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Philosophy"
+      ],
+      "tags": [
+        "First Amendment",
+        "social media platforms",
+        "content moderation",
+        "editorial discretion",
+        "algorithmic curation",
+        "platform regulation"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "electronic privacy information center",
+      "publisher_url": null,
+      "original_url": "online-platform-company-activities-as-protected-expression/",
+      "doi": null,
+      "venue_type": "news",
+      "abstract": "This analysis examines the Supreme Court's landmark decision in Moody v. NetChoice and NetChoice v. Paxton, which addressed the scope of First Amendment protections for online platform curation practices. The Court adopted a narrow approach, holding that only content moderation based on a platform's community and content guidelines constitutes clearly protected expression, while signaling skepticism toward broader protections for algorithmic curation and non-content-based ranking practices. The decision leaves substantial room for legislative regulation of platform design activities and rejects the technology industry's request for expansive First Amendment safeguards.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "zeran-v-america-online-inc-4th-cir-1997-2009",
       "title": " Zeran v. America Online, Inc. (4th Cir.) (1997)",
       "subtitle": "Analysis of the Fourth Circuit's foundational interpretation of Communications Decency Act Section 230 and its protection of ISPs from defamation liability.",
