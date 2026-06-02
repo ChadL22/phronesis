@@ -10,6 +10,39 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "47-us-code-230-protection-for-private-blocking-and-screening-of-offensive-material",
+      "title": "47 U.S. Code 230 - Protection for private blocking and screening of offensive material",
+      "subtitle": "Federal policy framework establishing liability protections for interactive computer service providers who implement content filtering and blocking technologies.",
+      "date": "",
+      "type": "policy",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Philosophy"
+      ],
+      "tags": [
+        "Section 230 immunity",
+        "intermediary liability",
+        "content moderation",
+        "parental controls",
+        "internet regulation",
+        "safe harbor provisions"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Cornell Legal Information Institute",
+      "publisher_url": null,
+      "original_url": "https://www.law.cornell.edu/uscode/text/47/230",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This legislative provision establishes United States policy regarding the development and deployment of Internet filtering technologies and parental control mechanisms. The framework grants liability protections to interactive computer service providers and users who voluntarily implement content blocking in good faith, while maintaining enforcement of criminal laws against obscenity, harassment, and child exploitation. The provision also mandates that service providers notify customers of commercially available parental control protections and delineates the relationship between this framework and other federal and state laws.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "audience": "federal"
+    },
+    {
+      "placeholder": false,
       "id": "internet-freedom-and-family-empowerment-act-1995",
       "title": "Internet Freedom and Family Empowerment Act",
       "subtitle": "H.R. 1978 (104th Congress) proposes federal protections for private sector content filtering and blocking services while prohibiting FCC regulation of interactive computer services.",
@@ -237,7 +270,7 @@
     {
       "placeholder": false,
       "id": "12-us-code-5531-prohibiting-unfair-deceptive-or-abusive-acts-or-practices-udaap",
-      "title": "12 U.S. Code Â§ 5531 - Prohibiting unfair, deceptive, or abusive acts or practices",
+      "title": "12 U.S. Code 5531 - Prohibiting unfair, deceptive, or abusive acts or practices",
       "subtitle": "Federal statutory authority establishing the Consumer Financial Protection Bureau's power to regulate unfair, deceptive, and abusive acts or practices in consumer financial services.",
       "date": "",
       "type": "policy",
