@@ -11,6 +11,27 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "generative-ai-meets-section-230-the-future-of-liability-and-its-implications-for-startup-innovation-2025",
+      "title": "Generative AI Meets Section 230: The Future of Liability and Its Implications for Startup Innovation",
+      "subtitle": "",
+      "date": "2025-10-16",
+      "type": "legal",
+      "fields": [],
+      "tags": [],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "University of Chicago Business Law Review",
+      "publisher_url": null,
+      "original_url": "https://businesslawreview.uchicago.edu/print-archive/generative-ai-meets-section-230-future-liability-and-its-implications-startup",
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "enigma-software-group-usa-llc-v-malwarebytes-inc-2024",
       "title": "Enigma Software Group USA, LLC v. Malwarebytes, Inc.",
       "subtitle": "Analysis of how courts apply First Amendment doctrine to cybersecurity filtering determinations in the context of Enigma Software Group v. Malwarebytes.",
