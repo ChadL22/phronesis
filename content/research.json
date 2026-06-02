@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "recommender-systems-techniques-applications-and-challenges-2021",
+      "title": "Recommender Systems: Techniques, Applications, and Challenges",
+      "subtitle": "An overview of recommender system concepts and navigation guide for a comprehensive handbook on the subject.",
+      "date": "2021-11-22",
+      "type": "research",
+      "fields": [
+        "Computer Science",
+        "Mathematics"
+      ],
+      "tags": [
+        "recommender systems",
+        "information filtering",
+        "personalization",
+        "algorithmic systems",
+        "user preferences",
+        "handbook overview"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Springer Recommender Systems Handbook 3rd Edition",
+      "publisher_url": null,
+      "original_url": "https://link.springer.com/chapter/10.1007/978-1-0716-2197-4_1",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This introductory chapter provides foundational concepts and terminology for understanding recommender systems (RSs), which are software tools designed to suggest items of likely interest to individual users. The chapter serves as a structural guide to the handbook's contents and aids readers in navigating the detailed material presented across multiple chapters. The text establishes basic RS ideas while positioning the handbook as a comprehensive resource for understanding both theoretical and practical aspects of recommendation technologies.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "individual-and-group-decision-making-and-recommender-systems-2022",
       "title": "Individual and Group Decision Making and Recommender Systems",
       "subtitle": "A framework for understanding how recommender systems can support human choice-making by integrating psychological models of decision-making.",
