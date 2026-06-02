@@ -2,7 +2,7 @@
   "_schema": "1.0",
   "_notes": [
     "origin 'original': Phronesis analysis, full body stored here",
-    "origin 'via': curated from law reviews or legal blogs Ã¢ÂÂ abstract only (open-access) or preview (paywalled)",
+    "origin 'via': curated from law reviews or legal blogs — abstract only (open-access) or preview (paywalled)",
     "analysis_type: doctrinal | case | statutory | regulatory | procedural | litigation | policy | comparative",
     "primary_topic: first-amendment | antitrust | liability | administrative | ip | privacy | competition",
     "case_refs: array of case names or statute citations central to the piece",
