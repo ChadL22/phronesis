@@ -9,6 +9,39 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "section-230s-half-bad-economics",
+      "title": "Section 230’s Half-Bad Economics",
+      "subtitle": "An analysis of how Section 230 of the Communications Decency Act creates misaligned economic incentives for content moderation by digital platforms.",
+      "date": "",
+      "type": "essay",
+      "fields": [
+        "Public Policy",
+        "Economics",
+        "Computer Science"
+      ],
+      "tags": [
+        "Section 230",
+        "content moderation",
+        "platform liability",
+        "economic incentives",
+        "Communications Decency Act",
+        "digital regulation"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "American Enterprise Institute (AEI)",
+      "publisher_url": null,
+      "original_url": "https://www.aei.org/technology-and-innovation/section-230s-half-bad-economics/",
+      "doi": null,
+      "venue_type": "news",
+      "abstract": "This essay examines Section 230 of the Communications Decency Act through an economic lens, arguing that while Section 230(c)(1) appropriately assigns liability to content creators, Section 230(c)(2) distorts market incentives by shielding platforms from consequences of their own editorial decisions. The author contends that this liability protection, unlike normal business incentives, may encourage platforms to prioritize political pressures over economic efficiency. The essay considers potential solutions including common law modifications and statutory amendments, while acknowledging the political and constitutional challenges involved.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "tone": "argumentative"
+    },
+    {
+      "placeholder": false,
       "id": "30-years-of-section-230-why-we-still-need-it-for-a-safer-internet-2026",
       "title": "30 Years of Section 230: Why We Still Need It for a Safer Internet ",
       "subtitle": "An examination of Section 230 of the Telecommunications Act and its critical role in enabling online speech, content moderation, and internet infrastructure.",
