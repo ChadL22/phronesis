@@ -10,6 +10,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "allow-states-and-victims-to-fight-online-sex-trafficking-act-of-2017-fosta-2018",
+      "title": "Allow States and Victims to Fight Online Sex Trafficking Act of 2017 (FOSTA)",
+      "subtitle": "Federal legislation that amends section 230 of the Communications Act to establish criminal and civil liability for online platforms that facilitate sex trafficking and prostitution.",
+      "date": "2018-04-11",
+      "type": "policy",
+      "fields": [
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "section 230 immunity",
+        "online sex trafficking",
+        "platform liability",
+        "criminal penalties",
+        "Communications Act amendments",
+        "federal sex trafficking law"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "U.S. Congress",
+      "publisher_url": null,
+      "original_url": "https://www.congress.gov/bill/115th-congress/house-bill/1865",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "Public Law 115-164 (FOSTA) creates new federal criminal penalties for individuals who own, manage, or operate interactive computer services to promote or facilitate prostitution, with enhanced penalties for aggravated circumstances involving multiple victims or reckless disregard for sex trafficking. The legislation carves out exceptions to section 230 of the Communications Act, permitting federal civil claims and state criminal charges related to sex trafficking and prostitution facilitation. The bill also expands the definition of 'participation in a venture' for sex trafficking offenses and establishes mandatory restitution requirements and private rights of action for injured parties.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "audience": "federal"
+    },
+    {
+      "placeholder": false,
       "id": "47-us-code-230-protection-for-private-blocking-and-screening-of-offensive-material",
       "title": "47 U.S. Code 230 - Protection for private blocking and screening of offensive material",
       "subtitle": "Section 230: Protection for Private Blocking and Screening of Offensive Material",
