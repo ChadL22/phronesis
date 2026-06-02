@@ -98,6 +98,10 @@
               "note": "Tests aiding-and-abetting limits adjacent to Section 230."
             },
             {
+              "id": "kg-et-al-v-meta-platforms-inc-et-al-2025",
+              "note": "Shows addiction and design-defect pleading against platforms."
+            },
+            {
               "id": "state-of-new-mexico-v-meta-platforms-inc-2023",
               "note": "Focuses on child-safety and design-based platform claims."
             },
@@ -110,8 +114,12 @@
               "note": "Connects platform moderation to First Amendment doctrine."
             },
             {
-              "id": "30-years-of-section-230-why-we-still-need-it-for-a-safer-internet-2026",
-              "note": "Adds a contemporary defense of retaining Section 230."
+              "id": "section-230s-half-bad-economics",
+              "note": "Introduces efficiency and incentive critiques of current immunity."
+            },
+            {
+              "id": "who-moderates-the-moderators-a-law-and-economics-approach-to-holding-online-platforms-accountable-without-destroying-the-internet-2022",
+              "note": "Examines accountability without eliminating platform-scale coordination."
             },
             {
               "id": "how-do-recommender-systems-work-on-digital-platforms-2022",
@@ -122,16 +130,24 @@
               "note": "Foundational, though it does appear late. It is a canonical case for broad intermediary immunity."
             },
             {
+              "id": "barnes-v-yahoo-inc-ninth-circuit-court-of-appeals-considers-internet-service-providers-liability-for-fake-profiles-2009",
+              "note": "A bit late or out order depending who you ask, this case highlights promissory-estoppel limits to immunity."
+            },
+            {
               "id": "fair-housing-council-of-san-fernando-valley-v-roommatescom",
               "note": "Foundationalâappears late. Marks the material-contribution boundary."
             },
             {
-              "id": "risk-management-framework-for-information-systems-and-organizations-a-system-life-cycle-approach-for-security-and-privacy-2018",
-              "note": "Offers a practical risk-management framework for governance."
+              "id": "the-new-york-timess-about-face-copyright-romantic-authorship-and-the-generative-ai-debate-2024",
+              "note": "Tests copyright and output claims against GenAI systems."
             },
             {
               "id": "artificial-intelligence-risk-management-framework-generative-artificial-intelligence-profile-2024",
               "note": "Applies AI RMF concepts specifically to generative AI."
+            },
+            {
+              "id": "risk-management-framework-for-information-systems-and-organizations-a-system-life-cycle-approach-for-security-and-privacy-2018",
+              "note": "Offers a practical risk-management framework for governance."
             }
           ]
         },
