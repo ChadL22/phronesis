@@ -28,98 +28,32 @@
         "student": {
           "label": "Student",
           "description": "Given the ever-evolving nature of the internet, this canon explores what role Section 230 has played, currently plays, and could play going forward. It traces how questions of platform liability have shifted from early internet defamation and content moderation to algorithmic amplification, recommender systems, and the growing entanglement of the internet with artificial intelligence.",
-          "sequence": [
-            {
-              "id": "liability-without-causation-2024",
-              "note": "Start here: why algorithmic systems fracture the causal chain tort law requires"
-            },
-            {
-              "id": "comments-to-il-lawmakers-regarding-the-consumer-protection-group-1-proposals-sb-3384-sb-3444-2026",
-              "note": "Industry perspective on state AI liability proposals"
-            },
-            {
-              "id": "cfpb-consumer-laws-and-regulations-unfair-deceptive-or-abusive-acts-or-practices",
-              "note": "The unfairness standard as an alternative to traditional tort"
-            }
-          ]
+          "sequence": []
         },
         "general": {
           "label": "General Reader",
           "description": "Section 230 has quietly shaped much of the internet as we know it, from comment sections and social media platforms to search engines and online marketplaces. This canon introduces readers to the law’s origins, its role in protecting online platforms, and the new questions raised by algorithms, recommender systems, and generative AI.",
-          "sequence": [
-            {
-              "id": "liability-without-causation-2024",
-              "note": "Why proving AI caused your harm is harder than it sounds"
-            },
-            {
-              "id": "move-fast-fix-later-2024",
-              "note": "Who bears the cost when companies deploy first and ask questions later"
-            }
-          ]
+          "sequence": []
         },
         "policy": {
           "label": "Policy Professional",
           "description": "This path examines Section 230 as a policy tool for governing platform liability, speech moderation, innovation, and online harm. It traces how the statute’s original intermediary-liability framework is being tested by algorithmic amplification, recommender systems, online marketplaces, and generative AI, while highlighting the tradeoffs policymakers must weigh when considering reform.",
-          "sequence": [
-            {
-              "id": "comments-to-il-lawmakers-regarding-the-consumer-protection-group-1-proposals-sb-3384-sb-3444-2026",
-              "note": "Industry testimony on Illinois AI liability bills â safe harbor debates"
-            },
-            {
-              "id": "californias-sb-53-the-first-frontier-ai-law-explained-2026",
-              "note": "California's approach to frontier AI liability"
-            },
-            {
-              "id": "cfpb-consumer-laws-and-regulations-unfair-deceptive-or-abusive-acts-or-practices",
-              "note": "UDAAP unfairness as a regulatory alternative to tort"
-            }
-          ]
+          "sequence": []
         },
         "legal": {
           "label": "Legal Professional",
           "description": "This path traces the legal evolution of Section 230 from its common-law roots in defamation and distributor liability to contemporary disputes involving recommender systems, platform design, and generative AI. It is designed to help legal professionals understand the doctrine’s origins, its major interpretive turning points, and the emerging cases and reform proposals testing the boundaries of platform immunity.",
-          "sequence": [
-            {
-              "id": "liability-without-causation-2024",
-              "note": "How algorithmic systems fracture tort doctrine's causal chain"
-            },
-            {
-              "id": "cfpb-consumer-laws-and-regulations-unfair-deceptive-or-abusive-acts-or-practices",
-              "note": "The three-part UDAAP unfairness standard"
-            },
-            {
-              "id": "cox-communications-v-sony-music-entertainment",
-              "note": "Secondary liability and the knowledge standard â analogies for AI"
-            }
-          ]
+          "sequence": []
         },
         "economist": {
           "label": "Economist",
           "description": "This path examines Section 230 through the lens of incentives, market design, and platform economics. It explores how liability rules shape the behavior of platforms, users, advertisers, and victims in markets increasingly defined by recommender systems, attention competition, asymmetric information, network effects, and generative AI.",
-          "sequence": [
-            {
-              "id": "dynamic-pricing-algorithms-consumer-harm-and-regulatory-response",
-              "note": "Consumer harm independent of collusion â pricing regulation as alternative"
-            },
-            {
-              "id": "move-fast-fix-later-2024",
-              "note": "The distributional costs of deploy-first governance"
-            }
-          ]
+          "sequence": []
         },
         "technologist": {
           "label": "Technologist",
           "description": "This path helps technologists understand how Section 230 intersects with the design of modern internet and AI systems. It traces how choices around content moderation, recommender systems, algorithmic amplification, marketplace architecture, and generative AI outputs can affect platform liability, user safety, and governance obligations.",
-          "sequence": [
-            {
-              "id": "audits-under-resource-data-and-access-constraints-2025",
-              "note": "Scaling laws for algorithmic auditing under real constraints"
-            },
-            {
-              "id": "liability-without-causation-2024",
-              "note": "Why emergent behavior complicates technical attribution"
-            }
-          ]
+          "sequence": []
         }
       }
     },
