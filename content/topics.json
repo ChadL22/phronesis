@@ -140,6 +140,22 @@
           "description": "Section 230 has quietly shaped much of the internet as we know it, from comment sections and social media platforms to search engines and online marketplaces. This canon introduces readers to the law’s origins, its role in protecting online platforms, and the new questions raised by algorithms, recommender systems, and generative AI.",
           "sequence": [
             {
+              "id": "twitter-inc-v-taamneh-2023",
+              "note": "Tests aiding-and-abetting limits adjacent to Section 230."
+            },
+            {
+              "id": "state-of-new-mexico-v-meta-platforms-inc-2023",
+              "note": "Focuses on child-safety and design-based platform claims."
+            },
+            {
+              "id": "the-case-was-settled-but-chatgpt-thought-otherwise-a-dispute-poised-to-define-ai-legal-liability-2026",
+              "note": "Shows hallucination and AI output liability in practice."
+            },
+            {
+              "id": "moody-v-netchoice-and-netchoice-v-paxton-a-narrow-path-to-platform-first-amendment-protections-2024",
+              "note": "Connects platform moderation to First Amendment doctrine."
+            },
+            {
               "id": "30-years-of-section-230-why-we-still-need-it-for-a-safer-internet-2026",
               "note": "Adds a contemporary defense of retaining Section 230."
             },
