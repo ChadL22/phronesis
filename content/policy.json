@@ -10,6 +10,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "s1993-a-bill-to-waive-immunity-under-section-230-of-the-communications-act-of-1934-for-claims-and-charges-related-to-generative-artificial-intelligence-2023",
+      "title": "S.1993 - A bill to waive immunity under section 230 of the Communications Act of 1934 for claims and charges related to generative artificial intelligence.",
+      "subtitle": "A Senate bill proposing to remove Section 230 immunity protections for interactive computer services when their conduct involves generative artificial intelligence systems.",
+      "date": "2023-06-14",
+      "type": "policy",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Economics"
+      ],
+      "tags": [
+        "Section 230 immunity",
+        "generative artificial intelligence regulation",
+        "liability framework",
+        "AI governance",
+        "platform liability",
+        "U.S. Senate legislation"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "U.S. Congress",
+      "publisher_url": null,
+      "original_url": "https://businesslawreview.uchicago.edu/print-archive/generative-ai-meets-section-230-future-liability-and-its-implications-startup",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This bill, introduced in the 118th Congress on June 14, 2023, proposes amendments to Section 230 of the Communications Act of 1934 to create a specific carve-out that eliminates immunity protections for interactive computer service providers when claims or charges involve generative artificial intelligence systems. The legislation defines generative AI as systems capable of producing novel text, video, images, audio, and other media based on user prompts or data inputs. The amendment would allow civil and criminal legal actions to proceed against such providers under federal or state law despite Section 230's traditional broad immunity framework.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "hr492-biased-algorithm-deterrence-act-of-2019-2019",
       "title": "H.R.492 - Biased Algorithm Deterrence Act of 2019",
       "subtitle": "Proposed amendment to Section 230 of the Communications Act of 1934 to modify publisher liability exemptions for social media services that algorithmically manipulate user-generated content display.",
@@ -74,7 +106,7 @@
       "audience": "federal"
     },
     {
-      "placeholder": true,
+      "placeholder": false,
       "id": "artificial-intelligence-risk-management-framework-generative-artificial-intelligence-profile-2024",
       "title": "Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile",
       "subtitle": "A companion resource implementing the AI RMF for generative AI systems pursuant to Executive Order 14110.",
