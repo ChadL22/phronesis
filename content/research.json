@@ -10,7 +10,36 @@
   ],
   "entries": [
     {
-      "placeholder": true,
+      "placeholder": false,
+      "id": "a-survey-of-deep-reinforcement-learning-in-recommender-systems-a-systematic-review-and-future-directions-2021",
+      "title": "A Survey of Deep Reinforcement Learning in Recommender Systems: A Systematic Review and Future Directions",
+      "subtitle": "A comprehensive overview of recent trends and applications of deep reinforcement learning techniques in recommender systems research.",
+      "date": "2021-09-08",
+      "type": "research",
+      "fields": [
+        "Computer Science"
+      ],
+      "tags": [
+        "deep reinforcement learning",
+        "recommender systems",
+        "machine learning",
+        "taxonomy",
+        "survey"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "ArXiv",
+      "publisher_url": null,
+      "original_url": "https://arxiv.org/abs/2109.03540",
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This survey provides a timely and comprehensive overview of deep reinforcement learning (DRL) applications in recommender systems. It presents the motivation for applying DRL in this domain, offers a taxonomy of current DRL-based recommender systems, and summarizes existing methods. The work discusses emerging topics and open research issues while identifying opportunities for further advancement in the field.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "a-review-of-modern-recommender-systems-using-generative-models-gen-recsys-2024",
       "title": "A Review of Modern Recommender Systems Using Generative Models (Gen-RecSys)",
       "subtitle": "A multidisciplinary survey examining the integration of deep generative models, large language models, and multimodal approaches in modern recommendation systems.",
