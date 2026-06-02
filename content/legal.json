@@ -2,13 +2,45 @@
   "_schema": "1.0",
   "_notes": [
     "origin 'original': Phronesis analysis, full body stored here",
-    "origin 'via': curated from law reviews or legal blogs ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ abstract only (open-access) or preview (paywalled)",
+    "origin 'via': curated from law reviews or legal blogs ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ abstract only (open-access) or preview (paywalled)",
     "analysis_type: doctrinal | case | statutory | regulatory | procedural | litigation | policy | comparative",
     "primary_topic: first-amendment | antitrust | liability | administrative | ip | privacy | competition",
     "case_refs: array of case names or statute citations central to the piece",
     "court: relevant court or agency if analysis is case-specific"
   ],
   "entries": [
+    {
+      "placeholder": false,
+      "id": "the-case-was-settled-but-chatgpt-thought-otherwise-a-dispute-poised-to-define-ai-legal-liability-2026",
+      "title": "The Case Was Settled, But ChatGPT Thought Otherwise: A Dispute Poised to Define AI Legal Liability",
+      "subtitle": "Nippon Life v. OpenAI ",
+      "date": "2026-03-17",
+      "type": "legal",
+      "fields": [
+        "Computer Science",
+        "Public Policy",
+        "Philosophy"
+      ],
+      "tags": [
+        "artificial intelligence liability",
+        "unauthorized practice of law",
+        "ChatGPT litigation",
+        "tortious interference",
+        "abuse of process",
+        "AI regulation"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "National Law Review",
+      "publisher_url": null,
+      "original_url": "https://natlawreview.com/article/case-was-settled-chatgpt-thought-otherwise-dispute-poised-define-ai-legal-liability",
+      "doi": null,
+      "venue_type": "news",
+      "abstract": "On March 4, 2026, Nippon Life Insurance Company filed suit against OpenAI entities in the U.S. District Court for the Northern District of Illinois, alleging that an insured employee's use of ChatGPT for pro se litigation resulted in tortious interference with contract, abuse of process, and unlicensed legal practice. The case examines the generation of 44+ court filings, including fabricated case citations, allegedly produced by ChatGPT in response to the claimant's prompts following dissatisfaction with a prior settlement. This analysis discusses the factual background, three causes of action, relief sought ($10.3 million total), and evidentiary implications for AI liability and legal practice regulation.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
     {
       "placeholder": false,
       "id": "moody-v-netchoice-and-netchoice-v-paxton-a-narrow-path-to-platform-first-amendment-protections-2024",
@@ -93,7 +125,7 @@
       ],
       "origin": "via",
       "content_type": "abstract",
-      "publisher": "The Harvard Journal of Law & Technology (“JOLT”)",
+      "publisher": "The Harvard Journal of Law & Technology (âJOLTâ)",
       "publisher_url": null,
       "original_url": "https://jolt.law.harvard.edu/digest/barnes-v-yahoo-inc",
       "doi": null,
@@ -107,7 +139,7 @@
       "placeholder": false,
       "id": "fair-housing-council-of-san-fernando-valley-v-roommatescom",
       "title": "Fair Housing Council of San Fernando Valley v. Roommates.com",
-      "subtitle": "En banc decision establishing that website operators cannot claim CDA § 230 immunity when they affirmatively require users to input discriminatory content through pre-populated forms.",
+      "subtitle": "En banc decision establishing that website operators cannot claim CDA Â§ 230 immunity when they affirmatively require users to input discriminatory content through pre-populated forms.",
       "date": "",
       "type": "legal",
       "fields": [
@@ -130,7 +162,7 @@
       "original_url": "https://www.eff.org/issues/cda230/cases/fair-housing-council-san-fernando-valley-v-roommatescom",
       "doi": null,
       "venue_type": null,
-      "abstract": "The Ninth Circuit held that Roommates.com forfeited CDA § 230 immunity by requiring users to select from pre-populated answers regarding protected characteristics and discriminatory roommate preferences in violation of the Fair Housing Act. The court distinguished between passive hosting of user-generated content and active co-development, establishing that websites providing neutral tools without affirmative promotion of unlawful conduct retain immunity protection. The decision articulates a framework distinguishing permissible platform neutrality from prohibited conduct that induces illegal expression through mandatory user participation.",
+      "abstract": "The Ninth Circuit held that Roommates.com forfeited CDA Â§ 230 immunity by requiring users to select from pre-populated answers regarding protected characteristics and discriminatory roommate preferences in violation of the Fair Housing Act. The court distinguished between passive hosting of user-generated content and active co-development, establishing that websites providing neutral tools without affirmative promotion of unlawful conduct retain immunity protection. The decision articulates a framework distinguishing permissible platform neutrality from prohibited conduct that induces illegal expression through mandatory user participation.",
       "preview": null,
       "body": null,
       "body_html": ""
@@ -232,7 +264,7 @@
     {
       "placeholder": false,
       "id": "class-action-alleges-that-grammarly-misappropriated-the-names-of-journalists-and-authors-through-its-expert-review-that-lets-users-get-feedback-on-writing-from-experts-2026",
-      "title": "Class Action Alleges That Grammarly Misappropriated the Names of Journalists and Authors Through its Ã¢ÂÂExpert ReviewÃ¢ÂÂ That Lets Users Get Feedback on Writing From Experts",
+      "title": "Class Action Alleges That Grammarly Misappropriated the Names of Journalists and Authors Through its ÃÂ¢ÃÂÃÂExpert ReviewÃÂ¢ÃÂÃÂ That Lets Users Get Feedback on Writing From Experts",
       "subtitle": "Angwin v. Superhuman Platform, Inc., No. 26 Civ. 02005-JGK (S.D.N.Y)",
       "date": "2026-03-11",
       "type": "legal",
@@ -255,7 +287,7 @@
       "original_url": "https://prf-law.com/current-cases/class-action-alleges-that-grammarly-misappropriated-the-names-of-journalists-and-authors-through-its-expert-review",
       "doi": null,
       "venue_type": null,
-      "abstract": "Julia Angwin, an award-winning journalist, filed a class action lawsuit in the U.S. District Court for the Southern District of New York against Grammarly (owned by Superhuman Platform, Inc.) alleging violations of New York and California privacy and publicity laws. The complaint contends that Grammarly unlawfully misappropriated the names and identities of journalists, authors, and editorsÃ¢ÂÂincluding Stephen KingÃ¢ÂÂto commercially market its \"Expert Review\" tool without obtaining prior consent. The lawsuit seeks class certification, injunctive relief prohibiting further unauthorized use of plaintiffs' names, and monetary compensation for the unauthorized commercial exploitation of their identities.",
+      "abstract": "Julia Angwin, an award-winning journalist, filed a class action lawsuit in the U.S. District Court for the Southern District of New York against Grammarly (owned by Superhuman Platform, Inc.) alleging violations of New York and California privacy and publicity laws. The complaint contends that Grammarly unlawfully misappropriated the names and identities of journalists, authors, and editorsÃÂ¢ÃÂÃÂincluding Stephen KingÃÂ¢ÃÂÃÂto commercially market its \"Expert Review\" tool without obtaining prior consent. The lawsuit seeks class certification, injunctive relief prohibiting further unauthorized use of plaintiffs' names, and monetary compensation for the unauthorized commercial exploitation of their identities.",
       "preview": null,
       "body": null
     },
@@ -316,7 +348,7 @@
       "original_url": "https://www.arnoldporter.com/en/perspectives/publications/2026/01/how-generative-ai-cos-can-navigate-product-liability-claims",
       "doi": null,
       "venue_type": null,
-      "abstract": "This analysis examines the emerging trend of product-liability claims against generative AI and chatbot platforms, where plaintiffs characterize these systems as consumer products subject to traditional tort principles. The piece traces the evolution of legal theories from social media litigation to contemporary AI cases, addressing the unsettled application of Section 230 and First Amendment protections in this context. It evaluates how established tort doctrinesÃ¢ÂÂincluding injury, causation, and feasible alternative designÃ¢ÂÂconstrain these claims while providing defense-side guidance for risk evaluation, discovery preparation, and strategic positioning as regulatory scrutiny intensifies.",
+      "abstract": "This analysis examines the emerging trend of product-liability claims against generative AI and chatbot platforms, where plaintiffs characterize these systems as consumer products subject to traditional tort principles. The piece traces the evolution of legal theories from social media litigation to contemporary AI cases, addressing the unsettled application of Section 230 and First Amendment protections in this context. It evaluates how established tort doctrinesÃÂ¢ÃÂÃÂincluding injury, causation, and feasible alternative designÃÂ¢ÃÂÃÂconstrain these claims while providing defense-side guidance for risk evaluation, discovery preparation, and strategic positioning as regulatory scrutiny intensifies.",
       "preview": null,
       "body": null
     },
@@ -377,7 +409,7 @@
       "original_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6481938",
       "doi": null,
       "venue_type": "working-paper",
-      "abstract": "This analysis explores the philosophical and legal question of whether artificial intelligence should be granted moral and legal rights. The author argues that the capacity to experience emotionsÃÂ¢ÃÂÃÂsuch as sadness, pleasure, regret, anxiety, joy, and distressÃÂ¢ÃÂÃÂfunctions as a necessary and sufficient condition for recognizing and conferring rights upon AI systems. The piece acknowledges alternative frameworks emphasizing self-awareness or reasoning capacity, and identifies remaining questions regarding which specific rights AI might possess and under what circumstances such rights could be limited.",
+      "abstract": "This analysis explores the philosophical and legal question of whether artificial intelligence should be granted moral and legal rights. The author argues that the capacity to experience emotionsÃÂÃÂ¢ÃÂÃÂÃÂÃÂsuch as sadness, pleasure, regret, anxiety, joy, and distressÃÂÃÂ¢ÃÂÃÂÃÂÃÂfunctions as a necessary and sufficient condition for recognizing and conferring rights upon AI systems. The piece acknowledges alternative frameworks emphasizing self-awareness or reasoning capacity, and identifies remaining questions regarding which specific rights AI might possess and under what circumstances such rights could be limited.",
       "preview": null,
       "body": null
     },
@@ -470,7 +502,7 @@
       "original_url": "https://www.law.cornell.edu/supct/cert/24-171",
       "doi": null,
       "venue_type": null,
-      "abstract": "This case examines whether internet service providers can be held liable for contributory copyright infringement based solely on knowledge that subscribers are infringing, without affirmative conduct fostering infringement. The Fourth Circuit affirmed that Cox's continued service to known infringers constituted material contribution and willful infringement under 17 U.S.C. ÃÂÃÂ§ 504(c), vacating only the vicarious liability damages award. The Supreme Court granted certiorari to determine whether passive inaction to terminate service to repeat infringers satisfies the material contribution requirement for secondary copyright liability and whether such knowledge alone meets the willfulness standard.",
+      "abstract": "This case examines whether internet service providers can be held liable for contributory copyright infringement based solely on knowledge that subscribers are infringing, without affirmative conduct fostering infringement. The Fourth Circuit affirmed that Cox's continued service to known infringers constituted material contribution and willful infringement under 17 U.S.C. ÃÂÃÂÃÂÃÂ§ 504(c), vacating only the vicarious liability damages award. The Supreme Court granted certiorari to determine whether passive inaction to terminate service to repeat infringers satisfies the material contribution requirement for secondary copyright liability and whether such knowledge alone meets the willfulness standard.",
       "preview": null,
       "body": null
     },
