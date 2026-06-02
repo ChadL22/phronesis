@@ -10,6 +10,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "communications-decency-act-and-section-230-1996-2024",
+      "title": "Communications Decency Act and Section 230 (1996)",
+      "subtitle": "A historical overview of federal legislation regulating online obscenity and the development of internet service provider immunity provisions.",
+      "date": "2024-07-05",
+      "type": "policy",
+      "fields": [
+        "Public Policy",
+        "Philosophy"
+      ],
+      "tags": [
+        "Section 230",
+        "Communications Decency Act",
+        "online content moderation",
+        "First Amendment",
+        "platform liability",
+        "child protection"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Free Speech Center at Middle Tennessee State University",
+      "publisher_url": null,
+      "original_url": "https://firstamendment.mtsu.edu/article/communications-decency-act-and-section-230/",
+      "doi": null,
+      "venue_type": "news",
+      "abstract": "This document traces the legislative history of the Communications Decency Act of 1996 and its constitutional challenges, particularly through the landmark Reno v. ACLU decision. It explains how Section 230 emerged as a compromise to incentivize content moderation while protecting service providers from liability, and examines the subsequent legal developments including the Child Online Protection Act and ongoing debates about limiting platform immunity. The analysis demonstrates the tension between protecting minors from harmful content and preserving protected speech under the First Amendment.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "audience": "federal"
+    },
+    {
+      "placeholder": false,
       "id": "s1993-a-bill-to-waive-immunity-under-section-230-of-the-communications-act-of-1934-for-claims-and-charges-related-to-generative-artificial-intelligence-2023",
       "title": "S.1993 - A bill to waive immunity under section 230 of the Communications Act of 1934 for claims and charges related to generative artificial intelligence.",
       "subtitle": "A Senate bill proposing to remove Section 230 immunity protections for interactive computer services when their conduct involves generative artificial intelligence systems.",
