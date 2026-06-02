@@ -10,6 +10,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "no-section-230-immunity-for-ai-act-2023",
+      "title": "No Section 230 Immunity for AI Act",
+      "subtitle": "S. 1993 proposes to remove federal liability protections for interactive computer service providers when their conduct involves generative artificial intelligence systems.",
+      "date": "2023-06-14",
+      "type": "policy",
+      "fields": [
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "Section 230",
+        "generative artificial intelligence",
+        "platform liability",
+        "AI regulation",
+        "content moderation",
+        "internet law"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "United States Senate",
+      "publisher_url": null,
+      "original_url": "https://www.congress.gov/bill/118th-congress/senate-bill/1993",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This legislative proposal amends Section 230 of the Communications Act of 1934 to carve out liability protections for interactive computer service providers in cases where the underlying conduct involves generative artificial intelligence. The bill defines generative AI as systems capable of producing novel text, video, images, audio, and other media based on user prompts or data inputs. By limiting Section 230's broad immunity in the AI context, the legislation seeks to establish legal accountability for platform operators and service providers regarding AI-generated or AI-facilitated content.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "audience": "federal"
+    },
+    {
+      "placeholder": false,
       "id": "allow-states-and-victims-to-fight-online-sex-trafficking-act-of-2017-fosta-2018",
       "title": "Allow States and Victims to Fight Online Sex Trafficking Act of 2017 (FOSTA)",
       "subtitle": "Federal legislation that amends section 230 of the Communications Act to establish criminal and civil liability for online platforms that facilitate sex trafficking and prostitution.",
