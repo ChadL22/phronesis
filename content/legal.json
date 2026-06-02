@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "doe-no-1-v-backpagecom-llc-2016",
+      "title": "Doe No. 1 v. Backpage.com, LLC",
+      "subtitle": "A First Circuit case examining claims against Backpage.com for alleged facilitation of sex trafficking of minors.",
+      "date": "2016-03-14",
+      "type": "legal",
+      "fields": [
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "sex trafficking",
+        "online platforms",
+        "Section 230",
+        "FOSTA-SESTA",
+        "civil liability",
+        "Backpage"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Justia Law",
+      "publisher_url": null,
+      "original_url": "https://law.justia.com/cases/federal/appellate-courts/ca1/15-1724/15-1724-2016-03-14.html",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This case involved minors who alleged they were trafficked through advertisements posted on Backpage.com. The plaintiffs brought suit alleging that Backpage tailored its website to facilitate sex traffickers' efforts to advertise victims, claiming violations of the Trafficking Victims Protection Reauthorization Act, Massachusetts General Laws chapter 93A, and intellectual property rights. The district court dismissed the action for failure to state a claim, and the First Circuit affirmed, finding that the allegations did not plausibly entitle plaintiffs to relief.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "stratton-oakmont-v-prodigy-1995",
       "title": "Stratton Oakmont v. Prodigy",
       "subtitle": "A landmark 1995 defamation case establishing internet service provider liability for third-party content on moderated forums.",
