@@ -28,7 +28,12 @@
         "student": {
           "label": "Student",
           "description": "Given the ever-evolving nature of the internet, this canon explores what role Section 230 has played, currently plays, and could play going forward. It traces how questions of platform liability have shifted from early internet defamation and content moderation to algorithmic amplification, recommender systems, and the growing entanglement of the internet with artificial intelligence.",
-          "sequence": []
+          "sequence": [
+            {
+              "id": "communications-decency-act-and-section-230-1996-2024",
+              "note": "This is a brief overview of the Communications Decency Act of 1996 which is the broader statute from which Section 230 emerged."
+            }
+          ]
         },
         "general": {
           "label": "General Reader",
