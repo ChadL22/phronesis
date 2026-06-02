@@ -140,6 +140,26 @@
           "description": "Section 230 has quietly shaped much of the internet as we know it, from comment sections and social media platforms to search engines and online marketplaces. This canon introduces readers to the law’s origins, its role in protecting online platforms, and the new questions raised by algorithms, recommender systems, and generative AI.",
           "sequence": [
             {
+              "id": "communications-decency-act-and-section-230-1996-2024",
+              "note": "Defines the broader statute from which Section 230 emerged."
+            },
+            {
+              "id": "mark-foster-et-al-v-richard-h-churchill-jr-et-al-1996",
+              "note": "Shows the defamation elements Section 230 later displaced online."
+            },
+            {
+              "id": "cubby-v-compuserve-1990",
+              "note": "Introduces distributor liability before broad internet immunity."
+            },
+            {
+              "id": "stratton-oakmont-v-prodigy-1995",
+              "note": "Creates the moderation dilemma that Congress answered."
+            },
+            {
+              "id": "internet-freedom-and-family-empowerment-act-1995",
+              "note": "Shows Cox-Wyden’s original market-and-moderation design."
+            },
+            {
               "id": "47-us-code-230-protection-for-private-blocking-and-screening-of-offensive-material",
               "note": "Provides the operative text, definitions, and policy clauses."
             },
