@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "cubby-v-compuserve-1990",
+      "title": "Cubby v. CompuServe",
+      "subtitle": "A landmark internet case establishing that internet service providers function as distributors rather than publishers of third-party content.",
+      "date": "1990-01-01",
+      "type": "legal",
+      "fields": [
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "ISP liability",
+        "defamation law",
+        "Section 230",
+        "publisher versus distributor",
+        "internet regulation",
+        "third-party content"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Digital Media Law Project (DMLP)",
+      "publisher_url": null,
+      "original_url": "https://www.dmlp.org/threats/cubby-v-compuserve",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This case involved a defamation suit brought by Cubby, Inc. and Robert G. Blanchard against CompuServe and Don Fitzpatrick over allegedly false and disparaging remarks published in the newsletter \"Rumorville.\" The U.S. District Court for the Southern District of New York dismissed all claims against CompuServe, ruling that the ISP lacked publisher liability because it exercised no editorial control over the content and had no knowledge of or opportunity to review publications before they became available to subscribers. The court likened CompuServe's role to that of a public library or newsstand. Though later complicated by Stratton Oakmont v. Prodigy, this decision established important precedent that was subsequently codified in Section 230 of the Communications Decency Act.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "mark-foster-et-al-v-richard-h-churchill-jr-et-al-1996",
       "title": "Mark Foster et al. v. Richard H. Churchill, Jr., et al.",
       "subtitle": "New York Court of Appeals decision examining tortious interference and defamation claims arising from the termination of co-CEOs by venture capital investors.",
