@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "echo-chambers-in-the-age-of-algorithms-an-audit-of-twitters-friend-recommender-system-2024",
+      "title": "Echo Chambers in the Age of Algorithms: An Audit of Twitter's Friend Recommender System",
+      "subtitle": "An empirical audit examining how Twitter's friend recommendation algorithm shapes political network composition and exposure to election misinformation.",
+      "date": "2024-04-09",
+      "type": "research",
+      "fields": [
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "algorithmic auditing",
+        "social media recommendation systems",
+        "political misinformation",
+        "echo chambers",
+        "election integrity",
+        "Twitter"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "ArXiv",
+      "publisher_url": null,
+      "original_url": "https://arxiv.org/abs/2404.06422",
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This study presents the first in-situ empirical audit of Twitter's Who-To-Follow recommendation system, investigating its role in political echo chambers and misinformation exposure. Using automated accounts that initially followed left and right-affiliated U.S. politicians during the 2022 midterm elections, researchers compared network growth through algorithmic recommendations versus organic social endorsement. Findings indicate that while the recommender system creates structurally dense neighborhoods, it produces less political homogeneity than social endorsement and reduces exposure to false or misleading election narratives.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "a-survey-on-adversarial-recommender-systems-from-attackdefense-strategies-to-generative-adversarial-networks-2020",
       "title": "A survey on Adversarial Recommender Systems: from Attack/Defense strategies to Generative Adversarial Networks",
       "subtitle": "A comprehensive review of adversarial attacks, defenses, and generative applications in recommendation systems and collaborative filtering models.",
