@@ -11,6 +11,39 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "who-moderates-the-moderators-a-law-and-economics-approach-to-holding-online-platforms-accountable-without-destroying-the-internet-2022",
+      "title": "Who Moderates the Moderators?: A Law and Economics Approach to Holding Online Platforms Accountable Without Destroying the Internet",
+      "subtitle": "A proposal for conditioning Section 230's intermediary liability protections on reasonable efforts to curb unlawful content while maintaining Internet ecosystem viability.",
+      "date": "2022-12-01",
+      "type": "research",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Economics",
+        "Philosophy"
+      ],
+      "tags": [
+        "Section 230",
+        "online intermediary liability",
+        "platform regulation",
+        "user-generated content",
+        "Communications Decency Act",
+        "duty of care standard"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "unknown",
+      "publisher_url": null,
+      "original_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3964123",
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This paper examines the practical feasibility of reforming Section 230(c)(1) to impose indirect liability on online platforms for user-generated illegal or tortious content, contingent upon reasonable remedial measures. Drawing on law and economics analysis and common law precedents, the authors propose a duty-of-care standard with procedural safeguards designed to reduce harmful content without excessively burdening platforms or chilling speech. The paper systematically addresses common objections to Section 230 reform, contending that many concerns, while legitimate, are overstated or constitute arguments for broader procedural reform rather than defense of the statute itself.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "the-economics-of-algorithmic-selection-on-the-internet-2021",
       "title": "The Economics of Algorithmic Selection on the Internet",
       "subtitle": "An examination of how algorithms shape information consumption, economic markets, and society while creating risks to privacy, fairness, and welfare",
