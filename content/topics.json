@@ -96,6 +96,30 @@
             {
               "id": "moody-v-netchoice-and-netchoice-v-paxton-a-narrow-path-to-platform-first-amendment-protections-2024",
               "note": "Connects platform moderation to First Amendment doctrine."
+            },
+            {
+              "id": "30-years-of-section-230-why-we-still-need-it-for-a-safer-internet-2026",
+              "note": "Adds a contemporary defense of retaining Section 230."
+            },
+            {
+              "id": "how-do-recommender-systems-work-on-digital-platforms-2022",
+              "note": "Explains recommendation mechanics for nontechnical readers."
+            },
+            {
+              "id": "zeran-v-america-online-inc-4th-cir-1997-2009",
+              "note": "Foundational, though it does appear late. It is a canonical case for broad intermediary immunity."
+            },
+            {
+              "id": "fair-housing-council-of-san-fernando-valley-v-roommatescom",
+              "note": "Foundational—appears late. Marks the material-contribution boundary."
+            },
+            {
+              "id": "risk-management-framework-for-information-systems-and-organizations-a-system-life-cycle-approach-for-security-and-privacy-2018",
+              "note": "Offers a practical risk-management framework for governance."
+            },
+            {
+              "id": "artificial-intelligence-risk-management-framework-generative-artificial-intelligence-profile-2024",
+              "note": "Applies AI RMF concepts specifically to generative AI."
             }
           ]
         },
