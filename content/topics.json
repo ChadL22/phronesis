@@ -35,23 +35,31 @@
             },
             {
               "id": "section-230-a-juridical-history-2025",
-              "note": "Here is a more in depth look at the history of Section 230, covering many important cases that have predated, developed alongside, and arisen after Section 230's introduction"
+              "note": "Here is a more in depth look at the history of Section 230, covering many important cases that have predated, developed alongside, and arisen after Section 230's introduction."
             },
             {
               "id": "mark-foster-et-al-v-richard-h-churchill-jr-et-al-1996",
-              "note": "This case predates Section 230 and shows the defamation elements Section 230 later displaced online"
+              "note": "This case predates Section 230 and shows the defamation elements Section 230 later displaced online."
             },
             {
               "id": "cubby-v-compuserve-1990",
-              "note": "This case introduces distributor liability before broad internet immunity"
+              "note": "This case introduces distributor liability before broad internet immunity."
             },
             {
               "id": "stratton-oakmont-v-prodigy-1995",
-              "note": "In this case we see the creation of the moderation dilemma that Congress would go onto answer"
+              "note": "In this case we see the creation of the moderation dilemma that Congress would go onto answer."
             },
             {
               "id": "47-us-code-230-protection-for-private-blocking-and-screening-of-offensive-material",
-              "note": "This provides the operative text, definitions, and policy clauses."
+              "note": "This provides the operative text, definitions, and policy clauses of Section 230."
+            },
+            {
+              "id": "doe-no-1-v-backpagecom-llc-2016",
+              "note": "This is an example of specific harms that broad immunity as defined by Section 230 struggled to address."
+            },
+            {
+              "id": "allow-states-and-victims-to-fight-online-sex-trafficking-act-of-2017-fosta-2018",
+              "note": "Shows Congress’s first major Section 230 carveout."
             }
           ]
         },
