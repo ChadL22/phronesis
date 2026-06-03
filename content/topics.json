@@ -282,88 +282,27 @@
         "general": {
           "label": "General Reader",
           "description": "The basics of platform law and why it affects what you see online.",
-          "sequence": [
-            {
-              "id": "to-repeal-or-not-to-repeal-is-not-the-question-for-section-230-2026",
-              "note": "The reform debate in plain terms"
-            },
-            {
-              "id": "state-platform-regulation-a-roadmap-to-coming-debates",
-              "note": "How states are stepping in where Congress hasn't"
-            }
-          ]
+          "sequence": []
         },
         "policy": {
           "label": "Policy Professional",
           "description": "Legislative frameworks, state action, and structural reforms.",
-          "sequence": [
-            {
-              "id": "state-platform-regulation-a-roadmap-to-coming-debates",
-              "note": "The state-level landscape mapped"
-            },
-            {
-              "id": "to-repeal-or-not-to-repeal-is-not-the-question-for-section-230-2026",
-              "note": "Structural reforms that don't require repeal"
-            },
-            {
-              "id": "section-230-and-child-exploitation-restoring-the-original-intent-of-the-communications-decency-act-2025",
-              "note": "Restoring the statute's original child protection purpose"
-            },
-            {
-              "id": "trump-administration-national-ai-policy-framework-2026",
-              "note": "Current administration's position on content moderation"
-            }
-          ]
+          "sequence": []
         },
         "legal": {
           "label": "Legal Professional",
           "description": "The doctrine — NetChoice, Moody, and what comes next.",
-          "sequence": [
-            {
-              "id": "in-netchoice-cases-supreme-court-labels-a-surprisingly-narrow-class-of-online-platform-company-activities-as-protected-expression-2024",
-              "note": "The Court's surprisingly narrow holding on platform expression"
-            },
-            {
-              "id": "section-230-and-child-exploitation-restoring-the-original-intent-of-the-communications-decency-act-2025",
-              "note": "Legislative history analysis of Section 230's original purpose"
-            },
-            {
-              "id": "cox-communications-v-sony-music-entertainment",
-              "note": "Secondary liability and the ISP knowledge standard"
-            }
-          ]
+          "sequence": []
         },
         "economist": {
           "label": "Economist",
           "description": "Platform markets, competition dynamics, and regulatory economics.",
-          "sequence": [
-            {
-              "id": "state-platform-regulation-a-roadmap-to-coming-debates",
-              "note": "The regulatory landscape shaping platform markets"
-            },
-            {
-              "id": "amazons-dominance-and-the-need-for-antitrust-reform",
-              "note": "Platform market power and competition doctrine"
-            }
-          ]
+          "sequence": []
         },
         "technologist": {
           "label": "Technologist",
           "description": "How algorithmic curation intersects with legal frameworks.",
-          "sequence": [
-            {
-              "id": "in-netchoice-cases-supreme-court-labels-a-surprisingly-narrow-class-of-online-platform-company-activities-as-protected-expression-2024",
-              "note": "When does algorithmic curation count as protected expression?"
-            },
-            {
-              "id": "reranking-social-media-feeds-a-practical-guide-for-field-experiments-2026",
-              "note": "Running independent feed-ranking experiments"
-            },
-            {
-              "id": "to-repeal-or-not-to-repeal-is-not-the-question-for-section-230-2026",
-              "note": "Structural reform proposals and their technical implications"
-            }
-          ]
+          "sequence": []
         }
       }
     },
@@ -390,106 +329,32 @@
         "student": {
           "label": "Student",
           "description": "What privacy means in a data-driven world and why current law falls short.",
-          "sequence": [
-            {
-              "id": "a-comprehensive-guide-to-differential-privacy-from-theory-to-user-expectations-2025",
-              "note": "Start with the technical foundations of modern privacy"
-            },
-            {
-              "id": "ftc-surveillance-pricing-6b-study-research-summaries-a-staff-perspective",
-              "note": "How companies use your data to set prices"
-            },
-            {
-              "id": "blueprint-for-an-ai-bill-of-rights",
-              "note": "The federal framework for AI and privacy protections"
-            }
-          ]
+          "sequence": []
         },
         "general": {
           "label": "General Reader",
           "description": "How your data is being used — and what's being done about it.",
-          "sequence": [
-            {
-              "id": "walmart-is-putting-digital-labels-that-change-prices-instantly-on-every-store-shelf-in-america-2026",
-              "note": "When dynamic pricing meets your grocery store"
-            },
-            {
-              "id": "ftc-surveillance-pricing-6b-study-research-summaries-a-staff-perspective",
-              "note": "The FTC's investigation into personalized pricing"
-            }
-          ]
+          "sequence": []
         },
         "policy": {
           "label": "Policy Professional",
           "description": "The regulatory landscape for data privacy — federal, state, and international.",
-          "sequence": [
-            {
-              "id": "cfpb-consumer-laws-and-regulations-unfair-deceptive-or-abusive-acts-or-practices",
-              "note": "CFPB's UDAAP framework — the enforcement baseline"
-            },
-            {
-              "id": "ftc-surveillance-pricing-6b-study-research-summaries-a-staff-perspective",
-              "note": "FTC enforcement on algorithmic pricing and data use"
-            },
-            {
-              "id": "eu-artificial-intelligence-act-2024",
-              "note": "The EU's approach to AI and data regulation"
-            },
-            {
-              "id": "blueprint-for-an-ai-bill-of-rights",
-              "note": "Federal privacy principles in the AI Bill of Rights"
-            }
-          ]
+          "sequence": []
         },
         "legal": {
           "label": "Legal Professional",
           "description": "Consumer protection doctrine and the emerging privacy case law.",
-          "sequence": [
-            {
-              "id": "cfpb-consumer-laws-and-regulations-unfair-deceptive-or-abusive-acts-or-practices",
-              "note": "The UDAAP three-part unfairness standard"
-            },
-            {
-              "id": "cox-communications-v-sony-music-entertainment",
-              "note": "ISP liability and the knowledge standard for user data"
-            },
-            {
-              "id": "ftc-surveillance-pricing-6b-study-research-summaries-a-staff-perspective",
-              "note": "FTC's 6(b) study findings on data-driven pricing"
-            }
-          ]
+          "sequence": []
         },
         "economist": {
           "label": "Economist",
           "description": "The economics of data, pricing, and privacy regulation.",
-          "sequence": [
-            {
-              "id": "dynamic-pricing-algorithms-consumer-harm-and-regulatory-response",
-              "note": "Consumer harm from data-driven pricing"
-            },
-            {
-              "id": "ftc-surveillance-pricing-6b-study-research-summaries-a-staff-perspective",
-              "note": "Empirical findings on surveillance pricing"
-            },
-            {
-              "id": "forecasting-the-economic-effects-of-ai-predictions-from-economists-ai-experts-and-the-public",
-              "note": "Economic forecasts and policy preferences"
-            }
-          ]
+          "sequence": []
         },
         "technologist": {
           "label": "Technologist",
           "description": "Technical privacy mechanisms and their real-world deployment.",
-          "sequence": [
-            {
-              "id": "a-comprehensive-guide-to-differential-privacy-from-theory-to-user-expectations-2025",
-              "note": "Differential privacy — from theory to implementation"
-            },
-            {
-              "id": "ftc-surveillance-pricing-6b-study-research-summaries-a-staff-perspective",
-              "note": "How algorithmic pricing systems use personal data"
-            }
-          ]
+          "sequence": []
         }
       }
     },
@@ -517,106 +382,32 @@
         "student": {
           "label": "Student",
           "description": "How copyright law collides with AI training — the basics.",
-          "sequence": [
-            {
-              "id": "anthropic-settles-its-copyright-litigationand-why-that-was-the-right-move-2025",
-              "note": "A $1.5B settlement and what it means for the field"
-            },
-            {
-              "id": "cox-communications-v-sony-music-entertainment",
-              "note": "Secondary liability — when does knowing about infringement make you liable?"
-            },
-            {
-              "id": "open-source-ai-meaning-2024",
-              "note": "What 'open source' means for accountability and IP"
-            }
-          ]
+          "sequence": []
         },
         "general": {
           "label": "General Reader",
           "description": "AI companies are training on copyrighted work — what's happening.",
-          "sequence": [
-            {
-              "id": "anthropic-settles-its-copyright-litigationand-why-that-was-the-right-move-2025",
-              "note": "Anthropic's $1.5B copyright settlement, explained"
-            },
-            {
-              "id": "gptzero-finds-100-new-hallucinations-in-neurips-2025-accepted-papers-2026",
-              "note": "When AI makes things up — hallucinations in academic papers"
-            },
-            {
-              "id": "open-source-ai-meaning-2024",
-              "note": "When companies say 'open source,' what do they actually mean?"
-            }
-          ]
+          "sequence": []
         },
         "policy": {
           "label": "Policy Professional",
           "description": "IP policy frameworks and the legislative landscape.",
-          "sequence": [
-            {
-              "id": "trump-administration-national-ai-policy-framework-2026",
-              "note": "The administration's IP framework for AI"
-            },
-            {
-              "id": "anthropic-settles-its-copyright-litigationand-why-that-was-the-right-move-2025",
-              "note": "Settlement dynamics and remaining policy gaps"
-            },
-            {
-              "id": "eu-artificial-intelligence-act-2024",
-              "note": "How the EU AI Act addresses training data and IP"
-            }
-          ]
+          "sequence": []
         },
         "legal": {
           "label": "Legal Professional",
           "description": "The doctrine — fair use, secondary liability, and pending litigation.",
-          "sequence": [
-            {
-              "id": "cox-communications-v-sony-music-entertainment",
-              "note": "Material contribution and willfulness in secondary copyright"
-            },
-            {
-              "id": "anthropic-settles-its-copyright-litigationand-why-that-was-the-right-move-2025",
-              "note": "Settlement strategy and remaining legal exposure"
-            },
-            {
-              "id": "does-ai-have-rights-2026",
-              "note": "Whether AI systems can hold or be subject to IP rights"
-            }
-          ]
+          "sequence": []
         },
         "economist": {
           "label": "Economist",
           "description": "The economics of intellectual property in AI markets.",
-          "sequence": [
-            {
-              "id": "anthropic-settles-its-copyright-litigationand-why-that-was-the-right-move-2025",
-              "note": "The economics of a $1.5B settlement — compensation rates and market signals"
-            },
-            {
-              "id": "eli-lilly-insilico-strike-ai-drug-discovery-deal-2026",
-              "note": "IP licensing in the AI pharmaceutical space"
-            }
-          ]
+          "sequence": []
         },
         "technologist": {
           "label": "Technologist",
           "description": "Technical dimensions of training data, model weights, and openness.",
-          "sequence": [
-            {
-              "id": "open-source-ai-meaning-2024",
-              "note": "Disaggregating 'open source' — weights, data, architecture"
-            },
-            {
-              "id": "gptzero-finds-100-new-hallucinations-in-neurips-2025-accepted-papers-2026",
-              "note": "Detecting AI-generated content and hallucinations"
-            },
-            {
-              "id": "model-context-protocol-mcp-architecture-overview",
-              "note": "Protocol design and open standards in AI"
-            }
-          ]
+          "sequence": []
         }
       }
     },
@@ -641,98 +432,32 @@
         "student": {
           "label": "Student",
           "description": "How AI governance changes when systems can cause physical harm.",
-          "sequence": [
-            {
-              "id": "pausing-isnt-policy-2026",
-              "note": "Why moratoria on physical infrastructure don't constrain AI development"
-            },
-            {
-              "id": "the-future-of-data-centers-2025",
-              "note": "The physical infrastructure underlying AI — energy, land, and policy"
-            },
-            {
-              "id": "liability-without-causation-2024",
-              "note": "How physical harm complicates algorithmic liability"
-            }
-          ]
+          "sequence": []
         },
         "general": {
           "label": "General Reader",
           "description": "AI in the real world — data centers, infrastructure, and physical systems.",
-          "sequence": [
-            {
-              "id": "the-future-of-data-centers-2025",
-              "note": "What AI requires in the physical world"
-            },
-            {
-              "id": "pausing-isnt-policy-2026",
-              "note": "Why banning data centers doesn't slow AI"
-            }
-          ]
+          "sequence": []
         },
         "policy": {
           "label": "Policy Professional",
           "description": "Infrastructure policy, safety standards, and permitting.",
-          "sequence": [
-            {
-              "id": "the-future-of-data-centers-2025",
-              "note": "Energy, permitting, and the national competitiveness case"
-            },
-            {
-              "id": "pausing-isnt-policy-2026",
-              "note": "Why compute moratoria can't work — and what might"
-            },
-            {
-              "id": "trump-administration-national-ai-policy-framework-2026",
-              "note": "Federal infrastructure and permitting priorities"
-            }
-          ]
+          "sequence": []
         },
         "legal": {
           "label": "Legal Professional",
           "description": "Liability for physical harm and safety regulation.",
-          "sequence": [
-            {
-              "id": "liability-without-causation-2024",
-              "note": "Causation challenges when AI causes physical damage"
-            },
-            {
-              "id": "ethical-analysis-of-normothermic-regional-perfusion-nrp-2023",
-              "note": "Bioethics case study — physical AI in medical contexts"
-            }
-          ]
+          "sequence": []
         },
         "economist": {
           "label": "Economist",
           "description": "Infrastructure economics and the physical foundations of AI.",
-          "sequence": [
-            {
-              "id": "the-future-of-data-centers-2025",
-              "note": "Capital costs, energy markets, and workforce requirements"
-            },
-            {
-              "id": "forecasting-the-economic-effects-of-ai",
-              "note": "Expert forecasts on AI's physical infrastructure needs"
-            }
-          ]
+          "sequence": []
         },
         "technologist": {
           "label": "Technologist",
           "description": "Technical architecture of physical AI systems.",
-          "sequence": [
-            {
-              "id": "the-future-of-data-centers-2025",
-              "note": "Infrastructure requirements for AI at scale"
-            },
-            {
-              "id": "dna-as-a-universal-chemical-substrate-for-computing-and-data-storage-2024",
-              "note": "Alternative computing substrates — beyond silicon"
-            },
-            {
-              "id": "pausing-isnt-policy-2026",
-              "note": "Why compute fungibility undermines infrastructure moratoria"
-            }
-          ]
+          "sequence": []
         }
       }
     },
@@ -757,98 +482,32 @@
         "student": {
           "label": "Student",
           "description": "How recommendation systems shape what you see — and why it matters.",
-          "sequence": [
-            {
-              "id": "reranking-social-media-feeds-a-practical-guide-for-field-experiments-2026",
-              "note": "How researchers study feed algorithms independently"
-            },
-            {
-              "id": "in-netchoice-cases-supreme-court-labels-a-surprisingly-narrow-class-of-online-platform-company-activities-as-protected-expression-2024",
-              "note": "When does algorithmic curation become protected speech?"
-            },
-            {
-              "id": "ethical-nudging-2026",
-              "note": "When platforms nudge you — and when that crosses a line"
-            }
-          ]
+          "sequence": []
         },
         "general": {
           "label": "General Reader",
           "description": "Why you see what you see online — and who decides.",
-          "sequence": [
-            {
-              "id": "reranking-social-media-feeds-a-practical-guide-for-field-experiments-2026",
-              "note": "How feeds actually work — from researchers who study them"
-            },
-            {
-              "id": "ethical-nudging-2026",
-              "note": "When nudges help and when they manipulate"
-            }
-          ]
+          "sequence": []
         },
         "policy": {
           "label": "Policy Professional",
           "description": "Platform transparency, algorithmic accountability, and regulatory tools.",
-          "sequence": [
-            {
-              "id": "blueprint-for-an-ai-bill-of-rights",
-              "note": "Federal principles on algorithmic transparency"
-            },
-            {
-              "id": "in-netchoice-cases-supreme-court-labels-a-surprisingly-narrow-class-of-online-platform-company-activities-as-protected-expression-2024",
-              "note": "Which curatorial activities can be regulated?"
-            },
-            {
-              "id": "ethical-nudging-2026",
-              "note": "Ethical limits on government and platform nudges"
-            }
-          ]
+          "sequence": []
         },
         "legal": {
           "label": "Legal Professional",
           "description": "First Amendment dimensions of algorithmic curation.",
-          "sequence": [
-            {
-              "id": "in-netchoice-cases-supreme-court-labels-a-surprisingly-narrow-class-of-online-platform-company-activities-as-protected-expression-2024",
-              "note": "The Court's granular approach to platform expression claims"
-            },
-            {
-              "id": "to-repeal-or-not-to-repeal-is-not-the-question-for-section-230-2026",
-              "note": "Structural reforms and algorithmic transparency requirements"
-            }
-          ]
+          "sequence": []
         },
         "economist": {
           "label": "Economist",
           "description": "Attention economics and the business models of recommendation.",
-          "sequence": [
-            {
-              "id": "the-coasean-singularity-2025",
-              "note": "How AI agents transform search and recommendation economics"
-            },
-            {
-              "id": "amazons-dominance-and-the-need-for-antitrust-reform",
-              "note": "Platform dominance and the attention marketplace"
-            }
-          ]
+          "sequence": []
         },
         "technologist": {
           "label": "Technologist",
           "description": "How recommendation systems work — and how to study them.",
-          "sequence": [
-            {
-              "id": "reranking-social-media-feeds-a-practical-guide-for-field-experiments-2026",
-              "note": "Technical guide to intercepting and reranking feeds"
-            },
-            {
-              "id": "on-goodharts-law-with-an-application-to-value-alignment-2024",
-              "note": "Why optimizing engagement metrics undermines user welfare"
-            },
-            {
-              "id": "model-context-protocol-mcp-architecture-overview",
-              "note": "Protocols for AI application context — relevant to agents and recommenders"
-            }
-          ]
+          "sequence": []
         }
       }
     },
@@ -876,118 +535,32 @@
         "student": {
           "label": "Student",
           "description": "How algorithms can discriminate — and what the law says about it.",
-          "sequence": [
-            {
-              "id": "audits-under-resource-data-and-access-constraints-2025",
-              "note": "How auditors find less discriminatory alternatives"
-            },
-            {
-              "id": "on-goodharts-law-with-an-application-to-value-alignment-2024",
-              "note": "Why optimizing proxy measures undermines the values they target"
-            },
-            {
-              "id": "move-fast-fix-later-2024",
-              "note": "Who bears the cost when we deploy first and ask questions later"
-            },
-            {
-              "id": "blueprint-for-an-ai-bill-of-rights",
-              "note": "The federal framework for protecting against algorithmic harm"
-            }
-          ]
+          "sequence": []
         },
         "general": {
           "label": "General Reader",
           "description": "How automated decisions affect you — and what protections exist.",
-          "sequence": [
-            {
-              "id": "move-fast-fix-later-2024",
-              "note": "Why 'move fast and break things' has real human costs"
-            },
-            {
-              "id": "blueprint-for-an-ai-bill-of-rights",
-              "note": "The federal principles meant to protect you"
-            },
-            {
-              "id": "ethical-nudging-2026",
-              "note": "When governments use nudges — and when that crosses a line"
-            }
-          ]
+          "sequence": []
         },
         "policy": {
           "label": "Policy Professional",
           "description": "Assessment standards, enforcement gaps, and regulatory tools.",
-          "sequence": [
-            {
-              "id": "audits-under-resource-data-and-access-constraints-2025",
-              "note": "Scaling laws for real-world algorithmic auditing"
-            },
-            {
-              "id": "blueprint-for-an-ai-bill-of-rights",
-              "note": "Federal principles for automated system oversight"
-            },
-            {
-              "id": "comments-to-il-lawmakers-regarding-the-consumer-protection-group-1-proposals-sb-3384-sb-3444-2026",
-              "note": "Industry response to state AI accountability proposals"
-            },
-            {
-              "id": "ethical-nudging-2026",
-              "note": "Ethical limits on government use of behavioral nudges"
-            }
-          ]
+          "sequence": []
         },
         "legal": {
           "label": "Legal Professional",
           "description": "Liability doctrine, discrimination law, and the causation problem.",
-          "sequence": [
-            {
-              "id": "liability-without-causation-2024",
-              "note": "How algorithmic systems fracture tort doctrine's causal chain"
-            },
-            {
-              "id": "audits-under-resource-data-and-access-constraints-2025",
-              "note": "The 'less discriminatory alternative' requirement in practice"
-            },
-            {
-              "id": "cfpb-consumer-laws-and-regulations-unfair-deceptive-or-abusive-acts-or-practices",
-              "note": "UDAAP unfairness standard applied to automated decisions"
-            }
-          ]
+          "sequence": []
         },
         "economist": {
           "label": "Economist",
           "description": "Economic dimensions of algorithmic bias and accountability.",
-          "sequence": [
-            {
-              "id": "on-goodharts-law-with-an-application-to-value-alignment-2024",
-              "note": "Formal treatment of proxy optimization failure"
-            },
-            {
-              "id": "ethical-nudging-2026",
-              "note": "Welfare, autonomy, and dignity in behavioral regulation"
-            },
-            {
-              "id": "social-choice-and-individual-values-1st-ed",
-              "note": "Foundational: can any aggregation procedure be rational?"
-            }
-          ]
+          "sequence": []
         },
         "technologist": {
           "label": "Technologist",
           "description": "Technical approaches to auditing, fairness, and value alignment.",
-          "sequence": [
-            {
-              "id": "audits-under-resource-data-and-access-constraints-2025",
-              "note": "Scaling laws for less discriminatory alternative detection"
-            },
-            {
-              "id": "on-goodharts-law-with-an-application-to-value-alignment-2024",
-              "note": "Goodhart's Law formalized for alignment"
-            },
-            {
-              "id": "a-definition-of-agi-2025",
-              "note": "Cognitive benchmarking — measuring what AI can actually do"
-            }
-          ]
+          "sequence": []
         }
       }
     },
@@ -1017,126 +590,32 @@
         "student": {
           "label": "Student",
           "description": "Understand how competition law applies to tech — from Amazon to algorithmic pricing.",
-          "sequence": [
-            {
-              "id": "amazons-dominance-and-the-need-for-antitrust-reform",
-              "note": "The foundational critique of platform antitrust"
-            },
-            {
-              "id": "united-states-v-google-llc",
-              "note": "The landmark Google monopolization case"
-            },
-            {
-              "id": "the-game-theory-of-how-algorithms-can-drive-up-prices-2025",
-              "note": "How pricing algorithms achieve collusion without coordination"
-            }
-          ]
+          "sequence": []
         },
         "general": {
           "label": "General Reader",
           "description": "Why prices are changing and what the government is doing about it.",
-          "sequence": [
-            {
-              "id": "walmart-is-putting-digital-labels-that-change-prices-instantly-on-every-store-shelf-in-america-2026",
-              "note": "Dynamic pricing comes to the grocery store"
-            },
-            {
-              "id": "the-game-theory-of-how-algorithms-can-drive-up-prices-2025",
-              "note": "The theory behind why algorithms raise prices"
-            },
-            {
-              "id": "ftc-surveillance-pricing-6b-study-research-summaries-a-staff-perspective",
-              "note": "What the FTC found about surveillance pricing"
-            }
-          ]
+          "sequence": []
         },
         "policy": {
           "label": "Policy Professional",
           "description": "Enforcement actions, regulatory gaps, and reform proposals.",
-          "sequence": [
-            {
-              "id": "ftc-surveillance-pricing-6b-study-research-summaries-a-staff-perspective",
-              "note": "FTC's preliminary findings on algorithmic pricing"
-            },
-            {
-              "id": "dynamic-pricing-algorithms-consumer-harm-and-regulatory-response",
-              "note": "Why antitrust can't address non-collusive algorithmic harm"
-            },
-            {
-              "id": "united-states-v-google-llc",
-              "note": "The Google case and modern monopolization theory"
-            },
-            {
-              "id": "comments-to-il-lawmakers-regarding-the-consumer-protection-group-1-proposals-sb-3384-sb-3444-2026",
-              "note": "Industry perspective on state AI liability proposals"
-            }
-          ]
+          "sequence": []
         },
         "legal": {
           "label": "Legal Professional",
           "description": "The doctrinal evolution of antitrust in digital markets.",
-          "sequence": [
-            {
-              "id": "united-states-v-google-llc",
-              "note": "Causation standards in Section 2 monopolization"
-            },
-            {
-              "id": "united-states-v-microsoft-corp",
-              "note": "The foundational tech antitrust case"
-            },
-            {
-              "id": "amazons-dominance-and-the-need-for-antitrust-reform",
-              "note": "Consumer welfare doctrine's limits in platform markets"
-            },
-            {
-              "id": "dynamic-pricing-algorithms-consumer-harm-and-regulatory-response",
-              "note": "Pricing regulation as an alternative to antitrust"
-            }
-          ]
+          "sequence": []
         },
         "economist": {
           "label": "Economist",
           "description": "Market structure, algorithmic pricing theory, and competition economics.",
-          "sequence": [
-            {
-              "id": "dynamic-pricing-algorithms-consumer-harm-and-regulatory-response",
-              "note": "Consumer harm from algorithmic pricing independent of collusion"
-            },
-            {
-              "id": "the-game-theory-of-how-algorithms-can-drive-up-prices-2025",
-              "note": "Game-theoretic foundations of algorithmic tacit collusion"
-            },
-            {
-              "id": "the-coasean-singularity-2025",
-              "note": "AI agents and the collapse of transaction costs"
-            },
-            {
-              "id": "an-economy-of-ai-agents-2025",
-              "note": "Markets, organizations, and institutions with AI participants"
-            },
-            {
-              "id": "ftc-surveillance-pricing-6b-study-research-summaries-a-staff-perspective",
-              "note": "Empirical evidence on surveillance pricing practices"
-            }
-          ]
+          "sequence": []
         },
         "technologist": {
           "label": "Technologist",
           "description": "How pricing algorithms work and what makes them hard to regulate.",
-          "sequence": [
-            {
-              "id": "the-game-theory-of-how-algorithms-can-drive-up-prices-2025",
-              "note": "Learning algorithms that converge on collusive pricing"
-            },
-            {
-              "id": "dynamic-pricing-algorithms-consumer-harm-and-regulatory-response",
-              "note": "The technical architecture of algorithmic pricing harm"
-            },
-            {
-              "id": "walmart-is-putting-digital-labels-that-change-prices-instantly-on-every-store-shelf-in-america-2026",
-              "note": "Infrastructure enabling dynamic pricing at retail scale"
-            }
-          ]
+          "sequence": []
         }
       }
     }
