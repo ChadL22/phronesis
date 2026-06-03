@@ -8,10 +8,10 @@
   ],
   "entries": [
     {
-      "placeholder": true,
+      "placeholder": false,
       "id": "breaking-the-algorithmic-contract-2025",
       "title": "Breaking the Algorithmic Contract",
-      "subtitle": "An excerpt proposing that users renegotiate their implicit social contract with technology platforms by reconceptualizing algorithmic engagement through political contract theory.",
+      "subtitle": "An exploration of the social contract framework applied to human-algorithm relationships and the surrender of curatorial autonomy to digital platforms.",
       "date": "2025-11-18",
       "type": "essay",
       "fields": [
@@ -22,19 +22,19 @@
       "tags": [
         "algorithmic governance",
         "social contract theory",
-        "curatorial autonomy",
+        "digital autonomy",
         "data extraction",
-        "digital platforms",
-        "algorithmic prediction"
+        "algorithmic curation",
+        "platform accountability"
       ],
       "origin": "via",
       "content_type": "abstract",
       "publisher": "Bristol University Press",
       "publisher_url": null,
-      "original_url": null,
+      "original_url": "https://ssir.org/books/excerpts/entry/you-must-become-an-algorithmic-problem",
       "doi": null,
       "venue_type": "news",
-      "abstract": "This excerpt from Jose Marichal's book argues that contemporary digital engagement with algorithms constitutes an implicit social contract analogous to political social contracts theorized by Hobbes, Locke, and Rousseau. Users exchange curatorial autonomy and personal data to algorithms in exchange for relief from choice anxiety and a curated information environment, but this arrangement increasingly pressures humans to become predictable and conform to algorithmic classification systems. Marichal contends that this unspoken agreement requires renegotiation as algorithmic systems shift from understanding human behavior to predicting and reshaping it.",
+      "abstract": "This excerpt from Jose Marichal's book argues that human engagement with algorithms should be understood through the lens of social contract theory, wherein users exchange curatorial autonomy for relief from decision anxiety and perceived safety. The author contends that as algorithms fail to naturally predict human behavior, humans are increasingly being conditioned to act more predictably and classify themselves according to algorithmic models. Rather than passively resisting algorithmic systems, Marichal calls for a fundamental renegotiation of the implicit socio-technical contract between individuals and technology companies.",
       "preview": null,
       "body": null,
       "body_html": "",
