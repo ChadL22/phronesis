@@ -51,15 +51,13 @@
     /* ── ALL PIECES ── */
     .all-pieces { max-width: 1160px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 5rem) 5rem; }
     .all-pieces-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
-    .type-filter-row { display: flex; gap: 0.8rem; flex-wrap: wrap; }
-    .type-filter-btn {
+    .expand-all-btn {
       font-family: var(--sans); font-size: 0.62rem; font-weight: 400;
       letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3);
-      background: none; border: 1px solid transparent; border-radius: 2px;
-      padding: 0.25rem 0.6rem; cursor: pointer; transition: all 0.2s;
+      background: none; border: 1px solid var(--rule); border-radius: 2px;
+      padding: 0.3rem 0.8rem; cursor: pointer; transition: all 0.2s;
     }
-    .type-filter-btn:hover { color: var(--ink); border-color: var(--rule); }
-    .type-filter-btn.active { color: var(--accent); border-color: var(--accent); }
+    .expand-all-btn:hover { color: var(--accent); border-color: var(--accent); }
     .piece-item {
       display: grid; grid-template-columns: 7rem 1fr 9rem; gap: 1.8rem;
       align-items: start; padding: 1.4rem 0; border-top: 1px solid var(--rule);
@@ -75,6 +73,25 @@
       text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent);
       border-radius: 2px; padding: 0.12rem 0.4rem; justify-self: end; align-self: start; margin-top: 0.15rem;
     }
+    /* ── PIECE TYPE GROUPS (collapsible) ── */
+    .type-group { border-top: 1px solid var(--rule); }
+    .type-group:last-child { border-bottom: 1px solid var(--rule); }
+    .type-group-header {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; background: none; border: none; cursor: pointer;
+      padding: 1.1rem 0; text-align: left; font-family: inherit;
+    }
+    .type-group-header:hover .type-group-name { color: var(--accent); }
+    .type-group-name {
+      font-family: var(--serif); font-size: 1.15rem; font-weight: 400;
+      color: var(--ink); transition: color 0.18s;
+    }
+    .type-group-chevron { font-size: 0.7rem; color: var(--ink-3); line-height: 1; flex-shrink: 0; transition: transform 0.2s; }
+    .type-group.open .type-group-chevron { transform: rotate(180deg); }
+    .type-group.open .type-group-name { color: var(--accent); }
+    .type-group-body { display: none; padding-bottom: 0.6rem; }
+    .type-group.open .type-group-body { display: block; }
+    .type-group-body .piece-item:last-child { border-bottom: none; }
     /* ── RELATED ── */
     .related-canons { max-width: 1160px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 5rem) 3rem; }
     .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 1.2rem; }
@@ -139,7 +156,7 @@
   <div class="all-pieces">
     <div class="all-pieces-header">
       <span class="label" id="pieces-count">All pieces in this canon</span>
-      <div class="type-filter-row" id="type-filters"></div>
+      <button class="expand-all-btn" id="expand-all-btn" style="display:none;">Expand all</button>
     </div>
     <div id="pieces-list"></div>
   </div>
@@ -176,7 +193,9 @@
     const CONTENT_FILES = ['research', 'essays', 'legal', 'policy', 'reports', 'articles'];
     const TYPE_LABELS = { research:'Research Paper', essay:'Essay', legal:'Legal Analysis', policy:'Policy Proposal', report:'Report', article:'Article' };
     const TYPE_PAGE = { research:'/research', essay:'/essays', legal:'/legal', policy:'/policy', report:'/reports', article:'/articles' };
-    let allEntries = [], currentTopic = null, allTopics = [], matchedPieces = [], activeAudience = null, activeTypeFilter = 'all';
+    const TYPE_ORDER = ['research','policy','legal','essay','article','report'];
+    const TYPE_LABELS_PLURAL = { research:'Research Papers', essay:'Essays', legal:'Legal Analyses', policy:'Policy Proposals', report:'Reports', article:'Articles' };
+    let allEntries = [], currentTopic = null, allTopics = [], matchedPieces = [], activeAudience = null;
 
     async function loadAllContent() {
       const entries = [];
@@ -245,56 +264,86 @@
       });
     }
 
-    function renderTypeFilters() {
-      const types = new Set();
-      matchedPieces.forEach(e => types.add(e.type));
-      const container = document.getElementById('type-filters');
-      container.innerHTML = '';
-
-      const allBtn = document.createElement('button');
-      allBtn.className = 'type-filter-btn active'; allBtn.textContent = 'All';
-      allBtn.addEventListener('click', () => { activeTypeFilter = 'all'; container.querySelectorAll('.type-filter-btn').forEach(b => b.classList.remove('active')); allBtn.classList.add('active'); renderPieces(); });
-      container.appendChild(allBtn);
-
-      /* Show all 6 types, even those with 0 matches in this canon */
-      const allTypes = ['research','essay','legal','policy','article','report'];
-      allTypes.forEach(type => {
-        const count = matchedPieces.filter(e => e.type === type).length;
-        const btn = document.createElement('button');
-        btn.className = 'type-filter-btn';
-        if (count === 0) btn.style.opacity = '0.35';
-        btn.textContent = TYPE_LABELS[type] || type;
-        btn.addEventListener('click', () => {
-          if (count === 0) return;
-          activeTypeFilter = type;
-          container.querySelectorAll('.type-filter-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          renderPieces();
-        });
-        container.appendChild(btn);
-      });
-    }
-
     function renderPieces() {
       const container = document.getElementById('pieces-list');
       container.innerHTML = '';
-      let pieces = activeTypeFilter === 'all' ? matchedPieces : matchedPieces.filter(e => e.type === activeTypeFilter);
-      pieces.sort((a, b) => { if (!a.date && !b.date) return 0; if (!a.date) return 1; if (!b.date) return -1; return new Date(b.date) - new Date(a.date); });
-      document.getElementById('pieces-count').textContent = `${pieces.length} ${pieces.length === 1 ? 'piece' : 'pieces'} in this canon`;
-      pieces.forEach(entry => {
-        const link = getLink(entry);
-        const div = document.createElement('div');
-        div.className = 'piece-item';
-        div.onclick = () => { if (link !== '#') window.open(link, '_blank'); };
-        div.innerHTML = `
-          <div class="piece-date">${formatDate(entry.date)}</div>
-          <div>
-            <div class="piece-title">${entry.title}</div>
-            <div class="piece-subtitle">${entry.subtitle || (entry.abstract ? entry.abstract.substring(0, 120) + '…' : '')}</div>
-          </div>
-          <span class="piece-tag">${TYPE_LABELS[entry.type] || entry.type}</span>`;
-        container.appendChild(div);
+
+      const sorted = matchedPieces.slice().sort((a, b) => {
+        if (!a.date && !b.date) return 0; if (!a.date) return 1; if (!b.date) return -1;
+        return new Date(b.date) - new Date(a.date);
       });
+      document.getElementById('pieces-count').textContent = `${sorted.length} ${sorted.length === 1 ? 'piece' : 'pieces'} in this canon`;
+
+      const expandBtn = document.getElementById('expand-all-btn');
+      const groups = TYPE_ORDER
+        .map(type => ({ type, items: sorted.filter(e => e.type === type) }))
+        .filter(g => g.items.length);
+
+      if (!groups.length) {
+        container.innerHTML = '<p style="font-family:var(--serif);font-size:1rem;color:var(--ink-3);padding:1.5rem 0;">No additional pieces are matched to this canon yet.</p>';
+        if (expandBtn) expandBtn.style.display = 'none';
+        return;
+      }
+      if (expandBtn) expandBtn.style.display = '';
+
+      groups.forEach(({ type, items }) => {
+        const group = document.createElement('div');
+        group.className = 'type-group';
+
+        const header = document.createElement('button');
+        header.className = 'type-group-header';
+        header.setAttribute('aria-expanded', 'false');
+        header.innerHTML = `
+          <span class="type-group-name">${TYPE_LABELS_PLURAL[type] || TYPE_LABELS[type] || type} (${items.length})</span>
+          <span class="type-group-chevron">▾</span>`;
+        header.addEventListener('click', () => {
+          const open = group.classList.toggle('open');
+          header.setAttribute('aria-expanded', open ? 'true' : 'false');
+          syncExpandAllLabel();
+        });
+        group.appendChild(header);
+
+        const body = document.createElement('div');
+        body.className = 'type-group-body';
+        items.forEach(entry => {
+          const link = getLink(entry);
+          const div = document.createElement('div');
+          div.className = 'piece-item';
+          div.onclick = () => { if (link !== '#') window.open(link, '_blank'); };
+          div.innerHTML = `
+            <div class="piece-date">${formatDate(entry.date)}</div>
+            <div>
+              <div class="piece-title">${entry.title}</div>
+              <div class="piece-subtitle">${entry.subtitle || (entry.abstract ? entry.abstract.substring(0, 120) + '…' : '')}</div>
+            </div>
+            <span class="piece-tag">${TYPE_LABELS[entry.type] || entry.type}</span>`;
+          body.appendChild(div);
+        });
+        group.appendChild(body);
+
+        container.appendChild(group);
+      });
+
+      syncExpandAllLabel();
+    }
+
+    function syncExpandAllLabel() {
+      const groups = document.querySelectorAll('.type-group');
+      const btn = document.getElementById('expand-all-btn');
+      if (!btn) return;
+      const allOpen = groups.length > 0 && Array.from(groups).every(g => g.classList.contains('open'));
+      btn.textContent = allOpen ? 'Collapse all' : 'Expand all';
+    }
+
+    function toggleAll() {
+      const groups = document.querySelectorAll('.type-group');
+      const allOpen = groups.length > 0 && Array.from(groups).every(g => g.classList.contains('open'));
+      groups.forEach(g => {
+        g.classList.toggle('open', !allOpen);
+        const h = g.querySelector('.type-group-header');
+        if (h) h.setAttribute('aria-expanded', (!allOpen).toString());
+      });
+      syncExpandAllLabel();
     }
 
     function renderRelatedCanons() {
@@ -329,7 +378,9 @@
       document.getElementById('canon-title').textContent = currentTopic.name;
       document.getElementById('canon-desc').textContent = currentTopic.description;
       matchedPieces = matchEntries(currentTopic, allEntries);
-      renderAudienceTabs(); renderTypeFilters(); renderPieces(); renderRelatedCanons();
+      renderAudienceTabs(); renderPieces(); renderRelatedCanons();
+      const expandBtn = document.getElementById('expand-all-btn');
+      if (expandBtn) expandBtn.addEventListener('click', toggleAll);
     }
     init();
   </script>
