@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "ai-productivity-and-labor-markets-a-review-of-the-empirical-evidence-2026",
+      "title": "AI, Productivity, and Labor Markets: A Review of the Empirical Evidence",
+      "subtitle": "A comprehensive review of empirical evidence on generative AI's effects on productivity, labor market disruption, and implications for competition and regulatory policy.",
+      "date": "2026-02-05",
+      "type": "research",
+      "fields": [
+        "Economics",
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "artificial intelligence",
+        "labor markets",
+        "productivity",
+        "generative AI",
+        "regulatory policy",
+        "workforce displacement"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "International Center for Law & Economics",
+      "publisher_url": null,
+      "original_url": "https://laweconcenter.org/resources/ai-productivity-and-labor-markets-a-review-of-the-empirical-evidence/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This paper synthesizes empirical evidence on the labor market and productivity impacts of generative artificial intelligence since its rapid diffusion in late 2022. Controlled experiments and field studies document significant productivity gains at the task and firm level across multiple occupations, with particular benefits for less-experienced workers, while aggregate labor-market data through 2024-2025 show limited economy-wide disruption. The authors argue that available evidence provides limited support for regulatory interventions premised on widespread worker displacement or durable monopoly power, and instead recommend targeted enforcement of existing law, reduced regulatory fragmentation, and investment in complementary areas.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "orthogonal-frequency-division-multiplexing-continuous-variable-terahertz-qkd-for-large-scale-wireless-quantum-communication-2026",
       "title": "Orthogonal Frequency-Division Multiplexing Continuous-Variable Terahertz QKD for Large-Scale Wireless Quantum Communication",
       "subtitle": "A novel CVQKD protocol leveraging THz carriers and OFDM techniques for high-throughput, hardware-compatible quantum communication across terrestrial and satellite links.",
