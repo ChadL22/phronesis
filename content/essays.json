@@ -9,6 +9,39 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "ai-model-history-is-being-lost-2025",
+      "title": "AI Model History is Being Lost",
+      "subtitle": "An examination of how the rapid retirement of proprietary AI models threatens historical documentation, research capabilities, and accountability in artificial intelligence development.",
+      "date": "2025-03-16",
+      "type": "essay",
+      "fields": [
+        "Computer Science",
+        "Public Policy",
+        "Philosophy"
+      ],
+      "tags": [
+        "AI model deprecation",
+        "technological preservation",
+        "research methodology",
+        "AI accountability",
+        "documentation and archival",
+        "model retirement"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Vale",
+      "publisher_url": null,
+      "original_url": "https://vale.rocks/posts/ai-model-history-is-being-lost",
+      "doi": null,
+      "venue_type": "news",
+      "abstract": "This essay addresses the accelerating disappearance of proprietary AI models that exist only in hosted capacities, arguing that their retirement without preservation mechanisms creates significant gaps in technological history and research documentation. The author examines multiple reasons for model retirement—including legal concerns, reputational risks, and maintenance burdens—and contends that this practice reduces accountability while limiting independent research and benchmarking capabilities. The essay warns against 'technological amnesia' and advocates for greater preservation efforts to maintain historical context and enable future comparative analysis of AI development trajectories.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "tone": "critical"
+    },
+    {
+      "placeholder": false,
       "id": "breaking-the-algorithmic-contract-2025",
       "title": "Breaking the Algorithmic Contract",
       "subtitle": "An exploration of the social contract framework applied to human-algorithm relationships and the surrender of curatorial autonomy to digital platforms.",
