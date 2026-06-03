@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "breaking-the-optical-barrier-terahertz-tech-could-help-enable-quantum-internet-security-2026",
+      "title": "Breaking the optical barrier: Terahertz tech could help enable quantum internet security",
+      "subtitle": "University of Glasgow researchers propose terahertz-based quantum key distribution as a secure alternative to conventional optical QKD systems.",
+      "date": "2026-05-27",
+      "type": "article",
+      "fields": [
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "quantum key distribution",
+        "terahertz technology",
+        "quantum internet",
+        "quantum cryptography",
+        "post-quantum security",
+        "6G communications"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "University of Glasgow",
+      "publisher_url": null,
+      "original_url": "https://techxplore.com/news/2026-05-optical-barrier-terahertz-tech-enable.html",
+      "doi": "10.1109/tqe.2026.3669050",
+      "venue_type": "news",
+      "abstract": "Researchers at the University of Glasgow have developed a simulation-based approach to quantum key distribution (QKD) using terahertz waves transmitted through wireless communications systems adapted from mobile and WiFi networks. The proposed system employs superconducting Josephson junction coherent emitters and Orthogonal Frequency-Division Multiplexing (OFDM) to enable secure quantum communication across multiple environments, including open air (4 meters), space (100+ kilometers), and cryogenically-cooled cables (26 kilometers). This work presents a high-fidelity, energy-efficient alternative to laser-based and fiber-optic QKD infrastructure, with potential applications in future quantum internet security.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "lejepa-provable-and-scalable-self-supervised-learning-without-the-heuristics-2025",
       "title": "LeJEPA: Provable and Scalable Self-Supervised Learning Without the Heuristics",
       "subtitle": "Yann LeCun's new theoretically grounded JEPA variant introduces SIGReg regularization to stabilize representation learning and prevent embedding collapse.",
