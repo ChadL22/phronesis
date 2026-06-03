@@ -8,6 +8,39 @@
   ],
   "entries": [
     {
+      "placeholder": true,
+      "id": "breaking-the-algorithmic-contract-2025",
+      "title": "Breaking the Algorithmic Contract",
+      "subtitle": "An excerpt proposing that users renegotiate their implicit social contract with technology platforms by reconceptualizing algorithmic engagement through political contract theory.",
+      "date": "2025-11-18",
+      "type": "essay",
+      "fields": [
+        "Philosophy",
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "algorithmic governance",
+        "social contract theory",
+        "curatorial autonomy",
+        "data extraction",
+        "digital platforms",
+        "algorithmic prediction"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Bristol University Press",
+      "publisher_url": null,
+      "original_url": null,
+      "doi": null,
+      "venue_type": "news",
+      "abstract": "This excerpt from Jose Marichal's book argues that contemporary digital engagement with algorithms constitutes an implicit social contract analogous to political social contracts theorized by Hobbes, Locke, and Rousseau. Users exchange curatorial autonomy and personal data to algorithms in exchange for relief from choice anxiety and a curated information environment, but this arrangement increasingly pressures humans to become predictable and conform to algorithmic classification systems. Marichal contends that this unspoken agreement requires renegotiation as algorithmic systems shift from understanding human behavior to predicting and reshaping it.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "tone": "argumentative"
+    },
+    {
       "placeholder": false,
       "id": "section-230s-half-bad-economics-2021",
       "title": "Section 230's Half-Bad Economics",
