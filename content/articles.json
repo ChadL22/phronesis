@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "how-personalization-drives-consumer-choice-and-autonomy-2026",
+      "title": "How Personalization Drives Consumer Choice and Autonomy",
+      "subtitle": "An examination of how AI-driven personalization technologies can be governed to enhance consumer welfare while maintaining transparency and competition.",
+      "date": "2026-05-28",
+      "type": "article",
+      "fields": [
+        "Computer Science",
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "personalization",
+        "AI governance",
+        "consumer autonomy",
+        "digital regulation",
+        "data privacy",
+        "technology policy"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Information Technology and Innovation Foundation",
+      "publisher_url": null,
+      "original_url": "https://itif.org/publications/2026/05/28/how-personalization-drives-consumer-choice-and-autonomy/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This article analyzes the evolution of personalization in digital systems, particularly as driven by advanced AI technologies that integrate across multiple platforms and services. The author argues that while personalization creates legitimate data governance concerns, it also delivers substantial consumer value by reducing information overload and search costs. The piece contends that policy frameworks should regulate harmful outcomes such as fraud and deception rather than restrict core technology features, and that overly strict regulatory approaches may inadvertently concentrate market power and delay innovation.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "breaking-the-optical-barrier-terahertz-tech-could-help-enable-quantum-internet-security-2026",
       "title": "Breaking the optical barrier: Terahertz tech could help enable quantum internet security",
       "subtitle": "University of Glasgow researchers propose terahertz-based quantum key distribution as a secure alternative to conventional optical QKD systems.",
