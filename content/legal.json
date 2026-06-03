@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "geofence-warrants-and-the-fourth-amendment-2026",
+      "title": "Geofence Warrants and the Fourth Amendment",
+      "subtitle": "A legal analysis of federal appellate disagreement over geofence warrant constitutionality and the Supreme Court's pending review in Chatrie v. United States.",
+      "date": "2026-01-22",
+      "type": "legal",
+      "fields": [
+        "Public Policy",
+        "Philosophy"
+      ],
+      "tags": [
+        "Fourth Amendment",
+        "geofence warrants",
+        "digital privacy",
+        "law enforcement technology",
+        "Carpenter doctrine",
+        "third-party doctrine"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Congressional Research Service, Library of Congress",
+      "publisher_url": null,
+      "original_url": "https://www.congress.gov/crs-product/LSB11274",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This legal sidebar examines the constitutional implications of geofence warrants—investigative tools that identify smartphones present in a geographic area during a specified timeframe. The document analyzes two primary Fourth Amendment issues: whether geofence data collection constitutes a 'search' under the Fourth Amendment, and whether a warrant sufficiently protects such searches. It focuses on diverging 2024 federal appellate opinions and discusses the Supreme Court's January 2026 grant of certiorari in Chatrie v. United States, situating geofence warrant jurisprudence within broader technology privacy doctrine including the third-party doctrine and Carpenter v. United States.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "housden-v-stoyton-1568",
       "title": "Housden v. Stoyton (1568)",
       "subtitle": "Early English common law case establishing a cause of action for defamatory statements regarding plague in a plaintiff's residence.",
