@@ -10,6 +10,37 @@
   ],
   "entries": [
     {
+      "placeholder": true,
+      "id": "after-a-16-billion-stargate-ai-data-center-was-built-despite-being-voted-down-michigan-towns-rush-to-block-new-buildouts-massive-facility-will-suck-14-gigawatts-of-energy-to-power-chatgpt-2026",
+      "title": "After a $16 billion Stargate AI data center was built despite being voted down, Michigan towns rush to block new buildouts — massive facility will suck 1.4 Gigawatts of energy to power ChatGPT",
+      "subtitle": "Michigan municipalities implement data center moratoriums in response to the Stargate facility's approval despite local opposition and concerns over energy consumption and resource use.",
+      "date": "2026-05-07",
+      "type": "article",
+      "fields": [
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "data centers",
+        "AI infrastructure",
+        "local opposition",
+        "zoning and land use",
+        "energy consumption",
+        "regulatory response"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Tom's Hardware",
+      "publisher_url": null,
+      "original_url": "re.com/tech-industry/michigan-towns-rush-to-block-ai-data-centers-after-16-billion-stargate-project-overrode-local-opposition",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "Following the approval and construction of Oracle and OpenAI's $16 billion Stargate data center in Saline Township despite near-unanimous local opposition, at least 19 Michigan municipalities have enacted moratoriums on new data center development. The facility, which will consume 1.4 gigawatts of electricity, was advanced through litigation after a developer sued the township for allegedly exclusionary zoning, resulting in a settlement that secured $14 million in community benefits. The backlash has expanded to include county-level resolutions, bipartisan state legislative proposals for a temporary statewide pause, and regional water authority restrictions, reflecting broader concerns about AI infrastructure development and its environmental and fiscal impacts on local communities.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
       "placeholder": false,
       "id": "uber-caps-employee-ai-spending-after-blowing-through-budget-in-4-months-2026",
       "title": "Uber caps employee AI spending after blowing through budget in 4 months",
