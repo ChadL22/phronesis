@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "lejepa-provable-and-scalable-self-supervised-learning-without-the-heuristics-2025",
+      "title": "LeJEPA: Provable and Scalable Self-Supervised Learning Without the Heuristics",
+      "subtitle": "Yann LeCun's new theoretically grounded JEPA variant introduces SIGReg regularization to stabilize representation learning and prevent embedding collapse.",
+      "date": "2025-11-19",
+      "type": "article",
+      "fields": [
+        "Computer Science",
+        "Mathematics"
+      ],
+      "tags": [
+        "self-supervised learning",
+        "representation learning",
+        "world models",
+        "JEPA",
+        "embodied AI",
+        "regularization"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Phronesis Research",
+      "publisher_url": null,
+      "original_url": "https://www.turingpost.com/p/lejepa",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "LeJEPA is a self-supervised learning architecture that provides a rigorous theoretical foundation for Joint-Embedding Predictive Architecture (JEPA), a framework proposed by Yann LeCun in 2022. The model addresses representation collapse through SIGReg, a Gaussian regularization method that enforces isotropic Gaussian distributions in learned embeddings without relying on fragile heuristics. This work positions JEPA-style world models as a practical foundation for embodied AI, robotics, and predictive systems across multiple modalities.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "why-community-benefit-agreements-are-necessary-for-data-centers-2026",
       "title": "Why community benefit agreements are necessary for data centers",
       "subtitle": "AI companies should establish legally binding community benefit agreements with local leaders to address public concerns about data center construction and operations.",
