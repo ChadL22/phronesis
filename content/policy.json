@@ -9,6 +9,39 @@
   ],
   "entries": [
     {
+      "placeholder": true,
+      "id": "ai-productivity-and-labor-markets-a-review-of-the-empirical-evidence-2026",
+      "title": "AI, Productivity, and Labor Markets: A Review of the Empirical Evidence",
+      "subtitle": "A comprehensive empirical review examining the effects of generative AI adoption on productivity, labor market outcomes, and competition policy.",
+      "date": "2026-02-05",
+      "type": "policy",
+      "fields": [
+        "Economics",
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "artificial intelligence",
+        "labor market disruption",
+        "productivity growth",
+        "regulatory policy",
+        "empirical evidence",
+        "competition policy"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "International Center for Law & Economics",
+      "publisher_url": null,
+      "original_url": null,
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This review synthesizes empirical evidence on the impacts of generative artificial intelligence on productivity and labor markets through 2024–2025. Controlled experiments and randomized trials demonstrate significant productivity gains at task and firm levels across multiple occupations, with benefits concentrated among less-experienced workers. Despite rapid AI adoption, aggregate labor market data show limited economy-wide job losses or wage declines, with adjustment occurring primarily through task reallocation rather than displacement. The evidence suggests that macroeconomic projections remain uncertain due to divergent assumptions about diffusion and complementary investment, and that existing competition concerns may be overstated given lowered barriers to entry in downstream markets and broad access to AI inputs.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "audience": "international"
+    },
+    {
       "placeholder": false,
       "id": "anti-terrorism-act-of-2001-2001",
       "title": "Anti-Terrorism Act of 2001",
