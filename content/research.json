@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "scaling-laws-for-agent-harnesses-via-effective-feedback-compute-2026",
+      "title": "Scaling Laws for Agent Harnesses via Effective Feedback Compute",
+      "subtitle": "A novel metric for measuring test-time scaling in language model systems that prioritizes feedback quality over raw computational expenditure.",
+      "date": "2026-05-28",
+      "type": "research",
+      "fields": [
+        "Computer Science",
+        "Mathematics"
+      ],
+      "tags": [
+        "language models",
+        "test-time scaling",
+        "agent harnesses",
+        "feedback mechanisms",
+        "computational efficiency",
+        "performance prediction"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "ArXiv",
+      "publisher_url": null,
+      "original_url": "https://arxiv.org/abs/2605.29682",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This paper introduces Effective Feedback Compute (EFC), a trace-level scaling metric that evaluates feedback quality in language model agent systems by measuring informativeness, validity, non-redundancy, and retention rather than raw computational costs. Across multiple evaluation settings including synthetic tasks, executable code tasks, and real benchmark traces, EFC-based coordinates substantially outperform raw-compute baselines in predicting system failure rates, achieving R² values up to 0.99 compared to 0.33-0.42 for traditional metrics. The research demonstrates that harness performance is determined more by efficient conversion of computational budget into durable, task-sufficient feedback than by total computational expenditure.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "echo-chambers-in-the-age-of-algorithms-an-audit-of-twitters-friend-recommender-system-2024",
       "title": "Echo Chambers in the Age of Algorithms: An Audit of Twitter's Friend Recommender System",
       "subtitle": "An empirical audit examining how Twitter's friend recommendation algorithm shapes political network composition and exposure to election misinformation.",
