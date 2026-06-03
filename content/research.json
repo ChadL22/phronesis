@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "orthogonal-frequency-division-multiplexing-continuous-variable-terahertz-qkd-for-large-scale-wireless-quantum-communication-2026",
+      "title": "Orthogonal Frequency-Division Multiplexing Continuous-Variable Terahertz QKD for Large-Scale Wireless Quantum Communication",
+      "subtitle": "A novel CVQKD protocol leveraging THz carriers and OFDM techniques for high-throughput, hardware-compatible quantum communication across terrestrial and satellite links.",
+      "date": "2026-03-02",
+      "type": "research",
+      "fields": [
+        "Computer Science",
+        "Mathematics"
+      ],
+      "tags": [
+        "quantum key distribution",
+        "terahertz communication",
+        "OFDM",
+        "quantum cryptography",
+        "free-space optical",
+        "satellite quantum networks"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "IEEE Transactions on Quantum Engineering ( Volume: 7)",
+      "publisher_url": null,
+      "original_url": "https://ieeexplore.ieee.org/document/11417762",
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This article presents a continuous-variable quantum key distribution protocol that combines orthogonal frequency-division multiplexing with terahertz carriers to enable high-throughput quantum communication. The approach distributes quantum states across multiple subcarriers to improve spectral efficiency while mitigating dispersion and atmospheric losses. Security analysis under collective Gaussian attacks incorporates realistic noise models for terrestrial free-space and intersatellite channels, demonstrating secret key rates approaching 72 bits per channel use at 4.5 m terrestrial range and secure transmission over 100 km for satellite links. The work uniquely bridges protocol design and practical implementation through evaluation of on-chip coherent THz sources based on superconducting Josephson junctions.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "scaling-laws-for-agent-harnesses-via-effective-feedback-compute-2026",
       "title": "Scaling Laws for Agent Harnesses via Effective Feedback Compute",
       "subtitle": "A novel metric for measuring test-time scaling in language model systems that prioritizes feedback quality over raw computational expenditure.",
