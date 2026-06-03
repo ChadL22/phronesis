@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "why-community-benefit-agreements-are-necessary-for-data-centers-2026",
+      "title": "Why community benefit agreements are necessary for data centers",
+      "subtitle": "AI companies should establish legally binding community benefit agreements with local leaders to address public concerns about data center construction and operations.",
+      "date": "2026-01-29",
+      "type": "article",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Economics"
+      ],
+      "tags": [
+        "data centers",
+        "community benefit agreements",
+        "AI infrastructure",
+        "local governance",
+        "corporate accountability",
+        "public engagement"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Brookings",
+      "publisher_url": null,
+      "original_url": "https://www.brookings.edu/articles/why-community-benefit-agreements-are-necessary-for-data-centers/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "Data centers are essential infrastructure for AI and the digital economy, yet their construction has faced significant public opposition across the United States due to concerns about energy costs, environmental impact, and corporate power. The authors argue that community benefit agreements (CBAs)—formal, legally binding documents negotiated collaboratively between developers and host communities—can mitigate these concerns by providing transparency about costs, benefits, and long-term impacts. CBAs should include quantifiable data on job creation, tax revenue, workforce training, and health contributions, along with rigorous evaluation mechanisms to ensure mutual respect and accountability between all parties.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "after-a-16-billion-stargate-ai-data-center-was-built-despite-being-voted-down-michigan-towns-rush-to-block-new-buildouts-massive-facility-will-suck-14-gigawatts-of-energy-to-power-chatgpt-2026",
       "title": "After a $16 billion Stargate AI data center was built despite being voted down, Michigan towns rush to block new buildouts — massive facility will suck 1.4 Gigawatts of energy to power ChatGPT",
       "subtitle": "Michigan municipalities implement data center moratoriums in response to the Stargate facility's approval despite local opposition and concerns over energy consumption and resource use.",
