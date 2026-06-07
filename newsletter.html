@@ -383,6 +383,10 @@
   <script>
     // nav handled by chat.js
 
+    // Subscribe / unsubscribe are served by the standalone Phronesis
+    // newsletter Worker, the same endpoint the footer forms use site-wide.
+    const NEWSLETTER_API = 'https://phronesis-newsletter.sclanga315.workers.dev';
+
     // ── helpers ──
     function showStatus(msg, type) {
       const el = document.getElementById('statusMessage');
@@ -408,7 +412,7 @@
       btn.disabled = true; btn.textContent = 'Subscribing...';
 
       try {
-        const res = await fetch('/api/subscribe', {
+        const res = await fetch(NEWSLETTER_API + '/subscribe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email })
@@ -441,7 +445,7 @@
       btn.disabled = true; btn.textContent = 'Removing...';
 
       try {
-        const res = await fetch('/api/unsubscribe', {
+        const res = await fetch(NEWSLETTER_API + '/unsubscribe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email })
