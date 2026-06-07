@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "america-needs-one-national-framework-for-artificial-intelligence-2026",
+      "title": "America Needs One National Framework for Artificial Intelligence",
+      "subtitle": "Two members of Congress propose a bipartisan legislative framework to establish uniform national AI governance standards while protecting innovation and workers.",
+      "date": "2026-06-04",
+      "type": "article",
+      "fields": [
+        "Computer Science",
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "AI regulation",
+        "national framework",
+        "frontier AI safety",
+        "workforce impact",
+        "AI governance",
+        "labor policy"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Bloomberg Law",
+      "publisher_url": null,
+      "original_url": "https://news.bloomberglaw.com/legal-exchange-insights-and-commentary/america-needs-one-national-framework-for-artificial-intelligence",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "Representatives Jay Obernolte (R-CA) and Lori Trahan (D-MA) introduce the Great American Artificial Intelligence Act, a bipartisan discussion draft proposing a unified national framework for AI regulation. The proposal addresses safety requirements for frontier AI systems, labor market impact monitoring, workforce development, and international competitiveness, while avoiding state-by-state regulatory fragmentation. The framework includes mandatory safety plans and incident reporting for large developers, independent auditing mechanisms, federal data collection on AI's employment effects, and investments in AI education and workforce preparation.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "how-personalization-drives-consumer-choice-and-autonomy-2026",
       "title": "How Personalization Drives Consumer Choice and Autonomy",
       "subtitle": "An examination of how AI-driven personalization technologies can be governed to enhance consumer welfare while maintaining transparency and competition.",
