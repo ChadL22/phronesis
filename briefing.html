@@ -91,6 +91,17 @@
   .btn-solid{background:var(--accent);color:#EEE8DA;}.btn-solid:hover{background:var(--accent-l);}
   .btn-ghost{background:none;color:var(--accent);}.btn-ghost:hover{background:var(--paper-2);}
 
+  /* PUBLISHED-WORK PICKER */
+  .pick-field{margin-bottom:.7rem;}
+  .pick-results{margin-top:.4rem;border:1px solid var(--rule);border-radius:3px;max-height:230px;overflow-y:auto;background:var(--paper);}
+  .pick-results:empty{display:none;}
+  .pick-status{padding:.5rem .6rem;font-size:.66rem;color:var(--ink-3);line-height:1.5;}
+  .pick-item{display:block;width:100%;text-align:left;background:none;border:none;border-bottom:1px solid var(--rule);padding:.5rem .6rem;cursor:pointer;transition:background .12s;}
+  .pick-item:last-child{border-bottom:none;}
+  .pick-item:hover{background:var(--paper-2);}
+  .pick-title{display:block;font-family:var(--serif);font-size:.95rem;color:var(--ink);line-height:1.25;}
+  .pick-meta{display:block;font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-top:.15rem;}
+
   .overlay{position:fixed;inset:0;background:var(--paper);display:flex;align-items:center;justify-content:center;z-index:50;font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--ink-3);}
 
   @media (max-width:1000px){
@@ -140,6 +151,16 @@
       <div class="section-title serif">Build the briefing</div>
 
       <div class="field">
+        <label for="format">Format</label>
+        <select id="format">
+          <option value="tiktok">TikTok / Reels / Story &middot; 1080&times;1920 (9:16)</option>
+          <option value="portrait">Instagram Portrait &middot; 1080&times;1350 (4:5)</option>
+          <option value="square">Instagram Square &middot; 1080&times;1080 (1:1)</option>
+        </select>
+        <div class="hint">9:16 fills the screen on TikTok, Reels, and Stories. 4:5 is the safest for Instagram feed carousels. 1:1 is square.</div>
+      </div>
+
+      <div class="field">
         <label for="category">Category kicker (title slide)</label>
         <input type="text" id="category" placeholder="e.g. Legal Explainer" />
         <div class="hint">Small label above the opening question. Leave blank to omit.</div>
@@ -181,8 +202,17 @@
 
 <script>
 const INK='#1A1916', INK2='#4A4944', INK3='#8A8880', PAPER='#F6F3EC', ACCENT='#2B4736';
-const W=1080, H=1920, M=96, CONTENT_W=W-2*M;
-const REGION_TOP=362, REGION_BOTTOM=1648;
+const W=1080, M=96, CONTENT_W=W-2*M;
+/* Aspect formats. All are 1080 wide; height drives the layout. */
+const FORMATS={
+  tiktok:  {label:'TikTok / Reels / Story', w:1080, h:1920},
+  portrait:{label:'Instagram Portrait',     w:1080, h:1350},
+  square:  {label:'Instagram Square',        w:1080, h:1080}
+};
+function fmt(){ return FORMATS[deck().format] || FORMATS.tiktok; }
+/* Chrome insets are fixed from the top and bottom edges; the content
+   region is whatever remains between them, so any height composes. */
+function geometry(h){ return { topRuleY:120, eyebrowY:178, subRuleY:198, regionTop:362, regionBottom:h-272, bottomRuleY:h-148, footerY:h-100, dotsY:h-38 }; }
 
 /* ============================================================
    PERSISTENCE  (deck library in localStorage)
@@ -193,7 +223,7 @@ function loadLib(){ try{ return JSON.parse(localStorage.getItem(LS_KEY))||null; 
 function saveLib(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(lib)); }catch(e){} }
 
 function blankDeck(id){
-  return {id,name:'Untitled briefing',category:'',updated:Date.now(),slides:[
+  return {id,name:'Untitled briefing',category:'',format:'portrait',updated:Date.now(),slides:[
     {type:'title',text:''},
     {type:'context',text:''},
     {type:'context',text:''},
@@ -202,7 +232,7 @@ function blankDeck(id){
   ]};
 }
 function seedSection230(id){
-  return {id,name:'What is Section 230?',category:'Legal Explainer',updated:Date.now(),slides:[
+  return {id,name:'What is Section 230?',category:'Legal Explainer',format:'tiktok',updated:Date.now(),slides:[
     {type:'title',   text:'What is *Section 230*?'},
     {type:'context', text:'Section 230 is a provision of federal law enacted in 1996.'},
     {type:'context', text:'It generally prevents online platforms from being treated as the publisher of user-generated content.'},
@@ -266,14 +296,14 @@ function drawSerif(ctx,lines,x,top,size,lh,italicAll,baseColor,accentColor,align
     y+=lh;
   }
 }
-function renderStack(ctx,els,x,maxW,align){
+function renderStack(ctx,els,x,maxW,align,regionTop,regionBottom){
   const measured=[]; let total=0;
   for(const el of els){
     let h,lines=null;
     if(el.kind==='serif'){ lines=wrap(ctx,tokenize(el.text),el.size,el.italicAll,maxW); h=lines.length*el.lh; } else { h=el.size; }
     measured.push({el,h,lines}); total+=h+(el.mt||0);
   }
-  let y=REGION_TOP+((REGION_BOTTOM-REGION_TOP)-total)/2;
+  let y=regionTop+((regionBottom-regionTop)-total)/2;
   for(const m of measured){
     y+=(m.el.mt||0); const el=m.el;
     if(el.kind==='serif'){ drawSerif(ctx,m.lines,x,y,el.size,el.lh,el.italicAll,el.color,el.accent||ACCENT,el.align||align,maxW); }
@@ -282,43 +312,44 @@ function renderStack(ctx,els,x,maxW,align){
     y+=m.h;
   }
 }
-function drawChrome(ctx,index,total){
-  ctx.fillStyle=ACCENT; ctx.fillRect(M,120,CONTENT_W,2.5);
+function drawChrome(ctx,index,total,geo){
+  ctx.fillStyle=ACCENT; ctx.fillRect(M,geo.topRuleY,CONTENT_W,2.5);
   ctx.textBaseline='alphabetic';
   ctx.font='500 22px "Outfit", system-ui, sans-serif'; ctx.fillStyle=INK3; ctx.letterSpacing='6px';
-  ctx.fillText('PHRONESIS RESEARCH',M,178); ctx.letterSpacing='0px';
-  ctx.globalAlpha=.35; ctx.fillStyle=ACCENT; ctx.fillRect(M,198,CONTENT_W,1); ctx.globalAlpha=1;
+  ctx.fillText('PHRONESIS RESEARCH',M,geo.eyebrowY); ctx.letterSpacing='0px';
+  ctx.globalAlpha=.35; ctx.fillStyle=ACCENT; ctx.fillRect(M,geo.subRuleY,CONTENT_W,1); ctx.globalAlpha=1;
   if(total>1){ ctx.font='500 18px "Outfit", system-ui, sans-serif'; ctx.fillStyle=INK3; ctx.letterSpacing='3px';
     const c=String(index+1).padStart(2,'0')+' / '+String(total).padStart(2,'0');
-    ctx.fillText(c, M+CONTENT_W-ctx.measureText(c).width, 178); ctx.letterSpacing='0px'; }
-  ctx.globalAlpha=.4; ctx.fillStyle=ACCENT; ctx.fillRect(M,1772,CONTENT_W,1); ctx.globalAlpha=1;
+    ctx.fillText(c, M+CONTENT_W-ctx.measureText(c).width, geo.eyebrowY); ctx.letterSpacing='0px'; }
+  ctx.globalAlpha=.4; ctx.fillStyle=ACCENT; ctx.fillRect(M,geo.bottomRuleY,CONTENT_W,1); ctx.globalAlpha=1;
   ctx.font='500 18px "Outfit", system-ui, sans-serif'; ctx.fillStyle=INK3; ctx.letterSpacing='4px';
-  ctx.fillText('PHRONESISRESEARCH.ORG',M,1820); ctx.letterSpacing='0px';
+  ctx.fillText('PHRONESISRESEARCH.ORG',M,geo.footerY); ctx.letterSpacing='0px';
   ctx.font='italic 30px "Cormorant Garamond", Georgia, serif'; ctx.fillStyle=ACCENT; ctx.textAlign='right';
-  ctx.fillText('\u03C6\u03C1\u03CC\u03BD\u03B7\u03C3\u03B9\u03C2', M+CONTENT_W, 1822); ctx.textAlign='left';
-  const r=5,gap=24,tw=(total-1)*gap,cx0=540-tw/2,dy=1882;
+  ctx.fillText('\u03C6\u03C1\u03CC\u03BD\u03B7\u03C3\u03B9\u03C2', M+CONTENT_W, geo.footerY+2); ctx.textAlign='left';
+  const r=5,gap=24,tw=(total-1)*gap,cx0=540-tw/2,dy=geo.dotsY;
   for(let i=0;i<total;i++){ ctx.beginPath(); ctx.arc(cx0+i*gap,dy,r,0,Math.PI*2); ctx.globalAlpha=i===index?1:.25; ctx.fillStyle=ACCENT; ctx.fill(); }
   ctx.globalAlpha=1;
 }
 function drawSlide(canvas,slide,index,total,scale){
   const ctx=canvas.getContext('2d');
-  canvas.width=W*scale; canvas.height=H*scale; ctx.setTransform(scale,0,0,scale,0,0);
-  ctx.fillStyle=PAPER; ctx.fillRect(0,0,W,H);
-  drawChrome(ctx,index,total);
-  const x=M,maxW=CONTENT_W; const cat=deck().category;
+  const F=fmt(), h=F.h, geo=geometry(h);
+  canvas.width=W*scale; canvas.height=h*scale; ctx.setTransform(scale,0,0,scale,0,0);
+  ctx.fillStyle=PAPER; ctx.fillRect(0,0,W,h);
+  drawChrome(ctx,index,total,geo);
+  const x=M,maxW=CONTENT_W,RT=geo.regionTop,RB=geo.regionBottom; const cat=deck().category;
   if(slide.type==='title'){
     const els=[];
     if(cat && cat.trim()) els.push({kind:'label',text:cat,size:22,ls:6,color:INK3});
     els.push({kind:'serif',text:slide.text||'',size:104,lh:114,color:INK,accent:ACCENT,align:'left',mt:cat&&cat.trim()?44:0});
-    renderStack(ctx,els,x,maxW,'left');
+    renderStack(ctx,els,x,maxW,'left',RT,RB);
   } else if(slide.type==='context'){
-    renderStack(ctx,[{kind:'serif',text:slide.text||'',size:62,lh:82,color:INK,accent:ACCENT,align:'left'}],x,maxW,'left');
+    renderStack(ctx,[{kind:'serif',text:slide.text||'',size:62,lh:82,color:INK,accent:ACCENT,align:'left'}],x,maxW,'left',RT,RB);
   } else if(slide.type==='takeaway'){
-    renderStack(ctx,[{kind:'label',text:'The takeaway',size:22,ls:6,color:ACCENT},{kind:'serif',text:slide.text||'',size:60,lh:80,color:ACCENT,accent:ACCENT,italicAll:true,align:'left',mt:46}],x,maxW,'left');
+    renderStack(ctx,[{kind:'label',text:'The takeaway',size:22,ls:6,color:ACCENT},{kind:'serif',text:slide.text||'',size:60,lh:80,color:ACCENT,accent:ACCENT,italicAll:true,align:'left',mt:46}],x,maxW,'left',RT,RB);
   } else if(slide.type==='reading'){
     const els=[{kind:'label',text:'Further reading',size:22,ls:6,color:ACCENT},{kind:'serif',text:slide.title||'',size:58,lh:74,color:INK,accent:ACCENT,align:'left',mt:46}];
     if(slide.url && slide.url.trim()) els.push({kind:'sans',text:'\u2192   '+slide.url,size:28,color:INK2,align:'left',mt:42});
-    renderStack(ctx,els,x,maxW,'left');
+    renderStack(ctx,els,x,maxW,'left',RT,RB);
   }
 }
 
@@ -380,11 +411,19 @@ function renderEditor(){
       const f1=document.createElement('div'); f1.className='field'; f1.innerHTML='<label>Piece title</label>';
       const t1=document.createElement('input'); t1.type='text'; t1.value=s.title||'';
       t1.addEventListener('input',()=>{ s.title=t1.value; touch(); renderCanvases(); }); t1.addEventListener('focus',()=>setCurrent(i));
-      f1.appendChild(t1); body.appendChild(f1);
+      f1.appendChild(t1);
       const f2=document.createElement('div'); f2.className='field'; f2.style.marginBottom='0'; f2.innerHTML='<label>Link or handle</label>';
       const t2=document.createElement('input'); t2.type='text'; t2.value=s.url||''; t2.placeholder='phronesisresearch.org/legal';
       t2.addEventListener('input',()=>{ s.url=t2.value; touch(); renderCanvases(); }); t2.addEventListener('focus',()=>setCurrent(i));
-      f2.appendChild(t2); body.appendChild(f2);
+      f2.appendChild(t2);
+      const pf=document.createElement('div'); pf.className='pick-field';
+      pf.innerHTML='<label style="display:block;font-size:.6rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:.35rem;">Search published work</label>';
+      const ps=document.createElement('input'); ps.type='text'; ps.placeholder='Title, topic, or keyword';
+      const pr=document.createElement('div'); pr.className='pick-results';
+      const doSearch=()=>renderResults(pr,ps.value,s,t1,t2); pr._refresh=doSearch;
+      let pt=null; ps.addEventListener('input',()=>{ clearTimeout(pt); pt=setTimeout(doSearch,160); }); ps.addEventListener('focus',()=>{ setCurrent(i); doSearch(); });
+      pf.appendChild(ps); pf.appendChild(pr);
+      body.appendChild(pf); body.appendChild(f1); body.appendChild(f2);
     } else {
       const ta=document.createElement('textarea'); ta.value=s.text||''; ta.rows=s.type==='title'?2:3;
       ta.addEventListener('input',()=>{ s.text=ta.value; touch(); renderCanvases(); }); ta.addEventListener('focus',()=>setCurrent(i));
@@ -397,7 +436,7 @@ function renderEditorSelection(){ [...editor.children].forEach((c,i)=>c.classLis
 function setCurrent(i){ if(current!==i){ current=i; renderCanvases(); renderEditorSelection(); } }
 function move(i,dir){ const j=i+dir; if(j<0||j>=deck().slides.length)return; const [it]=deck().slides.splice(i,1); deck().slides.splice(j,0,it); current=j; touch(); renderEditor(); renderCanvases(); }
 
-function renderAll(){ renderSidebar(); document.getElementById('deckName').value=deck().name||''; document.getElementById('category').value=deck().category||''; renderEditor(); renderCanvases(); }
+function renderAll(){ renderSidebar(); document.getElementById('deckName').value=deck().name||''; document.getElementById('format').value=deck().format||'tiktok'; document.getElementById('category').value=deck().category||''; renderEditor(); renderCanvases(); }
 
 /* ============================================================
    DECK OPERATIONS
@@ -418,6 +457,7 @@ function deleteDeck(){
    ============================================================ */
 document.getElementById('deckName').addEventListener('input',e=>{ deck().name=e.target.value; touch(); renderSidebar(); });
 document.getElementById('category').addEventListener('input',e=>{ deck().category=e.target.value; touch(); renderCanvases(); });
+document.getElementById('format').addEventListener('change',e=>{ deck().format=e.target.value; touch(); renderCanvases(); });
 document.getElementById('addSlide').addEventListener('click',()=>{ const last=deck().slides[deck().slides.length-1]; const at=(last&&last.type==='reading')?deck().slides.length-1:deck().slides.length; deck().slides.splice(at,0,{type:'context',text:''}); current=at; touch(); renderEditor(); renderCanvases(); renderSidebar(); });
 document.getElementById('newDeck').addEventListener('click',newDeck);
 document.getElementById('dupDeck').addEventListener('click',duplicateDeck);
@@ -431,6 +471,45 @@ document.getElementById('dlOne').addEventListener('click',()=>{ download(main,'p
 function downloadAll(){ const total=deck().slides.length; const off=document.createElement('canvas'); deck().slides.forEach((s,i)=>{ setTimeout(()=>{ drawSlide(off,s,i,total,1); download(off,'phronesis_'+slug()+'_slide'+String(i+1).padStart(2,'0')+'.png'); }, i*500); }); }
 document.getElementById('dlAll').addEventListener('click',downloadAll);
 document.getElementById('dlAllB').addEventListener('click',downloadAll);
+
+/* ============================================================
+   PUBLISHED-WORK INDEX  (search & select existing Phronesis content)
+   Mirrors the site's own link rule: 'original' -> document_url,
+   'via' -> external original_url. Fetched same-origin from /content.
+   ============================================================ */
+const CONTENT_TYPES=['research','policy','legal','essays','articles','reports'];
+const TYPE_LABEL={research:'Research',policy:'Policy',legal:'Legal',essays:'Essay',articles:'Article',reports:'Report'};
+let contentIndex=[]; let indexStatus='loading';
+function resolveEntryUrl(e){ if(e.origin==='via'&&e.original_url)return{url:e.original_url}; if(e.origin==='original'&&e.document_url)return{url:e.document_url}; return null; }
+function cleanDisplayUrl(u){ if(!u)return''; if(u[0]==='/')return 'phronesisresearch.org'+u.replace(/\/+$/,''); return u.replace(/^https?:\/\//,'').replace(/^www\./,'').replace(/[?#].*$/,'').replace(/\/+$/,''); }
+async function loadContentIndex(){
+  try{
+    const sets=await Promise.all(CONTENT_TYPES.map(t=>fetch('/content/'+t+'.json').then(r=>r.ok?r.json():{entries:[]}).catch(()=>({entries:[]}))));
+    const idx=[];
+    sets.forEach(json=>{ (json.entries||[]).filter(e=>!e.placeholder).forEach(e=>{
+      const link=resolveEntryUrl(e); if(!link)return;
+      idx.push({ title:e.title||'', typeLabel:TYPE_LABEL[e.type]||(e.type||''), originLabel:e.origin==='original'?'Original':'Via '+(e.publisher||'source'), display:cleanDisplayUrl(link.url), search:[e.title,(e.tags||[]).join(' '),e.subtitle||e.abstract||'',e.type].join(' ').toLowerCase() });
+    }); });
+    contentIndex=idx; indexStatus=idx.length?'ready':'error';
+  }catch(err){ indexStatus='error'; }
+  document.querySelectorAll('.pick-results').forEach(c=>c._refresh&&c._refresh());
+}
+function renderResults(container,query,s,t1,t2){
+  container.innerHTML='';
+  if(indexStatus==='loading'){ container.innerHTML='<div class="pick-status">Loading published work&hellip;</div>'; return; }
+  if(indexStatus==='error'){ container.innerHTML='<div class="pick-status">Open the Studio at phronesisresearch.org/briefing to search published work.</div>'; return; }
+  const q=(query||'').trim().toLowerCase();
+  if(!q){ container.innerHTML='<div class="pick-status">'+contentIndex.length+' published items. Start typing to search.</div>'; return; }
+  const toks=q.split(/\s+/);
+  const matches=contentIndex.filter(it=>toks.every(t=>it.search.indexOf(t)!==-1)).slice(0,8);
+  if(!matches.length){ container.innerHTML='<div class="pick-status">No matches.</div>'; return; }
+  matches.forEach(it=>{
+    const b=document.createElement('button'); b.type='button'; b.className='pick-item';
+    b.innerHTML='<span class="pick-title">'+escapeHtml(it.title)+'</span><span class="pick-meta">'+escapeHtml(it.typeLabel)+' \u00B7 '+escapeHtml(it.originLabel)+'</span>';
+    b.addEventListener('click',()=>{ s.title=it.title; s.url=it.display; t1.value=it.title; t2.value=it.display; touch(); renderCanvases(); container.innerHTML='<div class="pick-status">Selected. Edit the fields below if needed.</div>'; });
+    container.appendChild(b);
+  });
+}
 
 /* ============================================================
    BOOT
@@ -447,6 +526,7 @@ async function boot(){
   }catch(e){}
   renderAll(); setStatus('saved');
   document.getElementById('overlay').style.display='none';
+  loadContentIndex();
 }
 boot();
 </script>
