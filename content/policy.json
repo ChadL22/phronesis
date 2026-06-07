@@ -9,6 +9,39 @@
   ],
   "entries": [
     {
+      "placeholder": false,
+      "id": "promoting-advanced-artificial-intelligence-innovation-and-security-2026",
+      "title": "Promoting Advanced Artificial Intelligence Innovation and Security",
+      "subtitle": "Executive order establishing federal policy and directives for AI innovation, cybersecurity infrastructure modernization, and frontier AI model deployment.",
+      "date": "2026-06-02",
+      "type": "policy",
+      "fields": [
+        "Computer Science",
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "artificial intelligence policy",
+        "cybersecurity",
+        "frontier models",
+        "national security",
+        "government regulation",
+        "critical infrastructure"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "The White House",
+      "publisher_url": null,
+      "original_url": "https://www.whitehouse.gov/presidential-actions/2026/06/promoting-advanced-artificial-intelligence-innovation-and-security/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This executive order establishes U.S. government policy prioritizing artificial intelligence innovation while addressing national security considerations. The order mandates federal agencies to upgrade cybersecurity defenses for national security and civilian government systems, establish an AI cybersecurity clearinghouse, and develop a framework for assessing and deploying advanced frontier AI models. Key directives require action within 30-60 days across multiple departments including Treasury, Defense, Homeland Security, and OMB to enhance AI-enabled defensive capabilities and coordinate vulnerability detection efforts.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "audience": "federal"
+    },
+    {
       "placeholder": true,
       "id": "ai-productivity-and-labor-markets-a-review-of-the-empirical-evidence-2026",
       "title": "AI, Productivity, and Labor Markets: A Review of the Empirical Evidence",
