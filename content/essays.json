@@ -9,6 +9,39 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "the-ai-moment-possibilities-productivity-and-policy-2026",
+      "title": "The AI Moment? Possibilities, Productivity, and Policy",
+      "subtitle": "An examination of artificial intelligence adoption, productivity impacts, and implications for monetary policy in the context of historical technological transformations.",
+      "date": "2026-02-23",
+      "type": "essay",
+      "fields": [
+        "Economics",
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "artificial intelligence",
+        "productivity growth",
+        "monetary policy",
+        "technological transformation",
+        "general-purpose technologies",
+        "generative AI"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Federal Reserve Bank of San Francisco",
+      "publisher_url": null,
+      "original_url": "https://www.frbsf.org/research-and-insights/publications/economic-letter/2026/02/ai-moment-possibilities-productivity-policy/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This essay by Mary C. Daly, president of the Federal Reserve Bank of San Francisco, analyzes the current state of AI adoption and its potential economic impacts. Drawing parallels with the century-long transformation following the discovery of electricity, the author argues that major technological changes require sustained periods of access, adoption, learning, and infrastructure development before productivity gains materialize. The piece examines what is currently known about AI's impact on the economy, identifies remaining uncertainties, and discusses appropriate monetary policy responses in both the near and long term.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "tone": "exploratory"
+    },
+    {
+      "placeholder": false,
       "id": "ai-model-history-is-being-lost-2025",
       "title": "AI Model History is Being Lost",
       "subtitle": "An examination of how the rapid retirement of proprietary AI models threatens historical documentation, research capabilities, and accountability in artificial intelligence development.",
