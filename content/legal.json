@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "taking-behavioralism-seriously-the-problem-of-market-manipulation-1999",
+      "title": "Taking Behavioralism Seriously: The Problem of Market Manipulation",
+      "subtitle": "An examination of how cognitive biases enable market manipulation when behavioral economics insights are fully applied to legal analysis.",
+      "date": "1999-06-15",
+      "type": "legal",
+      "fields": [
+        "Economics",
+        "Public Policy",
+        "Philosophy"
+      ],
+      "tags": [
+        "behavioral economics",
+        "market manipulation",
+        "products liability",
+        "cognitive biases",
+        "rational actor model",
+        "law and economics"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "New York University Law Review",
+      "publisher_url": null,
+      "original_url": "https://nyulawreview.org/issues/volume-74-number-3/taking-behavioralism-seriously-the-problem-of-market-manipulation/",
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This article critiques the incomplete application of behavioral economics findings in legal scholarship, particularly in products liability theory. The authors argue that while legal scholars have incorporated cognitive anomalies into efficiency analysis, they have treated these biases as exogenous factors rather than recognizing their endogenous effects on market outcomes. By demonstrating how economic actors can exploit cognitive biases through control of information framing and decision contexts, the authors establish a framework for understanding market manipulation in consumer product markets and advocate for corrective legal mechanisms such as enterprise liability.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "geofence-warrants-and-the-fourth-amendment-2026",
       "title": "Geofence Warrants and the Fourth Amendment",
       "subtitle": "A legal analysis of federal appellate disagreement over geofence warrant constitutionality and the Supreme Court's pending review in Chatrie v. United States.",
