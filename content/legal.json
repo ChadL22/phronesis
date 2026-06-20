@@ -11,6 +11,36 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "a-network-of-lies-dominion-voting-systems-defamation-case-against-fox-news-2023",
+      "title": "A Network of Lies: Dominion Voting System's Defamation Case Against Fox News",
+      "subtitle": "A legal analysis of Dominion Voting Systems' defamation lawsuit against Fox News following the 2020 presidential election.",
+      "date": "2023-06-28",
+      "type": "legal",
+      "fields": [
+        "Public Policy"
+      ],
+      "tags": [
+        "defamation law",
+        "election misinformation",
+        "Fox News",
+        "Dominion Voting Systems",
+        "actual malice standard",
+        "First Amendment"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "University of Cincinnati Law Review",
+      "publisher_url": null,
+      "original_url": "https://uclawreview.org/2023/06/28/dominion-voting-systems-defamation-case-against-fox-news/",
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This article examines Dominion Voting Systems' defamation case against Fox News, analyzing whether the network's statements about election fraud meet the legal standard for defamation established in New York Times v. Sullivan. The author argues that Dominion is likely to prevail based on the volume and repetition of false statements made over time, despite the high bar of proving actual malice required for public figures. The case represents a rare instance where a plaintiff may successfully sue a major news network for defamation.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "carpenter-v-united-states-2018",
       "title": "Carpenter v. United States",
       "subtitle": "The Supreme Court establishes that warrantless government acquisition of cell-site location information violates Fourth Amendment protections against unreasonable searches and seizures.",
