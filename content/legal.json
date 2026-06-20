@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "carpenter-v-united-states-2018",
+      "title": "Carpenter v. United States",
+      "subtitle": "The Supreme Court establishes that warrantless government acquisition of cell-site location information violates Fourth Amendment protections against unreasonable searches and seizures.",
+      "date": "2018-06-22",
+      "type": "legal",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Philosophy"
+      ],
+      "tags": [
+        "Fourth Amendment",
+        "cell-site location information",
+        "digital privacy",
+        "third-party doctrine",
+        "warrantless searches",
+        "Supreme Court"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Supreme Court of the United States",
+      "publisher_url": null,
+      "original_url": "https://www.oyez.org/cases/2017/16-402",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "In a 5-4 decision, the Supreme Court held that the government's warrantless acquisition of cell-site location information (CSLI) from telecommunications providers constitutes a Fourth Amendment search requiring probable cause and a warrant. Chief Justice Roberts' majority opinion declined to extend the third-party doctrine to CSLI, reasoning that extensive location tracking implicates greater privacy concerns than traditional precedents anticipated and that such information is obtained without affirmative user action. The decision represents a significant expansion of Fourth Amendment protections in the digital age, while dissenting justices argued for maintaining property-based frameworks and distinguishing between searches and compulsory document production.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "taking-behavioralism-seriously-the-problem-of-market-manipulation-1999",
       "title": "Taking Behavioralism Seriously: The Problem of Market Manipulation",
       "subtitle": "An examination of how cognitive biases enable market manipulation when behavioral economics insights are fully applied to legal analysis.",
