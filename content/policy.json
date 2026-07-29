@@ -10,6 +10,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "ieee-80211bf-amendment-wi-fi-sensing-definitions-and-features-2023",
+      "title": "IEEE 802.11bf Amendment: Wi-Fi Sensing Definitions and Features",
+      "subtitle": "Overview of the IEEE 802.11bf standard amendment for enhanced Wi-Fi sensing capabilities in license-exempt frequency bands.",
+      "date": "2023-05-31",
+      "type": "policy",
+      "fields": [
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "IEEE 802.11bf",
+        "Wi-Fi sensing",
+        "WLAN sensing procedure",
+        "wireless standards",
+        "spectrum regulation",
+        "smart buildings"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "National Institute of Standards and Technology (NIST)",
+      "publisher_url": null,
+      "original_url": "https://www.nist.gov/publications/ieee-80211bf-enabling-widespread-adoption-wi-fi-sensing",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This paper identifies and describes the main definitions and features of the IEEE 802.11bf amendment to the IEEE 802.11 standard, which enhances support for Wi-Fi sensing applications. The work focuses on the Wireless Local Area Network (WLAN) sensing procedure that supports bistatic and multistatic Wi-Fi sensing in license-exempt frequency bands below 7 GHz (2.4, 5, and 6 GHz). The paper presents basic sensing principles and provides detailed discussion of features that enhance client-based Wi-Fi sensing for applications including user presence detection, smart building environment monitoring, and remote wellness monitoring.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "audience": "institutional"
+    },
+    {
+      "placeholder": false,
       "id": "breaking-down-the-great-american-artificial-intelligence-act-2026",
       "title": "Breaking Down the Great American Artificial Intelligence Act",
       "subtitle": "Analysis of the Great American AI Act discussion draft and its approach to federal frontier AI governance.",
