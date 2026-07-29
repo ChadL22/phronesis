@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "protecting-kids-online-government-mandates-vs-market-solutions-2026",
+      "title": "Protecting Kids Online: Government Mandates vs. Market Solutions",
+      "subtitle": "An analysis of how proposed legislative knowledge standards for user age verification could create unintended privacy and speech consequences for digital platforms and users.",
+      "date": "2026-07-13",
+      "type": "article",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Philosophy"
+      ],
+      "tags": [
+        "age verification",
+        "children's online safety",
+        "platform liability",
+        "privacy regulation",
+        "identity verification",
+        "knowledge standards"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "American Action Forum",
+      "publisher_url": null,
+      "original_url": "https://www.americanactionforum.org/insight/protecting-kids-online-government-mandates-vs-market-solutions/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This policy analysis examines legislative proposals that would modify how digital platforms must verify user age, particularly through heightened \"constructive knowledge\" standards that effectively mandate age verification. The paper argues that while intended to protect minors, such requirements would necessitate collection of personally identifiable information and biometric data, creating privacy risks for both adult and minor users, potential data breach vulnerabilities, and chilling effects on speech. The analysis reviews various legislative approaches including KOSA, COPPA 2.0, KIDS Act, and ASAA, comparing the tradeoffs between child safety protections and privacy, innovation, and civil liberties concerns.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "cpu-vs-gpu-vs-tpu-vs-npu-ai-hardware-processing-units-explained-2025",
       "title": "CPU vs GPU vs TPU vs NPU: AI Hardware Processing Units Explained",
       "subtitle": "A comprehensive guide to AI hardware architectures comparing traditional processors, specialized accelerators, and emerging custom-built chips.",
