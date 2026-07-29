@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "mayor-mamdani-announces-landmark-click-to-cancel-consumer-protection-rules-to-ban-subscription-traps-and-junk-fees-2026",
+      "title": "Mayor Mamdani Announces Landmark \"Click-To-Cancel\" Consumer Protection Rules to Ban Subscription Traps and Junk Fees",
+      "subtitle": "New York City announces first-in-nation municipal regulations requiring transparent all-in pricing and easy subscription cancellation mechanisms.",
+      "date": "2026-07-10",
+      "type": "article",
+      "fields": [
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "consumer protection",
+        "subscription services",
+        "hidden fees",
+        "municipal regulation",
+        "price transparency",
+        "click-to-cancel"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Office of the Mayor, New York City",
+      "publisher_url": null,
+      "original_url": "https://www.nyc.gov/mayors-office/news/2026/07/mayor-mamdani-announces-landmark--click-to-cancel--consumer-prot",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "New York City has announced comprehensive consumer protection regulations addressing subscription traps and hidden junk fees. The rules include a proposed transparent all-in pricing requirement banning hidden mandatory charges and a final click-to-cancel rule requiring subscription cancellation to be as simple as sign-up. The city estimates the click-to-cancel rule alone will save New Yorkers approximately $162.5 million annually, with families currently paying an average of $3,200 per year in hidden fees. These regulations represent significant municipal consumer protection policy and address market failures in digital commerce and subscription services.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "built-for-speed-the-hidden-costs-of-last-mile-delivery",
       "title": "Built for Speed: The Hidden Costs of Last-Mile Delivery",
       "subtitle": "An analysis of how speed-driven logistics systems generate occupational hazards for last-mile delivery drivers through fragmented responsibility and algorithmic control.",
