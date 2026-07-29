@@ -9,6 +9,40 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "dont-put-the-government-on-the-cap-table-2026",
+      "title": "Don't Put the Government on the Cap Table",
+      "subtitle": "An analysis of the constitutional, economic, and competitive risks of federal government equity ownership in artificial intelligence companies.",
+      "date": "2026-06-29",
+      "type": "essay",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Economics",
+        "Philosophy"
+      ],
+      "tags": [
+        "artificial intelligence governance",
+        "government ownership",
+        "industrial policy",
+        "First Amendment",
+        "jawboning",
+        "market competition"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Truth on the Market",
+      "publisher_url": null,
+      "original_url": "https://truthonthemarket.com/2026/06/29/dont-put-the-government-on-the-cap-table/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This essay examines the proposal for the U.S. federal government to acquire equity stakes in major artificial intelligence companies. The authors argue that government ownership would distort market competition, weaken market discipline, expose taxpayers to corporate bailouts and political favoritism, tilt the competitive playing field against disruptive startups, and create opportunities for unconstitutional censorship and speech coercion through informal pressure ('jawboning'). The piece contends that government ownership of strategically important AI firms represents an industrial policy that conflicts with First Amendment protections and fundamental principles of competitive markets.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "tone": "critical"
+    },
+    {
+      "placeholder": false,
       "id": "is-training-ai-on-copyrighted-materials-protected-by-the-first-amendment-2026",
       "title": "Is training AI on copyrighted materials protected by the First Amendment?",
       "subtitle": "A wave of lawsuits risks giving copyright holders a veto over a transformative new medium of expression.",
