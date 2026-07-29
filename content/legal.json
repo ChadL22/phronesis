@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "alabamas-new-ai-ethical-guidance-and-its-impact-on-legal-departments-2026",
+      "title": "Alabama's New AI Ethical Guidance and Its Impact on Legal Departments",
+      "subtitle": "Analysis of the Alabama State Bar's updated guidance on ethical AI use and its implications for legal practice and organizational risk management.",
+      "date": "2026-07-21",
+      "type": "legal",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Philosophy"
+      ],
+      "tags": [
+        "artificial intelligence ethics",
+        "legal practice standards",
+        "AI governance",
+        "professional responsibility",
+        "output verification",
+        "legal department management"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Bradley Arant Boult Cummings LLP",
+      "publisher_url": null,
+      "original_url": "https://natlawreview.com/article/alabamas-new-ai-ethical-guidance-and-its-impact-legal-departments",
+      "doi": null,
+      "venue_type": "news",
+      "abstract": "The Alabama State Bar released updated guidance clarifying how existing professional responsibilities under the Alabama Rules of Professional Conduct apply to artificial intelligence tools in legal practice. The guidance does not establish new duties but recontextualizes existing obligations, emphasizing lawyer competence, independent verification of AI-generated output, and ultimate attorney accountability. The analysis provides practical frameworks for legal departments implementing AI governance, including vendor diligence, data governance, written policies, and documented human oversight mechanisms.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "a-network-of-lies-dominion-voting-systems-defamation-case-against-fox-news-2023",
       "title": "A Network of Lies: Dominion Voting System's Defamation Case Against Fox News",
       "subtitle": "A legal analysis of Dominion Voting Systems' defamation lawsuit against Fox News following the 2020 presidential election.",
