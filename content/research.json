@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "an-investigation-of-the-private-attribute-leakage-in-wifi-sensing-2024",
+      "title": "An investigation of the private-attribute leakage in WiFi sensing",
+      "subtitle": "WiFi sensing systems unintentionally leak sensitive personal attributes such as gender, height, and weight through Channel State Information analysis.",
+      "date": "2024-12-01",
+      "type": "research",
+      "fields": [
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "WiFi sensing",
+        "privacy leakage",
+        "Channel State Information (CSI)",
+        "deep learning",
+        "private attributes",
+        "privacy protection"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Elsevier - High-Confidence Computing",
+      "publisher_url": null,
+      "original_url": "https://www.sciencedirect.com/science/article/pii/S2667295224000126?fr=RR-2&ref=pdf_download&rr=a22f44814fa84210",
+      "doi": "10.1016/j.hcc.2024.100209",
+      "venue_type": null,
+      "abstract": "This paper demonstrates that WiFi sensing systems, widely deployed for localization and activity recognition, inadvertently leak users' private attributes including gender, height, and weight. The authors investigate two public WiFi sensing datasets (Widar and Wiar) using deep learning models to infer private attributes from Channel State Information (CSI) features. Experimental results show nearly 100% accuracy for gender prediction, less than 4 cm error for height inference, and approximately 4 kg error for weight estimation. The findings highlight significant privacy concerns with existing WiFi sensing applications and call for privacy-preserving mechanisms in future deployments.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "societal-frameworks-can-improve-llm-alignment-2026",
       "title": "Societal Frameworks Can Improve LLM Alignment",
       "subtitle": "Incorporating social, economic, and contractual frameworks from society into large language model alignment methodology.",
