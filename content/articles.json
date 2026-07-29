@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "the-hidden-water-cost-of-ai-understanding-infrastructure-impacts-beyond-individual-queries-2026",
+      "title": "The Hidden Water Cost of AI: Understanding Infrastructure Impacts Beyond Individual Queries",
+      "subtitle": "An examination of how artificial intelligence systems consume vast quantities of water globally, with projections showing AI infrastructure could use half of the UK's annual water withdrawal by 2027.",
+      "date": "2026-07-20",
+      "type": "article",
+      "fields": [
+        "Computer Science",
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "artificial intelligence",
+        "water consumption",
+        "data centers",
+        "environmental impact",
+        "infrastructure sustainability",
+        "AI measurement methodology"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Science Blog",
+      "publisher_url": null,
+      "original_url": "https://scienceblog.com/t-writing-a-single-100-word-email-with-chatgpt-consumes-approximately-the-volume-of-a-standard-bottle-of-water-the-global-infrastructure-processing-ai-queries-is-projected-to-use-the-equivalent-of-hal/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This article analyzes the water consumption footprint of AI systems, examining both direct cooling-related water use and indirect consumption through electricity generation. While individual AI queries consume modest amounts of water (estimated between five drops and one bottle depending on measurement methodology), cumulative global AI demand is projected to account for 4.2 to 6.6 billion cubic meters of water withdrawal by 2027. The piece discusses methodological differences between major studies and emphasizes that water use varies significantly by geographic location, data center infrastructure, and accounting frameworks.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "mayor-mamdani-announces-landmark-click-to-cancel-consumer-protection-rules-to-ban-subscription-traps-and-junk-fees-2026",
       "title": "Mayor Mamdani Announces Landmark \"Click-To-Cancel\" Consumer Protection Rules to Ban Subscription Traps and Junk Fees",
       "subtitle": "New York City announces first-in-nation municipal regulations requiring transparent all-in pricing and easy subscription cancellation mechanisms.",
