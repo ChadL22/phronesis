@@ -11,6 +11,39 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "societal-frameworks-can-improve-llm-alignment-2026",
+      "title": "Societal Frameworks Can Improve LLM Alignment",
+      "subtitle": "Incorporating social, economic, and contractual frameworks from society into large language model alignment methodology.",
+      "date": "2026-07-23",
+      "type": "research",
+      "fields": [
+        "Computer Science",
+        "Public Policy",
+        "Economics",
+        "Philosophy"
+      ],
+      "tags": [
+        "LLM alignment",
+        "human values",
+        "incomplete contracts",
+        "societal frameworks",
+        "AI governance",
+        "participatory design"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "axiv",
+      "publisher_url": null,
+      "original_url": "https://arxiv.org/abs/2503.00069",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This paper addresses the persistent challenge of aligning large language models with human expectations and shared values by arguing that purely technical approaches are insufficient given the complexity of human values. The authors contend that LLM alignment suffers from misspecified objectives analogous to incomplete contracts in society, and propose incorporating insights from social, economic, and contractual alignment frameworks. The paper examines how uncertainty, a fundamental feature of societal alignment mechanisms, manifests in LLM alignment and reframes the under-specified nature of alignment objectives as an opportunity rather than a limitation. The authors further advocate for participatory alignment interface designs as a necessary complement to technical improvements.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "ai-tokenomics-the-economics-of-tokens-computation-and-pricing-in-foundation-models-2026",
       "title": "AI Tokenomics: The Economics of Tokens, Computation, and Pricing in Foundation Models",
       "subtitle": "A framework connecting token-level technical costs to economic value and market design in foundation model services.",
