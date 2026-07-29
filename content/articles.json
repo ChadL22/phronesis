@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "ai-powered-inferred-data-poses-new-threats-for-consumer-privacy-2026",
+      "title": "AI-Powered Inferred Data Poses New Threats for Consumer Privacy",
+      "subtitle": "Emerging AI inference tools that generate consumer profiles raise concerns about discrimination, manipulation, and opacity in consequential life decisions.",
+      "date": "2026-07-06",
+      "type": "article",
+      "fields": [
+        "Computer Science",
+        "Public Policy",
+        "Philosophy"
+      ],
+      "tags": [
+        "AI inference",
+        "consumer privacy",
+        "algorithmic discrimination",
+        "transparency and explainability",
+        "state privacy legislation",
+        "automated decision-making"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Bloomberg Law",
+      "publisher_url": null,
+      "original_url": "https://news.bloomberglaw.com/litigation/ai-powered-inferred-data-poses-new-threats-for-consumer-privacy?taid=6a4bc7afe00e41000160efd2",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This article examines the privacy and discrimination risks posed by AI tools that generate inferences about consumers based on aggregated data, making predictions about sensitive attributes like race, health, and income for use in hiring, lending, housing, and pricing decisions. The piece documents how inference-generating systems create novel harms distinct from traditional data collection, including the challenge that even AI architects may not fully understand how their tools produce outputs. State-level legislative responses, including California's CCPA and recent Maryland and New York laws addressing automated decision-making and surveillance pricing, represent initial policy approaches to address transparency, consent, and consumer rights regarding inferred data.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "everything-you-need-to-know-about-knowledge-distillation-2025",
       "title": "Everything You Need to Know about Knowledge Distillation",
       "subtitle": "A comprehensive overview of knowledge distillation techniques, their evolution, and real-world applications following DeepSeek's recent advancements.",
