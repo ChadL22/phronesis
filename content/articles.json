@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "agentic-ai-liability-fuels-issues-reaching-beyond-the-laws-edge",
+      "title": "Agentic AI Liability Fuels Issues Reaching Beyond the Law's Edge",
+      "subtitle": "As autonomous AI systems take independent actions across the web, courts must grapple with fundamental questions of agency law and liability allocation.",
+      "date": "",
+      "type": "article",
+      "fields": [
+        "Computer Science",
+        "Public Policy",
+        "Philosophy"
+      ],
+      "tags": [
+        "agentic AI",
+        "agency law",
+        "AI liability",
+        "autonomous systems",
+        "algorithmic accountability",
+        "emerging litigation"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Bloomberg Law",
+      "publisher_url": null,
+      "original_url": "https://news.bloomberglaw.com/legal-exchange-insights-and-commentary/agentic-ai-liability-fuels-issues-reaching-beyond-the-laws-edge?taid=6a4e50f312c2400001a1fe18",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This commentary examines the emerging legal challenges posed by agentic artificial intelligence systems—autonomous AI that can plan, execute extended interactions, and take real-world actions without continuous human oversight. Using Amazon v. Perplexity AI as a focal point, the author argues that autonomous AI fundamentally challenges traditional common law agency principles, including consent, control, scope of authority, and duty of loyalty. The piece surveys both the technical characteristics of agentic systems and first-generation litigation involving algorithmic decision-making in employment and other contexts, demonstrating how courts will need to reexamine foundational legal premises to allocate liability among AI developers, deployers, and users.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "ai-powered-inferred-data-poses-new-threats-for-consumer-privacy-2026",
       "title": "AI-Powered Inferred Data Poses New Threats for Consumer Privacy",
       "subtitle": "Emerging AI inference tools that generate consumer profiles raise concerns about discrimination, manipulation, and opacity in consequential life decisions.",
