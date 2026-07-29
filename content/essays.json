@@ -9,6 +9,39 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "ais-biggest-impact-may-be-making-workers-more-valuable-2026",
+      "title": "AI’s Biggest Impact May Be Making Workers More Valuable",
+      "subtitle": "An examination of how artificial intelligence functions as a complement to human workers rather than a replacement for employment.",
+      "date": "2026-06-25",
+      "type": "essay",
+      "fields": [
+        "Computer Science",
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "artificial intelligence",
+        "labor displacement",
+        "workplace automation",
+        "technology adoption",
+        "human-AI collaboration",
+        "productivity"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "American Enterprise Institute (AEI)",
+      "publisher_url": null,
+      "original_url": "https://www.aei.org/technology-and-innovation/ais-biggest-impact-may-be-making-workers-more-valuable/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This essay challenges the widespread public concern that artificial intelligence will eliminate jobs by presenting evidence from business deployments across telecommunications, utilities, transportation, and finance sectors. The author argues that historical patterns of technological adoption demonstrate that innovations typically automate tasks rather than jobs, allowing workers to focus on higher-value activities requiring judgment and creativity. The analysis suggests that organizational capacity to integrate human and machine capabilities, rather than technological capability itself, represents the primary challenge in AI adoption.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "tone": "argumentative"
+    },
+    {
+      "placeholder": false,
       "id": "dont-put-the-government-on-the-cap-table-2026",
       "title": "Don't Put the Government on the Cap Table",
       "subtitle": "An analysis of the constitutional, economic, and competitive risks of federal government equity ownership in artificial intelligence companies.",
