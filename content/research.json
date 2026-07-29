@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "ai-tokenomics-the-economics-of-tokens-computation-and-pricing-in-foundation-models-2026",
+      "title": "AI Tokenomics: The Economics of Tokens, Computation, and Pricing in Foundation Models",
+      "subtitle": "A framework connecting token-level technical costs to economic value and market design in foundation model services.",
+      "date": "2026-10-06",
+      "type": "research",
+      "fields": [
+        "Computer Science",
+        "Economics",
+        "Public Policy"
+      ],
+      "tags": [
+        "foundation models",
+        "token economics",
+        "AI pricing",
+        "computational accounting",
+        "market design",
+        "resource allocation"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "arXiv",
+      "publisher_url": null,
+      "original_url": "https://arxiv.org/abs/2606.24616v1",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This paper develops a comprehensive framework for AI tokenomics, studying how tokens are generated, consumed, priced, and allocated across AI systems. The work connects token-level technical costs to workflow-level production functions, enterprise resource allocation, and measurement methodologies while establishing that token expenditure and economic value are distinct constructs. The framework identifies key value determinants including marginal productivity, workflow position, hidden reasoning activity, risk, and downstream propagation effects, concluding with research directions in measurement, calibration, and token-based market design.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "problems-with-rules-1995",
       "title": "Problems with Rules",
       "subtitle": "An examination of the tension between rule-based and discretionary legal decision-making and the foundational principles of the rule of law.",
