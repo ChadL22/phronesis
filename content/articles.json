@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "new-jerseys-highest-in-nation-data-broker-fees-shock-industry-2026",
+      "title": "New Jersey's Highest-in-Nation Data Broker Fees Shock Industry",
+      "subtitle": "New Jersey enacted sweeping data broker legislation with registration fees up to $1.5 million annually, the highest in the nation, catching industry stakeholders off-guard due to rapid legislative passage.",
+      "date": "2026-07-10",
+      "type": "article",
+      "fields": [
+        "Public Policy",
+        "Economics",
+        "Computer Science"
+      ],
+      "tags": [
+        "data broker regulation",
+        "state privacy legislation",
+        "New Jersey",
+        "registration fees",
+        "data collection",
+        "consumer privacy"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Bloomberg Law",
+      "publisher_url": null,
+      "original_url": "https://news.bloomberglaw.com/privacy-and-data-security/fast-tracked-new-jersey-law-leaves-data-broker-industry-reeling?taid=6a5145eeb5738300016de079",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "New Jersey Governor Mikie Sherrill signed into law a data broker regulation on June 30, 2026, establishing annual registration fees ranging from $5,000 to $1.5 million—the highest in the nation—and banning the sale of sensitive personal data. The legislation, introduced and passed within days, uniquely extends regulatory requirements to businesses that collect and sell their own customer data, not just third-party brokers. Industry representatives and privacy advocates expressed surprise at both the bill's rapid passage and its expansive scope, with the measure expected to generate approximately $50 million in revenue to support the state's constitutionally mandated balanced budget.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "new-york-times-seeks-sanctions-for-openai-in-copyright-case-2026",
       "title": "New York Times Seeks Sanctions for OpenAI in Copyright Case",
       "subtitle": "The New York Times filed a motion seeking sanctions against OpenAI for allegedly obstructing discovery and concealing the ability to search training data and output logs for copyrighted works over a two-year period.",
