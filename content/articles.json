@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "meta-layoff-bias-suit-exposes-employer-risk-in-ai-firing-factors-2026",
+      "title": "Meta Layoff Bias Suit Exposes Employer Risk in AI Firing Factors",
+      "subtitle": "A lawsuit against Meta demonstrates legal vulnerabilities when companies use AI systems to make employment termination decisions without accounting for protected leave and disabilities.",
+      "date": "2026-07-28",
+      "type": "article",
+      "fields": [
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "algorithmic discrimination",
+        "AI employment decisions",
+        "disability discrimination",
+        "FMLA violations",
+        "employment law",
+        "AI regulation"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Bloomberg Law",
+      "publisher_url": null,
+      "original_url": "https://news.bloomberglaw.com/daily-labor-report/meta-layoff-bias-suit-exposes-employer-risk-in-ai-firing-factors?taid=6a6973bdd247b30001e6b49f",
+      "doi": null,
+      "venue_type": "news",
+      "abstract": "A lawsuit filed against Meta Platforms Inc. by 26 former and current workers alleges the company used AI systems to discriminatorily rank and select employees for layoffs without considering how protected leave or disabilities influenced performance metrics. The case represents one of the first major legal challenges to AI use in employee termination decisions and exposes employers to liability under multiple legal frameworks including Title VII, the Family and Medical Leave Act, the Americans with Disabilities Act, and California's 2025 AI employment regulations. The dispute centers on whether Meta's AI systems improperly weighted factors such as AI usage and productivity metrics that would necessarily disadvantage workers on medical or disability leave, raising broader questions about how employers can lawfully incorporate AI into employment decisions.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "america-needs-one-national-framework-for-artificial-intelligence-2026",
       "title": "America Needs One National Framework for Artificial Intelligence",
       "subtitle": "Two members of Congress propose a bipartisan legislative framework to establish uniform national AI governance standards while protecting innovation and workers.",
