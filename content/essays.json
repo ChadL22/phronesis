@@ -9,6 +9,39 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "the-path-for-federal-frontier-ai-governance-2026",
+      "title": "The Path for Federal Frontier AI Governance",
+      "subtitle": "An argument for minimum conditions that federal AI legislation must satisfy to protect the public interest while enabling innovation.",
+      "date": "2026-07-27",
+      "type": "essay",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Philosophy"
+      ],
+      "tags": [
+        "frontier AI regulation",
+        "federal governance",
+        "AI safety standards",
+        "developer accountability",
+        "independent assurance",
+        "state preemption"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Americans for Responsible Innovation (ARI)",
+      "publisher_url": null,
+      "original_url": "https://ari.us/policy-bytes/the-path-for-federal-frontier-ai-governance/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This policy document articulates six minimum requirements for federal frontier AI governance: independently-set safety standards, mandatory and enforceable government-backed rules, substantive pre- and post-deployment evaluation, rules-based deployment controls, independent compliance verification, and narrow state law preemption. The authors argue that existing developer-led safety frameworks are insufficient given documented instances of backsliding on safety commitments, and propose that a rules-based federal framework with clear enforcement mechanisms is necessary to adequately address frontier AI risks while promoting American technological innovation.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "tone": "argumentative"
+    },
+    {
+      "placeholder": false,
       "id": "the-hidden-consumer-protection-problem-in-ai-spending-2026",
       "title": "The Hidden Consumer Protection Problem in AI Spending",
       "subtitle": "Usage-based AI pricing lacks sufficient transparency mechanisms to enable users to predict costs before transactions, raising consumer protection and regulatory concerns.",
