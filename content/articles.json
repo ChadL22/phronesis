@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "built-for-speed-the-hidden-costs-of-last-mile-delivery",
+      "title": "Built for Speed: The Hidden Costs of Last-Mile Delivery",
+      "subtitle": "An analysis of how speed-driven logistics systems generate occupational hazards for last-mile delivery drivers through fragmented responsibility and algorithmic control.",
+      "date": "",
+      "type": "article",
+      "fields": [
+        "Public Policy",
+        "Economics",
+        "Computer Science"
+      ],
+      "tags": [
+        "last-mile delivery",
+        "gig economy labor",
+        "algorithmic management",
+        "workplace safety regulation",
+        "contractor liability",
+        "occupational hazards"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "The Cornell Policy Review",
+      "publisher_url": null,
+      "original_url": "https://www.cornellpolicyreview.com/built-for-speed-the-hidden-costs-of-last-mile-delivery/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This article examines the structural risks embedded in last-mile delivery systems, arguing that workplace hazards emerge from the interaction of speed optimization, algorithmic management, and fragmented responsibility. The author demonstrates how logistics firms maintain operational control over delivery pace and performance metrics while distributing legal accountability across networks of third-party contractors, leaving drivers to bear safety risks without traditional employment protections. Current regulatory frameworks fail to address the distinctive hazards of urban delivery work, creating a policy gap that leaves workers insufficiently protected.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "protecting-kids-online-government-mandates-vs-market-solutions-2026",
       "title": "Protecting Kids Online: Government Mandates vs. Market Solutions",
       "subtitle": "An analysis of how proposed legislative knowledge standards for user age verification could create unintended privacy and speech consequences for digital platforms and users.",
