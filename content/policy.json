@@ -10,6 +10,39 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "new-jersey-becomes-third-state-to-curb-personalized-pricing-2026",
+      "title": "New Jersey becomes third state to curb personalized pricing",
+      "subtitle": "New Jersey Governor signs the Fair Price Protection Act, enabling consumers to directly enforce rights against personalized pricing in grocery sales.",
+      "date": "2026-07-23",
+      "type": "policy",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Economics"
+      ],
+      "tags": [
+        "personalized pricing",
+        "surveillance pricing",
+        "consumer protection",
+        "price discrimination",
+        "grocery retail",
+        "algorithmic pricing"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Consumer Reports",
+      "publisher_url": null,
+      "original_url": "https://advocacy.consumerreports.org/press_release/new-jersey-becomes-third-state-to-curb-personalized-pricing/?EXTKEY=YSOCIAL_TW",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "New Jersey has enacted the Fair Price Protection Act, becoming the third state to prohibit personalized pricing in grocery and foodstuff sales. The legislation is distinguished by granting consumers direct enforcement rights rather than requiring appeals to the state Attorney General. The law addresses the practice of surveillance pricing, wherein companies utilize consumer data including browsing history, location, and inferred demographic information to set differentiated prices for identical products. Consumer Reports identifies remaining statutory gaps regarding loyalty program disclosures, definitions of bona fide discounts, and location-based profiling that warrant legislative refinement.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "audience": "state"
+    },
+    {
+      "placeholder": false,
       "id": "testimony-to-the-house-subcommittee-on-commerce-manufacturing-and-trade-regarding-legislative-proposals-to-strengthen-consumer-protection-in-a-changing-marketplace-2026",
       "title": "Testimony to the House Subcommittee on Commerce, Manufacturing, and Trade Regarding Legislative Proposals to Strengthen Consumer Protection in a Changing Marketplace",
       "subtitle": "Congressional testimony examining marketplace governance practices and proposing legislative measures to strengthen consumer protections in online commerce.",
