@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "researchers-identify-people-through-ordinary-wi-fi-routers-with-995-accuracy-technique-works-with-standard-wi-fi-routers-2026",
+      "title": "Researchers identify people through ordinary Wi-Fi routers with 99.5% accuracy — technique works with standard Wi-Fi routers",
+      "subtitle": "Security researchers at Karlsruhe Institute of Technology demonstrate a novel Wi-Fi-based identification attack using beamforming data that achieves unprecedented accuracy without specialized hardware.",
+      "date": "2026-05-25",
+      "type": "article",
+      "fields": [
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "Wi-Fi security",
+        "biometric identification",
+        "privacy",
+        "wireless sensing",
+        "802.11 standards",
+        "beamforming"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Tom's Hardware",
+      "publisher_url": null,
+      "original_url": "https://www.tomshardware.com/tech-industry/researchers-identify-people-through-ordinary-wi-fi-routers-with-99-percent-accuracy",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "Researchers at the Karlsruhe Institute of Technology have developed BFId, a technique that exploits unencrypted beamforming feedback information (BFI) broadcast by standard Wi-Fi routers to identify individuals with 99.5% accuracy. Unlike prior Wi-Fi-based identification methods relying on channel state information (CSI), BFId requires no specialized hardware, no network access, and functions regardless of whether targets carry wireless devices. Tested on 197 participants, the technique substantially outperforms existing CSI-based approaches and raises significant privacy concerns, particularly given the recent IEEE 802.11bf standard for Wi-Fi sensing which lacks adequate privacy protections.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "the-hidden-water-cost-of-ai-understanding-infrastructure-impacts-beyond-individual-queries-2026",
       "title": "The Hidden Water Cost of AI: Understanding Infrastructure Impacts Beyond Individual Queries",
       "subtitle": "An examination of how artificial intelligence systems consume vast quantities of water globally, with projections showing AI infrastructure could use half of the UK's annual water withdrawal by 2027.",
