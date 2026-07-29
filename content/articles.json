@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "new-york-times-seeks-sanctions-for-openai-in-copyright-case-2026",
+      "title": "New York Times Seeks Sanctions for OpenAI in Copyright Case",
+      "subtitle": "The New York Times filed a motion seeking sanctions against OpenAI for allegedly obstructing discovery and concealing the ability to search training data and output logs for copyrighted works over a two-year period.",
+      "date": "2026-07-09",
+      "type": "article",
+      "fields": [
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "copyright infringement",
+        "large language models",
+        "discovery sanctions",
+        "ChatGPT",
+        "AI training data",
+        "content scraping"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Bloomberg Law",
+      "publisher_url": null,
+      "original_url": "https://news.bloomberglaw.com/ip-law/new-york-times-seeks-sanctions-against-openai-in-copyright-case?taid=6a50027fcbe63c000107a627",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "In a copyright infringement case consolidated in the U.S. District Court for the Southern District of New York, the New York Times Co. and other news publishers have filed a motion seeking sanctions against OpenAI for what they characterize as deliberate obstruction of discovery. The plaintiffs allege that OpenAI concealed its ability to search ChatGPT training data and output logs for copyrighted materials for two years, providing only heavily redacted sample logs that the court deemed unusable. The Times seeks to prohibit OpenAI from relying on the provided output logs, to establish findings regarding systematic copying of news content, and to recover attorneys' fees and expert costs associated with securing the withheld discovery.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "agentic-ai-liability-fuels-issues-reaching-beyond-the-laws-edge",
       "title": "Agentic AI Liability Fuels Issues Reaching Beyond the Law's Edge",
       "subtitle": "As autonomous AI systems take independent actions across the web, courts must grapple with fundamental questions of agency law and liability allocation.",
