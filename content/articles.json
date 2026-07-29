@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "google-beats-suit-over-data-tracking-by-gemini-ai-assistant-2026",
+      "title": "Google Beats Suit Over Data Tracking by Gemini AI Assistant",
+      "subtitle": "A federal judge dismissed a class action lawsuit alleging Google illegally tracked user communications through its Gemini AI assistant, finding plaintiffs failed to establish concrete harm.",
+      "date": "2026-07-08",
+      "type": "article",
+      "fields": [
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "artificial intelligence",
+        "digital privacy",
+        "class action litigation",
+        "standing doctrine",
+        "data tracking",
+        "Google Gemini"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Bloomberg Law",
+      "publisher_url": null,
+      "original_url": "https://news.bloomberglaw.com/litigation/google-beats-suit-over-data-tracking-by-gemini-ai-assistant?taid=6a524c6b2fac9a0001be37cb&utm_campaign=trueanthem&utm_medium=social&utm_source=twitter",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "A proposed class action lawsuit against Google alleging that the company used its Gemini AI assistant to illegally track private communications through Gmail, Chat, and Meet was dismissed by Judge Noël Wise of the US District Court for the Northern District of California on July 8, 2026. Plaintiffs Thomas Thele and Melo Porter claimed Google silently enabled the AI tool by default in October 2025 without user consent. The court granted Google's motion to dismiss on standing grounds, finding that plaintiffs failed to allege sufficient concrete harm or specificity regarding the data accessed and their resulting injury, though the judge permitted an amended complaint.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "new-jerseys-highest-in-nation-data-broker-fees-shock-industry-2026",
       "title": "New Jersey's Highest-in-Nation Data Broker Fees Shock Industry",
       "subtitle": "New Jersey enacted sweeping data broker legislation with registration fees up to $1.5 million annually, the highest in the nation, catching industry stakeholders off-guard due to rapid legislative passage.",
