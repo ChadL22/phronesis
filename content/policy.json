@@ -10,6 +10,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "trahan-obernolte-introduce-bipartisan-frontier-act-to-strengthen-oversight-of-advanced-ai-2026",
+      "title": "Trahan, Obernolte Introduce Bipartisan FRONTIER Act to Strengthen Oversight of Advanced AI",
+      "subtitle": "Congressional leaders introduce risk-based regulatory framework for frontier AI model development and deployment.",
+      "date": "2026-07-23",
+      "type": "policy",
+      "fields": [
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "AI regulation",
+        "frontier AI models",
+        "risk management",
+        "transparency requirements",
+        "federal oversight",
+        "AI safety"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Congresswoman Lori Trahan",
+      "publisher_url": null,
+      "original_url": "https://trahan.house.gov/news/documentsingle.aspx?DocumentID=3823#:~:text=today%20can%20be%20accessed-,HERE,-.",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "The FRONTIER Act (Frontier Risk Oversight, National Transparency, Independent Evaluation, and Reporting Act) is bipartisan legislation introduced by Representatives Trahan and Obernolte that establishes a national, risk-based regulatory framework for advanced artificial intelligence models. The legislation implements tiered requirements for frontier AI developers including model cards, risk-management frameworks, independent audits, incident reporting, and ongoing assessments, while creating uniform national standards to prevent fragmented state-level regulation. The bill targets oversight specifically toward the largest AI developers and most advanced models rather than applying one-size-fits-all mandates across the industry.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "audience": "federal"
+    },
+    {
+      "placeholder": false,
       "id": "icle-comments-to-the-ftc-on-ai-suppression-2026",
       "title": "ICLE Comments to the FTC on AI Suppression",
       "subtitle": "Legal and economic analysis of the FTC's proposed policy statement on artificial intelligence regulation and First Amendment constraints.",
