@@ -11,6 +11,36 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "everything-you-need-to-know-about-knowledge-distillation-2025",
+      "title": "Everything You Need to Know about Knowledge Distillation",
+      "subtitle": "A comprehensive overview of knowledge distillation techniques, their evolution, and real-world applications following DeepSeek's recent advancements.",
+      "date": "2025-03-05",
+      "type": "article",
+      "fields": [
+        "Computer Science"
+      ],
+      "tags": [
+        "knowledge distillation",
+        "machine learning",
+        "model compression",
+        "large language models",
+        "DeepSeek",
+        "neural networks"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Turning Post",
+      "publisher_url": null,
+      "original_url": "https://www.turingpost.com/p/kd",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This article examines knowledge distillation (KD), a machine learning technique that transfers knowledge from larger teacher models to smaller student models. The piece traces KD's evolution from 2006 model compression work through Hinton et al.'s 2015 formalization, explains the mathematical foundations involving softmax and temperature parameters, and discusses various distillation types, scaling laws, benefits, limitations, and contemporary applications including DeepSeek's R1 model distillation.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "bank-ai-oversight-expands-to-every-exam-generative-ai-bypasses-sr-26-2-as-kill-switch-gap-grows-2026",
       "title": "Bank AI Oversight Expands to Every Exam: Generative AI Bypasses SR 26-2 as Kill-Switch Gap Grows",
       "subtitle": "Federal banking regulators embed AI governance questions into routine examinations while newly issued guidance excludes generative and agentic AI systems from validation requirements.",
