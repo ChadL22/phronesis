@@ -11,10 +11,40 @@
   "entries": [
     {
       "placeholder": false,
-      "id": "it-is-time-to-restore-the-us-office-of-technology-assessment-2026",
+      "id": "cpu-vs-gpu-vs-tpu-vs-npu-ai-hardware-processing-units-explained-2025",
+      "title": "CPU vs GPU vs TPU vs NPU: AI Hardware Processing Units Explained",
+      "subtitle": "A comprehensive guide to AI hardware architectures comparing traditional processors, specialized accelerators, and emerging custom-built chips.",
+      "date": "2025-09-10",
+      "type": "article",
+      "fields": [
+        "Computer Science"
+      ],
+      "tags": [
+        "AI hardware architecture",
+        "GPU vs CPU vs TPU",
+        "specialized processors",
+        "semiconductor design",
+        "machine learning infrastructure",
+        "neural processing units"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Turing Post",
+      "publisher_url": null,
+      "original_url": "https://www.turingpost.com/p/pu",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This article provides a technical overview of processing unit architectures used in AI systems, examining the fundamental differences between Central Processing Units (CPUs), Graphics Processing Units (GPUs), Tensor Processing Units (TPUs), and specialized alternatives. The piece traces the historical development of CPU technology from ENIAC through modern multi-core processors, explains the computational strengths and limitations of each architecture type, and surveys emerging alternatives including ASICs, APUs, NPUs, IPUs, and FPGAs. The analysis emphasizes that while GPUs have dominated AI infrastructure discourse, alternative hardware designs offer distinct efficiencies and approaches for different computational workloads.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
+      "id": "it-is-time-to-restore-the-us-office-of-technology-assessment-2021",
       "title": "It is time to restore the US Office of Technology Assessment",
       "subtitle": "A policy brief arguing for the reinstatement of Congress's defunct technology assessment agency to address emerging digital governance challenges.",
-      "date": "2026-02-10",
+      "date": "2021-02-10",
       "type": "article",
       "fields": [
         "Public Policy",
