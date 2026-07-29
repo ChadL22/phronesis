@@ -10,6 +10,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "the-ndaa-a-key-vehicle-for-ai-governance-2026",
+      "title": "The NDAA: A Key Vehicle for AI Governance",
+      "subtitle": "Analysis of artificial intelligence provisions in the Fiscal Year 2026 National Defense Authorization Act and their implications for DOD policy.",
+      "date": "2026-07-01",
+      "type": "policy",
+      "fields": [
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "AI governance",
+        "National Defense Authorization Act",
+        "Department of Defense AI policy",
+        "artificial general intelligence",
+        "autonomous weapons",
+        "AI procurement"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Institute for Law & AI",
+      "publisher_url": null,
+      "original_url": "https://law-ai.org/the-ndaa-a-key-vehicle-for-ai-governance/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "The Fiscal Year 2026 National Defense Authorization Act (NDAA) contained nearly two dozen AI-related provisions, with several establishing significant governance mechanisms for the Department of Defense. This commentary examines major AI provisions including requirements to establish an AI Futures Steering Committee and develop standardized assessment frameworks for AI models. The NDAA has emerged as a powerful legislative tool for shaping broader AI policy beyond defense operations, with implications for both domestic governance and strategic competition with adversaries.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "ieee-80211bf-amendment-wi-fi-sensing-definitions-and-features-2023",
       "title": "IEEE 802.11bf Amendment: Wi-Fi Sensing Definitions and Features",
       "subtitle": "Overview of the IEEE 802.11bf standard amendment for enhanced Wi-Fi sensing capabilities in license-exempt frequency bands.",
