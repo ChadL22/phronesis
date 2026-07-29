@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "bank-ai-oversight-expands-to-every-exam-generative-ai-bypasses-sr-26-2-as-kill-switch-gap-grows-2026",
+      "title": "Bank AI Oversight Expands to Every Exam: Generative AI Bypasses SR 26-2 as Kill-Switch Gap Grows",
+      "subtitle": "Federal banking regulators embed AI governance questions into routine examinations while newly issued guidance excludes generative and agentic AI systems from validation requirements.",
+      "date": "2026-06-13",
+      "type": "article",
+      "fields": [
+        "Computer Science",
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "AI governance in banking",
+        "Generative AI regulation",
+        "Model risk management",
+        "Financial services compliance",
+        "Vendor risk oversight",
+        "Agentic AI systems"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Tech Times",
+      "publisher_url": null,
+      "original_url": "https://www.techtimes.com/articles/318340/20260613/bank-ai-oversight-expands-every-exam-generative-ai-bypasses-sr-26-2-kill-switch-gap-grows.htm",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "Federal banking regulators have integrated AI governance assessments into all standard bank examinations, focusing on credit decisions, fraud detection, and customer service automation. A survey of 230 banking professionals reveals that nearly 75% of banks lack confidence in their ability to shut down malfunctioning AI systems or report AI failures to regulators. The April 2026 joint guidance (SR 26-2) from the Federal Reserve, Office of the Comptroller of the Currency, and Federal Deposit Insurance Corporation modernizes model risk management frameworks but explicitly excludes generative and agentic AI—the very systems banks have deployed most aggressively—from validation and documentation requirements.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "researchers-identify-people-through-ordinary-wi-fi-routers-with-995-accuracy-technique-works-with-standard-wi-fi-routers-2026",
       "title": "Researchers identify people through ordinary Wi-Fi routers with 99.5% accuracy — technique works with standard Wi-Fi routers",
       "subtitle": "Security researchers at Karlsruhe Institute of Technology demonstrate a novel Wi-Fi-based identification attack using beamforming data that achieves unprecedented accuracy without specialized hardware.",
