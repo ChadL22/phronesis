@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "wi-fi-sensing-risk-and-potential-on-it-security-and-privacy",
+      "title": "Wi-Fi sensing: Risk and Potential on IT Security and Privacy",
+      "subtitle": "An examination of Wi-Fi sensing technologies and their implications for privacy and security across different environments",
+      "date": "",
+      "type": "research",
+      "fields": [
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "Wi-Fi sensing",
+        "privacy implications",
+        "cybersecurity",
+        "wireless networks",
+        "device detection",
+        "security risks"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Munich University of Applied Sciences",
+      "publisher_url": null,
+      "original_url": "https://www.researchgate.net/profile/Kilian-Osenstaetter/publication/382557257_Wi-Fi_sensing_Risk_and_Potential_on_IT_Security_and_Privacy/links/66a353f575fcd863e5dafecf/Wi-Fi-sensing-Risk-and-Potential-on-IT-Security-and-Privacy.pdf?origin=publication_detail&_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6InB1YmxpY2F0aW9uIiwicGFnZSI6InB1YmxpY2F0aW9uRG93bmxvYWQiLCJwcmV2aW91c1BhZ2UiOiJwdWJsaWNhdGlvbiJ9fQ",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This study investigates the privacy and information security implications of Wi-Fi sensing technologies, which are increasingly deployed as wireless network infrastructures expand. Wi-Fi sensing capabilities extend beyond basic network connectivity to include presence detection and input recognition, creating both opportunities for technological advancement and risks requiring mitigation strategies. The paper synthesizes literature research to provide a comprehensive overview of Wi-Fi sensing fundamentals, analytical methodologies, and their broader implications for security and privacy.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "a-framework-for-understanding-and-evaluating-ai-commercialization-strategies-2025",
       "title": "A Framework for Understanding and Evaluating AI Commercialization Strategies",
       "subtitle": "An analysis of diverse commercialization models for AI development and their implications for innovation, competition, and public policy.",
