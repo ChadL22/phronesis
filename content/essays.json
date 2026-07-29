@@ -9,6 +9,39 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "how-does-the-first-amendment-apply-to-ai-2026",
+      "title": "How does the First Amendment apply to AI?",
+      "subtitle": "AI models embody layers of human expressive choices by developers that merit First Amendment protection.",
+      "date": "2026-06-24",
+      "type": "essay",
+      "fields": [
+        "Public Policy",
+        "Philosophy",
+        "Computer Science"
+      ],
+      "tags": [
+        "First Amendment",
+        "AI regulation",
+        "free speech",
+        "language models",
+        "developer intent",
+        "expressive content"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Foundation for Individual Rights and Expression (FIRE)",
+      "publisher_url": null,
+      "original_url": "https://expression.fire.org/p/how-does-the-first-amendment-apply?r=2b8zxz&triedRedirect=true",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This essay examines how First Amendment principles apply to artificial intelligence systems by deconstructing the misconception that AI-generated speech is authorless or mechanical. The author argues that AI models represent a long chain of deliberate developer decisions regarding training data selection, fine-tuning, and value alignment that constitute protected expression. By unpacking the technical architecture of language models, the piece demonstrates that AI outputs reflect intentional human creative vision and should therefore receive First Amendment coverage.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "tone": "argumentative"
+    },
+    {
+      "placeholder": false,
       "id": "ais-biggest-impact-may-be-making-workers-more-valuable-2026",
       "title": "AI’s Biggest Impact May Be Making Workers More Valuable",
       "subtitle": "An examination of how artificial intelligence functions as a complement to human workers rather than a replacement for employment.",
