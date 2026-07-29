@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "it-is-time-to-restore-the-us-office-of-technology-assessment-2026",
+      "title": "It is time to restore the US Office of Technology Assessment",
+      "subtitle": "A policy brief arguing for the reinstatement of Congress's defunct technology assessment agency to address emerging digital governance challenges.",
+      "date": "2026-02-10",
+      "type": "article",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Economics"
+      ],
+      "tags": [
+        "Office of Technology Assessment",
+        "technology policy",
+        "congressional governance",
+        "artificial intelligence regulation",
+        "digital oversight",
+        "technology assessment"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Brooking",
+      "publisher_url": null,
+      "original_url": "https://www.brookings.edu/articles/it-is-time-to-restore-the-us-office-of-technology-assessment/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This policy brief examines the 1995 elimination of the U.S. Office of Technology Assessment (OTA) by the Republican-controlled Congress and argues for its restoration in light of contemporary technology governance challenges. The author contends that Congress lacks adequate institutional capacity to conduct impartial analysis of rapidly evolving digital technologies, including artificial intelligence, autonomous vehicles, and algorithmic systems. The piece identifies gaps in current policy advisory structures and recommends establishing a dedicated, nonpartisan body to provide objective research and analysis on technology's societal impacts.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "meta-layoff-bias-suit-exposes-employer-risk-in-ai-firing-factors-2026",
       "title": "Meta Layoff Bias Suit Exposes Employer Risk in AI Firing Factors",
       "subtitle": "A lawsuit against Meta demonstrates legal vulnerabilities when companies use AI systems to make employment termination decisions without accounting for protected leave and disabilities.",
