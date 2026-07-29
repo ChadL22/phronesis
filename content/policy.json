@@ -10,6 +10,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "breaking-down-the-great-american-artificial-intelligence-act-2026",
+      "title": "Breaking Down the Great American Artificial Intelligence Act",
+      "subtitle": "Analysis of the Great American AI Act discussion draft and its approach to federal frontier AI governance.",
+      "date": "2026-07-21",
+      "type": "proposal",
+      "fields": [
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "artificial intelligence regulation",
+        "frontier AI governance",
+        "federal preemption",
+        "AI transparency and accountability",
+        "cybersecurity and AI",
+        "regulatory framework"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "American Action Forum",
+      "publisher_url": null,
+      "original_url": "https://www.americanactionforum.org/insight/breaking-down-the-great-american-artificial-intelligence-act/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This analysis examines the Great American AI Act (GAAIA) discussion draft, Congress's most comprehensive attempt to establish federal governance for frontier artificial intelligence development. The draft proposes a federal baseline rooted in transparency and accountability standards while preserving state authority over AI deployment and consumer applications. The piece evaluates the bill's core provisions on frontier AI governance, cybersecurity, and federal preemption, while assessing its implications for regulatory fragmentation, innovation, and the adequacy of proposed risk mitigation approaches.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "audience": "federal"
+    },
+    {
+      "placeholder": false,
       "id": "new-jersey-becomes-third-state-to-curb-personalized-pricing-2026",
       "title": "New Jersey becomes third state to curb personalized pricing",
       "subtitle": "New Jersey Governor signs the Fair Price Protection Act, enabling consumers to directly enforce rights against personalized pricing in grocery sales.",
