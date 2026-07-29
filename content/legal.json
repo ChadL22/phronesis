@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "ai-outputs-are-not-protected-speech",
+      "title": "AI Outputs Are Not Protected Speech",
+      "subtitle": "A legal analysis arguing that generative AI outputs do not constitute protected First Amendment speech despite emerging scholarly concerns.",
+      "date": "",
+      "type": "legal",
+      "fields": [
+        "Computer Science",
+        "Public Policy",
+        "Philosophy"
+      ],
+      "tags": [
+        "First Amendment",
+        "artificial intelligence regulation",
+        "generative AI",
+        "constitutional law",
+        "AI safety",
+        "AI policy"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Washington University Law Review",
+      "publisher_url": null,
+      "original_url": "https://wustllawreview.org/2024/11/05/ai-outputs-are-not-protected-speech/",
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This article challenges the emerging scholarly position that generative AI outputs qualify as protected speech under the First Amendment. The author argues that AI outputs lack protected speech status because neither AI systems nor their users/creators communicate through AI-generated text, images, or sound in ways that trigger First Amendment protections. However, the article acknowledges that AI outputs may receive indirect First Amendment protection as speech-facilitating tools subject to less stringent regulatory scrutiny, similar to how regulations affecting loudspeakers or listening receive intermediate constitutional review.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "alabamas-new-ai-ethical-guidance-and-its-impact-on-legal-departments-2026",
       "title": "Alabama's New AI Ethical Guidance and Its Impact on Legal Departments",
       "subtitle": "Analysis of the Alabama State Bar's updated guidance on ethical AI use and its implications for legal practice and organizational risk management.",
