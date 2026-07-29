@@ -10,6 +10,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "testimony-to-the-house-subcommittee-on-commerce-manufacturing-and-trade-regarding-legislative-proposals-to-strengthen-consumer-protection-in-a-changing-marketplace-2026",
+      "title": "Testimony to the House Subcommittee on Commerce, Manufacturing, and Trade Regarding Legislative Proposals to Strengthen Consumer Protection in a Changing Marketplace",
+      "subtitle": "Congressional testimony examining marketplace governance practices and proposing legislative measures to strengthen consumer protections in online commerce.",
+      "date": "2026-07-22",
+      "type": "proposal",
+      "fields": [
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "online marketplaces",
+        "consumer protection",
+        "marketplace governance",
+        "counterfeit products",
+        "seller verification",
+        "regulatory policy"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Information Technology and Innovation Foundation",
+      "publisher_url": null,
+      "original_url": "https://itif.org/publications/2026/07/22/testimony-regarding-legislative-proposals-to-strengthen-consumer-protection/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This testimony by Daniel Castro of the Information Technology and Innovation Foundation addresses consumer protection challenges in online marketplaces, particularly regarding counterfeit products, unsafe goods, and fraud. The testimony argues that significant differences exist in how major online marketplaces—particularly Chinese platforms—invest in seller verification, product detection systems, and enforcement mechanisms. The author proposes that Congress should establish stronger incentives for marketplaces to implement preventative consumer protections while preserving innovation and competition.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "audience": "federal"
+    },
+    {
+      "placeholder": false,
       "id": "trahan-obernolte-introduce-bipartisan-frontier-act-to-strengthen-oversight-of-advanced-ai-2026",
       "title": "Trahan, Obernolte Introduce Bipartisan FRONTIER Act to Strengthen Oversight of Advanced AI",
       "subtitle": "Congressional leaders introduce risk-based regulatory framework for frontier AI model development and deployment.",
