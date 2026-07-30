@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "new-jersey-bans-sale-of-sensitive-data-and-creates-public-registry-for-data-brokers-and-collectors-2026",
+      "title": "New Jersey Bans Sale of Sensitive Data and Creates Public Registry for Data Brokers and Collectors",
+      "subtitle": "New Jersey Governor Mikie Sherrill signed Assembly Bill 5328 on June 30, 2026, establishing one of the nation's most expansive bans on the sale of sensitive consumer data with a mandatory public registry for data brokers and collectors.",
+      "date": "2026-07-28",
+      "type": "article",
+      "fields": [
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "data privacy legislation",
+        "sensitive data protection",
+        "data broker regulation",
+        "New Jersey A5328",
+        "consumer data sale ban",
+        "data registry requirements"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Ogletree, Deakins, Nash, Smoak & Stewart, P.C.",
+      "publisher_url": null,
+      "original_url": null,
+      "doi": null,
+      "venue_type": null,
+      "abstract": "Assembly Bill 5328 (A5328), signed into law by New Jersey Governor Mikie Sherrill on June 30, 2026, prohibits the sale of sensitive consumer data by nearly all individuals and entities, with limited exceptions for HIPAA-covered entities and Gramm-Leach-Bliley Act-covered financial institutions. The legislation defines sensitive data broadly to include information regarding racial or ethnic origin, health conditions, financial account details, sexual orientation, citizenship status, genetic or biometric data, children's data, and precise geolocation data. Violators face civil penalties of $50,000 per record sold or offered for sale. Additionally, A5328 establishes a mandatory public registry requiring data brokers and data collectors to register with the New Jersey Division of Consumer Affairs, provide detailed information about their data practices, and pay registration fees ranging from $5,000 to $1,500,000 based on consumer volume, with noncompliance penalties of $2,500 per day.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "comparing-recent-federal-data-privacy-bills-2026",
       "title": "Comparing Recent Federal Data Privacy Bills",
       "subtitle": "Analysis of three major federal data privacy legislative proposals from the 117th, 118th, and 119th Congresses.",
