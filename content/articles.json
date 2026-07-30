@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "comparing-recent-federal-data-privacy-bills-2026",
+      "title": "Comparing Recent Federal Data Privacy Bills",
+      "subtitle": "Analysis of three major federal data privacy legislative proposals from the 117th, 118th, and 119th Congresses.",
+      "date": "2026-07-29",
+      "type": "article",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Economics"
+      ],
+      "tags": [
+        "data privacy legislation",
+        "federal privacy framework",
+        "consumer rights",
+        "data minimization",
+        "FTC enforcement",
+        "opt-in consent"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "ITIF (Information Technology and Innovation Foundation)",
+      "publisher_url": null,
+      "original_url": "https://itif.org/publications/2026/07/29/comparing-recent-federal-data-privacy-bills/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This article compares three federal data privacy bills: the American Data Privacy and Protection Act (ADPPA, 2022), the American Privacy Rights Act (APRA, 2024), and the SECURE Data Act (2026). The bills are analyzed across five dimensions: consumer rights, consent requirements, data controller obligations, enforcement mechanisms, and data minimization standards. While all three bills establish similar frameworks for consumer privacy protections, they differ significantly in their prescriptive requirements on data security, consent mechanisms, and the stringency of data minimization standards.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "google-beats-suit-over-data-tracking-by-gemini-ai-assistant-2026",
       "title": "Google Beats Suit Over Data Tracking by Gemini AI Assistant",
       "subtitle": "A federal judge dismissed a class action lawsuit alleging Google illegally tracked user communications through its Gemini AI assistant, finding plaintiffs failed to establish concrete harm.",
