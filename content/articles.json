@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "machine-generated-evidence-challenges-the-federal-rules-inside-the-contested-proposed-federal-rule-of-evidence-707-2026",
+      "title": "Machine-Generated Evidence Challenges the Federal Rules: Inside the Contested Proposed Federal Rule of Evidence 707",
+      "subtitle": "A comprehensive analysis of the divisive proposed Federal Rule of Evidence 707 governing the admissibility of machine-generated evidence in litigation.",
+      "date": "2026-07-29",
+      "type": "article",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Philosophy"
+      ],
+      "tags": [
+        "Federal Rules of Evidence",
+        "artificial intelligence",
+        "machine-generated evidence",
+        "Daubert standard",
+        "evidence admissibility",
+        "litigation procedure"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Proskauer Rose LLP",
+      "publisher_url": null,
+      "original_url": "https://natlawreview.com/article/machine-generated-evidence-challenges-federal-rules-inside-contested-proposed?utm_source=dlvr.it&utm_medium=twitter",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "Proposed Federal Rule of Evidence 707 seeks to require machine-generated evidence offered without expert testimony to satisfy the Daubert reliability criteria established in Rule 702, closing a potential loophole in evidence admissibility standards. The rule has generated substantial controversy, with stakeholders divided over whether it is overly broad, potentially burdening long-accepted evidence types, or conversely too narrow in failing to address disputed authenticity and deepfakes. Following public comment periods and committee discussions, the Standing Committee declined to recommend action as of June 2026, sending the proposal back for revision alongside consideration of separate deepfakes issues.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "new-jersey-bans-sale-of-sensitive-data-and-creates-public-registry-for-data-brokers-and-collectors-2026",
       "title": "New Jersey Bans Sale of Sensitive Data and Creates Public Registry for Data Brokers and Collectors",
       "subtitle": "New Jersey Governor Mikie Sherrill signed Assembly Bill 5328 on June 30, 2026, establishing one of the nation's most expansive bans on the sale of sensitive consumer data with a mandatory public registry for data brokers and collectors.",
@@ -32,7 +64,7 @@
       "content_type": "abstract",
       "publisher": "Ogletree, Deakins, Nash, Smoak & Stewart, P.C.",
       "publisher_url": null,
-      "original_url": null,
+      "original_url": "https://natlawreview.com/article/new-jersey-bans-sale-sensitive-data-and-creates-public-registry-data-brokers-and",
       "doi": null,
       "venue_type": null,
       "abstract": "Assembly Bill 5328 (A5328), signed into law by New Jersey Governor Mikie Sherrill on June 30, 2026, prohibits the sale of sensitive consumer data by nearly all individuals and entities, with limited exceptions for HIPAA-covered entities and Gramm-Leach-Bliley Act-covered financial institutions. The legislation defines sensitive data broadly to include information regarding racial or ethnic origin, health conditions, financial account details, sexual orientation, citizenship status, genetic or biometric data, children's data, and precise geolocation data. Violators face civil penalties of $50,000 per record sold or offered for sale. Additionally, A5328 establishes a mandatory public registry requiring data brokers and data collectors to register with the New Jersey Division of Consumer Affairs, provide detailed information about their data practices, and pay registration fees ranging from $5,000 to $1,500,000 based on consumer volume, with noncompliance penalties of $2,500 per day.",
