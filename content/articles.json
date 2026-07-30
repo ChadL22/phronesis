@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "geofence-ruling-brings-new-risks-for-sensitive-data-collection-2026",
+      "title": "Geofence Ruling Brings New Risks for Sensitive Data Collection",
+      "subtitle": "A Supreme Court decision requiring warrants for location data access has broader implications for how companies handle sensitive consumer information and comply with government demands.",
+      "date": "2026-07-29",
+      "type": "article",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Philosophy"
+      ],
+      "tags": [
+        "Fourth Amendment",
+        "location data privacy",
+        "geofence warrants",
+        "data retention",
+        "government surveillance",
+        "sensitive data protection"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Bloomberg Law",
+      "publisher_url": null,
+      "original_url": "https://news.bloomberglaw.com/litigation/geofence-ruling-brings-new-risks-for-sensitive-data-collection?taid=6a6a613271891d00011429bd",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "Following the Supreme Court's decision in Chatrie v. United States, which established Fourth Amendment protections for location data accessed by law enforcement, companies face new obligations to reevaluate their data collection, retention, and disclosure practices. The ruling's analysis of location data sensitivity extends beyond geofencing to other categories of sensitive information including health data, biometric data, and genetic data, and applies to various reverse search contexts. Legal experts suggest companies may adopt risk mitigation strategies such as device-side data storage, reduced data retention, or increased scrutiny of government demands, while the decision potentially chills innovation if companies become overly cautious about data collection.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "machine-generated-evidence-challenges-the-federal-rules-inside-the-contested-proposed-federal-rule-of-evidence-707-2026",
       "title": "Machine-Generated Evidence Challenges the Federal Rules: Inside the Contested Proposed Federal Rule of Evidence 707",
       "subtitle": "A comprehensive analysis of the divisive proposed Federal Rule of Evidence 707 governing the admissibility of machine-generated evidence in litigation.",
