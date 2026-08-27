@@ -9,6 +9,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "state-of-ai-safety-in-china-annual-report-july-2025-june-2026-2026",
+      "title": "State of AI Safety in China: Annual Report (July 2025 - June 2026)",
+      "subtitle": "Comprehensive tracking of China's evolving approach to AI safety governance across domestic policy, international coordination, technical research, and industry regulation.",
+      "date": "2026-07-20",
+      "type": "report",
+      "fields": [
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "AI governance",
+        "autonomous agents",
+        "AI safety research",
+        "China policy",
+        "international coordination",
+        "AI regulation"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Concordia AI",
+      "publisher_url": null,
+      "original_url": "https://aisafetychina.com/%20",
+      "doi": null,
+      "venue_type": "report",
+      "abstract": "This annual report from Concordia AI documents China's AI safety and governance framework during the period July 2025 to June 2026, analyzing developments across five domains: domestic governance, international governance, technical safety research, expert perspectives, and industry governance. The report demonstrates a significant evolution in China's regulatory approach from content control toward action control, driven by the proliferation of multimodal models, autonomous agents, and AI companion products. Key findings include the integration of 'AI Plus' into the 15th Five-Year Plan, new binding rules addressing anthropomorphic AI services and AI-generated content labeling, increased technical research output on agent safety and mechanistic interpretability, and China's positioning as an architect of multilateral AI governance mechanisms.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "report_type": "annual"
+    },
+    {
+      "placeholder": false,
       "id": "the-stanford-emerging-technology-review-2026-2026",
       "title": "THE STANFORD EMERGING TECHNOLOGY REVIEW 2026",
       "subtitle": "A comprehensive reference guide examining ten emerging technologies and their policy implications across critical domains.",

@@ -11,6 +11,164 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "ai-outputs-are-not-protected-speech",
+      "title": "AI Outputs Are Not Protected Speech",
+      "subtitle": "A legal analysis arguing that generative AI outputs do not constitute protected First Amendment speech despite emerging scholarly concerns.",
+      "date": "",
+      "type": "legal",
+      "fields": [
+        "Computer Science",
+        "Public Policy",
+        "Philosophy"
+      ],
+      "tags": [
+        "First Amendment",
+        "artificial intelligence regulation",
+        "generative AI",
+        "constitutional law",
+        "AI safety",
+        "AI policy"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Washington University Law Review",
+      "publisher_url": null,
+      "original_url": "https://wustllawreview.org/2024/11/05/ai-outputs-are-not-protected-speech/",
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This article challenges the emerging scholarly position that generative AI outputs qualify as protected speech under the First Amendment. The author argues that AI outputs lack protected speech status because neither AI systems nor their users/creators communicate through AI-generated text, images, or sound in ways that trigger First Amendment protections. However, the article acknowledges that AI outputs may receive indirect First Amendment protection as speech-facilitating tools subject to less stringent regulatory scrutiny, similar to how regulations affecting loudspeakers or listening receive intermediate constitutional review.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
+      "id": "alabamas-new-ai-ethical-guidance-and-its-impact-on-legal-departments-2026",
+      "title": "Alabama's New AI Ethical Guidance and Its Impact on Legal Departments",
+      "subtitle": "Analysis of the Alabama State Bar's updated guidance on ethical AI use and its implications for legal practice and organizational risk management.",
+      "date": "2026-07-21",
+      "type": "legal",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Philosophy"
+      ],
+      "tags": [
+        "artificial intelligence ethics",
+        "legal practice standards",
+        "AI governance",
+        "professional responsibility",
+        "output verification",
+        "legal department management"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Bradley Arant Boult Cummings LLP",
+      "publisher_url": null,
+      "original_url": "https://natlawreview.com/article/alabamas-new-ai-ethical-guidance-and-its-impact-legal-departments",
+      "doi": null,
+      "venue_type": "news",
+      "abstract": "The Alabama State Bar released updated guidance clarifying how existing professional responsibilities under the Alabama Rules of Professional Conduct apply to artificial intelligence tools in legal practice. The guidance does not establish new duties but recontextualizes existing obligations, emphasizing lawyer competence, independent verification of AI-generated output, and ultimate attorney accountability. The analysis provides practical frameworks for legal departments implementing AI governance, including vendor diligence, data governance, written policies, and documented human oversight mechanisms.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
+      "id": "a-network-of-lies-dominion-voting-systems-defamation-case-against-fox-news-2023",
+      "title": "A Network of Lies: Dominion Voting System's Defamation Case Against Fox News",
+      "subtitle": "A legal analysis of Dominion Voting Systems' defamation lawsuit against Fox News following the 2020 presidential election.",
+      "date": "2023-06-28",
+      "type": "legal",
+      "fields": [
+        "Public Policy"
+      ],
+      "tags": [
+        "defamation law",
+        "election misinformation",
+        "Fox News",
+        "Dominion Voting Systems",
+        "actual malice standard",
+        "First Amendment"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "University of Cincinnati Law Review",
+      "publisher_url": null,
+      "original_url": "https://uclawreview.org/2023/06/28/dominion-voting-systems-defamation-case-against-fox-news/",
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This article examines Dominion Voting Systems' defamation case against Fox News, analyzing whether the network's statements about election fraud meet the legal standard for defamation established in New York Times v. Sullivan. The author argues that Dominion is likely to prevail based on the volume and repetition of false statements made over time, despite the high bar of proving actual malice required for public figures. The case represents a rare instance where a plaintiff may successfully sue a major news network for defamation.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
+      "id": "carpenter-v-united-states-2018",
+      "title": "Carpenter v. United States",
+      "subtitle": "The Supreme Court establishes that warrantless government acquisition of cell-site location information violates Fourth Amendment protections against unreasonable searches and seizures.",
+      "date": "2018-06-22",
+      "type": "legal",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Philosophy"
+      ],
+      "tags": [
+        "Fourth Amendment",
+        "cell-site location information",
+        "digital privacy",
+        "third-party doctrine",
+        "warrantless searches",
+        "Supreme Court"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Supreme Court of the United States",
+      "publisher_url": null,
+      "original_url": "https://www.oyez.org/cases/2017/16-402",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "In a 5-4 decision, the Supreme Court held that the government's warrantless acquisition of cell-site location information (CSLI) from telecommunications providers constitutes a Fourth Amendment search requiring probable cause and a warrant. Chief Justice Roberts' majority opinion declined to extend the third-party doctrine to CSLI, reasoning that extensive location tracking implicates greater privacy concerns than traditional precedents anticipated and that such information is obtained without affirmative user action. The decision represents a significant expansion of Fourth Amendment protections in the digital age, while dissenting justices argued for maintaining property-based frameworks and distinguishing between searches and compulsory document production.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
+      "id": "taking-behavioralism-seriously-the-problem-of-market-manipulation-1999",
+      "title": "Taking Behavioralism Seriously: The Problem of Market Manipulation",
+      "subtitle": "An examination of how cognitive biases enable market manipulation when behavioral economics insights are fully applied to legal analysis.",
+      "date": "1999-06-15",
+      "type": "legal",
+      "fields": [
+        "Economics",
+        "Public Policy",
+        "Philosophy"
+      ],
+      "tags": [
+        "behavioral economics",
+        "market manipulation",
+        "products liability",
+        "cognitive biases",
+        "rational actor model",
+        "law and economics"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "New York University Law Review",
+      "publisher_url": null,
+      "original_url": "https://nyulawreview.org/issues/volume-74-number-3/taking-behavioralism-seriously-the-problem-of-market-manipulation/",
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This article critiques the incomplete application of behavioral economics findings in legal scholarship, particularly in products liability theory. The authors argue that while legal scholars have incorporated cognitive anomalies into efficiency analysis, they have treated these biases as exogenous factors rather than recognizing their endogenous effects on market outcomes. By demonstrating how economic actors can exploit cognitive biases through control of information framing and decision contexts, the authors establish a framework for understanding market manipulation in consumer product markets and advocate for corrective legal mechanisms such as enterprise liability.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "geofence-warrants-and-the-fourth-amendment-2026",
       "title": "Geofence Warrants and the Fourth Amendment",
       "subtitle": "A legal analysis of federal appellate disagreement over geofence warrant constitutionality and the Supreme Court's pending review in Chatrie v. United States.",

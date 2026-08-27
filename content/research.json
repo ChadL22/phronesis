@@ -11,6 +11,197 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "an-investigation-of-the-private-attribute-leakage-in-wifi-sensing-2024",
+      "title": "An investigation of the private-attribute leakage in WiFi sensing",
+      "subtitle": "WiFi sensing systems unintentionally leak sensitive personal attributes such as gender, height, and weight through Channel State Information analysis.",
+      "date": "2024-12-01",
+      "type": "research",
+      "fields": [
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "WiFi sensing",
+        "privacy leakage",
+        "Channel State Information (CSI)",
+        "deep learning",
+        "private attributes",
+        "privacy protection"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Elsevier - High-Confidence Computing",
+      "publisher_url": null,
+      "original_url": "https://www.sciencedirect.com/science/article/pii/S2667295224000126?fr=RR-2&ref=pdf_download&rr=a22f44814fa84210",
+      "doi": "10.1016/j.hcc.2024.100209",
+      "venue_type": null,
+      "abstract": "This paper demonstrates that WiFi sensing systems, widely deployed for localization and activity recognition, inadvertently leak users' private attributes including gender, height, and weight. The authors investigate two public WiFi sensing datasets (Widar and Wiar) using deep learning models to infer private attributes from Channel State Information (CSI) features. Experimental results show nearly 100% accuracy for gender prediction, less than 4 cm error for height inference, and approximately 4 kg error for weight estimation. The findings highlight significant privacy concerns with existing WiFi sensing applications and call for privacy-preserving mechanisms in future deployments.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
+      "id": "societal-frameworks-can-improve-llm-alignment-2026",
+      "title": "Societal Frameworks Can Improve LLM Alignment",
+      "subtitle": "Incorporating social, economic, and contractual frameworks from society into large language model alignment methodology.",
+      "date": "2026-07-23",
+      "type": "research",
+      "fields": [
+        "Computer Science",
+        "Public Policy",
+        "Economics",
+        "Philosophy"
+      ],
+      "tags": [
+        "LLM alignment",
+        "human values",
+        "incomplete contracts",
+        "societal frameworks",
+        "AI governance",
+        "participatory design"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "axiv",
+      "publisher_url": null,
+      "original_url": "https://arxiv.org/abs/2503.00069",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This paper addresses the persistent challenge of aligning large language models with human expectations and shared values by arguing that purely technical approaches are insufficient given the complexity of human values. The authors contend that LLM alignment suffers from misspecified objectives analogous to incomplete contracts in society, and propose incorporating insights from social, economic, and contractual alignment frameworks. The paper examines how uncertainty, a fundamental feature of societal alignment mechanisms, manifests in LLM alignment and reframes the under-specified nature of alignment objectives as an opportunity rather than a limitation. The authors further advocate for participatory alignment interface designs as a necessary complement to technical improvements.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
+      "id": "ai-tokenomics-the-economics-of-tokens-computation-and-pricing-in-foundation-models-2026",
+      "title": "AI Tokenomics: The Economics of Tokens, Computation, and Pricing in Foundation Models",
+      "subtitle": "A framework connecting token-level technical costs to economic value and market design in foundation model services.",
+      "date": "2026-10-06",
+      "type": "research",
+      "fields": [
+        "Computer Science",
+        "Economics",
+        "Public Policy"
+      ],
+      "tags": [
+        "foundation models",
+        "token economics",
+        "AI pricing",
+        "computational accounting",
+        "market design",
+        "resource allocation"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "arXiv",
+      "publisher_url": null,
+      "original_url": "https://arxiv.org/abs/2606.24616v1",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This paper develops a comprehensive framework for AI tokenomics, studying how tokens are generated, consumed, priced, and allocated across AI systems. The work connects token-level technical costs to workflow-level production functions, enterprise resource allocation, and measurement methodologies while establishing that token expenditure and economic value are distinct constructs. The framework identifies key value determinants including marginal productivity, workflow position, hidden reasoning activity, risk, and downstream propagation effects, concluding with research directions in measurement, calibration, and token-based market design.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
+      "id": "problems-with-rules-1995",
+      "title": "Problems with Rules",
+      "subtitle": "An examination of the tension between rule-based and discretionary legal decision-making and the foundational principles of the rule of law.",
+      "date": "1995-07-01",
+      "type": "research",
+      "fields": [
+        "Philosophy",
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "rule of law",
+        "casuistry",
+        "legal reasoning",
+        "judicial discretion",
+        "jurisprudence",
+        "rule-based decision-making"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "California Law Review",
+      "publisher_url": null,
+      "original_url": "https://dash.harvard.edu/server/api/core/bitstreams/7312037d-4191-6bd4-e053-0100007fdf3b/content",
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This article explores the fundamental tension in law between rigid adherence to rules and discretionary judgment at the point of application. Sunstein argues for a refined understanding of the rule of law that incorporates casuistry—case-by-case reasoning grounded in particular facts—as a legitimate component of legal reasoning. The paper identifies three main criticisms of rule-based decision-making: that rules are excessively conservative, that they obscure contested political and moral claims in their interpretation, and that they are too crude to accommodate diverse human circumstances. Sunstein proposes three solutions: privately adaptable rules that allocate entitlements without specifying outcomes, recognition of legitimate rule revision, and contextualized assessment of both rule-based and discretionary approaches to promote democratic responsiveness.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
+      "id": "wi-fi-sensing-risk-and-potential-on-it-security-and-privacy",
+      "title": "Wi-Fi sensing: Risk and Potential on IT Security and Privacy",
+      "subtitle": "An examination of Wi-Fi sensing technologies and their implications for privacy and security across different environments",
+      "date": "",
+      "type": "research",
+      "fields": [
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "Wi-Fi sensing",
+        "privacy implications",
+        "cybersecurity",
+        "wireless networks",
+        "device detection",
+        "security risks"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Munich University of Applied Sciences",
+      "publisher_url": null,
+      "original_url": "https://www.researchgate.net/profile/Kilian-Osenstaetter/publication/382557257_Wi-Fi_sensing_Risk_and_Potential_on_IT_Security_and_Privacy/links/66a353f575fcd863e5dafecf/Wi-Fi-sensing-Risk-and-Potential-on-IT-Security-and-Privacy.pdf?origin=publication_detail&_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6InB1YmxpY2F0aW9uIiwicGFnZSI6InB1YmxpY2F0aW9uRG93bmxvYWQiLCJwcmV2aW91c1BhZ2UiOiJwdWJsaWNhdGlvbiJ9fQ",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This study investigates the privacy and information security implications of Wi-Fi sensing technologies, which are increasingly deployed as wireless network infrastructures expand. Wi-Fi sensing capabilities extend beyond basic network connectivity to include presence detection and input recognition, creating both opportunities for technological advancement and risks requiring mitigation strategies. The paper synthesizes literature research to provide a comprehensive overview of Wi-Fi sensing fundamentals, analytical methodologies, and their broader implications for security and privacy.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
+      "id": "a-framework-for-understanding-and-evaluating-ai-commercialization-strategies-2025",
+      "title": "A Framework for Understanding and Evaluating AI Commercialization Strategies",
+      "subtitle": "An analysis of diverse commercialization models for AI development and their implications for innovation, competition, and public policy.",
+      "date": "2025-08-27",
+      "type": "research",
+      "fields": [
+        "Computer Science",
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "AI commercialization",
+        "open-source versus proprietary",
+        "innovation policy",
+        "AI regulation",
+        "intellectual property",
+        "standards"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "International Center for Law & Economics",
+      "publisher_url": null,
+      "original_url": "https://laweconcenter.org/resources/a-framework-for-understanding-and-evaluating-ai-commercialization-strategies/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This paper examines the diverse commercialization models for AI development, exploring proprietary private, open-source private, hybrid, and public models. The authors argue that AI is not a monolithic technology but rather a diverse array of techniques and applications with vastly different market potentials and societal impacts. The analysis emphasizes that no single commercialization approach is universally superior, and optimal strategies depend on specific context, including the nature of the AI technology, target market, and broader ecosystem.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "ai-productivity-and-labor-markets-a-review-of-the-empirical-evidence-2026",
       "title": "AI, Productivity, and Labor Markets: A Review of the Empirical Evidence",
       "subtitle": "A comprehensive review of empirical evidence on generative AI's effects on productivity, labor market disruption, and implications for competition and regulatory policy.",
