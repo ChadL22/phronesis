@@ -383,10 +383,16 @@
   <script>
     // nav handled by chat.js
 
-    // Subscribe / unsubscribe are served same-origin by the main Phronesis
-    // Worker (worker.js), which handles /api/subscribe, /api/unsubscribe, and
-    // /api/status against the SUBSCRIBERS KV. Same-origin avoids CORS preflight.
-    const NEWSLETTER_API = '/api';
+    // Subscribe / unsubscribe are served by the main Phronesis Worker
+    // (worker.js), which handles /api/subscribe, /api/unsubscribe, and
+    // /api/status against the SUBSCRIBERS KV.
+    //
+    // This points at the Worker's own hostname rather than a same-origin
+    // /api path. phronesisresearch.org is currently served by GitHub Pages,
+    // which has no /api routes, so same-origin requests return 404/405 and
+    // surface to the reader as "Network error. Please try again."
+    // The Worker sends CORS headers, so the cross-origin call is fine.
+    const NEWSLETTER_API = 'https://phronesis.sclanga315.workers.dev/api';
 
     // ── helpers ──
     function showStatus(msg, type) {
