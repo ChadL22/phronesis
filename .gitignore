@@ -5,6 +5,9 @@
 .env*
 !.env.example
 
+# newsletter automation — Google OAuth client + tokens, never commit
+.google-credentials/
+
 # old config
 wrangler.jsonc
 
