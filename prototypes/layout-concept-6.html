@@ -233,7 +233,7 @@
     grid-template-areas:
       "lead lead top  top"
       "lead lead a    b"
-      "c    c    d    e";
+      "c    d    e    f";
     border-top:1px solid var(--marble);
     border-left:1px solid var(--marble);
   }
@@ -244,15 +244,15 @@
       grid-template-areas:
         "lead lead"
         "top top"
-        "c c"
         "a b"
-        "d e";
+        "c d"
+        "e f";
     }
   }
   @media (max-width:480px){
     .news-grid{
       grid-template-columns:1fr;
-      grid-template-areas:"lead" "top" "c" "a" "b" "d" "e";
+      grid-template-areas:"lead" "top" "a" "b" "c" "d" "e" "f";
     }
   }
 
@@ -282,6 +282,7 @@
   .news-card--c{grid-area:c;}
   .news-card--d{grid-area:d;}
   .news-card--e{grid-area:e;}
+  .news-card--f{grid-area:f;}
 
   .news-badge{
     align-self:flex-start;
@@ -305,7 +306,7 @@
     margin:0 0 6px;
   }
   .news-card--lead h3{font-size:29px; line-height:1.2;}
-  .news-card--top h3, .news-card--c h3{font-size:20px;}
+  .news-card--top h3{font-size:20px;}
   .news-card p{
     font-family:'Outfit', sans-serif;
     font-size:12px;
@@ -469,10 +470,10 @@
   </div>
 
   <div class="brand">
-    <div class="brand-name-row">
+    <a href="/" class="brand-name-row">
       <span class="name">Phronesis</span>
       <span class="label">RESEARCH</span>
-    </div>
+    </a>
     <button class="pron-btn" onclick="var u = new SpeechSynthesisUtterance('Phronesis'); u.rate = 0.85; speechSynthesis.cancel(); speechSynthesis.speak(u);" aria-label="Hear the pronunciation of Phronesis" title="Click to hear it pronounced">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
       frə-NEE-sis · /frəˈniːsɪs/
@@ -487,11 +488,16 @@
       <span></span><span></span><span></span>
     </button>
     <div class="menu-panel" id="menuPanel">
-      <a href="/corpus">Corpus</a>
-      <a href="/about#contributors">Contributors</a>
-      <a href="/about">About</a>
+      <a href="/research">Research Papers</a>
+      <a href="/policy">Policy Artifacts</a>
+      <a href="/legal">Legal Analyses</a>
+      <a href="/essays">Essays</a>
+      <a href="/articles">Articles</a>
+      <a href="/reports">Reports</a>
       <div class="divider"></div>
-      <a href="#newsletter">Subscribe</a>
+      <a href="/corpus">Corpus</a>
+      <a href="/about">About</a>
+      <a href="/subscribe">Subscribe</a>
     </div>
   </div>
 </header>
@@ -635,20 +641,31 @@ function goToRandomContent(e) {
 document.getElementById('randomArticleLink').addEventListener('click', goToRandomContent);
 
 // ── recently added ──
-// Pulls the 7 most recently dated published entries across all six
-// content files and drops them into the news grid, using the same
-// destinationFor() resolution as the random-content picker above so
-// the links behave identically to clicking a card on the archive pages.
+// One representative card per category, not a single ranked feed:
+//   lead → Phronesis's own published work — the most recent entry with
+//          origin:'original' (self-authored), of any content type
+//   top/a/b/c/d/e → the most recent research paper, policy artifact,
+//          legal analysis, essay, article, and report respectively,
+//          any origin, excluding whichever item was already used as lead
+//   f → a canon (subject collection) from topics.json. Canons carry no
+//        publish date, so this is the last entry in that file — treated
+//        as the most recently added, not the most recently updated.
+// Links use the same destinationFor() resolution as the random-content
+// picker so they behave identically to clicking a card on the archive
+// pages, and the canon links to canon.html?t=<id>, matching canon.html's
+// own linking convention.
 var TYPE_LABELS = {
   research: 'Research paper',
   policy:   'Policy artifact',
   legal:    'Legal analysis',
   essay:    'Essay',
   article:  'Article',
-  report:   'Report'
+  report:   'Report',
+  canon:    'Canon'
 };
 var MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-var NEWS_SLOTS = ['lead','top','a','b','c','d','e'];
+var CATEGORY_SLOTS = { research: 'top', policy: 'a', legal: 'b', essay: 'c', article: 'd', report: 'e' };
+var CATEGORY_ORDER = ['research', 'policy', 'legal', 'essay', 'article', 'report'];
 
 function fmtShortDate(dateStr) {
   var d = new Date(dateStr + 'T00:00:00');
@@ -656,10 +673,26 @@ function fmtShortDate(dateStr) {
   return MONTHS_SHORT[d.getMonth()] + ' ' + d.getDate();
 }
 
+function mostRecent(list) {
+  return list.reduce(function(best, cur) {
+    return (!best || new Date(cur.date) > new Date(best.date)) ? cur : best;
+  }, null);
+}
+
+function cardHTML(c) {
+  var attrs = c.external ? ' target="_blank" rel="noopener"' : '';
+  return '<a href="' + c.url + '" class="news-card news-card--' + c.slot + '"' + attrs + '>' +
+    '<span class="news-badge">' + c.badge + '</span>' +
+    '<h3>' + c.title + '</h3>' +
+    '<p>' + c.blurb + '</p>' +
+    '<div class="news-meta"><span>' + c.metaLeft + '</span><span class="news-link">Read →</span></div>' +
+  '</a>';
+}
+
 function loadRecentlyAdded() {
   var grid = document.getElementById('newsGrid');
 
-  Promise.all(CONTENT_SOURCES.map(function(src) {
+  var entriesPromise = Promise.all(CONTENT_SOURCES.map(function(src) {
     return fetch('/content/' + src.file)
       .then(function(res) { return res.json(); })
       .then(function(json) {
@@ -669,10 +702,12 @@ function loadRecentlyAdded() {
             var dest = destinationFor(entry, src.page);
             if (!dest) return null;
             return {
+              id: entry.id,
               title: entry.title,
               blurb: entry.abstract || entry.preview || entry.subtitle || '',
               date: entry.date,
               type: entry.type,
+              origin: entry.origin,
               url: dest.url,
               external: dest.external
             };
@@ -680,29 +715,39 @@ function loadRecentlyAdded() {
           .filter(Boolean);
       })
       .catch(function() { return []; });
-  })).then(function(lists) {
-    var all = [].concat.apply([], lists);
-    all.sort(function(a, b) { return new Date(b.date) - new Date(a.date); });
-    var top7 = all.slice(0, 7);
+  })).then(function(lists) { return [].concat.apply([], lists); });
 
-    if (!top7.length) {
-      grid.innerHTML = '';
-      return;
+  var topicsPromise = fetch('/content/topics.json')
+    .then(function(res) { return res.json(); })
+    .then(function(json) { return json.topics || []; })
+    .catch(function() { return []; });
+
+  Promise.all([entriesPromise, topicsPromise]).then(function(results) {
+    var all = results[0];
+    var topics = results[1];
+
+    var original = mostRecent(all.filter(function(e) { return e.origin === 'original'; }));
+    var rest = original ? all.filter(function(e) { return e.id !== original.id; }) : all;
+
+    var cards = [];
+    if (original) {
+      cards.push({ slot: 'lead', badge: 'Phronesis Original', title: original.title, blurb: original.blurb,
+        metaLeft: fmtShortDate(original.date), url: original.url, external: original.external });
+    }
+    CATEGORY_ORDER.forEach(function(type) {
+      var e = mostRecent(rest.filter(function(x) { return x.type === type; }));
+      if (!e) return;
+      cards.push({ slot: CATEGORY_SLOTS[type], badge: TYPE_LABELS[type], title: e.title, blurb: e.blurb,
+        metaLeft: fmtShortDate(e.date), url: e.url, external: e.external });
+    });
+    if (topics.length) {
+      var canon = topics[topics.length - 1];
+      cards.push({ slot: 'f', badge: 'Canon', title: canon.name, blurb: canon.description || '',
+        metaLeft: 'Curated collection', url: 'canon.html?t=' + canon.id, external: false });
     }
 
-    grid.innerHTML = top7.map(function(item, i) {
-      var slot = NEWS_SLOTS[i];
-      var typeLabel = TYPE_LABELS[item.type] || item.type;
-      var badge = i === 0 ? 'Most recent' : typeLabel;
-      var metaLeft = (i === 0 ? typeLabel + ' · ' : '') + fmtShortDate(item.date);
-      var attrs = item.external ? ' target="_blank" rel="noopener"' : '';
-      return '<a href="' + item.url + '" class="news-card news-card--' + slot + '"' + attrs + '>' +
-        '<span class="news-badge">' + badge + '</span>' +
-        '<h3>' + item.title + '</h3>' +
-        '<p>' + item.blurb + '</p>' +
-        '<div class="news-meta"><span>' + metaLeft + '</span><span class="news-link">Read →</span></div>' +
-      '</a>';
-    }).join('');
+    if (!cards.length) { grid.innerHTML = ''; return; }
+    grid.innerHTML = cards.map(cardHTML).join('');
   }).catch(function(err) {
     console.error('Could not load recently added content:', err);
     grid.innerHTML = '<p class="news-loading" style="font-family:\'Outfit\', sans-serif; font-size:13px; opacity:.5; padding:20px 4px;">Could not load recent work.</p>';
@@ -710,6 +755,40 @@ function loadRecentlyAdded() {
 }
 
 loadRecentlyAdded();
+</script>
+
+<!-- Newsletter Subscription Script -->
+<script>
+(function() {
+  const WORKER_URL = 'https://phronesis-newsletter.sclanga315.workers.dev/subscribe';
+  document.querySelectorAll('.newsletter-form').forEach(form => {
+    const input = form.querySelector('input[type="email"]');
+    const button = form.querySelector('button');
+    if (!input || !button) return;
+    button.addEventListener('click', () => handleSubscribe(form, input, button));
+    input.addEventListener('keypress', (e) => { if (e.key === 'Enter') { e.preventDefault(); handleSubscribe(form, input, button); }});
+  });
+  async function handleSubscribe(form, input, button) {
+    const email = input.value.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showMessage(form, 'Please enter a valid email address', 'error'); return; }
+    const originalText = button.textContent; button.disabled = true; button.textContent = 'Subscribing...';
+    try {
+      const response = await fetch(WORKER_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email }) });
+      const data = await response.json();
+      if (response.ok && data.success) { showMessage(form, data.message || 'Successfully subscribed!', 'success'); input.value = ''; }
+      else { showMessage(form, data.error || 'Subscription failed', 'error'); }
+    } catch (error) { console.error('Newsletter error:', error); showMessage(form, 'Network error. Please try again.', 'error'); }
+    finally { button.disabled = false; button.textContent = originalText; }
+  }
+  function showMessage(form, message, type) {
+    const existing = form.querySelector('.newsletter-message'); if (existing) existing.remove();
+    const msg = document.createElement('div'); msg.className = 'newsletter-message newsletter-message--' + type; msg.textContent = message;
+    Object.assign(msg.style, { marginTop: '0.75rem', padding: '0.65rem 1rem', borderRadius: '4px', fontSize: '0.8rem', fontFamily: "'Outfit', sans-serif",
+      backgroundColor: type === 'success' ? '#d4edda' : '#f8d7da', color: type === 'success' ? '#155724' : '#721c24',
+      border: type === 'success' ? '1px solid #c3e6cb' : '1px solid #f5c6cb' });
+    form.appendChild(msg); setTimeout(() => msg.remove(), 5000);
+  }
+})();
 </script>
 
 </body>
