@@ -349,6 +349,13 @@
         "c d"
         "e f";
     }
+    .news-card p{
+      display:block;
+      max-height:4.4em;
+      overflow-y:auto;
+      -webkit-overflow-scrolling:touch;
+    }
+    .news-card--lead p{ max-height:5.8em; }
   }
   @media (max-width:480px){
     .news-grid{
@@ -480,6 +487,7 @@
     -webkit-line-clamp:3;
     -webkit-box-orient:vertical;
     overflow:hidden;
+    text-overflow:ellipsis;
   }
   .news-card--lead p{font-size:14px; -webkit-line-clamp:4;}
   .news-meta{
