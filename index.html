@@ -361,7 +361,6 @@
     display:flex;
     flex-direction:column;
     text-align:left;
-    padding:22px 22px;
     border-right:1px solid var(--marble);
     border-bottom:1px solid var(--marble);
     overflow:hidden;
@@ -375,6 +374,43 @@
     z-index:2;
   }
   .news-card:hover h3{color:var(--terracotta);}
+
+  .carousel-track{
+    display:flex;
+    flex:1;
+    min-height:0;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .carousel-track::-webkit-scrollbar{ display:none; }
+  .carousel-slide{
+    flex:0 0 100%;
+    scroll-snap-align:start;
+    display:flex;
+    flex-direction:column;
+    padding:22px 22px 4px;
+    text-decoration:none;
+    color:inherit;
+  }
+  .carousel-dots{
+    display:flex;
+    justify-content:center;
+    gap:6px;
+    padding:0 0 12px;
+  }
+  .carousel-dot{
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:var(--marble);
+    border:none;
+    padding:0;
+    cursor:pointer;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .carousel-dot.active{ background:var(--forest); transform:scale(1.35); }
 
   .news-card--lead{grid-area:lead;}
   .news-card--top{grid-area:top;}
@@ -1017,20 +1053,54 @@ function fmtShortDate(dateStr) {
   return MONTHS_SHORT[d.getMonth()] + ' ' + d.getDate();
 }
 
-function mostRecent(list) {
-  return list.reduce(function(best, cur) {
-    return (!best || new Date(cur.date) > new Date(best.date)) ? cur : best;
-  }, null);
+function mostRecentN(list, n) {
+  return list.slice().sort(function(a, b) { return new Date(b.date) - new Date(a.date); }).slice(0, n);
 }
 
 function cardHTML(c) {
-  var attrs = c.external ? ' target="_blank" rel="noopener"' : '';
-  return '<a href="' + c.url + '" class="news-card news-card--' + c.slot + '"' + attrs + '>' +
-    '<span class="news-badge">' + c.badge + '</span>' +
-    '<h3>' + c.title + '</h3>' +
-    '<p>' + c.blurb + '</p>' +
-    '<div class="news-meta"><span>' + c.metaLeft + '</span><span class="news-link">Read →</span></div>' +
-  '</a>';
+  var slidesHTML = c.items.map(function(it) {
+    var attrs = it.external ? ' target="_blank" rel="noopener"' : '';
+    return '<a href="' + it.url + '" class="carousel-slide"' + attrs + '>' +
+      '<span class="news-badge">' + c.badge + '</span>' +
+      '<h3>' + it.title + '</h3>' +
+      '<p>' + it.blurb + '</p>' +
+      '<div class="news-meta"><span>' + it.metaLeft + '</span><span class="news-link">Read →</span></div>' +
+    '</a>';
+  }).join('');
+  var dotsHTML = c.items.length > 1
+    ? '<div class="carousel-dots">' + c.items.map(function(_, i) {
+        return '<button class="carousel-dot' + (i === 0 ? ' active' : '') + '" data-index="' + i + '" aria-label="Go to item ' + (i + 1) + '"></button>';
+      }).join('') + '</div>'
+    : '';
+  return '<div class="news-card news-card--' + c.slot + '" data-carousel>' +
+    '<div class="carousel-track">' + slidesHTML + '</div>' +
+    dotsHTML +
+  '</div>';
+}
+
+function initCarousels(container) {
+  Array.prototype.forEach.call(container.querySelectorAll('[data-carousel]'), function(card) {
+    var track = card.querySelector('.carousel-track');
+    var dots = card.querySelectorAll('.carousel-dot');
+    if (!track || !dots.length) return;
+    function setActive(i) {
+      Array.prototype.forEach.call(dots, function(d, idx) { d.classList.toggle('active', idx === i); });
+    }
+    Array.prototype.forEach.call(dots, function(dot, i) {
+      dot.addEventListener('click', function(e) {
+        e.preventDefault();
+        track.scrollTo({ left: i * track.clientWidth, behavior: 'smooth' });
+      });
+    });
+    var scrollTimer;
+    track.addEventListener('scroll', function() {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(function() {
+        var i = Math.round(track.scrollLeft / track.clientWidth);
+        setActive(i);
+      }, 80);
+    });
+  });
 }
 
 function loadRecentlyAdded() {
@@ -1070,28 +1140,36 @@ function loadRecentlyAdded() {
     var all = results[0];
     var topics = results[1];
 
-    var original = mostRecent(all.filter(function(e) { return e.origin === 'original'; }));
-    var rest = original ? all.filter(function(e) { return e.id !== original.id; }) : all;
+    var originalItems = mostRecentN(all.filter(function(e) { return e.origin === 'original'; }), 4);
+    var originalIds = {};
+    originalItems.forEach(function(e) { originalIds[e.id] = true; });
+    var rest = all.filter(function(e) { return !originalIds[e.id]; });
+
+    function toSlideItems(list) {
+      return list.map(function(e) {
+        return { title: e.title, blurb: e.blurb, metaLeft: fmtShortDate(e.date), url: e.url, external: e.external };
+      });
+    }
 
     var cards = [];
-    if (original) {
-      cards.push({ slot: 'lead', badge: 'Phronesis Original', title: original.title, blurb: original.blurb,
-        metaLeft: fmtShortDate(original.date), url: original.url, external: original.external });
+    if (originalItems.length) {
+      cards.push({ slot: 'lead', badge: 'Phronesis Original', items: toSlideItems(originalItems) });
     }
     CATEGORY_ORDER.forEach(function(type) {
-      var e = mostRecent(rest.filter(function(x) { return x.type === type; }));
-      if (!e) return;
-      cards.push({ slot: CATEGORY_SLOTS[type], badge: TYPE_LABELS[type], title: e.title, blurb: e.blurb,
-        metaLeft: fmtShortDate(e.date), url: e.url, external: e.external });
+      var list = mostRecentN(rest.filter(function(x) { return x.type === type; }), 4);
+      if (!list.length) return;
+      cards.push({ slot: CATEGORY_SLOTS[type], badge: TYPE_LABELS[type], items: toSlideItems(list) });
     });
     if (topics.length) {
-      var canon = topics[topics.length - 1];
-      cards.push({ slot: 'f', badge: 'Canon', title: canon.name, blurb: canon.description || '',
-        metaLeft: 'Curated collection', url: 'canon.html?t=' + canon.id, external: false });
+      var canonItems = topics.slice(-4).reverse().map(function(t) {
+        return { title: t.name, blurb: t.description || '', metaLeft: 'Curated collection', url: 'canon.html?t=' + t.id, external: false };
+      });
+      cards.push({ slot: 'f', badge: 'Canon', items: canonItems });
     }
 
     if (!cards.length) { grid.innerHTML = ''; return; }
     grid.innerHTML = cards.map(cardHTML).join('');
+    initCarousels(grid);
   }).catch(function(err) {
     console.error('Could not load recently added content:', err);
     grid.innerHTML = '<p class="news-loading" style="font-family:\'Outfit\', sans-serif; font-size:13px; opacity:.5; padding:20px 4px;">Could not load recent work.</p>';
