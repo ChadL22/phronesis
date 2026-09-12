@@ -207,9 +207,23 @@
   }
   .search-results{
     display:none;
-    max-height:360px;
+    max-height:420px;
     overflow-y:auto;
     border-top:1px solid var(--marble);
+  }
+  .search-group-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:7px 20px;
+    background:var(--parchment);
+    font-family:'Outfit', sans-serif;
+    font-size:10.5px;
+    font-weight:500;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-3);
+    border-bottom:1px solid var(--marble);
   }
   .search-result-item{
     padding:12px 20px;
@@ -224,6 +238,15 @@
     font-family:'Cormorant Garamond', serif;
     font-size:17px;
     color:var(--ink);
+    margin-bottom:2px;
+  }
+  .search-result-snippet{
+    display:block;
+    font-family:'Outfit', sans-serif;
+    font-size:12px;
+    line-height:1.45;
+    color:var(--ink);
+    opacity:.6;
     margin-bottom:3px;
   }
   .search-result-meta{
@@ -242,6 +265,14 @@
     font-size:12px;
     color:var(--ink);
     opacity:.5;
+  }
+  .search-more-note{
+    padding:7px 20px;
+    font-family:'Outfit', sans-serif;
+    font-style:italic;
+    font-size:11px;
+    color:var(--ink-3);
+    border-bottom:1px solid var(--marble);
   }
   .search-no-results{
     padding:22px 20px;
@@ -680,31 +711,112 @@ document.addEventListener('keydown', function(e){
 });
 
 // ── search ──
-// Live suggestions as the reader types, matched against title, publisher
-// (the closest field to "author/organization" — via entries carry a
-// publisher, not a separate author field), and tags. Reuses destinationFor()
-// so results link exactly the way clicking a card on the archive pages does.
+// Live, grouped-by-type suggestions as the reader types, modeled on
+// SCOTUSblog's search overlay. Matches against title, publisher (the
+// closest field to "author/organization" for via content), tags, fields,
+// the type label itself (so typing "essay" surfaces essays), and the
+// abstract/preview/subtitle text as a proxy for the piece's content —
+// with a short snippet shown when the match is in that content rather
+// than the title. Matching is fuzzy (small Levenshtein tolerance per
+// word) so minor misspellings still surface results, the way "Chatr"
+// still finds "Chatrie" on SCOTUSblog. Reuses destinationFor() so
+// results link exactly the way clicking a card on the archive pages does.
+var CATEGORY_LABELS_PLURAL = {
+  research: 'Research Papers', policy: 'Policy Artifacts', legal: 'Legal Analyses',
+  essay: 'Essays', article: 'Articles', report: 'Reports', canon: 'Canons'
+};
+var CATEGORY_RENDER_ORDER = ['research', 'policy', 'legal', 'essay', 'article', 'report', 'canon'];
+
+function levenshtein(a, b) {
+  if (a === b) return 0;
+  var al = a.length, bl = b.length;
+  if (!al) return bl;
+  if (!bl) return al;
+  var prev = [];
+  for (var j = 0; j <= bl; j++) prev[j] = j;
+  for (var i = 1; i <= al; i++) {
+    var cur = [i];
+    for (var j2 = 1; j2 <= bl; j2++) {
+      var cost = a.charAt(i - 1) === b.charAt(j2 - 1) ? 0 : 1;
+      cur[j2] = Math.min(prev[j2] + 1, cur[j2 - 1] + 1, prev[j2 - 1] + cost);
+    }
+    prev = cur;
+  }
+  return prev[bl];
+}
+
+function fuzzyThreshold(len) {
+  if (len <= 7) return 1;
+  return 2;
+}
+
+function wordFuzzyMatch(word, targetText) {
+  if (targetText.indexOf(word) !== -1) return true;
+  var thresh = fuzzyThreshold(word.length);
+  var tokens = targetText.split(/[^a-z0-9]+/);
+  for (var i = 0; i < tokens.length; i++) {
+    var t = tokens[i];
+    if (!t || Math.abs(t.length - word.length) > thresh) continue;
+    if (levenshtein(word, t) <= thresh) return true;
+  }
+  return false;
+}
+
+function makeSnippet(content, words) {
+  var lower = content.toLowerCase();
+  var idx = -1;
+  for (var i = 0; i < words.length; i++) {
+    var p = lower.indexOf(words[i]);
+    if (p !== -1) { idx = p; break; }
+  }
+  if (idx === -1) idx = 0;
+  var start = Math.max(0, idx - 40);
+  var end = Math.min(content.length, idx + 100);
+  var snippet = content.slice(start, end);
+  if (start > 0) snippet = '…' + snippet;
+  if (end < content.length) snippet = snippet + '…';
+  return snippet;
+}
+
 var searchIndexPromise = null;
 function getSearchIndex() {
   if (!searchIndexPromise) {
-    searchIndexPromise = Promise.all(CONTENT_SOURCES.map(function(src) {
+    var entriesPromise = Promise.all(CONTENT_SOURCES.map(function(src) {
       return fetch('/content/' + src.file)
         .then(function(res) { return res.json(); })
         .then(function(json) {
           return (json.entries || [])
             .filter(function(entry) { return !entry.placeholder; })
             .map(function(entry) {
+              var dest = destinationFor(entry, src.page);
+              var typeLabel = TYPE_LABELS[entry.type] || entry.type || '';
+              var content = entry.abstract || entry.preview || entry.subtitle || '';
+              var tags = (entry.tags || []).join(' ');
+              var fields = (entry.fields || []).join(' ');
+              var searchable = [entry.title, entry.publisher, tags, fields, typeLabel, content].join(' ').toLowerCase();
               return {
-                title: entry.title || '',
-                publisher: entry.publisher || '',
-                tags: (entry.tags || []).join(' '),
-                type: entry.type,
-                dest: destinationFor(entry, src.page)
+                title: entry.title || '', publisher: entry.publisher || '', type: entry.type,
+                content: content, searchable: searchable, dest: dest
               };
             });
         })
         .catch(function() { return []; });
     })).then(function(lists) { return [].concat.apply([], lists); });
+
+    var topicsPromise = fetch('/content/topics.json')
+      .then(function(res) { return res.json(); })
+      .then(function(json) {
+        return (json.topics || []).map(function(t) {
+          var searchable = [t.name, t.description, 'canon'].join(' ').toLowerCase();
+          return {
+            title: t.name, publisher: '', type: 'canon', content: t.description || '',
+            searchable: searchable, dest: { url: 'canon.html?t=' + t.id, external: false }
+          };
+        });
+      })
+      .catch(function() { return []; });
+
+    searchIndexPromise = Promise.all([entriesPromise, topicsPromise]).then(function(r) { return r[0].concat(r[1]); });
   }
   return searchIndexPromise;
 }
@@ -718,6 +830,16 @@ function closeSearch() {
   document.getElementById('searchOverlay').classList.remove('open');
   document.getElementById('searchInput').value = '';
   renderSearchResults([], '');
+}
+
+function resultRowHTML(item) {
+  var attrs = item.dest && item.dest.external ? '' : '';
+  var snippet = item.snippet ? '<span class="search-result-snippet">' + item.snippet + '</span>' : '';
+  return '<div class="search-result-item" data-url="' + (item.dest ? item.dest.url : '') + '" data-external="' + (item.dest && item.dest.external ? '1' : '0') + '">' +
+    '<span class="search-result-title">' + item.title + '</span>' +
+    snippet +
+    (item.publisher ? '<span class="search-result-meta"><span class="srm-pub">' + item.publisher + '</span></span>' : '') +
+  '</div>';
 }
 
 function renderSearchResults(items, query) {
@@ -735,14 +857,23 @@ function renderSearchResults(items, query) {
     container.innerHTML = '<div class="search-no-results">No matches for “' + query + '”</div>';
     return;
   }
-  container.innerHTML = items.slice(0, 8).map(function(item) {
-    var badge = TYPE_LABELS[item.type] || item.type;
-    return '<div class="search-result-item" data-url="' + (item.dest ? item.dest.url : '') + '" data-external="' + (item.dest && item.dest.external ? '1' : '0') + '">' +
-      '<span class="search-result-title">' + item.title + '</span>' +
-      '<span class="search-result-meta"><span class="srm-type">' + badge + '</span>' +
-      (item.publisher ? '<span class="srm-pub">' + item.publisher + '</span>' : '') + '</span>' +
-    '</div>';
-  }).join('');
+
+  var groups = {};
+  items.forEach(function(item) { (groups[item.type] = groups[item.type] || []).push(item); });
+
+  var html = '';
+  CATEGORY_RENDER_ORDER.forEach(function(type) {
+    var list = groups[type];
+    if (!list || !list.length) return;
+    list.sort(function(a, b) { return (a.snippet ? 1 : 0) - (b.snippet ? 1 : 0); });
+    html += '<div class="search-group-header"><span>' + (CATEGORY_LABELS_PLURAL[type] || type) + '</span><span>' + list.length + '</span></div>';
+    list.slice(0, 4).forEach(function(item) { html += resultRowHTML(item); });
+    if (list.length > 4) {
+      html += '<div class="search-more-note">+' + (list.length - 4) + ' more ' + (CATEGORY_LABELS_PLURAL[type] || type).toLowerCase() + '</div>';
+    }
+  });
+  container.innerHTML = html;
+
   Array.prototype.forEach.call(container.querySelectorAll('.search-result-item'), function(row) {
     row.addEventListener('click', function() {
       var url = row.getAttribute('data-url');
@@ -760,13 +891,16 @@ document.getElementById('searchInput').addEventListener('input', function(e) {
   if (!query) { renderSearchResults([], ''); return; }
   searchDebounceTimer = setTimeout(function() {
     getSearchIndex().then(function(all) {
-      var q = query.toLowerCase();
-      var matches = all.filter(function(item) {
-        return item.dest && (
-          item.title.toLowerCase().indexOf(q) !== -1 ||
-          item.publisher.toLowerCase().indexOf(q) !== -1 ||
-          item.tags.toLowerCase().indexOf(q) !== -1
-        );
+      var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+      var matches = [];
+      all.forEach(function(item) {
+        if (!item.dest) return;
+        if (!words.every(function(w) { return wordFuzzyMatch(w, item.searchable); })) return;
+        var titleLower = item.title.toLowerCase();
+        var titleHit = words.some(function(w) { return wordFuzzyMatch(w, titleLower); });
+        var out = { title: item.title, publisher: item.publisher, type: item.type, dest: item.dest, snippet: null };
+        if (!titleHit && item.content) out.snippet = makeSnippet(item.content, words);
+        matches.push(out);
       });
       renderSearchResults(matches, query);
     });
