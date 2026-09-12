@@ -394,11 +394,17 @@
     text-decoration:none;
     color:inherit;
   }
+  .carousel-nav{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:0 0 12px;
+  }
   .carousel-dots{
     display:flex;
     justify-content:center;
     gap:6px;
-    padding:0 0 12px;
   }
   .carousel-dot{
     width:6px;
@@ -411,6 +417,21 @@
     transition:background .2s ease, transform .2s ease;
   }
   .carousel-dot.active{ background:var(--forest); transform:scale(1.35); }
+  .carousel-arrow{
+    background:none;
+    border:none;
+    cursor:pointer;
+    font-family:'Outfit', sans-serif;
+    font-size:15px;
+    line-height:1;
+    color:var(--ink);
+    opacity:.4;
+    padding:2px 3px;
+    transition:opacity .2s ease, color .2s ease;
+  }
+  .carousel-arrow:hover{ opacity:1; color:var(--terracotta); }
+  .carousel-arrow:disabled{ opacity:.15; cursor:default; }
+  .carousel-arrow:disabled:hover{ color:var(--ink); }
 
   .news-card--lead{grid-area:lead;}
   .news-card--top{grid-area:top;}
@@ -1067,14 +1088,18 @@ function cardHTML(c) {
       '<div class="news-meta"><span>' + it.metaLeft + '</span><span class="news-link">Read →</span></div>' +
     '</a>';
   }).join('');
-  var dotsHTML = c.items.length > 1
-    ? '<div class="carousel-dots">' + c.items.map(function(_, i) {
-        return '<button class="carousel-dot' + (i === 0 ? ' active' : '') + '" data-index="' + i + '" aria-label="Go to item ' + (i + 1) + '"></button>';
-      }).join('') + '</div>'
+  var navHTML = c.items.length > 1
+    ? '<div class="carousel-nav">' +
+        '<button type="button" class="carousel-arrow carousel-arrow--prev" aria-label="Previous">‹</button>' +
+        '<div class="carousel-dots">' + c.items.map(function(_, i) {
+          return '<button type="button" class="carousel-dot' + (i === 0 ? ' active' : '') + '" data-index="' + i + '" aria-label="Go to item ' + (i + 1) + '"></button>';
+        }).join('') + '</div>' +
+        '<button type="button" class="carousel-arrow carousel-arrow--next" aria-label="Next">›</button>' +
+      '</div>'
     : '';
   return '<div class="news-card news-card--' + c.slot + '" data-carousel>' +
     '<div class="carousel-track">' + slidesHTML + '</div>' +
-    dotsHTML +
+    navHTML +
   '</div>';
 }
 
@@ -1082,23 +1107,36 @@ function initCarousels(container) {
   Array.prototype.forEach.call(container.querySelectorAll('[data-carousel]'), function(card) {
     var track = card.querySelector('.carousel-track');
     var dots = card.querySelectorAll('.carousel-dot');
-    if (!track || !dots.length) return;
+    var prevBtn = card.querySelector('.carousel-arrow--prev');
+    var nextBtn = card.querySelector('.carousel-arrow--next');
+    var slideCount = card.querySelectorAll('.carousel-slide').length;
+    if (!track) return;
+
+    function currentIndex() {
+      return Math.round(track.scrollLeft / track.clientWidth);
+    }
+    function goTo(i) {
+      i = Math.max(0, Math.min(slideCount - 1, i));
+      track.scrollTo({ left: i * track.clientWidth, behavior: 'smooth' });
+    }
     function setActive(i) {
       Array.prototype.forEach.call(dots, function(d, idx) { d.classList.toggle('active', idx === i); });
+      if (prevBtn) prevBtn.disabled = i <= 0;
+      if (nextBtn) nextBtn.disabled = i >= slideCount - 1;
     }
+
     Array.prototype.forEach.call(dots, function(dot, i) {
-      dot.addEventListener('click', function(e) {
-        e.preventDefault();
-        track.scrollTo({ left: i * track.clientWidth, behavior: 'smooth' });
-      });
+      dot.addEventListener('click', function(e) { e.preventDefault(); goTo(i); });
     });
+    if (prevBtn) prevBtn.addEventListener('click', function(e) { e.preventDefault(); goTo(currentIndex() - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function(e) { e.preventDefault(); goTo(currentIndex() + 1); });
+
+    setActive(0);
+
     var scrollTimer;
     track.addEventListener('scroll', function() {
       clearTimeout(scrollTimer);
-      scrollTimer = setTimeout(function() {
-        var i = Math.round(track.scrollLeft / track.clientWidth);
-        setActive(i);
-      }, 80);
+      scrollTimer = setTimeout(function() { setActive(currentIndex()); }, 80);
     });
   });
 }
