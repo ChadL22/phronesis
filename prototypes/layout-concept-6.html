@@ -283,7 +283,7 @@
 
   /* ---------- body ---------- */
   .intro-block{max-width:940px; margin: 20px auto 0; padding:0 24px; text-align:center;}
-  .intro-block .blurb{max-width:680px; margin:0 auto; font-size:22px; line-height:1.48; color:rgba(26,25,22,0.85);}
+  .intro-block .blurb{max-width:680px; margin:0 auto; font-size:22px; line-height:1.48; color:rgba(26,25,22,0.85); text-align:center;}
   .intro-block .blurb strong{color:var(--forest-deep); font-weight:600; font-style:italic;}
   .resources-label{
     font-family:'Cormorant Garamond', serif;
@@ -617,10 +617,10 @@
     <button class="icon-btn" onclick="openSearch()" aria-label="Search">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
     </button>
-    <button class="icon-btn hamburger-btn" onclick="document.getElementById('menuPanel').classList.toggle('open')" aria-label="Menu">
+    <button class="icon-btn hamburger-btn" onclick="event.stopPropagation(); document.getElementById('menuPanel').classList.toggle('open');" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
-    <div class="menu-panel" id="menuPanel">
+    <div class="menu-panel" id="menuPanel" onclick="event.stopPropagation();">
       <a href="/research">Research Papers</a>
       <a href="/policy">Policy Artifacts</a>
       <a href="/legal">Legal Analyses</a>
@@ -706,7 +706,11 @@
 document.addEventListener('keydown', function(e){
   if(e.key === 'Escape'){
     closeSearch();
+    document.getElementById('menuPanel').classList.remove('open');
   }
+});
+document.addEventListener('click', function(){
+  document.getElementById('menuPanel').classList.remove('open');
 });
 
 // ── search ──
