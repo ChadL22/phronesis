@@ -852,7 +852,7 @@ function renderSearchResults(items, query) {
     return;
   }
   hint.style.display = 'none';
-  container.style.display = '';
+  container.style.display = 'block';
   if (!items.length) {
     container.innerHTML = '<div class="search-no-results">No matches for “' + query + '”</div>';
     return;
@@ -885,10 +885,11 @@ function renderSearchResults(items, query) {
 }
 
 var searchDebounceTimer;
+var MIN_QUERY_LENGTH = 2;
 document.getElementById('searchInput').addEventListener('input', function(e) {
   var query = e.target.value.trim();
   clearTimeout(searchDebounceTimer);
-  if (!query) { renderSearchResults([], ''); return; }
+  if (query.length < MIN_QUERY_LENGTH) { renderSearchResults([], ''); return; }
   searchDebounceTimer = setTimeout(function() {
     getSearchIndex().then(function(all) {
       var words = query.toLowerCase().split(/\s+/).filter(Boolean);
