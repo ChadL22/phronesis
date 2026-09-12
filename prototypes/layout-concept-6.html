@@ -422,18 +422,15 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    height:14px;
     background:none;
     border:none;
     cursor:pointer;
-    font-family:'Outfit', sans-serif;
-    font-size:15px;
-    line-height:1;
+    padding:2px;
     color:var(--ink);
     opacity:.4;
-    padding:2px 3px;
     transition:opacity .2s ease, color .2s ease;
   }
+  .carousel-arrow svg{ display:block; }
   .carousel-arrow:hover{ opacity:1; color:var(--terracotta); }
   .carousel-arrow:disabled{ opacity:.15; cursor:default; }
   .carousel-arrow:disabled:hover{ color:var(--ink); }
@@ -1095,11 +1092,11 @@ function cardHTML(c) {
   }).join('');
   var navHTML = c.items.length > 1
     ? '<div class="carousel-nav">' +
-        '<button type="button" class="carousel-arrow carousel-arrow--prev" aria-label="Previous">‹</button>' +
+        '<button type="button" class="carousel-arrow carousel-arrow--prev" aria-label="Previous"><svg width="7" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 6 9 12 15 18"/></svg></button>' +
         '<div class="carousel-dots">' + c.items.map(function(_, i) {
           return '<button type="button" class="carousel-dot' + (i === 0 ? ' active' : '') + '" data-index="' + i + '" aria-label="Go to item ' + (i + 1) + '"></button>';
         }).join('') + '</div>' +
-        '<button type="button" class="carousel-arrow carousel-arrow--next" aria-label="Next">›</button>' +
+        '<button type="button" class="carousel-arrow carousel-arrow--next" aria-label="Next"><svg width="7" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></button>' +
       '</div>'
     : '';
   return '<div class="news-card news-card--' + c.slot + '" data-carousel>' +
