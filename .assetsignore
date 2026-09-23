@@ -18,3 +18,6 @@ worker.js
 *.mov
 *.heic
 *.png
+!favicon-16.png
+!favicon-32.png
+!apple-touch-icon.png
