@@ -16,6 +16,7 @@
     "head   head    head"
     "rail   search  ."
     "rail   tools   tools"
+    "rail   adv     adv"
     "rail   results panel";
   align-items: start;
 }
@@ -185,6 +186,74 @@
 .arc-view-toggle button:hover { color: var(--ink); }
 .arc-view-toggle button.active { background: var(--accent); color: var(--parchment); }
 .arc-view-toggle svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 1.7; }
+
+/* ── advanced search: the filter dropdowns, hidden until asked for ── */
+.arc-adv-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: none;
+  border: none;
+  padding: 0.38rem 0.2rem;
+  font-family: var(--sans);
+  font-size: 0.66rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.arc-adv-toggle:hover { color: var(--terracotta); }
+.arc-adv-toggle.open .arc-dd-chevron { transform: rotate(180deg); }
+.arc-adv-toggle.is-set::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--terracotta);
+}
+.arc-advanced {
+  grid-area: adv;
+  margin: -0.9rem 0 1.6rem;
+  padding: 0.8rem 0.9rem;
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+}
+.arc-advanced[hidden] { display: none; }
+.arc-advanced .arc-dd-btn { background: var(--paper); }
+.arc-advanced .arc-dd-menu { right: auto; left: 0; }
+
+/* ── numbered pages, Google-style (no logo) ── */
+.arc-pager {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-top: 1.2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--sans);
+  font-size: 0.86rem;
+}
+.arc-pg {
+  min-width: 2rem;
+  padding: 0.3rem 0.45rem;
+  background: none;
+  border: none;
+  border-radius: 2px;
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--accent);
+  cursor: pointer;
+  text-align: center;
+}
+button.arc-pg:hover { color: var(--terracotta); text-decoration: underline; }
+.arc-pg-cur { color: var(--ink); font-weight: 500; }
+.arc-pg-step { padding: 0.3rem 0.6rem; }
+.arc-pg-step:first-child { margin-right: 0.4rem; }
+.arc-pg-step:last-child { margin-left: 0.4rem; }
+.arc-pg-off { color: var(--ink-3); opacity: 0.5; }
 
 /* ── left rail: other content types ── */
 .arc-rail { grid-area: rail; position: sticky; top: 1.5rem; }
@@ -398,6 +467,58 @@ a.arc-mini-title::after { content: ''; position: absolute; inset: 0; }  /* whole
   text-overflow: ellipsis;
 }
 
+/* ── tech & AI bills: auto-scrolling list, pauses on hover or focus ── */
+.arc-bills { margin-top: 1.6rem; }
+.arc-bills-window {
+  height: 22rem;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  background: #fff;
+  position: relative;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 1.2rem, #000 calc(100% - 1.2rem), transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 1.2rem, #000 calc(100% - 1.2rem), transparent 100%);
+}
+.arc-bills-track {
+  list-style: none;
+  animation: arc-bills-scroll 180s linear infinite;
+}
+.arc-bills-window:hover .arc-bills-track,
+.arc-bills-window:focus-within .arc-bills-track { animation-play-state: paused; }
+@keyframes arc-bills-scroll {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
+}
+.arc-bill {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px dashed var(--rule);
+}
+.arc-bill:hover .arc-bill-title { color: var(--terracotta); }
+.arc-bill-badge {
+  flex-shrink: 0;
+  width: 2.1rem;
+  padding: 0.12rem 0;
+  text-align: center;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--parchment);
+  background: var(--accent);
+  border-radius: 2px;
+}
+.arc-bill-text { display: flex; flex-direction: column; min-width: 0; }
+.arc-bill-title { font-family: var(--serif); font-size: 0.95rem; line-height: 1.25; color: var(--ink); transition: color 0.18s; }
+.arc-bill-status { margin-top: 0.15rem; font-size: 0.66rem; color: var(--ink-3); }
+.arc-bills-src { margin-top: 0.45rem; font-size: 0.64rem; color: var(--ink-3); }
+.arc-bills-src a { color: var(--accent-l); text-decoration: underline; text-underline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  .arc-bills-window { overflow-y: auto; }
+  .arc-bills-track { animation: none; }
+  .arc-bills-track li[aria-hidden="true"] { display: none; }
+}
+
 /* ── essay reader ── */
 .arc-reader {
   display: none;
@@ -477,7 +598,7 @@ a.arc-mini-title::after { content: ''; position: absolute; inset: 0; }  /* whole
 @media (max-width: 900px) {
   .arc {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "head" "search" "rail" "tools" "results" "panel";
+    grid-template-areas: "head" "search" "rail" "tools" "adv" "results" "panel";
     padding-top: 1.6rem;
   }
   .arc-head { margin-bottom: 1.1rem; }

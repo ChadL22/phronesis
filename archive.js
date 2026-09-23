@@ -6,7 +6,10 @@
 //   left   → the other content types, current one highlighted
 //   center → a search bar scoped to this category, a tools row with
 //            filter dropdowns + card/list toggle, then the results
-//   right  → the newest item spotlit, then up to ten more as cards
+//   right  → the newest item spotlit, then up to ten more as cards,
+//            then an auto-scrolling list of tech and AI bills
+//   Results show eight per page with numbered pages; the filter
+//   dropdowns sit behind an "Advanced search" toggle.
 //
 // A page opts in with a single mount point:
 //   <div id="archiveApp" data-category="policy"
@@ -31,7 +34,9 @@
     { key: 'reports',  type: 'report',   label: 'Reports',          file: 'reports.json',  href: '/reports',  page: 'reports.html'  }
   ];
   var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  var PAGE_SIZE = 20;
+  var PAGE_SIZE = 8;
+  var PAGE_LINKS = 10;     // numbered page links shown at once
+  var BILLS_URL = '/tracker-data.json';
   var RECENT_COUNT = 11;   // one spotlit + ten cards
   var SOURCE_LABELS = { original: 'Original', via: 'Via' };
 
@@ -207,7 +212,7 @@
     var description = app.getAttribute('data-description') || '';
     var items = [];
     var activeFacets = [];
-    var state = { q: '', view: 'list', sort: '', filters: {}, shown: PAGE_SIZE };
+    var state = { q: '', view: 'list', sort: '', filters: {}, page: 1, advanced: false };
 
     // restore from URL
     var params = new URLSearchParams(window.location.search);
@@ -215,6 +220,9 @@
     if (params.get('view') === 'cards') state.view = 'cards';
     if (SORTS[params.get('sort')]) state.sort = params.get('sort');
     FACETS.forEach(function (f) { if (params.get(f.key)) state.filters[f.key] = params.get(f.key); });
+    state.page = Math.max(1, parseInt(params.get('page'), 10) || 1);
+    // a shared link with filters in it opens with the advanced row showing
+    state.advanced = Object.keys(state.filters).length > 0;
 
     // ── skeleton ──
     var railHTML = CATEGORIES.map(function (c) {
@@ -242,13 +250,15 @@
       '<div class="arc-tools">' +
         '<div class="arc-count" id="arcCount" aria-live="polite"></div>' +
         '<div class="arc-controls">' +
-          '<div class="arc-facets" id="arcFacets"></div>' +
+          '<button type="button" class="arc-adv-toggle" id="arcAdvToggle" aria-expanded="false" aria-controls="arcAdvanced">Advanced search' + ICON_CHEVRON + '</button>' +
+          '<div class="arc-sort" id="arcSort"></div>' +
           '<div class="arc-view-toggle" role="group" aria-label="View">' +
             '<button type="button" data-view="list" title="List view" aria-label="List view">' + ICON_LIST + '</button>' +
             '<button type="button" data-view="cards" title="Card view" aria-label="Card view">' + ICON_CARDS + '</button>' +
           '</div>' +
         '</div>' +
       '</div>' +
+      '<div class="arc-advanced" id="arcAdvanced" hidden><div class="arc-facets" id="arcFacets"></div></div>' +
       '<div class="arc-results" id="arcResults"><p class="arc-empty">Loading…</p></div>' +
       '<aside class="arc-panel" id="arcPanel" aria-label="Most recent"></aside>';
 
@@ -256,6 +266,9 @@
     var resultsEl = document.getElementById('arcResults');
     var countEl = document.getElementById('arcCount');
     var facetsEl = document.getElementById('arcFacets');
+    var sortEl = document.getElementById('arcSort');
+    var advEl = document.getElementById('arcAdvanced');
+    var advBtn = document.getElementById('arcAdvToggle');
     var panelEl = document.getElementById('arcPanel');
     input.value = state.q;
 
@@ -273,6 +286,7 @@
       FACETS.forEach(function (f) { if (state.filters[f.key]) p.set(f.key, state.filters[f.key]); });
       if (state.sort) p.set('sort', state.sort);
       if (state.view === 'cards') p.set('view', 'cards');
+      if (state.page > 1) p.set('page', String(state.page));
       var qs = p.toString();
       history.replaceState(null, '', window.location.pathname + (qs ? '?' + qs : '') + window.location.hash);
     }
@@ -335,13 +349,17 @@
       var sortOpts = Object.keys(SORTS).filter(function (k) { return k !== 'relevance' || state.q; }).map(function (k) {
         return '<button type="button" class="arc-dd-opt' + (s === k ? ' selected' : '') + '" data-sort="' + k + '">' + SORTS[k] + '</button>';
       }).join('');
-      html += '<div class="arc-dd">' +
+      sortEl.innerHTML = '<div class="arc-dd">' +
         '<button type="button" class="arc-dd-btn" aria-haspopup="true" aria-expanded="false">Sort: ' + SORTS[s] + ICON_CHEVRON + '</button>' +
         '<div class="arc-dd-menu" role="menu">' + sortOpts + '</div></div>';
 
       var anySet = Object.keys(state.filters).some(function (k) { return state.filters[k]; });
-      if (anySet) html += '<button type="button" class="arc-clear" data-clear="1">Clear</button>';
+      if (anySet) html += '<button type="button" class="arc-clear" data-clear="1">Clear filters</button>';
       facetsEl.innerHTML = html;
+      advEl.hidden = !state.advanced;
+      advBtn.setAttribute('aria-expanded', state.advanced ? 'true' : 'false');
+      advBtn.classList.toggle('open', state.advanced);
+      advBtn.classList.toggle('is-set', anySet);
     }
 
     // ── results ──
@@ -391,6 +409,26 @@
       '</article>';
     }
 
+    // Google-style numbered pages: Previous 1 2 3 … Next (no logo)
+    function pagerHTML(pages) {
+      if (pages <= 1) return '';
+      var first = Math.max(1, Math.min(state.page - Math.floor(PAGE_LINKS / 2), pages - PAGE_LINKS + 1));
+      var last = Math.min(pages, first + PAGE_LINKS - 1);
+      var html = '<nav class="arc-pager" aria-label="Result pages">';
+      html += state.page > 1
+        ? '<button type="button" class="arc-pg arc-pg-step" data-page="' + (state.page - 1) + '">\u2039 Previous</button>'
+        : '<span class="arc-pg-step arc-pg-off">\u2039 Previous</span>';
+      for (var n = first; n <= last; n++) {
+        html += n === state.page
+          ? '<span class="arc-pg arc-pg-cur" aria-current="page">' + n + '</span>'
+          : '<button type="button" class="arc-pg" data-page="' + n + '">' + n + '</button>';
+      }
+      html += state.page < pages
+        ? '<button type="button" class="arc-pg arc-pg-step" data-page="' + (state.page + 1) + '">Next \u203A</button>'
+        : '<span class="arc-pg-step arc-pg-off">Next \u203A</span>';
+      return html + '</nav>';
+    }
+
     function render() {
       var toks = tokenize(state.q);
       var matched = queryMatches(toks);
@@ -399,7 +437,7 @@
       renderFacets(matched);
 
       var noun = list.length === 1 ? 'result' : 'results';
-      countEl.textContent = list.length + ' ' + noun + (state.q ? ' for \u201C' + state.q + '\u201D' : '');
+      countEl.textContent = (state.page > 1 ? 'Page ' + state.page + ' of ' : '') + list.length + ' ' + noun + (state.q ? ' for \u201C' + state.q + '\u201D' : '');
 
       Array.prototype.forEach.call(document.querySelectorAll('.arc-view-toggle button'), function (b) {
         var on = b.getAttribute('data-view') === state.view;
@@ -414,13 +452,14 @@
         return;
       }
 
-      var page = list.slice(0, state.shown);
+      var pages = Math.ceil(list.length / PAGE_SIZE);
+      if (state.page > pages) state.page = pages;
+      var start = (state.page - 1) * PAGE_SIZE;
+      var page = list.slice(start, start + PAGE_SIZE);
       var body = state.view === 'cards'
         ? '<div class="arc-cards">' + page.map(function (it) { return cardHTML(it, toks); }).join('') + '</div>'
         : '<div class="arc-list">' + page.map(function (it) { return resultHTML(it, toks); }).join('') + '</div>';
-      if (list.length > state.shown) {
-        body += '<button type="button" class="arc-more" data-more="1">More results (' + (list.length - state.shown) + ')</button>';
-      }
+      body += pagerHTML(pages);
       resultsEl.innerHTML = body;
     }
 
@@ -526,8 +565,52 @@
       if (id) openReader(id);
     }
 
+    // ── tech & AI bills: an auto-scrolling list under the recent cards ──
+    var STATE_ABBR = { 'Alabama':'AL','Alaska':'AK','Arizona':'AZ','Arkansas':'AR','California':'CA','Colorado':'CO','Connecticut':'CT','Delaware':'DE','Florida':'FL','Georgia':'GA','Hawaii':'HI','Idaho':'ID','Illinois':'IL','Indiana':'IN','Iowa':'IA','Kansas':'KS','Kentucky':'KY','Louisiana':'LA','Maine':'ME','Maryland':'MD','Massachusetts':'MA','Michigan':'MI','Minnesota':'MN','Mississippi':'MS','Missouri':'MO','Montana':'MT','Nebraska':'NE','Nevada':'NV','New Hampshire':'NH','New Jersey':'NJ','New Mexico':'NM','New York':'NY','North Carolina':'NC','North Dakota':'ND','Ohio':'OH','Oklahoma':'OK','Oregon':'OR','Pennsylvania':'PA','Rhode Island':'RI','South Carolina':'SC','South Dakota':'SD','Tennessee':'TN','Texas':'TX','Utah':'UT','Vermont':'VT','Virginia':'VA','Washington':'WA','West Virginia':'WV','Wisconsin':'WI','Wyoming':'WY' };
+    var COUNTRY_ABBR = { 'United States': 'US', 'European Union': 'EU', 'United Kingdom': 'UK', 'Australia': 'AU', 'India': 'IN', 'Canada': 'CA' };
+    function jurisdiction(bill) {
+      var country = String(bill.country || '').trim();
+      if (country === 'United States') {
+        var names = Object.keys(STATE_ABBR).sort(function (a, b) { return b.length - a.length; });
+        for (var i = 0; i < names.length; i++) {
+          if (new RegExp('\\b' + names[i] + '\\b').test(bill.title || '')) return { code: STATE_ABBR[names[i]], label: names[i] };
+        }
+        return { code: 'US', label: 'Federal' };
+      }
+      return { code: COUNTRY_ABBR[country] || country.slice(0, 2).toUpperCase(), label: country };
+    }
+    function loadBills() {
+      fetch(BILLS_URL)
+        .then(function (res) { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
+        .then(function (json) {
+          var bills = (json.result || []).filter(function (b) { return String(b.type || '').trim() === 'Legislation'; });
+          if (!bills.length) return;
+          var rows = bills.map(function (b) {
+            var j = jurisdiction(b);
+            var slug = b.slug && b.slug.current ? b.slug.current : '';
+            var href = 'https://www.techpolicy.press/tracker/' + (slug ? slug + '/' : '');
+            return '<li><a class="arc-bill" href="' + esc(href) + '" target="_blank" rel="noopener">' +
+              '<span class="arc-bill-badge" title="' + esc(j.label) + '">' + esc(j.code) + '</span>' +
+              '<span class="arc-bill-text"><span class="arc-bill-title">' + esc(String(b.title || '').trim()) + '</span>' +
+              (b.status ? '<span class="arc-bill-status">' + esc(String(b.status).trim()) + '</span>' : '') + '</span>' +
+            '</a></li>';
+          }).join('');
+          var box = document.createElement('section');
+          box.className = 'arc-bills';
+          box.setAttribute('aria-label', 'Technology and AI bills');
+          // the list is rendered twice so the scroll can loop seamlessly
+          box.innerHTML = '<div class="arc-panel-label">Tech &amp; AI bills</div>' +
+            '<div class="arc-bills-window"><ul class="arc-bills-track">' + rows + rows.replace(/<li><a /g, '<li aria-hidden="true"><a tabindex="-1" ') + '</ul></div>' +
+            '<div class="arc-bills-src">Source: <a href="https://www.techpolicy.press/tracker/" target="_blank" rel="noopener">Tech Policy Press tracker</a></div>';
+          panelEl.appendChild(box);
+          // pace the loop to the list length so every bill moves at the same speed
+          box.querySelector('.arc-bills-track').style.animationDuration = Math.max(40, bills.length * 3.5) + 's';
+        })
+        .catch(function (err) { console.warn('Bills list unavailable:', err); });
+    }
+
     function update(resetPaging) {
-      if (resetPaging) state.shown = PAGE_SIZE;
+      if (resetPaging) state.page = 1;
       syncURL();
       render();
     }
@@ -592,9 +675,17 @@
         update(false);
         return;
       }
-      if (t.hasAttribute('data-more')) {
-        state.shown += PAGE_SIZE;
-        render();
+      if (t.hasAttribute('data-page')) {
+        state.page = parseInt(t.getAttribute('data-page'), 10) || 1;
+        update(false);
+        window.scrollTo({ top: resultsEl.getBoundingClientRect().top + window.pageYOffset - 120, behavior: 'smooth' });
+        return;
+      }
+      if (t.id === 'arcAdvToggle') {
+        state.advanced = !state.advanced;
+        advEl.hidden = !state.advanced;
+        t.setAttribute('aria-expanded', state.advanced ? 'true' : 'false');
+        t.classList.toggle('open', state.advanced);
         return;
       }
       if (t.hasAttribute('data-tag')) {
@@ -628,7 +719,8 @@
           if (activeFacets.indexOf(FACET_BY_KEY[k]) === -1) delete state.filters[k];
         });
         renderPanel();
-        update(true);
+        update(false);
+        loadBills();
         if (cat.key === 'essays') {
           openReaderFromHash();
           window.addEventListener('hashchange', openReaderFromHash);
