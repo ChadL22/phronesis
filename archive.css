@@ -13,21 +13,21 @@
   grid-template-columns: 170px minmax(0, 1fr) 320px;
   column-gap: 2.75rem;
   grid-template-areas:
-    "title  search  ."
+    "head   head    head"
+    "rail   search  ."
     "rail   tools   tools"
     "rail   results panel";
   align-items: start;
 }
 
-/* ── header row: title + scoped search ── */
+/* ── header: title with its description beneath, then scoped search ── */
+.arc-head { grid-area: head; margin-bottom: 1.6rem; }
 .arc-title {
-  grid-area: title;
   font-family: var(--serif);
-  font-size: 1.65rem;
+  font-size: 2rem;
   font-weight: 500;
   line-height: 1.1;
   color: var(--forest);
-  padding-top: 0.35rem;
 }
 .arc-search-area { grid-area: search; max-width: 640px; }
 .arc-search {
@@ -67,9 +67,10 @@
 }
 .arc-search-btn:hover { background: var(--accent-l); }
 .arc-desc {
-  margin-top: 0.7rem;
+  max-width: 760px;
+  margin-top: 0.55rem;
   font-family: var(--serif);
-  font-size: 1rem;
+  font-size: 1.05rem;
   line-height: 1.55;
   color: var(--ink-2);
 }
@@ -186,7 +187,7 @@
 .arc-view-toggle svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 1.7; }
 
 /* ── left rail: other content types ── */
-.arc-rail { grid-area: rail; position: sticky; top: 1.5rem; padding-top: 1.4rem; }
+.arc-rail { grid-area: rail; position: sticky; top: 1.5rem; }
 .arc-rail ul { list-style: none; }
 .arc-rail a {
   display: block;
@@ -319,15 +320,8 @@ a.arc-card-title:hover { color: var(--terracotta); }
 .arc-empty { padding: 1rem 0 2rem; font-family: var(--serif); font-size: 1.05rem; color: var(--ink-3); }
 .arc-empty .arc-clear { margin-top: 0.6rem; padding-left: 0; }
 
-/* ── right panel: most recent ── */
-.arc-panel {
-  grid-area: panel;
-  position: sticky;
-  top: 1.5rem;
-  border: 1px solid var(--rule);
-  background: #fff;
-  padding: 1.3rem 1.3rem 1.1rem;
-}
+/* ── right panel: newest item spotlit, ten more as cards ── */
+.arc-panel { grid-area: panel; min-width: 0; }
 .arc-panel:empty { display: none; }
 .arc-panel-label {
   font-size: 0.62rem;
@@ -337,29 +331,144 @@ a.arc-card-title:hover { color: var(--terracotta); }
   color: var(--ink-3);
   margin-bottom: 0.7rem;
 }
-.arc-panel-label--sub { margin: 1.2rem 0 0.2rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
-.arc-panel-title {
+.arc-panel-label--sub { margin: 1.6rem 0 0.7rem; }
+
+.arc-spot {
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--terracotta);
+  padding: 1.3rem 1.3rem 1.2rem;
+}
+.arc-spot .arc-panel-label { color: var(--terracotta); }
+.arc-spot-title {
   display: block;
   font-family: var(--serif);
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 500;
-  line-height: 1.22;
+  line-height: 1.2;
   color: var(--ink);
 }
-a.arc-panel-title:hover { color: var(--terracotta); }
-.arc-panel-text { margin-top: 0.55rem; font-size: 0.8rem; line-height: 1.55; color: var(--ink-2); }
-.arc-panel-list { list-style: none; }
-.arc-panel-list li { padding: 0.6rem 0; border-bottom: 1px solid var(--rule); }
-.arc-panel-list li:last-child { border-bottom: none; padding-bottom: 0; }
-.arc-panel-item {
-  display: block;
-  font-family: var(--serif);
-  font-size: 0.98rem;
-  line-height: 1.3;
-  color: var(--forest);
+a.arc-spot-title:hover { color: var(--terracotta); }
+.arc-spot-text { margin-top: 0.55rem; font-size: 0.8rem; line-height: 1.55; color: var(--ink-2); }
+
+.arc-mini-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
 }
-a.arc-panel-item:hover { color: var(--terracotta); }
-.arc-panel-date { display: block; margin-top: 0.15rem; font-size: 0.68rem; color: var(--ink-3); }
+.arc-mini {
+  position: relative;
+  background: var(--paper);
+  padding: 0.85rem 0.8rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  transition: background 0.18s;
+}
+.arc-mini:hover { background: #fff; }
+.arc-mini-kicker {
+  font-size: 0.54rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.35rem;
+}
+.arc-mini-title {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--ink);
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+a.arc-mini-title::after { content: ''; position: absolute; inset: 0; }  /* whole card clickable */
+.arc-mini:hover a.arc-mini-title { color: var(--terracotta); }
+.arc-mini-meta { margin-top: auto; font-size: 0.64rem; color: var(--ink-3); }
+.arc-mini-src {
+  font-size: 0.64rem;
+  color: var(--accent-l);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── essay reader ── */
+.arc-reader {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(26, 25, 22, 0.45);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+.arc-reader.open { display: flex; align-items: center; justify-content: center; }
+.arc-reader-panel {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  width: min(90vw, 760px);
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 48px rgba(26, 25, 22, 0.18);
+}
+.arc-reader-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1.6rem;
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper-2);
+  flex-shrink: 0;
+}
+.arc-reader-label { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
+.arc-reader-close {
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: none;
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+}
+.arc-reader-close:hover { background: var(--accent); color: var(--parchment); }
+.arc-reader-scroll { overflow-y: auto; flex: 1; }
+.arc-reader-body {
+  padding: 2.5rem 3rem 3rem;
+  font-family: var(--serif);
+  font-size: 1.08rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--ink-2);
+}
+.arc-reader-body h1, .arc-reader-body h2, .arc-reader-body h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  color: var(--ink);
+  margin: 2rem 0 0.8rem;
+  line-height: 1.2;
+}
+.arc-reader-body h1 { font-size: 1.8rem; margin-top: 0; }
+.arc-reader-body h2 { font-size: 1.35rem; }
+.arc-reader-body h3 { font-size: 1.1rem; }
+.arc-reader-body p { margin-bottom: 1.2rem; }
+.arc-reader-body figure { margin: 2rem 0; text-align: center; }
+.arc-reader-body img { max-width: 100%; height: auto; border-radius: 4px; }
+.arc-reader-body figcaption { font-family: var(--sans); font-size: 0.78rem; color: var(--ink-3); font-style: italic; margin-top: 0.6rem; }
+.arc-reader-body blockquote { border-left: 3px solid var(--accent); margin: 1.5rem 0; padding-left: 1.2rem; font-style: italic; }
+.arc-reader-body ul, .arc-reader-body ol { margin: 1rem 0; padding-left: 1.5rem; }
+.arc-reader-body li { margin-bottom: 0.4rem; }
+.arc-reader-body a { color: var(--accent); text-decoration: underline; }
+.arc-reader-byline { font-style: italic; color: var(--ink-3); }
 
 /* ── narrower screens ── */
 @media (max-width: 1100px) {
@@ -368,10 +477,11 @@ a.arc-panel-item:hover { color: var(--terracotta); }
 @media (max-width: 900px) {
   .arc {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "title" "search" "rail" "tools" "results" "panel";
+    grid-template-areas: "head" "search" "rail" "tools" "results" "panel";
     padding-top: 1.6rem;
   }
-  .arc-title { font-size: 1.5rem; margin-bottom: 0.8rem; padding-top: 0; }
+  .arc-head { margin-bottom: 1.1rem; }
+  .arc-title { font-size: 1.6rem; }
   .arc-search-area { max-width: none; }
   .arc-rail {
     position: static;
@@ -395,7 +505,11 @@ a.arc-panel-item:hover { color: var(--terracotta); }
   .arc-rail-divider { width: 1px; height: auto; margin: 0.5rem 0.4rem; flex-shrink: 0; }
   .arc-tools { margin-top: 0; border-top: none; }
   .arc-controls { justify-content: flex-start; }
-  .arc-panel { position: static; margin-top: 2rem; }
+  .arc-panel { margin-top: 2rem; }
+}
+@media (max-width: 600px) {
+  .arc-reader-panel { width: 100vw; max-height: 100vh; height: 100vh; }
+  .arc-reader-body { padding: 1.5rem; }
 }
 @media (max-width: 520px) {
   .arc-dd-menu { right: auto; left: 0; }

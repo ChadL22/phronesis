@@ -6,13 +6,15 @@
 //   left   → the other content types, current one highlighted
 //   center → a search bar scoped to this category, a tools row with
 //            filter dropdowns + card/list toggle, then the results
-//   right  → the most recent items in this category
+//   right  → the newest item spotlit, then up to ten more as cards
 //
 // A page opts in with a single mount point:
 //   <div id="archiveApp" data-category="policy"
 //        data-description="..."></div>
 // Title and description come from the page itself so no copy lives
-// here. Search, filters, sort, and view are mirrored into the URL
+// here. On the essays page, Phronesis originals with a full body open
+// in an in-page reader (essays.html#<id> links from elsewhere on the
+// site open it directly). Search, filters, sort, and view are mirrored into the URL
 // (?q=&year=&view=) so a filtered view can be shared or bookmarked.
 // Everything is wrapped in an IIFE so nothing leaks into the page's
 // own inline scripts.
@@ -30,7 +32,7 @@
   ];
   var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   var PAGE_SIZE = 20;
-  var RECENT_COUNT = 5;
+  var RECENT_COUNT = 11;   // one spotlit + ten cards
   var SOURCE_LABELS = { original: 'Original', via: 'Via' };
 
   // ── helpers ──
@@ -49,6 +51,13 @@
     return MONTHS[d.getMonth()] + ' ' + d.getFullYear();
   }
   function regexEscape(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+  // "ai-policy" → "AI Policy", "ip" → "IP", "first-amendment" → "First Amendment"
+  function prettify(raw) {
+    return String(raw).replace(/[-_]+/g, ' ').split(' ').map(function (w) {
+      if (!w) return w;
+      return w.length <= 2 ? w.toUpperCase() : w.charAt(0).toUpperCase() + w.slice(1);
+    }).join(' ');
+  }
 
   // mirrors masthead.js / the archive pages' own link resolution
   function destinationFor(entry, page) {
@@ -65,25 +74,33 @@
   }
 
   function normalize(e, cat) {
-    var subtype = e.document_type || (e.type && e.type !== cat.type ? e.type : '');
+    // each content file names its sub-type differently
+    var subtype = e.document_type || e.analysis_type || e.report_type ||
+      (e.type && e.type !== cat.type ? e.type : '');
+    var topicRaw = e.primary_topic || e.topic || e.category || '';
+    var topic = e.topic_label || (topicRaw ? prettify(topicRaw) : '');
+    var reader = cat.key === 'essays' && e.origin === 'original' && !!e.body;
     var item = {
       id: e.id,
       title: e.title || 'Untitled',
       subtitle: e.subtitle || '',
-      text: e.abstract || e.preview || e.subtitle || '',
+      text: e.abstract || e.preview || e.excerpt || e.subtitle || '',
       date: e.date || '',
       time: e.date ? (Date.parse(e.date + 'T00:00:00') || 0) : 0,
       year: e.date ? String(e.date).slice(0, 4) : '',
       subtype: subtype,
+      topic: topic,
       level: e.level || e.audience || '',
       fields: e.fields || [],
       tags: e.tags || [],
       origin: e.origin || '',
       publisher: e.publisher || '',
-      dest: destinationFor(e, cat.page)
+      dest: reader ? { url: '#' + e.id, external: false, reader: true } : destinationFor(e, cat.page),
+      body: reader ? e.body : null,
+      body_html: reader ? (e.body_html || null) : null
     };
     item._title = item.title.toLowerCase();
-    item._meta = [item.tags.join(' '), item.fields.join(' '), item.publisher, item.subtype, item.level].join(' ').toLowerCase();
+    item._meta = [item.tags.join(' '), item.fields.join(' '), item.publisher, item.subtype, item.topic, item.level].join(' ').toLowerCase();
     item._body = [item.subtitle, item.text].join(' ').toLowerCase();
     return item;
   }
@@ -92,6 +109,7 @@
   var FACETS = [
     { key: 'year',      label: 'Year',      any: 'Any year',      order: 'desc', values: function (i) { return i.year ? [i.year] : []; } },
     { key: 'type',      label: 'Type',      any: 'Any type',      display: titleCase, values: function (i) { return i.subtype ? [i.subtype] : []; } },
+    { key: 'topic',     label: 'Topic',     any: 'Any topic',     values: function (i) { return i.topic ? [i.topic] : []; } },
     { key: 'level',     label: 'Level',     any: 'Any level',     display: titleCase, values: function (i) { return i.level ? [i.level] : []; } },
     { key: 'field',     label: 'Field',     any: 'Any field',     values: function (i) { return i.fields; } },
     { key: 'source',    label: 'Source',    any: 'Any source',    display: function (v) { return SOURCE_LABELS[v] || titleCase(v); }, values: function (i) { return i.origin ? [i.origin] : []; } },
@@ -205,13 +223,15 @@
 
     app.className = 'arc';
     app.innerHTML =
-      '<h1 class="arc-title">' + esc(cat.label) + '</h1>' +
+      '<header class="arc-head">' +
+        '<h1 class="arc-title">' + esc(cat.label) + '</h1>' +
+        (description ? '<p class="arc-desc">' + esc(description) + '</p>' : '') +
+      '</header>' +
       '<div class="arc-search-area">' +
         '<form class="arc-search" role="search" id="arcSearchForm">' +
           '<input type="search" id="arcQuery" autocomplete="off" placeholder="Search ' + esc(cat.label.toLowerCase()) + '" aria-label="Search ' + esc(cat.label) + '">' +
           '<button type="submit" class="arc-search-btn" aria-label="Search">' + ICON_SEARCH + '</button>' +
         '</form>' +
-        (description ? '<p class="arc-desc">' + esc(description) + '</p>' : '') +
       '</div>' +
       // a div rather than <nav>: shared.css styles bare nav elements as the old top bar
       '<div class="arc-rail" role="navigation" aria-label="Content types">' +
@@ -330,12 +350,14 @@
       if (it.publisher) bits.push('<span class="arc-pub">' + esc(it.origin === 'original' ? 'Phronesis' : it.publisher) + '</span>');
       if (it.date) bits.push(esc(fmtMonth(it.date)));
       if (it.subtype) bits.push(esc(titleCase(it.subtype)));
+      if (it.topic) bits.push(esc(it.topic));
       if (it.level) bits.push(esc(titleCase(it.level)));
       return bits.join('<span class="arc-sep">·</span>');
     }
     function titleLink(it, toks, cls) {
       var inner = highlight(it.title, toks);
       if (!it.dest) return '<span class="' + cls + '">' + inner + '</span>';
+      if (it.dest.reader) return '<a class="' + cls + '" href="' + esc(it.dest.url) + '" data-reader="' + esc(it.id) + '">' + inner + '</a>';
       return '<a class="' + cls + '" href="' + esc(it.dest.url) + '"' + (it.dest.external ? ' target="_blank" rel="noopener"' : '') + '>' + inner + '</a>';
     }
     function tagLinks(it, max) {
@@ -356,6 +378,7 @@
     function cardHTML(it, toks) {
       var chips = [];
       if (it.subtype) chips.push('<span class="arc-chip arc-chip--accent">' + esc(titleCase(it.subtype)) + '</span>');
+      if (it.topic) chips.push('<span class="arc-chip">' + esc(it.topic) + '</span>');
       if (it.level) chips.push('<span class="arc-chip">' + esc(titleCase(it.level)) + '</span>');
       if (it.origin === 'original') chips.push('<span class="arc-chip arc-chip--accent">Original</span>');
       var source = it.origin === 'original' ? 'Phronesis' : (it.publisher ? 'Via ' + it.publisher : '');
@@ -401,26 +424,106 @@
       resultsEl.innerHTML = body;
     }
 
-    // ── right panel: most recent in this category (not affected by search) ──
+    // ── right panel: newest item spotlit, then up to ten more as cards.
+    //    Always the category's newest work; search and filters don't change it.
+    function miniCard(it) {
+      var kicker = it.subtype ? titleCase(it.subtype) : (it.topic || '');
+      var source = it.origin === 'original' ? 'Phronesis' : it.publisher;
+      return '<article class="arc-mini">' +
+        (kicker ? '<span class="arc-mini-kicker">' + esc(kicker) + '</span>' : '') +
+        titleLink(it, [], 'arc-mini-title') +
+        '<span class="arc-mini-meta">' + esc(fmtMonth(it.date)) + '</span>' +
+        (source ? '<span class="arc-mini-src">' + esc(source) + '</span>' : '') +
+      '</article>';
+    }
     function renderPanel() {
       var recent = items.slice().sort(function (a, b) { return b.time - a.time; }).slice(0, RECENT_COUNT);
       if (!recent.length) { panelEl.innerHTML = ''; return; }
       var lead = recent[0];
-      var html = '<div class="arc-panel-label">Most recent</div>' +
-        '<div class="arc-panel-lead">' +
-          titleLink(lead, [], 'arc-panel-title') +
+      var html = '<div class="arc-spot">' +
+          '<div class="arc-panel-label">Most recent</div>' +
+          titleLink(lead, [], 'arc-spot-title') +
           '<div class="arc-meta">' + metaLine(lead) + '</div>' +
-          (lead.text ? '<p class="arc-panel-text">' + esc(snippetFor(lead.text, [], 320)) + '</p>' : '') +
+          (lead.text ? '<p class="arc-spot-text">' + esc(snippetFor(lead.text, [], 320)) + '</p>' : '') +
           tagLinks(lead, 6) +
         '</div>';
       if (recent.length > 1) {
-        html += '<div class="arc-panel-label arc-panel-label--sub">Also recent</div><ul class="arc-panel-list">' +
-          recent.slice(1).map(function (it) {
-            return '<li>' + titleLink(it, [], 'arc-panel-item') +
-              '<span class="arc-panel-date">' + esc(fmtMonth(it.date)) + (it.publisher && it.origin !== 'original' ? ' · ' + esc(it.publisher) : '') + '</span></li>';
-          }).join('') + '</ul>';
+        html += '<div class="arc-panel-label arc-panel-label--sub">Also recent</div>' +
+          '<div class="arc-mini-grid">' + recent.slice(1).map(miniCard).join('') + '</div>';
       }
       panelEl.innerHTML = html;
+    }
+
+    // ── essay reader (essays page only) ──
+    var readerEl = null;
+    function bodyToHTML(raw, bodyHtml) {
+      if (bodyHtml) return sanitizeHtml(bodyHtml);
+      if (!raw) return '';
+      return sanitizeHtml(plainToHTML(raw));
+    }
+    function plainToHTML(raw) {
+      raw = raw.replace(/\[IMAGE: ([^\]]*)\]\(([^)]+)\)/g, '<figure><img src="$2" alt="$1" /><figcaption>$1</figcaption></figure>');
+      return raw.split(/\n\n+/).map(function (p) {
+        p = p.trim();
+        if (!p) return '';
+        if (p.indexOf('<figure>') === 0 || p.indexOf('<img') === 0) return p;
+        if (/^Works Cited$/i.test(p) || /^References$/i.test(p)) return '<h2>' + p + '</h2>';
+        if (/^By:/.test(p)) return '<p class="arc-reader-byline">' + p + '</p>';
+        if (p.indexOf('### ') === 0) return '<h3>' + p.slice(4) + '</h3>';
+        if (p.indexOf('## ') === 0) return '<h2>' + p.slice(3) + '</h2>';
+        if (p.indexOf('# ') === 0) return '<h1>' + p.slice(2) + '</h1>';
+        return '<p>' + p + '</p>';
+      }).join('');
+    }
+    function sanitizeHtml(html) {
+      var div = document.createElement('div');
+      div.innerHTML = html;
+      Array.prototype.forEach.call(div.querySelectorAll('script, style, iframe, object, embed'), function (n) { n.remove(); });
+      Array.prototype.forEach.call(div.querySelectorAll('*'), function (el) {
+        Array.prototype.slice.call(el.attributes).forEach(function (attr) {
+          if (/^on/i.test(attr.name)) el.removeAttribute(attr.name);
+          if ((attr.name === 'href' || attr.name === 'src') && /^\s*javascript:/i.test(attr.value)) el.removeAttribute(attr.name);
+        });
+        if (el.tagName === 'A') { el.setAttribute('target', '_blank'); el.setAttribute('rel', 'noopener'); }
+      });
+      return div.innerHTML;
+    }
+    function openReader(id) {
+      var it = null;
+      items.forEach(function (x) { if (x.id === id && x.dest && x.dest.reader) it = x; });
+      if (!it) return false;
+      if (!readerEl) {
+        readerEl = document.createElement('div');
+        readerEl.className = 'arc-reader';
+        readerEl.innerHTML =
+          '<div class="arc-reader-panel" role="dialog" aria-modal="true" aria-label="Essay">' +
+            '<div class="arc-reader-bar"><span class="arc-reader-label"></span>' +
+            '<button type="button" class="arc-reader-close">Close</button></div>' +
+            '<div class="arc-reader-scroll"><article class="arc-reader-body"></article></div>' +
+          '</div>';
+        document.body.appendChild(readerEl);
+        readerEl.addEventListener('click', function (e) {
+          if (e.target === readerEl || e.target.closest('.arc-reader-close')) closeReader();
+        });
+      }
+      readerEl.querySelector('.arc-reader-label').textContent = 'Essay' + (it.topic ? ' \u00B7 ' + it.topic : '');
+      readerEl.querySelector('.arc-reader-body').innerHTML = bodyToHTML(it.body, it.body_html);
+      readerEl.querySelector('.arc-reader-scroll').scrollTop = 0;
+      readerEl.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      history.replaceState(null, '', window.location.pathname + window.location.search + '#' + it.id);
+      readerEl.querySelector('.arc-reader-close').focus();
+      return true;
+    }
+    function closeReader() {
+      if (!readerEl || !readerEl.classList.contains('open')) return;
+      readerEl.classList.remove('open');
+      document.body.style.overflow = '';
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+    function openReaderFromHash() {
+      var id = decodeURIComponent(window.location.hash.slice(1));
+      if (id) openReader(id);
     }
 
     function update(resetPaging) {
@@ -452,6 +555,8 @@
     });
 
     app.addEventListener('click', function (e) {
+      var r = e.target.closest('a[data-reader]');
+      if (r) { e.preventDefault(); openReader(r.getAttribute('data-reader')); return; }
       var t = e.target.closest('button');
       if (!t || !app.contains(t)) return;
 
@@ -503,7 +608,7 @@
       if (!e.target.closest || !e.target.closest('.arc-dd')) closeMenus();
     });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeMenus();
+      if (e.key === 'Escape') { closeMenus(); closeReader(); }
     });
 
     // ── load ──
@@ -524,6 +629,10 @@
         });
         renderPanel();
         update(true);
+        if (cat.key === 'essays') {
+          openReaderFromHash();
+          window.addEventListener('hashchange', openReaderFromHash);
+        }
       })
       .catch(function (err) {
         console.error('Could not load ' + cat.file + ':', err);
