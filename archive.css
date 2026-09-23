@@ -10,31 +10,23 @@
   margin: 0 auto;
   padding: 2.2rem clamp(1.25rem, 4vw, 3rem) 4.5rem;
   display: grid;
-  grid-template-columns: 200px minmax(0, 1fr) 320px;
+  grid-template-columns: 230px minmax(0, 1fr) 320px;
+  grid-template-rows: auto auto 1fr;
   column-gap: 2.75rem;
   grid-template-areas:
-    "head   head    head"
-    ".      tools   tools"
-    ".      adv     adv"
+    "side   adv     adv"
+    "side   tools   tools"
     "side   results panel";
   align-items: start;
 }
 
 /* ── header: title with its description beneath, then scoped search ── */
-/* the head is only as wide as the title; the description wraps inside that
-   width (with a floor so short titles like "Essays" stay readable) */
-.arc-head {
-  grid-area: head;
-  justify-self: start;
-  display: grid;
-  grid-template-columns: minmax(16rem, max-content);
-  max-width: 100%;
-  margin-bottom: 1.4rem;
-}
+/* title and description sit at the top of the left column, so the
+   description is never wider than that column */
+.arc-head { margin-bottom: 2.2rem; }
 .arc-title {
-  white-space: nowrap;
   font-family: var(--serif);
-  font-size: 2.6rem;
+  font-size: 2.3rem;
   font-weight: 500;
   line-height: 1.1;
   color: var(--forest);
@@ -78,8 +70,6 @@
 }
 .arc-search-btn:hover { background: var(--accent-l); }
 .arc-desc {
-  width: 0;
-  min-width: 100%;
   margin-top: 0.55rem;
   font-family: var(--serif);
   font-size: 1.05rem;
@@ -95,12 +85,11 @@
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
-  margin: 1.4rem 0 1.6rem;
+  margin: 0 0 1.6rem;
   padding: 0.7rem 0;
   border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
 }
-.arc-count { order: 10; flex-basis: 100%; margin-top: -0.3rem; font-size: 0.78rem; color: var(--ink-3); }
 .arc-controls { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
 .arc-facets { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
 
@@ -226,13 +215,9 @@
 }
 .arc-advanced {
   grid-area: adv;
-  margin: -0.9rem 0 1.6rem;
-  padding: 0.8rem 0.9rem;
-  background: var(--paper-2);
-  border: 1px solid var(--rule);
+  margin: 0 0 0.9rem;
 }
 .arc-advanced[hidden] { display: none; }
-.arc-advanced .arc-dd-btn { background: var(--paper); }
 .arc-advanced .arc-dd-menu { right: auto; left: 0; }
 
 /* ── numbered pages, Google-style (no logo) ── */
@@ -268,6 +253,7 @@ button.arc-pg:hover { color: var(--terracotta); text-decoration: underline; }
 
 /* ── left rail: other content types ── */
 .arc-side { grid-area: side; min-width: 0; }
+.arc-rail-label { padding-left: 0.85rem; margin-bottom: 0.4rem; }
 .arc-rail ul { list-style: none; }
 .arc-rail a {
   display: block;
@@ -411,7 +397,7 @@ a.arc-card-title:hover { color: var(--terracotta); }
   color: var(--ink-3);
   margin-bottom: 0.7rem;
 }
-.arc-panel-label--sub { margin: 1.6rem 0 0.7rem; }
+.arc-spot + .arc-mini-grid { margin-top: 1rem; }
 
 .arc-spot {
   background: #fff;
@@ -419,7 +405,6 @@ a.arc-card-title:hover { color: var(--terracotta); }
   border-top: 3px solid var(--terracotta);
   padding: 1.3rem 1.3rem 1.2rem;
 }
-.arc-spot .arc-panel-label { color: var(--terracotta); }
 .arc-spot-title {
   display: block;
   font-family: var(--serif);
@@ -623,12 +608,13 @@ a.arc-mini-title::after { content: ''; position: absolute; inset: 0; }  /* whole
 @media (max-width: 900px) {
   .arc {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "head" "rail" "tools" "adv" "results" "panel" "bills";
+    grid-template-rows: none;
+    grid-template-areas: "head" "rail" "adv" "tools" "results" "panel" "bills";
     padding-top: 1.6rem;
   }
-  .arc-head { margin-bottom: 1.1rem; grid-template-columns: minmax(0, 1fr); }
-  .arc-title { font-size: 1.6rem; white-space: normal; }
-  .arc-desc { width: auto; }
+  .arc-head { grid-area: head; margin-bottom: 1.1rem; }
+  .arc-title { font-size: 1.8rem; }
+  .arc-rail-label { display: none; }
   .arc-side { display: contents; }
   .arc-bills { grid-area: bills; }
   .arc-rail {
@@ -663,4 +649,5 @@ a.arc-mini-title::after { content: ''; position: absolute; inset: 0; }  /* whole
 @media (max-width: 520px) {
   .arc-dd-menu { right: auto; left: 0; }
   .arc-tools { flex-direction: column; align-items: flex-start; }
+  .arc-search { align-self: stretch; }
 }

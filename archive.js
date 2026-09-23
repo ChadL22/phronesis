@@ -9,7 +9,7 @@
 //   right  → the newest item spotlit, then up to ten more as cards
 //   Policy page only: an auto-scrolling tech policy tracker under the
 //   content types on the left.
-//   Results show eight per page with numbered pages; the filter
+//   Results show four per page with numbered pages; the filter
 //   dropdowns sit behind an "Advanced search" toggle.
 //
 // A page opts in with a single mount point:
@@ -35,7 +35,7 @@
     { key: 'reports',  type: 'report',   label: 'Reports',          file: 'reports.json',  href: '/reports',  page: 'reports.html'  }
   ];
   var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  var PAGE_SIZE = 8;
+  var PAGE_SIZE = 4;
   var PAGE_LINKS = 10;     // numbered page links shown at once
   var BILLS_URL = '/tracker-data.json';
   var RECENT_COUNT = 11;   // one spotlit + ten cards
@@ -232,10 +232,8 @@
 
     app.className = 'arc';
     app.innerHTML =
-      '<header class="arc-head">' +
-        '<h1 class="arc-title">' + esc(cat.label) + '</h1>' +
-        (description ? '<p class="arc-desc">' + esc(description) + '</p>' : '') +
-      '</header>' +
+      // advanced filters open above the toolbar row
+      '<div class="arc-advanced" id="arcAdvanced" hidden><div class="arc-facets" id="arcFacets"></div></div>' +
       // one row: filters on the left, search in the middle, view toggle on the right
       '<div class="arc-tools">' +
         '<div class="arc-controls">' +
@@ -250,24 +248,27 @@
           '<button type="button" data-view="list" title="List view" aria-label="List view">' + ICON_LIST + '</button>' +
           '<button type="button" data-view="cards" title="Card view" aria-label="Card view">' + ICON_CARDS + '</button>' +
         '</div>' +
-        '<div class="arc-count" id="arcCount" aria-live="polite"></div>' +
       '</div>' +
-      // left column: content types, then (policy page only) the bills tracker.
-      // The rail is a div rather than <nav>: shared.css styles bare nav elements as the old top bar
+      // left column: page title and description, the categories list, then
+      // (policy page only) the bills tracker. The rail is a div rather than
+      // <nav>: shared.css styles bare nav elements as the old top bar
       '<div class="arc-side" id="arcSide">' +
-        '<div class="arc-rail" role="navigation" aria-label="Content types">' +
+        '<header class="arc-head">' +
+          '<h1 class="arc-title">' + esc(cat.label) + '</h1>' +
+          (description ? '<p class="arc-desc">' + esc(description) + '</p>' : '') +
+        '</header>' +
+        '<div class="arc-rail" role="navigation" aria-label="Categories">' +
+          '<div class="arc-panel-label arc-rail-label">Categories</div>' +
           '<ul>' + railHTML + '</ul>' +
           '<div class="arc-rail-divider"></div>' +
           '<ul><li><a href="/canon">Canons</a></li></ul>' +
         '</div>' +
       '</div>' +
-      '<div class="arc-advanced" id="arcAdvanced" hidden><div class="arc-facets" id="arcFacets"></div></div>' +
       '<div class="arc-results" id="arcResults"><p class="arc-empty">Loading…</p></div>' +
-      '<aside class="arc-panel" id="arcPanel" aria-label="Most recent"></aside>';
+      '<aside class="arc-panel" id="arcPanel" aria-label="Recently added"></aside>';
 
     var input = document.getElementById('arcQuery');
     var resultsEl = document.getElementById('arcResults');
-    var countEl = document.getElementById('arcCount');
     var facetsEl = document.getElementById('arcFacets');
     var sortEl = document.getElementById('arcSort');
     var advEl = document.getElementById('arcAdvanced');
@@ -439,9 +440,6 @@
 
       renderFacets(matched);
 
-      var noun = list.length === 1 ? 'result' : 'results';
-      countEl.textContent = (state.page > 1 ? 'Page ' + state.page + ' of ' : '') + list.length + ' ' + noun + (state.q ? ' for \u201C' + state.q + '\u201D' : '');
-
       Array.prototype.forEach.call(document.querySelectorAll('.arc-view-toggle button'), function (b) {
         var on = b.getAttribute('data-view') === state.view;
         b.classList.toggle('active', on);
@@ -482,16 +480,15 @@
       var recent = items.slice().sort(function (a, b) { return b.time - a.time; }).slice(0, RECENT_COUNT);
       if (!recent.length) { panelEl.innerHTML = ''; return; }
       var lead = recent[0];
-      var html = '<div class="arc-spot">' +
-          '<div class="arc-panel-label">Most recent</div>' +
+      var html = '<div class="arc-panel-label">Recently added</div>' +
+        '<div class="arc-spot">' +
           titleLink(lead, [], 'arc-spot-title') +
           '<div class="arc-meta">' + metaLine(lead) + '</div>' +
           (lead.text ? '<p class="arc-spot-text">' + esc(snippetFor(lead.text, [], 320)) + '</p>' : '') +
           tagLinks(lead, 6) +
         '</div>';
       if (recent.length > 1) {
-        html += '<div class="arc-panel-label arc-panel-label--sub">Also recent</div>' +
-          '<div class="arc-mini-grid">' + recent.slice(1).map(miniCard).join('') + '</div>';
+        html += '<div class="arc-mini-grid">' + recent.slice(1).map(miniCard).join('') + '</div>';
       }
       panelEl.innerHTML = html;
     }
