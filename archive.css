@@ -10,28 +10,38 @@
   margin: 0 auto;
   padding: 2.2rem clamp(1.25rem, 4vw, 3rem) 4.5rem;
   display: grid;
-  grid-template-columns: 170px minmax(0, 1fr) 320px;
+  grid-template-columns: 200px minmax(0, 1fr) 320px;
   column-gap: 2.75rem;
   grid-template-areas:
     "head   head    head"
-    "rail   search  ."
-    "rail   tools   tools"
-    "rail   adv     adv"
-    "rail   results panel";
+    ".      tools   tools"
+    ".      adv     adv"
+    "side   results panel";
   align-items: start;
 }
 
 /* ── header: title with its description beneath, then scoped search ── */
-.arc-head { grid-area: head; margin-bottom: 1.6rem; }
+/* the head is only as wide as the title; the description wraps inside that
+   width (with a floor so short titles like "Essays" stay readable) */
+.arc-head {
+  grid-area: head;
+  justify-self: start;
+  display: grid;
+  grid-template-columns: minmax(16rem, max-content);
+  max-width: 100%;
+  margin-bottom: 1.4rem;
+}
 .arc-title {
+  white-space: nowrap;
   font-family: var(--serif);
-  font-size: 2rem;
+  font-size: 2.6rem;
   font-weight: 500;
   line-height: 1.1;
   color: var(--forest);
 }
-.arc-search-area { grid-area: search; max-width: 640px; }
 .arc-search {
+  flex: 1 1 280px;
+  min-width: 0;
   display: flex;
   border: 1px solid var(--rule);
   background: #fff;
@@ -47,16 +57,16 @@
   border: none;
   outline: none;
   background: transparent;
-  padding: 0.7rem 0.95rem;
+  padding: 0.5rem 0.85rem;
   font-family: var(--serif);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--ink);
 }
 .arc-search input::placeholder { color: var(--ink-3); opacity: 0.8; }
 .arc-search input::-webkit-search-cancel-button { cursor: pointer; }
 .arc-search-btn {
   flex-shrink: 0;
-  width: 3.4rem;
+  width: 2.8rem;
   border: none;
   background: var(--accent);
   color: var(--parchment);
@@ -68,7 +78,8 @@
 }
 .arc-search-btn:hover { background: var(--accent-l); }
 .arc-desc {
-  max-width: 760px;
+  width: 0;
+  min-width: 100%;
   margin-top: 0.55rem;
   font-family: var(--serif);
   font-size: 1.05rem;
@@ -89,8 +100,8 @@
   border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
 }
-.arc-count { font-size: 0.78rem; color: var(--ink-3); }
-.arc-controls { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; justify-content: flex-end; }
+.arc-count { order: 10; flex-basis: 100%; margin-top: -0.3rem; font-size: 0.78rem; color: var(--ink-3); }
+.arc-controls { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
 .arc-facets { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
 
 .arc-dd { position: relative; }
@@ -256,7 +267,7 @@ button.arc-pg:hover { color: var(--terracotta); text-decoration: underline; }
 .arc-pg-off { color: var(--ink-3); opacity: 0.5; }
 
 /* ── left rail: other content types ── */
-.arc-rail { grid-area: rail; position: sticky; top: 1.5rem; }
+.arc-side { grid-area: side; min-width: 0; }
 .arc-rail ul { list-style: none; }
 .arc-rail a {
   display: block;
@@ -468,12 +479,26 @@ a.arc-mini-title::after { content: ''; position: absolute; inset: 0; }  /* whole
 }
 
 /* ── tech & AI bills: auto-scrolling list, pauses on hover or focus ── */
-.arc-bills { margin-top: 1.6rem; }
-.arc-bills-window {
-  height: 22rem;
-  overflow: hidden;
-  border: 1px solid var(--rule);
+.arc-bills {
+  margin-top: 2rem;
+  border: 1px solid var(--accent);
+  border-radius: 3px;
   background: #fff;
+  box-shadow: 0 2px 10px rgba(26, 25, 22, 0.06);
+  overflow: hidden;
+}
+.arc-bills-head {
+  padding: 0.55rem 0.8rem;
+  background: var(--accent);
+  color: var(--parchment);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.arc-bills-window {
+  height: 26rem;
+  overflow: hidden;
   position: relative;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 1.2rem, #000 calc(100% - 1.2rem), transparent 100%);
   mask-image: linear-gradient(to bottom, transparent 0, #000 1.2rem, #000 calc(100% - 1.2rem), transparent 100%);
@@ -490,11 +515,12 @@ a.arc-mini-title::after { content: ''; position: absolute; inset: 0; }  /* whole
 }
 .arc-bill {
   display: flex;
-  align-items: flex-start;
-  gap: 0.7rem;
-  padding: 0.7rem 0.9rem;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.7rem 0.8rem;
   border-bottom: 1px dashed var(--rule);
 }
+.arc-bill-top { display: flex; align-items: center; gap: 0.5rem; min-width: 0; }
 .arc-bill:hover .arc-bill-title { color: var(--terracotta); }
 .arc-bill-badge {
   flex-shrink: 0;
@@ -508,10 +534,9 @@ a.arc-mini-title::after { content: ''; position: absolute; inset: 0; }  /* whole
   background: var(--accent);
   border-radius: 2px;
 }
-.arc-bill-text { display: flex; flex-direction: column; min-width: 0; }
-.arc-bill-title { font-family: var(--serif); font-size: 0.95rem; line-height: 1.25; color: var(--ink); transition: color 0.18s; }
-.arc-bill-status { margin-top: 0.15rem; font-size: 0.66rem; color: var(--ink-3); }
-.arc-bills-src { margin-top: 0.45rem; font-size: 0.64rem; color: var(--ink-3); }
+.arc-bill-title { font-family: var(--serif); font-size: 0.92rem; line-height: 1.25; color: var(--ink); transition: color 0.18s; }
+.arc-bill-status { font-size: 0.64rem; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.arc-bills-src { padding: 0.5rem 0.8rem; border-top: 1px solid var(--rule); font-size: 0.62rem; color: var(--ink-3); }
 .arc-bills-src a { color: var(--accent-l); text-decoration: underline; text-underline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) {
   .arc-bills-window { overflow-y: auto; }
@@ -598,16 +623,19 @@ a.arc-mini-title::after { content: ''; position: absolute; inset: 0; }  /* whole
 @media (max-width: 900px) {
   .arc {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "head" "search" "rail" "tools" "adv" "results" "panel";
+    grid-template-areas: "head" "rail" "tools" "adv" "results" "panel" "bills";
     padding-top: 1.6rem;
   }
-  .arc-head { margin-bottom: 1.1rem; }
-  .arc-title { font-size: 1.6rem; }
-  .arc-search-area { max-width: none; }
+  .arc-head { margin-bottom: 1.1rem; grid-template-columns: minmax(0, 1fr); }
+  .arc-title { font-size: 1.6rem; white-space: normal; }
+  .arc-desc { width: auto; }
+  .arc-side { display: contents; }
+  .arc-bills { grid-area: bills; }
   .arc-rail {
+    grid-area: rail;
     position: static;
     padding-top: 0;
-    margin-top: 1.1rem;
+    margin-top: 0;
     display: flex;
     overflow-x: auto;
     scrollbar-width: none;
@@ -624,8 +652,8 @@ a.arc-mini-title::after { content: ''; position: absolute; inset: 0; }  /* whole
   }
   .arc-rail a.active { border-bottom-color: var(--terracotta); }
   .arc-rail-divider { width: 1px; height: auto; margin: 0.5rem 0.4rem; flex-shrink: 0; }
-  .arc-tools { margin-top: 0; border-top: none; }
-  .arc-controls { justify-content: flex-start; }
+  .arc-tools { border-top: none; }
+  .arc-search { order: -1; flex-basis: 100%; }
   .arc-panel { margin-top: 2rem; }
 }
 @media (max-width: 600px) {

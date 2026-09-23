@@ -6,8 +6,9 @@
 //   left   → the other content types, current one highlighted
 //   center → a search bar scoped to this category, a tools row with
 //            filter dropdowns + card/list toggle, then the results
-//   right  → the newest item spotlit, then up to ten more as cards,
-//            then an auto-scrolling list of tech and AI bills
+//   right  → the newest item spotlit, then up to ten more as cards
+//   Policy page only: an auto-scrolling tech policy tracker under the
+//   content types on the left.
 //   Results show eight per page with numbered pages; the filter
 //   dropdowns sit behind an "Advanced search" toggle.
 //
@@ -235,27 +236,29 @@
         '<h1 class="arc-title">' + esc(cat.label) + '</h1>' +
         (description ? '<p class="arc-desc">' + esc(description) + '</p>' : '') +
       '</header>' +
-      '<div class="arc-search-area">' +
+      // one row: filters on the left, search in the middle, view toggle on the right
+      '<div class="arc-tools">' +
+        '<div class="arc-controls">' +
+          '<button type="button" class="arc-adv-toggle" id="arcAdvToggle" aria-expanded="false" aria-controls="arcAdvanced">Advanced search' + ICON_CHEVRON + '</button>' +
+          '<div class="arc-sort" id="arcSort"></div>' +
+        '</div>' +
         '<form class="arc-search" role="search" id="arcSearchForm">' +
           '<input type="search" id="arcQuery" autocomplete="off" placeholder="Search ' + esc(cat.label.toLowerCase()) + '" aria-label="Search ' + esc(cat.label) + '">' +
           '<button type="submit" class="arc-search-btn" aria-label="Search">' + ICON_SEARCH + '</button>' +
         '</form>' +
-      '</div>' +
-      // a div rather than <nav>: shared.css styles bare nav elements as the old top bar
-      '<div class="arc-rail" role="navigation" aria-label="Content types">' +
-        '<ul>' + railHTML + '</ul>' +
-        '<div class="arc-rail-divider"></div>' +
-        '<ul><li><a href="/canon">Canons</a></li></ul>' +
-      '</div>' +
-      '<div class="arc-tools">' +
+        '<div class="arc-view-toggle" role="group" aria-label="View">' +
+          '<button type="button" data-view="list" title="List view" aria-label="List view">' + ICON_LIST + '</button>' +
+          '<button type="button" data-view="cards" title="Card view" aria-label="Card view">' + ICON_CARDS + '</button>' +
+        '</div>' +
         '<div class="arc-count" id="arcCount" aria-live="polite"></div>' +
-        '<div class="arc-controls">' +
-          '<button type="button" class="arc-adv-toggle" id="arcAdvToggle" aria-expanded="false" aria-controls="arcAdvanced">Advanced search' + ICON_CHEVRON + '</button>' +
-          '<div class="arc-sort" id="arcSort"></div>' +
-          '<div class="arc-view-toggle" role="group" aria-label="View">' +
-            '<button type="button" data-view="list" title="List view" aria-label="List view">' + ICON_LIST + '</button>' +
-            '<button type="button" data-view="cards" title="Card view" aria-label="Card view">' + ICON_CARDS + '</button>' +
-          '</div>' +
+      '</div>' +
+      // left column: content types, then (policy page only) the bills tracker.
+      // The rail is a div rather than <nav>: shared.css styles bare nav elements as the old top bar
+      '<div class="arc-side" id="arcSide">' +
+        '<div class="arc-rail" role="navigation" aria-label="Content types">' +
+          '<ul>' + railHTML + '</ul>' +
+          '<div class="arc-rail-divider"></div>' +
+          '<ul><li><a href="/canon">Canons</a></li></ul>' +
         '</div>' +
       '</div>' +
       '<div class="arc-advanced" id="arcAdvanced" hidden><div class="arc-facets" id="arcFacets"></div></div>' +
@@ -565,7 +568,7 @@
       if (id) openReader(id);
     }
 
-    // ── tech & AI bills: an auto-scrolling list under the recent cards ──
+    // ── tech policy tracker (policy page only): auto-scrolling bills under the content types ──
     var STATE_ABBR = { 'Alabama':'AL','Alaska':'AK','Arizona':'AZ','Arkansas':'AR','California':'CA','Colorado':'CO','Connecticut':'CT','Delaware':'DE','Florida':'FL','Georgia':'GA','Hawaii':'HI','Idaho':'ID','Illinois':'IL','Indiana':'IN','Iowa':'IA','Kansas':'KS','Kentucky':'KY','Louisiana':'LA','Maine':'ME','Maryland':'MD','Massachusetts':'MA','Michigan':'MI','Minnesota':'MN','Mississippi':'MS','Missouri':'MO','Montana':'MT','Nebraska':'NE','Nevada':'NV','New Hampshire':'NH','New Jersey':'NJ','New Mexico':'NM','New York':'NY','North Carolina':'NC','North Dakota':'ND','Ohio':'OH','Oklahoma':'OK','Oregon':'OR','Pennsylvania':'PA','Rhode Island':'RI','South Carolina':'SC','South Dakota':'SD','Tennessee':'TN','Texas':'TX','Utah':'UT','Vermont':'VT','Virginia':'VA','Washington':'WA','West Virginia':'WV','Wisconsin':'WI','Wyoming':'WY' };
     var COUNTRY_ABBR = { 'United States': 'US', 'European Union': 'EU', 'United Kingdom': 'UK', 'Australia': 'AU', 'India': 'IN', 'Canada': 'CA' };
     function jurisdiction(bill) {
@@ -590,19 +593,19 @@
             var slug = b.slug && b.slug.current ? b.slug.current : '';
             var href = 'https://www.techpolicy.press/tracker/' + (slug ? slug + '/' : '');
             return '<li><a class="arc-bill" href="' + esc(href) + '" target="_blank" rel="noopener">' +
-              '<span class="arc-bill-badge" title="' + esc(j.label) + '">' + esc(j.code) + '</span>' +
-              '<span class="arc-bill-text"><span class="arc-bill-title">' + esc(String(b.title || '').trim()) + '</span>' +
+              '<span class="arc-bill-top"><span class="arc-bill-badge" title="' + esc(j.label) + '">' + esc(j.code) + '</span>' +
               (b.status ? '<span class="arc-bill-status">' + esc(String(b.status).trim()) + '</span>' : '') + '</span>' +
+              '<span class="arc-bill-title">' + esc(String(b.title || '').trim()) + '</span>' +
             '</a></li>';
           }).join('');
           var box = document.createElement('section');
           box.className = 'arc-bills';
           box.setAttribute('aria-label', 'Technology and AI bills');
           // the list is rendered twice so the scroll can loop seamlessly
-          box.innerHTML = '<div class="arc-panel-label">Tech &amp; AI bills</div>' +
+          box.innerHTML = '<div class="arc-bills-head">Tech Policy Tracker</div>' +
             '<div class="arc-bills-window"><ul class="arc-bills-track">' + rows + rows.replace(/<li><a /g, '<li aria-hidden="true"><a tabindex="-1" ') + '</ul></div>' +
             '<div class="arc-bills-src">Source: <a href="https://www.techpolicy.press/tracker/" target="_blank" rel="noopener">Tech Policy Press tracker</a></div>';
-          panelEl.appendChild(box);
+          document.getElementById('arcSide').appendChild(box);
           // pace the loop to the list length so every bill moves at the same speed
           box.querySelector('.arc-bills-track').style.animationDuration = Math.max(40, bills.length * 3.5) + 's';
         })
@@ -720,7 +723,7 @@
         });
         renderPanel();
         update(false);
-        loadBills();
+        if (cat.key === 'policy') loadBills();   // the tracker lives on the policy page only
         if (cat.key === 'essays') {
           openReaderFromHash();
           window.addEventListener('hashchange', openReaderFromHash);
