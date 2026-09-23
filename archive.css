@@ -220,36 +220,33 @@
 .arc-advanced[hidden] { display: none; }
 .arc-advanced .arc-dd-menu { right: auto; left: 0; }
 
-/* ── numbered pages, Google-style (no logo) ── */
+/* ── paging, Google Careers-style: "5–8 of 45" with arrows ── */
 .arc-pager {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 0.25rem;
+  justify-content: flex-end;
+  gap: 0.5rem;
   margin-top: 1.2rem;
   padding-top: 1.2rem;
   border-top: 1px solid var(--rule);
-  font-family: var(--sans);
-  font-size: 0.86rem;
 }
-.arc-pg {
-  min-width: 2rem;
-  padding: 0.3rem 0.45rem;
+.arc-pager-range { margin-right: 0.6rem; font-size: 0.82rem; color: var(--ink-2); }
+.arc-pager-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
   background: none;
-  border: none;
-  border-radius: 2px;
-  font-family: inherit;
-  font-size: inherit;
   color: var(--accent);
   cursor: pointer;
-  text-align: center;
+  transition: background 0.18s, border-color 0.18s;
 }
-button.arc-pg:hover { color: var(--terracotta); text-decoration: underline; }
-.arc-pg-cur { color: var(--ink); font-weight: 500; }
-.arc-pg-step { padding: 0.3rem 0.6rem; }
-.arc-pg-step:first-child { margin-right: 0.4rem; }
-.arc-pg-step:last-child { margin-left: 0.4rem; }
-.arc-pg-off { color: var(--ink-3); opacity: 0.5; }
+.arc-pager-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
+.arc-pager-btn:hover:not(:disabled) { background: var(--paper-2); border-color: var(--accent); }
+.arc-pager-btn:disabled { color: var(--ink-3); opacity: 0.4; cursor: default; }
 
 /* ── left rail: other content types ── */
 .arc-side { grid-area: side; min-width: 0; }

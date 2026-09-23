@@ -6,10 +6,10 @@
 //   left   → the other content types, current one highlighted
 //   center → a search bar scoped to this category, a tools row with
 //            filter dropdowns + card/list toggle, then the results
-//   right  → the newest item spotlit, then up to ten more as cards
+//   right  → the newest item spotlit, then up to four more as cards
 //   Policy page only: an auto-scrolling tech policy tracker under the
 //   content types on the left.
-//   Results show four per page with numbered pages; the filter
+//   Results show four per page ("5–8 of 45" with arrows); the filter
 //   dropdowns sit behind an "Advanced search" toggle.
 //
 // A page opts in with a single mount point:
@@ -36,9 +36,8 @@
   ];
   var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   var PAGE_SIZE = 4;
-  var PAGE_LINKS = 10;     // numbered page links shown at once
   var BILLS_URL = '/tracker-data.json';
-  var RECENT_COUNT = 11;   // one spotlit + ten cards
+  var RECENT_COUNT = 5;    // one spotlit + four cards
   var SOURCE_LABELS = { original: 'Original', via: 'Via' };
 
   // ── helpers ──
@@ -413,24 +412,18 @@
       '</article>';
     }
 
-    // Google-style numbered pages: Previous 1 2 3 … Next (no logo)
-    function pagerHTML(pages) {
+    // Google Careers-style paging: "5–8 of 45" with previous / next arrows
+    var ICON_PREV = '<svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>';
+    var ICON_NEXT = '<svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg>';
+    function pagerHTML(total, pages) {
       if (pages <= 1) return '';
-      var first = Math.max(1, Math.min(state.page - Math.floor(PAGE_LINKS / 2), pages - PAGE_LINKS + 1));
-      var last = Math.min(pages, first + PAGE_LINKS - 1);
-      var html = '<nav class="arc-pager" aria-label="Result pages">';
-      html += state.page > 1
-        ? '<button type="button" class="arc-pg arc-pg-step" data-page="' + (state.page - 1) + '">\u2039 Previous</button>'
-        : '<span class="arc-pg-step arc-pg-off">\u2039 Previous</span>';
-      for (var n = first; n <= last; n++) {
-        html += n === state.page
-          ? '<span class="arc-pg arc-pg-cur" aria-current="page">' + n + '</span>'
-          : '<button type="button" class="arc-pg" data-page="' + n + '">' + n + '</button>';
-      }
-      html += state.page < pages
-        ? '<button type="button" class="arc-pg arc-pg-step" data-page="' + (state.page + 1) + '">Next \u203A</button>'
-        : '<span class="arc-pg-step arc-pg-off">Next \u203A</span>';
-      return html + '</nav>';
+      var first = (state.page - 1) * PAGE_SIZE + 1;
+      var last = Math.min(total, state.page * PAGE_SIZE);
+      return '<nav class="arc-pager" aria-label="Result pages">' +
+        '<span class="arc-pager-range">' + first + '\u2013' + last + ' of ' + total + '</span>' +
+        '<button type="button" class="arc-pager-btn" data-page="' + (state.page - 1) + '" aria-label="Previous page"' + (state.page <= 1 ? ' disabled' : '') + '>' + ICON_PREV + '</button>' +
+        '<button type="button" class="arc-pager-btn" data-page="' + (state.page + 1) + '" aria-label="Next page"' + (state.page >= pages ? ' disabled' : '') + '>' + ICON_NEXT + '</button>' +
+      '</nav>';
     }
 
     function render() {
@@ -460,7 +453,7 @@
       var body = state.view === 'cards'
         ? '<div class="arc-cards">' + page.map(function (it) { return cardHTML(it, toks); }).join('') + '</div>'
         : '<div class="arc-list">' + page.map(function (it) { return resultHTML(it, toks); }).join('') + '</div>';
-      body += pagerHTML(pages);
+      body += pagerHTML(list.length, pages);
       resultsEl.innerHTML = body;
     }
 
