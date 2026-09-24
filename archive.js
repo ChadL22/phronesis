@@ -261,9 +261,9 @@
         '<div class="arc-sticky" id="arcSticky">' +
         '<div class="arc-rail" role="navigation" aria-label="Categories">' +
           '<div class="arc-panel-label arc-rail-label">Categories</div>' +
-          '<ul>' + railHTML + '</ul>' +
+          '<div class="arc-rail-divider arc-rail-divider--top"></div>' +
+          '<ul>' + railHTML + '<li><a href="/canon">Canons</a></li></ul>' +
           '<div class="arc-rail-divider"></div>' +
-          '<ul><li><a href="/canon">Canons</a></li></ul>' +
         '</div>' +
         '</div>' +
       '</div>' +

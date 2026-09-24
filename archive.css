@@ -264,6 +264,7 @@
 .arc-rail a:hover { color: var(--terracotta); }
 .arc-rail a.active { color: var(--terracotta); font-weight: 500; border-left-color: var(--terracotta); }
 .arc-rail-divider { height: 1px; background: var(--rule); margin: 0.9rem 0 0.9rem 0.85rem; }
+.arc-rail-divider--top { margin: 0.1rem 0 0.6rem 0.85rem; }
 
 /* ── results: list view ── */
 .arc-results { grid-area: results; min-width: 0; }
@@ -660,7 +661,7 @@ a.arc-mini-title::after { content: ''; position: absolute; inset: 0; }  /* whole
     font-size: 0.8rem;
   }
   .arc-rail a.active { border-bottom-color: var(--terracotta); }
-  .arc-rail-divider { width: 1px; height: auto; margin: 0.5rem 0.4rem; flex-shrink: 0; }
+  .arc-rail-divider { display: none; }
   .arc-tools { border-top: none; }
   .arc-search { order: -1; flex-basis: 100%; }
   .arc-panel { margin-top: 2rem; }
