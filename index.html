@@ -167,6 +167,7 @@
     color:var(--ink);
     opacity:.5;
   }
+  .home-cats-label--section{margin:52px 0 14px;}
   .home-cats{
     display:flex;
     flex-wrap:wrap;
@@ -767,7 +768,7 @@
      in one line (numbered left to right). Recently Added follows. -->
 <section class="home-hero">
 <div class="intro-block">
-  <p class="blurb">Phronesis is a nonprofit research center archiving pragmatic content at the intersection of <strong>technology</strong>, <strong>law</strong>, and <strong>policy</strong>.</p>
+  <p class="blurb">Explore research and ideas at the intersection of <strong>technology</strong>, <strong>law</strong>, and <strong>policy</strong>.</p>
 </div>
 
 <!-- site-wide search, front and center like a search engine or archive home page -->
@@ -781,7 +782,6 @@
     </form>
     <div class="search-results" id="searchResults"></div>
   </div>
-  <div class="hint" id="searchHint">Search by title, tag, or publisher. Press <kbd>↵</kbd> to open the top result.</div>
 </div>
 
 <div class="home-cats-label">Resource Categories</div>
@@ -798,7 +798,7 @@
 
 <div class="intro-block" id="recent">
   <div class="news-header">
-    <h2 class="resources-label resources-label--underlined">Recently Added</h2>
+    <h2 class="home-cats-label home-cats-label--section">Recently Added</h2>
   </div>
   <div class="news-grid" id="newsGrid">
     <p class="news-loading" style="font-family:'Outfit', sans-serif; font-size:13px; opacity:.5; padding:20px 4px;">Loading recent work…</p>
@@ -990,14 +990,14 @@ function resultRowHTML(item) {
 
 function renderSearchResults(items, query) {
   var container = document.getElementById('searchResults');
-  var hint = document.getElementById('searchHint');
+  var hint = document.getElementById('searchHint');   // optional; the homepage no longer shows one
   if (!query) {
     container.style.display = 'none';
     container.innerHTML = '';
-    hint.style.display = '';
+    if (hint) hint.style.display = '';
     return;
   }
-  hint.style.display = 'none';
+  if (hint) hint.style.display = 'none';
   container.style.display = 'block';
   if (!items.length) {
     container.innerHTML = '<div class="search-no-results">No matches for “' + query + '”</div>';
