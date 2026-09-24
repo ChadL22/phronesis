@@ -150,6 +150,56 @@
   .menu-panel a:hover{background:var(--parchment); color:var(--terracotta);}
   .menu-panel .divider{height:1px; background:var(--marble); margin:6px 0;}
 
+  /* ---------- Google-style front page ---------- */
+  .home-hero{
+    min-height:62vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:28px 0 20px;
+  }
+  .home-hero .intro-block{margin-top:0;}
+  .home-hero .home-search{margin:30px auto 18px;}
+  /* categories as quiet plain-text links under the search bar:
+     I III V VII on the first row, II IV VI on the second */
+  .home-cats{
+    max-width:760px;
+    margin:4px auto 0;
+    padding:0 24px;
+    display:grid;
+    grid-template-columns:repeat(4, auto);
+    grid-template-areas:
+      "c1 c3 c5 c7"
+      "c2 c4 c6 .";
+    justify-content:center;
+    column-gap:44px;
+    row-gap:8px;
+  }
+  .home-cats .c1{grid-area:c1;}
+  .home-cats .c2{grid-area:c2;}
+  .home-cats .c3{grid-area:c3;}
+  .home-cats .c4{grid-area:c4;}
+  .home-cats .c5{grid-area:c5;}
+  .home-cats .c6{grid-area:c6;}
+  .home-cats .c7{grid-area:c7;}
+  .home-cats a{
+    font-family:'Cormorant Garamond', serif;
+    font-size:18px;
+    color:var(--ink);
+    opacity:.75;
+    white-space:nowrap;
+  }
+  .home-cats a:hover{opacity:1; text-decoration:underline; text-underline-offset:3px;}
+  .home-cats .hc-num{margin-right:6px;}
+  @media (max-width:700px){
+    .home-hero{min-height:0;}
+    .home-cats{
+      grid-template-columns:repeat(2, auto);
+      grid-template-areas:"c1 c2" "c3 c4" "c5 c6" "c7 .";
+      column-gap:32px;
+    }
+  }
+
   /* ---------- homepage search (replaces the header magnifier on this page) ---------- */
   .home-search{
     max-width:760px;
@@ -729,6 +779,9 @@
   </div>
 </header>
 
+<!-- Google-style front page: introduction, a large search bar, then the
+     categories as a quiet row of plain-text links. Recently Added follows. -->
+<section class="home-hero">
 <div class="intro-block">
   <p class="blurb">Phronesis is an independent nonprofit research center that catalogs, curates, and develops resources to help practitioners, scholars, and the public better understand the ever evolving landscape of <strong>technology</strong>, <strong>law</strong>, and <strong>policy</strong>.</p>
 </div>
@@ -748,20 +801,16 @@
   <div class="hint" id="searchHint">Search by title, tag, or publisher. Press <kbd>↵</kbd> to open the top result.</div>
 </div>
 
-<div class="category-wrap">
-  <div class="news-header">
-    <h2 class="resources-label resources-label--category">Resources By Category</h2>
-  </div>
-  <div class="publish-list">
-    <a href="/research" class="item-1"><span class="p-name"><span class="p-num">I.</span>Research papers</span><span class="p-desc">Peer-reviewed scholarship spanning computer science, robotics, economics, philosophy, and related fields</span></a>
-    <a href="/policy" class="item-2"><span class="p-name"><span class="p-num">II.</span>Policy Artifacts</span><span class="p-desc">Policy documents such as memos, executive orders, and legislation</span></a>
-    <a href="/legal" class="item-3"><span class="p-name"><span class="p-num">III.</span>Legal Analyses</span><span class="p-desc">Case studies, statutes, and legal definitions relevant to technology law</span></a>
-    <a href="/essays" class="item-4"><span class="p-name"><span class="p-num">IV.</span>Essays</span><span class="p-desc">Analytical, interpretive, or critical writing from a personal point of view</span></a>
-    <a href="/articles" class="item-5"><span class="p-name"><span class="p-num">V.</span>Articles</span><span class="p-desc">Timely, informative coverage of news and specific topics relevant to technology policy</span></a>
-    <a href="/reports" class="item-6"><span class="p-name"><span class="p-num">VI.</span>Reports</span><span class="p-desc">Structured documents from governments, universities, and institutions presenting facts and evidence on a topic</span></a>
-    <a href="/canon" class="item-7"><span class="p-name"><span class="p-num">VII.</span>Canons</span><span class="p-desc">Curated reading lists tailored to specific audiences on specific topics</span></a>
-  </div>
+<div class="home-cats" role="navigation" aria-label="Resources by category">
+  <a href="/research" class="c1" title="Peer-reviewed scholarship spanning computer science, robotics, economics, philosophy, and related fields"><span class="hc-num">I.</span>Research papers</a>
+  <a href="/policy" class="c2" title="Policy documents such as memos, executive orders, and legislation"><span class="hc-num">II.</span>Policy Artifacts</a>
+  <a href="/legal" class="c3" title="Case studies, statutes, and legal definitions relevant to technology law"><span class="hc-num">III.</span>Legal Analyses</a>
+  <a href="/essays" class="c4" title="Analytical, interpretive, or critical writing from a personal point of view"><span class="hc-num">IV.</span>Essays</a>
+  <a href="/articles" class="c5" title="Timely, informative coverage of news and specific topics relevant to technology policy"><span class="hc-num">V.</span>Articles</a>
+  <a href="/reports" class="c6" title="Structured documents from governments, universities, and institutions presenting facts and evidence on a topic"><span class="hc-num">VI.</span>Reports</a>
+  <a href="/canon" class="c7" title="Curated reading lists tailored to specific audiences on specific topics"><span class="hc-num">VII.</span>Canons</a>
 </div>
+</section>
 
 <div class="intro-block">
   <div class="news-header">
