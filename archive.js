@@ -385,6 +385,14 @@
       if (it.dest.reader) return '<a class="' + cls + '" href="' + esc(it.dest.url) + '" data-reader="' + esc(it.id) + '">' + inner + '</a>';
       return '<a class="' + cls + '" href="' + esc(it.dest.url) + '"' + (it.dest.external ? ' target="_blank" rel="noopener"' : '') + '>' + inner + '</a>';
     }
+    // the summary under a title opens the same item as the title; it is
+    // skipped in keyboard order since the title link already leads there
+    function bodyLink(it, cls, html) {
+      if (!it.dest) return '<p class="' + cls + '">' + html + '</p>';
+      return '<a class="' + cls + ' arc-body-link" href="' + esc(it.dest.url) + '" tabindex="-1"' +
+        (it.dest.reader ? ' data-reader="' + esc(it.id) + '"' : '') +
+        (it.dest.external ? ' target="_blank" rel="noopener"' : '') + '>' + html + '</a>';
+    }
     function tagLinks(it, max) {
       if (!it.tags.length) return '';
       return '<div class="arc-tags">' + it.tags.slice(0, max).map(function (t) {
@@ -396,7 +404,7 @@
       return '<article class="arc-result">' +
         titleLink(it, toks, 'arc-result-title') +
         '<div class="arc-meta">' + metaLine(it) + (it.origin === 'original' ? '<span class="arc-badge">Original</span>' : '') + '</div>' +
-        (it.text ? '<p class="arc-snippet">' + highlight(snippetFor(it.text, toks, 240), toks) + '</p>' : '') +
+        (it.text ? bodyLink(it, 'arc-snippet', highlight(snippetFor(it.text, toks, 240), toks)) : '') +
         tagLinks(it, 4) +
       '</article>';
     }
@@ -410,7 +418,7 @@
       return '<article class="arc-card">' +
         (chips.length ? '<div class="arc-card-chips">' + chips.join('') + '</div>' : '') +
         titleLink(it, toks, 'arc-card-title') +
-        (it.text ? '<p class="arc-card-text">' + highlight(snippetFor(it.text, toks, 200), toks) + '</p>' : '') +
+        (it.text ? bodyLink(it, 'arc-card-text', highlight(snippetFor(it.text, toks, 200), toks)) : '') +
         '<div class="arc-card-foot"><span>' + esc(fmtMonth(it.date)) + '</span>' +
           (source ? '<span class="arc-card-src">' + esc(source) + '</span>' : '') + '</div>' +
       '</article>';
@@ -498,7 +506,7 @@
         '<div class="arc-spot">' +
           titleLink(lead, [], 'arc-spot-title') +
           '<div class="arc-meta">' + metaLine(lead) + '</div>' +
-          (lead.text ? '<p class="arc-spot-text">' + esc(snippetFor(lead.text, [], 320)) + '</p>' : '') +
+          (lead.text ? bodyLink(lead, 'arc-spot-text', esc(snippetFor(lead.text, [], 320))) : '') +
           tagLinks(lead, 6) +
         '</div>';
       if (recent.length > 1) {

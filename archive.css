@@ -330,6 +330,13 @@ a.arc-result-title:hover { color: var(--terracotta); text-decoration-color: curr
 .arc-tag::before { content: '\21B3\00A0'; color: var(--ink-3); }
 .arc-tag:hover { color: var(--terracotta); text-decoration: underline; }
 
+/* summaries that link to their item: block-level, same look as plain text */
+.arc-body-link { display: block; color: var(--ink-2); cursor: pointer; }
+.arc-body-link:hover { color: var(--ink); }
+.arc-result:has(.arc-body-link:hover) .arc-result-title,
+.arc-card:has(.arc-body-link:hover) .arc-card-title,
+.arc-spot:has(.arc-body-link:hover) .arc-spot-title { color: var(--terracotta); }
+
 /* ── results: card view ── */
 .arc-cards {
   display: grid;

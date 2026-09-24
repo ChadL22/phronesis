@@ -1,6 +1,6 @@
 {
-  "generated_by": "seeded from Tech-Policy-Hub/build/data/ticker.json (2026-09-21); replaced by scripts/refresh_bills.py on its first run",
-  "generated_at": "2026-09-21T18:25:16Z",
+  "generated_by": "scripts/refresh_bills.py",
+  "generated_at": "2026-09-24T13:38:48Z",
   "source": "Integrity Institute Tech Policy Tracker (us-federal.techpolicytracker.com, us-state.techpolicytracker.com)",
   "items": [
     {
@@ -8,7 +8,7 @@
       "jurisdiction_name": "Federal",
       "code": "HB8747",
       "title": "K–12 AI Literacy and Readiness Act of 2026",
-      "date": "",
+      "date": "2026-12-05",
       "link": "https://www.congress.gov/bill/119th-congress/house-bill/8747/all-info"
     },
     {
@@ -16,7 +16,7 @@
       "jurisdiction_name": "Federal",
       "code": "HB8768",
       "title": "CHARGE Act Cybersecurity and Hardware Assurance for Resilient Grid Electrification Act",
-      "date": "",
+      "date": "2026-12-05",
       "link": "https://www.congress.gov/bill/119th-congress/house-bill/8768/all-info"
     },
     {
@@ -24,7 +24,7 @@
       "jurisdiction_name": "Federal",
       "code": "SB4074",
       "title": "Fund CISA Personnel Act of 2026",
-      "date": "",
+      "date": "2026-12-03",
       "link": "https://www.congress.gov/bill/119th-congress/senate-bill/4074/all-info"
     },
     {
@@ -32,31 +32,727 @@
       "jurisdiction_name": "Federal",
       "code": "SB4069",
       "title": "AI-Ready Bio-Data Standards Act",
-      "date": "",
+      "date": "2026-12-03",
       "link": "https://www.congress.gov/bill/119th-congress/senate-bill/4069/all-info"
+    },
+    {
+      "jurisdiction": "US",
+      "jurisdiction_name": "Federal",
+      "code": "HB7907",
+      "title": "AI-Ready Bio-Data Standards Act",
+      "date": "2026-12-03",
+      "link": "https://www.congress.gov/bill/119th-congress/house-bill/7907/all-info"
+    },
+    {
+      "jurisdiction": "US",
+      "jurisdiction_name": "Federal",
+      "code": "SB3888",
+      "title": "Small Business Artificial Intelligence Training Act of 2026",
+      "date": "2026-12-02",
+      "link": "https://www.congress.gov/bill/119th-congress/senate-bill/3888/all-info"
+    },
+    {
+      "jurisdiction": "US",
+      "jurisdiction_name": "Federal",
+      "code": "HB7548",
+      "title": "SCAM Act Safeguarding Consumers from Advertising Misconduct Act",
+      "date": "2026-12-02",
+      "link": "https://www.congress.gov/bill/119th-congress/house-bill/7548/all-info"
+    },
+    {
+      "jurisdiction": "US",
+      "jurisdiction_name": "Federal",
+      "code": "SB3614",
+      "title": "Internet Application I.D. Act Internet Application Integrity and Disclosure Act",
+      "date": "2026-12-01",
+      "link": "https://www.congress.gov/bill/119th-congress/senate-bill/3614/all-info"
+    },
+    {
+      "jurisdiction": "US",
+      "jurisdiction_name": "Federal",
+      "code": "SB4774",
+      "title": "A bill to prohibit the distribution of false AI-generated election media, to amend the National Voter Registration Act of 1993 to prohibit the removal of names from voting rolls using unverified voter challenge databases, and for other purposes.",
+      "date": "2026-11-06",
+      "link": "https://www.congress.gov/bill/119th-congress/senate-bill/4774/all-info"
+    },
+    {
+      "jurisdiction": "US",
+      "jurisdiction_name": "Federal",
+      "code": "SB4770",
+      "title": "A bill to require the Secretary of Energy to establish a centralized resource for access to data to facilitate biological research through enabling advanced computational methods such as artificial intelligence, and for other purposes.",
+      "date": "2026-11-06",
+      "link": "https://www.congress.gov/bill/119th-congress/senate-bill/4770/all-info"
+    },
+    {
+      "jurisdiction": "NJ",
+      "jurisdiction_name": "New Jersey",
+      "code": "A5502",
+      "title": "\"Fair Wage Protection Act\"; prohibits use of surveillance wage setting through use of wage setting algorithm.",
+      "date": "2026-09-14",
+      "link": "https://www.njleg.state.nj.us/bill-search/2026/A5502"
+    },
+    {
+      "jurisdiction": "NJ",
+      "jurisdiction_name": "New Jersey",
+      "code": "A5496",
+      "title": "Regulates use of artificial intelligence in certain mortgage lending tools to minimize discrimination in lending.",
+      "date": "2026-09-14",
+      "link": "https://www.njleg.state.nj.us/bill-search/2026/A5496"
+    },
+    {
+      "jurisdiction": "OH",
+      "jurisdiction_name": "Ohio",
+      "code": "SB469",
+      "title": "Regulate use of automated license plate recognition systems",
+      "date": "2026-09-14",
+      "link": "https://www.legislature.ohio.gov/legislation/136/sb469"
+    },
+    {
+      "jurisdiction": "OH",
+      "jurisdiction_name": "Ohio",
+      "code": "HB1011",
+      "title": "Enact the 1984 No More Act",
+      "date": "2026-09-14",
+      "link": "https://www.legislature.ohio.gov/legislation/136/hb1011"
+    },
+    {
+      "jurisdiction": "PA",
+      "jurisdiction_name": "Pennsylvania",
+      "code": "SR356",
+      "title": "Designating the week of August 17 through 23, 2026, as \"Social Media Safety and Parental Awareness Week\" in Pennsylvania.",
+      "date": "2026-08-13",
+      "link": "https://www.palegis.us/legislation/bills/2025/sr356"
+    },
+    {
+      "jurisdiction": "MA",
+      "jurisdiction_name": "Massachusetts",
+      "code": "S3177",
+      "title": "Order relative to authorizing the joint committee on Consumer Protection and Professional Licensure to make an investigation and study of a certain current Senate document relative to animal telehealth.",
+      "date": "2026-07-16",
+      "link": "https://malegislature.gov/Bills/194/S3177"
+    },
+    {
+      "jurisdiction": "MI",
+      "jurisdiction_name": "Michigan",
+      "code": "HB6223",
+      "title": "Consumer protection: unfair trade practices; violation under Michigan consumer protection act for violations under the cryptocurrency exchange kiosk regulation act; provide for. Amends sec. 3 of 1976 PA 331 (MCL 445.903). TIE BAR WITH: HB 6222'26",
+      "date": "2026-07-16",
+      "link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2026-HB-6223"
+    },
+    {
+      "jurisdiction": "MI",
+      "jurisdiction_name": "Michigan",
+      "code": "HB6222",
+      "title": "Consumer protection: other; cryptocurrency exchange kiosk regulation act; create. Creates new act. TIE BAR WITH: HB 6223'26",
+      "date": "2026-07-16",
+      "link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2026-HB-6222"
+    },
+    {
+      "jurisdiction": "PA",
+      "jurisdiction_name": "Pennsylvania",
+      "code": "HB2705",
+      "title": "Providing for a report on artificial intelligence in the workforce; and imposing duties on the Department of Labor and Industry and Department of Community and Economic Development.",
+      "date": "2026-07-16",
+      "link": "https://www.palegis.us/legislation/bills/2025/hb2705"
+    },
+    {
+      "jurisdiction": "MS",
+      "jurisdiction_name": "Mississippi",
+      "code": "SB2001",
+      "title": "The Mississippi Youth Court Reform Act of 2026; enact.",
+      "date": "2026-07-15",
+      "link": "https://billstatus.ls.state.ms.us/20261E/pdf/history/SB/SB2001.xml"
+    },
+    {
+      "jurisdiction": "MA",
+      "jurisdiction_name": "Massachusetts",
+      "code": "S3175",
+      "title": "Protecting children from addictive social media feeds",
+      "date": "2026-07-09",
+      "link": "https://malegislature.gov/Bills/194/S3175"
+    },
+    {
+      "jurisdiction": "AZ",
+      "jurisdiction_name": "Arizona",
+      "code": "HB4080",
+      "title": "Artificial intelligence; nursing tasks; pilot",
+      "date": "2026-06-13",
+      "link": "https://apps.azleg.gov/BillStatus/BillOverview/85602"
+    },
+    {
+      "jurisdiction": "AZ",
+      "jurisdiction_name": "Arizona",
+      "code": "HB4040",
+      "title": "Public schools; universities; AI policies",
+      "date": "2026-06-13",
+      "link": "https://apps.azleg.gov/BillStatus/BillOverview/85556"
+    },
+    {
+      "jurisdiction": "RI",
+      "jurisdiction_name": "Rhode Island",
+      "code": "S3338",
+      "title": "Protects individuals and businesses from those who knowingly impersonate an entity with the intent of facilitating fraud. This act would also protect individuals and businesses from digital forgery.",
+      "date": "2026-06-01",
+      "link": "https://status.rilegislature.gov/"
+    },
+    {
+      "jurisdiction": "LA",
+      "jurisdiction_name": "Louisiana",
+      "code": "SR176",
+      "title": "Requests the office of alcohol and tobacco control and the Board of Regents to study the feasibility of student identification cards being used for digital identification verification.",
+      "date": "2026-05-28",
+      "link": "https://www.legis.la.gov/legis/BillInfo.aspx?s=26rs&b=SR176&sbi=y"
+    },
+    {
+      "jurisdiction": "NY",
+      "jurisdiction_name": "New York",
+      "code": "A11500",
+      "title": "Authorizes the use of fully autonomous vehicles in Albany and Rensselaer counties until July 1, 2028; provides for operation, licensing, insurance, duties following crashes, on-demand autonomous vehicle networks, registration and titles, operation by human drivers, and related provisions.",
+      "date": "2026-05-28",
+      "link": "https://www.nysenate.gov/legislation/bills/2025/A11500"
+    },
+    {
+      "jurisdiction": "NY",
+      "jurisdiction_name": "New York",
+      "code": "A11490",
+      "title": "Prohibits dynamic pricing, algorithm or automated pricing tools in the sale or rental of any residential dwelling unit; prohibits the use of online real estate auction platforms for rental units where the owner has a direct or indirect ownership interest in such platform.",
+      "date": "2026-05-28",
+      "link": "https://www.nysenate.gov/legislation/bills/2025/A11490"
+    },
+    {
+      "jurisdiction": "DE",
+      "jurisdiction_name": "Delaware",
+      "code": "HB441",
+      "title": "An Act To Amend Title 6 Of The Delaware Code Relating To Cryptocurrency Kiosks.",
+      "date": "2026-05-21",
+      "link": "https://legis.delaware.gov/BillDetail?LegislationId=143383"
+    },
+    {
+      "jurisdiction": "LA",
+      "jurisdiction_name": "Louisiana",
+      "code": "HR302",
+      "title": "Requests the Legislative Youth Advisory Council to discuss artificial intelligence issues that may affect young people in Louisiana",
+      "date": "2026-05-19",
+      "link": "https://www.legis.la.gov/legis/BillInfo.aspx?s=26rs&b=HR302&sbi=y"
+    },
+    {
+      "jurisdiction": "DE",
+      "jurisdiction_name": "Delaware",
+      "code": "HB404",
+      "title": "An Act To Amend Title 14 Of The Delaware Code Relating To The Artificial Intelligence And Extended Reality In Schools Pilot Program.",
+      "date": "2026-05-07",
+      "link": "https://legis.delaware.gov/BillDetail?LegislationId=143513"
+    },
+    {
+      "jurisdiction": "RI",
+      "jurisdiction_name": "Rhode Island",
+      "code": "S3256",
+      "title": "Creates the public health data privacy and protection act to regulate the reporting of information relating to reportable disease data in the possession of the department of health.",
+      "date": "2026-05-05",
+      "link": "https://status.rilegislature.gov/"
+    },
+    {
+      "jurisdiction": "IL",
+      "jurisdiction_name": "Illinois",
+      "code": "HB5761",
+      "title": "$DCEO-AI WORKFORCE TRANSITION",
+      "date": "2026-04-30",
+      "link": "https://www.ilga.gov/Legislation/BillStatus?DocNum=5761&GAID=18&DocTypeID=HB&SessionID=114&GA=104"
+    },
+    {
+      "jurisdiction": "IL",
+      "jurisdiction_name": "Illinois",
+      "code": "HB5760",
+      "title": "AI WORK TRANSITION COMMISSION",
+      "date": "2026-04-30",
+      "link": "https://www.ilga.gov/Legislation/BillStatus?DocNum=5760&GAID=18&DocTypeID=HB&SessionID=114&GA=104"
+    },
+    {
+      "jurisdiction": "NC",
+      "jurisdiction_name": "North Carolina",
+      "code": "S1022",
+      "title": "Consumer Privacy Act",
+      "date": "2026-04-30",
+      "link": "https://www.ncleg.gov/BillLookUp/2025/S1022"
+    },
+    {
+      "jurisdiction": "NC",
+      "jurisdiction_name": "North Carolina",
+      "code": "S988",
+      "title": "Protecting Workers in the Age of AI Act",
+      "date": "2026-04-30",
+      "link": "https://www.ncleg.gov/BillLookUp/2025/S988"
+    },
+    {
+      "jurisdiction": "DC",
+      "jurisdiction_name": "District of Columbia",
+      "code": "B26-0670",
+      "title": "District of Columbia Government Data Privacy and Protection Act of 2026",
+      "date": "2026-04-27",
+      "link": "https://lims.dccouncil.gov/Legislation/B26-0670"
+    },
+    {
+      "jurisdiction": "MN",
+      "jurisdiction_name": "Minnesota",
+      "code": "SF5221",
+      "title": "Geolocation data provisions establishment",
+      "date": "2026-04-27",
+      "link": "https://www.revisor.mn.gov/bills/94/2026/0/SF/5221/"
+    },
+    {
+      "jurisdiction": "FL",
+      "jurisdiction_name": "Florida",
+      "code": "S0002",
+      "title": "Artificial Intelligence Bill of Rights",
+      "date": "2026-04-24",
+      "link": "https://www.flsenate.gov/Session/Bill/2026D/2D"
+    },
+    {
+      "jurisdiction": "MN",
+      "jurisdiction_name": "Minnesota",
+      "code": "HF5055",
+      "title": "Individual income, corporate franchise, sales and use, and gross receipts taxes and other various taxes and tax-related provisions modified; federal conformity provided; sustainable aviation fuel credit modified, firearms gross receipts tax imposed, social media tax imposed, and money appropriated.",
+      "date": "2026-04-22",
+      "link": "https://www.revisor.mn.gov/bills/94/2026/0/HF/5055/"
+    },
+    {
+      "jurisdiction": "DC",
+      "jurisdiction_name": "District of Columbia",
+      "code": "B26-0656",
+      "title": "Internet Gaming and Consumer Protection Act of 2026",
+      "date": "2026-04-09",
+      "link": "https://lims.dccouncil.gov/Legislation/B26-0656"
+    },
+    {
+      "jurisdiction": "GA",
+      "jurisdiction_name": "Georgia",
+      "code": "HR2121",
+      "title": "The transformative impact of blockchain technology; commend",
+      "date": "2026-04-02",
+      "link": "https://www.legis.ga.gov/legislation/74732"
+    },
+    {
+      "jurisdiction": "SC",
+      "jurisdiction_name": "South Carolina",
+      "code": "H5476",
+      "title": "Protecting Children from Chatbots",
+      "date": "2026-03-31",
+      "link": "https://www.scstatehouse.gov/billsearch.php?billnumbers=5476&session=126&summary=B"
+    },
+    {
+      "jurisdiction": "GA",
+      "jurisdiction_name": "Georgia",
+      "code": "HB1603",
+      "title": "Georgia Entertainment Artificial Intelligence Accountability and Performer Protection Act; enact",
+      "date": "2026-03-25",
+      "link": "https://www.legis.ga.gov/legislation/74419"
+    },
+    {
+      "jurisdiction": "ID",
+      "jurisdiction_name": "Idaho",
+      "code": "H0945",
+      "title": "Adds to existing law to establish provisions regarding artifical intelligence medical services.",
+      "date": "2026-03-25",
+      "link": "https://legislature.idaho.gov/sessioninfo/2026/legislation/H0945/"
+    },
+    {
+      "jurisdiction": "NE",
+      "jurisdiction_name": "Nebraska",
+      "code": "LR421",
+      "title": "Interim study to examine the current status of artificial intelligence legislation occurring at the state and federal levels to address risks to public safety and to determine what action Nebraska should take to address such risks",
+      "date": "2026-03-24",
+      "link": "https://nebraskalegislature.gov/bills/view_bill.php?DocumentID=65874"
+    },
+    {
+      "jurisdiction": "SC",
+      "jurisdiction_name": "South Carolina",
+      "code": "S1037",
+      "title": "Protecting Children from Chatbots",
+      "date": "2026-03-19",
+      "link": "https://www.scstatehouse.gov/billsearch.php?billnumbers=1037&session=126&summary=B"
+    },
+    {
+      "jurisdiction": "WI",
+      "jurisdiction_name": "Wisconsin",
+      "code": "SB1119",
+      "title": "Protection of pregnant individualsâ information, authorization for disclosure, data breach, and providing a penalty.",
+      "date": "2026-03-19",
+      "link": "https://docs.legis.wisconsin.gov/2025/proposals/reg/sen/bill/sb1119"
+    },
+    {
+      "jurisdiction": "IA",
+      "jurisdiction_name": "Iowa",
+      "code": "HSB766",
+      "title": "A bill for an act relating to the licensure of artificial intelligence augmented and autonomous service providers, and including penalties.",
+      "date": "2026-03-18",
+      "link": "https://www.legis.iowa.gov/legislation/BillBook?ga=91&ba=HSB766"
+    },
+    {
+      "jurisdiction": "ID",
+      "jurisdiction_name": "Idaho",
+      "code": "H0917",
+      "title": "Adds to existing law to require the use of AI to review administrative rules annually.",
+      "date": "2026-03-17",
+      "link": "https://legislature.idaho.gov/sessioninfo/2026/legislation/H0917/"
+    },
+    {
+      "jurisdiction": "HI",
+      "jurisdiction_name": "Hawaii",
+      "code": "SCR184",
+      "title": "Requesting The Hawaii Civil Rights Commission To Examine The Applicability Of Existing State Anti-discrimination Laws To Algorithmic And Automated Decision Systems.",
+      "date": "2026-03-16",
+      "link": "https://www.capitol.hawaii.gov/session/measure_indiv.aspx?billtype=SCR&billnumber=184&year=2026"
+    },
+    {
+      "jurisdiction": "HI",
+      "jurisdiction_name": "Hawaii",
+      "code": "HCR192",
+      "title": "Requesting The Hawaii Civil Rights Commission To Examine The Applicability Of Existing State Anti-discrimination Laws To Algorithmic And Automated Decision Systems.",
+      "date": "2026-03-16",
+      "link": "https://www.capitol.hawaii.gov/session/measure_indiv.aspx?billtype=HCR&billnumber=192&year=2026"
+    },
+    {
+      "jurisdiction": "WI",
+      "jurisdiction_name": "Wisconsin",
+      "code": "AB1161",
+      "title": "Online services accessed by minors, minorsâ personal data, and granting rule-making authority.",
+      "date": "2026-03-13",
+      "link": "https://docs.legis.wisconsin.gov/2025/proposals/reg/asm/bill/ab1161"
+    },
+    {
+      "jurisdiction": "CT",
+      "jurisdiction_name": "Connecticut",
+      "code": "SB00483",
+      "title": "An Act Establishing The Crime Of Digital Forgery.",
+      "date": "2026-03-11",
+      "link": "https://www.cga.ct.gov/asp/cgabillstatus/cgabillstatus.asp?selBillType=Bill&bill_num=SB00483&which_year=2026"
+    },
+    {
+      "jurisdiction": "FL",
+      "jurisdiction_name": "Florida",
+      "code": "S1816",
+      "title": "CyberBay",
+      "date": "2026-03-11",
+      "link": "https://www.flsenate.gov/Session/Bill/2026/1816"
+    },
+    {
+      "jurisdiction": "CT",
+      "jurisdiction_name": "Connecticut",
+      "code": "SB00435",
+      "title": "An Act Concerning Automated Decision Systems Protections For Employees.",
+      "date": "2026-03-05",
+      "link": "https://www.cga.ct.gov/asp/cgabillstatus/cgabillstatus.asp?selBillType=Bill&bill_num=SB00435&which_year=2026"
+    },
+    {
+      "jurisdiction": "KY",
+      "jurisdiction_name": "Kentucky",
+      "code": "HB904",
+      "title": "AN ACT relating to gaming.",
+      "date": "2026-03-04",
+      "link": "https://apps.legislature.ky.gov/record/26RS/hb904.html"
+    },
+    {
+      "jurisdiction": "KY",
+      "jurisdiction_name": "Kentucky",
+      "code": "HB776",
+      "title": "AN ACT relating to health care services and declaring an emergency.",
+      "date": "2026-02-27",
+      "link": "https://apps.legislature.ky.gov/record/26RS/hb776.html"
+    },
+    {
+      "jurisdiction": "MO",
+      "jurisdiction_name": "Missouri",
+      "code": "HCR53",
+      "title": "Condemns President Trump's social media activity",
+      "date": "2026-02-27",
+      "link": "https://house.mo.gov/Bill.aspx?bill=HCR53&year=2026&code=R"
+    },
+    {
+      "jurisdiction": "AL",
+      "jurisdiction_name": "Alabama",
+      "code": "HB524",
+      "title": "Artificial Intelligence; state agencies required to perform quarterly AI-assisted review of rules",
+      "date": "2026-02-26",
+      "link": "https://alison.legislature.state.al.us/bill-search"
+    },
+    {
+      "jurisdiction": "AL",
+      "jurisdiction_name": "Alabama",
+      "code": "SB328",
+      "title": "Artificial Intelligence; state agencies required to perform quarterly AI-assisted review of rules",
+      "date": "2026-02-25",
+      "link": "https://alison.legislature.state.al.us/bill-search"
     },
     {
       "jurisdiction": "MD",
       "jurisdiction_name": "Maryland",
       "code": "HB1638",
       "title": "Consumer Protection - Covered Platforms - Protection of Minors (Kids Online Protection and Antigrooming Act)",
-      "date": "",
+      "date": "2026-02-25",
       "link": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/HB1638?ys=2026RS"
+    },
+    {
+      "jurisdiction": "IA",
+      "jurisdiction_name": "Iowa",
+      "code": "HF2715",
+      "title": "A bill for an act relating to chatbots, including deployer requirements and interactions with minors.(Formerly HSB 647.)",
+      "date": "2026-02-24",
+      "link": "https://www.legis.iowa.gov/legislation/BillBook?ga=91&ba=HF2715"
+    },
+    {
+      "jurisdiction": "MS",
+      "jurisdiction_name": "Mississippi",
+      "code": "HB4074",
+      "title": "Mississippi Mobile Sports Wagering Act; create.",
+      "date": "2026-02-24",
+      "link": "https://billstatus.ls.state.ms.us/2026/pdf/history/HB/HB4074.xml"
+    },
+    {
+      "jurisdiction": "AK",
+      "jurisdiction_name": "Alaska",
+      "code": "SB262",
+      "title": "Social Media/minors",
+      "date": "2026-02-23",
+      "link": "https://www.akleg.gov/basis/Bill/Detail/34?Root=SB262"
+    },
+    {
+      "jurisdiction": "AK",
+      "jurisdiction_name": "Alaska",
+      "code": "HB367",
+      "title": "Consumer Data Privacy Act",
+      "date": "2026-02-23",
+      "link": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB367"
+    },
+    {
+      "jurisdiction": "CA",
+      "jurisdiction_name": "California",
+      "code": "SB1315",
+      "title": "Drive My Car Act.",
+      "date": "2026-02-20",
+      "link": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1315"
+    },
+    {
+      "jurisdiction": "CA",
+      "jurisdiction_name": "California",
+      "code": "AB2713",
+      "title": "California AI Transparency Act: system provenance data.",
+      "date": "2026-02-20",
+      "link": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2713"
+    },
+    {
+      "jurisdiction": "CO",
+      "jurisdiction_name": "Colorado",
+      "code": "HB1263",
+      "title": "Conversational Artificial Intelligence Service Operator Requirements",
+      "date": "2026-02-19",
+      "link": "https://leg.colorado.gov/bills/HB26-1263"
+    },
+    {
+      "jurisdiction": "CO",
+      "jurisdiction_name": "Colorado",
+      "code": "HB1255",
+      "title": "Social Media Duty to Report & Search Warrants",
+      "date": "2026-02-18",
+      "link": "https://leg.colorado.gov/bills/HB26-1255"
     },
     {
       "jurisdiction": "MD",
       "jurisdiction_name": "Maryland",
       "code": "SB989",
       "title": "Child Exploitation Material - Civil and Criminal Actions (Safe Kids Act)",
-      "date": "",
+      "date": "2026-02-18",
       "link": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/SB0989?ys=2026RS"
+    },
+    {
+      "jurisdiction": "WV",
+      "jurisdiction_name": "West Virginia",
+      "code": "HR15",
+      "title": "Expressing support for I-68 Energy Manufacturing Corridor",
+      "date": "2026-02-17",
+      "link": "http://www.wvlegislature.gov/Bill_Status/Resolution_History.cfm?year=2026&sessiontype=RS&input4=15&billtype=R&houseorig=H&btype=res"
+    },
+    {
+      "jurisdiction": "WV",
+      "jurisdiction_name": "West Virginia",
+      "code": "HB5656",
+      "title": "Relating to additional compensation of clerk of the county commission for additional duties.",
+      "date": "2026-02-17",
+      "link": "http://www.wvlegislature.gov/Bill_Status/Bills_history.cfm?input=5656&year=2026&sessiontype=RS&btype=bill"
+    },
+    {
+      "jurisdiction": "WY",
+      "jurisdiction_name": "Wyoming",
+      "code": "HB0181",
+      "title": "Biometric data and license plate readers-regulation.",
+      "date": "2026-02-11",
+      "link": "https://www.wyoleg.gov/Legislation/2026/HB0181"
+    },
+    {
+      "jurisdiction": "KS",
+      "jurisdiction_name": "Kansas",
+      "code": "HB2772",
+      "title": "Enacting the Kansas age-appropriate design code act to require businesses to assess and mitigate risks of compulsive use in minors; enacting the Kansas stopping likeness abuse by nonconsensual digital replicas act to create a private right of action for the unauthorized digital replication and distribution of individuals' digital likenesses; enacting the Kansas saving human connection act to prohibit deceptive practices and ensure transparency in chatbot interactions.",
+      "date": "2026-02-10",
+      "link": "https://kslegislature.gov/li/b2025_26/measures/hb2772/"
+    },
+    {
+      "jurisdiction": "KS",
+      "jurisdiction_name": "Kansas",
+      "code": "SB499",
+      "title": "Enacting the Kansas age-appropriate design code act to require businesses to assess and mitigate risks of compulsive use in minors, enacting the Kansas stopping likeness abuse by nonconsensual digital replicas act to create a private right of action for the unauthorized digital replication and distribution of individuals' digital likenesses and enacting the Kansas saving human connection act to prohibit deceptive practices and ensure transparency in chatbot interactions.",
+      "date": "2026-02-09",
+      "link": "https://kslegislature.gov/li/b2025_26/measures/sb499/"
+    },
+    {
+      "jurisdiction": "UT",
+      "jurisdiction_name": "Utah",
+      "code": "SB0275",
+      "title": "State-Endorsed Digital Identity Program Amendments",
+      "date": "2026-02-09",
+      "link": "https://le.utah.gov/~2026/bills/static/SB0275.html"
+    },
+    {
+      "jurisdiction": "WY",
+      "jurisdiction_name": "Wyoming",
+      "code": "HB0102",
+      "title": "Protecting kids from deepfakes and exploitative images.",
+      "date": "2026-02-05",
+      "link": "https://www.wyoleg.gov/Legislation/2026/HB0102"
+    },
+    {
+      "jurisdiction": "NH",
+      "jurisdiction_name": "New Hampshire",
+      "code": "SB657",
+      "title": "Relative to the use of information technology and artificial intelligence systems by state agencies.",
+      "date": "2026-02-04",
+      "link": "https://gc.nh.gov/bill_status/legacy/bs2016/bill_status.aspx?lsr=3270&sy=2026&sortoption=&txtsessionyear=2026&txtbillnumber=SB657"
+    },
+    {
+      "jurisdiction": "NM",
+      "jurisdiction_name": "New Mexico",
+      "code": "HB330",
+      "title": "Ai Ethics As School Science Elective",
+      "date": "2026-02-04",
+      "link": "https://www.nmlegis.gov/Legislation/Legislation?chamber=H&legtype=B&legno=330&year=26"
+    },
+    {
+      "jurisdiction": "SD",
+      "jurisdiction_name": "South Dakota",
+      "code": "HB1309",
+      "title": "Restrict the processing of online personal data of individuals sixteen years of age or younger.",
+      "date": "2026-02-04",
+      "link": "https://sdlegislature.gov/#/Session/Bill/26602"
+    },
+    {
+      "jurisdiction": "MO",
+      "jurisdiction_name": "Missouri",
+      "code": "HB3188",
+      "title": "Establishes the Media Literacy and Critical Thinking Act",
+      "date": "2026-02-03",
+      "link": "https://house.mo.gov/Bill.aspx?bill=HB3188&year=2026&code=R"
+    },
+    {
+      "jurisdiction": "TN",
+      "jurisdiction_name": "Tennessee",
+      "code": "HB2586",
+      "title": "AN ACT to amend Tennessee Code Annotated, Title 2; Title 4; Title 8; Title 10; Title 16; Title 29; Title 36; Title 37; Title 38; Title 39; Title 40; Title 45; Title 47; Title 48; Title 49; Title 53; Title 62; Title 63; Title 65; Title 67; Title 68 and Title 71, relative to artificial intelligence.",
+      "date": "2026-02-03",
+      "link": "https://wapp.capitol.tn.gov/apps/Billinfo/Default?BillNumber=HB2586&ga=114"
+    },
+    {
+      "jurisdiction": "TN",
+      "jurisdiction_name": "Tennessee",
+      "code": "HB2416",
+      "title": "AN ACT to amend Tennessee Code Annotated, Title 49, relative to education.",
+      "date": "2026-02-03",
+      "link": "https://wapp.capitol.tn.gov/apps/Billinfo/Default?BillNumber=HB2416&ga=114"
+    },
+    {
+      "jurisdiction": "VT",
+      "jurisdiction_name": "Vermont",
+      "code": "H0855",
+      "title": "An act relating to defenses in civil actions based on harm caused by artificial intelligence",
+      "date": "2026-02-03",
+      "link": "https://legislature.vermont.gov/bill/status/2026/H.855"
+    },
+    {
+      "jurisdiction": "OK",
+      "jurisdiction_name": "Oklahoma",
+      "code": "SB2085",
+      "title": "Artificial intelligence; establishing certain rights; prohibiting certain actions by certain entities; requiring certain actions by certain entities. Effective date.",
+      "date": "2026-02-02",
+      "link": "https://www.oklegislature.gov/BillInfo.aspx?Bill=sb2085&Session=2600"
+    },
+    {
+      "jurisdiction": "OK",
+      "jurisdiction_name": "Oklahoma",
+      "code": "SB2038",
+      "title": "Health Insurance; prohibiting issue of outcomes with AI; requiring decisions to be made by provider; requiring disclosures. Emergency.",
+      "date": "2026-02-02",
+      "link": "https://www.oklegislature.gov/BillInfo.aspx?Bill=sb2038&Session=2600"
+    },
+    {
+      "jurisdiction": "OR",
+      "jurisdiction_name": "Oregon",
+      "code": "SB1546",
+      "title": "Relating to artificial intelligence companions.",
+      "date": "2026-02-02",
+      "link": "https://olis.oregonlegislature.gov/liz/2026R1/Measures/Overview/SB1546"
+    },
+    {
+      "jurisdiction": "OR",
+      "jurisdiction_name": "Oregon",
+      "code": "HB4103",
+      "title": "Relating to artificial intelligence.",
+      "date": "2026-02-02",
+      "link": "https://olis.oregonlegislature.gov/liz/2026R1/Measures/Overview/HB4103"
+    },
+    {
+      "jurisdiction": "UT",
+      "jurisdiction_name": "Utah",
+      "code": "HB0450",
+      "title": "Data Privacy Amendments",
+      "date": "2026-02-02",
+      "link": "https://le.utah.gov/~2026/bills/static/HB0450.html"
+    },
+    {
+      "jurisdiction": "VT",
+      "jurisdiction_name": "Vermont",
+      "code": "H0846",
+      "title": "An act relating to artificial intelligence and elections",
+      "date": "2026-01-30",
+      "link": "https://legislature.vermont.gov/bill/status/2026/H.846"
+    },
+    {
+      "jurisdiction": "NM",
+      "jurisdiction_name": "New Mexico",
+      "code": "HB214",
+      "title": "Consumer Information And Data Protection Act",
+      "date": "2026-01-29",
+      "link": "https://www.nmlegis.gov/Legislation/Legislation?chamber=H&legtype=B&legno=214&year=26"
+    },
+    {
+      "jurisdiction": "SD",
+      "jurisdiction_name": "South Dakota",
+      "code": "SB170",
+      "title": "Require the provision of a notice to consumers, interacting with certain chatbots or other human-simulating computer technologies that could mislead or deceive the consumer.",
+      "date": "2026-01-29",
+      "link": "https://sdlegislature.gov/#/Session/Bill/26551"
+    },
+    {
+      "jurisdiction": "WA",
+      "jurisdiction_name": "Washington",
+      "code": "HB2667",
+      "title": "Providing consumer protections for artificial intelligence systems.",
+      "date": "2026-01-26",
+      "link": "https://app.leg.wa.gov/billsummary?BillNumber=2667&Year=2025&Initiative=false"
     },
     {
       "jurisdiction": "VA",
       "jurisdiction_name": "Virginia",
       "code": "SB796",
       "title": "Artificial Intelligence Companion Chatbots and Minors Act; established, enforcement, civil penalty.",
-      "date": "",
+      "date": "2026-01-23",
       "link": "https://lis.virginia.gov/bill-details/20261/SB796"
     },
     {
@@ -64,24 +760,160 @@
       "jurisdiction_name": "Virginia",
       "code": "HB1521",
       "title": "Digital innovation & infrastructure; establishing rights in digital property & technology resources.",
-      "date": "",
+      "date": "2026-01-23",
       "link": "https://lis.virginia.gov/bill-details/20261/HB1521"
     },
     {
-      "jurisdiction": "DC",
-      "jurisdiction_name": "District of Columbia",
-      "code": "B26-0670",
-      "title": "District of Columbia Government Data Privacy and Protection Act of 2026",
-      "date": "",
-      "link": "https://lims.dccouncil.gov/Legislation/B26-0670"
+      "jurisdiction": "WA",
+      "jurisdiction_name": "Washington",
+      "code": "SB6299",
+      "title": "Concerning artificial intelligence and instructional staff.",
+      "date": "2026-01-23",
+      "link": "https://app.leg.wa.gov/billsummary?BillNumber=6299&Year=2025&Initiative=false"
     },
     {
-      "jurisdiction": "DC",
-      "jurisdiction_name": "District of Columbia",
-      "code": "B26-0656",
-      "title": "Internet Gaming and Consumer Protection Act of 2026",
-      "date": "",
-      "link": "https://lims.dccouncil.gov/Legislation/B26-0656"
+      "jurisdiction": "NE",
+      "jurisdiction_name": "Nebraska",
+      "code": "LB1185",
+      "title": "Adopt the Conversational Artificial Intelligence Safety Act",
+      "date": "2026-01-21",
+      "link": "https://nebraskalegislature.gov/bills/view_bill.php?DocumentID=63873"
+    },
+    {
+      "jurisdiction": "ME",
+      "jurisdiction_name": "Maine",
+      "code": "LD2162",
+      "title": "An Act to Regulate and Prevent Children's Access to Artificial Intelligence Chatbots with Human-like Features and Social Artificial Intelligence Companions",
+      "date": "2026-01-13",
+      "link": "https://legislature.maine.gov/legis/bills/display_ps.asp?LD=2162&snum=132"
+    },
+    {
+      "jurisdiction": "IN",
+      "jurisdiction_name": "Indiana",
+      "code": "HB1419",
+      "title": "Self-service storage facilities.",
+      "date": "2026-01-08",
+      "link": "https://iga.in.gov/legislative/2026/bills/house/1419/details"
+    },
+    {
+      "jurisdiction": "IN",
+      "jurisdiction_name": "Indiana",
+      "code": "HB1408",
+      "title": "Education matters.",
+      "date": "2026-01-08",
+      "link": "https://iga.in.gov/legislative/2026/bills/house/1408/details"
+    },
+    {
+      "jurisdiction": "ME",
+      "jurisdiction_name": "Maine",
+      "code": "LD2103",
+      "title": "An Act Requiring Hospitals to Adopt Cybersecurity Plans",
+      "date": "2026-01-07",
+      "link": "https://legislature.maine.gov/legis/bills/display_ps.asp?LD=2103&snum=132"
+    },
+    {
+      "jurisdiction": "NH",
+      "jurisdiction_name": "New Hampshire",
+      "code": "HB1728",
+      "title": "Requiring sufficient cybersecurity protections for critical infrastructure and technology projects.",
+      "date": "2025-12-17",
+      "link": "https://gc.nh.gov/bill_status/legacy/bs2016/bill_status.aspx?lsr=3165&sy=2026&sortoption=&txtsessionyear=2026&txtbillnumber=HB1728"
+    },
+    {
+      "jurisdiction": "NV",
+      "jurisdiction_name": "Nevada",
+      "code": "AB1",
+      "title": "Revises provisions relating to governmental administration. (BDR 19-22)",
+      "date": "2025-11-12",
+      "link": "https://www.leg.state.nv.us/App/NELIS/REL/36th2025Special/Bill/12988/Overview"
+    },
+    {
+      "jurisdiction": "TX",
+      "jurisdiction_name": "Texas",
+      "code": "HB148",
+      "title": "Relating to the use of artificial intelligence to score constructed responses on assessment instruments administered to public school students.",
+      "date": "2025-08-15",
+      "link": "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=892&Bill=HB148"
+    },
+    {
+      "jurisdiction": "TX",
+      "jurisdiction_name": "Texas",
+      "code": "HB270",
+      "title": "Relating to disasters, including the regulation of social media platforms, disaster relief organizations, and disaster volunteers; creating criminal offenses; increasing criminal penalties; authorizing a fee.",
+      "date": "2025-08-04",
+      "link": "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=891&Bill=HB270"
+    },
+    {
+      "jurisdiction": "NV",
+      "jurisdiction_name": "Nevada",
+      "code": "SB467",
+      "title": "Revises provisions relating to cybersecurity. (BDR 19-1149)",
+      "date": "2025-05-15",
+      "link": "https://www.leg.state.nv.us/App/NELIS/REL/83rd2025/Bill/12892/Overview"
+    },
+    {
+      "jurisdiction": "AR",
+      "jurisdiction_name": "Arkansas",
+      "code": "SB616",
+      "title": "To Create The Arkansas Long-term Care Facility Resident Monitoring And Communications Act; And To Establish Resident Rights For Electronic Monitoring And Communication In Long-term Care Facilities.",
+      "date": "2025-04-03",
+      "link": "https://arkleg.state.ar.us/Bills/Detail?id=sb616&ddBienniumSession=2025%2F2025R"
+    },
+    {
+      "jurisdiction": "AR",
+      "jurisdiction_name": "Arkansas",
+      "code": "HB1958",
+      "title": "To Require Public Entities To Create A Policy Concerning The Authorized Use Of Artificial Intelligence.",
+      "date": "2025-04-01",
+      "link": "https://arkleg.state.ar.us/Bills/Detail?id=hb1958&ddBienniumSession=2025%2F2025R"
+    },
+    {
+      "jurisdiction": "ND",
+      "jurisdiction_name": "North Dakota",
+      "code": "SB2354",
+      "title": "The use of personal electronic devices in schools providing prekindergarten, elementary, or secondary education.",
+      "date": "2025-01-24",
+      "link": "https://ndlegis.gov/assembly/69-2025/regular/bill-overview/bo2354.html"
+    },
+    {
+      "jurisdiction": "ND",
+      "jurisdiction_name": "North Dakota",
+      "code": "HB1460",
+      "title": "Substitute caregiver and respite care provider requirements in foster homes for adults and the permitted use of an electronic monitoring device by an adult foster care provider.",
+      "date": "2025-01-16",
+      "link": "https://ndlegis.gov/assembly/69-2025/regular/bill-overview/bo1460.html"
+    },
+    {
+      "jurisdiction": "MT",
+      "jurisdiction_name": "Montana",
+      "code": "HB556",
+      "title": "Generally revise usage of artificial intelligence in certain health insurance",
+      "date": "2024-12-15",
+      "link": "https://bills.legmt.gov/#/laws/bill/2/LC3970"
+    },
+    {
+      "jurisdiction": "MT",
+      "jurisdiction_name": "Montana",
+      "code": "HJ72",
+      "title": "Interim study of personal data sharing by DOT",
+      "date": "2024-12-14",
+      "link": "https://bills.legmt.gov/#/laws/bill/2/LC3255"
+    },
+    {
+      "jurisdiction": "PR",
+      "jurisdiction_name": "Puerto Rico",
+      "code": "SR684",
+      "title": "Artificial Intelligence",
+      "date": "2023-06-16",
+      "link": "https://www.ncsl.org/technology-and-communication/artificial-intelligence-2023-legislation"
+    },
+    {
+      "jurisdiction": "PR",
+      "jurisdiction_name": "Puerto Rico",
+      "code": "SB1179",
+      "title": "Artificial Intelligence Officer",
+      "date": "2023-06-14",
+      "link": "https://www.ncsl.org/technology-and-communication/artificial-intelligence-2023-legislation"
     }
   ]
 }
