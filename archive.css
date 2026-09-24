@@ -266,6 +266,15 @@
 
 /* ── results: list view ── */
 .arc-results { grid-area: results; min-width: 0; }
+/* Google-style load time; shares its height with the "Recently added"
+   heading so results and the spotlit box start on the same line */
+.arc-stats,
+.arc-panel > .arc-panel-label:first-child {
+  height: 1rem;
+  line-height: 1rem;
+  margin: 0 0 0.9rem;
+}
+.arc-stats { font-size: 0.8rem; color: var(--ink-3); }
 .arc-list { max-width: 660px; }
 .arc-result { padding-bottom: 1.6rem; }
 .arc-result-title {

@@ -9,7 +9,8 @@
 //   right  → the newest item spotlit, then up to four more as cards
 //   Policy page only: an auto-scrolling tech policy tracker under the
 //   content types on the left.
-//   Results show four per page ("5–8 of 45" with arrows); the filter
+//   Results show four per page in list view and six in card view
+//   ("5–8 of 45" with arrows), under a Google-style load time; the filter
 //   dropdowns sit behind an "Advanced search" toggle.
 //
 // A page opts in with a single mount point:
@@ -35,7 +36,7 @@
     { key: 'reports',  type: 'report',   label: 'Reports',          file: 'reports.json',  href: '/reports',  page: 'reports.html'  }
   ];
   var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  var PAGE_SIZE = 4;
+  var PAGE_SIZE = { list: 4, cards: 6 };   // results per page in each view
   var BILLS_URL = '/tracker-data.json';
   var RECENT_COUNT = 5;    // one spotlit + four cards
   var SOURCE_LABELS = { original: 'Original', via: 'Via' };
@@ -417,8 +418,9 @@
     var ICON_NEXT = '<svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg>';
     function pagerHTML(total, pages) {
       if (pages <= 1) return '';
-      var first = (state.page - 1) * PAGE_SIZE + 1;
-      var last = Math.min(total, state.page * PAGE_SIZE);
+      var size = PAGE_SIZE[state.view];
+      var first = (state.page - 1) * size + 1;
+      var last = Math.min(total, state.page * size);
       return '<nav class="arc-pager" aria-label="Result pages">' +
         '<span class="arc-pager-range">' + first + '\u2013' + last + ' of ' + total + '</span>' +
         '<button type="button" class="arc-pager-btn" data-page="' + (state.page - 1) + '" aria-label="Previous page"' + (state.page <= 1 ? ' disabled' : '') + '>' + ICON_PREV + '</button>' +
@@ -426,7 +428,16 @@
       '</nav>';
     }
 
+    // Google-style timing line. It sits in the same row as the "Recently
+    // added" heading so the first result lines up with the spotlit box.
+    function statsHTML(ms) {
+      var secs = ms / 1000;
+      // report the real time; anything under 10 ms reads "under 0.01" rather than 0.00
+      return '<p class="arc-stats">Loaded in ' + (secs < 0.01 ? 'under 0.01' : secs.toFixed(2)) + ' seconds</p>';
+    }
+
     function render() {
+      var t0 = performance.now();
       var toks = tokenize(state.q);
       var matched = queryMatches(toks);
       var list = sorted(matched.filter(function (it) { return passesFilters(it); }));
@@ -439,20 +450,25 @@
         b.setAttribute('aria-pressed', on ? 'true' : 'false');
       });
 
+      // the first render also counts the time spent fetching the content file
+      var ms = performance.now() - t0 + pendingLoadMs;
+      pendingLoadMs = 0;
+
       if (!list.length) {
-        resultsEl.innerHTML = '<div class="arc-empty"><p>No ' + esc(cat.label.toLowerCase()) +
+        resultsEl.innerHTML = statsHTML(ms) + '<div class="arc-empty"><p>No ' + esc(cat.label.toLowerCase()) +
           (state.q ? ' match \u201C' + esc(state.q) + '\u201D' : ' match these filters') + '.</p>' +
           '<button type="button" class="arc-clear" data-clear="all">Clear search and filters</button></div>';
         return;
       }
 
-      var pages = Math.ceil(list.length / PAGE_SIZE);
+      var size = PAGE_SIZE[state.view];
+      var pages = Math.ceil(list.length / size);
       if (state.page > pages) state.page = pages;
-      var start = (state.page - 1) * PAGE_SIZE;
-      var page = list.slice(start, start + PAGE_SIZE);
-      var body = state.view === 'cards'
+      var start = (state.page - 1) * size;
+      var page = list.slice(start, start + size);
+      var body = statsHTML(ms) + (state.view === 'cards'
         ? '<div class="arc-cards">' + page.map(function (it) { return cardHTML(it, toks); }).join('') + '</div>'
-        : '<div class="arc-list">' + page.map(function (it) { return resultHTML(it, toks); }).join('') + '</div>';
+        : '<div class="arc-list">' + page.map(function (it) { return resultHTML(it, toks); }).join('') + '</div>');
       body += pagerHTML(list.length, pages);
       resultsEl.innerHTML = body;
     }
@@ -665,7 +681,7 @@
       }
       if (t.hasAttribute('data-view')) {
         state.view = t.getAttribute('data-view');
-        update(false);
+        update(true);   // page sizes differ between views, so start from page 1
         return;
       }
       if (t.hasAttribute('data-page')) {
@@ -696,6 +712,8 @@
     });
 
     // ── load ──
+    var loadStart = performance.now();
+    var pendingLoadMs = 0;
     fetch('/content/' + cat.file)
       .then(function (res) { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
       .then(function (json) {
@@ -711,6 +729,7 @@
         Object.keys(state.filters).forEach(function (k) {
           if (activeFacets.indexOf(FACET_BY_KEY[k]) === -1) delete state.filters[k];
         });
+        pendingLoadMs = performance.now() - loadStart;
         renderPanel();
         update(false);
         if (cat.key === 'policy') loadBills();   // the tracker lives on the policy page only
