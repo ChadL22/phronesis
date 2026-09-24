@@ -421,11 +421,13 @@
       var size = PAGE_SIZE[state.view];
       var first = (state.page - 1) * size + 1;
       var last = Math.min(total, state.page * size);
-      return '<nav class="arc-pager" aria-label="Result pages">' +
+      // a div rather than <nav>: shared.css gives bare nav elements the old
+      // top-bar styling (sticky, fixed height, bottom border)
+      return '<div class="arc-pager" role="navigation" aria-label="Result pages">' +
         '<span class="arc-pager-range">' + first + '\u2013' + last + ' of ' + total + '</span>' +
         '<button type="button" class="arc-pager-btn" data-page="' + (state.page - 1) + '" aria-label="Previous page"' + (state.page <= 1 ? ' disabled' : '') + '>' + ICON_PREV + '</button>' +
         '<button type="button" class="arc-pager-btn" data-page="' + (state.page + 1) + '" aria-label="Next page"' + (state.page >= pages ? ' disabled' : '') + '>' + ICON_NEXT + '</button>' +
-      '</nav>';
+      '</div>';
     }
 
     // Google-style timing line. It sits in the same row as the "Recently
