@@ -150,132 +150,66 @@
   .menu-panel a:hover{background:var(--parchment); color:var(--terracotta);}
   .menu-panel .divider{height:1px; background:var(--marble); margin:6px 0;}
 
-  /* ---------- front page panel, modeled on the Internet Archive's:
-     crest | statement, categories, search | latest additions ---------- */
-  .home-panel{
-    max-width:1240px;
-    margin:30px auto 10px;
-    background:#fff;
-    border:1px solid var(--marble);
-    box-shadow:0 2px 10px rgba(26,25,22,0.05);
-    display:grid;
-    grid-template-columns:230px minmax(0, 1fr) 280px;
-    padding:38px 0;
-  }
-  .home-panel-crest{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:0 30px;
-  }
-  .home-panel-crest img{display:block; width:100%; max-width:170px; height:auto;}
-  .home-panel-main{
-    padding:0 38px;
-    border-left:1px solid var(--marble);
-    border-right:1px solid var(--marble);
-  }
-  .home-panel-main .blurb{
-    margin:0;
-    font-size:24px;
-    line-height:1.4;
-    color:rgba(26,25,22,0.88);
-  }
-  .home-panel-main .blurb strong{color:var(--forest-deep); font-weight:600; font-style:italic;}
-  /* categories as plain-text links, numbered left to right */
-  .home-cats{
-    display:grid;
-    grid-template-columns:repeat(4, minmax(0, 1fr));
-    gap:14px 24px;
-    margin:26px 0 4px;
-  }
-  .home-cats a{
-    display:block;
-    font-family:'Cormorant Garamond', serif;
-    font-size:18px;
-    line-height:1.25;
-    color:var(--ink);
-  }
-  .home-cats .hc-num{margin-right:6px; opacity:.7;}
-  .home-cats .hc-count{
-    display:block;
-    margin-top:2px;
-    font-family:'Outfit', sans-serif;
-    font-size:11.5px;
-    color:var(--ink);
-    opacity:.5;
-  }
-  .home-cats a:hover .hc-name{text-decoration:underline; text-underline-offset:3px;}
-  .home-panel-main .home-search{max-width:none; margin:26px 0 0; padding:0;}
-  .home-panel-main .home-search .hint{text-align:right;}
-  .home-panel-news{padding:0 30px;}
-  .home-panel-news h2{
-    margin:0 0 14px;
-    font-family:'Cormorant Garamond', serif;
-    font-weight:600;
-    font-size:23px;
-    color:var(--forest);
-  }
-  .home-latest{list-style:none; margin:0; padding:0;}
-  .home-latest li{margin-bottom:14px;}
-  .home-latest a{
-    display:block;
-    font-family:'Cormorant Garamond', serif;
-    font-size:17px;
-    line-height:1.3;
-    color:var(--ink);
-  }
-  .home-latest a:hover{color:var(--terracotta);}
-  .home-latest .hl-meta{
-    display:block;
-    margin-top:2px;
+  /* ---------- front page: statement, a wide search bar (same width as
+     Recently Added, styled like the category pages' search), then the
+     resource categories in one line, numbered left to right ---------- */
+  .home-hero{padding:46px 0 10px;}
+  .home-hero .intro-block{margin-top:0;}
+  .home-hero .blurb{max-width:760px;}
+  .home-cats-label{
+    margin:30px 0 12px;
+    text-align:center;
     font-family:'Outfit', sans-serif;
     font-size:11px;
+    font-weight:500;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--ink);
     opacity:.5;
   }
-  .home-panel-news .hl-more{
-    display:block;
-    text-align:right;
-    font-family:'Outfit', sans-serif;
-    font-size:13px;
-    color:var(--forest);
+  .home-cats{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px 34px;
+    max-width:1320px;
+    margin:0 auto;
+    padding:0 24px;
   }
-  .home-panel-news .hl-more:hover{color:var(--terracotta);}
-  @media (max-width:1100px){
-    .home-panel{grid-template-columns:170px minmax(0, 1fr) 240px; margin:24px 20px 10px;}
-    .home-cats{grid-template-columns:repeat(3, minmax(0, 1fr));}
+  .home-cats a{
+    font-family:'Cormorant Garamond', serif;
+    font-size:19px;
+    color:var(--ink);
+    white-space:nowrap;
   }
-  @media (max-width:860px){
-    .home-panel{grid-template-columns:1fr; padding:26px 0; row-gap:24px;}
-    .home-panel-crest img{max-width:110px;}
-    .home-panel-main{border:none; padding:0 22px;}
-    .home-panel-main .blurb{font-size:20px; text-align:center;}
-    .home-cats{grid-template-columns:repeat(2, minmax(0, 1fr));}
-    .home-panel-news{padding:22px 22px 0; border-top:1px solid var(--marble);}
+  .home-cats .hc-num{margin-right:6px; opacity:.7;}
+  .home-cats a:hover .hc-name{text-decoration:underline; text-underline-offset:3px;}
+  @media (max-width:600px){
+    .home-hero{padding-top:28px;}
+    .home-cats{gap:8px 22px;}
+    .home-cats a{font-size:17px;}
   }
 
   /* ---------- homepage search (replaces the header magnifier on this page) ---------- */
+  /* same outer width as the Recently Added grid (which sits inside an
+     .intro-block), and the same square bar as the category pages */
   .home-search{
-    max-width:760px;
-    margin:28px auto 34px;
+    max-width:940px;
+    margin:30px auto 0;
     padding:0 24px;
   }
   .home-search-box{position:relative;}
   .home-search-bar{
     display:flex;
-    align-items:center;
-    gap:12px;
+    align-items:stretch;
     background:#fff;
     border:1px solid var(--marble);
-    border-radius:30px;
-    padding:6px 6px 6px 22px;
-    box-shadow:0 2px 8px rgba(26,25,22,0.05);
+    transition:border-color .18s, box-shadow .18s;
   }
-  .home-search-bar:hover,
   .home-search-bar:focus-within{
     border-color:var(--forest);
-    box-shadow:0 6px 20px rgba(26,25,22,0.10);
+    box-shadow:0 2px 10px rgba(26,25,22,0.06);
   }
-  .home-search-bar > svg{opacity:.45; flex-shrink:0;}
   .home-search-bar input{
     flex:1;
     min-width:0;
@@ -283,18 +217,16 @@
     outline:none;
     background:transparent;
     font-family:'Cormorant Garamond', serif;
-    font-size:21px;
+    font-size:20px;
     color:var(--ink);
-    padding:8px 0;
+    padding:13px 18px;
   }
-  .home-search-bar input::placeholder{opacity:.45;}
+  .home-search-bar input::placeholder{opacity:.5;}
   .home-search-bar input::-webkit-search-cancel-button{cursor:pointer;}
   .home-search-btn{
     flex-shrink:0;
-    width:46px;
-    height:46px;
+    width:58px;
     border:none;
-    border-radius:50%;
     background:var(--forest);
     color:var(--parchment);
     display:flex;
@@ -302,7 +234,7 @@
     justify-content:center;
     cursor:pointer;
   }
-  .home-search-btn:hover{background:var(--terracotta);}
+  .home-search-btn:hover{background:#3D6B50;}
   .home-search .hint{
     text-align:center;
     margin-top:12px;
@@ -318,20 +250,18 @@
   /* live results open as a dropdown under the bar so the page below doesn't jump */
   .home-search .search-results{
     position:absolute;
-    top:calc(100% + 8px);
+    top:calc(100% + 6px);
     left:0;
     right:0;
     z-index:25;
     background:#fff;
     border:1px solid var(--marble);
-    border-radius:16px;
     box-shadow:0 20px 45px rgba(26,25,22,0.16);
   }
   @media (max-width:480px){
-    .home-search{ padding:0 14px; margin:20px auto 26px; }
-    .home-search-bar{ padding-left:16px; }
-    .home-search-bar input{ font-size:18px; }
-    .home-search-btn{ width:40px; height:40px; }
+    .home-search{ padding:0 14px; }
+    .home-search-bar input{ font-size:18px; padding:11px 14px; }
+    .home-search-btn{ width:50px; }
   }
   .search-results{
     display:none;
@@ -761,6 +691,7 @@
 
   @media (min-width:1200px){
     .intro-block{ max-width:1320px; }
+    .home-search{ max-width:1320px; }
     .intro-block .blurb{ font-size:23px; }
     .category-wrap{ max-width:1300px; padding:6px 60px 26px; }
     .resources-label{ font-size:32px; }
@@ -832,32 +763,17 @@
   </div>
 </header>
 
-<!-- front page panel, after the Internet Archive's: crest on the left;
-     statement, categories (numbered left to right), and search in the
-     middle; the newest additions on the right. Recently Added follows. -->
-<section class="home-panel">
-<div class="home-panel-crest">
-  <img src="/crest.png" alt="Phronesis crest" width="317" height="292">
-</div>
-
-<div class="home-panel-main">
-  <p class="blurb">Phronesis is an independent nonprofit research center that catalogs, curates, and develops resources to help practitioners, scholars, and the public better understand the ever evolving landscape of <strong>technology</strong>, <strong>law</strong>, and <strong>policy</strong>.</p>
-
-<div class="home-cats" role="navigation" aria-label="Resources by category">
-  <a href="/research" title="Peer-reviewed scholarship spanning computer science, robotics, economics, philosophy, and related fields"><span class="hc-num">I.</span><span class="hc-name">Research papers</span><span class="hc-count" data-count="research.json"></span></a>
-  <a href="/policy" title="Policy documents such as memos, executive orders, and legislation"><span class="hc-num">II.</span><span class="hc-name">Policy Artifacts</span><span class="hc-count" data-count="policy.json"></span></a>
-  <a href="/legal" title="Case studies, statutes, and legal definitions relevant to technology law"><span class="hc-num">III.</span><span class="hc-name">Legal Analyses</span><span class="hc-count" data-count="legal.json"></span></a>
-  <a href="/essays" title="Analytical, interpretive, or critical writing from a personal point of view"><span class="hc-num">IV.</span><span class="hc-name">Essays</span><span class="hc-count" data-count="essays.json"></span></a>
-  <a href="/articles" title="Timely, informative coverage of news and specific topics relevant to technology policy"><span class="hc-num">V.</span><span class="hc-name">Articles</span><span class="hc-count" data-count="articles.json"></span></a>
-  <a href="/reports" title="Structured documents from governments, universities, and institutions presenting facts and evidence on a topic"><span class="hc-num">VI.</span><span class="hc-name">Reports</span><span class="hc-count" data-count="reports.json"></span></a>
-  <a href="/canon" title="Curated reading lists tailored to specific audiences on specific topics"><span class="hc-num">VII.</span><span class="hc-name">Canons</span><span class="hc-count" data-count="topics.json"></span></a>
+<!-- front page: statement, a wide search bar, then the resource categories
+     in one line (numbered left to right). Recently Added follows. -->
+<section class="home-hero">
+<div class="intro-block">
+  <p class="blurb">Phronesis is a nonprofit research center archiving pragmatic content at the intersection of <strong>technology</strong>, <strong>law</strong>, and <strong>policy</strong>.</p>
 </div>
 
 <!-- site-wide search, front and center like a search engine or archive home page -->
 <div class="home-search" id="homeSearch">
   <div class="home-search-box">
     <form class="home-search-bar" role="search" id="homeSearchForm">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       <input id="searchInput" type="search" autocomplete="off" placeholder="Search papers, memos, essays, authors..." aria-label="Search Phronesis">
       <button type="submit" class="home-search-btn" aria-label="Open the top result">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -867,12 +783,16 @@
   </div>
   <div class="hint" id="searchHint">Search by title, tag, or publisher. Press <kbd>↵</kbd> to open the top result.</div>
 </div>
-</div>
 
-<div class="home-panel-news">
-  <h2>Latest Additions</h2>
-  <ul class="home-latest" id="homeLatest"></ul>
-  <a href="#recent" class="hl-more">More recent work</a>
+<div class="home-cats-label">Resource Categories</div>
+<div class="home-cats" role="navigation" aria-label="Resource categories">
+  <a href="/research" title="Peer-reviewed scholarship spanning computer science, robotics, economics, philosophy, and related fields"><span class="hc-num">I.</span><span class="hc-name">Research papers</span></a>
+  <a href="/policy" title="Policy documents such as memos, executive orders, and legislation"><span class="hc-num">II.</span><span class="hc-name">Policy Artifacts</span></a>
+  <a href="/legal" title="Case studies, statutes, and legal definitions relevant to technology law"><span class="hc-num">III.</span><span class="hc-name">Legal Analyses</span></a>
+  <a href="/essays" title="Analytical, interpretive, or critical writing from a personal point of view"><span class="hc-num">IV.</span><span class="hc-name">Essays</span></a>
+  <a href="/articles" title="Timely, informative coverage of news and specific topics relevant to technology policy"><span class="hc-num">V.</span><span class="hc-name">Articles</span></a>
+  <a href="/reports" title="Structured documents from governments, universities, and institutions presenting facts and evidence on a topic"><span class="hc-num">VI.</span><span class="hc-name">Reports</span></a>
+  <a href="/canon" title="Curated reading lists tailored to specific audiences on specific topics"><span class="hc-num">VII.</span><span class="hc-name">Canons</span></a>
 </div>
 </section>
 
@@ -1377,46 +1297,6 @@ function loadRecentlyAdded() {
   });
 }
 
-// ── front page panel: item counts under each category and the newest
-// additions in the right column, from the same content files ──
-function loadHomePanel() {
-  var files = CONTENT_SOURCES.map(function(s) { return s.file; }).concat(['topics.json']);
-  var pages = {};
-  CONTENT_SOURCES.forEach(function(s) { pages[s.file] = s.page; });
-  Promise.all(files.map(function(file) {
-    return fetch('/content/' + file)
-      .then(function(res) { return res.json(); })
-      .then(function(json) { return { file: file, json: json }; })
-      .catch(function() { return { file: file, json: null }; });
-  })).then(function(results) {
-    var latest = [];
-    results.forEach(function(r) {
-      if (!r.json) return;
-      var list = r.file === 'topics.json'
-        ? (r.json.topics || [])
-        : (r.json.entries || []).filter(function(e) { return !e.placeholder; });
-      var countEl = document.querySelector('.hc-count[data-count="' + r.file + '"]');
-      if (countEl && list.length) countEl.textContent = list.length + (list.length === 1 ? ' item' : ' items');
-      if (r.file === 'topics.json') return;
-      list.forEach(function(e) {
-        var dest = e.date ? destinationFor(e, pages[r.file]) : null;
-        if (dest) latest.push({ title: e.title, date: e.date, type: e.type, dest: dest });
-      });
-    });
-    latest.sort(function(a, b) { return new Date(b.date) - new Date(a.date); });
-    var ul = document.getElementById('homeLatest');
-    ul.innerHTML = latest.slice(0, 4).map(function(it) {
-      var attrs = it.dest.external ? ' target="_blank" rel="noopener"' : '';
-      var d = new Date(it.date + 'T00:00:00');
-      var when = isNaN(d.getTime()) ? '' : MONTHS_SHORT[d.getMonth()] + ' ' + d.getFullYear();
-      var meta = [TYPE_LABELS[it.type] || '', when].filter(Boolean).join(' \u00B7 ');
-      var safeTitle = String(it.title || '').replace(/[&<>"]/g, function(c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
-      return '<li><a href="' + it.dest.url + '"' + attrs + '>' + safeTitle + '</a><span class="hl-meta">' + meta + '</span></li>';
-    }).join('');
-  });
-}
-
-loadHomePanel();
 loadRecentlyAdded();
 </script>
 
