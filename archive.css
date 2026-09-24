@@ -686,3 +686,11 @@ a.arc-mini-title::after { content: ''; position: absolute; inset: 0; }  /* whole
   .arc-adv-toggle, .arc-dd-btn { letter-spacing: 0.06em; }
   .arc-view-toggle { margin-left: auto; }
 }
+/* small phones: tighten the toolbar so the view toggle stays beside Sort */
+@media (max-width: 400px) {
+  .arc-controls { gap: 0.25rem; }
+  .arc-adv-toggle, .arc-dd-btn { font-size: 0.6rem; letter-spacing: 0.04em; }
+  .arc-adv-toggle { padding-left: 0; padding-right: 0.1rem; }
+  .arc-dd-btn { padding: 0.38rem 0.45rem; }
+  .arc-view-toggle button { width: 1.8rem; }
+}
