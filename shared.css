@@ -8,8 +8,8 @@
   --accent:  #2B4736;
   --accent-l:#3D6B50;
   --rule:    #D9D5CA;
-  --serif:   'Cormorant Garamond', Georgia, serif;
-  --sans:    'Outfit', system-ui, sans-serif;
+  --serif:   'Times New Roman', Times, serif;
+  --sans:    'Times New Roman', Times, serif;
 
   /* aliases for the masthead component below, matching the landing page's own tokens */
   --forest:     #2B4736;
@@ -21,6 +21,9 @@
 }
 
 /* ── RESET ─────────────────────────────────────────────── */
+/* Times New Roman throughout: this also overrides the older per-page
+   styles that name Cormorant Garamond or Outfit directly */
+html body, html body * { font-family: 'Times New Roman', Times, serif !important; }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { font-size: 16px; scroll-behavior: smooth; }
 body {

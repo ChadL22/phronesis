@@ -232,8 +232,6 @@
 
     app.className = 'arc';
     app.innerHTML =
-      // advanced filters open above the toolbar row
-      '<div class="arc-advanced" id="arcAdvanced" hidden><div class="arc-facets" id="arcFacets"></div></div>' +
       // one row: filters on the left, search in the middle, view toggle on the right
       '<div class="arc-tools">' +
         '<div class="arc-controls">' +
@@ -249,6 +247,8 @@
           '<button type="button" data-view="cards" title="Card view" aria-label="Card view">' + ICON_CARDS + '</button>' +
         '</div>' +
       '</div>' +
+      // advanced filters open just below the toolbar row
+      '<div class="arc-advanced" id="arcAdvanced" hidden><div class="arc-facets" id="arcFacets"></div></div>' +
       // left column: page title and description, the categories list, then
       // (policy page only) the bills tracker. The rail is a div rather than
       // <nav>: shared.css styles bare nav elements as the old top bar

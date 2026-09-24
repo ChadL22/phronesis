@@ -14,8 +14,8 @@
   grid-template-rows: auto auto 1fr;
   column-gap: 2.75rem;
   grid-template-areas:
-    "side   adv     adv"
     "side   tools   tools"
+    "side   adv     adv"
     "side   results panel";
   align-items: start;
 }
@@ -215,7 +215,7 @@
 }
 .arc-advanced {
   grid-area: adv;
-  margin: 0 0 0.9rem;
+  margin: -0.8rem 0 1.4rem;   /* tucked just under the toolbar row */
 }
 .arc-advanced[hidden] { display: none; }
 .arc-advanced .arc-dd-menu { right: auto; left: 0; }
@@ -640,7 +640,7 @@ a.arc-mini-title::after { content: ''; position: absolute; inset: 0; }  /* whole
   .arc {
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: none;
-    grid-template-areas: "head" "rail" "adv" "tools" "results" "panel" "bills";
+    grid-template-areas: "head" "rail" "tools" "adv" "results" "panel" "bills";
     padding-top: 1.6rem;
   }
   .arc-head { grid-area: head; margin-bottom: 1.1rem; }

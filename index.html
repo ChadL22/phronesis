@@ -9,7 +9,8 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <meta name="description" content="A research entity dedicated to practical wisdom in technology law and policy." />
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@400;500;600&display=swap');
+  /* Times New Roman throughout (the rest of the site gets this from shared.css) */
+  html body, html body * { font-family: 'Times New Roman', Times, serif !important; }
 
   :root{
     --parchment:#F6F3EC;
@@ -155,7 +156,19 @@
      resource categories in one line, numbered left to right ---------- */
   .home-hero{padding:46px 0 10px;}
   .home-hero .intro-block{margin-top:0;}
-  .home-hero .blurb{max-width:760px;}
+  /* small sans label over a large serif headline, then the search bar */
+  .home-hero .home-kicker{margin:0 0 14px;}
+  .home-headline{
+    max-width:860px;
+    margin:0 auto;
+    font-family:'Cormorant Garamond', serif;
+    font-weight:400;
+    font-size:42px;
+    line-height:1.2;
+    color:var(--ink);
+  }
+  .home-headline em{color:var(--forest-deep);}
+  @media (max-width:600px){ .home-headline{font-size:29px;} }
   .home-cats-label{
     margin:30px 0 12px;
     text-align:center;
@@ -768,7 +781,8 @@
      in one line (numbered left to right). Recently Added follows. -->
 <section class="home-hero">
 <div class="intro-block">
-  <p class="blurb">Explore research and ideas at the intersection of <strong>technology</strong>, <strong>law</strong>, and <strong>policy</strong>.</p>
+  <div class="home-cats-label home-kicker">A Nonprofit Research Center</div>
+  <h1 class="home-headline">Explore original work and curated resources on <em>technology</em>, <em>law</em>, and <em>policy</em>.</h1>
 </div>
 
 <!-- site-wide search, front and center like a search engine or archive home page -->
