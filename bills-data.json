@@ -1,0 +1,87 @@
+{
+  "generated_by": "seeded from Tech-Policy-Hub/build/data/ticker.json (2026-09-21); replaced by scripts/refresh_bills.py on its first run",
+  "generated_at": "2026-09-21T18:25:16Z",
+  "source": "Integrity Institute Tech Policy Tracker (us-federal.techpolicytracker.com, us-state.techpolicytracker.com)",
+  "items": [
+    {
+      "jurisdiction": "US",
+      "jurisdiction_name": "Federal",
+      "code": "HB8747",
+      "title": "K–12 AI Literacy and Readiness Act of 2026",
+      "date": "",
+      "link": "https://www.congress.gov/bill/119th-congress/house-bill/8747/all-info"
+    },
+    {
+      "jurisdiction": "US",
+      "jurisdiction_name": "Federal",
+      "code": "HB8768",
+      "title": "CHARGE Act Cybersecurity and Hardware Assurance for Resilient Grid Electrification Act",
+      "date": "",
+      "link": "https://www.congress.gov/bill/119th-congress/house-bill/8768/all-info"
+    },
+    {
+      "jurisdiction": "US",
+      "jurisdiction_name": "Federal",
+      "code": "SB4074",
+      "title": "Fund CISA Personnel Act of 2026",
+      "date": "",
+      "link": "https://www.congress.gov/bill/119th-congress/senate-bill/4074/all-info"
+    },
+    {
+      "jurisdiction": "US",
+      "jurisdiction_name": "Federal",
+      "code": "SB4069",
+      "title": "AI-Ready Bio-Data Standards Act",
+      "date": "",
+      "link": "https://www.congress.gov/bill/119th-congress/senate-bill/4069/all-info"
+    },
+    {
+      "jurisdiction": "MD",
+      "jurisdiction_name": "Maryland",
+      "code": "HB1638",
+      "title": "Consumer Protection - Covered Platforms - Protection of Minors (Kids Online Protection and Antigrooming Act)",
+      "date": "",
+      "link": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/HB1638?ys=2026RS"
+    },
+    {
+      "jurisdiction": "MD",
+      "jurisdiction_name": "Maryland",
+      "code": "SB989",
+      "title": "Child Exploitation Material - Civil and Criminal Actions (Safe Kids Act)",
+      "date": "",
+      "link": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/SB0989?ys=2026RS"
+    },
+    {
+      "jurisdiction": "VA",
+      "jurisdiction_name": "Virginia",
+      "code": "SB796",
+      "title": "Artificial Intelligence Companion Chatbots and Minors Act; established, enforcement, civil penalty.",
+      "date": "",
+      "link": "https://lis.virginia.gov/bill-details/20261/SB796"
+    },
+    {
+      "jurisdiction": "VA",
+      "jurisdiction_name": "Virginia",
+      "code": "HB1521",
+      "title": "Digital innovation & infrastructure; establishing rights in digital property & technology resources.",
+      "date": "",
+      "link": "https://lis.virginia.gov/bill-details/20261/HB1521"
+    },
+    {
+      "jurisdiction": "DC",
+      "jurisdiction_name": "District of Columbia",
+      "code": "B26-0670",
+      "title": "District of Columbia Government Data Privacy and Protection Act of 2026",
+      "date": "",
+      "link": "https://lims.dccouncil.gov/Legislation/B26-0670"
+    },
+    {
+      "jurisdiction": "DC",
+      "jurisdiction_name": "District of Columbia",
+      "code": "B26-0656",
+      "title": "Internet Gaming and Consumer Protection Act of 2026",
+      "date": "",
+      "link": "https://lims.dccouncil.gov/Legislation/B26-0656"
+    }
+  ]
+}

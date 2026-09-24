@@ -37,7 +37,7 @@
   ];
   var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   var PAGE_SIZE = { list: 4, cards: 6 };   // results per page in each view
-  var BILLS_URL = '/tracker-data.json';
+  var BILLS_URL = '/bills-data.json';
   var RECENT_COUNT = 5;    // one spotlit + four cards
   var SOURCE_LABELS = { original: 'Original', via: 'Via' };
 
@@ -257,11 +257,14 @@
           '<h1 class="arc-title">' + esc(cat.label) + '</h1>' +
           (description ? '<p class="arc-desc">' + esc(description) + '</p>' : '') +
         '</header>' +
+        // categories (and, on the policy page, the bills tracker) stay in view while scrolling
+        '<div class="arc-sticky" id="arcSticky">' +
         '<div class="arc-rail" role="navigation" aria-label="Categories">' +
           '<div class="arc-panel-label arc-rail-label">Categories</div>' +
           '<ul>' + railHTML + '</ul>' +
           '<div class="arc-rail-divider"></div>' +
           '<ul><li><a href="/canon">Canons</a></li></ul>' +
+        '</div>' +
         '</div>' +
       '</div>' +
       '<div class="arc-results" id="arcResults"><p class="arc-empty">Loading…</p></div>' +
@@ -576,46 +579,45 @@
       if (id) openReader(id);
     }
 
-    // ── tech policy tracker (policy page only): auto-scrolling bills under the content types ──
-    var STATE_ABBR = { 'Alabama':'AL','Alaska':'AK','Arizona':'AZ','Arkansas':'AR','California':'CA','Colorado':'CO','Connecticut':'CT','Delaware':'DE','Florida':'FL','Georgia':'GA','Hawaii':'HI','Idaho':'ID','Illinois':'IL','Indiana':'IN','Iowa':'IA','Kansas':'KS','Kentucky':'KY','Louisiana':'LA','Maine':'ME','Maryland':'MD','Massachusetts':'MA','Michigan':'MI','Minnesota':'MN','Mississippi':'MS','Missouri':'MO','Montana':'MT','Nebraska':'NE','Nevada':'NV','New Hampshire':'NH','New Jersey':'NJ','New Mexico':'NM','New York':'NY','North Carolina':'NC','North Dakota':'ND','Ohio':'OH','Oklahoma':'OK','Oregon':'OR','Pennsylvania':'PA','Rhode Island':'RI','South Carolina':'SC','South Dakota':'SD','Tennessee':'TN','Texas':'TX','Utah':'UT','Vermont':'VT','Virginia':'VA','Washington':'WA','West Virginia':'WV','Wisconsin':'WI','Wyoming':'WY' };
-    var COUNTRY_ABBR = { 'United States': 'US', 'European Union': 'EU', 'United Kingdom': 'UK', 'Australia': 'AU', 'India': 'IN', 'Canada': 'CA' };
-    function jurisdiction(bill) {
-      var country = String(bill.country || '').trim();
-      if (country === 'United States') {
-        var names = Object.keys(STATE_ABBR).sort(function (a, b) { return b.length - a.length; });
-        for (var i = 0; i < names.length; i++) {
-          if (new RegExp('\\b' + names[i] + '\\b').test(bill.title || '')) return { code: STATE_ABBR[names[i]], label: names[i] };
-        }
-        return { code: 'US', label: 'Federal' };
-      }
-      return { code: COUNTRY_ABBR[country] || country.slice(0, 2).toUpperCase(), label: country };
-    }
+    // ── tech policy tracker (policy page only): three bills visible at a time,
+    // scrolling slowly. Data: /bills-data.json, written by scripts/refresh_bills.py
+    // from the Integrity Institute Tech Policy Tracker (the same source as the
+    // Tech Policy Hub's ticker), refreshed daily by .github/workflows/refresh-bills.yml.
     function loadBills() {
       fetch(BILLS_URL)
         .then(function (res) { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
         .then(function (json) {
-          var bills = (json.result || []).filter(function (b) { return String(b.type || '').trim() === 'Legislation'; });
+          var bills = (json.items || []).filter(function (b) { return b && b.title; });
           if (!bills.length) return;
           var rows = bills.map(function (b) {
-            var j = jurisdiction(b);
-            var slug = b.slug && b.slug.current ? b.slug.current : '';
-            var href = 'https://www.techpolicy.press/tracker/' + (slug ? slug + '/' : '');
-            return '<li><a class="arc-bill" href="' + esc(href) + '" target="_blank" rel="noopener">' +
-              '<span class="arc-bill-top"><span class="arc-bill-badge" title="' + esc(j.label) + '">' + esc(j.code) + '</span>' +
-              (b.status ? '<span class="arc-bill-status">' + esc(String(b.status).trim()) + '</span>' : '') + '</span>' +
-              '<span class="arc-bill-title">' + esc(String(b.title || '').trim()) + '</span>' +
-            '</a></li>';
+            var meta = [b.code, fmtMonth(b.date)].filter(Boolean).join(' \u00B7 ');
+            var inner =
+              '<span class="arc-bill-top"><span class="arc-bill-badge" title="' + esc(b.jurisdiction_name || b.jurisdiction) + '">' + esc(b.jurisdiction) + '</span>' +
+              (meta ? '<span class="arc-bill-status">' + esc(meta) + '</span>' : '') + '</span>' +
+              '<span class="arc-bill-title">' + esc(b.title) + '</span>';
+            return b.link
+              ? '<li><a class="arc-bill" href="' + esc(b.link) + '" target="_blank" rel="noopener" title="' + esc(b.title) + '">' + inner + '</a></li>'
+              : '<li><span class="arc-bill" title="' + esc(b.title) + '">' + inner + '</span></li>';
           }).join('');
           var box = document.createElement('section');
           box.className = 'arc-bills';
           box.setAttribute('aria-label', 'Technology and AI bills');
-          // the list is rendered twice so the scroll can loop seamlessly
+          // the list is rendered twice so the scroll can loop seamlessly;
+          // the copy is hidden from screen readers and keyboard focus
+          var copy = rows.replace(/<li>/g, '<li aria-hidden="true">').replace(/<a class="arc-bill"/g, '<a tabindex="-1" class="arc-bill"');
           box.innerHTML = '<div class="arc-bills-head">Tech Policy Tracker</div>' +
-            '<div class="arc-bills-window"><ul class="arc-bills-track">' + rows + rows.replace(/<li><a /g, '<li aria-hidden="true"><a tabindex="-1" ') + '</ul></div>' +
-            '<div class="arc-bills-src">Source: <a href="https://www.techpolicy.press/tracker/" target="_blank" rel="noopener">Tech Policy Press tracker</a></div>';
-          document.getElementById('arcSide').appendChild(box);
-          // pace the loop to the list length so every bill moves at the same speed
-          box.querySelector('.arc-bills-track').style.animationDuration = Math.max(40, bills.length * 3.5) + 's';
+            '<div class="arc-bills-window"><ul class="arc-bills-track">' + rows + (bills.length > 3 ? copy : '') + '</ul></div>' +
+            '<div class="arc-bills-src">Source: Integrity Institute ' +
+              '<a href="https://us-federal.techpolicytracker.com/" target="_blank" rel="noopener">federal</a> and ' +
+              '<a href="https://us-state.techpolicytracker.com/" target="_blank" rel="noopener">state</a> trackers</div>';
+          document.getElementById('arcSticky').appendChild(box);
+          var track = box.querySelector('.arc-bills-track');
+          if (bills.length > 3) {
+            // pace the loop so each bill takes about five seconds to pass
+            track.style.animationDuration = (bills.length * 5) + 's';
+          } else {
+            track.style.animation = 'none';
+          }
         })
         .catch(function (err) { console.warn('Bills list unavailable:', err); });
     }
