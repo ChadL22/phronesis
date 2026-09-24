@@ -150,60 +150,85 @@
   .menu-panel a:hover{background:var(--parchment); color:var(--terracotta);}
   .menu-panel .divider{height:1px; background:var(--marble); margin:6px 0;}
 
-  /* ---------- search overlay ---------- */
-  .search-overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(26,25,22,0.45);
-    display:none;
-    align-items:flex-start;
-    justify-content:center;
-    z-index:30;
-    padding-top:14vh;
+  /* ---------- homepage search (replaces the header magnifier on this page) ---------- */
+  .home-search{
+    max-width:760px;
+    margin:28px auto 34px;
+    padding:0 24px;
   }
-  .search-overlay.open{display:flex;}
-  .search-panel{
-    background:#fff;
-    width:min(640px, 90vw);
-    border:1px solid var(--marble);
-    box-shadow:0 20px 45px rgba(26,25,22,0.18);
-  }
-  .search-panel .row{
+  .home-search-box{position:relative;}
+  .home-search-bar{
     display:flex;
     align-items:center;
     gap:12px;
-    padding:18px 20px;
-    border-bottom:1px solid var(--marble);
+    background:#fff;
+    border:1px solid var(--marble);
+    border-radius:30px;
+    padding:6px 6px 6px 22px;
+    box-shadow:0 2px 8px rgba(26,25,22,0.05);
   }
-  .search-panel svg{opacity:.5; flex-shrink:0;}
-  .search-panel input{
+  .home-search-bar:hover,
+  .home-search-bar:focus-within{
+    border-color:var(--forest);
+    box-shadow:0 6px 20px rgba(26,25,22,0.10);
+  }
+  .home-search-bar > svg{opacity:.45; flex-shrink:0;}
+  .home-search-bar input{
     flex:1;
+    min-width:0;
     border:none;
     outline:none;
+    background:transparent;
     font-family:'Cormorant Garamond', serif;
-    font-size:19px;
+    font-size:21px;
     color:var(--ink);
+    padding:8px 0;
   }
-  .search-panel input::placeholder{opacity:.4;}
-  .search-panel .esc{
-    font-family:'Outfit', sans-serif;
-    font-size:10.5px;
-    letter-spacing:0.05em;
-    border:1px solid var(--marble);
-    padding:2px 7px;
-    opacity:.5;
+  .home-search-bar input::placeholder{opacity:.45;}
+  .home-search-bar input::-webkit-search-cancel-button{cursor:pointer;}
+  .home-search-btn{
+    flex-shrink:0;
+    width:46px;
+    height:46px;
+    border:none;
+    border-radius:50%;
+    background:var(--forest);
+    color:var(--parchment);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
   }
-  .search-panel .hint{
+  .home-search-btn:hover{background:var(--terracotta);}
+  .home-search .hint{
     text-align:center;
-    padding:26px 20px;
+    margin-top:12px;
     font-family:'Outfit', sans-serif;
     font-size:13px;
     opacity:.55;
   }
-  .search-panel .hint kbd{
+  .home-search .hint kbd{
     border:1px solid var(--marble);
     padding:1px 6px;
     font-family:'Outfit', sans-serif;
+  }
+  /* live results open as a dropdown under the bar so the page below doesn't jump */
+  .home-search .search-results{
+    position:absolute;
+    top:calc(100% + 8px);
+    left:0;
+    right:0;
+    z-index:25;
+    background:#fff;
+    border:1px solid var(--marble);
+    border-radius:16px;
+    box-shadow:0 20px 45px rgba(26,25,22,0.16);
+  }
+  @media (max-width:480px){
+    .home-search{ padding:0 14px; margin:20px auto 26px; }
+    .home-search-bar{ padding-left:16px; }
+    .home-search-bar input{ font-size:18px; }
+    .home-search-btn{ width:40px; height:40px; }
   }
   .search-results{
     display:none;
@@ -514,13 +539,12 @@
     max-width:760px;
     margin: 6px auto 0;
     display:grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
+    /* read down each column: I-II, III-IV, V-VI, then VII */
     grid-template-areas:
-      "c1 c4"
-      "c2 c5"
-      "c3 c6"
-      "c7 c7";
-    column-gap:80px;
+      "c1 c3 c5 c7"
+      "c2 c4 c6 .";
+    column-gap:36px;
     text-align:center;
   }
   .publish-list .item-1{grid-area:c1;}
@@ -529,12 +553,7 @@
   .publish-list .item-4{grid-area:c4;}
   .publish-list .item-5{grid-area:c5;}
   .publish-list .item-6{grid-area:c6;}
-  .publish-list .item-7{
-    grid-area:c7;
-    justify-self:center;
-    width:min(380px, 100%);
-    margin-top:4px;
-  }
+  .publish-list .item-7{grid-area:c7;}
   .publish-list a{display:block; padding:8px 16px; border-bottom:1px solid var(--marble); margin:0 -16px;}
   .publish-list a:hover{background:#fff;}
   .publish-list a:hover .p-name{color:var(--terracotta);}
@@ -542,6 +561,17 @@
   .publish-list .p-name{font-size:23px; font-family:'Cormorant Garamond', serif; color:var(--ink);}
   .publish-list .p-desc{display:block; font-family:'Outfit', sans-serif; font-size:13.5px; opacity:.55; margin-top:4px;}
 
+  @media (max-width:980px){
+    .publish-list{
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "c1 c2"
+        "c3 c4"
+        "c5 c6"
+        "c7 .";
+      column-gap:40px;
+    }
+  }
   @media (max-width:700px){
     .category-wrap{ padding: 8px 20px 28px; }
     .publish-list{
@@ -552,7 +582,6 @@
       row-gap:2px;
       width:100%;
     }
-    .publish-list .item-7{ width:100%; margin-top:0; }
   }
 
   footer{
@@ -632,7 +661,7 @@
     .intro-block .blurb{ font-size:23px; }
     .category-wrap{ max-width:1300px; padding:6px 60px 26px; }
     .resources-label{ font-size:32px; }
-    .publish-list{ max-width:1080px; column-gap:110px; }
+    .publish-list{ max-width:1160px; column-gap:44px; }
     .publish-list .p-name{ font-size:24px; }
     .publish-list .p-desc{ font-size:14px; }
     .brand .name{ font-size:25px; }
@@ -682,9 +711,6 @@
   </div>
 
   <div class="nav-right">
-    <button class="icon-btn" onclick="openSearch()" aria-label="Search">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    </button>
     <button class="icon-btn hamburger-btn" onclick="event.stopPropagation(); document.getElementById('menuPanel').classList.toggle('open');" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -703,21 +729,23 @@
   </div>
 </header>
 
-<!-- search overlay, modeled on SCOTUSblog's expanding search -->
-<div class="search-overlay" id="searchOverlay" onclick="if(event.target===this) closeSearch()">
-  <div class="search-panel">
-    <div class="row">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input id="searchInput" type="text" placeholder="Search papers, memos, essays, authors...">
-      <span class="esc" onclick="closeSearch()">ESC</span>
-    </div>
-    <div class="hint" id="searchHint">Type to search by title, tag, or publisher. Press <kbd>↵</kbd> to open the top result.</div>
-    <div class="search-results" id="searchResults"></div>
-  </div>
-</div>
-
 <div class="intro-block">
   <p class="blurb">Phronesis is an independent nonprofit research center that catalogs, curates, and develops resources to help practitioners, scholars, and the public better understand the ever evolving landscape of <strong>technology</strong>, <strong>law</strong>, and <strong>policy</strong>.</p>
+</div>
+
+<!-- site-wide search, front and center like a search engine or archive home page -->
+<div class="home-search" id="homeSearch">
+  <div class="home-search-box">
+    <form class="home-search-bar" role="search" id="homeSearchForm">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input id="searchInput" type="search" autocomplete="off" placeholder="Search papers, memos, essays, authors..." aria-label="Search Phronesis">
+      <button type="submit" class="home-search-btn" aria-label="Open the top result">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+    </form>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+  <div class="hint" id="searchHint">Search by title, tag, or publisher. Press <kbd>↵</kbd> to open the top result.</div>
 </div>
 
 <div class="category-wrap">
@@ -892,16 +920,30 @@ function getSearchIndex() {
   return searchIndexPromise;
 }
 
-function openSearch() {
-  document.getElementById('searchOverlay').classList.add('open');
-  document.getElementById('searchInput').focus();
-}
-
+// The results panel drops down under the homepage search bar. Escape
+// or clicking elsewhere closes it; focusing the bar again reopens it
+// for whatever is still typed.
 function closeSearch() {
-  document.getElementById('searchOverlay').classList.remove('open');
-  document.getElementById('searchInput').value = '';
+  var input = document.getElementById('searchInput');
+  input.value = '';
   renderSearchResults([], '');
 }
+
+function hideSearchResults() {
+  document.getElementById('searchResults').style.display = 'none';
+}
+
+document.addEventListener('click', function(e) {
+  if (!document.getElementById('homeSearch').contains(e.target)) hideSearchResults();
+});
+document.getElementById('searchInput').addEventListener('focus', function(e) {
+  if (e.target.value.trim().length >= MIN_QUERY_LENGTH) e.target.dispatchEvent(new Event('input'));
+});
+document.getElementById('homeSearchForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var first = document.querySelector('.search-result-item');
+  if (first) first.click();
+});
 
 function resultRowHTML(item) {
   var attrs = item.dest && item.dest.external ? '' : '';
@@ -980,10 +1022,8 @@ document.getElementById('searchInput').addEventListener('input', function(e) {
 });
 
 document.getElementById('searchInput').addEventListener('keydown', function(e) {
-  if (e.key === 'Enter') {
-    var first = document.querySelector('.search-result-item');
-    if (first) first.click();
-  }
+  // Enter is handled by the form's submit (opens the top result)
+  if (e.key === 'Escape') e.target.blur();
 });
 
 // ── random piece of content ──
