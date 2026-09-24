@@ -22,8 +22,17 @@
 
 /* ── RESET ─────────────────────────────────────────────── */
 /* Times New Roman throughout: this also overrides the older per-page
-   styles that name Cormorant Garamond or Outfit directly */
-html body, html body * { font-family: 'Times New Roman', Times, serif !important; }
+   styles that name Cormorant Garamond or Outfit directly. Weights are held
+   at regular: Times has no light or semibold cuts, so the old 300/500/600
+   settings otherwise render as heavier or full bold and darken the page.
+   Only true emphasis (strong, b) stays bold. Colors are unchanged. */
+html body, html body * {
+  font-family: 'Times New Roman', Times, serif !important;
+  font-weight: 400 !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+html body strong, html body b { font-weight: 700 !important; }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { font-size: 16px; scroll-behavior: smooth; }
 body {

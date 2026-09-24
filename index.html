@@ -9,8 +9,16 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <meta name="description" content="A research entity dedicated to practical wisdom in technology law and policy." />
 <style>
-  /* Times New Roman throughout (the rest of the site gets this from shared.css) */
-  html body, html body * { font-family: 'Times New Roman', Times, serif !important; }
+  /* Times New Roman throughout (the rest of the site gets this from shared.css).
+     Weights are held at regular, since Times has no light or semibold cuts and
+     the old 500/600 settings would otherwise render as full bold. */
+  html body, html body * {
+    font-family: 'Times New Roman', Times, serif !important;
+    font-weight: 400 !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  html body strong, html body b { font-weight: 700 !important; }
 
   :root{
     --parchment:#F6F3EC;
@@ -197,11 +205,15 @@
     white-space:nowrap;
   }
   .home-cats .hc-num{margin-right:6px; opacity:.7;}
+  /* line breaks used only on phones to set the categories as
+     I II / III IV V / VI VII */
+  .home-cats .hc-break{display:none;}
   .home-cats a:hover .hc-name{text-decoration:underline; text-underline-offset:3px;}
   @media (max-width:600px){
     .home-hero{padding-top:28px;}
-    .home-cats{gap:8px 22px;}
-    .home-cats a{font-size:17px;}
+    .home-cats{gap:0 22px;}
+    .home-cats a{font-size:17px; padding:5px 0;}
+    .home-cats .hc-break{display:block; flex-basis:100%; height:0;}
   }
 
   /* ---------- homepage search (replaces the header magnifier on this page) ---------- */
@@ -803,9 +815,11 @@
 <div class="home-cats" role="navigation" aria-label="Resource categories">
   <a href="/research" title="Peer-reviewed scholarship spanning computer science, robotics, economics, philosophy, and related fields"><span class="hc-num">I.</span><span class="hc-name">Research papers</span></a>
   <a href="/policy" title="Policy documents such as memos, executive orders, and legislation"><span class="hc-num">II.</span><span class="hc-name">Policy Artifacts</span></a>
+  <span class="hc-break" aria-hidden="true"></span>
   <a href="/legal" title="Case studies, statutes, and legal definitions relevant to technology law"><span class="hc-num">III.</span><span class="hc-name">Legal Analyses</span></a>
   <a href="/essays" title="Analytical, interpretive, or critical writing from a personal point of view"><span class="hc-num">IV.</span><span class="hc-name">Essays</span></a>
   <a href="/articles" title="Timely, informative coverage of news and specific topics relevant to technology policy"><span class="hc-num">V.</span><span class="hc-name">Articles</span></a>
+  <span class="hc-break" aria-hidden="true"></span>
   <a href="/reports" title="Structured documents from governments, universities, and institutions presenting facts and evidence on a topic"><span class="hc-num">VI.</span><span class="hc-name">Reports</span></a>
   <a href="/canon" title="Curated reading lists tailored to specific audiences on specific topics"><span class="hc-num">VII.</span><span class="hc-name">Canons</span></a>
 </div>
