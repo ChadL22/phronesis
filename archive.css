@@ -686,6 +686,34 @@ a.arc-mini-title::after { content: ''; position: absolute; inset: 0; }  /* whole
   .arc-adv-toggle, .arc-dd-btn { letter-spacing: 0.06em; }
   .arc-view-toggle { margin-left: auto; }
 }
+/* phones: the advanced-search filters share one row;
+   long labels (a chosen publisher, say) are cut off with "…" rather than
+   wrapping, and the last two menus open leftward so they stay on screen */
+@media (max-width: 600px) {
+  .arc-facets {
+    flex-wrap: nowrap;
+    gap: 0.3rem;
+    width: 100%;
+  }
+  /* each filter starts at its natural width and gives up space in
+     proportion to it, so short labels like YEAR stay whole */
+  .arc-facets > .arc-dd { flex: 1 1 auto; min-width: 0; }
+  .arc-facets > .arc-clear { flex: 0 0 auto; }
+  .arc-facets .arc-dd-btn {
+    width: 100%;
+    max-width: none;
+    justify-content: center;
+    gap: 0.2rem;
+    padding: 0.4rem 0.3rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.02em;
+  }
+  .arc-dd-label { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .arc-facets .arc-dd-chevron { width: 8px; height: 8px; }
+  .arc-facets .arc-dd-menu { left: 0; right: auto; }
+  .arc-facets .arc-dd:nth-last-of-type(-n+2) .arc-dd-menu { left: auto; right: 0; }
+  .arc-facets .arc-clear { padding: 0.4rem 0; font-size: 0.58rem; }
+}
 /* small phones: tighten the toolbar so the view toggle stays beside Sort */
 @media (max-width: 400px) {
   .arc-controls { gap: 0.25rem; }

@@ -348,7 +348,7 @@
               '<span>' + esc(facetDisplay(f, v)) + '</span><span class="arc-dd-n">' + counts[v] + '</span></button>';
           }).join('');
         return '<div class="arc-dd' + (selected ? ' is-set' : '') + '">' +
-          '<button type="button" class="arc-dd-btn" aria-haspopup="true" aria-expanded="false" title="' + esc(f.label) + '">' + esc(btnLabel) + ICON_CHEVRON + '</button>' +
+          '<button type="button" class="arc-dd-btn" aria-haspopup="true" aria-expanded="false" title="' + esc(f.label) + '"><span class="arc-dd-label">' + esc(btnLabel) + '</span>' + ICON_CHEVRON + '</button>' +
           '<div class="arc-dd-menu" role="menu">' + opts + '</div></div>';
       }).join('');
 
