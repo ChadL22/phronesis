@@ -205,8 +205,8 @@
     white-space:nowrap;
   }
   .home-cats .hc-num{margin-right:6px; opacity:.7;}
-  /* line breaks used only on phones to set the categories as
-     I II / III IV V / VI VII */
+  /* line breaks used only on phones to set the categories roughly as a
+     diamond: I / II III / IV V VI / VII */
   .home-cats .hc-break{display:none;}
   .home-cats a:hover .hc-name{text-decoration:underline; text-underline-offset:3px;}
   @media (max-width:600px){
@@ -214,6 +214,11 @@
     .home-cats{gap:0 22px;}
     .home-cats a{font-size:17px; padding:5px 0;}
     .home-cats .hc-break{display:block; flex-basis:100%; height:0;}
+  }
+  /* the smallest phones: tighten so "II. Policy Artifacts  III. Legal Analyses" still fits on one row */
+  @media (max-width:360px){
+    .home-cats{gap:0 14px; padding:0 12px;}
+    .home-cats a{font-size:15.5px;}
   }
 
   /* ---------- homepage search (replaces the header magnifier on this page) ---------- */
@@ -795,7 +800,7 @@
 <section class="home-hero">
 <div class="intro-block">
   <div class="home-cats-label home-kicker">A Nonprofit Research Center</div>
-  <h1 class="home-headline">Explore our archive of curated resources on <em>technology</em>, <em>law</em>, and <em>policy</em>.</h1>
+  <h1 class="home-headline">Explore our archive of curated resources spanning <em>technology</em>, <em>law</em>, and <em>policy</em>.</h1>
 </div>
 
 <!-- site-wide search, front and center like a search engine or archive home page -->
@@ -814,13 +819,14 @@
 <div class="home-cats-label">Resource Categories</div>
 <div class="home-cats" role="navigation" aria-label="Resource categories">
   <a href="/research" title="Peer-reviewed scholarship spanning computer science, robotics, economics, philosophy, and related fields"><span class="hc-num">I.</span><span class="hc-name">Research papers</span></a>
-  <a href="/policy" title="Policy documents such as memos, executive orders, and legislation"><span class="hc-num">II.</span><span class="hc-name">Policy Artifacts</span></a>
   <span class="hc-break" aria-hidden="true"></span>
+  <a href="/policy" title="Policy documents such as memos, executive orders, and legislation"><span class="hc-num">II.</span><span class="hc-name">Policy Artifacts</span></a>
   <a href="/legal" title="Case studies, statutes, and legal definitions relevant to technology law"><span class="hc-num">III.</span><span class="hc-name">Legal Analyses</span></a>
+  <span class="hc-break" aria-hidden="true"></span>
   <a href="/essays" title="Analytical, interpretive, or critical writing from a personal point of view"><span class="hc-num">IV.</span><span class="hc-name">Essays</span></a>
   <a href="/articles" title="Timely, informative coverage of news and specific topics relevant to technology policy"><span class="hc-num">V.</span><span class="hc-name">Articles</span></a>
-  <span class="hc-break" aria-hidden="true"></span>
   <a href="/reports" title="Structured documents from governments, universities, and institutions presenting facts and evidence on a topic"><span class="hc-num">VI.</span><span class="hc-name">Reports</span></a>
+  <span class="hc-break" aria-hidden="true"></span>
   <a href="/canon" title="Curated reading lists tailored to specific audiences on specific topics"><span class="hc-num">VII.</span><span class="hc-name">Canons</span></a>
 </div>
 </section>
