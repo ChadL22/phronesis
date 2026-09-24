@@ -150,54 +150,107 @@
   .menu-panel a:hover{background:var(--parchment); color:var(--terracotta);}
   .menu-panel .divider{height:1px; background:var(--marble); margin:6px 0;}
 
-  /* ---------- Google-style front page ---------- */
-  .home-hero{
-    min-height:62vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    padding:28px 0 20px;
-  }
-  .home-hero .intro-block{margin-top:0;}
-  .home-hero .home-search{margin:30px auto 18px;}
-  /* categories as quiet plain-text links under the search bar:
-     I III V VII on the first row, II IV VI on the second */
-  .home-cats{
-    max-width:760px;
-    margin:4px auto 0;
-    padding:0 24px;
+  /* ---------- front page panel, modeled on the Internet Archive's:
+     crest | statement, categories, search | latest additions ---------- */
+  .home-panel{
+    max-width:1240px;
+    margin:30px auto 10px;
+    background:#fff;
+    border:1px solid var(--marble);
+    box-shadow:0 2px 10px rgba(26,25,22,0.05);
     display:grid;
-    grid-template-columns:repeat(4, auto);
-    grid-template-areas:
-      "c1 c3 c5 c7"
-      "c2 c4 c6 .";
-    justify-content:center;
-    column-gap:44px;
-    row-gap:8px;
+    grid-template-columns:230px minmax(0, 1fr) 280px;
+    padding:38px 0;
   }
-  .home-cats .c1{grid-area:c1;}
-  .home-cats .c2{grid-area:c2;}
-  .home-cats .c3{grid-area:c3;}
-  .home-cats .c4{grid-area:c4;}
-  .home-cats .c5{grid-area:c5;}
-  .home-cats .c6{grid-area:c6;}
-  .home-cats .c7{grid-area:c7;}
+  .home-panel-crest{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:0 30px;
+  }
+  .home-panel-crest img{display:block; width:100%; max-width:170px; height:auto;}
+  .home-panel-main{
+    padding:0 38px;
+    border-left:1px solid var(--marble);
+    border-right:1px solid var(--marble);
+  }
+  .home-panel-main .blurb{
+    margin:0;
+    font-size:24px;
+    line-height:1.4;
+    color:rgba(26,25,22,0.88);
+  }
+  .home-panel-main .blurb strong{color:var(--forest-deep); font-weight:600; font-style:italic;}
+  /* categories as plain-text links, numbered left to right */
+  .home-cats{
+    display:grid;
+    grid-template-columns:repeat(4, minmax(0, 1fr));
+    gap:14px 24px;
+    margin:26px 0 4px;
+  }
   .home-cats a{
+    display:block;
     font-family:'Cormorant Garamond', serif;
     font-size:18px;
+    line-height:1.25;
     color:var(--ink);
-    opacity:.75;
-    white-space:nowrap;
   }
-  .home-cats a:hover{opacity:1; text-decoration:underline; text-underline-offset:3px;}
-  .home-cats .hc-num{margin-right:6px;}
-  @media (max-width:700px){
-    .home-hero{min-height:0;}
-    .home-cats{
-      grid-template-columns:repeat(2, auto);
-      grid-template-areas:"c1 c2" "c3 c4" "c5 c6" "c7 .";
-      column-gap:32px;
-    }
+  .home-cats .hc-num{margin-right:6px; opacity:.7;}
+  .home-cats .hc-count{
+    display:block;
+    margin-top:2px;
+    font-family:'Outfit', sans-serif;
+    font-size:11.5px;
+    color:var(--ink);
+    opacity:.5;
+  }
+  .home-cats a:hover .hc-name{text-decoration:underline; text-underline-offset:3px;}
+  .home-panel-main .home-search{max-width:none; margin:26px 0 0; padding:0;}
+  .home-panel-main .home-search .hint{text-align:right;}
+  .home-panel-news{padding:0 30px;}
+  .home-panel-news h2{
+    margin:0 0 14px;
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size:23px;
+    color:var(--forest);
+  }
+  .home-latest{list-style:none; margin:0; padding:0;}
+  .home-latest li{margin-bottom:14px;}
+  .home-latest a{
+    display:block;
+    font-family:'Cormorant Garamond', serif;
+    font-size:17px;
+    line-height:1.3;
+    color:var(--ink);
+  }
+  .home-latest a:hover{color:var(--terracotta);}
+  .home-latest .hl-meta{
+    display:block;
+    margin-top:2px;
+    font-family:'Outfit', sans-serif;
+    font-size:11px;
+    opacity:.5;
+  }
+  .home-panel-news .hl-more{
+    display:block;
+    text-align:right;
+    font-family:'Outfit', sans-serif;
+    font-size:13px;
+    color:var(--forest);
+  }
+  .home-panel-news .hl-more:hover{color:var(--terracotta);}
+  @media (max-width:1100px){
+    .home-panel{grid-template-columns:170px minmax(0, 1fr) 240px; margin:24px 20px 10px;}
+    .home-cats{grid-template-columns:repeat(3, minmax(0, 1fr));}
+  }
+  @media (max-width:860px){
+    .home-panel{grid-template-columns:1fr; padding:26px 0; row-gap:24px;}
+    .home-panel-crest img{max-width:110px;}
+    .home-panel-main{border:none; padding:0 22px;}
+    .home-panel-main .blurb{font-size:20px; text-align:center;}
+    .home-cats{grid-template-columns:repeat(2, minmax(0, 1fr));}
+    .home-panel-news{padding:22px 22px 0; border-top:1px solid var(--marble);}
   }
 
   /* ---------- homepage search (replaces the header magnifier on this page) ---------- */
@@ -779,11 +832,25 @@
   </div>
 </header>
 
-<!-- Google-style front page: introduction, a large search bar, then the
-     categories as a quiet row of plain-text links. Recently Added follows. -->
-<section class="home-hero">
-<div class="intro-block">
+<!-- front page panel, after the Internet Archive's: crest on the left;
+     statement, categories (numbered left to right), and search in the
+     middle; the newest additions on the right. Recently Added follows. -->
+<section class="home-panel">
+<div class="home-panel-crest">
+  <img src="/crest.png" alt="Phronesis crest" width="317" height="292">
+</div>
+
+<div class="home-panel-main">
   <p class="blurb">Phronesis is an independent nonprofit research center that catalogs, curates, and develops resources to help practitioners, scholars, and the public better understand the ever evolving landscape of <strong>technology</strong>, <strong>law</strong>, and <strong>policy</strong>.</p>
+
+<div class="home-cats" role="navigation" aria-label="Resources by category">
+  <a href="/research" title="Peer-reviewed scholarship spanning computer science, robotics, economics, philosophy, and related fields"><span class="hc-num">I.</span><span class="hc-name">Research papers</span><span class="hc-count" data-count="research.json"></span></a>
+  <a href="/policy" title="Policy documents such as memos, executive orders, and legislation"><span class="hc-num">II.</span><span class="hc-name">Policy Artifacts</span><span class="hc-count" data-count="policy.json"></span></a>
+  <a href="/legal" title="Case studies, statutes, and legal definitions relevant to technology law"><span class="hc-num">III.</span><span class="hc-name">Legal Analyses</span><span class="hc-count" data-count="legal.json"></span></a>
+  <a href="/essays" title="Analytical, interpretive, or critical writing from a personal point of view"><span class="hc-num">IV.</span><span class="hc-name">Essays</span><span class="hc-count" data-count="essays.json"></span></a>
+  <a href="/articles" title="Timely, informative coverage of news and specific topics relevant to technology policy"><span class="hc-num">V.</span><span class="hc-name">Articles</span><span class="hc-count" data-count="articles.json"></span></a>
+  <a href="/reports" title="Structured documents from governments, universities, and institutions presenting facts and evidence on a topic"><span class="hc-num">VI.</span><span class="hc-name">Reports</span><span class="hc-count" data-count="reports.json"></span></a>
+  <a href="/canon" title="Curated reading lists tailored to specific audiences on specific topics"><span class="hc-num">VII.</span><span class="hc-name">Canons</span><span class="hc-count" data-count="topics.json"></span></a>
 </div>
 
 <!-- site-wide search, front and center like a search engine or archive home page -->
@@ -800,19 +867,16 @@
   </div>
   <div class="hint" id="searchHint">Search by title, tag, or publisher. Press <kbd>↵</kbd> to open the top result.</div>
 </div>
+</div>
 
-<div class="home-cats" role="navigation" aria-label="Resources by category">
-  <a href="/research" class="c1" title="Peer-reviewed scholarship spanning computer science, robotics, economics, philosophy, and related fields"><span class="hc-num">I.</span>Research papers</a>
-  <a href="/policy" class="c2" title="Policy documents such as memos, executive orders, and legislation"><span class="hc-num">II.</span>Policy Artifacts</a>
-  <a href="/legal" class="c3" title="Case studies, statutes, and legal definitions relevant to technology law"><span class="hc-num">III.</span>Legal Analyses</a>
-  <a href="/essays" class="c4" title="Analytical, interpretive, or critical writing from a personal point of view"><span class="hc-num">IV.</span>Essays</a>
-  <a href="/articles" class="c5" title="Timely, informative coverage of news and specific topics relevant to technology policy"><span class="hc-num">V.</span>Articles</a>
-  <a href="/reports" class="c6" title="Structured documents from governments, universities, and institutions presenting facts and evidence on a topic"><span class="hc-num">VI.</span>Reports</a>
-  <a href="/canon" class="c7" title="Curated reading lists tailored to specific audiences on specific topics"><span class="hc-num">VII.</span>Canons</a>
+<div class="home-panel-news">
+  <h2>Latest Additions</h2>
+  <ul class="home-latest" id="homeLatest"></ul>
+  <a href="#recent" class="hl-more">More recent work</a>
 </div>
 </section>
 
-<div class="intro-block">
+<div class="intro-block" id="recent">
   <div class="news-header">
     <h2 class="resources-label resources-label--underlined">Recently Added</h2>
   </div>
@@ -1313,6 +1377,46 @@ function loadRecentlyAdded() {
   });
 }
 
+// ── front page panel: item counts under each category and the newest
+// additions in the right column, from the same content files ──
+function loadHomePanel() {
+  var files = CONTENT_SOURCES.map(function(s) { return s.file; }).concat(['topics.json']);
+  var pages = {};
+  CONTENT_SOURCES.forEach(function(s) { pages[s.file] = s.page; });
+  Promise.all(files.map(function(file) {
+    return fetch('/content/' + file)
+      .then(function(res) { return res.json(); })
+      .then(function(json) { return { file: file, json: json }; })
+      .catch(function() { return { file: file, json: null }; });
+  })).then(function(results) {
+    var latest = [];
+    results.forEach(function(r) {
+      if (!r.json) return;
+      var list = r.file === 'topics.json'
+        ? (r.json.topics || [])
+        : (r.json.entries || []).filter(function(e) { return !e.placeholder; });
+      var countEl = document.querySelector('.hc-count[data-count="' + r.file + '"]');
+      if (countEl && list.length) countEl.textContent = list.length + (list.length === 1 ? ' item' : ' items');
+      if (r.file === 'topics.json') return;
+      list.forEach(function(e) {
+        var dest = e.date ? destinationFor(e, pages[r.file]) : null;
+        if (dest) latest.push({ title: e.title, date: e.date, type: e.type, dest: dest });
+      });
+    });
+    latest.sort(function(a, b) { return new Date(b.date) - new Date(a.date); });
+    var ul = document.getElementById('homeLatest');
+    ul.innerHTML = latest.slice(0, 4).map(function(it) {
+      var attrs = it.dest.external ? ' target="_blank" rel="noopener"' : '';
+      var d = new Date(it.date + 'T00:00:00');
+      var when = isNaN(d.getTime()) ? '' : MONTHS_SHORT[d.getMonth()] + ' ' + d.getFullYear();
+      var meta = [TYPE_LABELS[it.type] || '', when].filter(Boolean).join(' \u00B7 ');
+      var safeTitle = String(it.title || '').replace(/[&<>"]/g, function(c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
+      return '<li><a href="' + it.dest.url + '"' + attrs + '>' + safeTitle + '</a><span class="hl-meta">' + meta + '</span></li>';
+    }).join('');
+  });
+}
+
+loadHomePanel();
 loadRecentlyAdded();
 </script>
 
