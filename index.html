@@ -189,7 +189,19 @@
     color:var(--ink);
     opacity:.5;
   }
-  .home-cats-label--section{margin:52px 0 14px;}
+  /* Recently Added sits below the hero's 10px bottom padding, and this top
+     margin collapses with its .intro-block wrapper's 20px, so 34px gives the
+     same 44px gap below the categories as above them */
+  .home-cats-label--section{margin:34px 0 14px;}
+  /* desktop: the categories sit a little lower so the space above them
+     (from the search bar) and below them (to Recently Added) is even */
+  @media (min-width:601px){
+    .home-hero .home-cats-label:not(.home-kicker){margin-top:44px;}
+  }
+  /* phones: pull Recently Added up to match the gap above the categories */
+  @media (max-width:600px){
+    .home-cats-label--section{margin-top:0;}
+  }
   .home-cats{
     display:flex;
     flex-wrap:wrap;
