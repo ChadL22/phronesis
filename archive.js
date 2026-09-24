@@ -268,7 +268,7 @@
         '</div>' +
       '</div>' +
       '<div class="arc-results" id="arcResults"><p class="arc-empty">Loading…</p></div>' +
-      '<aside class="arc-panel" id="arcPanel" aria-label="Recently added"></aside>';
+      '<aside class="arc-panel" id="arcPanel" aria-label="Recent developments"></aside>';
 
     var input = document.getElementById('arcQuery');
     var resultsEl = document.getElementById('arcResults');
@@ -470,7 +470,8 @@
       if (!list.length) {
         resultsEl.innerHTML = statsHTML(ms) + '<div class="arc-empty"><p>No ' + esc(cat.label.toLowerCase()) +
           (state.q ? ' match \u201C' + esc(state.q) + '\u201D' : ' match these filters') + '.</p>' +
-          '<button type="button" class="arc-clear" data-clear="all">Clear search and filters</button></div>';
+          '<button type="button" class="arc-clear" data-clear="all">Clear search and filters</button></div>' +
+          expandHTML();
         return;
       }
 
@@ -482,8 +483,28 @@
       var body = statsHTML(ms) + (state.view === 'cards'
         ? '<div class="arc-cards">' + page.map(function (it) { return cardHTML(it, toks); }).join('') + '</div>'
         : '<div class="arc-list">' + page.map(function (it) { return resultHTML(it, toks); }).join('') + '</div>');
-      body += pagerHTML(list.length, pages);
+      body += pagerHTML(list.length, pages) + expandHTML();
       resultsEl.innerHTML = body;
+    }
+
+    // after a search, offer to run the same words across every category
+    function expandHTML() {
+      if (!state.q) return '';
+      return '<div class="arc-expand">' +
+        '<button type="button" class="arc-expand-btn" data-expand="1">Search all of Phronesis for \u201C' + esc(state.q) + '\u201D \u2192</button>' +
+      '</div>';
+    }
+    // hands the query to the site-wide search in the header (masthead.js)
+    function expandSearch(q) {
+      var openBtn = document.getElementById('searchIconBtn');
+      var siteInput = document.getElementById('searchInput');
+      if (!openBtn || !siteInput) return;
+      setTimeout(function () {
+        openBtn.click();
+        siteInput.value = q;
+        siteInput.dispatchEvent(new Event('input', { bubbles: true }));
+        siteInput.focus();
+      }, 0);
     }
 
     // ── right panel: newest item spotlit, then up to ten more as cards.
@@ -498,11 +519,13 @@
         (source ? '<span class="arc-mini-src">' + esc(source) + '</span>' : '') +
       '</article>';
     }
+    // ordered by each document's own date (not when it was added to the
+    // site): the most recently dated work is spotlit, older work follows
     function renderPanel() {
       var recent = items.slice().sort(function (a, b) { return b.time - a.time; }).slice(0, RECENT_COUNT);
       if (!recent.length) { panelEl.innerHTML = ''; return; }
       var lead = recent[0];
-      var html = '<div class="arc-panel-label">Recently added</div>' +
+      var html = '<div class="arc-panel-label">Recent developments</div>' +
         '<div class="arc-spot">' +
           titleLink(lead, [], 'arc-spot-title') +
           '<div class="arc-meta">' + metaLine(lead) + '</div>' +
@@ -707,6 +730,10 @@
         advEl.hidden = !state.advanced;
         t.setAttribute('aria-expanded', state.advanced ? 'true' : 'false');
         t.classList.toggle('open', state.advanced);
+        return;
+      }
+      if (t.hasAttribute('data-expand')) {
+        expandSearch(state.q);
         return;
       }
       if (t.hasAttribute('data-tag')) {
