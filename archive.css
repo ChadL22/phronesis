@@ -679,6 +679,10 @@ a.arc-mini-title::after { content: ''; position: absolute; inset: 0; }  /* whole
 }
 @media (max-width: 520px) {
   .arc-dd-menu { right: auto; left: 0; }
-  .arc-tools { flex-direction: column; align-items: flex-start; }
-  .arc-search { align-self: stretch; }
+  /* search on its own line, then Advanced search + Sort with the view
+     toggle beside them, so the filters open right under the button */
+  .arc-tools { gap: 0.7rem 0.5rem; }
+  .arc-controls { gap: 0.4rem; }
+  .arc-adv-toggle, .arc-dd-btn { letter-spacing: 0.06em; }
+  .arc-view-toggle { margin-left: auto; }
 }
