@@ -98,17 +98,31 @@ def typesense_search(collection, api_key, limit, state=None):
 def iso_date(value):
     """The tracker's 'Intro date' is sortable, but its exact format isn't
     documented; accept a Unix timestamp (seconds or ms) or a date string,
-    and fall back to '' rather than guessing."""
+    and fall back to '' rather than guessing.
+
+    Slash dates are read day-first (12/05/2026 = 12 May), which is what the
+    tracker's data turned out to use: reading them month-first put bills
+    introduced in May into December. As a backstop, a date that lands in the
+    future is flipped to day/month order when that gives a past date."""
+    today = datetime.date.today()
     if isinstance(value, (int, float)) and value > 0:
         ts = value / 1000 if value > 1e11 else value
         return datetime.datetime.utcfromtimestamp(ts).date().isoformat()
     if isinstance(value, str) and value.strip():
-        text = value.strip()
-        for fmt in ("%Y-%m-%d", "%m/%d/%Y", "%Y/%m/%d"):
+        text = value.strip()[:10]
+        for fmt in ("%Y-%m-%d", "%d/%m/%Y", "%m/%d/%Y", "%Y/%m/%d"):
             try:
-                return datetime.datetime.strptime(text[:10], fmt).date().isoformat()
+                d = datetime.datetime.strptime(text, fmt).date()
             except ValueError:
                 continue
+            if d > today and d.day <= 12:
+                try:
+                    flipped = d.replace(month=d.day, day=d.month)
+                    if flipped <= today:
+                        d = flipped
+                except ValueError:
+                    pass
+            return d.isoformat()
     return ""
 
 

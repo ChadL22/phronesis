@@ -615,6 +615,49 @@
     // scrolling slowly. Data: /bills-data.json, written by scripts/refresh_bills.py
     // from the Integrity Institute Tech Policy Tracker (the same source as the
     // Tech Policy Hub's ticker), refreshed daily by .github/workflows/refresh-bills.yml.
+    // The list drifts upward on its own, but readers can scroll it by hand
+    // (wheel, trackpad, touch, keyboard). Any hover, touch, focus, or manual
+    // scroll pauses the drift, which resumes a few seconds after they stop.
+    // The list is rendered twice, so passing the end of the first copy
+    // quietly jumps back by one copy's height for a seamless loop.
+    function autoScrollBills(win) {
+      if (!win) return;
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var paused = false, resumeTimer = null, pos = 0, last = null;
+      function half() { return win.scrollHeight / 2; }
+      function pause() { paused = true; clearTimeout(resumeTimer); }
+      function resumeSoon() {
+        clearTimeout(resumeTimer);
+        resumeTimer = setTimeout(function () { pos = win.scrollTop; paused = false; }, 3000);
+      }
+      win.addEventListener('mouseenter', pause);
+      win.addEventListener('mouseleave', resumeSoon);
+      win.addEventListener('focusin', pause);
+      win.addEventListener('focusout', resumeSoon);
+      win.addEventListener('touchstart', pause, { passive: true });
+      win.addEventListener('touchend', resumeSoon, { passive: true });
+      win.addEventListener('wheel', function () { pause(); resumeSoon(); }, { passive: true });
+      win.addEventListener('scroll', function () {
+        var h = half();
+        if (win.scrollTop >= h) { win.scrollTop -= h; pos = win.scrollTop; }
+      }, { passive: true });
+      function step(t) {
+        if (last === null) last = t;
+        var dt = Math.min(t - last, 100);
+        last = t;
+        if (!paused && !document.hidden) {
+          // about one bill every five seconds
+          var rowH = win.clientHeight / 3;
+          pos += dt * rowH / 5000;
+          var h = half();
+          if (pos >= h) pos -= h;
+          win.scrollTop = pos;
+        }
+        requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
     function loadBills() {
       fetch(BILLS_URL)
         .then(function (res) { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
@@ -643,13 +686,7 @@
               '<a href="https://us-federal.techpolicytracker.com/" target="_blank" rel="noopener">federal</a> and ' +
               '<a href="https://us-state.techpolicytracker.com/" target="_blank" rel="noopener">state</a> trackers</div>';
           document.getElementById('arcSticky').appendChild(box);
-          var track = box.querySelector('.arc-bills-track');
-          if (bills.length > 3) {
-            // pace the loop so each bill takes about five seconds to pass
-            track.style.animationDuration = (bills.length * 5) + 's';
-          } else {
-            track.style.animation = 'none';
-          }
+          if (bills.length > 3) autoScrollBills(box.querySelector('.arc-bills-window'));
         })
         .catch(function (err) { console.warn('Bills list unavailable:', err); });
     }

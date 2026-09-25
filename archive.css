@@ -515,24 +515,21 @@ a.arc-mini-title::after { content: ''; position: absolute; inset: 0; }  /* whole
   text-transform: uppercase;
 }
 /* three bills fit in the window at once: each row has a fixed height and
-   the title is clamped to one line (the full title shows on hover) */
+   the title is clamped to one line (the full title shows on hover).
+   The window scrolls on its own (archive.js) and by hand. */
 .arc-bills-window {
   height: calc(3 * var(--arc-bill-h));
-  overflow: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule) transparent;
   position: relative;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 0.6rem, #000 calc(100% - 0.6rem), transparent 100%);
   mask-image: linear-gradient(to bottom, transparent 0, #000 0.6rem, #000 calc(100% - 0.6rem), transparent 100%);
 }
-.arc-bills-track {
-  list-style: none;
-  animation: arc-bills-scroll 180s linear infinite;
-}
-.arc-bills-window:hover .arc-bills-track,
-.arc-bills-window:focus-within .arc-bills-track { animation-play-state: paused; }
-@keyframes arc-bills-scroll {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-50%); }
-}
+.arc-bills-window::-webkit-scrollbar { width: 5px; }
+.arc-bills-window::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 3px; }
+.arc-bills-track { list-style: none; }
 .arc-bill {
   display: flex;
   flex-direction: column;
@@ -572,8 +569,6 @@ a.arc-mini-title::after { content: ''; position: absolute; inset: 0; }  /* whole
 .arc-bills-src { padding: 0.5rem 0.8rem; border-top: 1px solid var(--rule); font-size: 0.62rem; color: var(--ink-3); }
 .arc-bills-src a { color: var(--accent-l); text-decoration: underline; text-underline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) {
-  .arc-bills-window { overflow-y: auto; }
-  .arc-bills-track { animation: none; }
   .arc-bills-track li[aria-hidden="true"] { display: none; }
 }
 
