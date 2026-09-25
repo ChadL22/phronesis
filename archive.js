@@ -268,7 +268,7 @@
         '</div>' +
       '</div>' +
       '<div class="arc-results" id="arcResults"><p class="arc-empty">Loading…</p></div>' +
-      '<aside class="arc-panel" id="arcPanel" aria-label="Recent developments"></aside>';
+      '<aside class="arc-panel" id="arcPanel" aria-label="Recently added"></aside>';
 
     var input = document.getElementById('arcQuery');
     var resultsEl = document.getElementById('arcResults');
@@ -519,13 +519,14 @@
         (source ? '<span class="arc-mini-src">' + esc(source) + '</span>' : '') +
       '</article>';
     }
-    // ordered by each document's own date (not when it was added to the
-    // site): the most recently dated work is spotlit, older work follows
+    // ordered by when each item was added to the site (the newest addition
+    // is spotlit), not by the document's own date; the results list and
+    // cards keep sorting by document date
     function renderPanel() {
-      var recent = items.slice().sort(function (a, b) { return b.time - a.time; }).slice(0, RECENT_COUNT);
+      var recent = items.slice().sort(function (a, b) { return a.addedRank - b.addedRank; }).slice(0, RECENT_COUNT);
       if (!recent.length) { panelEl.innerHTML = ''; return; }
       var lead = recent[0];
-      var html = '<div class="arc-panel-label">Recent developments</div>' +
+      var html = '<div class="arc-panel-label">Recently added</div>' +
         '<div class="arc-spot">' +
           titleLink(lead, [], 'arc-spot-title') +
           '<div class="arc-meta">' + metaLine(lead) + '</div>' +
@@ -758,7 +759,13 @@
       .then(function (json) {
         items = (json.entries || [])
           .filter(function (e) { return !e.placeholder; })
-          .map(function (e) { return normalize(e, cat); });
+          .map(function (e, i) {
+            var it = normalize(e, cat);
+            // the content manager adds new entries to the top of each file,
+            // so file position is the order things were added to the site
+            it.addedRank = i;
+            return it;
+          });
         activeFacets = FACETS.filter(function (f) {
           var seen = {};
           items.forEach(function (it) { f.values(it).forEach(function (v) { seen[v] = true; }); });

@@ -1432,7 +1432,10 @@ function saveEntry() {
   if (!entry.id) entry.id = slugify(entry.title || 'untitled');
 
   if (editingEntry.idx === null) {
-    // new entry — prepend (newest first)
+    // new entry: record the day it was added (separate from the document's
+    // own "date"), then prepend so file order stays newest-added first; the
+    // site's "Recently added" panels rely on that order
+    if (!entry.date_added) entry.date_added = new Date().toISOString().slice(0, 10);
     store.entries.unshift(entry);
     editingEntry.idx = 0;
   } else {
