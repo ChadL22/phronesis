@@ -7,8 +7,8 @@
 //   center → a search bar scoped to this category, a tools row with
 //            filter dropdowns + card/list toggle, then the results
 //   right  → the newest item spotlit, then up to four more as cards
-//   Policy page only: an auto-scrolling tech policy tracker under the
-//   content types on the left.
+//   Policy and Legal pages: an auto-scrolling tracker under the content
+//   types on the left (bills on Policy, court cases on Legal).
 //   Results show four per page in list view and six in card view
 //   ("5–8 of 45" with arrows), under a Google-style load time; the filter
 //   dropdowns sit behind an "Advanced search" toggle.
@@ -37,7 +37,24 @@
   ];
   var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   var PAGE_SIZE = { list: 4, cards: 6 };   // results per page in each view
-  var BILLS_URL = '/bills-data.json';
+  // the scrolling tracker box under the categories, on the pages that have one
+  var TRACKERS = {
+    policy: {
+      url: '/bills-data.json',
+      head: 'Tech Policy Tracker',
+      label: 'Technology and AI bills',
+      src: 'Source: Integrity Institute ' +
+        '<a href="https://us-federal.techpolicytracker.com/" target="_blank" rel="noopener">federal</a> and ' +
+        '<a href="https://us-state.techpolicytracker.com/" target="_blank" rel="noopener">state</a> trackers'
+    },
+    legal: {
+      url: '/api/cases',
+      head: 'Tech Litigation Tracker',
+      label: 'Technology litigation',
+      src: 'Source: Tech Justice Law Project ' +
+        '<a href="https://techjusticelaw.org/resources/tracker/" target="_blank" rel="noopener">litigation tracker</a>'
+    }
+  };
   var RECENT_COUNT = 5;    // one spotlit + four cards
   var SOURCE_LABELS = { original: 'Original', via: 'Via' };
 
@@ -250,14 +267,14 @@
       // advanced filters open just below the toolbar row
       '<div class="arc-advanced" id="arcAdvanced" hidden><div class="arc-facets" id="arcFacets"></div></div>' +
       // left column: page title and description, the categories list, then
-      // (policy page only) the bills tracker. The rail is a div rather than
+      // (policy and legal pages) the tracker box. The rail is a div rather than
       // <nav>: shared.css styles bare nav elements as the old top bar
       '<div class="arc-side" id="arcSide">' +
         '<header class="arc-head">' +
           '<h1 class="arc-title">' + esc(cat.label) + '</h1>' +
           (description ? '<p class="arc-desc">' + esc(description) + '</p>' : '') +
         '</header>' +
-        // categories (and, on the policy page, the bills tracker) stay in view while scrolling
+        // categories (and, on policy and legal, the tracker box) stay in view while scrolling
         '<div class="arc-sticky" id="arcSticky">' +
         '<div class="arc-rail" role="navigation" aria-label="Categories">' +
           '<div class="arc-panel-label arc-rail-label">Categories</div>' +
@@ -611,10 +628,14 @@
       if (id) openReader(id);
     }
 
-    // ── tech policy tracker (policy page only): three bills visible at a time,
-    // scrolling slowly. Data: /bills-data.json, written by scripts/refresh_bills.py
+    // ── tracker box (policy and legal pages): three rows visible at a time,
+    // scrolling slowly. Policy: /bills-data.json, written by scripts/refresh_bills.py
     // from the Integrity Institute Tech Policy Tracker (the same source as the
     // Tech Policy Hub's ticker), refreshed daily by .github/workflows/refresh-bills.yml.
+    // Legal: /api/cases, served by worker.js from the Tech Justice Law Project's
+    // litigation tracker (court code badge, status and filing month, case name).
+    // Both sources share one row shape: jurisdiction, jurisdiction_name, code,
+    // title, date, link.
     // The list drifts upward on its own, but readers can scroll it by hand
     // (wheel, trackpad, touch, keyboard). Any hover, touch, focus, or manual
     // scroll pauses the drift, which resumes a few seconds after they stop.
@@ -658,8 +679,8 @@
       requestAnimationFrame(step);
     }
 
-    function loadBills() {
-      fetch(BILLS_URL)
+    function loadTracker(cfg) {
+      fetch(cfg.url)
         .then(function (res) { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
         .then(function (json) {
           var bills = (json.items || []).filter(function (b) { return b && b.title; });
@@ -676,19 +697,17 @@
           }).join('');
           var box = document.createElement('section');
           box.className = 'arc-bills';
-          box.setAttribute('aria-label', 'Technology and AI bills');
+          box.setAttribute('aria-label', cfg.label);
           // the list is rendered twice so the scroll can loop seamlessly;
           // the copy is hidden from screen readers and keyboard focus
           var copy = rows.replace(/<li>/g, '<li aria-hidden="true">').replace(/<a class="arc-bill"/g, '<a tabindex="-1" class="arc-bill"');
-          box.innerHTML = '<div class="arc-bills-head">Tech Policy Tracker</div>' +
+          box.innerHTML = '<div class="arc-bills-head">' + esc(cfg.head) + '</div>' +
             '<div class="arc-bills-window"><ul class="arc-bills-track">' + rows + (bills.length > 3 ? copy : '') + '</ul></div>' +
-            '<div class="arc-bills-src">Source: Integrity Institute ' +
-              '<a href="https://us-federal.techpolicytracker.com/" target="_blank" rel="noopener">federal</a> and ' +
-              '<a href="https://us-state.techpolicytracker.com/" target="_blank" rel="noopener">state</a> trackers</div>';
+            '<div class="arc-bills-src">' + cfg.src + '</div>';
           document.getElementById('arcSticky').appendChild(box);
           if (bills.length > 3) autoScrollBills(box.querySelector('.arc-bills-window'));
         })
-        .catch(function (err) { console.warn('Bills list unavailable:', err); });
+        .catch(function (err) { console.warn(cfg.head + ' unavailable:', err); });
     }
 
     function update(resetPaging) {
@@ -815,7 +834,7 @@
         pendingLoadMs = performance.now() - loadStart;
         renderPanel();
         update(false);
-        if (cat.key === 'policy') loadBills();   // the tracker lives on the policy page only
+        if (TRACKERS[cat.key]) loadTracker(TRACKERS[cat.key]);   // policy and legal pages only
         if (cat.key === 'essays') {
           openReaderFromHash();
           window.addEventListener('hashchange', openReaderFromHash);

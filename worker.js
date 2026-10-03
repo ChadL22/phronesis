@@ -7,6 +7,85 @@ const CORS_HEADERS = {
   'Access-Control-Allow-Headers': 'Content-Type',
 };
 
+// ── Tech Litigation Tracker (Legal Analyses page) ──
+// Source: the Tech Justice Law Project's litigation tracker
+// (techjusticelaw.org/resources/tracker/). Its page loads its data from a
+// public, unauthenticated WordPress REST route, tjl/v1/tracker-data. That
+// route is undocumented, so if its shape changes this returns an error
+// and the box on the Legal Analyses page simply does not appear.
+// The worker trims each case to what the box shows, sorts newest filings
+// first, and caches the upstream response at the edge for six hours.
+const CASES_URL = 'https://techjusticelaw.org/wp-json/tjl/v1/tracker-data?region=us';
+const CASES_PAGE = 'https://techjusticelaw.org/resources/tracker/';
+const CASES_LIMIT = 60;
+const US_STATES = {
+  'District of Columbia': 'DC', 'Puerto Rico': 'PR',
+  'Alabama': 'AL', 'Alaska': 'AK', 'Arizona': 'AZ', 'Arkansas': 'AR', 'California': 'CA',
+  'Colorado': 'CO', 'Connecticut': 'CT', 'Delaware': 'DE', 'Florida': 'FL', 'Georgia': 'GA',
+  'Hawaii': 'HI', 'Idaho': 'ID', 'Illinois': 'IL', 'Indiana': 'IN', 'Iowa': 'IA',
+  'Kansas': 'KS', 'Kentucky': 'KY', 'Louisiana': 'LA', 'Maine': 'ME', 'Maryland': 'MD',
+  'Massachusetts': 'MA', 'Michigan': 'MI', 'Minnesota': 'MN', 'Mississippi': 'MS',
+  'Missouri': 'MO', 'Montana': 'MT', 'Nebraska': 'NE', 'Nevada': 'NV', 'New Hampshire': 'NH',
+  'New Jersey': 'NJ', 'New Mexico': 'NM', 'New York': 'NY', 'North Carolina': 'NC',
+  'North Dakota': 'ND', 'Ohio': 'OH', 'Oklahoma': 'OK', 'Oregon': 'OR', 'Pennsylvania': 'PA',
+  'Rhode Island': 'RI', 'South Carolina': 'SC', 'South Dakota': 'SD', 'Tennessee': 'TN',
+  'Texas': 'TX', 'Utah': 'UT', 'Vermont': 'VT', 'Virginia': 'VA', 'Washington': 'WA',
+  'West Virginia': 'WV', 'Wisconsin': 'WI', 'Wyoming': 'WY',
+};
+// longest names first, so "West Virginia" wins over "Virginia"
+const STATE_NAMES = Object.keys(US_STATES).sort((a, b) => b.length - a.length);
+
+// "Texas Eastern District Court" -> "TX"; circuit courts, the Supreme
+// Court, and anything without a state name -> "US"
+function courtCode(jurisdiction) {
+  const j = String(jurisdiction || '');
+  for (const name of STATE_NAMES) {
+    if (new RegExp('\\b' + name + '\\b', 'i').test(j)) return US_STATES[name];
+  }
+  return 'US';
+}
+
+// "11/5/2025" or "1/17/25" -> "2025-11-05"; anything else -> ""
+function isoDate(mdy) {
+  const m = String(mdy || '').trim().match(/^(\d{1,2})\/(\d{1,2})\/(\d{2}|\d{4})$/);
+  if (!m) return '';
+  const year = m[3].length === 2 ? 2000 + Number(m[3]) : Number(m[3]);
+  return year + '-' + m[1].padStart(2, '0') + '-' + m[2].padStart(2, '0');
+}
+
+async function fetchCases() {
+  const upstream = await fetch(CASES_URL, {
+    headers: { 'Accept': 'application/json', 'User-Agent': 'PhronesisResearch/1.0 (+https://phronesisresearch.org)' },
+    cf: { cacheTtl: 21600, cacheEverything: true },
+  });
+  if (!upstream.ok) throw new Error('Upstream HTTP ' + upstream.status);
+  const data = await upstream.json();
+  if (!data || !Array.isArray(data.records)) throw new Error('Unexpected upstream shape');
+  const items = data.records
+    .filter((r) => r && r.case_name)
+    .map((r) => {
+      const details = Array.isArray(r.details) ? r.details : [];
+      const docket = details.find((d) => d && d.key === 'court_listener_pleadings');
+      const docketUrl = docket && Array.isArray(docket.links) && docket.links[0] && docket.links[0].url;
+      return {
+        jurisdiction: courtCode(r.jurisdiction),
+        jurisdiction_name: r.jurisdiction || '',
+        code: r.status || '',
+        title: r.case_name,
+        date: isoDate(r.date_filed),
+        link: /^https?:\/\//.test(docketUrl || '') ? docketUrl : CASES_PAGE,
+      };
+    })
+    .sort((a, b) => (b.date || '').localeCompare(a.date || ''))
+    .slice(0, CASES_LIMIT);
+  return {
+    source: 'Tech Justice Law Project litigation tracker (techjusticelaw.org/resources/tracker)',
+    fetched_at: new Date().toISOString(),
+    total: data.records.length,
+    items,
+  };
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -42,6 +121,21 @@ export default {
       } catch (err) {
         return new Response(JSON.stringify({ error: err.message }), {
           status: 500,
+          headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+        });
+      }
+    }
+
+    // Tech Litigation Tracker data for the Legal Analyses page
+    if (url.pathname === '/api/cases' && request.method === 'GET') {
+      try {
+        const body = await fetchCases();
+        return new Response(JSON.stringify(body), {
+          headers: { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=3600', ...CORS_HEADERS },
+        });
+      } catch (err) {
+        return new Response(JSON.stringify({ error: err.message }), {
+          status: 502,
           headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
         });
       }
