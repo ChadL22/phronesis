@@ -1,0 +1,45 @@
+name: Refresh bills tracker
+
+# Keeps the Tech Policy Tracker box on the Policy Artifacts page current.
+# Pulls federal and state technology bills from the Integrity Institute
+# Tech Policy Tracker (the same source as the Tech Policy Hub's ticker; see
+# scripts/refresh_bills.py for what it queries and why) and commits
+# bills-data.json only when the bills have changed. The deploy workflow
+# listens for this workflow finishing, because a commit pushed with the
+# built-in GITHUB_TOKEN does not trigger the normal on-push deploy.
+#
+# No secrets needed: the script uses the tracker's own public,
+# read-only search key.
+
+on:
+  schedule:
+    - cron: '0 12 * * *'  # daily, 12:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Fetch fresh bills
+        run: python3 scripts/refresh_bills.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add bills-data.json
+          if git diff --staged --quiet; then
+            echo "No new bills; nothing to commit"
+            exit 0
+          fi
+          git commit -m "chore: refresh bills tracker"
+          git push

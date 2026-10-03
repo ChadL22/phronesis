@@ -3,9 +3,15 @@ name: Deploy to Cloudflare Workers
 on:
   push:
     branches: [main]
+  # redeploy after the daily bills refresh; its commit is pushed with the
+  # built-in GITHUB_TOKEN, which does not trigger the push event above
+  workflow_run:
+    workflows: ["Refresh bills tracker"]
+    types: [completed]
 
 jobs:
   deploy:
+    if: github.event_name == 'push' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     name: Deploy
     steps:

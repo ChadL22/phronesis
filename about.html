@@ -4,41 +4,11 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About — Phronesis</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="shared.css?v=20260924" />
-  <link rel="stylesheet" href="chat.css" />
-  <style>
-    .about-body { max-width: 1160px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 5rem) 5rem; display: grid; grid-template-columns: 1fr 1.8fr; gap: 6rem; align-items: start; margin-top: 2rem; }
-    .about-sidebar { position: sticky; top: 90px; }
-    .about-toc { list-style: none; margin-top: 1.4rem; }
-    .about-toc li { margin-bottom: 0.5rem; }
-    .about-toc a { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); transition: color 0.2s; }
-    .about-toc a:hover { color: var(--accent); }
-    .about-content section { margin-bottom: 4rem; }
-    .about-content section:last-child { margin-bottom: 0; }
-    .about-content h2 { font-family: var(--serif); font-size: 1.9rem; font-weight: 400; line-height: 1.15; margin-bottom: 1.4rem; padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
-    .about-content p { font-family: var(--serif); font-size: 1.08rem; font-weight: 300; line-height: 1.8; color: var(--ink-2); margin-bottom: 1.2rem; }
-    .about-content p:last-child { margin-bottom: 0; }
-    .contributor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 2rem; }
-    .contributor-card { background: var(--paper); padding: 1.8rem 1.6rem; }
-    .contributor-card h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; margin-bottom: 0.25rem; }
-    .contributor-card .role { font-size: 0.67rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
-    .contributor-card p { font-size: 0.8rem; color: var(--ink-3); line-height: 1.6; font-family: var(--sans); margin-bottom: 0; }
-    .scope-list { list-style: none; margin-top: 1rem; }
-    .scope-list li { display: flex; align-items: baseline; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid var(--rule); font-family: var(--serif); font-size: 1rem; color: var(--ink-2); }
-    .scope-list li::before { content: ''; display: block; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 0.4rem; }
-    .key-table { width: 100%; margin-top: 1.2rem; border-collapse: collapse; }
-    .key-table tr { border-bottom: 1px solid var(--rule); }
-    .key-table tr:first-child { border-top: 1px solid var(--rule); }
-    .key-table td { padding: 0.75rem 0; vertical-align: top; }
-    .key-table td:first-child { width: 38%; padding-right: 1.5rem; }
-    .key-table td:last-child { font-family: var(--serif); font-size: 0.95rem; font-weight: 300; color: var(--ink-3); line-height: 1.6; }
-    .key-label { font-family: var(--sans); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-2); }
-    @media (max-width: 900px) { .about-body { grid-template-columns: 1fr; gap: 3rem; } .about-sidebar { position: static; } .contributor-grid { grid-template-columns: 1fr; } }
-  </style>
+  <link rel="stylesheet" href="shared.css?v=20260925b" />
+  <link rel="stylesheet" href="archive.css?v=20260925b" />
 </head>
 <body>
   <header class="masthead">
@@ -110,98 +80,128 @@
     <div class="search-results" id="searchResults"></div>
   </div>
 </div>
-  <div class="page-header">
-    <div><div class="page-header-eyebrow"><span class="label">About</span></div><h1 class="serif">On <em>Phronesis</em></h1></div>
-    <p class="page-header-desc">A research entity is only as good as its transparency about what it is and who it is for. This page tries to answer both questions plainly.</p>
-  </div>
-  <div class="section-rule"></div>
-  <div class="about-body">
-    <aside class="about-sidebar">
-      <span class="label">On this page</span>
-      <ul class="about-toc">
-        <li><a href="#the-name">The name</a></li><li><a href="#what-we-do">What we do</a></li><li><a href="#reading-the-site">Reading the site</a></li><li><a href="#corpus-and-canons">Corpus &amp; canons</a></li><li><a href="#our-scope">Our scope</a></li><li><a href="#contributors">Contributors</a></li><li><a href="#independence">Independence</a></li>
-      </ul>
-    </aside>
-    <div class="about-content">
+
+  <!-- same shell as the category pages: title, description, and the
+       Categories list on the left; this page's content on the right -->
+  <div class="arc arc--page">
+    <div class="arc-side">
+      <header class="arc-head">
+        <h1 class="arc-title">About</h1>
+        <p class="arc-desc">A research entity is only as good as its transparency about what it is and who it is for. This page tries to answer both questions plainly.</p>
+      </header>
+      <div class="arc-sticky">
+        <div class="arc-rail" role="navigation" aria-label="Categories">
+          <div class="arc-panel-label arc-rail-label">Categories</div>
+          <div class="arc-rail-divider arc-rail-divider--top"></div>
+          <ul>
+          <li><a href="/research">Research Papers</a></li>
+          <li><a href="/policy">Policy Artifacts</a></li>
+          <li><a href="/legal">Legal Analyses</a></li>
+          <li><a href="/essays">Essays</a></li>
+          <li><a href="/articles">Articles</a></li>
+          <li><a href="/reports">Reports</a></li>
+          <li><a href="/corpus">Canons</a></li>
+          </ul>
+          <div class="arc-rail-divider"></div>
+        </div>
+        <div class="arc-rail arc-toc" role="navigation" aria-label="On this page">
+          <div class="arc-panel-label arc-rail-label">On this page</div>
+          <div class="arc-rail-divider arc-rail-divider--top"></div>
+          <ul>
+            <li><a href="#the-name">The name</a></li>
+            <li><a href="#what-we-do">What we do</a></li>
+            <li><a href="#reading-the-site">Reading the site</a></li>
+            <li><a href="#corpus-and-canons">Corpus &amp; canons</a></li>
+            <li><a href="#our-scope">Our scope</a></li>
+            <li><a href="#contributors">Contributors</a></li>
+            <li><a href="#independence">Independence</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <main class="arc-main">
+      <div class="arc-prose">
       <section id="the-name">
-        <h2 class="serif">The name</h2>
+        <h2>The name</h2>
         <p><em>Phronesis</em> is a Greek term that translates to practical wisdom, encompassing the ideas of prudence and common sense. Rooted in Ancient Greek philosophy, it is viewed as an intellectual virtue that not only involves knowing the right course of action but also understanding why it is the right choice.</p>
         <p>This concept was notably developed by Aristotle, who categorized virtues into intellectual and ethical types, placing phronesis as a key element of practical reasoning. He argued that phronesis is acquired through lived experiences and is essential for making sound moral decisions. Aristotle believed that individuals must first develop good habits in childhood and later learn to apply practical wisdom as they mature.</p>
         <p>The influence of phronesis extends into modern discussions, particularly in business and research, where ethical decision-making is paramount. In this context, phronesis encourages consideration of the processes and implications involved in decision-making, emphasizing the importance of both the means and the outcomes. Overall, phronesis serves as a foundation for good judgment and character, fostering moral and ethical behavior in various aspects of life.</p>
-        <p style="font-size: 0.85rem; color: var(--ink-3); font-style: italic; margin-top: 1.5rem;">Adapted from: Sheposh, Richard. "Phronesis." <em>Encyclopedia of Business and Professional Ethics</em>, edited by Deborah C. Poff and Alex C. Michalos, Springer, 2019.</p>
+        <p class="arc-cite">Adapted from: Sheposh, Richard. "Phronesis." <em>Encyclopedia of Business and Professional Ethics</em>, edited by Deborah C. Poff and Alex C. Michalos, Springer, 2019.</p>
         <p>In technology, law, and policy, practical wisdom means moving beyond abstract principles to consider real-world implications. It means asking not just whether we can regulate, but whether we should, and if so, how. We write and share content that lives up to this ideal, bringing practical wisdom to the governance challenges shaping our technological future.</p>
       </section>
+
       <section id="what-we-do">
-        <h2 class="serif">What we do</h2>
+        <h2>What we do</h2>
         <p>Phronesis produces and aggregates research papers, policy proposals, legal analyses, essays, articles, and reports on and related to the governance of technology. Some of this work is original, written and published by Phronesis. Other pieces are drawn from the broader field: work we have read, found valuable, and deemed worth sharing.</p>
         <p>Not all content on this site is representative of our views. We share perspectives that are well-argued, carefully reasoned, and offer insight into the challenges shaping technology governance. This collection is not exhaustive, nor does it claim to represent the "best" work in the field. It simply reflects what we have read and what we believe to be useful for orienting oneself amongst this ever changing landscape.</p>
         <p>The intention is bite-sized content for daily and weekly readers, alongside more thorough work for contemporaries and specific professional audiences. We are not trying to be a newspaper or a wire service. We are trying to build a repository of work to help orient readers amidst the ever changing landscape that is technology, policy, and law.</p>
       </section>
+
       <section id="reading-the-site">
-        <h2 class="serif">Reading the site</h2>
+        <h2>Reading the site</h2>
         <p>Every listing on Phronesis carries a few pieces of information beyond the title. Here is what each of them means.</p>
 
-        <p style="margin-top: 1.6rem; margin-bottom: 0.4rem;"><span class="key-label">Output types</span></p>
+        <div class="arc-panel-label">Output types</div>
         <p>Each piece of work belongs to one of six formats, reflecting how it was written and who it is for.</p>
-        <table class="key-table">
-          <tr><td><a href="/research" style="font-family: var(--serif); font-size: 1rem; color: var(--ink-2);">Research Papers</a></td><td>Academic works including working papers, preprints, or peer-reviewed publications on technology governance and digital law.</td></tr>
-          <tr><td><a href="/policy" style="font-family: var(--serif); font-size: 1rem; color: var(--ink-2);">Policy Artifacts</a></td><td>Artifacts ranging from legislation, memos, and proposals addressed to regulators, lawmakers, and institutions.</td></tr>
-          <tr><td><a href="/legal" style="font-family: var(--serif); font-size: 1rem; color: var(--ink-2);">Legal Analyses</a></td><td>Close readings of cases, statutes, and regulatory actions. Written for practitioners and informed general readers.</td></tr>
-          <tr><td><a href="/essays" style="font-family: var(--serif); font-size: 1rem; color: var(--ink-2);">Essays</a></td><td>Works written to explain, argue, narrate, or describe ideas and positions on technology governance.</td></tr>
-          <tr><td><a href="/articles" style="font-family: var(--serif); font-size: 1rem; color: var(--ink-2);">Articles</a></td><td>Timely, concise takes on current events — rulings, decisions, and policy shifts worth paying attention to right now.</td></tr>
-          <tr><td><a href="/reports" style="font-family: var(--serif); font-size: 1rem; color: var(--ink-2);">Reports</a></td><td>Formal, organized communications that share findings from investigation, analysis, or research, tailored to a specific audience and purpose, often including recommendations or conclusions.</td></tr>
-        </table>
+        <dl class="arc-deflist">
+          <div><dt><a href="/research">Research Papers</a></dt><dd>Academic works including working papers, preprints, or peer-reviewed publications on technology governance and digital law.</dd></div>
+          <div><dt><a href="/policy">Policy Artifacts</a></dt><dd>Artifacts ranging from legislation, memos, and proposals addressed to regulators, lawmakers, and institutions.</dd></div>
+          <div><dt><a href="/legal">Legal Analyses</a></dt><dd>Close readings of cases, statutes, and regulatory actions. Written for practitioners and informed general readers.</dd></div>
+          <div><dt><a href="/essays">Essays</a></dt><dd>Works written to explain, argue, narrate, or describe ideas and positions on technology governance.</dd></div>
+          <div><dt><a href="/articles">Articles</a></dt><dd>Timely, concise takes on current events — rulings, decisions, and policy shifts worth paying attention to right now.</dd></div>
+          <div><dt><a href="/reports">Reports</a></dt><dd>Formal, organized communications that share findings from investigation, analysis, or research, tailored to a specific audience and purpose, often including recommendations or conclusions.</dd></div>
+        </dl>
 
-        <p style="margin-top: 2rem; margin-bottom: 0.4rem;"><span class="key-label">Category tags</span></p>
-        <p>The small outlined label on each listing (e.g. <span class="archive-tag" style="display: inline; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); border-radius: 2px; padding: 0.15rem 0.45rem;">AI Governance</span>) indicates the subject area the piece falls under. Tags are used to group and filter content within each section. A single piece may sit at the intersection of several topics, but carries the tag most central to its argument.</p>
+        <div class="arc-panel-label">Category tags</div>
+        <p>The small outlined label on each listing (e.g. <span class="arc-chip arc-chip--accent">AI Governance</span>) indicates the subject area the piece falls under. Tags are used to group and filter content within each section. A single piece may sit at the intersection of several topics, but carries the tag most central to its argument.</p>
 
-        <p style="margin-top: 2rem; margin-bottom: 0.4rem;"><span class="key-label">Origin badges</span></p>
+        <div class="arc-panel-label">Origin badges</div>
         <p>Each title carries a small badge indicating whether the work was produced by Phronesis or sourced from elsewhere.</p>
-        <table class="key-table">
-          <tr><td><span class="origin-badge origin-badge--original">Original</span></td><td>Written and published by Phronesis. The analysis, argument, and conclusions are our own.</td></tr>
-          <tr><td><span class="origin-badge origin-badge--via">Via [Source]</span></td><td>Sourced from an external publication or institution. We may summarize, excerpt, or contextualize the work, but the underlying material originates elsewhere. The source is named in the badge.</td></tr>
-        </table>
+        <dl class="arc-deflist">
+          <div><dt><span class="arc-badge">Original</span></dt><dd>Written and published by Phronesis. The analysis, argument, and conclusions are our own.</dd></div>
+          <div><dt><span class="arc-chip">Via [Source]</span></dt><dd>Sourced from an external publication or institution. We may summarize, excerpt, or contextualize the work, but the underlying material originates elsewhere. The source is named in the badge.</dd></div>
+        </dl>
       </section>
 
       <section id="corpus-and-canons">
-        <h2 class="serif">Corpus &amp; canons</h2>
+        <h2>Corpus &amp; canons</h2>
         <p>As Phronesis has grown, so has the challenge of navigating it. The site publishes across six formats and covers subjects that range from antitrust doctrine to AI labor economics. A reader arriving for the first time — or returning after a few weeks away — needs a way in that does not require already knowing what exists.</p>
-        <p>The <a href="/corpus" style="color: var(--accent);">Corpus</a> is our answer to that problem. It organizes the full body of published work into <em>canons</em>: curated collections of reading material that we consider essential to understanding a particular subject. Each canon gathers research papers, policy proposals, legal analyses, essays, articles, and reports from across the site into a single, navigable body of work on one topic.</p>
+        <p>The <a href="/corpus">Corpus</a> is our answer to that problem. It organizes the full body of published work into <em>canons</em>: curated collections of reading material that we consider essential to understanding a particular subject. Each canon gathers research papers, policy proposals, legal analyses, essays, articles, and reports from across the site into a single, navigable body of work on one topic.</p>
         <p>The word is deliberate. A canon, in the literary sense, is the set of works considered foundational to a field — the texts you read to understand not just the current debate but the intellectual ground it stands on. Our canons serve the same purpose for technology law and policy: they are the reading lists we would hand to someone who wanted to understand a subject seriously, from the ground up.</p>
 
-        <p style="margin-top: 2rem; margin-bottom: 0.4rem;"><span class="key-label">How canons work</span></p>
+        <div class="arc-panel-label">How canons work</div>
         <p>Each canon has two layers. The first is a <em>guided reading path</em> — a curated sequence of pieces arranged in a deliberate order, with short editorial notes explaining why each piece matters and what it builds on. These paths are tailored by audience: a student entering AI governance for the first time sees a different starting point and sequence than a legal professional or an economist, even though they are drawing from the same underlying body of work.</p>
         <p>The second layer is the full collection: every piece on the site whose subject matter falls within the canon's scope, filterable by publication type. This lets readers who already know what they are looking for browse freely, while newcomers follow the guided path.</p>
 
-        <p style="margin-top: 2rem; margin-bottom: 0.4rem;"><span class="key-label">Current audience perspectives</span></p>
+        <div class="arc-panel-label">Current audience perspectives</div>
         <p>Reading paths are currently available for six audiences, each reflecting a different entry point and set of concerns:</p>
-        <table class="key-table">
-          <tr><td><span style="font-family: var(--serif); font-size: 1rem; color: var(--ink-2);">Student</span></td><td>Foundational concepts first, building toward current debates. Assumes curiosity but not prior expertise.</td></tr>
-          <tr><td><span style="font-family: var(--serif); font-size: 1rem; color: var(--ink-2);">General Reader</span></td><td>Accessible entry points that connect policy and technology to everyday concerns. Shorter sequences, less jargon.</td></tr>
-          <tr><td><span style="font-family: var(--serif); font-size: 1rem; color: var(--ink-2);">Policy Professional</span></td><td>Frameworks, legislative analysis, and enforcement actions. Oriented toward what is actionable and what is pending.</td></tr>
-          <tr><td><span style="font-family: var(--serif); font-size: 1rem; color: var(--ink-2);">Legal Professional</span></td><td>Doctrine, case law, and statutory analysis. Assumes familiarity with legal reasoning and precedent.</td></tr>
-          <tr><td><span style="font-family: var(--serif); font-size: 1rem; color: var(--ink-2);">Economist</span></td><td>Market structure, welfare analysis, and the economic research underlying policy debates.</td></tr>
-          <tr><td><span style="font-family: var(--serif); font-size: 1rem; color: var(--ink-2);">Technologist</span></td><td>Technical architecture, protocol design, and the engineering dimensions of governance questions.</td></tr>
-        </table>
+        <dl class="arc-deflist">
+          <div><dt>Student</dt><dd>Foundational concepts first, building toward current debates. Assumes curiosity but not prior expertise.</dd></div>
+          <div><dt>General Reader</dt><dd>Accessible entry points that connect policy and technology to everyday concerns. Shorter sequences, less jargon.</dd></div>
+          <div><dt>Policy Professional</dt><dd>Frameworks, legislative analysis, and enforcement actions. Oriented toward what is actionable and what is pending.</dd></div>
+          <div><dt>Legal Professional</dt><dd>Doctrine, case law, and statutory analysis. Assumes familiarity with legal reasoning and precedent.</dd></div>
+          <div><dt>Economist</dt><dd>Market structure, welfare analysis, and the economic research underlying policy debates.</dd></div>
+          <div><dt>Technologist</dt><dd>Technical architecture, protocol design, and the engineering dimensions of governance questions.</dd></div>
+        </dl>
 
-        <p style="margin-top: 2rem; margin-bottom: 0.4rem;"><span class="key-label">Current canons</span></p>
+        <div class="arc-panel-label">Current canons</div>
         <p>The corpus currently contains eight canons organized by what AI systems do, not abstract policy domains. New canons will be added as our coverage expands:</p>
-        <table class="key-table">
-          <tr><td><a href="/canon?t=product-liability" style="font-family: var(--serif); font-size: 1rem; color: var(--ink-2);">Product Liability &amp; AI</a></td><td>Tort doctrine, causation challenges, and liability allocation for algorithmic harm.</td></tr>
-          <tr><td><a href="/canon?t=moderation-detection-enforcement" style="font-family: var(--serif); font-size: 1rem; color: var(--ink-2);">Moderation, Detection, &amp; Enforcement</a></td><td>Section 230, content moderation, automated detection, and platform speech.</td></tr>
-          <tr><td><a href="/canon?t=identification-authentication-biometrics" style="font-family: var(--serif); font-size: 1rem; color: var(--ink-2);">Identification, Authentication, &amp; Biometrics</a></td><td>Privacy, surveillance, facial recognition, and data governance.</td></tr>
-          <tr><td><a href="/canon?t=generative-synthetic-media" style="font-family: var(--serif); font-size: 1rem; color: var(--ink-2);">Generative &amp; Synthetic Media</a></td><td>Copyright, training data, deepfakes, and AI-generated content liability.</td></tr>
-          <tr><td><a href="/canon?t=cyber-physical-embodied-ai" style="font-family: var(--serif); font-size: 1rem; color: var(--ink-2);">Cyber-Physical &amp; Embodied AI</a></td><td>Autonomous vehicles, robotics, infrastructure, and physical harm liability.</td></tr>
-          <tr><td><a href="/canon?t=recommender-targeting" style="font-family: var(--serif); font-size: 1rem; color: var(--ink-2);">Recommender &amp; Targeting</a></td><td>Algorithmic curation, news feeds, advertising, and attention economics.</td></tr>
-          <tr><td><a href="/canon?t=scoring-ranking-eligibility" style="font-family: var(--serif); font-size: 1rem; color: var(--ink-2);">Scoring, Ranking, &amp; Eligibility</a></td><td>Hiring algorithms, credit scoring, discrimination law, and auditing.</td></tr>
-          <tr><td><a href="/canon?t=pricing-resource-allocation" style="font-family: var(--serif); font-size: 1rem; color: var(--ink-2);">Pricing &amp; Resource Allocation</a></td><td>Dynamic pricing, algorithmic collusion, antitrust, and market design.</td></tr>
-        </table>
+        <dl class="arc-deflist">
+          <div><dt><a href="/canon?t=product-liability">Product Liability &amp; AI</a></dt><dd>Tort doctrine, causation challenges, and liability allocation for algorithmic harm.</dd></div>
+          <div><dt><a href="/canon?t=moderation-detection-enforcement">Moderation, Detection, &amp; Enforcement</a></dt><dd>Section 230, content moderation, automated detection, and platform speech.</dd></div>
+          <div><dt><a href="/canon?t=identification-authentication-biometrics">Identification, Authentication, &amp; Biometrics</a></dt><dd>Privacy, surveillance, facial recognition, and data governance.</dd></div>
+          <div><dt><a href="/canon?t=generative-synthetic-media">Generative &amp; Synthetic Media</a></dt><dd>Copyright, training data, deepfakes, and AI-generated content liability.</dd></div>
+          <div><dt><a href="/canon?t=cyber-physical-embodied-ai">Cyber-Physical &amp; Embodied AI</a></dt><dd>Autonomous vehicles, robotics, infrastructure, and physical harm liability.</dd></div>
+          <div><dt><a href="/canon?t=recommender-targeting">Recommender &amp; Targeting</a></dt><dd>Algorithmic curation, news feeds, advertising, and attention economics.</dd></div>
+          <div><dt><a href="/canon?t=scoring-ranking-eligibility">Scoring, Ranking, &amp; Eligibility</a></dt><dd>Hiring algorithms, credit scoring, discrimination law, and auditing.</dd></div>
+          <div><dt><a href="/canon?t=pricing-resource-allocation">Pricing &amp; Resource Allocation</a></dt><dd>Dynamic pricing, algorithmic collusion, antitrust, and market design.</dd></div>
+        </dl>
       </section>
 
       <section id="our-scope">
-        <h2 class="serif">Our scope</h2>
+        <h2>Our scope</h2>
         <p>We focus on the intersection of technology with law and policy. Our current areas of focus include, but are not limited to:</p>
-        <ul class="scope-list">
+        <ul class="arc-bullets">
           <li>Artificial intelligence governance and regulatory frameworks</li>
           <li>Platform liability and Section 230 doctrine</li>
           <li>Competition law and digital markets</li>
@@ -210,24 +210,28 @@
           <li>Algorithmic accountability and civil rights</li>
           <li>Technology procurement and public sector AI</li>
         </ul>
-        <p style="margin-top: 1.4rem;">As Phronesis grows, so will its scope. For now, we work in the areas we know best.</p>
+        <p>As Phronesis grows, so will its scope. For now, we work in the areas we know best.</p>
       </section>
+
       <section id="contributors">
-        <h2 class="serif">Contributors</h2>
+        <h2>Contributors</h2>
         <p>Our contributors bring backgrounds spanning academia, industry, and government. We are transparent about who we are and deliberate about what we publish.</p>
-        <div class="contributor-grid">
-          <a href="https://chadl22.github.io" target="_blank" rel="noopener" class="contributor-card" style="display: block; text-decoration: none; color: inherit;"><h3 class="serif">Sipho C. Langa</h3><div class="role">Founder &amp; Senior Research Fellow</div><p>Research engineer with a background spanning economics, computational sciences, and policy.</p></a>
-          <a href="https://www.linkedin.com/in/maxwell-harden-547945218" target="_blank" rel="noopener" class="contributor-card" style="display: block; text-decoration: none; color: inherit;"><h3 class="serif">Max Harden</h3><div class="role">Research Fellow</div><p>Researcher with a background spanning political economy, philosophy, and the economics of space exploration.</p></a>
-          <div class="contributor-card" style="background: var(--paper-2);"><h3 class="serif" style="color: var(--ink-3);">Open Contributor</h3><div class="role">Submissions Welcome</div><p>Phronesis welcomes collaborators. If your work fits this space, submit it to <a href="mailto:submissions@phronesisresearch.org" style="color: var(--accent); text-decoration: underline;">submissions@phronesisresearch.org</a></p></div>
+        <div class="arc-people">
+          <a href="https://chadl22.github.io" target="_blank" rel="noopener"><span class="arc-chip arc-chip--accent">Founder &amp; Senior Research Fellow</span><h3>Sipho C. Langa</h3><p>Research engineer with a background spanning economics, computational sciences, and policy.</p></a>
+          <a href="https://www.linkedin.com/in/maxwell-harden-547945218" target="_blank" rel="noopener"><span class="arc-chip arc-chip--accent">Research Fellow</span><h3>Max Harden</h3><p>Researcher with a background spanning political economy, philosophy, and the economics of space exploration.</p></a>
+          <div><span class="arc-chip">Submissions Welcome</span><h3>Open Contributor</h3><p>Phronesis welcomes collaborators. If your work fits this space, submit it to <a href="mailto:submissions@phronesisresearch.org">submissions@phronesisresearch.org</a></p></div>
         </div>
       </section>
+
       <section id="independence">
-        <h2 class="serif">Independence</h2>
+        <h2>Independence</h2>
         <p>Phronesis is an independent, non-partisan research entity. We do not accept funding that conditions or influences our editorial positions. Our work reflects the views of its authors and no one else.</p>
         <p>We do not compete with the institutions and publications that already exist in this space. We exist alongside them, with our own perspective and our own readers.</p>
       </section>
-    </div>
+      </div>
+    </main>
   </div>
+
   <section class="newsletter-band">
     <div class="newsletter-inner">
       <div class="newsletter-copy"><h3 class="serif">The Phronesis Brief</h3><p>Monthly insights delivered right to your inbox. Concise, considered, and consistent.</p></div>
@@ -243,11 +247,8 @@
     <p>&copy; 2025 Phronesis Research. Independent &amp; non-partisan.</p>
     <span class="phronesis-greek">&#x03C6;&#x03C1;&#x03CC;&#x03BD;&#x03B7;&#x03C3;&#x03B9;&#x03C2;</span>
   </div>
-  <script src="masthead.js" defer></script>
-  <script>
-    // nav handled by chat.js
-  </script>
 
+  <script src="masthead.js" defer></script>
   <!-- Newsletter Subscription Script -->
   <script>
   (function() {
