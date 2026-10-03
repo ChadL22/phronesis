@@ -87,8 +87,7 @@
   flex-wrap: wrap;
   margin: 0 0 1.6rem;
   padding: 0.7rem 0;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);   /* no rule above: the masthead already closes the top */
 }
 .arc-controls { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
 .arc-facets { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
@@ -681,7 +680,6 @@ a.arc-mini-title::after { content: ''; position: absolute; inset: 0; }  /* whole
   }
   .arc-rail a.active { border-bottom-color: var(--terracotta); }
   .arc-rail-divider { display: none; }
-  .arc-tools { border-top: none; }
   .arc-search { order: -1; flex-basis: 100%; }
   .arc-panel { margin-top: 2rem; }
 }
