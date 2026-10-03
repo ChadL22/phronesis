@@ -48,7 +48,9 @@
         '<a href="https://us-state.techpolicytracker.com/" target="_blank" rel="noopener">state</a> trackers'
     },
     legal: {
-      url: '/api/cases',
+      // phronesisresearch.org serves static files only; the worker's API
+      // routes live on workers.dev (same as subscribe.html and admin.html)
+      url: 'https://phronesis.sclanga315.workers.dev/api/cases',
       head: 'Tech Litigation Tracker',
       label: 'Technology litigation',
       src: 'Source: Tech Justice Law Project ' +
@@ -632,7 +634,7 @@
     // scrolling slowly. Policy: /bills-data.json, written by scripts/refresh_bills.py
     // from the Integrity Institute Tech Policy Tracker (the same source as the
     // Tech Policy Hub's ticker), refreshed daily by .github/workflows/refresh-bills.yml.
-    // Legal: /api/cases, served by worker.js from the Tech Justice Law Project's
+    // Legal: /api/cases on phronesis.sclanga315.workers.dev, served by worker.js from the Tech Justice Law Project's
     // litigation tracker (court code badge, status and filing month, case name).
     // Both sources share one row shape: jurisdiction, jurisdiction_name, code,
     // title, date, link.
