@@ -16,3 +16,16 @@ cloudflare-worker/
 
 # local databases
 databases/
+
+# local dependencies (npm install recreates them)
+node_modules/
+
+# local-only: subscriber database, sync logs, macOS + Claude Code files
+subscribers.db
+*.log
+.DS_Store
+.claude/
+
+# personal images kept out of the repo
+IMG_*.jpeg
+Phronesis X.png

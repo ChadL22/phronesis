@@ -21,5 +21,21 @@ worker.js
 !favicon-16.png
 !favicon-32.png
 !apple-touch-icon.png
+!icon-192.png
 !crest.png
 !brand-mark.png
+# never serve: local data, logs, scripts and tooling
+*.db
+*.log
+*.md
+scripts/
+cloudflare-worker/
+databases/
+prototypes/
+.claude
+.gitignore
+.assetsignore
+send-newsletter.js
+sync-subscribers.js
+newsletter.config.json
+org.phronesis.sync-subscribers.plist
