@@ -8,7 +8,7 @@
 .arc {
   max-width: 1320px;
   margin: 0 auto;
-  padding: 2.2rem clamp(1.25rem, 4vw, 3rem) 4.5rem;
+  padding: 1rem clamp(1.25rem, 4vw, 3rem) 4.5rem;
   display: grid;
   grid-template-columns: 230px minmax(0, 1fr) 320px;
   grid-template-rows: auto auto 1fr;
@@ -652,7 +652,7 @@ a.arc-mini-title::after { content: ''; position: absolute; inset: 0; }  /* whole
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: none;
     grid-template-areas: "head" "rail" "tools" "adv" "results" "panel" "bills";
-    padding-top: 1.6rem;
+    padding-top: 0.9rem;
   }
   .arc-head { grid-area: head; margin-bottom: 1.1rem; }
   .arc-title { font-size: 1.8rem; }
