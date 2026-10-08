@@ -10,6 +10,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "econometric-analysis-in-ftc-v-staples",
+      "title": "Econometric Analysis in FTC v. Staples",
+      "subtitle": "A public statement examining the econometric evidence and merger analysis methodologies employed in the Federal Trade Commission's successful challenge to the Staples-Office Depot merger.",
+      "date": "",
+      "type": "policy",
+      "fields": [
+        "Economics",
+        "Public Policy"
+      ],
+      "tags": [
+        "antitrust merger analysis",
+        "econometric evidence",
+        "unilateral competitive effects",
+        "FTC enforcement",
+        "office superstore competition",
+        "pricing analysis"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Federal Trade Commission",
+      "publisher_url": null,
+      "original_url": "https://www.ftc.gov/news-events/news/speeches/econometric-analysis-ftc-v-staples",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This statement by Jonathan B. Baker, Former Director of the FTC's Bureau of Economics, analyzes the econometric evidence presented in FTC v. Staples, a landmark 1997 merger case that blocked the proposed combination of two major office superstore chains. The case exemplified four key developments in merger analysis: unilateral competitive effects theory for differentiated products, extensive econometric analysis of localized competition, efficiency considerations under revised Merger Guidelines, and entry likelihood analysis. Baker describes the motivation and methods behind the FTC's econometric studies, including pricing analysis and cost-pass-through rates, demonstrating how empirical evidence supported the government's arguments regarding competitive harm.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "date_added": "2026-10-08"
+    },
+    {
+      "placeholder": false,
       "id": "merger-review-under-the-clayton-act-and-hart-scott-rodino-act-2023",
       "title": "Merger Review Under the Clayton Act and Hart-Scott-Rodino Act",
       "subtitle": "Overview of the FTC and DOJ's premerger notification and enforcement framework for evaluating potentially anticompetitive transactions.",
