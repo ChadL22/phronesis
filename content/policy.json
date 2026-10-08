@@ -10,6 +10,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "2023-merger-guidelines-section-41-sources-of-evidence",
+      "title": "2023 Merger Guidelines: Section 4.1 - Sources of Evidence",
+      "subtitle": "The U.S. Department of Justice Antitrust Division outlines the evidentiary standards and sources used to evaluate competitive effects in merger investigations.",
+      "date": "",
+      "type": "policy",
+      "fields": [
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "merger enforcement",
+        "antitrust guidelines",
+        "evidentiary standards",
+        "competitive effects analysis",
+        "DOJ Antitrust Division",
+        "merger review procedures"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "U.S. Department of Justice, Antitrust Division",
+      "publisher_url": null,
+      "original_url": "https://www.justice.gov/atr/merger-guidelines/tools/sources-of-evidence",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This section of the 2023 Merger Guidelines describes the primary sources of evidence employed by the DOJ and FTC in assessing whether a proposed or consummated merger may substantially lessen competition. The Agencies evaluate evidence from merging parties, customers, workers, industry participants, econometric analysis, and transaction terms, weighing each source based on probative value and reliability. The guidelines establish that contemporaneous business records receive greater weight than post-hoc predictions, and that evidence demonstrating intent to reduce competition is particularly probative in merger analysis.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "bureau-of-economics",
       "title": "Bureau of Economics",
       "subtitle": "Overview of the Federal Trade Commission's Bureau of Economics and its role in supporting antitrust and consumer protection activities.",
