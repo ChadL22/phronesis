@@ -10,6 +10,39 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "2023-merger-guidelines",
+      "title": "2023 Merger Guidelines",
+      "subtitle": "The Department of Justice and Federal Trade Commission's procedures and enforcement practices for investigating mergers under federal antitrust law.",
+      "date": "",
+      "type": "policy",
+      "fields": [
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "merger enforcement",
+        "antitrust law",
+        "Section 7 Clayton Act",
+        "competition analysis",
+        "FTC/DOJ guidelines",
+        "market concentration"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "U.S. Department of Justice Antitrust Division",
+      "publisher_url": null,
+      "original_url": "https://www.justice.gov/atr/merger-guidelines/overview",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "The 2023 Merger Guidelines establish the analytical frameworks and enforcement procedures used by the Department of Justice and Federal Trade Commission to evaluate whether proposed mergers violate federal antitrust laws, particularly Section 7 of the Clayton Act. The Guidelines identify how the Agencies assess whether mergers may substantially lessen competition or tend to create monopolies, examining industry-specific market realities through various indicators and analytical tools. The document outlines distinct frameworks for identifying prima facie concerns and procedures for evaluating rebuttal evidence that may demonstrate a merger does not threaten competition.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "audience": "federal",
+      "date_added": "2026-10-08"
+    },
+    {
+      "placeholder": false,
       "id": "2023-merger-guidelines-section-41-sources-of-evidence",
       "title": "2023 Merger Guidelines: Section 4.1 - Sources of Evidence",
       "subtitle": "The U.S. Department of Justice Antitrust Division outlines the evidentiary standards and sources used to evaluate competitive effects in merger investigations.",
