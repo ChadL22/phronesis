@@ -10,6 +10,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "bureau-of-economics",
+      "title": "Bureau of Economics",
+      "subtitle": "Overview of the Federal Trade Commission's Bureau of Economics and its role in supporting antitrust and consumer protection activities.",
+      "date": "",
+      "type": "policy",
+      "fields": [
+        "Economics",
+        "Public Policy"
+      ],
+      "tags": [
+        "FTC",
+        "antitrust",
+        "consumer protection",
+        "economic analysis",
+        "competition policy",
+        "regulatory guidance"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Federal Trade Commission",
+      "publisher_url": null,
+      "original_url": "https://www.ftc.gov/about-ftc/bureaus-offices/bureau-economics/about-bureau-economics",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This document describes the Bureau of Economics within the Federal Trade Commission, which provides economic analysis and support for the Commission's antitrust and consumer protection enforcement activities. The Bureau evaluates consumer protection policies by assessing costs and benefits, conducts economic analysis in antitrust investigations, and develops research to inform sound competition and consumer protection policy. The Bureau's work spans case-by-case economic analysis, litigation support, expert testimony, and broader policy research aimed at enhancing consumer welfare and market competition.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "date_added": "2026-10-08"
+    },
+    {
+      "placeholder": false,
       "id": "econometric-analysis-in-ftc-v-staples",
       "title": "Econometric Analysis in FTC v. Staples",
       "subtitle": "A public statement examining the econometric evidence and merger analysis methodologies employed in the Federal Trade Commission's successful challenge to the Staples-Office Depot merger.",
