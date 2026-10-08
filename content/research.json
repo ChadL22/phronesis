@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "discoloop-discrete-continuous-looping-for-multi-hop-reasoning-in-language-models-2026",
+      "title": "DiscoLoop: Discrete-Continuous Looping for Multi-Hop Reasoning in Language Models",
+      "subtitle": "A novel looping architecture that combines discrete embedding and continuous hidden-state channels to improve multi-hop reasoning in Transformers.",
+      "date": "2026-07-27",
+      "type": "research",
+      "fields": [
+        "Computer Science"
+      ],
+      "tags": [
+        "chain-of-thought reasoning",
+        "transformer architectures",
+        "multi-hop reasoning",
+        "recurrent neural networks",
+        "knowledge composition",
+        "language model optimization"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "ArXiv",
+      "publisher_url": null,
+      "original_url": "https://arxiv.org/abs/2607.00341",
+      "doi": null,
+      "venue_type": "working-paper",
+      "abstract": "Large language models struggle with multi-hop reasoning tasks that require composing multiple pieces of parametric knowledge within a single forward pass. Standard Transformers suffer from a depth-local storage problem where facts learned in earlier layers become unavailable during later reasoning steps. This paper identifies the bottleneck as representational misalignment between decoded bridge entities and their token embeddings, and proposes DiscoLoop, a looping architecture with discrete embedding and continuous hidden-state channels. DiscoLoop achieves near-perfect accuracy on symbolic and synthetic multi-hop reasoning tasks with fewer training steps and demonstrates improved performance on real-world language modeling benchmarks.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "date_added": "2026-10-08"
+    },
+    {
+      "placeholder": false,
       "id": "an-investigation-of-the-private-attribute-leakage-in-wifi-sensing-2024",
       "title": "An investigation of the private-attribute leakage in WiFi sensing",
       "subtitle": "WiFi sensing systems unintentionally leak sensitive personal attributes such as gender, height, and weight through Channel State Information analysis.",
