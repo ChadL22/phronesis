@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "amazons-antitrust-paradox-2017",
+      "title": "Amazon's Antitrust Paradox",
+      "subtitle": "A critical analysis of how current antitrust doctrine fails to address Amazon's anticompetitive market power despite its dominance in e-commerce and adjacent sectors.",
+      "date": "2017-01-31",
+      "type": "legal",
+      "fields": [
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "antitrust law",
+        "platform monopoly",
+        "predatory pricing",
+        "consumer welfare",
+        "e-commerce",
+        "market power"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Yale Law Journal",
+      "publisher_url": null,
+      "original_url": "https://yalelawjournal.org/note/amazons-antitrust-paradox",
+      "doi": null,
+      "venue_type": "journal",
+      "abstract": "This note argues that Amazon's business model—characterized by below-cost pricing, multi-sector integration, and platform dominance—poses significant anticompetitive risks that current antitrust doctrine fails to capture. The author contends that existing antitrust frameworks, which prioritize short-term consumer welfare and price effects, are inadequate for addressing market power in digital platform economies. The note maps Amazon's business dominance across retail, logistics, cloud services, and other sectors, and proposes alternative regulatory approaches including restoring traditional antitrust principles or imposing common carrier obligations.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "date_added": "2026-10-08"
+    },
+    {
+      "placeholder": false,
       "id": "ai-outputs-are-not-protected-speech",
       "title": "AI Outputs Are Not Protected Speech",
       "subtitle": "A legal analysis arguing that generative AI outputs do not constitute protected First Amendment speech despite emerging scholarly concerns.",
