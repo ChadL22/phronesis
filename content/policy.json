@@ -10,6 +10,39 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "ftc-bureau-of-competition-merger-settlement-guidance-statement-2012",
+      "title": "FTC Bureau of Competition Merger Settlement Guidance Statement",
+      "subtitle": "Federal Trade Commission guidance document providing procedural and substantive framework for negotiating merger remedies and settlements.",
+      "date": "2012-01-01",
+      "type": "policy",
+      "fields": [
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "merger remedies",
+        "antitrust settlement",
+        "FTC guidance",
+        "divestiture",
+        "competition law",
+        "regulatory framework"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Federal Trade Commission",
+      "publisher_url": null,
+      "original_url": "https://www.ftc.gov/advice-guidance/competition-guidance/negotiating-merger-remedies",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This FTC Bureau of Competition statement provides guidance to merging parties negotiating settlements in merger cases. It addresses seven key areas: assets to be divested, acceptable buyer criteria, divestiture agreements, additional order provisions, hold-separate orders, divestiture applications, and timing considerations. The statement emphasizes that each merger presents unique facts requiring individualized remedy evaluation, and notes that the Commission's acceptance of provisions in past cases does not guarantee acceptance in subsequent matters.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "audience": "federal",
+      "date_added": "2026-10-08"
+    },
+    {
+      "placeholder": false,
       "id": "the-ndaa-a-key-vehicle-for-ai-governance-2026",
       "title": "The NDAA: A Key Vehicle for AI Governance",
       "subtitle": "Analysis of artificial intelligence provisions in the Fiscal Year 2026 National Defense Authorization Act and their implications for DOD policy.",
