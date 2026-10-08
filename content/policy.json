@@ -9,6 +9,38 @@
   ],
   "entries": [
     {
+      "placeholder": true,
+      "id": "merger-review-under-the-clayton-act-and-hart-scott-rodino-act-2023",
+      "title": "Merger Review Under the Clayton Act and Hart-Scott-Rodino Act",
+      "subtitle": "Overview of the FTC and DOJ's premerger notification and enforcement framework for evaluating potentially anticompetitive transactions.",
+      "date": "2023-12-12",
+      "type": "policy",
+      "fields": [
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "merger review",
+        "antitrust enforcement",
+        "Clayton Act",
+        "Hart-Scott-Rodino",
+        "premerger notification",
+        "FTC/DOJ procedure"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Federal Trade Commission",
+      "publisher_url": null,
+      "original_url": "https://www.ftc.gov/advice-guidance/competition-guidance/guide-antitrust-laws/mergers",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This document outlines the legal and procedural framework governing merger review in the United States, particularly Section 7 of the Clayton Act and the Hart-Scott-Rodino Act's premerger notification requirements. The FTC and DOJ employ forward-looking analytical methods, including the agencies' Merger Guidelines, to assess whether proposed transactions may substantially lessen competition or create monopolies before consummation. The document describes the agencies' investigative processes, confidentiality protocols, and best practices for streamlining merger review to identify deals presenting competitive concerns.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "date_added": "2026-10-08"
+    },
+    {
       "placeholder": false,
       "id": "ftc-bureau-of-competition-merger-settlement-guidance-statement-2012",
       "title": "FTC Bureau of Competition Merger Settlement Guidance Statement",
