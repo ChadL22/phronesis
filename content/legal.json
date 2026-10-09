@@ -11,6 +11,39 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "dynamic-pricing-systems-and-methods-2018",
+      "title": "DYNAMIC PRICING SYSTEMS AND METHODS",
+      "subtitle": "A patent application describing automated systems for real-time price adjustment based on multiple event factors and user behavior data.",
+      "date": "2018-01-22",
+      "type": "legal",
+      "fields": [
+        "Computer Science",
+        "Economics",
+        "Public Policy"
+      ],
+      "tags": [
+        "dynamic pricing",
+        "retail technology",
+        "algorithmic pricing",
+        "price discrimination",
+        "e-commerce systems",
+        "patent law"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Justia Patents / United States Patent Office",
+      "publisher_url": null,
+      "original_url": "https://patents.justia.com/patent/20180144357",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This patent application by Walmart describes a dynamic pricing system that automatically adjusts item prices in response to multiple real-time events unrelated to individual customers, as well as historical user behavior including loyalty, returns, and interests. The system receives price inquiries through mobile device interfaces and determines price adjustments based on event data before generating search listings with adjusted prices. The technology addresses limitations in contemporary retail pricing systems that rely primarily on manual periodic adjustments and competitor price monitoring.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "date_added": "2026-10-09"
+    },
+    {
+      "placeholder": false,
       "id": "systems-and-methods-for-dynamic-pricing-2018",
       "title": "Systems and Methods for Dynamic Pricing",
       "subtitle": "A patent application describing computational systems for real-time price optimization using demand estimation and multi-armed bandit algorithms.",
