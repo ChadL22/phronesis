@@ -11,6 +11,39 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "microsoft-patents-system-to-freeze-games-and-inject-ads-during-downtimes-watching-commercials-earns-ad-free-playtime-credits-2026",
+      "title": "Microsoft patents system to freeze games and inject ads during downtimes — watching commercials earns ad-free playtime credits",
+      "subtitle": "Microsoft has filed a patent for a content management system that integrates advertisements into free-to-play games during natural gameplay pauses, with ad viewing granting players ad-free playtime credits.",
+      "date": "2026-09-20",
+      "type": "article",
+      "fields": [
+        "Computer Science",
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "video game monetization",
+        "digital advertising",
+        "free-to-play models",
+        "patent law",
+        "user experience design",
+        "platform strategy"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Tom's Hardware",
+      "publisher_url": null,
+      "original_url": "https://www.tomshardware.com/video-games/microsoft-patents-system-to-freeze-games-and-inject-ads-during-downtimes-watching-commercials-earns-ad-free-playtime-credits",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "Microsoft has patented a system designed to deliver advertisements within free-to-play games by leveraging natural gameplay downtimes such as loading screens, cutscene endings, and quest completions. The system freezes game state during ad playback to prevent progression disruption and grants players ad-free playtime credits proportional to viewed content. While still in patent application stage with unclear deployment status, the technology reflects Microsoft's broader strategy to monetize gaming services through integrated advertising, similar to existing approaches in Xbox Cloud Gaming and mobile gaming markets.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "date_added": "2026-10-09"
+    },
+    {
+      "placeholder": false,
       "id": "everyday-affordability-how-walmart-keeps-prices-low",
       "title": "Everyday Affordability: How Walmart Keeps Prices Low",
       "subtitle": "Walmart's corporate statement detailing pricing policies, digital shelf label implementation, and operational strategies for maintaining low consumer prices.",
