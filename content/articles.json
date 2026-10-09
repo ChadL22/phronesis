@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "lawsuit-accuses-anthropic-openai-spacexai-google-of-ai-pacing-collusion-2026",
+      "title": "Lawsuit accuses Anthropic, OpenAI, SpaceXAI, Google of AI pacing 'collusion'",
+      "subtitle": "Four plaintiffs filed an antitrust lawsuit against major AI companies alleging illegal collusion to slow AI development in response to safety coordination proposals.",
+      "date": "2026-09-09",
+      "type": "article",
+      "fields": [
+        "Public Policy",
+        "Economics",
+        "Computer Science"
+      ],
+      "tags": [
+        "antitrust law",
+        "AI safety",
+        "collusion allegations",
+        "regulatory exemptions",
+        "AI development pace"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "The Hill",
+      "publisher_url": null,
+      "original_url": "https://thehill.com/policy/technology/6099571-lawsuit-accuses-anthropic-openai-spacexai-google-of-ai-pacing-collusion/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "A lawsuit filed in U.S. District Court for the Northern District of California on September 19, 2026, alleges that Anthropic, OpenAI, SpaceXAI, and Google violated federal antitrust law by agreeing to slow AI development. The complaint was prompted by Anthropic CEO Dario Amodei's proposal for industry-wide coordination on AI safety, which received quick support from competitors Sam Altman, Elon Musk, and Demis Hassabis. The plaintiffs argue that AI safeguards should be established through government action rather than private agreements, while Senator Josh Hawley stated opposition to any antitrust exemptions for AI companies to facilitate such collaboration.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "microsoft-patents-system-to-freeze-games-and-inject-ads-during-downtimes-watching-commercials-earns-ad-free-playtime-credits-2026",
       "title": "Microsoft patents system to freeze games and inject ads during downtimes — watching commercials earns ad-free playtime credits",
       "subtitle": "Microsoft has filed a patent for a content management system that integrates advertisements into free-to-play games during natural gameplay pauses, with ad viewing granting players ad-free playtime credits.",
