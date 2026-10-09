@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "federal-trade-commission-v-corpay-inc-2026",
+      "title": "FEDERAL TRADE COMMISSION v. CORPAY INC",
+      "subtitle": "Eleventh Circuit Court of Appeals affirms FTC enforcement action against fuel card company for deceptive marketing practices and hidden fees.",
+      "date": "2026-01-06",
+      "type": "legal",
+      "fields": [
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "FTC enforcement",
+        "deceptive practices",
+        "consumer protection",
+        "fuel cards",
+        "fee disclosure",
+        "corporate liability"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "United States Court of Appeals, Eleventh Circuit",
+      "publisher_url": null,
+      "original_url": "https://caselaw.findlaw.com/court/us-11th-circuit/118090491.html",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This case addresses FTC enforcement against Corpay Inc. and CEO Ronald Clarke for allegedly misleading business customers about fuel card benefits through hidden charges and deceptive fee disclosure practices. The Eleventh Circuit affirmed summary judgment against Corpay on all five counts and upheld a permanent injunction requiring prominent fee disclosure and separate customer assent for each charge. The court vacated summary judgment against Clarke on one count, finding insufficient evidence of his knowledge of illegal conduct on that specific violation.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "date_added": "2026-10-09"
+    },
+    {
+      "placeholder": false,
       "id": "ai-training-of-copyrighted-material-not-fair-use-third-circuit-2026",
       "title": "AI training of copyrighted material not fair use: Third Circuit",
       "subtitle": "The Third Circuit Court of Appeals affirmed that an AI startup's use of copyrighted legal headnotes for model training constitutes copyright infringement and does not qualify as fair use.",
