@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "if-then-commitments-for-ai-risk-reduction",
+      "title": "If-Then Commitments for AI Risk Reduction",
+      "subtitle": "An emerging framework for preparing for catastrophic AI risks through conditional commitments that pair capability thresholds with mandatory risk mitigations.",
+      "date": "",
+      "type": "research",
+      "fields": [
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "AI governance",
+        "AI safety",
+        "risk mitigation",
+        "AI regulation",
+        "weapons proliferation",
+        "capability thresholds"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Carnegie Corporation of New York",
+      "publisher_url": null,
+      "original_url": "https://carnegieendowment.org/research/2024/09/if-then-commitments-for-ai-risk-reduction",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This paper introduces if-then commitments as a regulatory framework for managing artificial intelligence risks without unnecessarily impeding technological development. If-then commitments are conditional statements that specify required risk mitigations when AI models achieve particular capabilities, with provisions for delaying deployment if mitigations cannot be implemented in time. The paper provides a detailed walkthrough of a specific commitment addressing AI assistance in weapons of mass destruction production, and outlines how various stakeholders including governments and companies can contribute to developing a mature, enforceable system of if-then commitments.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "date_added": "2026-10-09"
+    },
+    {
+      "placeholder": false,
       "id": "price-discrimination-in-credit-markets-a-harm-based-framework-for-legal-analysis-2024",
       "title": "Price Discrimination in Credit Markets: A Harm-Based Framework for Legal Analysis",
       "subtitle": "An examination of how lenders' use of willingness-to-pay pricing can exploit vulnerable borrowers and a proposed regulatory framework based on harm assessment.",
