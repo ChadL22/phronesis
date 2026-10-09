@@ -10,6 +10,40 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "protecting-kids-online-government-mandates-vs-market-solutions-2026",
+      "title": "Protecting Kids Online: Government Mandates vs. Market Solutions",
+      "subtitle": "An analysis of legislative proposals to regulate children's online safety through age verification and their unintended privacy consequences.",
+      "date": "2026-07-13",
+      "type": "policy",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Economics"
+      ],
+      "tags": [
+        "age verification",
+        "children's online safety",
+        "platform regulation",
+        "privacy law",
+        "knowledge standards",
+        "identity verification"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "American Action Forum",
+      "publisher_url": null,
+      "original_url": "https://www.americanactionforum.org/insight/protecting-kids-online-government-mandates-vs-market-solutions/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This policy brief examines legislative proposals that would establish heightened knowledge standards for digital platforms regarding user age, effectively mandating age verification mechanisms. The author argues that such mandates would create significant privacy risks through collection of personally identifiable information and biometric data, while potentially redirecting existing industry-led safety initiatives. The analysis compares various legislative approaches including KOSA, COPPA 2.0, the KIDS Act, and the App Store Accountability Act, evaluating tradeoffs between child safety, privacy protection, free speech, and innovation.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "audience": "federal",
+      "date_added": "2026-10-09"
+    },
+    {
+      "placeholder": false,
       "id": "2023-merger-guidelines",
       "title": "2023 Merger Guidelines",
       "subtitle": "The Department of Justice and Federal Trade Commission's procedures and enforcement practices for investigating mergers under federal antitrust law.",
