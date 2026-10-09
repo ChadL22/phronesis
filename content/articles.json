@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "ai-101-what-is-recursive-self-improvement-2026",
+      "title": "AI 101: What is Recursive Self-Improvement?",
+      "subtitle": "An examination of how AI systems are beginning to automate the processes that create future AI systems, and the early signals from leading AI research organizations.",
+      "date": "2026-06-17",
+      "type": "article",
+      "fields": [
+        "Computer Science",
+        "Philosophy"
+      ],
+      "tags": [
+        "recursive self-improvement",
+        "AI development automation",
+        "AI research",
+        "machine learning infrastructure",
+        "autonomous AI systems",
+        "agent capabilities"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Phronesis Research",
+      "publisher_url": null,
+      "original_url": "https://www.turingpost.com/p/what-is-recursive-self-improvement",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "Recursive self-improvement (RSI) refers to AI systems participating in their own development by automating coding, experiments, evaluation, and research workflows. This article traces the conceptual lineage from von Neumann's self-reproducing automata and I.J. Good's intelligence explosion hypothesis to contemporary implementations at organizations including Anthropic, Recursive, and Sakana AI. Rather than fully autonomous AI building stronger foundation models without human oversight, current RSI applications focus on automating specific research loop components while humans maintain roles in goal-setting, validation, and governance. The piece discusses the realistic boundaries of AI automation in development processes and identifies the earliest practical steps toward machine-assisted AI development.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "victory-appeals-court-rejects-expansive-new-copyright-claim-2026",
       "title": "Victory! Appeals Court Rejects Expansive New Copyright Claim",
       "subtitle": "The Ninth Circuit Court of Appeals ruled that Section 1202 of the DMCA does not prohibit the creation of new works that lack copyright management information, rejecting a broad interpretation that would have created new liability for AI companies and legitimate users.",
