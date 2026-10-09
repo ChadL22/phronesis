@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "ai-agents-use-5x-more-tokens-than-humans-as-cached-prompts-explode-headed-for-10x-agents-are-mostly-rereading-what-theyve-already-seen-skyrocketing-kv-cache-demand-threatens-already-worsening-ram-shortages-2026",
+      "title": "AI agents use 5x more tokens than humans as cached prompts explode, headed for 10x — agents are mostly rereading what they've already seen, skyrocketing KV cache demand threatens already-worsening RAM shortages",
+      "subtitle": "AI agent token consumption is accelerating at 5-14x the rate of human usage, driven primarily by cached prompt reuse, creating mounting pressure on memory infrastructure and exacerbating hardware supply constraints.",
+      "date": "2026-10-03",
+      "type": "article",
+      "fields": [
+        "Computer Science",
+        "Economics"
+      ],
+      "tags": [
+        "AI agents",
+        "token consumption",
+        "KV cache",
+        "high-bandwidth memory",
+        "hardware infrastructure",
+        "semiconductor supply chain"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Tom's Hardware",
+      "publisher_url": null,
+      "original_url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/futurum-ceo-says-agents-use-ai-5x-more-than-humans-number-will-eventually-hit-10x-but-agents-are-mostly-rereading-what-theyve-already-seen",
+      "doi": null,
+      "venue_type": "news",
+      "abstract": "Analysis of OpenRouter platform data reveals that AI agents consumed 7.3 trillion tokens compared to 1.4 trillion for humans as of August 2026, with over 85% of agent tokens derived from cached prompts. This disproportionate growth in agent token usage, driven by systems rereading previously processed context, is creating substantial demand for high-bandwidth memory (HBM) and KV cache capacity that increasingly exceeds available GPU memory. The trend suggests token volume metrics may overstate actual computational costs while masking the real hardware bottleneck of memory scarcity, which memory manufacturers predict will worsen through 2027-2028.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "date_added": "2026-10-09"
+    },
+    {
+      "placeholder": false,
       "id": "what-is-dynamic-pricing-and-why-do-consumers-need-better-protections-2026",
       "title": "What is dynamic pricing, and why do consumers need better protections?",
       "subtitle": "An examination of dynamic pricing practices in e-commerce and the case for regulatory protections against predatory algorithmic pricing.",
