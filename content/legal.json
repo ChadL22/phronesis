@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "personalized-product-pricing-2014",
+      "title": "Personalized product pricing",
+      "subtitle": "A patent describing a pricing application that detects customer interest in unbought items through browsing behavior and facilitates targeted discount offers.",
+      "date": "2014-02-10",
+      "type": "legal",
+      "fields": [
+        "Computer Science",
+        "Economics"
+      ],
+      "tags": [
+        "e-commerce pricing",
+        "personalized discounts",
+        "customer behavior tracking",
+        "conversion optimization",
+        "dynamic pricing algorithms",
+        "patent analysis"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Justia Patents / Amazon",
+      "publisher_url": null,
+      "original_url": "https://patents.justia.com/patent/10977681",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "U.S. Patent 10,977,681 discloses a pricing application system that monitors customer browsing activity to identify interest in unpurchased items. When customer interest is detected through behaviors such as browsing product pages, adding items to shopping carts, or social media discussion, the system notifies merchants and facilitates the communication of personalized discount offers to customers. This mechanism aims to increase conversion rates by incentivizing purchase of previously browsed items through targeted pricing strategies.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "date_added": "2026-10-09"
+    },
+    {
+      "placeholder": false,
       "id": "proactive-pricing-2016",
       "title": "Proactive Pricing",
       "subtitle": "A system for matching buyer and seller offers in electronic commerce through dynamic pricing rules and automated offer ranking.",
