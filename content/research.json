@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "embedded-assessments-for-frontier-ai-design-and-implementation-2026",
+      "title": "Embedded Assessments for Frontier AI: Design and Implementation",
+      "subtitle": "A framework for independent evaluators to conduct deeper risk assessments of frontier AI systems through embedded access to developer internal systems and practices.",
+      "date": "2026-09-12",
+      "type": "research",
+      "fields": [
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "frontier AI evaluation",
+        "third-party assessment",
+        "AI governance",
+        "AI risk management",
+        "internal controls",
+        "model alignment"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "arXiv",
+      "publisher_url": null,
+      "original_url": "https://arxiv.org/abs/2609.25413",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This paper examines the design and implementation of embedded assessments as a mechanism for third-party evaluation of frontier AI risks. Unlike traditional external testing, embedded assessments grant independent evaluators employee-like access to developer internal systems, documentation, and staff to assess risks dependent on internal governance. The authors identify seven key design questions spanning scope, information gathering, duration, timing, terms of engagement, disclosure, and escalation mechanisms. The paper recommends that frontier AI developers implement continuous embedded assessments covering internal agent monitoring, security controls and permissions, and model alignment, with quarterly public reporting by evaluators.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "discoloop-discrete-continuous-looping-for-multi-hop-reasoning-in-language-models-2026",
       "title": "DiscoLoop: Discrete-Continuous Looping for Multi-Hop Reasoning in Language Models",
       "subtitle": "A novel looping architecture that combines discrete embedding and continuous hidden-state channels to improve multi-hop reasoning in Transformers.",
