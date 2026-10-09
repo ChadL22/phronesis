@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "hiq-labs-inc-v-linkedin-corporation-2022",
+      "title": "HIQ LABS, INC. V. LINKEDIN CORPORATION",
+      "subtitle": "Ninth Circuit affirms preliminary injunction protecting data scraping of public LinkedIn profiles against Computer Fraud and Abuse Act claims.",
+      "date": "2022-04-18",
+      "type": "legal",
+      "fields": [
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "Computer Fraud and Abuse Act",
+        "web scraping",
+        "data access",
+        "tortious interference",
+        "preliminary injunction",
+        "Van Buren v. United States"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Justia",
+      "publisher_url": null,
+      "original_url": "https://law.justia.com/cases/federal/appellate-courts/ca9/17-16783/17-16783-2022-04-18.html",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "In this 2022 Ninth Circuit decision, the court affirmed a preliminary injunction preventing LinkedIn from blocking hiQ Labs' access to publicly available user profile data used for analytics services. The panel held that hiQ raised serious questions on the merits regarding whether the Computer Fraud and Abuse Act could legally prevent access to public information after prior general authorization, and that the balance of hardships and public interest favored hiQ's position. On remand from the Supreme Court following Van Buren v. United States, the court reaffirmed its interpretation that the CFAA's 'without authorization' provision raises ambiguities when access is generally permitted but denied to specific actors.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "date_added": "2026-10-09"
+    },
+    {
+      "placeholder": false,
       "id": "17-us-code-107-limitations-on-exclusive-rights-fair-use-2026",
       "title": "17 U.S. Code § 107 - Limitations on exclusive rights: Fair use",
       "subtitle": "Federal statutory provision defining fair use doctrine and establishing four-factor test for determining non-infringing uses of copyrighted works.",
