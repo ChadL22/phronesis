@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "ai-training-of-copyrighted-material-not-fair-use-third-circuit-2026",
+      "title": "AI training of copyrighted material not fair use: Third Circuit",
+      "subtitle": "The Third Circuit Court of Appeals affirmed that an AI startup's use of copyrighted legal headnotes for model training constitutes copyright infringement and does not qualify as fair use.",
+      "date": "2026-09-30",
+      "type": "legal",
+      "fields": [
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "AI copyright law",
+        "fair use doctrine",
+        "machine learning training data",
+        "intellectual property",
+        "legal technology",
+        "appellate precedent"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Courthouse News Service",
+      "publisher_url": null,
+      "original_url": "https://www.courthousenews.com/ai-training-of-copyrighted-material-not-fair-use-third-circuit/",
+      "doi": null,
+      "venue_type": "news",
+      "abstract": "In Thomson Reuters v. ROSS Intelligence, the Third Circuit Court of Appeals upheld copyright protections for Westlaw's editorially-curated legal headnotes and rejected the AI startup's fair use defense. The court found that ROSS Intelligence's use of Thomson Reuters' headnotes to train a competing legal research platform was minimally transformative and directly harmed the copyright holder's market position. The decision establishes that copyright law applies to AI training data in a conventional manner, rejecting arguments that artificial intelligence development warrants special fair use considerations.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "date_added": "2026-10-09"
+    },
+    {
+      "placeholder": false,
       "id": "van-buren-v-united-states-2021",
       "title": "Van Buren v. United States",
       "subtitle": "Supreme Court decision establishing the narrow interpretation of 'exceeds authorized access' under the Computer Fraud and Abuse Act.",
