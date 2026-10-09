@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "flock-safety-faces-new-alpr-restrictions-in-missouri-2026",
+      "title": "Flock Safety Faces New ALPR Restrictions in Missouri",
+      "subtitle": "Governor Mike Kehoe issues executive order imposing data governance, compliance, and facial recognition restrictions on automated license plate reader systems used by state and local agencies.",
+      "date": "2026-09-18",
+      "type": "article",
+      "fields": [
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "automated license plate readers (ALPR)",
+        "surveillance technology regulation",
+        "data privacy and governance",
+        "facial recognition restrictions",
+        "state government executive orders"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "GovTech",
+      "publisher_url": null,
+      "original_url": "https://www.govtech.com/biz/flock-safety-faces-new-alpr-restrictions-in-missouri?utm_content=386063160&utm_medium=social&utm_source=twitter&hss_channel=tw-18922205",
+      "doi": null,
+      "venue_type": "news",
+      "abstract": "Missouri Governor Mike Kehoe issued an executive order restricting the use of automated license plate reader (ALPR) technology by state and local agencies receiving state funding. The order mandates 30-day data deletion timelines, restricts data access to law enforcement and emergency purposes only, prohibits integration of facial recognition systems, and establishes data ownership by agencies rather than vendors. These restrictions reflect broader national concerns regarding privacy, surveillance overreach, and documented misuse of ALPR technology including stalking incidents.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "date_added": "2026-10-09"
+    },
+    {
+      "placeholder": false,
       "id": "lawsuit-accuses-anthropic-openai-spacexai-google-of-ai-pacing-collusion-2026",
       "title": "Lawsuit accuses Anthropic, OpenAI, SpaceXAI, Google of AI pacing 'collusion'",
       "subtitle": "Four plaintiffs filed an antitrust lawsuit against major AI companies alleging illegal collusion to slow AI development in response to safety coordination proposals.",
