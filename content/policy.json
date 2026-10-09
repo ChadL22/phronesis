@@ -9,6 +9,38 @@
   ],
   "entries": [
     {
+      "placeholder": true,
+      "id": "18-us-code-1030-fraud-and-related-activity-in-connection-with-computers-1954",
+      "title": "18 U.S. Code § 1030 - Fraud and related activity in connection with computers",
+      "subtitle": "Federal statute establishing criminal penalties for unauthorized computer access, data theft, malicious damage, and computer-related fraud and extortion.",
+      "date": "1954-08-30",
+      "type": "policy",
+      "fields": [
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "computer fraud and abuse",
+        "cybercrime",
+        "unauthorized access",
+        "federal criminal law",
+        "data protection",
+        "computer security"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "U.S. Code (Cornell Law School Legal Information Institute)",
+      "publisher_url": null,
+      "original_url": "https://www.law.cornell.edu/uscode/text/18/1030",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This statute criminalizes a range of computer-related offenses, including unauthorized access to protected computers, theft of financial records and government information, transmission of malicious code, trafficking in unauthorized access credentials, and computer-based extortion. Penalties vary based on offense type and severity, ranging from one year to twenty years imprisonment, with enhanced sentences for repeat offenders and aggravated circumstances such as involvement of government systems, commercial advantage, or substantial financial loss.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "date_added": "2026-10-09"
+    },
+    {
       "placeholder": false,
       "id": "hr4718-computer-fraud-and-abuse-act-of-1986-1986",
       "title": "H.R.4718 - Computer Fraud and Abuse Act of 1986",
