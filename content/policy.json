@@ -10,6 +10,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "improving-frontier-ai-incident-reporting-regimes",
+      "title": "Improving Frontier AI Incident Reporting Regimes",
+      "subtitle": "A policy brief examining gaps in current AI incident reporting requirements and recommending frameworks to ensure incidents are identified, investigated, and used to improve safety across the industry.",
+      "date": "",
+      "type": "policy",
+      "fields": [
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "AI safety",
+        "incident reporting",
+        "regulatory framework",
+        "frontier AI",
+        "AI governance",
+        "policy recommendation"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "GovAI",
+      "publisher_url": null,
+      "original_url": "https://www.governance.ai/research-paper/improving-frontier-ai-incident-reporting-regimes",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "Current AI incident reporting regimes at the US state and EU levels fail to reliably ensure that AI safety incidents are reported, independently investigated, or used to improve safety practices across the industry. This policy brief analyzes weaknesses in existing reporting frameworks, illustrated by gaps that allowed the OpenAI-Hugging Face incident to avoid mandatory reporting in California. The authors recommend six key updates to incident reporting regimes: expanding mandatory reporting to include near misses, including incidents from training and evaluation phases, requiring independent investigations, improving agent attribution, specifying data preservation requirements, and incentivizing early reporting through safe harbor arrangements.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "date_added": "2026-10-09"
+    },
+    {
+      "placeholder": false,
       "id": "protecting-kids-online-government-mandates-vs-market-solutions-2026",
       "title": "Protecting Kids Online: Government Mandates vs. Market Solutions",
       "subtitle": "An analysis of legislative proposals to regulate children's online safety through age verification and their unintended privacy consequences.",
