@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "class-action-complaint-buist-et-al-v-anthropic-openai-spacexai-and-google-llc-2026",
+      "title": "CLASS ACTION COMPLAINT - Buist et al. v. Anthropic, OpenAI, SpaceXAI, and Google LLC",
+      "subtitle": "A class action complaint alleging Sherman Act violations through an agreement among frontier AI companies to coordinate the pace of AI model development.",
+      "date": "2026-09-18",
+      "type": "legal",
+      "fields": [
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "antitrust law",
+        "artificial intelligence",
+        "cartel conduct",
+        "Sherman Act",
+        "class action",
+        "technology competition"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "United States District Court, Northern District of California",
+      "publisher_url": null,
+      "original_url": "https://www.courtlistener.com/docket/74816200/buist-v-anthropic-pbc/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This complaint filed in the Northern District of California challenges an alleged agreement among Anthropic, OpenAI, SpaceXAI, and Google to collectively slow the rate of AI capability improvements. The plaintiffs argue that the agreement, publicly announced by Anthropic's CEO Dario Amodei and subsequently confirmed by rival executives, constitutes an illegal restraint on output under Section 1 of the Sherman Act. The complaint contends that competitors agreed to reduce product quality and development velocity to avoid individual competitive disadvantage, characterizing the arrangement as a cartel that restricts competition in the frontier AI market.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "system-and-method-for-dynamically-and-automatically-updating-item-prices-on-e-commerce-platform-2023",
       "title": "System and method for dynamically and automatically updating item prices on e-commerce platform",
       "subtitle": "Patent describing an automated dynamic pricing system for e-commerce platforms that adjusts item prices based on market factors including price elasticity and demand prediction.",
