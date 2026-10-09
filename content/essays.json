@@ -9,6 +9,39 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "personalized-pricing-who-wins-who-pays-2026",
+      "title": "Personalized Pricing: Who Wins, Who Pays?",
+      "subtitle": "An analysis of the empirical effects of personalized pricing on consumers and competition, examining regulatory proposals and market contexts.",
+      "date": "2026-09-29",
+      "type": "essay",
+      "fields": [
+        "Economics",
+        "Public Policy"
+      ],
+      "tags": [
+        "personalized pricing",
+        "price discrimination",
+        "antitrust",
+        "consumer protection",
+        "data-driven pricing",
+        "regulatory policy"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "International Center for Law & Economics",
+      "publisher_url": null,
+      "original_url": "https://laweconcenter.org/resources/personalized-pricing-who-wins-who-pays/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This paper examines personalized pricing—the practice of using customer data to estimate willingness-to-pay and set individualized prices. Drawing on three major empirical studies cited by the FTC, the authors find mixed and context-dependent effects on consumer welfare, with most consumers receiving lower offers in studied markets. The analysis demonstrates that price discrimination effects depend critically on market structure and competitive conditions, and that disclosure requirements carry their own costs that may reduce beneficial discounting.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "tone": "polemical",
+      "date_added": "2026-10-09"
+    },
+    {
+      "placeholder": false,
       "id": "how-does-the-first-amendment-apply-to-ai-2026",
       "title": "How does the First Amendment apply to AI?",
       "subtitle": "AI models embody layers of human expressive choices by developers that merit First Amendment protection.",
