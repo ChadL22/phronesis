@@ -11,6 +11,39 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "recursive-criticality-of-ai-self-improvement-2026",
+      "title": "Recursive Criticality of AI Self-Improvement",
+      "subtitle": "A mathematical model analyzing conditions under which AI development feedback becomes self-amplifying across development cycles.",
+      "date": "2026-03-08",
+      "type": "research",
+      "fields": [
+        "Computer Science",
+        "Public Policy",
+        "Mathematics"
+      ],
+      "tags": [
+        "AI self-improvement",
+        "recursive feedback loops",
+        "R&D systems",
+        "capability growth",
+        "amplification dynamics",
+        "multi-agent AI development"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "arXiv",
+      "publisher_url": null,
+      "original_url": "https://arxiv.org/abs/2609.00137",
+      "doi": "10.48550/arXiv.2609.00137",
+      "venue_type": null,
+      "abstract": "This paper examines the feedback mechanisms by which AI systems contribute to their own improvement through the R&D process. The authors introduce a recursive reproduction number (ρ_AI) that determines whether improvements amplify or dampen across development cycles, contingent on baseline research productivity, feedback strength, and increasing research difficulty. The framework identifies measurable properties distinguishing recursive amplification from rapid progress driven by other sources, and extends analysis to multi-actor research ecosystems where shared improvements can create system-wide self-amplification.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "date_added": "2026-10-09"
+    },
+    {
+      "placeholder": false,
       "id": "if-then-commitments-for-ai-risk-reduction",
       "title": "If-Then Commitments for AI Risk Reduction",
       "subtitle": "An emerging framework for preparing for catastrophic AI risks through conditional commitments that pair capability thresholds with mandatory risk mitigations.",
