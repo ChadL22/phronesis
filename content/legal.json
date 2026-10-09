@@ -11,6 +11,36 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "17-us-code-107-limitations-on-exclusive-rights-fair-use-2026",
+      "title": "17 U.S. Code § 107 - Limitations on exclusive rights: Fair use",
+      "subtitle": "Federal statutory provision defining fair use doctrine and establishing four-factor test for determining non-infringing uses of copyrighted works.",
+      "date": "2026-10-19",
+      "type": "legal",
+      "fields": [
+        "Public Policy"
+      ],
+      "tags": [
+        "copyright law",
+        "fair use doctrine",
+        "intellectual property",
+        "statutory interpretation",
+        "educational use",
+        "commercial use"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Cornell Law School Legal Information Institute",
+      "publisher_url": null,
+      "original_url": "https://www.law.cornell.edu/uscode/text/17/107",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This statute codifies the fair use doctrine in U.S. copyright law, establishing that certain uses of copyrighted materials do not constitute infringement when used for purposes including criticism, comment, news reporting, teaching, scholarship, or research. The provision establishes a four-factor balancing test for determining fair use: the purpose and character of the use (commercial vs. nonprofit); the nature of the copyrighted work; the amount and substantiality of the portion used; and the effect on the potential market value of the original work. The statute further clarifies that unpublished status alone cannot bar a fair use finding.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "federal-judge-suppresses-evidence-from-warrantless-alpr-search-2026",
       "title": "Federal Judge Suppresses Evidence From Warrantless ALPR Search",
       "subtitle": "A federal district court in Oklahoma ruled that warrantless queries of historical automated license plate reader data constitute a Fourth Amendment search, suppressing all evidence from a resulting traffic stop.",
