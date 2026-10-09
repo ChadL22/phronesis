@@ -11,6 +11,39 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "systems-and-methods-for-dynamic-pricing-2018",
+      "title": "Systems and Methods for Dynamic Pricing",
+      "subtitle": "A patent application describing computational systems for real-time price optimization using demand estimation and multi-armed bandit algorithms.",
+      "date": "2018-11-27",
+      "type": "legal",
+      "fields": [
+        "Computer Science",
+        "Economics",
+        "Mathematics"
+      ],
+      "tags": [
+        "dynamic pricing",
+        "multi-armed bandits",
+        "demand estimation",
+        "price optimization",
+        "algorithmic pricing",
+        "revenue maximization"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Justia Patents / United States Patent Office",
+      "publisher_url": null,
+      "original_url": "https://patents.justia.com/patent/20190172082",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This patent application discloses systems and methods for dynamic pricing that estimate demand for items using multiple demand models and calculate price elasticity through multi-armed bandit approaches. The invention addresses computational intractability issues in prior Bayesian and non-Bayesian dynamic pricing methods by providing tractable algorithms with theoretical guarantees. The system facilitates price display on video screens of devices, enabling real-time price adjustment based on estimated demand and elasticity parameters.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "date_added": "2026-10-09"
+    },
+    {
+      "placeholder": false,
       "id": "systems-and-methods-for-determining-price-bands-and-user-price-affinity-predictions-using-machine-learning-architectures-and-techniques-2023",
       "title": "Systems and methods for determining price bands and user price affinity predictions using machine learning architectures and techniques",
       "subtitle": "A patent disclosing machine learning systems that classify items into relative price bands and predict user purchasing preferences across product categories.",
