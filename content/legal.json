@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "methods-and-apparatus-for-determining-item-demand-and-pricing-using-machine-learning-processes-2022",
+      "title": "Methods and apparatus for determining item demand and pricing using machine learning processes",
+      "subtitle": "A patent describing machine learning systems for demand forecasting and dynamic pricing in retail operations.",
+      "date": "2022-01-28",
+      "type": "legal",
+      "fields": [
+        "Computer Science",
+        "Economics",
+        "Public Policy"
+      ],
+      "tags": [
+        "machine learning",
+        "demand forecasting",
+        "dynamic pricing",
+        "retail technology",
+        "inventory management",
+        "time-series prediction"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Justia Patents (U.S. Patent Office)",
+      "publisher_url": null,
+      "original_url": "https://patents.justia.com/patent/12572954",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "U.S. Patent 12,572,954 (filed by Walmart Apollo, LLC) describes automated systems for predicting item demand during future temporal periods and determining recommended prices using trained machine learning processes. The system generates features from historical sales data and applies time-series models to forecast demand, then calculates optimal pricing based on predicted demand and category-level budget allocations. The approach aims to improve inventory management, pricing optimization, and customer availability while reducing overstock and stockout scenarios.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "dynamic-pricing-systems-and-methods-2018",
       "title": "DYNAMIC PRICING SYSTEMS AND METHODS",
       "subtitle": "A patent application describing automated systems for real-time price adjustment based on multiple event factors and user behavior data.",
