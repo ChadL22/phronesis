@@ -11,6 +11,39 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "price-discrimination-in-credit-markets-a-harm-based-framework-for-legal-analysis-2024",
+      "title": "Price Discrimination in Credit Markets: A Harm-Based Framework for Legal Analysis",
+      "subtitle": "An examination of how lenders' use of willingness-to-pay pricing can exploit vulnerable borrowers and a proposed regulatory framework based on harm assessment.",
+      "date": "2024-07-02",
+      "type": "research",
+      "fields": [
+        "Public Policy",
+        "Economics",
+        "Philosophy"
+      ],
+      "tags": [
+        "price discrimination",
+        "credit lending",
+        "algorithmic discrimination",
+        "financial disparities",
+        "consumer protection law",
+        "artificial intelligence regulation"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Columbia University - Law School",
+      "publisher_url": null,
+      "original_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4883262",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This article analyzes price discrimination in credit lending, where lenders charge different rates based on borrowers' willingness-to-pay rather than credit risk alone. The author argues that this practice can disproportionately harm protected groups including racial minorities and women, potentially exacerbating financial disparities and default risks, particularly as artificial intelligence and big data expand its prevalence. Existing legal frameworks treat price discrimination categorically without clear justification criteria. The article proposes a harm-based approach that evaluates pricing policies based on the magnitude of disparities they create and the legitimacy of the underlying strategy, aligning with statutory prohibitions on unfair, deceptive, and abusive acts.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "date_added": "2026-10-09"
+    },
+    {
+      "placeholder": false,
       "id": "embedded-assessments-for-frontier-ai-design-and-implementation-2026",
       "title": "Embedded Assessments for Frontier AI: Design and Implementation",
       "subtitle": "A framework for independent evaluators to conduct deeper risk assessments of frontier AI systems through embedded access to developer internal systems and practices.",
