@@ -10,6 +10,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "hr4718-computer-fraud-and-abuse-act-of-1986-1986",
+      "title": "H.R.4718 - Computer Fraud and Abuse Act of 1986",
+      "subtitle": "Federal legislation establishing criminal offenses and penalties for unauthorized computer access and fraud.",
+      "date": "1986-10-03",
+      "type": "policy",
+      "fields": [
+        "Computer Science",
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "computer fraud",
+        "federal criminal law",
+        "cybercrime",
+        "unauthorized access",
+        "data protection",
+        "computer security"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Congress.gov",
+      "publisher_url": null,
+      "original_url": "https://www.congress.gov/bill/99th-congress/house-bill/4718",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "H.R.4718, passed during the 99th Congress and enacted as Public Law 99-474 on October 16, 1986, amends the Federal criminal code to establish comprehensive protections against computer fraud and unauthorized access. The Act modifies scienter requirements, expands the definition of protected financial institutions, creates new criminal offenses including property theft by computer and trafficking in access credentials, and revises penalty structures. The legislation represents early federal statutory intervention in cybercrime, establishing foundational legal frameworks for computer security enforcement.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "making-local-law-legible-llm-assisted-detection-of-discrimination-2026",
       "title": "Making Local Law Legible: LLM-Assisted Detection of Discrimination",
       "subtitle": "A policy brief demonstrating the use of large language models to identify discriminatory provisions in local legal codes across 9,623 U.S. jurisdictions.",
