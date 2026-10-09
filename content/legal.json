@@ -10,11 +10,42 @@
   ],
   "entries": [
     {
-      "placeholder": true,
+      "placeholder": false,
+      "id": "proactive-pricing-2016",
+      "title": "Proactive Pricing",
+      "subtitle": "A system for matching buyer and seller offers in electronic commerce through dynamic pricing rules and automated offer ranking.",
+      "date": "2016-04-26",
+      "type": "legal",
+      "fields": [
+        "Computer Science",
+        "Economics"
+      ],
+      "tags": [
+        "electronic commerce",
+        "dynamic pricing",
+        "auction systems",
+        "automated matching",
+        "pricing algorithms",
+        "offer negotiation"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "United States Patent and Trademark Office",
+      "publisher_url": null,
+      "original_url": "https://patents.google.com/patent/US9324109B1/en",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This patent describes a technological system for facilitating transactions between buyers and sellers in electronic commerce by maintaining seller offers with associated pricing rules and comparing them against buyer purchase offers. The system ranks purchase offers based on how well their terms align with asking terms, thereby reducing transaction failures due to price and term mismatches. The invention addresses the limitations of fixed-price electronic commerce systems by enabling flexible negotiation parameters within a structured matching framework.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "collecting-competitive-pricing-information-via-a-merchant-web-site-for-use-in-setting-prices-on-the-merchant-web-site-2010",
       "title": "Collecting competitive pricing information via a merchant web site for use in setting prices on the merchant web site",
       "subtitle": "A patent describing a web-based facility for crowdsourcing competitive pricing data to support dynamic price optimization.",
-      "date": "2010-09-02",
+      "date": "2010-02-09",
       "type": "legal",
       "fields": [
         "Computer Science",
@@ -39,8 +70,7 @@
       "abstract": "US Patent 7,660,738 B1 discloses a facility for collecting competitive pricing information through merchant web pages. The system serves web pages containing controls that allow customers to submit pricing information for items offered by competing vendors, which is then aggregated and used by the merchant to inform its own pricing decisions. The patent addresses the challenge of obtaining and organizing competitive pricing data in electronic commerce contexts, where price competitiveness is critical to sales performance.",
       "preview": null,
       "body": null,
-      "body_html": "",
-      "date_added": "2026-10-09"
+      "body_html": ""
     },
     {
       "placeholder": false,
