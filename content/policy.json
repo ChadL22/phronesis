@@ -10,6 +10,39 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "making-local-law-legible-llm-assisted-detection-of-discrimination-2026",
+      "title": "Making Local Law Legible: LLM-Assisted Detection of Discrimination",
+      "subtitle": "A policy brief demonstrating the use of large language models to identify discriminatory provisions in local legal codes across 9,623 U.S. jurisdictions.",
+      "date": "2026-09-08",
+      "type": "policy",
+      "fields": [
+        "Computer Science",
+        "Public Policy",
+        "Philosophy"
+      ],
+      "tags": [
+        "discriminatory laws",
+        "legal AI",
+        "LLM applications",
+        "local government",
+        "antidiscrimination law",
+        "statutory reform"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Stanford HAI",
+      "publisher_url": null,
+      "original_url": "https://hai.stanford.edu/policy/making-local-law-legible-llm-assisted-detection-of-discrimination",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This brief presents the first systematic effort to identify discriminatory legal provisions across local codes in the United States using LLM-assisted review. Researchers from Stanford HAI and RegLab analyzed 3 billion words of code from 9,623 jurisdictions covering approximately 75% of the U.S. population and identified dozens of jurisdictions that formally retain unconstitutional discriminatory laws, including provisions mandating racial segregation, imposing poll taxes, and denying voting rights. The methodology combines automated LLM analysis with human verification to flag provisions that explicitly reference protected categories and impose differential treatment, offering a scalable solution for legal code cleanup and reform efforts.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "date_added": "2026-10-09"
+    },
+    {
+      "placeholder": false,
       "id": "improving-frontier-ai-incident-reporting-regimes",
       "title": "Improving Frontier AI Incident Reporting Regimes",
       "subtitle": "A policy brief examining gaps in current AI incident reporting requirements and recommending frameworks to ensure incidents are identified, investigated, and used to improve safety across the industry.",
