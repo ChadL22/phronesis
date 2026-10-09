@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "what-is-dynamic-pricing-and-why-do-consumers-need-better-protections-2026",
+      "title": "What is dynamic pricing, and why do consumers need better protections?",
+      "subtitle": "An examination of dynamic pricing practices in e-commerce and the case for regulatory protections against predatory algorithmic pricing.",
+      "date": "2026-03-18",
+      "type": "article",
+      "fields": [
+        "Computer Science",
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "dynamic pricing",
+        "algorithmic pricing",
+        "artificial intelligence",
+        "consumer protection",
+        "e-commerce regulation",
+        "price discrimination"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Brookings Institute",
+      "publisher_url": null,
+      "original_url": "https://www.brookings.edu/articles/what-is-dynamic-pricing-and-why-do-consumers-need-better-protections/",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "Dynamic pricing refers to real-time variations in advertised prices based on AI algorithms, data analytics, and consumer behavior tracking. While price fluctuations tied to supply and demand reflect traditional market capitalism, algorithmic pricing that exploits individual consumer data creates information asymmetries favoring sellers. The article argues that regulatory enforcement against predatory and anticompetitive practices is necessary to ensure fair pricing in digital markets and protect consumers from exploitation by firms with superior information about purchasing habits and individual susceptibilities.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "geofence-ruling-brings-new-risks-for-sensitive-data-collection-2026",
       "title": "Geofence Ruling Brings New Risks for Sensitive Data Collection",
       "subtitle": "A Supreme Court decision requiring warrants for location data access has broader implications for how companies handle sensitive consumer information and comply with government demands.",
