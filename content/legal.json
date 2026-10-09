@@ -11,6 +11,37 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "van-buren-v-united-states-2021",
+      "title": "Van Buren v. United States",
+      "subtitle": "Supreme Court decision establishing the narrow interpretation of 'exceeds authorized access' under the Computer Fraud and Abuse Act.",
+      "date": "2021-06-03",
+      "type": "legal",
+      "fields": [
+        "Computer Science",
+        "Public Policy"
+      ],
+      "tags": [
+        "Computer Fraud and Abuse Act",
+        "criminal law",
+        "data access authorization",
+        "statutory interpretation",
+        "computer crime"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Cornell Law School Legal Information Institute",
+      "publisher_url": null,
+      "original_url": "https://www.law.cornell.edu/supremecourt/text/19-783",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "The Supreme Court reversed a conviction under the Computer Fraud and Abuse Act (CFAA), holding that an individual 'exceeds authorized access' only when accessing information located in particular areas of a computer to which the user lacks access privileges, not when misusing authorized access for prohibited purposes. The case involved a former Georgia police sergeant who used valid credentials to access a law enforcement database for personal financial gain in violation of department policy. The Court's decision significantly narrowed the scope of CFAA liability by requiring that unauthorized information be located in off-limits areas rather than merely obtained through misuse of legitimate access rights.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "date_added": "2026-10-09"
+    },
+    {
+      "placeholder": false,
       "id": "hiq-labs-inc-v-linkedin-corporation-2022",
       "title": "HIQ LABS, INC. V. LINKEDIN CORPORATION",
       "subtitle": "Ninth Circuit affirms preliminary injunction protecting data scraping of public LinkedIn profiles against Computer Fraud and Abuse Act claims.",
