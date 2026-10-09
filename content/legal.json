@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "systems-and-methods-for-determining-price-bands-and-user-price-affinity-predictions-using-machine-learning-architectures-and-techniques-2023",
+      "title": "Systems and methods for determining price bands and user price affinity predictions using machine learning architectures and techniques",
+      "subtitle": "A patent disclosing machine learning systems that classify items into relative price bands and predict user purchasing preferences across product categories.",
+      "date": "2023-10-30",
+      "type": "legal",
+      "fields": [
+        "Computer Science",
+        "Economics"
+      ],
+      "tags": [
+        "machine learning",
+        "price optimization",
+        "e-commerce",
+        "consumer preferences",
+        "patent",
+        "recommendation systems"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Justia Patents",
+      "publisher_url": null,
+      "original_url": "Systems and methods for determining price bands and user price affinity predictions using machine learning architectures and techniques",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "U.S. Patent 12,354,147 describes systems and methods for determining price bands and predicting user price affinity using machine learning. The patent addresses the technical challenge of understanding relative expensiveness of items across categories, recognizing that absolute price values are insufficient for determining whether an item is expensive within its category. The disclosed system uses a price band determination model to evaluate relative expensiveness, generate category-specific price bands, and present recommendations to end-user applications based on predicted user affinity for particular price points.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "date_added": "2026-10-09"
+    },
+    {
+      "placeholder": false,
       "id": "personalized-product-pricing-2014",
       "title": "Personalized product pricing",
       "subtitle": "A patent describing a pricing application that detects customer interest in unbought items through browsing behavior and facilitates targeted discount offers.",
