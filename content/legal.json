@@ -11,6 +11,39 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "fifth-circuit-wrestles-with-constitutionality-of-warrantless-flock-searches-2026",
+      "title": "Fifth Circuit wrestles with constitutionality of warrantless Flock searches",
+      "subtitle": "A Fifth Circuit panel examines whether automated license plate reader technology constitutes a Fourth Amendment search in a criminal case involving armed robbery.",
+      "date": "2026-10-05",
+      "type": "legal",
+      "fields": [
+        "Computer Science",
+        "Public Policy",
+        "Philosophy"
+      ],
+      "tags": [
+        "Fourth Amendment",
+        "automated license plate readers",
+        "Flock Safety",
+        "surveillance technology",
+        "Fourth Circuit",
+        "warrantless searches"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Courthouse News Service",
+      "publisher_url": null,
+      "original_url": "https://www.courthousenews.com/fifth-circuit-wrestles-with-constitutionality-of-warrantless-flock-searches/",
+      "doi": null,
+      "venue_type": "news",
+      "abstract": "In oral arguments before the Fifth Circuit, the court considered whether the use of Flock Safety's automated license plate reader (ALPR) and AI-enabled surveillance cameras violates Fourth Amendment protections against unreasonable search and seizure. The defendant's counsel argued that Flock's database enables retrospective tracking and pattern-of-life reconstruction, constituting a search, while the Department of Justice contended that publicly observable movements are not protected and that the technology operates episodically rather than continuously. Chief Judge Elrod questioned whether traditional privacy doctrines remain adequate in an era of pervasive surveillance and instantaneous data analysis, while the panel grappled with the distinction between incidental public observation and systematic tracking capabilities.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "date_added": "2026-10-09"
+    },
+    {
+      "placeholder": false,
       "id": "amazons-antitrust-paradox-2017",
       "title": "Amazon's Antitrust Paradox",
       "subtitle": "A critical analysis of how current antitrust doctrine fails to address Amazon's anticompetitive market power despite its dominance in e-commerce and adjacent sectors.",
