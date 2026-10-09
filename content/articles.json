@@ -11,6 +11,39 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "trump-says-tech-execs-signed-morally-binding-accord-to-help-police-ai-2026",
+      "title": "Trump says tech execs signed 'morally binding' accord to help police AI",
+      "subtitle": "President Trump announces a voluntary AI governance framework signed by major tech executives and proposes a 10-person oversight committee.",
+      "date": "2026-09-29",
+      "type": "article",
+      "fields": [
+        "Computer Science",
+        "Public Policy",
+        "Economics"
+      ],
+      "tags": [
+        "AI governance",
+        "self-regulation",
+        "tech policy",
+        "Trump administration",
+        "industry compliance",
+        "AI safety"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "POLITICO",
+      "publisher_url": null,
+      "original_url": "https://www.politico.com/news/2026/09/29/ai-execs-morally-binding-constitution-01097855?ref=aipolicydaily.org",
+      "doi": null,
+      "venue_type": "news",
+      "abstract": "President Donald Trump announced that technology executives signed a voluntary 'morally binding' constitution on artificial intelligence during a White House lunch on September 29, 2026. The accord encourages companies to implement internal controls, engage independent auditors, and establish board-level oversight committees to monitor AI model capabilities. Trump also proposed forming a 10-person government committee to oversee the industry and indicated plans to formally rename artificial intelligence to 'superintelligence.' The announcement reflects the administration's acknowledgment of public concerns about AI safety while emphasizing industry self-regulation over legislative intervention.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "date_added": "2026-10-09"
+    },
+    {
+      "placeholder": false,
       "id": "ai-agents-use-5x-more-tokens-than-humans-as-cached-prompts-explode-headed-for-10x-agents-are-mostly-rereading-what-theyve-already-seen-skyrocketing-kv-cache-demand-threatens-already-worsening-ram-shortages-2026",
       "title": "AI agents use 5x more tokens than humans as cached prompts explode, headed for 10x — agents are mostly rereading what they've already seen, skyrocketing KV cache demand threatens already-worsening RAM shortages",
       "subtitle": "AI agent token consumption is accelerating at 5-14x the rate of human usage, driven primarily by cached prompt reuse, creating mounting pressure on memory infrastructure and exacerbating hardware supply constraints.",
