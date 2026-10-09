@@ -11,6 +11,39 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "everyday-affordability-how-walmart-keeps-prices-low",
+      "title": "Everyday Affordability: How Walmart Keeps Prices Low",
+      "subtitle": "Walmart's corporate statement detailing pricing policies, digital shelf label implementation, and operational strategies for maintaining low consumer prices.",
+      "date": "",
+      "type": "article",
+      "fields": [
+        "Economics",
+        "Public Policy",
+        "Computer Science"
+      ],
+      "tags": [
+        "dynamic pricing",
+        "digital shelf labels",
+        "retail pricing transparency",
+        "pricing discrimination",
+        "consumer protection",
+        "algorithmic pricing"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Walmart Corporate",
+      "publisher_url": null,
+      "original_url": "https://corporate.walmart.com/about/everyday-affordability/the-facts-on-affordability",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "This document is a corporate policy statement from Walmart outlining the company's pricing transparency practices and technological infrastructure. It addresses concerns about dynamic pricing by affirming uniform pricing across customers, clarifying that digital shelf labels lack surveillance capabilities, and describing how centralized price controls and operational efficiency support the Every Day Low Price (EDLP) model. The statement emphasizes wage investment, supply chain logistics, and market-driven regional pricing variances while rejecting personalized or behavior-based price discrimination.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "date_added": "2026-10-09"
+    },
+    {
+      "placeholder": false,
       "id": "trump-says-tech-execs-signed-morally-binding-accord-to-help-police-ai-2026",
       "title": "Trump says tech execs signed 'morally binding' accord to help police AI",
       "subtitle": "President Trump announces a voluntary AI governance framework signed by major tech executives and proposes a 10-person oversight committee.",
