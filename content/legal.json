@@ -10,6 +10,39 @@
   ],
   "entries": [
     {
+      "placeholder": true,
+      "id": "collecting-competitive-pricing-information-via-a-merchant-web-site-for-use-in-setting-prices-on-the-merchant-web-site-2010",
+      "title": "Collecting competitive pricing information via a merchant web site for use in setting prices on the merchant web site",
+      "subtitle": "A patent describing a web-based facility for crowdsourcing competitive pricing data to support dynamic price optimization.",
+      "date": "2010-09-02",
+      "type": "legal",
+      "fields": [
+        "Computer Science",
+        "Economics",
+        "Public Policy"
+      ],
+      "tags": [
+        "e-commerce pricing",
+        "dynamic pricing algorithms",
+        "crowdsourced market data",
+        "competitive intelligence",
+        "web merchant technology",
+        "price optimization"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "United States Patent and Trademark Office",
+      "publisher_url": null,
+      "original_url": "https://patents.google.com/patent/US7660738B1/en",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "US Patent 7,660,738 B1 discloses a facility for collecting competitive pricing information through merchant web pages. The system serves web pages containing controls that allow customers to submit pricing information for items offered by competing vendors, which is then aggregated and used by the merchant to inform its own pricing decisions. The patent addresses the challenge of obtaining and organizing competitive pricing data in electronic commerce contexts, where price competitiveness is critical to sales performance.",
+      "preview": null,
+      "body": null,
+      "body_html": "",
+      "date_added": "2026-10-09"
+    },
+    {
       "placeholder": false,
       "id": "federal-trade-commission-v-corpay-inc-2026",
       "title": "FEDERAL TRADE COMMISSION v. CORPAY INC",
