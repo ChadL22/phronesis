@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "system-and-method-for-dynamically-and-automatically-updating-item-prices-on-e-commerce-platform-2023",
+      "title": "System and method for dynamically and automatically updating item prices on e-commerce platform",
+      "subtitle": "Patent describing an automated dynamic pricing system for e-commerce platforms that adjusts item prices based on market factors including price elasticity and demand prediction.",
+      "date": "2023-04-07",
+      "type": "legal",
+      "fields": [
+        "Computer Science",
+        "Economics",
+        "Public Policy"
+      ],
+      "tags": [
+        "dynamic pricing",
+        "e-commerce",
+        "price elasticity",
+        "demand prediction",
+        "patent",
+        "algorithmic pricing"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Justia Patents",
+      "publisher_url": null,
+      "original_url": "System and method for dynamically and automatically updating item prices on e-commerce platform",
+      "doi": null,
+      "venue_type": null,
+      "abstract": "U.S. Patent 12,524,776 discloses systems and methods for real-time, automated price markdown on e-commerce platforms. The invention employs dual pricing models: a primary model utilizing price elasticity data and predicted demand data, and a secondary model using decay rates for items with insufficient historical data. The system applies bounded pricing constraints and transmits updated prices to e-commerce platforms to optimize inventory clearance while maintaining price controls.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "methods-and-apparatus-for-determining-item-demand-and-pricing-using-machine-learning-processes-2022",
       "title": "Methods and apparatus for determining item demand and pricing using machine learning processes",
       "subtitle": "A patent describing machine learning systems for demand forecasting and dynamic pricing in retail operations.",
