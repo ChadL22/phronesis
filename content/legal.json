@@ -11,6 +11,38 @@
   "entries": [
     {
       "placeholder": false,
+      "id": "federal-judge-suppresses-evidence-from-warrantless-alpr-search-2026",
+      "title": "Federal Judge Suppresses Evidence From Warrantless ALPR Search",
+      "subtitle": "A federal district court in Oklahoma ruled that warrantless queries of historical automated license plate reader data constitute a Fourth Amendment search, suppressing all evidence from a resulting traffic stop.",
+      "date": "2026-08-04",
+      "type": "legal",
+      "fields": [
+        "Public Policy",
+        "Computer Science",
+        "Philosophy"
+      ],
+      "tags": [
+        "automated license plate reader (ALPR)",
+        "Fourth Amendment",
+        "warrantless search",
+        "privacy",
+        "traffic stops",
+        "suppression of evidence"
+      ],
+      "origin": "via",
+      "content_type": "abstract",
+      "publisher": "Recording Law",
+      "publisher_url": null,
+      "original_url": "https://www.recordinglaw.com/news/alpr-warrantless-search-suppressed-oklahoma/",
+      "doi": null,
+      "venue_type": "news",
+      "abstract": "On October 1, 2026, Judge Sara E. Hill of the U.S. District Court for the Northern District of Oklahoma granted a motion to suppress in United States v. Kyle, holding that a deputy's warrantless query of historical ALPR data through Flock and VehicleManager systems violated the Fourth Amendment. The court found that access to 30 days of vehicle location data across multiple states intruded on a reasonable expectation of privacy and constituted a search. Additionally, the court held the traffic stop was unlawfully prolonged beyond its original justification. This ruling represents a minority position among federal courts that have addressed the ALPR question.",
+      "preview": null,
+      "body": null,
+      "body_html": ""
+    },
+    {
+      "placeholder": false,
       "id": "fifth-circuit-wrestles-with-constitutionality-of-warrantless-flock-searches-2026",
       "title": "Fifth Circuit wrestles with constitutionality of warrantless Flock searches",
       "subtitle": "A Fifth Circuit panel examines whether automated license plate reader technology constitutes a Fourth Amendment search in a criminal case involving armed robbery.",
