@@ -1,6 +1,6 @@
 {
   "generated_by": "scripts/refresh_bills.py",
-  "generated_at": "2026-09-24T13:38:48Z",
+  "generated_at": "2026-10-15T16:31:09Z",
   "source": "Integrity Institute Tech Policy Tracker (us-federal.techpolicytracker.com, us-state.techpolicytracker.com)",
   "items": [
     {
@@ -84,20 +84,52 @@
       "link": "https://www.congress.gov/bill/119th-congress/senate-bill/4770/all-info"
     },
     {
-      "jurisdiction": "NJ",
-      "jurisdiction_name": "New Jersey",
-      "code": "A5502",
-      "title": "\"Fair Wage Protection Act\"; prohibits use of surveillance wage setting through use of wage setting algorithm.",
-      "date": "2026-09-14",
-      "link": "https://www.njleg.state.nj.us/bill-search/2026/A5502"
+      "jurisdiction": "PA",
+      "jurisdiction_name": "Pennsylvania",
+      "code": "HR653",
+      "title": "Directing the Joint State Government Commission to conduct a study and issue a report on the data that needs to be collected to evaluate the impact of artificial intelligence on the workforce.",
+      "date": "2026-10-09",
+      "link": "https://www.palegis.us/legislation/bills/2025/hr653"
     },
     {
       "jurisdiction": "NJ",
       "jurisdiction_name": "New Jersey",
-      "code": "A5496",
-      "title": "Regulates use of artificial intelligence in certain mortgage lending tools to minimize discrimination in lending.",
-      "date": "2026-09-14",
-      "link": "https://www.njleg.state.nj.us/bill-search/2026/A5496"
+      "code": "S4758",
+      "title": "Requires artificial intelligence companion operators to provide notifications that users are not communicating with human.",
+      "date": "2026-10-05",
+      "link": "https://www.njleg.state.nj.us/bill-search/2026/S4758"
+    },
+    {
+      "jurisdiction": "NJ",
+      "jurisdiction_name": "New Jersey",
+      "code": "S4754",
+      "title": "Expand existing prohibition against unauthorized practice of various professions to include content produced by or with assistance of artificial intelligence.",
+      "date": "2026-10-05",
+      "link": "https://www.njleg.state.nj.us/bill-search/2026/S4754"
+    },
+    {
+      "jurisdiction": "PA",
+      "jurisdiction_name": "Pennsylvania",
+      "code": "HB2829",
+      "title": "Providing for the establishment of standards, protections and transparency of artificial intelligence frameworks developed by frontier developers; imposing duties on the Pennsylvania Emergency Management Agency and the Attorney General; and imposing penalties.",
+      "date": "2026-10-05",
+      "link": "https://www.palegis.us/legislation/bills/2025/hb2829"
+    },
+    {
+      "jurisdiction": "MI",
+      "jurisdiction_name": "Michigan",
+      "code": "SB1199",
+      "title": "Campaign finance: public disclosure; disclosure of payments for social media posts; require, and require certain information be included in social media posts. Amends secs. 12 & 43 of 1976 PA 388 (MCL 169.212 & 169.243) & adds sec. 59a.",
+      "date": "2026-10-01",
+      "link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2026-SB-1199"
+    },
+    {
+      "jurisdiction": "MI",
+      "jurisdiction_name": "Michigan",
+      "code": "HB6417",
+      "title": "Labor: other; community and worker economic transition activities; provide to workers who have employment tied to an industry affected by the adoption or implementation of artificial intelligence. Amends sec. 5 of 2023 PA 232 (MCL 408.915).",
+      "date": "2026-09-24",
+      "link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2026-HB-6417"
     },
     {
       "jurisdiction": "OH",
@@ -116,44 +148,12 @@
       "link": "https://www.legislature.ohio.gov/legislation/136/hb1011"
     },
     {
-      "jurisdiction": "PA",
-      "jurisdiction_name": "Pennsylvania",
-      "code": "SR356",
-      "title": "Designating the week of August 17 through 23, 2026, as \"Social Media Safety and Parental Awareness Week\" in Pennsylvania.",
-      "date": "2026-08-13",
-      "link": "https://www.palegis.us/legislation/bills/2025/sr356"
-    },
-    {
       "jurisdiction": "MA",
       "jurisdiction_name": "Massachusetts",
       "code": "S3177",
       "title": "Order relative to authorizing the joint committee on Consumer Protection and Professional Licensure to make an investigation and study of a certain current Senate document relative to animal telehealth.",
       "date": "2026-07-16",
       "link": "https://malegislature.gov/Bills/194/S3177"
-    },
-    {
-      "jurisdiction": "MI",
-      "jurisdiction_name": "Michigan",
-      "code": "HB6223",
-      "title": "Consumer protection: unfair trade practices; violation under Michigan consumer protection act for violations under the cryptocurrency exchange kiosk regulation act; provide for. Amends sec. 3 of 1976 PA 331 (MCL 445.903). TIE BAR WITH: HB 6222'26",
-      "date": "2026-07-16",
-      "link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2026-HB-6223"
-    },
-    {
-      "jurisdiction": "MI",
-      "jurisdiction_name": "Michigan",
-      "code": "HB6222",
-      "title": "Consumer protection: other; cryptocurrency exchange kiosk regulation act; create. Creates new act. TIE BAR WITH: HB 6223'26",
-      "date": "2026-07-16",
-      "link": "https://legislature.mi.gov/Bills/Bill?ObjectName=2026-HB-6222"
-    },
-    {
-      "jurisdiction": "PA",
-      "jurisdiction_name": "Pennsylvania",
-      "code": "HB2705",
-      "title": "Providing for a report on artificial intelligence in the workforce; and imposing duties on the Department of Labor and Industry and Department of Community and Economic Development.",
-      "date": "2026-07-16",
-      "link": "https://www.palegis.us/legislation/bills/2025/hb2705"
     },
     {
       "jurisdiction": "MS",
