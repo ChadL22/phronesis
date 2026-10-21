@@ -211,7 +211,10 @@
   .home-brand{position:relative;}
   .home-pron{
     position:absolute;
-    top:calc(100% + 6px);
+    /* the name's box keeps ~0.21em of empty descender space under the
+       small caps; pull up by that (same size formula as the name) so the
+       spelling sits 8px under the letters at every screen width */
+    top:calc(100% - clamp(46px, 6.4vw, 82px) * 0.21 + 8px);
     left:50%;
     transform:translate(-50%, -4px);
     white-space:nowrap;
