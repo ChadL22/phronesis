@@ -205,6 +205,24 @@
   .home-brand .pron-btn{font-size:16px;}
   /* the short line under the name, in the same small-caps style as the kicker */
   .home-hero .home-tagline{margin:22px 0 0;}
+
+  /* desktop: Google-homepage spacing. The hero fills the first screen
+     (below the dice/menu row) and its contents sit a little above center,
+     so the name and search box land about a third of the way down an
+     otherwise open page. Recently Added starts below the fold. */
+  @media (min-width:601px){
+    .home-hero{
+      min-height:calc(100vh - 58px);
+      min-height:calc(100svh - 58px);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      padding:0 0 9vh;
+    }
+    .home-hero .intro-block .home-cats-label.home-tagline{margin-top:30px;}
+    .home-hero .home-search{max-width:660px; margin-top:14px;}
+    .home-hero .home-cats-label:not(.home-kicker):not(.home-tagline){margin-top:36px;}
+  }
   .home-cats-label{
     margin:30px 0 12px;
     text-align:center;
