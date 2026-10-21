@@ -468,7 +468,8 @@ header.masthead{
   grid-template-columns: 100px auto 100px;
   align-items:center;
   padding: 10px 28px;
-  border-bottom:1px solid var(--marble);
+  /* No rule under the masthead -- every page's header now matches the
+     homepage's, which never had one. */
   background:var(--parchment);
   position:sticky;
   top:0;
