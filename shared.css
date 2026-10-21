@@ -703,3 +703,22 @@ header.masthead{
   opacity:.55;
 }
 
+
+/* ── HEADER NAME ─────────────────────────────────────────────
+   The header shows the name alone, set like the homepage wordmark:
+   bold small caps in the deep brand green (no crest, no pronunciation).
+   The extra selector weight and !important beat the site-wide
+   regular-weight rule above. */
+html body .masthead .brand-name{
+  display:block;
+  font-weight:700 !important;
+  font-variant:small-caps;
+  font-size:26px;
+  letter-spacing:0.02em;
+  line-height:1;
+  color:var(--forest-deep);
+  padding:6px 0;
+}
+@media (max-width:480px){
+  html body .masthead .brand-name{ font-size:22px; }
+}
