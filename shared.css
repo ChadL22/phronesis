@@ -185,7 +185,10 @@ nav {
 
 /* ── PAGE HEADER ───────────────────────────────────────── */
 .page-header {
-  padding: clamp(3.5rem, 8vw, 6rem) clamp(1.5rem, 5vw, 5rem) 3rem;
+  /* Top padding was clamp(3.5rem, 8vw, 6rem) -- up to 96px of space under
+     the masthead on Corpus/Canon/Topic pages. Now 0, matching the archive
+     pages' ~25px header-to-content gap (see .arc in archive.css). */
+  padding: 0 clamp(1.5rem, 5vw, 5rem) 3rem;
   max-width: 1160px;
   margin: 0 auto;
   display: grid;
