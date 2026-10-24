@@ -933,3 +933,10 @@ a.arc-kicker:hover { color: var(--terracotta); }
   color: var(--parchment); font-size: 2rem; line-height: 1; cursor: pointer;
 }
 .arc-video figcaption { padding: 0.55rem 0.25rem 0.15rem; font-size: 0.8rem; line-height: 1.45; color: var(--ink-3); }
+
+/* Canons page: tags that label rather than filter, and small headings
+   inside the "Reading paths" box */
+.arc-tag--static { cursor: default; }
+.arc-tag--static:hover { color: var(--accent); text-decoration: none; }
+.arc-spot-sublabel { margin: 1.1rem 0 0.4rem; }
+.arc-spot .arc-spot-sublabel + .arc-spot-text { margin-top: 0; }

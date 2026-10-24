@@ -4,64 +4,12 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=3" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=3" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Canons — Phronesis</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="shared.css?v=20261021c" />
-  <style>
-    .corpus-grid {
-      max-width: 1160px; margin: 0 auto;
-      padding: 2.5rem clamp(1.5rem, 5vw, 5rem) 5rem;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1px; background: var(--rule); border: 1px solid var(--rule);
-    }
-    .canon-card {
-      background: var(--paper); padding: 2.4rem 2.2rem;
-      transition: background 0.18s; cursor: pointer;
-      display: flex; flex-direction: column;
-      text-decoration: none; color: inherit;
-    }
-    .canon-card:hover { background: var(--paper-2); }
-    .canon-card-icon {
-      width: 32px; height: 32px; border: 1px solid var(--rule); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1.2rem; flex-shrink: 0;
-    }
-    .canon-card-icon { font-family: var(--serif); font-size: 0.9rem; font-weight: 400; color: var(--accent); }
-    .canon-card h2 { font-family: var(--serif); font-size: 1.4rem; font-weight: 400; line-height: 1.25; margin-bottom: 0.7rem; }
-    .canon-card p { font-size: 0.78rem; color: var(--ink-2); line-height: 1.65; margin-bottom: 1.4rem; flex-grow: 1; }
-    .canon-card-footer {
-      display: flex; align-items: center; justify-content: space-between;
-      border-top: 1px solid var(--rule); padding-top: 0.9rem;
-    }
-    .canon-card-count { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
-    .canon-card-explore { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 0.4rem; }
-    .canon-card-explore::after { content: '→'; }
-    .corpus-intro { max-width: 1160px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 5rem); margin-top: 2rem; }
-    .corpus-intro-inner {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
-      padding-bottom: 2.5rem; border-bottom: 1px solid var(--rule);
-    }
-    .corpus-intro h2 { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; line-height: 1.3; margin-bottom: 0.6rem; }
-    .corpus-intro p { font-size: 0.82rem; color: var(--ink-2); line-height: 1.7; }
-    .audience-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.8rem; }
-    .audience-pill {
-      font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--ink-3); border: 1px solid var(--rule); border-radius: 2px; padding: 0.2rem 0.6rem;
-    }
-    .type-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
-    .type-pill {
-      font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--accent); border: 1px solid var(--accent); border-radius: 2px; padding: 0.15rem 0.5rem; opacity: 0.7;
-    }
-    @media (max-width: 700px) {
-      .corpus-grid { grid-template-columns: 1fr; }
-      .corpus-intro-inner { grid-template-columns: 1fr; gap: 1.5rem; }
-    }
-  </style>
+  <link rel="stylesheet" href="shared.css?v=20261021c" /><link rel="stylesheet" href="chat.css" />
+  <link rel="stylesheet" href="archive.css?v=20261024m" />
 </head>
 <body>
   <header class="masthead">
@@ -91,9 +39,6 @@
   </div>
 
   <div class="nav-right">
-    <button class="icon-btn" id="searchIconBtn" aria-label="Search">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    </button>
     <button class="icon-btn hamburger-btn" id="hamburgerBtn" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -124,132 +69,156 @@
   </div>
 </div>
 
-  <div class="page-header">
-    <div>
-      <div class="page-header-eyebrow"><span class="label">Canons</span></div>
-      <h1 class="serif">Browse by<br/><em>canon.</em></h1>
+    <!-- same shell as the category pages: title, description and the
+       Categories list on the left; canons in the centre; how reading paths
+       work on the right. Canon rows are filled in from /content/topics.json -->
+  <div class="arc arc--canons">
+    <div class="arc-tools">
+      <form class="arc-search" role="search" id="canonSearch">
+        <input type="search" id="canonQuery" autocomplete="off" placeholder="Search canons" aria-label="Search canons">
+        <button type="submit" class="arc-search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+      </form>
     </div>
-    <p class="page-header-desc">
-      Each canon collects the essential reading on a subject — research papers, policy proposals, legal analyses, essays, articles, and reports — with guided reading paths for different audiences.
-    </p>
-  </div>
-
-  <div class="section-rule"></div>
-
-  <div class="corpus-intro">
-    <div class="corpus-intro-inner">
-      <div>
-        <h2 class="serif">Reading paths for every audience</h2>
-        <p>Each canon offers curated reading sequences tailored to your background. Select your perspective and we'll suggest where to start and what to read next.</p>
-      </div>
-      <div>
-        <p style="margin-bottom: 0.6rem;">Available perspectives:</p>
-        <div class="audience-pills">
-          <span class="audience-pill">Student</span>
-          <span class="audience-pill">General Reader</span>
-          <span class="audience-pill">Policy Professional</span>
-          <span class="audience-pill">Legal Professional</span>
-          <span class="audience-pill">Economist</span>
-          <span class="audience-pill">Technologist</span>
-        </div>
-        <p style="margin-top: 1.2rem; margin-bottom: 0.6rem;">Draws from all publication types:</p>
-        <div class="type-pills">
-          <span class="type-pill">Research</span>
-          <span class="type-pill">Policy</span>
-          <span class="type-pill">Legal</span>
-          <span class="type-pill">Essays</span>
-          <span class="type-pill">Articles</span>
-          <span class="type-pill">Reports</span>
+    <div class="arc-side">
+      <header class="arc-head">
+        <h1 class="arc-title">Canons</h1>
+        <p class="arc-desc">Each canon collects the essential reading on a subject &mdash; research papers, policy proposals, legal analyses, essays, articles, and reports &mdash; with guided reading paths for different audiences.</p>
+      </header>
+      <div class="arc-sticky">
+        <div class="arc-rail" role="navigation" aria-label="Categories">
+          <div class="arc-panel-label arc-rail-label">Categories</div>
+          <div class="arc-rail-divider arc-rail-divider--top"></div>
+          <ul>
+          <li><a href="/research">Research Papers</a></li>
+          <li><a href="/policy">Policy Artifacts</a></li>
+          <li><a href="/legal">Legal Analyses</a></li>
+          <li><a href="/essays">Essays</a></li>
+          <li><a href="/articles">Articles</a></li>
+          <li><a href="/reports">Reports</a></li>
+          <li><a href="/corpus" class="active" aria-current="page">Canons</a></li>
+          </ul>
+          <div class="arc-rail-divider"></div>
         </div>
       </div>
     </div>
+    <div class="arc-results">
+      <p class="arc-stats" id="canonStats">&nbsp;</p>
+      <div class="arc-list" id="canonList"><p class="arc-empty">Loading&hellip;</p></div>
+    </div>
+    <aside class="arc-panel" aria-label="Reading paths">
+      <div class="arc-panel-label">Reading paths</div>
+      <div class="arc-spot">
+        <span class="arc-spot-title">Reading paths for every audience</span>
+        <p class="arc-spot-text">Each canon offers curated reading sequences tailored to your background. Select your perspective and we&rsquo;ll suggest where to start and what to read next.</p>
+        <div class="arc-panel-label arc-spot-sublabel">Perspectives</div>
+        <div class="arc-tags">
+          <span class="arc-tag arc-tag--static">Student</span>
+          <span class="arc-tag arc-tag--static">General Reader</span>
+          <span class="arc-tag arc-tag--static">Policy Professional</span>
+          <span class="arc-tag arc-tag--static">Legal Professional</span>
+          <span class="arc-tag arc-tag--static">Economist</span>
+          <span class="arc-tag arc-tag--static">Technologist</span>
+        </div>
+        <div class="arc-panel-label arc-spot-sublabel">Draws from</div>
+        <p class="arc-spot-text">All six publication types: research papers, policy artifacts, legal analyses, essays, articles, and reports.</p>
+      </div>
+    </aside>
   </div>
 
-  <div class="corpus-grid" id="corpus-grid"></div>
-
-  <section class="newsletter-band" style="margin-top: 4rem;">
-    <div class="newsletter-inner">
-      <div class="newsletter-copy"><h3 class="serif">The Phronesis Brief</h3><p>Monthly insights delivered right to your inbox. Concise, considered, and consistent.</p></div>
-      <div class="newsletter-form"><input type="email" placeholder="your@email.com" /><button type="button">Subscribe</button></div>
-    </div>
-  </section>
-
+  <section class="newsletter-band"><div class="newsletter-inner"><div class="newsletter-copy"><h3 class="serif">The Phronesis Brief</h3><p>Monthly insights delivered right to your inbox. Concise, considered, and consistent.</p></div><div class="newsletter-form"><input type="email" placeholder="your@email.com" /><button type="button">Subscribe</button></div></div></section>
   <footer>
     <div><div class="footer-brand serif">Phronesis</div><p>An independent research entity at the intersection of technology, law, and policy.</p></div>
     <div class="footer-col"><h4>Publication types</h4><ul><li><a href="/research">Research Papers</a></li><li><a href="/policy">Policy Artifacts</a></li><li><a href="/legal">Legal Analyses</a></li><li><a href="/essays">Essays</a></li><li><a href="/articles">Articles</a></li><li><a href="/reports">Reports</a></li></ul></div>
     <div class="footer-col"><h4>Site</h4><ul><li><a href="/corpus">Canons</a></li><li><a href="/about">About</a></li></ul></div>
   </footer>
-  <div class="footer-bottom">
-    <p>&copy; 2025 Phronesis Research. Independent &amp; non-partisan.</p>
-    <span class="phronesis-greek">&#x03C6;&#x03C1;&#x03CC;&#x03BD;&#x03B7;&#x03C3;&#x03B9;&#x03C2;</span>
-  </div>
+  <div class="footer-bottom"><p>&copy; 2025 Phronesis Research. Independent &amp; non-partisan.</p><span class="phronesis-greek">&#x03C6;&#x03C1;&#x03CC;&#x03BD;&#x03B7;&#x03C3;&#x03B9;&#x03C2;</span></div>
 
   <script src="masthead.js" defer></script>
   <script>
-    /* ── Nav handled by chat.js ── */
+  (function () {
+    var FILES = ['research', 'policy', 'legal', 'essays', 'articles', 'reports'];
+    // entry.type -> label, in the order the categories appear on the site
+    var TYPES = [
+      ['research', 'Research Paper', 'Research Papers'],
+      ['policy', 'Policy Artifact', 'Policy Artifacts'],
+      ['legal', 'Legal Analysis', 'Legal Analyses'],
+      ['essay', 'Essay', 'Essays'],
+      ['article', 'Article', 'Articles'],
+      ['report', 'Report', 'Reports']
+    ];
+    var list = document.getElementById('canonList');
+    var stats = document.getElementById('canonStats');
+    var input = document.getElementById('canonQuery');
+    var canons = [];
 
-    /* ── Numbers instead of icons ── */
-    const CONTENT_FILES = ['research', 'essays', 'legal', 'policy', 'reports', 'articles'];
-    const TYPE_LABELS = { research:'Research', essay:'Essay', legal:'Legal Analysis', policy:'Policy', report:'Report', article:'Article' };
+    function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
 
-    async function loadAllContent() {
-      const all = [];
-      for (const file of CONTENT_FILES) {
-        try { const res = await fetch(`content/${file}.json`); if (!res.ok) continue; const data = await res.json(); if (data.entries) data.entries.forEach(e => all.push(e)); } catch (e) {}
-      }
-      return all;
+    function loadEntries() {
+      return Promise.all(FILES.map(function (f) {
+        return fetch('/content/' + f + '.json').then(function (r) { return r.ok ? r.json() : { entries: [] }; })
+          .then(function (d) { return d.entries || []; }).catch(function () { return []; });
+      })).then(function (lists) { return [].concat.apply([], lists); });
     }
 
-    function countMatchesByType(topic, allEntries) {
-      const matchTags = (topic.match_tags || []).map(t => t.toLowerCase());
-      const matchFields = (topic.match_fields || []).map(f => f.toLowerCase());
-      const counts = {};
-      for (const entry of allEntries) {
-        const entryTags = (entry.tags || []).map(t => t.toLowerCase());
-        const entryFields = (entry.fields || []).map(f => f.toLowerCase());
-        const tagMatch = matchTags.some(mt => entryTags.some(et => et.includes(mt) || mt.includes(et)));
-        const fieldMatch = matchFields.some(mf => entryFields.includes(mf));
-        if (tagMatch || fieldMatch) {
-          const type = entry.type || 'other';
-          counts[type] = (counts[type] || 0) + 1;
-        }
-      }
+    // same matching rule the canon pages use: a tag or field overlap
+    function countByType(topic, entries) {
+      var tags = (topic.match_tags || []).map(function (t) { return t.toLowerCase(); });
+      var fields = (topic.match_fields || []).map(function (f) { return f.toLowerCase(); });
+      var counts = {};
+      entries.forEach(function (e) {
+        var et = (e.tags || []).map(function (t) { return t.toLowerCase(); });
+        var ef = (e.fields || []).map(function (f) { return f.toLowerCase(); });
+        var hit = tags.some(function (mt) { return et.some(function (t) { return t.indexOf(mt) !== -1 || mt.indexOf(t) !== -1; }); }) ||
+                  fields.some(function (mf) { return ef.indexOf(mf) !== -1; });
+        if (hit) counts[e.type || 'other'] = (counts[e.type || 'other'] || 0) + 1;
+      });
       return counts;
     }
 
-    async function init() {
-      const [topicsRes, allEntries] = await Promise.all([
-        fetch('content/topics.json').then(r => r.json()),
-        loadAllContent()
-      ]);
-      const grid = document.getElementById('corpus-grid');
-      const topics = topicsRes.topics || [];
-      topics.forEach((topic, index) => {
-        const typeCounts = countMatchesByType(topic, allEntries);
-        const total = Object.values(typeCounts).reduce((a, b) => a + b, 0);
-        const pathCount = Object.keys(topic.reading_paths || {}).length;
-        const num = String(index + 1).padStart(2, '0');
-
-        /* Build type breakdown string */
-        const breakdown = Object.entries(typeCounts)
-          .map(([type, count]) => `${count} ${TYPE_LABELS[type] || type}`)
-          .join(' · ');
-
-        const card = document.createElement('a');
-        card.href = `canon.html?t=${topic.id}`;
-        card.className = 'canon-card';
-        card.innerHTML = `
-          <div class="canon-card-icon">${num}</div>
-          <h2 class="serif">${topic.name}</h2>
-          <p>${topic.description}</p>
-          <div class="canon-card-footer">
-            <span class="canon-card-count">${total} ${total === 1 ? 'piece' : 'pieces'} · ${pathCount} reading paths</span>
-            <span class="canon-card-explore">Explore canon</span>
-          </div>`;
-        grid.appendChild(card);
-      });
+    function rowHTML(c) {
+      var url = 'canon.html?t=' + encodeURIComponent(c.id);
+      var tags = TYPES.filter(function (t) { return c.counts[t[0]]; }).map(function (t) {
+        var n = c.counts[t[0]];
+        return '<span class="arc-tag arc-tag--static">' + n + ' ' + (n === 1 ? t[1] : t[2]) + '</span>';
+      }).join('');
+      return '<article class="arc-result">' +
+        '<a class="arc-result-title" href="' + url + '">' + esc(c.name) + '</a>' +
+        '<div class="arc-meta"><span class="arc-pub">' + c.total + (c.total === 1 ? ' piece' : ' pieces') + '</span>' +
+          '<span class="arc-sep">&middot;</span>' + c.paths + (c.paths === 1 ? ' reading path' : ' reading paths') + '</div>' +
+        '<a class="arc-snippet arc-body-link" href="' + url + '" tabindex="-1">' + esc(c.description) + '</a>' +
+        (tags ? '<div class="arc-tags">' + tags + '</div>' : '') +
+      '</article>';
     }
-    init();
+
+    function render() {
+      var words = input.value.toLowerCase().split(/\s+/).filter(Boolean);
+      var shown = canons.filter(function (c) {
+        var hay = (c.name + ' ' + c.description).toLowerCase();
+        return words.every(function (w) { return hay.indexOf(w) !== -1; });
+      });
+      stats.textContent = shown.length + (shown.length === 1 ? ' canon' : ' canons') + (words.length ? ' matching \u201C' + input.value.trim() + '\u201D' : '');
+      list.innerHTML = shown.length ? shown.map(rowHTML).join('')
+        : '<p class="arc-empty">No canons match \u201C' + esc(input.value.trim()) + '\u201D.</p>';
+    }
+
+    Promise.all([fetch('/content/topics.json').then(function (r) { return r.json(); }), loadEntries()]).then(function (res) {
+      var entries = res[1];
+      canons = (res[0].topics || []).map(function (t) {
+        var counts = countByType(t, entries);
+        var total = Object.keys(counts).reduce(function (a, k) { return a + counts[k]; }, 0);
+        return { id: t.id, name: t.name, description: t.description || '', counts: counts, total: total,
+                 paths: Object.keys(t.reading_paths || {}).length };
+      });
+      render();
+    }).catch(function () { list.innerHTML = '<p class="arc-empty">Canons could not be loaded.</p>'; });
+
+    input.addEventListener('input', render);
+    document.getElementById('canonSearch').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var first = list.querySelector('.arc-result-title');
+      if (first) window.location.href = first.getAttribute('href');
+    });
+  })();
   </script>
 
   <!-- Newsletter Subscription Script -->
