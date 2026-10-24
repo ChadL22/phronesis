@@ -860,7 +860,10 @@ a.arc-kicker:hover { color: var(--terracotta); }
   .arc--toc-right { grid-template-columns: 170px minmax(0, 1fr); grid-template-areas: "side main" "side toc"; }
   .arc-toc-side .arc-toc { display: none; }
   .arc-toc-side .arc-sticky { position: static; }
-  .arc-toc-side .arc-video { margin: 3rem 0 0; max-width: 480px; }
+  .arc-toc-side .arc-video-head { margin-top: 3rem; max-width: 480px; }
+  .arc-toc-side .arc-video-label { padding-left: 0; }
+  .arc-toc-side .arc-video-head .arc-rail-divider { margin-left: 0; }
+  .arc-toc-side .arc-video { margin: 0.8rem 0 0; max-width: 480px; }
 }
 @media (max-width: 900px) {
   .arc--toc-right { grid-template-columns: minmax(0, 1fr); grid-template-areas: "head" "rail" "main" "toc"; }
@@ -906,7 +909,10 @@ a.arc-kicker:hover { color: var(--terracotta); }
 
 /* About page: walkthrough video under "On this page", framed like a
    Wikipedia thumbnail (tinted border box with a caption beneath) */
-.arc-video { margin: 1.8rem 0 0 0.85rem; padding: 5px; border: 1px solid var(--rule); background: var(--paper-2); }
+/* "How it works" label, styled like "On this page" above it */
+.arc-video-head { margin-top: 2.4rem; }
+.arc-video-label { padding-left: 0.85rem; margin-bottom: 0.4rem; }
+.arc-video { margin: 0.8rem 0 0 0.85rem; padding: 5px; border: 1px solid var(--rule); background: var(--paper-2); }
 .arc-video-thumb { position: relative; display: block; width: 100%; padding: 0; border: none; background: var(--paper); cursor: pointer; }
 .arc-video-thumb img { display: block; width: 100%; height: auto; }
 .arc-video-play {
