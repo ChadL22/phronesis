@@ -861,3 +861,6 @@ a.arc-kicker:hover { color: var(--terracotta); }
 @media (max-width: 900px) {
   .arc--toc-right { grid-template-columns: minmax(0, 1fr); grid-template-areas: "head" "rail" "main"; }
 }
+
+/* a single people card spans the full row instead of leaving empty grid tracks */
+.arc-people--solo { grid-template-columns: 1fr; }
