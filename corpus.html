@@ -211,8 +211,13 @@
 
     function build(topic, entries) {
       var counts = {}, latest = parseDay(topic.last_updated);
+      // a canon holds its tag matches plus every piece named in its reading paths (as on the canon page)
+      var inPath = {};
+      Object.keys(topic.reading_paths || {}).forEach(function (k) {
+        (topic.reading_paths[k].sequence || []).forEach(function (st) { inPath[st.id] = true; });
+      });
       entries.forEach(function (e) {
-        if (e.placeholder || !matches(topic, e)) return;
+        if (e.placeholder || !(matches(topic, e) || inPath[e.id])) return;
         counts[e.type || 'other'] = (counts[e.type || 'other'] || 0) + 1;
         // last updated = the newest piece added to the canon (or the topic's own last_updated, if later)
         var added = parseDay(e.date_added);

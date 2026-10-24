@@ -4,118 +4,12 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=3" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=3" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Canon — Phronesis</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="shared.css?v=20261021c" />
-  <style>
-    /* ── READING PATH ── */
-    .path-section { max-width: 1160px; margin: 0 auto; padding: 2.5rem clamp(1.5rem, 5vw, 5rem) 3rem; }
-    .path-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.8rem; }
-    .audience-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-    .audience-tab {
-      font-family: var(--sans); font-size: 0.65rem; font-weight: 400;
-      letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3);
-      background: none; border: 1px solid var(--rule); border-radius: 2px;
-      padding: 0.35rem 0.8rem; cursor: pointer; transition: all 0.2s;
-    }
-    .audience-tab:hover { color: var(--ink); border-color: var(--ink-3); }
-    .audience-tab.active { color: var(--accent); border-color: var(--accent); background: rgba(43,71,54,0.04); }
-    .path-description {
-      font-family: var(--serif); font-size: 1.05rem; font-weight: 300;
-      line-height: 1.7; color: var(--ink-2); margin-bottom: 2rem;
-      border-left: 2px solid var(--accent); padding-left: 1.4rem;
-    }
-    /* ── READING SEQUENCE ── */
-    .reading-sequence { position: relative; padding-left: 2rem; }
-    .reading-sequence::before { content: ''; position: absolute; left: 5px; top: 0; bottom: 0; width: 1px; background: var(--rule); }
-    .sequence-item {
-      position: relative; padding: 1.4rem 0 1.4rem 1.6rem;
-      border-bottom: 1px solid var(--rule); cursor: pointer; transition: background 0.15s;
-    }
-    .sequence-item:last-child { border-bottom: none; }
-    .sequence-item:hover { background: var(--paper-2); margin-left: -1rem; margin-right: -1rem; padding-left: 2.6rem; padding-right: 1rem; border-radius: 2px; }
-    .sequence-item::before {
-      content: ''; position: absolute; left: -2rem; top: 1.85rem;
-      width: 11px; height: 11px; border-radius: 50%;
-      border: 2px solid var(--accent); background: var(--paper); z-index: 1;
-    }
-    .sequence-item:first-child::before { background: var(--accent); }
-    .sequence-step-label { font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.35rem; }
-    .sequence-title { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; line-height: 1.3; margin-bottom: 0.3rem; transition: color 0.2s; }
-    .sequence-item:hover .sequence-title { color: var(--accent); }
-    .sequence-note { font-size: 0.75rem; color: var(--ink-3); line-height: 1.5; }
-    .sequence-meta { display: flex; gap: 1rem; margin-top: 0.4rem; }
-    .sequence-type, .sequence-publisher { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
-    .sequence-type { color: var(--accent); }
-    /* ── ALL PIECES ── */
-    .all-pieces { max-width: 1160px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 5rem) 5rem; }
-    .all-pieces-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
-    .expand-all-btn {
-      font-family: var(--sans); font-size: 0.62rem; font-weight: 400;
-      letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3);
-      background: none; border: 1px solid var(--rule); border-radius: 2px;
-      padding: 0.3rem 0.8rem; cursor: pointer; transition: all 0.2s;
-    }
-    .expand-all-btn:hover { color: var(--accent); border-color: var(--accent); }
-    .piece-item {
-      display: grid; grid-template-columns: 7rem 1fr 9rem; gap: 1.8rem;
-      align-items: start; padding: 1.4rem 0; border-top: 1px solid var(--rule);
-      cursor: pointer; transition: background 0.15s;
-    }
-    .piece-item:last-child { border-bottom: 1px solid var(--rule); }
-    .piece-item:hover .piece-title { color: var(--accent); }
-    .piece-date { font-family: var(--serif); font-size: 0.78rem; color: var(--ink-3); padding-top: 0.15rem; }
-    .piece-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; line-height: 1.3; margin-bottom: 0.3rem; transition: color 0.2s; }
-    .piece-subtitle { font-size: 0.73rem; color: var(--ink-3); line-height: 1.5; }
-    .piece-tag {
-      display: inline-block; font-size: 0.58rem; letter-spacing: 0.13em;
-      text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent);
-      border-radius: 2px; padding: 0.12rem 0.4rem; justify-self: end; align-self: start; margin-top: 0.15rem;
-    }
-    /* ── PIECE TYPE GROUPS (collapsible) ── */
-    .type-group { border-top: 1px solid var(--rule); }
-    .type-group:last-child { border-bottom: 1px solid var(--rule); }
-    .type-group-header {
-      width: 100%; display: flex; align-items: center; justify-content: space-between;
-      gap: 1rem; background: none; border: none; cursor: pointer;
-      padding: 1.1rem 0; text-align: left; font-family: inherit;
-    }
-    .type-group-header:hover .type-group-name { color: var(--accent); }
-    .type-group-name {
-      font-family: var(--serif); font-size: 1.15rem; font-weight: 400;
-      color: var(--ink); transition: color 0.18s;
-    }
-    .type-group-chevron { font-size: 0.7rem; color: var(--ink-3); line-height: 1; flex-shrink: 0; transition: transform 0.2s; }
-    .type-group.open .type-group-chevron { transform: rotate(180deg); }
-    .type-group.open .type-group-name { color: var(--accent); }
-    .type-group-body { display: none; padding-bottom: 0.6rem; }
-    .type-group.open .type-group-body { display: block; }
-    .type-group-body .piece-item:last-child { border-bottom: none; }
-    /* ── RELATED ── */
-    .related-canons { max-width: 1160px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 5rem) 3rem; }
-    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 1.2rem; }
-    .related-card { background: var(--paper); padding: 1.4rem 1.2rem; text-decoration: none; color: inherit; transition: background 0.18s; }
-    .related-card:hover { background: var(--paper-2); }
-    .related-card h3 { font-family: var(--serif); font-size: 1rem; font-weight: 400; margin-bottom: 0.3rem; }
-    .related-card p { font-size: 0.7rem; color: var(--ink-3); line-height: 1.5; }
-    .back-link {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--ink-3); margin-bottom: 1.4rem; transition: color 0.2s;
-    }
-    .back-link:hover { color: var(--accent); }
-    .back-link::before { content: '←'; }
-    @media (max-width: 700px) {
-      .piece-item { grid-template-columns: 1fr; gap: 0.4rem; }
-      .piece-tag { justify-self: start; }
-      .related-grid { grid-template-columns: 1fr; }
-      .path-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-    }
-  </style>
+  <link rel="stylesheet" href="shared.css?v=20261021c" /><link rel="stylesheet" href="chat.css" />
+  <link rel="stylesheet" href="archive.css?v=20261024o" />
 </head>
 <body>
   <header class="masthead">
@@ -145,9 +39,6 @@
   </div>
 
   <div class="nav-right">
-    <button class="icon-btn" id="searchIconBtn" aria-label="Search">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    </button>
     <button class="icon-btn hamburger-btn" id="hamburgerBtn" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -178,257 +69,429 @@
   </div>
 </div>
 
-  <div class="page-header">
-    <div>
-      <div class="page-header-eyebrow"><a href="corpus.html" class="back-link">All Canons</a></div>
-      <h1 class="serif" id="canon-title">Loading…</h1>
+    <!-- same shell as the category pages: canon title, description and the
+       Categories list on the left; the canon's pieces (in reading order when
+       a guided path exists) in the centre; recently added and related canons
+       on the right. Filled in from /content/topics.json and the content files. -->
+  <div class="arc arc--canon" id="canonApp">
+    <div class="arc-tools">
+      <div class="arc-controls">
+        <div class="arc-path" id="arcPath"></div>
+        <button type="button" class="arc-adv-toggle" id="arcAdvToggle" aria-expanded="false" aria-controls="arcAdvanced">Advanced search<svg class="arc-dd-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="arc-sort" id="arcSort"></div>
+      </div>
+      <form class="arc-search" role="search" id="canonSearch">
+        <input type="search" id="canonQuery" autocomplete="off" placeholder="Search this canon" aria-label="Search this canon">
+        <button type="submit" class="arc-search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+      </form>
+      <div class="arc-view-toggle" role="group" aria-label="View">
+        <button type="button" data-view="list" title="List view" aria-label="List view"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        <button type="button" data-view="cards" title="Card view" aria-label="Card view"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></button>
+      </div>
     </div>
-    <p class="page-header-desc" id="canon-desc"></p>
-  </div>
-  <div class="section-rule"></div>
-
-  <!-- READING PATH -->
-  <div class="path-section">
-    <div class="path-header">
-      <span class="label">Guided Reading Path</span>
-      <div class="audience-tabs" id="audience-tabs"></div>
+    <div class="arc-advanced" id="arcAdvanced" hidden><div class="arc-facets" id="arcFacets"></div></div>
+    <div class="arc-side">
+      <header class="arc-head">
+        <h1 class="arc-title" id="canonTitle">Canon</h1>
+        <p class="arc-desc" id="canonDesc"></p>
+      </header>
+      <div class="arc-sticky">
+        <div class="arc-rail" role="navigation" aria-label="Categories">
+          <div class="arc-panel-label arc-rail-label">Categories</div>
+          <div class="arc-rail-divider arc-rail-divider--top"></div>
+          <ul>
+          <li><a href="/research">Research Papers</a></li>
+          <li><a href="/policy">Policy Artifacts</a></li>
+          <li><a href="/legal">Legal Analyses</a></li>
+          <li><a href="/essays">Essays</a></li>
+          <li><a href="/articles">Articles</a></li>
+          <li><a href="/reports">Reports</a></li>
+          <li><a href="/corpus" class="active">Canons</a></li>
+          </ul>
+          <div class="arc-rail-divider"></div>
+        </div>
+      </div>
     </div>
-    <div class="path-description" id="path-description"></div>
-    <div class="reading-sequence" id="reading-sequence"></div>
-  </div>
-  <div class="section-rule"></div>
-
-  <!-- ALL PIECES -->
-  <div class="all-pieces">
-    <div class="all-pieces-header">
-      <span class="label" id="pieces-count">All pieces in this canon</span>
-      <button class="expand-all-btn" id="expand-all-btn" style="display:none;">Expand all</button>
+    <div class="arc-results">
+      <p class="arc-stats" id="canonStats">&nbsp;</p>
+      <div id="canonList"><p class="arc-empty">Loading&hellip;</p></div>
     </div>
-    <div id="pieces-list"></div>
-  </div>
-  <div class="section-rule"></div>
-
-  <!-- RELATED CANONS -->
-  <div class="related-canons">
-    <span class="label">Related Canons</span>
-    <div class="related-grid" id="related-grid"></div>
+    <aside class="arc-panel" id="canonPanel" aria-label="Recently added and related canons"></aside>
   </div>
 
-  <section class="newsletter-band" style="margin-top: 3rem;">
-    <div class="newsletter-inner">
-      <div class="newsletter-copy"><h3 class="serif">The Phronesis Brief</h3><p>Monthly insights delivered right to your inbox. Concise, considered, and consistent.</p></div>
-      <div class="newsletter-form"><input type="email" placeholder="your@email.com" /><button type="button">Subscribe</button></div>
-    </div>
-  </section>
-
+  <section class="newsletter-band"><div class="newsletter-inner"><div class="newsletter-copy"><h3 class="serif">The Phronesis Brief</h3><p>Monthly insights delivered right to your inbox. Concise, considered, and consistent.</p></div><div class="newsletter-form"><input type="email" placeholder="your@email.com" /><button type="button">Subscribe</button></div></div></section>
   <footer>
     <div><div class="footer-brand serif">Phronesis</div><p>An independent research entity at the intersection of technology, law, and policy.</p></div>
     <div class="footer-col"><h4>Publication types</h4><ul><li><a href="/research">Research Papers</a></li><li><a href="/policy">Policy Artifacts</a></li><li><a href="/legal">Legal Analyses</a></li><li><a href="/essays">Essays</a></li><li><a href="/articles">Articles</a></li><li><a href="/reports">Reports</a></li></ul></div>
     <div class="footer-col"><h4>Site</h4><ul><li><a href="/corpus">Canons</a></li><li><a href="/about">About</a></li></ul></div>
   </footer>
-  <div class="footer-bottom">
-    <p>&copy; 2025 Phronesis Research. Independent &amp; non-partisan.</p>
-    <span class="phronesis-greek">&#x03C6;&#x03C1;&#x03CC;&#x03BD;&#x03B7;&#x03C3;&#x03B9;&#x03C2;</span>
-  </div>
+  <div class="footer-bottom"><p>&copy; 2025 Phronesis Research. Independent &amp; non-partisan.</p><span class="phronesis-greek">&#x03C6;&#x03C1;&#x03CC;&#x03BD;&#x03B7;&#x03C3;&#x03B9;&#x03C2;</span></div>
 
   <script src="masthead.js" defer></script>
   <script>
-    /* ── Nav handled by chat.js ── */
+  // A single canon: same toolbar, list/card views, paging and right-hand
+  // panel as the category pages. ?t=<topic id> picks the canon.
+  (function () {
+    var FILES = [   // content file, entry.type, category page
+      ['research', 'research', 'research.html'], ['policy', 'policy', 'policy.html'], ['legal', 'legal', 'legal.html'],
+      ['essays', 'essay', 'essays.html'], ['articles', 'article', 'articles.html'], ['reports', 'report', 'reports.html']
+    ];
+    var TYPES = { research: ['Research Paper', 'Research Papers'], policy: ['Policy Artifact', 'Policy Artifacts'],
+                  legal: ['Legal Analysis', 'Legal Analyses'], essay: ['Essay', 'Essays'], article: ['Article', 'Articles'], report: ['Report', 'Reports'] };
+    var TYPE_ORDER = ['research', 'policy', 'legal', 'essay', 'article', 'report'];
+    var PAGE_SIZE = { list: 4, cards: 6 };
+    var RECENT_COUNT = 5;
+    var SORTS = { path: 'Reading order', relevance: 'Relevance', newest: 'Newest', oldest: 'Oldest' };
+    var SOURCE_LABELS = { original: 'Phronesis original', via: 'External source' };
+    var FACETS = [
+      { key: 'type', label: 'Type', any: 'Any type', values: function (i) { return [i.type]; }, display: function (v) { return TYPES[v] ? TYPES[v][1] : v; }, order: TYPE_ORDER },
+      { key: 'year', label: 'Year', any: 'Any year', values: function (i) { return i.year ? [i.year] : []; }, desc: true },
+      { key: 'source', label: 'Source', any: 'Any source', values: function (i) { return i.origin ? [i.origin] : []; }, display: function (v) { return SOURCE_LABELS[v] || v; } }
+    ];
+    var CHEVRON = '<svg class="arc-dd-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>';
+    var ICON_PREV = '<svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>';
+    var ICON_NEXT = '<svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg>';
 
-    /* ── Constants ── */
-    const CONTENT_FILES = ['research', 'essays', 'legal', 'policy', 'reports', 'articles'];
-    const TYPE_LABELS = { research:'Research Paper', essay:'Essay', legal:'Legal Analysis', policy:'Policy Proposal', report:'Report', article:'Article' };
-    const TYPE_PAGE = { research:'/research', essay:'/essays', legal:'/legal', policy:'/policy', report:'/reports', article:'/articles' };
-    const TYPE_ORDER = ['research','policy','legal','essay','article','report'];
-    const TYPE_LABELS_PLURAL = { research:'Research Papers', essay:'Essays', legal:'Legal Analyses', policy:'Policy Proposals', report:'Reports', article:'Articles' };
-    let allEntries = [], currentTopic = null, allTopics = [], matchedPieces = [], activeAudience = null;
+    var app = document.getElementById('canonApp');
+    var listEl = document.getElementById('canonList'), stats = document.getElementById('canonStats');
+    var panelEl = document.getElementById('canonPanel'), pathEl = document.getElementById('arcPath');
+    var input = document.getElementById('canonQuery'), sortEl = document.getElementById('arcSort');
+    var facetsEl = document.getElementById('arcFacets'), advEl = document.getElementById('arcAdvanced'), advBtn = document.getElementById('arcAdvToggle');
 
-    async function loadAllContent() {
-      const entries = [];
-      for (const file of CONTENT_FILES) {
-        try { const res = await fetch(`content/${file}.json`); if (!res.ok) continue; const data = await res.json(); if (data.entries) data.entries.forEach(e => entries.push(e)); } catch(e) {}
+    var params = new URLSearchParams(location.search);
+    var topicId = params.get('t');
+    if (!topicId) { location.href = '/corpus'; return; }
+
+    var topic = null, items = [], guided = [];   // guided: [{key, label, description, steps:[{item, note}]}]
+    var state = { q: params.get('q') || '', view: params.get('view') === 'cards' ? 'cards' : 'list', sort: params.get('sort') || '',
+                  path: params.get('path') || '', filters: {}, advanced: false, page: Math.max(1, parseInt(params.get('page'), 10) || 1) };
+    FACETS.forEach(function (f) { if (params.get(f.key)) { state.filters[f.key] = params.get(f.key); state.advanced = true; } });
+    input.value = state.q;
+
+    function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+    function fmtMonth(d) { var t = d ? Date.parse(d + 'T00:00:00') : NaN; return isNaN(t) ? (d || '') : new Date(t).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }); }
+    function snippet(text, n) { text = String(text || '').replace(/\s+/g, ' ').trim(); return text.length > n ? text.slice(0, n).replace(/\s+\S*$/, '') + ' …' : text; }
+
+    // where a piece leads: same rules as the category pages, falling back to its source or category page
+    function destination(e, page) {
+      if (page === 'essays.html' && e.origin === 'original' && e.body) return { url: page + '#' + e.id, external: false };
+      if (e.origin === 'via' && e.original_url) return { url: e.original_url, external: true };
+      if (e.origin === 'original' && e.document_url) return { url: e.document_url, external: false };
+      if (e.original_url) return { url: e.original_url, external: true };
+      return { url: page, external: false };
+    }
+    function normalize(e, page, rank) {
+      var subtype = e.document_type || e.analysis_type || e.report_type || '';
+      return { id: e.id, type: e.type, title: e.title || 'Untitled', text: e.abstract || e.preview || e.subtitle || '',
+               date: e.date || '', time: e.date ? (Date.parse(e.date + 'T00:00:00') || 0) : 0, year: e.date ? String(e.date).slice(0, 4) : '',
+               added: e.date_added || '', rank: rank, subtype: subtype, origin: e.origin || '', publisher: e.publisher || '',
+               tags: e.tags || [], fields: e.fields || [], dest: destination(e, page) };
+    }
+    function matches(t, e) {
+      var tags = (t.match_tags || []).map(function (x) { return x.toLowerCase(); });
+      var fields = (t.match_fields || []).map(function (x) { return x.toLowerCase(); });
+      var et = (e.tags || []).map(function (x) { return x.toLowerCase(); });
+      var ef = (e.fields || []).map(function (x) { return x.toLowerCase(); });
+      return tags.some(function (mt) { return et.some(function (x) { return x.indexOf(mt) !== -1 || mt.indexOf(x) !== -1; }); }) ||
+             fields.some(function (mf) { return ef.indexOf(mf) !== -1; });
+    }
+
+    // ── search, filters, sort ──
+    function words() { return state.q.toLowerCase().split(/\s+/).filter(Boolean); }
+    function score(it, ws) {
+      if (!ws.length) return 1;
+      var title = it.title.toLowerCase();
+      var hay = [title, it.text, it.publisher, it.tags.join(' '), it.fields.join(' '), it.note || ''].join(' ').toLowerCase();
+      if (!ws.every(function (w) { return hay.indexOf(w) !== -1; })) return 0;
+      return 1 + ws.filter(function (w) { return title.indexOf(w) !== -1; }).length * 2;
+    }
+    function passes(it, skip) {
+      return FACETS.every(function (f) { return f.key === skip || !state.filters[f.key] || f.values(it).indexOf(state.filters[f.key]) !== -1; });
+    }
+    function currentPath() { for (var i = 0; i < guided.length; i++) if (guided[i].key === state.path) return guided[i]; return null; }
+    function effectiveSort() {
+      var s = state.sort || (state.q ? 'relevance' : (guided.length ? 'path' : 'newest'));
+      if (s === 'path' && !currentPath()) s = 'newest';
+      if (s === 'relevance' && !state.q) s = guided.length ? 'path' : 'newest';
+      return SORTS[s] ? s : 'newest';
+    }
+    // reading order: the selected path's steps first, then the rest of the canon, newest first
+    function ordered(list) {
+      var s = effectiveSort(), ws = words();
+      var byDate = function (a, b) { return b.time - a.time || a.title.localeCompare(b.title); };
+      if (s === 'path') {
+        var steps = currentPath().steps, pos = {};
+        steps.forEach(function (st, i) { pos[st.item.id] = i; });
+        var inPath = list.filter(function (it) { return it.id in pos; }).sort(function (a, b) { return pos[a.id] - pos[b.id]; });
+        var rest = list.filter(function (it) { return !(it.id in pos); }).sort(byDate);
+        return inPath.concat(rest);
       }
-      return entries;
-    }
-    function matchEntries(topic, entries) {
-      const matchTags = (topic.match_tags || []).map(t => t.toLowerCase());
-      const matchFields = (topic.match_fields || []).map(f => f.toLowerCase());
-      return entries.filter(entry => {
-        const entryTags = (entry.tags || []).map(t => t.toLowerCase());
-        const entryFields = (entry.fields || []).map(f => f.toLowerCase());
-        return matchTags.some(mt => entryTags.some(et => et.includes(mt) || mt.includes(et))) || matchFields.some(mf => entryFields.includes(mf));
-      });
-    }
-    function getEntryById(id) { return allEntries.find(e => e.id === id); }
-    function formatDate(dateStr) { if (!dateStr) return ''; const d = new Date(dateStr); if (isNaN(d)) return dateStr; return d.toLocaleDateString('en-US', { month:'short', year:'numeric' }); }
-    function getLink(entry) { return entry.original_url || TYPE_PAGE[entry.type] || '#'; }
-
-    function renderAudienceTabs() {
-      const container = document.getElementById('audience-tabs');
-      const paths = currentTopic.reading_paths || {};
-      const audiences = Object.keys(paths);
-      container.innerHTML = '';
-      audiences.forEach((key, i) => {
-        const path = paths[key];
-        const btn = document.createElement('button');
-        btn.className = 'audience-tab' + (i === 0 ? ' active' : '');
-        btn.textContent = path.label;
-        btn.addEventListener('click', () => {
-          container.querySelectorAll('.audience-tab').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          activeAudience = key;
-          renderReadingPath();
-        });
-        container.appendChild(btn);
-      });
-      if (audiences.length > 0) { activeAudience = audiences[0]; renderReadingPath(); }
-    }
-
-    function renderReadingPath() {
-      const path = currentTopic.reading_paths[activeAudience];
-      if (!path) return;
-      document.getElementById('path-description').textContent = path.description;
-      const container = document.getElementById('reading-sequence');
-      container.innerHTML = '';
-      const stepLabels = ['Start here','Then read','Then read','Then read','Then read','Then read','Then read'];
-      path.sequence.forEach((item, i) => {
-        const entry = getEntryById(item.id);
-        if (!entry) return;
-        const link = getLink(entry);
-        const div = document.createElement('div');
-        div.className = 'sequence-item';
-        div.onclick = () => { if (link !== '#') window.open(link, '_blank'); };
-        div.innerHTML = `
-          <div class="sequence-step-label">${stepLabels[i] || 'Then read'}</div>
-          <div class="sequence-title">${entry.title}</div>
-          <div class="sequence-note">${item.note || ''}</div>
-          <div class="sequence-meta">
-            <span class="sequence-type">${TYPE_LABELS[entry.type] || entry.type}</span>
-            ${entry.publisher ? `<span class="sequence-publisher">· ${entry.publisher}</span>` : ''}
-          </div>`;
-        container.appendChild(div);
+      return list.slice().sort(function (a, b) {
+        if (s === 'relevance') return score(b, ws) - score(a, ws) || byDate(a, b);
+        if (s === 'oldest') return (a.time || Infinity) - (b.time || Infinity) || a.title.localeCompare(b.title);
+        return byDate(a, b);
       });
     }
 
-    function renderPieces() {
-      const container = document.getElementById('pieces-list');
-      container.innerHTML = '';
+    // ── rendering ──
+    function titleLink(it, cls) {
+      return '<a class="' + cls + '" href="' + esc(it.dest.url) + '"' + (it.dest.external ? ' target="_blank" rel="noopener"' : '') + '>' + esc(it.title) + '</a>';
+    }
+    function bodyLink(it, cls, html) {
+      return '<a class="' + cls + ' arc-body-link" href="' + esc(it.dest.url) + '" tabindex="-1"' + (it.dest.external ? ' target="_blank" rel="noopener"' : '') + '>' + html + '</a>';
+    }
+    function metaLine(it) {
+      var bits = [];
+      if (it.publisher || it.origin === 'original') bits.push('<span class="arc-pub">' + esc(it.origin === 'original' ? 'Phronesis' : it.publisher) + '</span>');
+      if (it.date) bits.push(esc(fmtMonth(it.date)));
+      bits.push(esc(TYPES[it.type] ? TYPES[it.type][0] : it.type));
+      return bits.join('<span class="arc-sep">&middot;</span>');
+    }
+    function stepInfo(it) {
+      var p = effectiveSort() === 'path' ? currentPath() : null;
+      if (!p) return null;
+      for (var i = 0; i < p.steps.length; i++) if (p.steps[i].item.id === it.id) return { n: i + 1, of: p.steps.length, note: p.steps[i].note };
+      return null;
+    }
+    function stepLabel(st) { return (st.n === 1 ? 'Start here' : 'Then read') + '<span class="arc-step-n">' + st.n + ' of ' + st.of + '</span>'; }
+    function rowHTML(it) {
+      var st = stepInfo(it);
+      return '<article class="arc-result' + (st ? ' arc-result--step' : '') + '">' +
+        (st ? '<span class="arc-step">' + stepLabel(st) + '</span>' : '') +
+        titleLink(it, 'arc-result-title') +
+        '<div class="arc-meta">' + metaLine(it) + (it.origin === 'original' ? '<span class="arc-badge">Original</span>' : '') + '</div>' +
+        (st && st.note ? bodyLink(it, 'arc-snippet arc-step-note', esc(st.note)) : (it.text ? bodyLink(it, 'arc-snippet', esc(snippet(it.text, 240))) : '')) +
+        (it.tags.length ? '<div class="arc-tags">' + it.tags.slice(0, 4).map(function (t) { return '<button type="button" class="arc-tag" data-tag="' + esc(t) + '">' + esc(t) + '</button>'; }).join('') + '</div>' : '') +
+      '</article>';
+    }
+    function cardHTML(it) {
+      var st = stepInfo(it);
+      var chips = (st ? '<span class="arc-chip arc-chip--step">' + (st.n === 1 ? 'Start here' : 'Step ' + st.n) + '</span>' : '') +
+        '<span class="arc-chip arc-chip--accent">' + esc(TYPES[it.type] ? TYPES[it.type][0] : it.type) + '</span>' +
+        (it.origin === 'original' ? '<span class="arc-chip arc-chip--accent">Original</span>' : '');
+      var source = it.origin === 'original' ? 'Phronesis' : (it.publisher ? 'Via ' + it.publisher : '');
+      return '<article class="arc-card">' +
+        '<div class="arc-card-chips">' + chips + '</div>' +
+        titleLink(it, 'arc-card-title') +
+        bodyLink(it, 'arc-card-text', esc(snippet(st && st.note ? st.note : it.text, 200))) +
+        '<div class="arc-card-foot"><span>' + esc(fmtMonth(it.date)) + '</span>' + (source ? '<span class="arc-card-src">' + esc(source) + '</span>' : '') + '</div>' +
+      '</article>';
+    }
+    function pagerHTML(total, pages) {
+      if (pages <= 1) return '';
+      var size = PAGE_SIZE[state.view], first = (state.page - 1) * size + 1, last = Math.min(total, state.page * size);
+      return '<div class="arc-pager" role="navigation" aria-label="Result pages">' +
+        '<span class="arc-pager-range">' + first + '–' + last + ' of ' + total + '</span>' +
+        '<button type="button" class="arc-pager-btn" data-page="' + (state.page - 1) + '" aria-label="Previous page"' + (state.page <= 1 ? ' disabled' : '') + '>' + ICON_PREV + '</button>' +
+        '<button type="button" class="arc-pager-btn" data-page="' + (state.page + 1) + '" aria-label="Next page"' + (state.page >= pages ? ' disabled' : '') + '>' + ICON_NEXT + '</button>' +
+      '</div>';
+    }
+    function dd(label, opts) {
+      return '<div class="arc-dd"><button type="button" class="arc-dd-btn" aria-haspopup="true" aria-expanded="false"><span class="arc-dd-label">' + label + '</span>' + CHEVRON + '</button>' +
+        '<div class="arc-dd-menu" role="menu">' + opts + '</div></div>';
+    }
+    function renderControls(matched) {
+      // reading path picker: only perspectives that have steps
+      var p = currentPath();
+      pathEl.innerHTML = guided.length ? dd('Path: ' + esc(p ? p.label : 'None'),
+        guided.map(function (g) { return '<button type="button" class="arc-dd-opt' + (p && p.key === g.key ? ' selected' : '') + '" data-path="' + esc(g.key) + '">' + esc(g.label) + '<span class="arc-dd-n">' + g.steps.length + '</span></button>'; }).join('')) : '';
 
-      const sorted = matchedPieces.slice().sort((a, b) => {
-        if (!a.date && !b.date) return 0; if (!a.date) return 1; if (!b.date) return -1;
-        return new Date(b.date) - new Date(a.date);
+      var s = effectiveSort();
+      sortEl.innerHTML = dd('Sort: ' + SORTS[s], Object.keys(SORTS).filter(function (k) {
+        return (k !== 'relevance' || state.q) && (k !== 'path' || currentPath());
+      }).map(function (k) { return '<button type="button" class="arc-dd-opt' + (s === k ? ' selected' : '') + '" data-sort="' + k + '">' + SORTS[k] + '</button>'; }).join(''));
+
+      var html = FACETS.map(function (f) {
+        var counts = {};
+        matched.filter(function (it) { return passes(it, f.key); }).forEach(function (it) { f.values(it).forEach(function (v) { counts[v] = (counts[v] || 0) + 1; }); });
+        var sel = state.filters[f.key];
+        if (sel && !counts[sel]) counts[sel] = 0;
+        var keys = Object.keys(counts);
+        if (f.order) keys = f.order.filter(function (k) { return k in counts; });
+        else keys.sort(function (a, b) { return f.desc ? (b < a ? -1 : b > a ? 1 : 0) : a.localeCompare(b); });
+        var disp = function (v) { return f.display ? f.display(v) : v; };
+        return '<div class="arc-dd' + (sel ? ' is-set' : '') + '"><button type="button" class="arc-dd-btn" aria-haspopup="true" aria-expanded="false" title="' + esc(f.label) + '"><span class="arc-dd-label">' + esc(sel ? disp(sel) : f.label) + '</span>' + CHEVRON + '</button>' +
+          '<div class="arc-dd-menu" role="menu"><button type="button" class="arc-dd-opt' + (!sel ? ' selected' : '') + '" data-facet="' + f.key + '" data-value="">' + esc(f.any) + '</button>' +
+          keys.map(function (v) { return '<button type="button" class="arc-dd-opt' + (sel === v ? ' selected' : '') + '" data-facet="' + f.key + '" data-value="' + esc(v) + '"><span>' + esc(disp(v)) + '</span><span class="arc-dd-n">' + counts[v] + '</span></button>'; }).join('') +
+          '</div></div>';
+      }).join('');
+      var anySet = Object.keys(state.filters).some(function (k) { return state.filters[k]; });
+      if (anySet) html += '<button type="button" class="arc-clear" data-clear="1">Clear filters</button>';
+      facetsEl.innerHTML = html;
+      advEl.hidden = !state.advanced;
+      advBtn.setAttribute('aria-expanded', state.advanced ? 'true' : 'false');
+      advBtn.classList.toggle('open', state.advanced);
+      advBtn.classList.toggle('is-set', anySet);
+    }
+    function miniCard(kicker, linkHTML, meta, src) {
+      return '<article class="arc-mini">' + (kicker ? '<span class="arc-mini-kicker">' + esc(kicker) + '</span>' : '') + linkHTML +
+        (meta ? '<span class="arc-mini-meta">' + esc(meta) + '</span>' : '') + (src ? '<span class="arc-mini-src">' + esc(src) + '</span>' : '') + '</article>';
+    }
+    function renderPanel(related) {
+      // newest additions first: date_added when recorded, otherwise position in the content files
+      var recent = items.slice().sort(function (a, b) {
+        return (b.added || '').localeCompare(a.added || '') || a.rank - b.rank;
+      }).slice(0, RECENT_COUNT);
+      var html = '';
+      if (recent.length) {
+        var lead = recent[0];
+        html += '<div class="arc-panel-label">Recently added</div><div class="arc-spot">' + titleLink(lead, 'arc-spot-title') +
+          '<div class="arc-meta">' + metaLine(lead) + '</div>' +
+          (lead.text ? bodyLink(lead, 'arc-spot-text', esc(snippet(lead.text, 320))) : '') + '</div>';
+        if (recent.length > 1) html += '<div class="arc-mini-grid">' + recent.slice(1).map(function (it) {
+          return miniCard(TYPES[it.type] ? TYPES[it.type][0] : '', titleLink(it, 'arc-mini-title'), fmtMonth(it.date), it.origin === 'original' ? 'Phronesis' : it.publisher);
+        }).join('') + '</div>';
+      }
+      if (related.length) {
+        html += '<div class="arc-panel-label arc-panel-label--next">Related canons</div><div class="arc-mini-grid">' + related.map(function (r) {
+          return miniCard('Canon', '<a class="arc-mini-title" href="canon.html?t=' + encodeURIComponent(r.id) + '">' + esc(r.name) + '</a>', r.count + ' pieces', '');
+        }).join('') + '</div>';
+      }
+      panelEl.innerHTML = html;
+    }
+
+    function syncURL() {
+      var p = new URLSearchParams();
+      p.set('t', topicId);
+      if (state.path && guided.length && guided[0].key !== state.path) p.set('path', state.path);
+      if (state.q) p.set('q', state.q);
+      FACETS.forEach(function (f) { if (state.filters[f.key]) p.set(f.key, state.filters[f.key]); });
+      if (state.sort) p.set('sort', state.sort);
+      if (state.view === 'cards') p.set('view', 'cards');
+      if (state.page > 1) p.set('page', String(state.page));
+      history.replaceState(null, '', location.pathname + '?' + p.toString());
+    }
+
+    function update(resetPage) {
+      if (resetPage) state.page = 1;
+      var ws = words();
+      var matched = items.filter(function (it) { return score(it, ws) > 0; });
+      var shown = ordered(matched.filter(function (it) { return passes(it); }));
+      renderControls(matched);
+      Array.prototype.forEach.call(app.querySelectorAll('.arc-view-toggle button'), function (b) {
+        var on = b.getAttribute('data-view') === state.view;
+        b.classList.toggle('active', on); b.setAttribute('aria-pressed', on ? 'true' : 'false');
       });
-      document.getElementById('pieces-count').textContent = `${sorted.length} ${sorted.length === 1 ? 'piece' : 'pieces'} in this canon`;
+      var p = effectiveSort() === 'path' ? currentPath() : null;
+      stats.textContent = shown.length + (shown.length === 1 ? ' piece' : ' pieces') + (state.q ? ' matching “' + state.q + '”' : ' in this canon') +
+        (p ? ' · ' + p.label + ' reading path, ' + p.steps.length + ' steps' : '');
+      if (!shown.length) {
+        listEl.innerHTML = '<p class="arc-empty">No pieces match.<br><button type="button" class="arc-clear" data-clear="all">Clear search and filters</button></p>';
+      } else {
+        var size = PAGE_SIZE[state.view], pages = Math.ceil(shown.length / size);
+        if (state.page > pages) state.page = pages;
+        var start = (state.page - 1) * size, page = shown.slice(start, start + size);
+        // the path's own introduction leads the first page of reading order
+        var intro = p && state.page === 1 && !state.q && p.description ? '<p class="arc-path-intro">' + esc(p.description) + '</p>' : '';
+        var body;
+        if (state.view === 'cards') {
+          body = '<div class="arc-cards">' + page.map(cardHTML).join('') + '</div>';
+        } else {
+          body = '<div class="arc-list">' + page.map(function (it, i) {
+            // label where the guided path ends and the rest of the canon begins
+            var prev = start + i > 0 ? shown[start + i - 1] : null;
+            var divider = p && prev && stepInfo(prev) && !stepInfo(it) ? '<div class="arc-panel-label arc-list-divider">More in this canon</div>' : '';
+            return divider + rowHTML(it);
+          }).join('') + '</div>';
+        }
+        listEl.innerHTML = intro + body + pagerHTML(shown.length, pages);
+      }
+      syncURL();
+    }
 
-      const expandBtn = document.getElementById('expand-all-btn');
-      const groups = TYPE_ORDER
-        .map(type => ({ type, items: sorted.filter(e => e.type === type) }))
-        .filter(g => g.items.length);
+    function closeMenus(except) {
+      Array.prototype.forEach.call(app.querySelectorAll('.arc-dd.open'), function (d) {
+        if (d === except) return;
+        d.classList.remove('open');
+        var b = d.querySelector('.arc-dd-btn'); if (b) b.setAttribute('aria-expanded', 'false');
+      });
+    }
 
-      if (!groups.length) {
-        container.innerHTML = '<p style="font-family:var(--serif);font-size:1rem;color:var(--ink-3);padding:1.5rem 0;">No additional pieces are matched to this canon yet.</p>';
-        if (expandBtn) expandBtn.style.display = 'none';
+    var debounce;
+    input.addEventListener('input', function () {
+      clearTimeout(debounce);
+      debounce = setTimeout(function () { state.q = input.value.trim(); update(true); }, 120);
+    });
+    document.getElementById('canonSearch').addEventListener('submit', function (e) {
+      e.preventDefault(); clearTimeout(debounce); state.q = input.value.trim(); update(true);
+    });
+    app.addEventListener('click', function (e) {
+      var t = e.target.closest('button');
+      if (!t || !app.contains(t)) return;
+      if (t.classList.contains('arc-dd-btn')) {
+        var d = t.parentNode, open = !d.classList.contains('open');
+        closeMenus(d); d.classList.toggle('open', open); t.setAttribute('aria-expanded', open ? 'true' : 'false');
         return;
       }
-      if (expandBtn) expandBtn.style.display = '';
+      if (t.hasAttribute('data-path')) { state.path = t.getAttribute('data-path'); state.sort = ''; closeMenus(); update(true); return; }
+      if (t.hasAttribute('data-facet')) {
+        var v = t.getAttribute('data-value');
+        if (v) state.filters[t.getAttribute('data-facet')] = v; else delete state.filters[t.getAttribute('data-facet')];
+        closeMenus(); update(true); return;
+      }
+      if (t.hasAttribute('data-sort')) { state.sort = t.getAttribute('data-sort'); closeMenus(); update(true); return; }
+      if (t.hasAttribute('data-clear')) {
+        state.filters = {};
+        if (t.getAttribute('data-clear') === 'all') { state.q = ''; input.value = ''; }
+        update(true); return;
+      }
+      if (t.hasAttribute('data-view')) { state.view = t.getAttribute('data-view'); update(true); return; }
+      if (t.hasAttribute('data-page')) {
+        state.page = parseInt(t.getAttribute('data-page'), 10) || 1; update();
+        window.scrollTo({ top: listEl.getBoundingClientRect().top + window.pageYOffset - 120, behavior: 'smooth' });
+        return;
+      }
+      if (t.hasAttribute('data-tag')) { state.q = t.getAttribute('data-tag'); input.value = state.q; update(true); return; }
+      if (t.id === 'arcAdvToggle') { state.advanced = !state.advanced; update(); }
+    });
+    document.addEventListener('click', function (e) { if (!e.target.closest || !e.target.closest('.arc-dd')) closeMenus(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenus(); });
 
-      groups.forEach(({ type, items }) => {
-        const group = document.createElement('div');
-        group.className = 'type-group';
+    Promise.all([
+      fetch('/content/topics.json').then(function (r) { return r.json(); }),
+      Promise.all(FILES.map(function (f) {
+        return fetch('/content/' + f[0] + '.json').then(function (r) { return r.ok ? r.json() : { entries: [] }; })
+          .then(function (d) { return (d.entries || []).map(function (e, i) { return { e: e, page: f[2], rank: i }; }); })
+          .catch(function () { return []; });
+      }))
+    ]).then(function (res) {
+      var topics = res[0].topics || [];
+      var all = [].concat.apply([], res[1]).filter(function (x) { return !x.e.placeholder; });
+      topic = topics.filter(function (t) { return t.id === topicId; })[0];
+      if (!topic) { location.href = '/corpus'; return; }
+      document.title = topic.name + ' — Phronesis';
+      document.getElementById('canonTitle').textContent = topic.name;
+      document.getElementById('canonDesc').textContent = topic.description || '';
 
-        const header = document.createElement('button');
-        header.className = 'type-group-header';
-        header.setAttribute('aria-expanded', 'false');
-        header.innerHTML = `
-          <span class="type-group-name">${TYPE_LABELS_PLURAL[type] || TYPE_LABELS[type] || type} (${items.length})</span>
-          <span class="type-group-chevron">▾</span>`;
-        header.addEventListener('click', () => {
-          const open = group.classList.toggle('open');
-          header.setAttribute('aria-expanded', open ? 'true' : 'false');
-          syncExpandAllLabel();
-        });
-        group.appendChild(header);
+      var byId = {};
+      all.forEach(function (x) { byId[x.e.id] = x; });
+      items = all.filter(function (x) { return matches(topic, x.e); }).map(function (x) { return normalize(x.e, x.page, x.rank); });
+      var have = {}; items.forEach(function (it) { have[it.id] = it; });
 
-        const body = document.createElement('div');
-        body.className = 'type-group-body';
-        items.forEach(entry => {
-          const link = getLink(entry);
-          const div = document.createElement('div');
-          div.className = 'piece-item';
-          div.onclick = () => { if (link !== '#') window.open(link, '_blank'); };
-          div.innerHTML = `
-            <div class="piece-date">${formatDate(entry.date)}</div>
-            <div>
-              <div class="piece-title">${entry.title}</div>
-              <div class="piece-subtitle">${entry.subtitle || (entry.abstract ? entry.abstract.substring(0, 120) + '…' : '')}</div>
-            </div>
-            <span class="piece-tag">${TYPE_LABELS[entry.type] || entry.type}</span>`;
-          body.appendChild(div);
-        });
-        group.appendChild(body);
+      var paths = topic.reading_paths || {};
+      guided = Object.keys(paths).map(function (k) {
+        var steps = (paths[k].sequence || []).map(function (s) {
+          var x = byId[s.id];
+          if (!x) return null;
+          var it = have[s.id];
+          if (!it) { it = normalize(x.e, x.page, x.rank); have[s.id] = it; items.push(it); }   // a step outside the tag match still belongs to the canon
+          return { item: it, note: s.note || '' };
+        }).filter(Boolean);
+        return { key: k, label: paths[k].label || k, description: paths[k].description || '', steps: steps };
+      }).filter(function (g) { return g.steps.length; });
+      if (!guided.some(function (g) { return g.key === state.path; })) state.path = guided.length ? guided[0].key : '';
 
-        container.appendChild(group);
-      });
+      // related canons: the most overlap in pieces
+      var ids = {}; items.forEach(function (it) { ids[it.id] = true; });
+      var related = topics.filter(function (t) { return t.id !== topic.id; }).map(function (t) {
+        var m = all.filter(function (x) { return matches(t, x.e); });
+        return { id: t.id, name: t.name, count: m.length, overlap: m.filter(function (x) { return ids[x.e.id]; }).length };
+      }).sort(function (a, b) { return b.overlap - a.overlap; }).slice(0, 4);   // four fill the two-column grid
 
-      syncExpandAllLabel();
-    }
-
-    function syncExpandAllLabel() {
-      const groups = document.querySelectorAll('.type-group');
-      const btn = document.getElementById('expand-all-btn');
-      if (!btn) return;
-      const allOpen = groups.length > 0 && Array.from(groups).every(g => g.classList.contains('open'));
-      btn.textContent = allOpen ? 'Collapse all' : 'Expand all';
-    }
-
-    function toggleAll() {
-      const groups = document.querySelectorAll('.type-group');
-      const allOpen = groups.length > 0 && Array.from(groups).every(g => g.classList.contains('open'));
-      groups.forEach(g => {
-        g.classList.toggle('open', !allOpen);
-        const h = g.querySelector('.type-group-header');
-        if (h) h.setAttribute('aria-expanded', (!allOpen).toString());
-      });
-      syncExpandAllLabel();
-    }
-
-    function renderRelatedCanons() {
-      const container = document.getElementById('related-grid');
-      container.innerHTML = '';
-      const others = allTopics.filter(t => t.id !== currentTopic.id);
-      const currentIds = new Set(matchedPieces.map(e => e.id));
-      const scored = others.map(t => {
-        const tMatched = matchEntries(t, allEntries);
-        const overlap = tMatched.filter(e => currentIds.has(e.id)).length;
-        return { topic: t, overlap, count: tMatched.length };
-      }).sort((a, b) => b.overlap - a.overlap).slice(0, 3);
-      scored.forEach(({ topic, count }) => {
-        const card = document.createElement('a');
-        card.href = `canon.html?t=${topic.id}`;
-        card.className = 'related-card';
-        card.innerHTML = `<h3 class="serif">${topic.name}</h3><p>${count} pieces</p>`;
-        container.appendChild(card);
-      });
-    }
-
-    async function init() {
-      const params = new URLSearchParams(window.location.search);
-      const topicId = params.get('t');
-      if (!topicId) { window.location.href = 'corpus.html'; return; }
-      const [topicsRes, entries] = await Promise.all([fetch('content/topics.json').then(r => r.json()), loadAllContent()]);
-      allEntries = entries;
-      allTopics = topicsRes.topics || [];
-      currentTopic = allTopics.find(t => t.id === topicId);
-      if (!currentTopic) { window.location.href = 'corpus.html'; return; }
-      document.title = `${currentTopic.name} — Phronesis`;
-      document.getElementById('canon-title').textContent = currentTopic.name;
-      document.getElementById('canon-desc').textContent = currentTopic.description;
-      matchedPieces = matchEntries(currentTopic, allEntries);
-      renderAudienceTabs(); renderPieces(); renderRelatedCanons();
-      const expandBtn = document.getElementById('expand-all-btn');
-      if (expandBtn) expandBtn.addEventListener('click', toggleAll);
-    }
-    init();
+      renderPanel(related);
+      update();
+    }).catch(function () { listEl.innerHTML = '<p class="arc-empty">This canon could not be loaded.</p>'; });
+  })();
   </script>
 
   <!-- Newsletter Subscription Script -->
