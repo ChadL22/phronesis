@@ -940,3 +940,8 @@ a.arc-kicker:hover { color: var(--terracotta); }
 .arc-tag--static:hover { color: var(--accent); text-decoration: none; }
 .arc-spot-sublabel { margin: 1.1rem 0 0.4rem; }
 .arc-spot .arc-spot-sublabel + .arc-spot-text { margin-top: 0; }
+
+/* Canons page: "Recently updated" marker, in the terracotta used for the
+   site's spotlight boxes so it reads as a flag, not a category */
+.arc-badge--recent { color: var(--terracotta); border-color: var(--terracotta); }
+.arc-chip--recent { color: var(--terracotta); border-color: var(--terracotta); }

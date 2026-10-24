@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="shared.css?v=20261021c" /><link rel="stylesheet" href="chat.css" />
-  <link rel="stylesheet" href="archive.css?v=20261024m" />
+  <link rel="stylesheet" href="archive.css?v=20261024n" />
 </head>
 <body>
   <header class="masthead">
@@ -72,13 +72,22 @@
     <!-- same shell as the category pages: title, description and the
        Categories list on the left; canons in the centre; how reading paths
        work on the right. Canon rows are filled in from /content/topics.json -->
-  <div class="arc arc--canons">
+  <div class="arc arc--canons" id="canonsApp">
     <div class="arc-tools">
+      <div class="arc-controls">
+        <button type="button" class="arc-adv-toggle" id="arcAdvToggle" aria-expanded="false" aria-controls="arcAdvanced">Advanced search<svg class="arc-dd-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="arc-sort" id="arcSort"></div>
+      </div>
       <form class="arc-search" role="search" id="canonSearch">
         <input type="search" id="canonQuery" autocomplete="off" placeholder="Search canons" aria-label="Search canons">
         <button type="submit" class="arc-search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
       </form>
+      <div class="arc-view-toggle" role="group" aria-label="View">
+        <button type="button" data-view="list" title="List view" aria-label="List view"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        <button type="button" data-view="cards" title="Card view" aria-label="Card view"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></button>
+      </div>
     </div>
+    <div class="arc-advanced" id="arcAdvanced" hidden><div class="arc-facets" id="arcFacets"></div></div>
     <div class="arc-side">
       <header class="arc-head">
         <h1 class="arc-title">Canons</h1>
@@ -103,7 +112,7 @@
     </div>
     <div class="arc-results">
       <p class="arc-stats" id="canonStats">&nbsp;</p>
-      <div class="arc-list" id="canonList"><p class="arc-empty">Loading&hellip;</p></div>
+      <div id="canonList"><p class="arc-empty">Loading&hellip;</p></div>
     </div>
     <aside class="arc-panel" aria-label="Reading paths">
       <div class="arc-panel-label">Reading paths</div>
@@ -135,10 +144,11 @@
 
   <script src="masthead.js" defer></script>
   <script>
+  // Canons index: same toolbar as the category pages (advanced search,
+  // sort, search, list/card view), built from /content/topics.json.
   (function () {
     var FILES = ['research', 'policy', 'legal', 'essays', 'articles', 'reports'];
-    // entry.type -> label, in the order the categories appear on the site
-    var TYPES = [
+    var TYPES = [   // entry.type, singular, plural
       ['research', 'Research Paper', 'Research Papers'],
       ['policy', 'Policy Artifact', 'Policy Artifacts'],
       ['legal', 'Legal Analysis', 'Legal Analyses'],
@@ -146,12 +156,39 @@
       ['article', 'Article', 'Articles'],
       ['report', 'Report', 'Reports']
     ];
-    var list = document.getElementById('canonList');
+    var TYPE_PLURAL = {}; TYPES.forEach(function (t) { TYPE_PLURAL[t[0]] = t[2]; });
+    var RECENT_DAYS = 30;   // canons updated within this many days get the "Recently updated" badge
+    var SORTS = { relevance: 'Relevance', updated: 'Recently updated', size: 'Most pieces', name: 'A–Z' };
+    var FACETS = [
+      { key: 'type', label: 'Includes', any: 'Any publication type', values: function (c) { return c.types; }, display: function (v) { return TYPE_PLURAL[v] || v; } },
+      { key: 'path', label: 'Guided path', any: 'Any perspective', values: function (c) { return c.guided; } }
+    ];
+    var CHEVRON = '<svg class="arc-dd-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>';
+
+    var app = document.getElementById('canonsApp');
+    var listEl = document.getElementById('canonList');
     var stats = document.getElementById('canonStats');
     var input = document.getElementById('canonQuery');
+    var sortEl = document.getElementById('arcSort');
+    var facetsEl = document.getElementById('arcFacets');
+    var advEl = document.getElementById('arcAdvanced');
+    var advBtn = document.getElementById('arcAdvToggle');
     var canons = [];
 
+    var params = new URLSearchParams(location.search);
+    var state = {
+      q: params.get('q') || '',
+      view: params.get('view') === 'cards' ? 'cards' : 'list',
+      sort: SORTS[params.get('sort')] ? params.get('sort') : 'updated',
+      filters: {},
+      advanced: false
+    };
+    FACETS.forEach(function (f) { if (params.get(f.key)) { state.filters[f.key] = params.get(f.key); state.advanced = true; } });
+    input.value = state.q;
+
     function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+    function parseDay(d) { var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(d || ''); return m ? new Date(+m[1], +m[2] - 1, +m[3]) : null; }
+    function fmtDay(d) { return d ? d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : ''; }
 
     function loadEntries() {
       return Promise.all(FILES.map(function (f) {
@@ -161,63 +198,203 @@
     }
 
     // same matching rule the canon pages use: a tag or field overlap
-    function countByType(topic, entries) {
+    function matches(topic, e) {
       var tags = (topic.match_tags || []).map(function (t) { return t.toLowerCase(); });
       var fields = (topic.match_fields || []).map(function (f) { return f.toLowerCase(); });
-      var counts = {};
-      entries.forEach(function (e) {
-        var et = (e.tags || []).map(function (t) { return t.toLowerCase(); });
-        var ef = (e.fields || []).map(function (f) { return f.toLowerCase(); });
-        var hit = tags.some(function (mt) { return et.some(function (t) { return t.indexOf(mt) !== -1 || mt.indexOf(t) !== -1; }); }) ||
-                  fields.some(function (mf) { return ef.indexOf(mf) !== -1; });
-        if (hit) counts[e.type || 'other'] = (counts[e.type || 'other'] || 0) + 1;
-      });
-      return counts;
+      var et = (e.tags || []).map(function (t) { return t.toLowerCase(); });
+      var ef = (e.fields || []).map(function (f) { return f.toLowerCase(); });
+      return tags.some(function (mt) { return et.some(function (t) { return t.indexOf(mt) !== -1 || mt.indexOf(t) !== -1; }); }) ||
+             fields.some(function (mf) { return ef.indexOf(mf) !== -1; });
     }
 
-    function rowHTML(c) {
-      var url = 'canon.html?t=' + encodeURIComponent(c.id);
-      var tags = TYPES.filter(function (t) { return c.counts[t[0]]; }).map(function (t) {
+    function build(topic, entries) {
+      var counts = {}, latest = parseDay(topic.last_updated);
+      entries.forEach(function (e) {
+        if (e.placeholder || !matches(topic, e)) return;
+        counts[e.type || 'other'] = (counts[e.type || 'other'] || 0) + 1;
+        // last updated = the newest piece added to the canon (or the topic's own last_updated, if later)
+        var added = parseDay(e.date_added);
+        if (added && (!latest || added > latest)) latest = added;
+      });
+      var total = Object.keys(counts).reduce(function (a, k) { return a + counts[k]; }, 0);
+      var paths = topic.reading_paths || {};
+      var guided = Object.keys(paths).filter(function (k) { return (paths[k].sequence || []).length; })
+        .map(function (k) { return paths[k].label || k; });
+      var recent = latest ? (Date.now() - latest.getTime()) / 864e5 <= RECENT_DAYS : false;
+      return { id: topic.id, name: topic.name, description: topic.description || '', counts: counts, total: total,
+               types: TYPES.map(function (t) { return t[0]; }).filter(function (k) { return counts[k]; }),
+               paths: guided.length, guided: guided, updated: latest, recent: recent };   // only paths that have steps
+    }
+
+    // ── filtering, sorting ──
+    function words() { return state.q.toLowerCase().split(/\s+/).filter(Boolean); }
+    function score(c, ws) {
+      if (!ws.length) return 1;
+      var name = c.name.toLowerCase(), hay = name + ' ' + c.description.toLowerCase();
+      if (!ws.every(function (w) { return hay.indexOf(w) !== -1; })) return 0;
+      return 1 + ws.filter(function (w) { return name.indexOf(w) !== -1; }).length;
+    }
+    function passes(c, skip) {
+      return FACETS.every(function (f) { return f.key === skip || !state.filters[f.key] || f.values(c).indexOf(state.filters[f.key]) !== -1; });
+    }
+    function effectiveSort() { return state.sort === 'relevance' && !state.q ? 'updated' : state.sort; }
+    function sorted(list) {
+      var s = effectiveSort(), ws = words();
+      return list.slice().sort(function (a, b) {
+        if (s === 'relevance') return score(b, ws) - score(a, ws) || a.name.localeCompare(b.name);
+        if (s === 'size') return b.total - a.total || a.name.localeCompare(b.name);
+        if (s === 'name') return a.name.localeCompare(b.name);
+        return (b.updated ? b.updated.getTime() : 0) - (a.updated ? a.updated.getTime() : 0) || a.name.localeCompare(b.name);
+      });
+    }
+
+    // ── rendering ──
+    function url(c) { return 'canon.html?t=' + encodeURIComponent(c.id); }
+    function typeTags(c) {
+      return TYPES.filter(function (t) { return c.counts[t[0]]; }).map(function (t) {
         var n = c.counts[t[0]];
         return '<span class="arc-tag arc-tag--static">' + n + ' ' + (n === 1 ? t[1] : t[2]) + '</span>';
       }).join('');
+    }
+    function rowHTML(c) {
       return '<article class="arc-result">' +
-        '<a class="arc-result-title" href="' + url + '">' + esc(c.name) + '</a>' +
+        '<a class="arc-result-title" href="' + url(c) + '">' + esc(c.name) + '</a>' +
         '<div class="arc-meta"><span class="arc-pub">' + c.total + (c.total === 1 ? ' piece' : ' pieces') + '</span>' +
-          '<span class="arc-sep">&middot;</span>' + c.paths + (c.paths === 1 ? ' reading path' : ' reading paths') + '</div>' +
-        '<a class="arc-snippet arc-body-link" href="' + url + '" tabindex="-1">' + esc(c.description) + '</a>' +
-        (tags ? '<div class="arc-tags">' + tags + '</div>' : '') +
+          (c.paths ? '<span class="arc-sep">&middot;</span>' + c.paths + (c.paths === 1 ? ' guided reading path' : ' guided reading paths') : '') +
+          (c.updated ? '<span class="arc-sep">&middot;</span>Updated ' + esc(fmtDay(c.updated)) : '') +
+          (c.recent ? '<span class="arc-badge arc-badge--recent">Recently updated</span>' : '') + '</div>' +
+        '<a class="arc-snippet arc-body-link" href="' + url(c) + '" tabindex="-1">' + esc(c.description) + '</a>' +
+        '<div class="arc-tags">' + typeTags(c) + '</div>' +
+      '</article>';
+    }
+    function cardHTML(c) {
+      var chips = (c.recent ? '<span class="arc-chip arc-chip--recent">Recently updated</span>' : '') +
+        (c.paths ? '<span class="arc-chip">' + c.paths + (c.paths === 1 ? ' guided path' : ' guided paths') + '</span>' : '');
+      return '<article class="arc-card">' +
+        (chips ? '<div class="arc-card-chips">' + chips + '</div>' : '') +
+        '<a class="arc-card-title" href="' + url(c) + '">' + esc(c.name) + '</a>' +
+        '<a class="arc-card-text arc-body-link" href="' + url(c) + '" tabindex="-1">' + esc(c.description) + '</a>' +
+        '<div class="arc-card-foot"><span>' + (c.updated ? 'Updated ' + esc(fmtDay(c.updated)) : '') + '</span>' +
+          '<span class="arc-card-src">' + c.total + (c.total === 1 ? ' piece' : ' pieces') + '</span></div>' +
       '</article>';
     }
 
-    function render() {
-      var words = input.value.toLowerCase().split(/\s+/).filter(Boolean);
-      var shown = canons.filter(function (c) {
-        var hay = (c.name + ' ' + c.description).toLowerCase();
-        return words.every(function (w) { return hay.indexOf(w) !== -1; });
-      });
-      stats.textContent = shown.length + (shown.length === 1 ? ' canon' : ' canons') + (words.length ? ' matching \u201C' + input.value.trim() + '\u201D' : '');
-      list.innerHTML = shown.length ? shown.map(rowHTML).join('')
-        : '<p class="arc-empty">No canons match \u201C' + esc(input.value.trim()) + '\u201D.</p>';
+    function renderFacets(matched) {
+      var html = FACETS.map(function (f) {
+        var counts = {};
+        matched.filter(function (c) { return passes(c, f.key); }).forEach(function (c) {
+          f.values(c).forEach(function (v) { counts[v] = (counts[v] || 0) + 1; });
+        });
+        var sel = state.filters[f.key];
+        if (sel && !counts[sel]) counts[sel] = 0;
+        var order = f.key === 'type' ? TYPES.map(function (t) { return t[0]; }).filter(function (k) { return k in counts; })
+                                     : Object.keys(counts).sort();
+        var disp = function (v) { return f.display ? f.display(v) : v; };
+        var opts = '<button type="button" class="arc-dd-opt' + (!sel ? ' selected' : '') + '" data-facet="' + f.key + '" data-value="">' + esc(f.any) + '</button>' +
+          order.map(function (v) {
+            return '<button type="button" class="arc-dd-opt' + (sel === v ? ' selected' : '') + '" data-facet="' + f.key + '" data-value="' + esc(v) + '">' +
+              '<span>' + esc(disp(v)) + '</span><span class="arc-dd-n">' + counts[v] + '</span></button>';
+          }).join('');
+        return '<div class="arc-dd' + (sel ? ' is-set' : '') + '">' +
+          '<button type="button" class="arc-dd-btn" aria-haspopup="true" aria-expanded="false" title="' + esc(f.label) + '"><span class="arc-dd-label">' + esc(sel ? disp(sel) : f.label) + '</span>' + CHEVRON + '</button>' +
+          '<div class="arc-dd-menu" role="menu">' + opts + '</div></div>';
+      }).join('');
+      var anySet = Object.keys(state.filters).some(function (k) { return state.filters[k]; });
+      if (anySet) html += '<button type="button" class="arc-clear" data-clear="1">Clear filters</button>';
+      facetsEl.innerHTML = html;
+
+      var s = effectiveSort();
+      sortEl.innerHTML = '<div class="arc-dd"><button type="button" class="arc-dd-btn" aria-haspopup="true" aria-expanded="false">Sort: ' + SORTS[s] + CHEVRON + '</button>' +
+        '<div class="arc-dd-menu" role="menu">' + Object.keys(SORTS).filter(function (k) { return k !== 'relevance' || state.q; }).map(function (k) {
+          return '<button type="button" class="arc-dd-opt' + (s === k ? ' selected' : '') + '" data-sort="' + k + '">' + SORTS[k] + '</button>';
+        }).join('') + '</div></div>';
+
+      advEl.hidden = !state.advanced;
+      advBtn.setAttribute('aria-expanded', state.advanced ? 'true' : 'false');
+      advBtn.classList.toggle('open', state.advanced);
+      advBtn.classList.toggle('is-set', anySet);
     }
 
-    Promise.all([fetch('/content/topics.json').then(function (r) { return r.json(); }), loadEntries()]).then(function (res) {
-      var entries = res[1];
-      canons = (res[0].topics || []).map(function (t) {
-        var counts = countByType(t, entries);
-        var total = Object.keys(counts).reduce(function (a, k) { return a + counts[k]; }, 0);
-        return { id: t.id, name: t.name, description: t.description || '', counts: counts, total: total,
-                 paths: Object.keys(t.reading_paths || {}).length };
-      });
-      render();
-    }).catch(function () { list.innerHTML = '<p class="arc-empty">Canons could not be loaded.</p>'; });
+    function syncURL() {
+      var p = new URLSearchParams();
+      if (state.q) p.set('q', state.q);
+      FACETS.forEach(function (f) { if (state.filters[f.key]) p.set(f.key, state.filters[f.key]); });
+      if (state.sort !== 'updated') p.set('sort', state.sort);
+      if (state.view === 'cards') p.set('view', 'cards');
+      var qs = p.toString();
+      history.replaceState(null, '', location.pathname + (qs ? '?' + qs : ''));
+    }
 
-    input.addEventListener('input', render);
+    function update() {
+      var ws = words();
+      var matched = canons.filter(function (c) { return score(c, ws) > 0; });
+      var shown = sorted(matched.filter(function (c) { return passes(c); }));
+      renderFacets(matched);
+      Array.prototype.forEach.call(app.querySelectorAll('.arc-view-toggle button'), function (b) {
+        var on = b.getAttribute('data-view') === state.view;
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      stats.textContent = shown.length + (shown.length === 1 ? ' canon' : ' canons') + (state.q ? ' matching “' + state.q + '”' : '');
+      if (!shown.length) {
+        listEl.innerHTML = '<p class="arc-empty">No canons match.<br><button type="button" class="arc-clear" data-clear="all">Clear search and filters</button></p>';
+      } else if (state.view === 'cards') {
+        listEl.innerHTML = '<div class="arc-cards">' + shown.map(cardHTML).join('') + '</div>';
+      } else {
+        listEl.innerHTML = '<div class="arc-list">' + shown.map(rowHTML).join('') + '</div>';
+      }
+      syncURL();
+    }
+
+    function closeMenus(except) {
+      Array.prototype.forEach.call(app.querySelectorAll('.arc-dd.open'), function (dd) {
+        if (dd === except) return;
+        dd.classList.remove('open');
+        var b = dd.querySelector('.arc-dd-btn'); if (b) b.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    // ── events ──
+    var debounce;
+    input.addEventListener('input', function () {
+      clearTimeout(debounce);
+      debounce = setTimeout(function () { state.q = input.value.trim(); update(); }, 120);
+    });
     document.getElementById('canonSearch').addEventListener('submit', function (e) {
       e.preventDefault();
-      var first = list.querySelector('.arc-result-title');
-      if (first) window.location.href = first.getAttribute('href');
+      state.q = input.value.trim(); update();
+      var first = listEl.querySelector('.arc-result-title, .arc-card-title');
+      if (first && state.q) window.location.href = first.getAttribute('href');
     });
+    app.addEventListener('click', function (e) {
+      var t = e.target.closest('button');
+      if (!t || !app.contains(t)) return;
+      if (t.classList.contains('arc-dd-btn')) {
+        var dd = t.parentNode, open = !dd.classList.contains('open');
+        closeMenus(dd); dd.classList.toggle('open', open); t.setAttribute('aria-expanded', open ? 'true' : 'false');
+        return;
+      }
+      if (t.hasAttribute('data-facet')) {
+        var v = t.getAttribute('data-value');
+        if (v) state.filters[t.getAttribute('data-facet')] = v; else delete state.filters[t.getAttribute('data-facet')];
+        closeMenus(); update(); return;
+      }
+      if (t.hasAttribute('data-sort')) { state.sort = t.getAttribute('data-sort'); closeMenus(); update(); return; }
+      if (t.hasAttribute('data-clear')) {
+        state.filters = {};
+        if (t.getAttribute('data-clear') === 'all') { state.q = ''; input.value = ''; }
+        update(); return;
+      }
+      if (t.hasAttribute('data-view')) { state.view = t.getAttribute('data-view'); update(); return; }
+      if (t.id === 'arcAdvToggle') { state.advanced = !state.advanced; update(); }
+    });
+    document.addEventListener('click', function (e) { if (!e.target.closest || !e.target.closest('.arc-dd')) closeMenus(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenus(); });
+
+    Promise.all([fetch('/content/topics.json').then(function (r) { return r.json(); }), loadEntries()]).then(function (res) {
+      canons = (res[0].topics || []).map(function (t) { return build(t, res[1]); });
+      update();
+    }).catch(function () { listEl.innerHTML = '<p class="arc-empty">Canons could not be loaded.</p>'; });
   })();
   </script>
 
