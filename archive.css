@@ -845,3 +845,19 @@ a.arc-kicker:hover { color: var(--terracotta); }
   .arc-main { margin-top: 1.4rem; }
   .arc-deflist > div { grid-template-columns: 1fr; gap: 0.2rem; }
 }
+
+/* ── About page: "On this page" list in a right-hand column ──
+   Opt-in via .arc--toc-right so Subscribe, Corpus and Canon keep their layout. */
+.arc--toc-right {
+  grid-template-columns: 230px minmax(0, 1fr) 200px;
+  grid-template-areas: "side main toc";
+}
+.arc-toc-side { grid-area: toc; min-width: 0; align-self: stretch; }
+.arc--toc-right .arc-toc { margin-top: 0; }
+@media (max-width: 1100px) {
+  .arc--toc-right { grid-template-columns: 170px minmax(0, 1fr); grid-template-areas: "side main"; }
+  .arc-toc-side { display: none; }
+}
+@media (max-width: 900px) {
+  .arc--toc-right { grid-template-columns: minmax(0, 1fr); grid-template-areas: "head" "rail" "main"; }
+}
