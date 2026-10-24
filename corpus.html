@@ -157,6 +157,7 @@
       ['report', 'Report', 'Reports']
     ];
     var TYPE_PLURAL = {}; TYPES.forEach(function (t) { TYPE_PLURAL[t[0]] = t[2]; });
+    var PAGE_SIZE = { list: 4, cards: 6 };   // same page sizes as the category pages
     var RECENT_DAYS = 30;   // canons updated within this many days get the "Recently updated" badge
     var SORTS = { relevance: 'Relevance', updated: 'Recently updated', size: 'Most pieces', name: 'A–Z' };
     var FACETS = [
@@ -181,7 +182,8 @@
       view: params.get('view') === 'cards' ? 'cards' : 'list',
       sort: SORTS[params.get('sort')] ? params.get('sort') : 'updated',
       filters: {},
-      advanced: false
+      advanced: false,
+      page: Math.max(1, parseInt(params.get('page'), 10) || 1)
     };
     FACETS.forEach(function (f) { if (params.get(f.key)) { state.filters[f.key] = params.get(f.key); state.advanced = true; } });
     input.value = state.q;
@@ -321,11 +323,27 @@
       FACETS.forEach(function (f) { if (state.filters[f.key]) p.set(f.key, state.filters[f.key]); });
       if (state.sort !== 'updated') p.set('sort', state.sort);
       if (state.view === 'cards') p.set('view', 'cards');
+      if (state.page > 1) p.set('page', String(state.page));
       var qs = p.toString();
       history.replaceState(null, '', location.pathname + (qs ? '?' + qs : ''));
     }
 
-    function update() {
+    // "5–8 of 8" with previous / next arrows, as on the category pages
+    var ICON_PREV = '<svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>';
+    var ICON_NEXT = '<svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg>';
+    function pagerHTML(total, pages) {
+      if (pages <= 1) return '';
+      var size = PAGE_SIZE[state.view];
+      var first = (state.page - 1) * size + 1, last = Math.min(total, state.page * size);
+      return '<div class="arc-pager" role="navigation" aria-label="Canon pages">' +
+        '<span class="arc-pager-range">' + first + '\u2013' + last + ' of ' + total + '</span>' +
+        '<button type="button" class="arc-pager-btn" data-page="' + (state.page - 1) + '" aria-label="Previous page"' + (state.page <= 1 ? ' disabled' : '') + '>' + ICON_PREV + '</button>' +
+        '<button type="button" class="arc-pager-btn" data-page="' + (state.page + 1) + '" aria-label="Next page"' + (state.page >= pages ? ' disabled' : '') + '>' + ICON_NEXT + '</button>' +
+      '</div>';
+    }
+
+    function update(resetPage) {
+      if (resetPage) state.page = 1;
       var ws = words();
       var matched = canons.filter(function (c) { return score(c, ws) > 0; });
       var shown = sorted(matched.filter(function (c) { return passes(c); }));
@@ -338,10 +356,13 @@
       stats.textContent = shown.length + (shown.length === 1 ? ' canon' : ' canons') + (state.q ? ' matching “' + state.q + '”' : '');
       if (!shown.length) {
         listEl.innerHTML = '<p class="arc-empty">No canons match.<br><button type="button" class="arc-clear" data-clear="all">Clear search and filters</button></p>';
-      } else if (state.view === 'cards') {
-        listEl.innerHTML = '<div class="arc-cards">' + shown.map(cardHTML).join('') + '</div>';
       } else {
-        listEl.innerHTML = '<div class="arc-list">' + shown.map(rowHTML).join('') + '</div>';
+        var size = PAGE_SIZE[state.view], pages = Math.ceil(shown.length / size);
+        if (state.page > pages) state.page = pages;
+        var page = shown.slice((state.page - 1) * size, state.page * size);
+        listEl.innerHTML = (state.view === 'cards'
+          ? '<div class="arc-cards">' + page.map(cardHTML).join('') + '</div>'
+          : '<div class="arc-list">' + page.map(rowHTML).join('') + '</div>') + pagerHTML(shown.length, pages);
       }
       syncURL();
     }
@@ -358,11 +379,11 @@
     var debounce;
     input.addEventListener('input', function () {
       clearTimeout(debounce);
-      debounce = setTimeout(function () { state.q = input.value.trim(); update(); }, 120);
+      debounce = setTimeout(function () { state.q = input.value.trim(); update(true); }, 120);
     });
     document.getElementById('canonSearch').addEventListener('submit', function (e) {
       e.preventDefault();
-      state.q = input.value.trim(); update();
+      state.q = input.value.trim(); update(true);
       var first = listEl.querySelector('.arc-result-title, .arc-card-title');
       if (first && state.q) window.location.href = first.getAttribute('href');
     });
@@ -377,15 +398,21 @@
       if (t.hasAttribute('data-facet')) {
         var v = t.getAttribute('data-value');
         if (v) state.filters[t.getAttribute('data-facet')] = v; else delete state.filters[t.getAttribute('data-facet')];
-        closeMenus(); update(); return;
+        closeMenus(); update(true); return;
       }
-      if (t.hasAttribute('data-sort')) { state.sort = t.getAttribute('data-sort'); closeMenus(); update(); return; }
+      if (t.hasAttribute('data-sort')) { state.sort = t.getAttribute('data-sort'); closeMenus(); update(true); return; }
       if (t.hasAttribute('data-clear')) {
         state.filters = {};
         if (t.getAttribute('data-clear') === 'all') { state.q = ''; input.value = ''; }
-        update(); return;
+        update(true); return;
       }
-      if (t.hasAttribute('data-view')) { state.view = t.getAttribute('data-view'); update(); return; }
+      if (t.hasAttribute('data-view')) { state.view = t.getAttribute('data-view'); update(true); return; }   // page sizes differ by view
+      if (t.hasAttribute('data-page')) {
+        state.page = parseInt(t.getAttribute('data-page'), 10) || 1;
+        update();
+        window.scrollTo({ top: listEl.getBoundingClientRect().top + window.pageYOffset - 120, behavior: 'smooth' });
+        return;
+      }
       if (t.id === 'arcAdvToggle') { state.advanced = !state.advanced; update(); }
     });
     document.addEventListener('click', function (e) { if (!e.target.closest || !e.target.closest('.arc-dd')) closeMenus(); });
