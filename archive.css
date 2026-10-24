@@ -853,7 +853,8 @@ a.arc-kicker:hover { color: var(--terracotta); }
   grid-template-areas: "side main toc";
 }
 .arc-toc-side { grid-area: toc; min-width: 0; align-self: stretch; }
-.arc--toc-right .arc-toc { margin-top: 0; }
+/* nudged down so its divider sits on the same line as the rule under the first h2 */
+.arc--toc-right .arc-toc { margin-top: 1.02rem; }
 @media (max-width: 1100px) {
   .arc--toc-right { grid-template-columns: 170px minmax(0, 1fr); grid-template-areas: "side main"; }
   .arc-toc-side { display: none; }
@@ -861,14 +862,6 @@ a.arc-kicker:hover { color: var(--terracotta); }
 @media (max-width: 900px) {
   .arc--toc-right { grid-template-columns: minmax(0, 1fr); grid-template-areas: "head" "rail" "main"; }
 }
-
-/* a single people card spans the full row instead of leaving empty grid tracks */
-.arc-people--solo { grid-template-columns: 1fr; }
-
-/* About page: people cards are whole-card links, so drop the prose underline */
-.arc-prose .arc-people a { text-decoration: none; color: inherit; }
-.arc-people > a:hover h3 { color: var(--terracotta); }
-.arc-card-more { display: inline-block; margin-top: 0.8rem; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
 
 /* call-to-action box: the Subscribe page's sign-up box, laid out as text + button */
 .arc-cta { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin-top: 1.4rem; }
