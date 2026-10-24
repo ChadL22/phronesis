@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About — Phronesis</title>
   <link rel="stylesheet" href="shared.css?v=20261021c" />
-  <link rel="stylesheet" href="archive.css?v=20261024d" />
+  <link rel="stylesheet" href="archive.css?v=20261024e" />
 </head>
 <body>
   <header class="masthead">
@@ -38,9 +38,6 @@
   </div>
 
   <div class="nav-right">
-    <button class="icon-btn" id="searchIconBtn" aria-label="Search">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    </button>
     <button class="icon-btn hamburger-btn" id="hamburgerBtn" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -59,24 +56,11 @@
   </div>
 </header>
 
-<div class="search-overlay" id="searchOverlay">
-  <div class="search-panel">
-    <div class="row">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input id="searchInput" type="text" placeholder="Search papers, memos, essays, authors...">
-      <span class="esc">ESC</span>
-    </div>
-    <div class="hint" id="searchHint">Type to search by title, tag, or publisher. Press <kbd>↵</kbd> to open the top result.</div>
-    <div class="search-results" id="searchResults"></div>
-  </div>
-</div>
-
   <!-- same shell as the category pages: title, description, and the
        Categories list on the left; this page's content on the right -->
   <div class="arc arc--page arc--toc-right">
     <div class="arc-side">
       <header class="arc-head">
-        <div class="arc-kicker">The library</div>
         <h1 class="arc-title">About</h1>
         <p class="arc-desc">Phronesis is a curated research library for technologists, legal professionals, and policymakers exploring topics at the intersection of technology, policy, and law.</p>
       </header>
@@ -97,8 +81,26 @@
         </div>
       </div>
     </div>
+    <!-- site-wide search, same behaviour as the homepage bar (wired by masthead.js) -->
+    <div class="arc-sitesearch" id="homeSearch">
+      <form class="arc-search" role="search" id="homeSearchForm">
+        <input id="searchInput" type="search" autocomplete="off" placeholder="Search papers, memos, essays, authors..." aria-label="Search Phronesis">
+        <button type="submit" class="arc-search-btn" aria-label="Open the top result">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </form>
+      <div id="searchHint" hidden></div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
     <main class="arc-main">
       <div class="arc-prose">
+      <section id="the-name">
+        <h2>The name</h2>
+        <p><em>Phronesis</em> is a Greek term meaning &ldquo;practical wisdom,&rdquo; derived from learning and evidence of practical things.</p>
+        <p>Our name reflects our goal of providing free access to carefully selected resources that inform public understanding on topics at the intersection of technology, law, and policy.</p>
+        <p class="arc-cite">Definition adapted from <a href="https://oxford-review.com/oxford-review-encyclopaedia-terms/phronesis-definition-meaning/" target="_blank" rel="noopener">The Oxford Review</a>.</p>
+      </section>
+
       <section id="what-we-do">
         <h2>What we do</h2>
         <p>We provide policymakers, technologists, and legal professionals with free access to primary and secondary technology policy resources, each hand-selected for relevance and quality.</p>
@@ -122,7 +124,7 @@
       <section id="resource-acquisition-process">
         <h2>Resource Acquisition Process</h2>
         <p>The library grows in response to its readers. Suggest a topic you want covered, and we will explore and curate resources on it. If you have work that fits the library, you can send that too.</p>
-        <div class="arc-formbox arc-cta">
+        <div class="arc-cta">
           <div>
             <h3>Suggest a topic</h3>
             <p>Send topic suggestions and submissions to <a href="mailto:submissions@phronesisresearch.org">submissions@phronesisresearch.org</a>.</p>
@@ -136,13 +138,6 @@
         <p>Phronesis is independently curated. We select resources for their relevance and quality, and inclusion does not imply endorsement of an author&rsquo;s views or conclusions.</p>
         <p>We do not accept funding that gives donors control over which resources we include or how we present them.</p>
       </section>
-
-      <section id="the-name">
-        <h2>The name</h2>
-        <p><em>Phronesis</em> is a Greek term meaning &ldquo;practical wisdom,&rdquo; derived from learning and evidence of practical things.</p>
-        <p>Our name reflects our goal of providing free access to carefully selected resources that inform public understanding on topics at the intersection of technology, law, and policy.</p>
-        <p class="arc-cite">Definition adapted from <a href="https://oxford-review.com/oxford-review-encyclopaedia-terms/phronesis-definition-meaning/" target="_blank" rel="noopener">The Oxford Review</a>.</p>
-      </section>
       </div>
     </main>
     <aside class="arc-toc-side">
@@ -151,11 +146,11 @@
           <div class="arc-panel-label arc-rail-label">On this page</div>
           <div class="arc-rail-divider arc-rail-divider--top"></div>
           <ul>
+            <li><a href="#the-name">The name</a></li>
             <li><a href="#what-we-do">What we do</a></li>
             <li><a href="#whats-in-the-library">What&rsquo;s in the library</a></li>
             <li><a href="#resource-acquisition-process">Resource Acquisition Process</a></li>
             <li><a href="#independence">Independence</a></li>
-            <li><a href="#the-name">The name</a></li>
           </ul>
         </div>
       </div>
@@ -179,6 +174,23 @@
   </div>
 
   <script src="masthead.js" defer></script>
+  <script>
+  (function () {
+    var box = document.getElementById('homeSearch');
+    var form = document.getElementById('homeSearchForm');
+    var input = document.getElementById('searchInput');
+    var results = document.getElementById('searchResults');
+    // masthead.js opens the top result on Enter; stop the form also submitting
+    input.addEventListener('keydown', function (e) { if (e.key === 'Enter') e.preventDefault(); });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var first = results.querySelector('.search-result-item');
+      if (first) first.click();
+    });
+    document.addEventListener('click', function (e) { if (!box.contains(e.target)) results.style.display = 'none'; });
+    input.addEventListener('focus', function () { if (input.value.trim().length >= 2) input.dispatchEvent(new Event('input')); });
+  })();
+  </script>
   <!-- Newsletter Subscription Script -->
   <script>
   (function() {

@@ -513,13 +513,14 @@
         '<button type="button" class="arc-expand-btn" data-expand="1">Search all of Phronesis for \u201C' + esc(state.q) + '\u201D \u2192</button>' +
       '</div>';
     }
-    // hands the query to the site-wide search in the header (masthead.js)
+    // hands the query to the site-wide search panel (masthead.js); opened
+    // directly because these pages no longer show the header search icon
     function expandSearch(q) {
-      var openBtn = document.getElementById('searchIconBtn');
+      var overlay = document.getElementById('searchOverlay');
       var siteInput = document.getElementById('searchInput');
-      if (!openBtn || !siteInput) return;
+      if (!overlay || !siteInput) return;
       setTimeout(function () {
-        openBtn.click();
+        overlay.classList.add('open');
         siteInput.value = q;
         siteInput.dispatchEvent(new Event('input', { bubbles: true }));
         siteInput.focus();

@@ -850,21 +850,34 @@ a.arc-kicker:hover { color: var(--terracotta); }
    Opt-in via .arc--toc-right so Subscribe, Corpus and Canon keep their layout. */
 .arc--toc-right {
   grid-template-columns: 230px minmax(0, 1fr) 200px;
-  grid-template-areas: "side main toc";
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "side search search"
+    "side main   toc";
+}
+/* site-wide search bar across the top of the centre and right columns,
+   in the same row and style as the category pages' search */
+.arc-sitesearch { grid-area: search; position: relative; margin: 0 0 1.6rem; padding: 0.7rem 0; }
+.arc-sitesearch .arc-search { height: 2.6rem; }
+.arc-sitesearch .search-results {
+  position: absolute; top: calc(100% - 0.7rem + 6px); left: 0; right: 0; z-index: 25;
+  background: #fff; border: 1px solid var(--rule);
+  box-shadow: 0 20px 45px rgba(26, 25, 22, 0.16);
 }
 .arc-toc-side { grid-area: toc; min-width: 0; align-self: stretch; }
 /* nudged down so its divider sits on the same line as the rule under the first h2 */
 .arc--toc-right .arc-toc { margin-top: 1.02rem; }
 @media (max-width: 1100px) {
-  .arc--toc-right { grid-template-columns: 170px minmax(0, 1fr); grid-template-areas: "side main"; }
+  .arc--toc-right { grid-template-columns: 170px minmax(0, 1fr); grid-template-areas: "side search" "side main"; }
   .arc-toc-side { display: none; }
 }
 @media (max-width: 900px) {
-  .arc--toc-right { grid-template-columns: minmax(0, 1fr); grid-template-areas: "head" "rail" "main"; }
+  .arc--toc-right { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; grid-template-areas: "head" "rail" "search" "main"; }
+  .arc-sitesearch { margin: 1.2rem 0 0; }
 }
 
-/* call-to-action box: the Subscribe page's sign-up box, laid out as text + button */
-.arc-cta { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin-top: 1.4rem; }
+/* call-to-action row: text + button between two rules, on the page background */
+.arc-cta { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin-top: 1.4rem; padding: 1.2rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
 .arc-cta h3 { font-family: var(--serif); font-size: 1.25rem; color: var(--ink); margin: 0 0 0.3rem; }
 .arc-prose .arc-cta p { font-size: 0.98rem; margin: 0; }
 .arc-prose a.arc-btn {
