@@ -850,30 +850,17 @@ a.arc-kicker:hover { color: var(--terracotta); }
    Opt-in via .arc--toc-right so Subscribe, Corpus and Canon keep their layout. */
 .arc--toc-right {
   grid-template-columns: 230px minmax(0, 1fr) 200px;
-  grid-template-rows: auto 1fr;
-  grid-template-areas:
-    "side search search"
-    "side main   toc";
-}
-/* site-wide search bar across the top of the centre and right columns,
-   in the same row and style as the category pages' search */
-.arc-sitesearch { grid-area: search; position: relative; margin: 0 0 1.6rem; padding: 0.7rem 0; }
-.arc-sitesearch .arc-search { height: 2.6rem; }
-.arc-sitesearch .search-results {
-  position: absolute; top: calc(100% - 0.7rem + 6px); left: 0; right: 0; z-index: 25;
-  background: #fff; border: 1px solid var(--rule);
-  box-shadow: 0 20px 45px rgba(26, 25, 22, 0.16);
+  grid-template-areas: "side main toc";
 }
 .arc-toc-side { grid-area: toc; min-width: 0; align-self: stretch; }
 /* nudged down so its divider sits on the same line as the rule under the first h2 */
 .arc--toc-right .arc-toc { margin-top: 1.02rem; }
 @media (max-width: 1100px) {
-  .arc--toc-right { grid-template-columns: 170px minmax(0, 1fr); grid-template-areas: "side search" "side main"; }
+  .arc--toc-right { grid-template-columns: 170px minmax(0, 1fr); grid-template-areas: "side main"; }
   .arc-toc-side { display: none; }
 }
 @media (max-width: 900px) {
-  .arc--toc-right { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; grid-template-areas: "head" "rail" "search" "main"; }
-  .arc-sitesearch { margin: 1.2rem 0 0; }
+  .arc--toc-right { grid-template-columns: minmax(0, 1fr); grid-template-areas: "head" "rail" "main"; }
 }
 
 /* call-to-action row: text + button between two rules, on the page background */
@@ -889,4 +876,33 @@ a.arc-kicker:hover { color: var(--terracotta); }
 .arc-prose a.arc-btn:hover { background: var(--accent-l); border-color: var(--accent-l); color: var(--parchment); }
 @media (max-width: 600px) {
   .arc-cta { flex-direction: column; align-items: flex-start; }
+}
+
+/* About page: Wikipedia-style overview table (navbox). Group labels on a
+   tinted column, item names beside them, descriptions on the page background. */
+.arc-navbox { width: 100%; border-collapse: collapse; margin-top: 1.2rem; border: 1px solid var(--rule); }
+.arc-navbox caption {
+  caption-side: top; text-align: center; padding: 0.6rem 1rem;
+  background: var(--paper-2); border: 1px solid var(--rule); border-bottom: none;
+  font-family: var(--serif); font-size: 1.05rem; color: var(--forest);
+}
+.arc-navbox th, .arc-navbox td { border: 1px solid var(--rule); padding: 0.6rem 0.9rem; vertical-align: middle; text-align: left; }
+.arc-navbox th { font-weight: normal; font-family: var(--serif); }
+.arc-navbox .arc-navbox-group {
+  width: 9.5rem; background: var(--paper-2); text-align: center;
+  font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-2);
+}
+.arc-navbox th[scope="row"] { width: 10.5rem; font-size: 1rem; }
+.arc-prose .arc-navbox th a { color: var(--forest); text-decoration: none; }
+.arc-prose .arc-navbox th a:hover { color: var(--terracotta); text-decoration: underline; }
+.arc-navbox td { font-size: 0.95rem; line-height: 1.55; color: var(--ink-3); }
+@media (max-width: 700px) {
+  .arc-navbox, .arc-navbox tbody, .arc-navbox tr, .arc-navbox th, .arc-navbox td { display: block; width: auto; }
+  .arc-navbox tr { border-bottom: 1px solid var(--rule); }
+  .arc-navbox th, .arc-navbox td { border: none; }
+  .arc-navbox .arc-navbox-group { width: auto; text-align: left; padding: 0.55rem 0.9rem; }
+  .arc-navbox th[scope="row"] { width: auto; }
+  .arc-navbox th[scope="row"] { padding-bottom: 0.1rem; }
+  .arc-navbox td { padding-top: 0; }
+  .arc-navbox caption { display: block; }
 }
