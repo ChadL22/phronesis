@@ -140,7 +140,7 @@
                   legal: ['Legal Analysis', 'Legal Analyses'], essay: ['Essay', 'Essays'], article: ['Article', 'Articles'], report: ['Report', 'Reports'] };
     var TYPE_ORDER = ['research', 'policy', 'legal', 'essay', 'article', 'report'];
     var PAGE_SIZE = { list: 4, cards: 6 };
-    var RECENT_COUNT = 5;
+    var RECENT_COUNT = 1;   // just the newest addition, spotlit
     var SORTS = { path: 'Reading order', relevance: 'Relevance', newest: 'Newest', oldest: 'Oldest' };
     var SOURCE_LABELS = { original: 'Phronesis original', via: 'External source' };
     var FACETS = [
@@ -338,9 +338,6 @@
         html += '<div class="arc-panel-label">Recently added</div><div class="arc-spot">' + titleLink(lead, 'arc-spot-title') +
           '<div class="arc-meta">' + metaLine(lead) + '</div>' +
           (lead.text ? bodyLink(lead, 'arc-spot-text', esc(snippet(lead.text, 320))) : '') + '</div>';
-        if (recent.length > 1) html += '<div class="arc-mini-grid">' + recent.slice(1).map(function (it) {
-          return miniCard(TYPES[it.type] ? TYPES[it.type][0] : '', titleLink(it, 'arc-mini-title'), fmtMonth(it.date), it.origin === 'original' ? 'Phronesis' : it.publisher);
-        }).join('') + '</div>';
       }
       if (related.length) {
         html += '<div class="arc-panel-label arc-panel-label--next">Related canons</div><div class="arc-mini-grid">' + related.map(function (r) {
