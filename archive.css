@@ -864,3 +864,23 @@ a.arc-kicker:hover { color: var(--terracotta); }
 
 /* a single people card spans the full row instead of leaving empty grid tracks */
 .arc-people--solo { grid-template-columns: 1fr; }
+
+/* About page: people cards are whole-card links, so drop the prose underline */
+.arc-prose .arc-people a { text-decoration: none; color: inherit; }
+.arc-people > a:hover h3 { color: var(--terracotta); }
+.arc-card-more { display: inline-block; margin-top: 0.8rem; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+
+/* call-to-action box: the Subscribe page's sign-up box, laid out as text + button */
+.arc-cta { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin-top: 1.4rem; }
+.arc-cta h3 { font-family: var(--serif); font-size: 1.25rem; color: var(--ink); margin: 0 0 0.3rem; }
+.arc-prose .arc-cta p { font-size: 0.98rem; margin: 0; }
+.arc-prose a.arc-btn {
+  flex-shrink: 0; display: inline-block; padding: 0.75rem 1.4rem;
+  font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+  background: var(--accent); color: var(--parchment); border: 1px solid var(--accent);
+  text-decoration: none; transition: background 0.18s, border-color 0.18s;
+}
+.arc-prose a.arc-btn:hover { background: var(--accent-l); border-color: var(--accent-l); color: var(--parchment); }
+@media (max-width: 600px) {
+  .arc-cta { flex-direction: column; align-items: flex-start; }
+}
