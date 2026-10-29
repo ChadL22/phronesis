@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="shared.css?v=20261021c" /><link rel="stylesheet" href="chat.css" />
-  <link rel="stylesheet" href="archive.css?v=20261029zb" />
+  <link rel="stylesheet" href="archive.css?v=20261029ze" />
   <link rel="stylesheet" href="footer.css?v=20261029k" />
 </head>
 <body>
@@ -222,13 +222,14 @@
       <div id="pastIssues"></div>
       <section id="faq" class="arc-col-faq">
         <h2 class="arc-col-heading arc-col-heading--next">FAQs</h2>
-        <dl class="arc-faq-compact">
-          <div><dt>How often do you send The Brief?</dt><dd>One email per month, typically on the first Monday. Each issue covers the prior month&rsquo;s key developments in technology law and policy.</dd></div>
-          <div><dt>What if I miss an issue?</dt><dd>Every past issue is collected on this page, so you can catch up on previous months at any time.</dd></div>
-          <div><dt>Who produces The Brief?</dt><dd>The Tech Policy Brief is produced in collaboration with the University of Maryland&rsquo;s Tech Policy Hub, combining independent research with academic expertise.</dd></div>
-          <div><dt>Is my email private?</dt><dd>Your email address is stored securely and used only to send you The Tech Policy Brief. We do not sell, trade, or share it with third parties.</dd></div>
-          <div><dt>How do I unsubscribe?</dt><dd>Enter your email address in the Subscribe box and choose &ldquo;Unsubscribe.&rdquo; You will be removed from the mailing list immediately.</dd></div>
-        </dl>
+        <!-- questions only; each opens to its answer (keeps the column short) -->
+        <div class="arc-faq-compact arc-faq-fold">
+          <details><summary>How often do you send The Brief?</summary><p>One email per month, typically on the first Monday. Each issue covers the prior month&rsquo;s key developments in technology law and policy.</p></details>
+          <details><summary>What if I miss an issue?</summary><p>Every past issue is collected on this page, so you can catch up on previous months at any time.</p></details>
+          <details><summary>Who produces The Brief?</summary><p>The Tech Policy Brief is produced in collaboration with the University of Maryland&rsquo;s Tech Policy Hub, combining independent research with academic expertise.</p></details>
+          <details><summary>Is my email private?</summary><p>Your email address is stored securely and used only to send you The Tech Policy Brief. We do not sell, trade, or share it with third parties.</p></details>
+          <details><summary>How do I unsubscribe?</summary><p>Enter your email address in the Subscribe box and choose &ldquo;Unsubscribe.&rdquo; You will be removed from the mailing list immediately.</p></details>
+        </div>
       </section>
     </aside>
   </div>
@@ -358,8 +359,7 @@
       for (var k = past.length; k < Math.max(4, past.length + past.length % 2); k++) blanks += '<div class="arc-mini arc-mini--empty" aria-hidden="true"></div>';
       pastEl.innerHTML = past.length ? '<h2 class="arc-col-heading arc-col-heading--next">Previous Issues</h2><div class="arc-mini-grid">' + past.map(function (p) {
         var month = p.title.replace(/^The (Tech Policy|Phronesis) Brief,?\s*/, '');
-        return '<article class="arc-mini"><span class="arc-mini-kicker">The Brief</span>' + link(p, 'arc-mini-title', esc(month)) +
-          '<span class="arc-mini-meta">Sent ' + esc(sentOn(p)) + '</span></article>';
+        return '<article class="arc-mini arc-mini--month">' + link(p, 'arc-mini-title', esc(month)) + '</article>';
       }).join('') + blanks + '</div>' : '';
     }
 
@@ -454,18 +454,19 @@
       var mEnd = new Date(view.getFullYear(), view.getMonth(), days);
       var inMonth = events.filter(function (e) { return e.e >= first && e.s <= mEnd; });
       var shown = inMonth.length ? inMonth : events.filter(function (e) { return e.e >= today; });
-      // three events in view at a time; the rest scroll. Blank boxes fill any
-      // of the three slots the events don't.
+      // two events in view at a time; the rest scroll. Blank boxes fill any
+      // of the two slots the events don't.
       var pads = '';
-      for (var k = shown.length; k < 3; k++) pads += '<div class="arc-cal-item arc-cal-item--empty" aria-hidden="true"></div>';
-      listEl.innerHTML = (inMonth.length ? '' : '<div class="arc-panel-label">' + (shown.length ? 'Coming up' : 'Nothing scheduled yet') + '</div>') +
+      for (var k = shown.length; k < 2; k++) pads += '<div class="arc-cal-item arc-cal-item--empty" aria-hidden="true"></div>';
+      // framed like the page's tables: a caption row, then the events
+      listEl.innerHTML = '<div class="arc-cal-frame"><div class="arc-cal-cap">' + (inMonth.length ? 'This month' : (shown.length ? 'Coming up' : 'Nothing scheduled yet')) + '</div>' +
         '<div class="arc-cal-scroll" tabindex="0" aria-label="Events">' + shown.map(function (e) {
           return '<article class="arc-cal-item"><span class="arc-cal-dot arc-cal-dot--' + esc(e.type) + '"></span><div>' +
             '<a class="arc-cal-title" href="' + esc(e.url) + '" target="_blank" rel="noopener">' + esc(e.title) + '</a>' +
             '<div class="arc-meta">' + esc(when(e)) + '<span class="arc-sep">&middot;</span>' + esc(LABEL[e.type] || e.type) +
             (e.location ? '<span class="arc-sep">&middot;</span>' + esc(e.location) : '') + '</div>' +
             (e.note ? '<p class="arc-cal-note">' + esc(e.note) + '</p>' : '') + '</div></article>';
-        }).join('') + pads + '</div>';
+        }).join('') + pads + '</div></div>';
     }
     document.getElementById('calendar-app').addEventListener('click', function (e) {
       var b = e.target.closest('[data-cal]'); if (!b) return;
@@ -495,37 +496,33 @@
   </script>
   <script>
   // desktop: the left column (calendar and events) and the right column
-  // (FAQs) end level with the bottom of the Socials Overview table. On the
-  // left the extra height is shared between taller calendar days and taller
-  // event rows (the events box still shows two at a time); on the right the
-  // latest issue's reading box takes it, so Previous Issues keeps its 2 x 2
-  // grid. Each has a cap, so a very narrow centre column can't stretch them.
+  // (FAQs) end level with the bottom of the Socials Overview table.
+  // Left: the calendar moves down (up to 8rem), then the two event rows grow
+  // a little if more is needed. Right: the latest issue's reading box takes
+  // the difference, but never drops below a comfortable reading height.
+  // (Measured with the FAQs closed; opening one doesn't re-fit the page.)
   (function () {
     var table = document.querySelector('#about-our-socials .arc-navbox'), cal = document.getElementById('calendar-app');
+    var panel = document.querySelector('.arc-cal-panel');
     function fit() {
       var box = document.querySelector('.arc-cal-scroll'), spot = document.querySelector('.arc-spot--issue'), faq = document.getElementById('faq');
-      cal.style.removeProperty('--cal-day'); cal.style.removeProperty('--cal-item');
+      cal.style.removeProperty('--cal-item'); panel.style.marginTop = '';
       if (spot) spot.style.height = '';
       if (window.innerWidth <= 900) return;
       var end = table.getBoundingClientRect().bottom;
       if (box) {
-        // the box is three event rows tall; grow the rows (and the calendar
-        // days a little) or shrink the rows, so its bottom meets the table's
-        var need = end - box.getBoundingClientRect().bottom, row = box.getBoundingClientRect().height / 3;
+        var need = end - box.getBoundingClientRect().bottom;
         if (need > 0) {
-          var rows = Math.ceil((document.querySelectorAll('#calGrid > span').length - 7) / 7) || 5;
-          var day = Math.min(16, need * 0.35 / rows);
-          var item = Math.min(40, (need - day * rows) / 3);
-          var base = document.querySelector('#calGrid > .arc-cal-day, #calGrid > .arc-cal-pad').getBoundingClientRect().height;
-          cal.style.setProperty('--cal-day', (base + day) + 'px');
-          cal.style.setProperty('--cal-item', (row + item) + 'px');
-        } else if (need < 0) {
-          cal.style.setProperty('--cal-item', Math.max(row + need / 3, 68) + 'px');
+          var base = parseFloat(getComputedStyle(panel).marginTop) || 0;
+          var drop = Math.min(need, 128);
+          panel.style.marginTop = (base + drop) + 'px';
+          var rest = need - drop;
+          if (rest > 0) cal.style.setProperty('--cal-item', (box.getBoundingClientRect().height / 2 + Math.min(rest / 2, 40)) + 'px');
         }
       }
       if (spot && faq) {
         var s = spot.getBoundingClientRect().height + (end - faq.getBoundingClientRect().bottom);
-        spot.style.height = Math.min(Math.max(s, 200), 640) + 'px';
+        spot.style.height = Math.min(Math.max(s, 360), 640) + 'px';
       }
     }
     window.addEventListener('load', fit); window.addEventListener('resize', fit);
