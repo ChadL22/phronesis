@@ -1128,3 +1128,32 @@ a.arc-mini-title { text-decoration: none; }
 .arc-sub-box { width: max-content; max-width: 100%; }
 .arc-sub-box .arc-sub-form { width: 0; min-width: 100%; }
 .arc-sub-box .validation-error { width: 0; min-width: 100%; }
+/* more room between Subscribe and Unsubscribe (the email field widens to match) */
+.arc-sub-actions { gap: 2.2rem; }
+
+/* ── Newsletter & Socials: subscription block sized to its label ──
+   column 1 is as wide as "MANAGE SUBSCRIPTION"; the field, the link row
+   and the icon row all fill exactly that width */
+.arc-side .arc-subscribe-panel { display: grid; grid-template-columns: max-content 1fr; }
+.arc-side .arc-subscribe-panel > .arc-rail-label { grid-column: 1; }
+.arc-side .arc-subscribe-panel > .arc-rail-divider,
+.arc-side .arc-subscribe-panel > .status-message { grid-column: 1 / -1; }
+.arc-side .arc-subscribe-panel > .arc-sub-box { grid-column: 1; width: auto; }
+.arc-sub-box .arc-sub-actions { justify-content: space-between; gap: 0.8rem; }
+.arc-sub-social { list-style: none; display: flex; justify-content: space-between; margin: 1.1rem 0 0; padding: 0; }
+.arc-sub-social a { display: block; }
+.arc-sub-social img { display: block; width: 18px; height: 18px; opacity: 0.55; transition: opacity 0.18s; }
+.arc-sub-social a:hover img, .arc-sub-social a:focus-visible img { opacity: 1; }
+@media (max-width: 900px) {
+  .arc-side .arc-subscribe-panel { display: grid; }
+}
+/* right-column headings styled like "About The Brief", so the latest-issue
+   box starts level with the overview table */
+.arc-col-heading {
+  font-family: var(--serif); font-size: 1.65rem; font-weight: normal; line-height: 1.2; color: var(--ink);
+  margin: 0 0 1.25rem; padding-bottom: 0.7rem; border-bottom: 1px solid var(--rule);
+}
+.arc-col-heading--next { margin-top: 2.4rem; }
+/* page titles: nudge down so their tops line up with the search bar */
+@media (min-width: 901px) { .arc-head .arc-title { margin-top: 4px; } }
+.arc-side .arc-subscribe-panel .arc-sub-social a { padding: 0; margin: 0; border: none; }

@@ -5,11 +5,11 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=3" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=3" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Newsletter and Socials — Phronesis</title>
+  <title>Newsletter &amp; Socials — Phronesis</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="shared.css?v=20261021c" /><link rel="stylesheet" href="chat.css" />
-  <link rel="stylesheet" href="archive.css?v=20261029o" />
+  <link rel="stylesheet" href="archive.css?v=20261029q" />
 </head>
 <body>
   <header class="masthead">
@@ -73,7 +73,7 @@
     </div>
     <div class="arc-side">
       <header class="arc-head">
-        <h1 class="arc-title">Newsletter and Socials</h1>
+        <h1 class="arc-title">Newsletter &amp; Socials</h1>
         <p class="arc-desc">The Phronesis Brief: a monthly briefing on developments at the intersection of technology, law, and policy. Produced in collaboration with the University of Maryland&rsquo;s Tech Policy Hub.</p>
       </header>
       <div class="arc-sticky">
@@ -104,19 +104,13 @@
               <button type="button" class="arc-sub-leave arc-sub-join" id="subscribeBtn">Subscribe</button>
               <button type="button" class="arc-sub-leave" id="unsubscribeBtn">Unsubscribe</button>
             </div>
+            <ul class="arc-sub-social" aria-label="Phronesis elsewhere">
+              <li><a href="https://x.com/phronesisres" target="_blank" rel="noopener" title="X" aria-label="Phronesis on X"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11.0.0/icons/x.svg" alt="X" width="18" height="18" loading="lazy"></a></li>
+              <li><a href="https://www.instagram.com/phronesisres" target="_blank" rel="noopener" title="Instagram" aria-label="Phronesis on Instagram"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11.0.0/icons/instagram.svg" alt="Instagram" width="18" height="18" loading="lazy"></a></li>
+              <li><a href="https://www.threads.com/@phronesisres" target="_blank" rel="noopener" title="Threads" aria-label="Phronesis on Threads"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11.0.0/icons/threads.svg" alt="Threads" width="18" height="18" loading="lazy"></a></li>
+              <li><a href="https://www.tiktok.com/@phronesis.research" target="_blank" rel="noopener" title="TikTok" aria-label="Phronesis on TikTok"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11.0.0/icons/tiktok.svg" alt="TikTok" width="18" height="18" loading="lazy"></a></li>
+            </ul>
           </div>
-        </div>
-        <!-- social profiles as small monochrome icons (Simple Icons, CC0,
-             loaded from jsDelivr); each icon's alt text names the platform -->
-        <div class="arc-rail arc-social" role="navigation" aria-label="Elsewhere">
-          <div class="arc-panel-label arc-rail-label">Elsewhere</div>
-          <div class="arc-rail-divider arc-rail-divider--top"></div>
-          <ul>
-          <li><a href="https://x.com/phronesisres" target="_blank" rel="noopener" title="X" aria-label="Phronesis on X"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11.0.0/icons/x.svg" alt="X" width="18" height="18" loading="lazy"></a></li>
-          <li><a href="https://www.instagram.com/phronesisres" target="_blank" rel="noopener" title="Instagram" aria-label="Phronesis on Instagram"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11.0.0/icons/instagram.svg" alt="Instagram" width="18" height="18" loading="lazy"></a></li>
-          <li><a href="https://www.threads.com/@phronesisres" target="_blank" rel="noopener" title="Threads" aria-label="Phronesis on Threads"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11.0.0/icons/threads.svg" alt="Threads" width="18" height="18" loading="lazy"></a></li>
-          <li><a href="https://www.tiktok.com/@phronesis.research" target="_blank" rel="noopener" title="TikTok" aria-label="Phronesis on TikTok"><img src="https://cdn.jsdelivr.net/npm/simple-icons@11.0.0/icons/tiktok.svg" alt="TikTok" width="18" height="18" loading="lazy"></a></li>
-          </ul>
         </div>
       </div>
     </div>
@@ -186,7 +180,7 @@
     </div>
 
     <aside class="arc-panel" id="issues" aria-label="Issues of The Phronesis Brief">
-      <div class="arc-panel-label">Latest issue</div>
+      <h2 class="arc-col-heading">Latest Issue</h2>
       <div id="latestIssue"><p class="arc-empty">Loading&hellip;</p></div>
       <div id="pastIssues"></div>
     </aside>
@@ -283,7 +277,7 @@
         link(i, 'arc-issue-more', 'Open full screen &rarr;') + '</div>';
       // the rest as a grid of small cards
       var past = issues.slice(1);
-      pastEl.innerHTML = past.length ? '<div class="arc-panel-label arc-panel-label--next">Past issues</div><div class="arc-mini-grid">' + past.map(function (p) {
+      pastEl.innerHTML = past.length ? '<h2 class="arc-col-heading arc-col-heading--next">Past Issues</h2><div class="arc-mini-grid">' + past.map(function (p) {
         var month = p.title.replace(/^The Phronesis Brief,?\s*/, '');
         return '<article class="arc-mini"><span class="arc-mini-kicker">The Brief</span>' + link(p, 'arc-mini-title', esc(month)) +
           '<span class="arc-mini-meta">Sent ' + esc(sentOn(p)) + '</span></article>';
