@@ -1169,3 +1169,57 @@ a.arc-mini-title { text-decoration: none; }
 .arc-faq-compact > div:first-child { padding-top: 0; }
 .arc-faq-compact dt { font-family: var(--serif); font-size: 0.92rem; color: var(--ink); margin-bottom: 0.25rem; }
 .arc-faq-compact dd { font-size: 0.8rem; line-height: 1.55; color: var(--ink-3); }
+
+/* ── Newsletter & Socials: About Our Socials and the calendar ── */
+#about-our-socials, #calendar { margin-top: 2.8rem; }
+.arc-cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.7rem; }
+.arc-cal-month { font-family: var(--serif); font-size: 1.1rem; color: var(--ink); }
+.arc-cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
+.arc-cal-grid > span { position: relative; height: 3rem; padding: 0.3rem 0.45rem; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); font-size: 0.78rem; color: var(--ink-2); }
+.arc-cal-grid > .arc-cal-wd { height: auto; padding: 0.3rem 0; text-align: center; font-size: 0.6rem; letter-spacing: 0.14em; color: var(--ink-3); background: var(--paper-2); }
+.arc-cal-day.has-event { background: #fff; color: var(--ink); }
+.arc-cal-day.is-today { box-shadow: inset 0 0 0 1px var(--accent); font-weight: 500; }
+.arc-cal-dots { position: absolute; left: 0.45rem; bottom: 0.35rem; display: flex; gap: 3px; }
+.arc-cal-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.arc-cal-dot--conference { background: var(--accent); }
+.arc-cal-dot--comment { background: var(--terracotta); }
+.arc-cal-dot--government { background: var(--ink-3); border-radius: 1px; }
+.arc-cal-key { list-style: none; margin: 0.8rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.35rem 1.2rem; font-size: 0.76rem; color: var(--ink-3); }
+.arc-cal-key li { display: flex; align-items: center; gap: 0.4rem; }
+.arc-cal-list { margin-top: 1.4rem; }
+.arc-cal-item { display: flex; gap: 0.7rem; padding: 0.7rem 0; border-top: 1px solid var(--rule); }
+.arc-cal-item .arc-cal-dot { margin-top: 0.45rem; }
+.arc-prose a.arc-cal-title { font-family: var(--serif); font-size: 1rem; color: var(--accent); text-decoration: none; }
+.arc-prose a.arc-cal-title:hover { color: var(--terracotta); }
+.arc-prose .arc-cal-note { margin: 0.2rem 0 0; font-size: 0.82rem; line-height: 1.5; color: var(--ink-3); }
+@media (max-width: 600px) { .arc-cal-grid > span { height: 2.4rem; padding: 0.2rem 0.3rem; } }
+/* calendar lives in the left column, under Socials: small and compact */
+.arc-side .arc-cal-panel { margin-top: 1.4rem; }
+.arc-side .arc-cal-panel .arc-rail-label { padding-left: 0; }
+.arc-cal-divider { width: 10rem; margin: 0.1rem 0 0.8rem 0; }
+.arc-side .arc-cal-head { margin-bottom: 0.4rem; }
+.arc-side .arc-cal-head .arc-pager-btn { width: 1.6rem; height: 1.6rem; }
+.arc-side .arc-cal-head .arc-pager-btn svg { width: 12px; height: 12px; }
+.arc-side .arc-cal-month { font-size: 0.92rem; }
+.arc-side .arc-cal-grid > span { height: 2rem; padding: 0.15rem 0.25rem; font-size: 0.66rem; }
+.arc-side .arc-cal-grid > .arc-cal-wd { height: auto; padding: 0.2rem 0; font-size: 0.52rem; letter-spacing: 0.08em; }
+.arc-side .arc-cal-dots { left: 0.25rem; bottom: 0.2rem; gap: 2px; }
+.arc-side .arc-cal-dot { width: 5px; height: 5px; }
+.arc-side .arc-cal-key { flex-direction: column; gap: 0.25rem; font-size: 0.68rem; line-height: 1.35; }
+.arc-side .arc-cal-key .arc-cal-dot { width: 6px; height: 6px; }
+.arc-side .arc-cal-list { margin-top: 0.9rem; }
+.arc-side .arc-cal-item { gap: 0.5rem; padding: 0.55rem 0; }
+.arc-side .arc-cal-item .arc-cal-dot { width: 6px; height: 6px; margin-top: 0.4rem; }
+.arc-side a.arc-cal-title { font-family: var(--serif); font-size: 0.86rem; line-height: 1.3; color: var(--accent); text-decoration: none; }
+.arc-side a.arc-cal-title:hover { color: var(--terracotta); }
+.arc-side .arc-cal-item .arc-meta { font-size: 0.66rem; margin-top: 0.15rem; }
+.arc-side .arc-cal-note { display: none; }
+@media (max-width: 900px) {
+  .arc-side .arc-cal-panel { grid-area: auto; display: block; overflow: visible; border-bottom: none; }
+  .arc-side .arc-cal-panel .arc-rail-label { display: block; }
+  .arc-side .arc-cal-panel .arc-rail-divider { display: block; }
+  .arc-side .arc-cal-panel a { padding: 0; border: none; white-space: normal; font-size: 0.86rem; }
+  .arc-side .arc-cal-panel .arc-cal-head .arc-pager-btn { padding: 0; }
+}
+/* centre column: About Our Socials is stretched by a small script so its
+   table ends level with the bottom of the FAQs */

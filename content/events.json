@@ -1,0 +1,17 @@
+{
+  "_notes": [
+    "Calendar on the Newsletter & Socials page. Maintained by hand (not the CMS).",
+    "type: conference | comment | government. start/end: YYYY-MM-DD (end optional). url: the official page."
+  ],
+  "events": [
+    { "type": "conference", "title": "ACM EAAMO 2026", "start": "2026-11-05", "end": "2026-11-07",
+      "location": "LMU Munich, Germany", "note": "Academic conference on equity and access in algorithms, mechanisms, and optimization.",
+      "url": "https://conference2026.eaamo.org" },
+    { "type": "conference", "title": "NeurIPS 2026", "start": "2026-12-08", "end": "2026-12-11",
+      "location": "Sydney, Atlanta, and Paris", "note": "Academic machine learning conference, held across three sites.",
+      "url": "https://neurips.cc/Conferences/2026/Dates" },
+    { "type": "comment", "title": "ACUS: Processing Public Comments in Agency Rulemaking", "start": "2026-12-28",
+      "location": "Administrative Conference of the United States", "note": "Written comments due by 10:00 a.m. ET.",
+      "url": "https://www.federalregister.gov/documents/2026/10/26/2026-21742/processing-public-comments-in-agency-rulemaking-request-for-comments" }
+  ]
+}

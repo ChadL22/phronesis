@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="shared.css?v=20261021c" /><link rel="stylesheet" href="chat.css" />
-  <link rel="stylesheet" href="archive.css?v=20261029r" />
+  <link rel="stylesheet" href="archive.css?v=20261029t" />
 </head>
 <body>
   <header class="masthead">
@@ -114,6 +114,24 @@
             </ul>
           </div>
         </div>
+        <div class="arc-rail arc-cal-panel" role="region" aria-label="Calendar">
+          <div class="arc-panel-label arc-rail-label">Calendar</div>
+          <div class="arc-rail-divider arc-cal-divider"></div>
+          <div class="arc-cal" id="calendar-app">
+            <div class="arc-cal-head">
+              <button type="button" class="arc-pager-btn" data-cal="-1" aria-label="Previous month"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg></button>
+              <span class="arc-cal-month" id="calMonth"></span>
+              <button type="button" class="arc-pager-btn" data-cal="1" aria-label="Next month"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg></button>
+            </div>
+            <div class="arc-cal-grid" id="calGrid"></div>
+            <ul class="arc-cal-key">
+              <li><span class="arc-cal-dot arc-cal-dot--conference"></span>Conferences: industry, academic, and government</li>
+              <li><span class="arc-cal-dot arc-cal-dot--comment"></span>Public comment deadlines</li>
+              <li><span class="arc-cal-dot arc-cal-dot--government"></span>Government events, such as committee meetings</li>
+            </ul>
+            <div class="arc-cal-list" id="calList"></div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -168,6 +186,28 @@
         </table>
       </section>
 
+      <section id="about-our-socials">
+        <h2>About Our Socials</h2>
+        <table class="arc-navbox">
+          <caption>Socials Overview</caption>
+          <tbody>
+            <tr>
+              <th scope="rowgroup" rowspan="2" class="arc-navbox-group">Original</th>
+              <th scope="row">Video breakdowns</th>
+              <td>A member of our team talks through a topic on camera.</td>
+            </tr>
+            <tr>
+              <th scope="row">Explainers</th>
+              <td>Posts that walk readers through a topic step by step and point to some of the resources worth reading.</td>
+            </tr>
+            <tr>
+              <th scope="rowgroup" class="arc-navbox-group">Shared</th>
+              <th scope="row">Worth sharing</th>
+              <td>Material we found particularly compelling: posts and threads, resources that are or will be in our library, and things that don&rsquo;t fit the library, such as podcasts, books, and YouTube videos.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
       </div>
     </div>
 
@@ -341,6 +381,78 @@
     });
     document.addEventListener('click', function (e) { if (!box.contains(e.target)) results.style.display = 'none'; });
     input.addEventListener('focus', function () { if (input.value.trim().length >= 2) input.dispatchEvent(new Event('input')); });
+  })();
+  </script>
+  <script>
+  // ── calendar, from /content/events.json ──
+  (function () {
+    var grid = document.getElementById('calGrid'), listEl = document.getElementById('calList'), monthEl = document.getElementById('calMonth');
+    var LABEL = { conference: 'Conference', comment: 'Public comment deadline', government: 'Government event' };
+    var events = [], today = new Date(); today.setHours(0, 0, 0, 0);
+    var view = new Date(today.getFullYear(), today.getMonth(), 1);
+    function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+    function day(s) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || ''); return m ? new Date(+m[1], +m[2] - 1, +m[3]) : null; }
+    function fmt(d, o) { return d.toLocaleDateString('en-US', o); }
+    function onDay(d) { return events.filter(function (e) { return d >= e.s && d <= e.e; }); }
+    function when(e) {
+      var same = +e.e === +e.s;
+      return fmt(e.s, { month: 'short', day: 'numeric' }) +
+        (same ? '' : '–' + fmt(e.e, e.e.getMonth() === e.s.getMonth() ? { day: 'numeric' } : { month: 'short', day: 'numeric' })) +
+        ', ' + e.s.getFullYear();
+    }
+    function render() {
+      monthEl.textContent = fmt(view, { month: 'long', year: 'numeric' });
+      var html = ['S', 'M', 'T', 'W', 'T', 'F', 'S'].map(function (w) { return '<span class="arc-cal-wd" aria-hidden="true">' + w + '</span>'; }).join('');
+      var first = new Date(view.getFullYear(), view.getMonth(), 1), days = new Date(view.getFullYear(), view.getMonth() + 1, 0).getDate();
+      for (var i = 0; i < first.getDay(); i++) html += '<span class="arc-cal-pad"></span>';
+      for (var n = 1; n <= days; n++) {
+        var d = new Date(view.getFullYear(), view.getMonth(), n), es = onDay(d), types = [];
+        es.forEach(function (e) { if (types.indexOf(e.type) === -1) types.push(e.type); });
+        html += '<span class="arc-cal-day' + (+d === +today ? ' is-today' : '') + (es.length ? ' has-event' : '') + '"' +
+          (es.length ? ' title="' + esc(es.map(function (e) { return e.title; }).join('; ')) + '"' : '') + '>' + n +
+          (types.length ? '<span class="arc-cal-dots">' + types.map(function (t) { return '<span class="arc-cal-dot arc-cal-dot--' + t + '"></span>'; }).join('') + '</span>' : '') + '</span>';
+      }
+      grid.innerHTML = html;
+      // this month's events; if the month is quiet, the next few coming up
+      var mEnd = new Date(view.getFullYear(), view.getMonth(), days);
+      var inMonth = events.filter(function (e) { return e.e >= first && e.s <= mEnd; });
+      var shown = inMonth.length ? inMonth : events.filter(function (e) { return e.e >= today; }).slice(0, 3);
+      listEl.innerHTML = (inMonth.length ? '' : '<div class="arc-panel-label">' + (shown.length ? 'Coming up' : 'Nothing scheduled yet') + '</div>') +
+        shown.map(function (e) {
+          return '<article class="arc-cal-item"><span class="arc-cal-dot arc-cal-dot--' + esc(e.type) + '"></span><div>' +
+            '<a class="arc-cal-title" href="' + esc(e.url) + '" target="_blank" rel="noopener">' + esc(e.title) + '</a>' +
+            '<div class="arc-meta">' + esc(LABEL[e.type] || e.type) + '<span class="arc-sep">&middot;</span>' + esc(when(e)) +
+            (e.location ? '<span class="arc-sep">&middot;</span>' + esc(e.location) : '') + '</div>' +
+            (e.note ? '<p class="arc-cal-note">' + esc(e.note) + '</p>' : '') + '</div></article>';
+        }).join('');
+    }
+    document.getElementById('calendar-app').addEventListener('click', function (e) {
+      var b = e.target.closest('[data-cal]'); if (!b) return;
+      view = new Date(view.getFullYear(), view.getMonth() + (+b.getAttribute('data-cal')), 1); render();
+    });
+    fetch('/content/events.json').then(function (r) { return r.json(); }).then(function (d) {
+      events = (d.events || []).map(function (e) {
+        var st = day(e.start); return { type: e.type, title: e.title, url: e.url, location: e.location, note: e.note, s: st, e: day(e.end) || st };
+      }).filter(function (e) { return e.s; }).sort(function (a, b) { return a.s - b.s; });
+      render();
+    }).catch(function () { events = []; render(); });
+  })();
+  </script>
+  <script>
+  // end the Socials Overview table level with the bottom of the FAQs (desktop)
+  (function () {
+    var table = document.querySelector('#about-our-socials .arc-navbox'), faq = document.getElementById('faq');
+    function fit() {
+      table.style.height = '';
+      if (window.innerWidth <= 900) return;
+      var gap = faq.getBoundingClientRect().bottom - table.getBoundingClientRect().bottom;
+      if (gap <= 0) return;
+      // a table's set height excludes its caption, so take the caption off
+      var cap = table.querySelector('caption');
+      table.style.height = (table.getBoundingClientRect().height + gap - (cap ? cap.getBoundingClientRect().height : 0)) + 'px';
+    }
+    window.addEventListener('load', fit); window.addEventListener('resize', fit);
+    new MutationObserver(fit).observe(document.getElementById('pastIssues'), { childList: true });
   })();
   </script>
 </body>
