@@ -2,7 +2,7 @@
    SITE FOOTER — shared by every page, including the homepage (which does
    not load shared.css, so colours and fonts are spelled out here).
    A ruled partition, then the darker band (brand, Resource Categories,
-   Engagement), then the copyright line on the lighter page colour.
+   Engagement), then the copyright line under a thin rule.
    ═══════════════════════════════════════════════════════════════ */
 .site-foot {
   margin-top: 4.5rem;
@@ -38,25 +38,7 @@
 .site-foot-grid .is-centre a { color: #2B4736; font-style: italic; }
 .site-foot-grid .is-centre a:hover { color: #A6472E; }
 
-/* Engagement: the newsletter sign-up, socials and pages */
-.site-foot-note { font-size: 0.82rem; line-height: 1.5; color: #4A4944; margin: 0 0 0.6rem; }
-.site-foot-form { display: flex; border: 1px solid #D9D5CA; background: #fff; width: 11rem; max-width: 100%; margin-top: 0.9rem; }
-.site-foot-form:focus-within { border-color: #2B4736; }
-.site-foot-form input {
-  flex: 1; min-width: 0; border: none; outline: none; background: transparent;
-  padding: 0.35rem 0.6rem; font-family: inherit; font-size: 0.85rem; color: #1A1916;
-}
-.site-foot-actions { display: flex; margin-top: 0.5rem; }
-.site-foot-actions button {
-  padding: 0; border: none; background: none; cursor: pointer; font-family: inherit; font-size: 0.78rem;
-  color: #8A8880; text-decoration: underline; text-underline-offset: 2px;
-}
-.site-foot-actions .is-join { color: #2B4736; font-weight: 500; }
-.site-foot-actions button:hover { color: #A6472E; }
-.site-foot-actions button:disabled { opacity: 0.6; cursor: not-allowed; }
-.site-foot .site-foot-status { display: none; max-width: 15rem; margin-top: 0.5rem; font-size: 0.78rem; line-height: 1.4; }
-.site-foot .site-foot-status.is-ok { display: block; color: #1B5E20; }
-.site-foot .site-foot-status.is-err { display: block; color: #B71C1C; }
+/* Engagement: page links, then social icons */
 .site-foot .site-foot-social { list-style: none; margin: 0.9rem 0 0; padding: 0; display: flex; gap: 1.4rem; }
 .site-foot-social img { display: block; width: 18px; height: 18px; opacity: 0.55; transition: opacity 0.18s; }
 .site-foot-social a:hover img, .site-foot-social a:focus-visible img { opacity: 1; }
@@ -93,3 +75,6 @@
 }
 .site-foot-col[aria-label="Resource categories"] .site-foot-grid li { text-align: left; }
 .site-foot-col[aria-label="Resource categories"] .site-foot-grid .is-centre { text-align: center; }
+/* no sign-up in the footer (it lives on the Newsletter & Socials page):
+   the icons follow the page links directly */
+.site-foot .site-foot-links + .site-foot-social { margin-top: 1rem; }
