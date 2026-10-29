@@ -1098,3 +1098,26 @@ a.arc-mini-title { text-decoration: none; }
 .arc-spot--issue { display: flex; flex-direction: column; height: 26.25rem; }
 .arc-spot--issue .arc-spot-scroll { flex: 1 1 auto; min-height: 0; max-height: none; }
 .arc-spot--issue .arc-issue-more { flex-shrink: 0; }
+
+/* ── left column alignment (all pages): category label, dividers and links
+   line up with the page title; the active page's rust bar sits just left of
+   the column edge instead of pushing the text in ── */
+@media (min-width: 901px) {
+  .arc-side .arc-rail-label { padding-left: 0; }
+  .arc-side .arc-rail-divider, .arc-side .arc-rail-divider--top { margin-left: 0; }
+  .arc-side .arc-rail a { padding-left: 0.85rem; margin-left: calc(-0.85rem - 3px); }
+  .arc-side .arc-subscribe-panel .status-message,
+  .arc-side .arc-subscribe-panel .arc-sub-form,
+  .arc-side .arc-subscribe-panel .validation-error,
+  .arc-side .arc-subscribe-panel .arc-sub-actions { margin-left: 0; }
+  .arc-side .arc-social a { margin-left: 0; padding-left: 0; padding-right: 1.3rem; }
+  /* "On this page" on the About page follows the same rule in its own column */
+  .arc-toc-side .arc-rail-label { padding-left: 0; }
+  .arc-toc-side .arc-rail-divider--top { margin-left: 0; }
+  .arc-toc-side .arc-rail a { padding-left: 0.85rem; margin-left: calc(-0.85rem - 3px); }
+  .arc-toc-side .arc-video-label { padding-left: 0; }
+  .arc-toc-side .arc-video-head .arc-rail-divider { margin-left: 0; }
+  .arc-toc-side .arc-video { margin-left: 0; }
+}
+/* the sign-up no longer has its own label, so give it a little space */
+.arc-side .arc-subscribe-panel { margin-top: 1.4rem; }
