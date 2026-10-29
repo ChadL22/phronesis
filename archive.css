@@ -1157,3 +1157,15 @@ a.arc-mini-title { text-decoration: none; }
 /* page titles: nudge down so their tops line up with the search bar */
 @media (min-width: 901px) { .arc-head .arc-title { margin-top: 4px; } }
 .arc-side .arc-subscribe-panel .arc-sub-social a { padding: 0; margin: 0; border: none; }
+
+/* left column: the lines under "Manage Subscription" and "Socials" run just
+   past their headings rather than across the whole column */
+.arc-side .arc-subscribe-panel > .arc-rail-divider { grid-column: 1; width: calc(100% + 0.75rem); }
+.arc-sub-sublabel { margin-top: 1.4rem; }
+.arc-side .arc-subscribe-panel .arc-sub-divider { width: calc(100% + 0.75rem); margin: 0.1rem 0 0.6rem 0; }
+.arc-sub-divider + .arc-sub-social { margin-top: 0.4rem; }
+/* FAQs: a compact list in the right column, under Past Issues */
+.arc-faq-compact > div { padding: 0.75rem 0; border-bottom: 1px solid var(--rule); }
+.arc-faq-compact > div:first-child { padding-top: 0; }
+.arc-faq-compact dt { font-family: var(--serif); font-size: 0.92rem; color: var(--ink); margin-bottom: 0.25rem; }
+.arc-faq-compact dd { font-size: 0.8rem; line-height: 1.55; color: var(--ink-3); }
