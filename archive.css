@@ -1123,3 +1123,8 @@ a.arc-mini-title { text-decoration: none; }
 .arc-side .arc-subscribe-panel { margin-top: 1.4rem; }
 /* a slimmer email field in the left column */
 .arc-side .arc-sub-form input { padding: 0.3rem 0.6rem; font-size: 0.85rem; }
+/* the email field is only as wide as the "Subscribe  Unsubscribe" row:
+   the box shrinks to that row, and the field fills the box */
+.arc-sub-box { width: max-content; max-width: 100%; }
+.arc-sub-box .arc-sub-form { width: 0; min-width: 100%; }
+.arc-sub-box .validation-error { width: 0; min-width: 100%; }
