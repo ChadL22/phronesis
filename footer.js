@@ -6,7 +6,7 @@
   var join = document.getElementById('footSubscribe');
   var leave = document.getElementById('footUnsubscribe');
   var status = document.getElementById('footStatus');
-  if (!input || !join || !leave || !status) return;
+  if (!input || !join || !status) return;   // Unsubscribe lives on the Newsletter & Socials page
 
   function show(msg, ok) { status.textContent = msg; status.className = 'site-foot-status ' + (ok ? 'is-ok' : 'is-err'); }
   function valid(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
@@ -24,6 +24,6 @@
       .then(function () { btn.disabled = false; btn.textContent = label; });
   }
   join.addEventListener('click', function () { send('/subscribe', join, 'Subscribing…'); });
-  leave.addEventListener('click', function () { send('/unsubscribe', leave, 'Removing…'); });
+  if (leave) leave.addEventListener('click', function () { send('/unsubscribe', leave, 'Removing…'); });
   input.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); send('/subscribe', join, 'Subscribing…'); } });
 })();

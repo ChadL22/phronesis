@@ -31,21 +31,22 @@
 .site-foot a { color: #4A4944; text-decoration: none; transition: color 0.18s; }
 .site-foot a:hover { color: #A6472E; }
 
-/* Resource Categories: a 3 × 3 grid with Canons in the centre */
-.site-foot-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.85rem 1.5rem; }
+/* Resource Categories: two columns of three, with Canons centred beneath */
+.site-foot-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.85rem 1.5rem; max-width: 20rem; }
+.site-foot-grid .is-centre { grid-column: 1 / -1; text-align: center; }
 .site-foot-grid a { font-size: 0.9rem; }
 .site-foot-grid .is-centre a { color: #2B4736; font-style: italic; }
 .site-foot-grid .is-centre a:hover { color: #A6472E; }
 
 /* Engagement: the newsletter sign-up, socials and pages */
 .site-foot-note { font-size: 0.82rem; line-height: 1.5; color: #4A4944; margin: 0 0 0.6rem; }
-.site-foot-form { display: flex; border: 1px solid #D9D5CA; background: #fff; max-width: 15rem; }
+.site-foot-form { display: flex; border: 1px solid #D9D5CA; background: #fff; width: 11rem; max-width: 100%; margin-top: 1.2rem; }
 .site-foot-form:focus-within { border-color: #2B4736; }
 .site-foot-form input {
   flex: 1; min-width: 0; border: none; outline: none; background: transparent;
   padding: 0.35rem 0.6rem; font-family: inherit; font-size: 0.85rem; color: #1A1916;
 }
-.site-foot-actions { display: flex; justify-content: space-between; max-width: 15rem; margin-top: 0.5rem; }
+.site-foot-actions { display: flex; margin-top: 0.5rem; }
 .site-foot-actions button {
   padding: 0; border: none; background: none; cursor: pointer; font-family: inherit; font-size: 0.78rem;
   color: #8A8880; text-decoration: underline; text-underline-offset: 2px;
@@ -59,7 +60,7 @@
 .site-foot .site-foot-social { list-style: none; margin: 1.2rem 0 0; padding: 0; display: flex; gap: 1.4rem; }
 .site-foot-social img { display: block; width: 18px; height: 18px; opacity: 0.55; transition: opacity 0.18s; }
 .site-foot-social a:hover img, .site-foot-social a:focus-visible img { opacity: 1; }
-.site-foot .site-foot-links { list-style: none; margin: 1.2rem 0 0; padding: 0; display: flex; gap: 1.2rem; font-size: 0.85rem; }
+.site-foot .site-foot-links { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.85rem; font-size: 0.9rem; }
 
 /* copyright line, on the lighter page colour */
 .site-foot-bottom {
