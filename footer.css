@@ -2,10 +2,9 @@
    SITE FOOTER — shared by every page. The homepage does not load
    shared.css, so colours and fonts are spelled out here.
 
-   Inner pages: a darker band, after Brookings, full width — the wordmark
-   and description on the left, link columns on the right split by a thin
-   rule, then one small copyright line.
-   Homepage: one quiet line on the page colour (copyright and social icons),
+   Inner pages: a darker band, after Brookings, full width — the copyright
+   and φρόνησις frame the wordmark, description and link columns.
+   Homepage: one quiet line on the page colour (copyright and φρόνησις),
    after Google's home page.
    ═══════════════════════════════════════════════════════════════ */
 .site-foot {
@@ -21,15 +20,30 @@
 .site-foot a { color: #4A4944; text-decoration: none; transition: color 0.18s; }
 .site-foot a:hover { color: #A6472E; }
 
-/* ── inner pages: full width, sides 28px in like the masthead icons ── */
+/* ── inner pages ──
+   One three-column grid: the copyright line on the left and φρόνησις on
+   the right frame the content between them. The wordmark and description
+   start just right of the copyright; the link columns end just left of
+   φρόνησις. (.site-foot-bottom is display:contents so its two children
+   drop into the outer grid.) */
+.site-foot:not(.site-foot--home) {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr) max-content;
+  column-gap: 2.6rem;
+  padding: 1.6rem 28px 1.3rem;
+}
 .site-foot-inner {
-  padding: 1.6rem 28px 1.2rem;
+  grid-column: 2; grid-row: 1;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto auto;
   align-items: start;
 }
-.site-foot-brand { display: flex; align-items: flex-start; gap: 2.2rem; padding-right: 2.6rem; }
-.site-foot-mark { flex: none; font-size: 2.1rem; line-height: 1; letter-spacing: 0.01em; }
+.site-foot-bottom { display: contents; }
+.site-foot-bottom p { grid-column: 1; grid-row: 1; align-self: end; font-size: 0.68rem; letter-spacing: 0.06em; color: #8A8880; }
+.site-foot-bottom .phronesis-greek { grid-column: 3; grid-row: 1; align-self: end; font-style: italic; font-size: 0.78rem; color: #8A8880; }
+
+.site-foot-brand { padding-right: 2.6rem; }
+.site-foot-mark { display: inline-block; font-size: 2.1rem; line-height: 1; letter-spacing: 0.01em; margin-bottom: 0.7rem; }
 .site-foot .site-foot-mark { color: #2B4736; }
 .site-foot .site-foot-mark:hover { color: #A6472E; }
 .site-foot-brand p { max-width: 30rem; font-size: 0.95rem; line-height: 1.6; color: #4A4944; }
@@ -47,26 +61,25 @@
 .site-foot-social img { display: block; width: 18px; height: 18px; opacity: 0.55; transition: opacity 0.18s; }
 .site-foot-social a:hover img, .site-foot-social a:focus-visible img { opacity: 1; }
 
-.site-foot-bottom {
-  padding: 0.7rem 28px 0.9rem;
-  display: flex; justify-content: space-between; align-items: center;
+/* narrower screens: content on top, the copyright line beneath it */
+@media (max-width: 1100px) {
+  .site-foot:not(.site-foot--home) { grid-template-columns: 1fr auto; row-gap: 1.4rem; }
+  .site-foot-inner { grid-column: 1 / -1; }
+  .site-foot-bottom p { grid-column: 1; grid-row: 2; }
+  .site-foot-bottom .phronesis-greek { grid-column: 2; grid-row: 2; }
 }
-.site-foot-bottom::before { content: none; }
-.site-foot-bottom p { font-size: 0.68rem; letter-spacing: 0.06em; color: #8A8880; }
-.site-foot-bottom .phronesis-greek { font-style: italic; font-size: 0.78rem; color: #8A8880; }
-
-@media (max-width: 1000px) {
+@media (max-width: 900px) {
   .site-foot-inner { grid-template-columns: 1fr 1fr; row-gap: 1.6rem; }
   .site-foot-brand { grid-column: 1 / -1; padding-right: 0; }
   .site-foot-col { padding: 0 1.5rem 0 0; }
   .site-foot-col + .site-foot-col { padding-left: 1.5rem; }
 }
 @media (max-width: 600px) {
-  .site-foot-inner { padding-left: 20px; padding-right: 20px; }
-  .site-foot-brand { flex-direction: column; gap: 0.8rem; }
-  .site-foot-inner { grid-template-columns: 1fr; }
+  .site-foot:not(.site-foot--home) { padding-left: 20px; padding-right: 20px; grid-template-columns: 1fr; row-gap: 0.4rem; }
+  .site-foot-inner { grid-template-columns: 1fr; margin-bottom: 1.2rem; }
   .site-foot-col + .site-foot-col { border-left: none; padding-left: 0; }
-  .site-foot-bottom { flex-direction: column; gap: 0.4rem; text-align: center; }
+  .site-foot-bottom p, .site-foot-bottom .phronesis-greek { grid-column: 1; text-align: center; }
+  .site-foot-bottom .phronesis-greek { grid-row: 3; }
 }
 
 /* ── homepage: one line on the page colour, no band ── */
@@ -78,7 +91,7 @@
   display: flex; justify-content: space-between; align-items: center; gap: 1.5rem;
 }
 .site-foot-home p { font-size: 0.8rem; letter-spacing: 0.04em; color: #8A8880; }
-.site-foot-home .site-foot-social { margin: 0; }
+.site-foot-home .phronesis-greek { font-style: italic; font-size: 0.85rem; color: #8A8880; }
 @media (max-width: 700px) {
-  .site-foot-home { flex-direction: column-reverse; gap: 0.8rem; text-align: center; }
+  .site-foot-home { flex-direction: column; gap: 0.4rem; text-align: center; }
 }
