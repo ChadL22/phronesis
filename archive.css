@@ -1121,3 +1121,5 @@ a.arc-mini-title { text-decoration: none; }
 }
 /* the sign-up no longer has its own label, so give it a little space */
 .arc-side .arc-subscribe-panel { margin-top: 1.4rem; }
+/* a slimmer email field in the left column */
+.arc-side .arc-sub-form input { padding: 0.3rem 0.6rem; font-size: 0.85rem; }
