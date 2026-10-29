@@ -1224,8 +1224,8 @@ a.arc-mini-title { text-decoration: none; }
 /* centre column: About Our Socials is stretched by a small script so its
    table ends level with the bottom of the FAQs */
 
-/* ── Subscribe page: search over the centre column; over the right column the
-   social icons and a Subscribe button whose menu holds the email field and
+/* ── Subscribe page: search over the centre column; over the right column a
+   Subscribe button, then the social icons. The button's menu holds the email field and
    Subscribe / Unsubscribe (after YouTube's and GitHub's subscribe menus).
    The row uses the page's own column widths so each part lines up below. */
 .arc--subscribe .arc-tools {
@@ -1233,7 +1233,7 @@ a.arc-mini-title { text-decoration: none; }
   align-items: center;
 }
 .arc-tool-sub { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-width: 0; }
-.arc-tool-sub .arc-sub-social { margin: 0; gap: 1.1rem; justify-content: flex-start; }
+.arc-tool-sub .arc-sub-social { margin: 0; gap: 1.1rem; justify-content: flex-end; }
 .arc-sub-menu { position: relative; }
 .arc-sub-trigger {
   display: inline-flex; align-items: center; gap: 0.5rem; height: 2.6rem; padding: 0 0.9rem 0 0.8rem;
@@ -1246,7 +1246,7 @@ a.arc-mini-title { text-decoration: none; }
 .arc-sub-chev { width: 13px; height: 13px; transition: transform 0.18s; }
 .arc-sub-menu.is-open .arc-sub-chev { transform: rotate(180deg); }
 .arc-sub-pop {
-  position: absolute; top: calc(100% + 6px); right: 0; z-index: 30; width: 18.5rem;
+  position: absolute; top: calc(100% + 6px); left: 0; z-index: 30; width: 18.5rem;
   padding: 1rem 1.1rem 1.1rem; background: #fff; border: 1px solid var(--rule);
   box-shadow: 0 20px 45px rgba(26, 25, 22, 0.16);
 }
