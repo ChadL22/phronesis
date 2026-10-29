@@ -17,13 +17,13 @@
 .site-foot-inner {
   max-width: 1160px;
   margin: 0 auto;
-  padding: 3rem clamp(1.5rem, 5vw, 5rem) 3.2rem;
+  padding: 2rem clamp(1.5rem, 5vw, 5rem) 1.6rem;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr) minmax(0, 0.9fr);
-  gap: 3rem;
+  gap: 2.5rem;
   align-items: start;
 }
-.site-foot-name { font-size: 1.5rem; margin-bottom: 0.7rem; color: #1A1916; }
+.site-foot-name { font-size: 1.5rem; margin-bottom: 0.5rem; color: #1A1916; }
 .site-foot-brand p { margin: 0; font-size: 0.95rem; line-height: 1.6; color: #4A4944; max-width: 22rem; }
 .site-foot h4 {
   margin: 0 0 1rem; font-size: 0.65rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: #8A8880;
@@ -32,7 +32,7 @@
 .site-foot a:hover { color: #A6472E; }
 
 /* Resource Categories: two columns of three, with Canons centred beneath */
-.site-foot-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.85rem 1.5rem; max-width: 20rem; }
+.site-foot-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem 1.5rem; max-width: 20rem; }
 .site-foot-grid .is-centre { grid-column: 1 / -1; text-align: center; }
 .site-foot-grid a { font-size: 0.9rem; }
 .site-foot-grid .is-centre a { color: #2B4736; font-style: italic; }
@@ -40,7 +40,7 @@
 
 /* Engagement: the newsletter sign-up, socials and pages */
 .site-foot-note { font-size: 0.82rem; line-height: 1.5; color: #4A4944; margin: 0 0 0.6rem; }
-.site-foot-form { display: flex; border: 1px solid #D9D5CA; background: #fff; width: 11rem; max-width: 100%; margin-top: 1.2rem; }
+.site-foot-form { display: flex; border: 1px solid #D9D5CA; background: #fff; width: 11rem; max-width: 100%; margin-top: 0.9rem; }
 .site-foot-form:focus-within { border-color: #2B4736; }
 .site-foot-form input {
   flex: 1; min-width: 0; border: none; outline: none; background: transparent;
@@ -57,19 +57,20 @@
 .site-foot .site-foot-status { display: none; max-width: 15rem; margin-top: 0.5rem; font-size: 0.78rem; line-height: 1.4; }
 .site-foot .site-foot-status.is-ok { display: block; color: #1B5E20; }
 .site-foot .site-foot-status.is-err { display: block; color: #B71C1C; }
-.site-foot .site-foot-social { list-style: none; margin: 1.2rem 0 0; padding: 0; display: flex; gap: 1.4rem; }
+.site-foot .site-foot-social { list-style: none; margin: 0.9rem 0 0; padding: 0; display: flex; gap: 1.4rem; }
 .site-foot-social img { display: block; width: 18px; height: 18px; opacity: 0.55; transition: opacity 0.18s; }
 .site-foot-social a:hover img, .site-foot-social a:focus-visible img { opacity: 1; }
-.site-foot .site-foot-links { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.85rem; font-size: 0.9rem; }
+.site-foot .site-foot-links { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; font-size: 0.9rem; }
 
-/* copyright line, on the lighter page colour */
+/* copyright line, inside the darker band under a thin rule */
 .site-foot-bottom {
-  background: #F6F3EC;
-  border-top: 1px solid #D9D5CA;
-  padding: 1.5rem clamp(1.5rem, 5vw, 5rem);
+  background: #EDE9DF;
+  max-width: 1160px; margin: 0 auto;
+  padding: 0.9rem clamp(1.5rem, 5vw, 5rem) 1.1rem;
   display: flex; justify-content: space-between; align-items: center;
   font-family: 'Times New Roman', Times, serif;
 }
+.site-foot-bottom::before { content: none; }
 .site-foot-bottom p { margin: 0; font-size: 0.68rem; letter-spacing: 0.06em; color: #8A8880; }
 .site-foot-bottom .phronesis-greek { font-style: italic; font-size: 0.78rem; color: #8A8880; }
 
@@ -78,7 +79,17 @@
   .site-foot-brand { grid-column: 1 / -1; }
 }
 @media (max-width: 600px) {
-  .site-foot-inner { grid-template-columns: 1fr; gap: 2.2rem; }
+  .site-foot-inner { grid-template-columns: 1fr; gap: 1.6rem; }
   .site-foot-grid { gap: 0.75rem 1rem; }
   .site-foot-bottom { flex-direction: column; gap: 0.4rem; text-align: center; }
 }
+.site-foot-rule { max-width: 1160px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 5rem); }
+.site-foot-rule::before { content: ''; display: block; border-top: 1px solid #D9D5CA; }
+/* Resource Categories: heading, the two columns and Canons share one centre
+   line — the columns size to their text and sit centred under the heading */
+.site-foot-col[aria-label="Resource categories"] { text-align: center; }
+.site-foot-col[aria-label="Resource categories"] .site-foot-grid {
+  grid-template-columns: repeat(2, max-content); justify-content: center; column-gap: 3rem; max-width: none;
+}
+.site-foot-col[aria-label="Resource categories"] .site-foot-grid li { text-align: left; }
+.site-foot-col[aria-label="Resource categories"] .site-foot-grid .is-centre { text-align: center; }
