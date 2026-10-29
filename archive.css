@@ -941,10 +941,9 @@ a.arc-kicker:hover { color: var(--terracotta); }
 .arc-spot-sublabel { margin: 1.1rem 0 0.4rem; }
 .arc-spot .arc-spot-sublabel + .arc-spot-text { margin-top: 0; }
 
-/* Canons page: "Recently updated" marker, in the terracotta used for the
-   site's spotlight boxes so it reads as a flag, not a category */
-.arc-badge--recent { color: var(--terracotta); border-color: var(--terracotta); }
-.arc-chip--recent { color: var(--terracotta); border-color: var(--terracotta); }
+/* canon pages: "← All canons" link above the title */
+.arc-back { text-decoration: none; }
+.arc-back span { margin-right: 0.3rem; }
 
 /* Individual canon pages: reading-path steps inside the standard results list */
 .arc-step {
@@ -960,3 +959,72 @@ a.arc-kicker:hover { color: var(--terracotta); }
 }
 .arc-list-divider { margin: 0.4rem 0 1.2rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
 .arc-panel-label--next { margin-top: 2rem; }
+
+/* ── Subscribe page ── */
+/* site-wide search in the toolbar row, results drop down beneath it */
+.arc--subscribe .arc-tools { padding: 0.7rem 0; }
+.arc-sitesearch { position: relative; flex: 1 1 auto; display: flex; }
+.arc-sitesearch .arc-search { flex: 1 1 auto; height: 2.6rem; }
+.arc-sitesearch .search-results {
+  position: absolute; top: calc(100% + 6px); left: 0; right: 0; z-index: 25;
+  background: #fff; border: 1px solid var(--rule); box-shadow: 0 20px 45px rgba(26, 25, 22, 0.16);
+}
+.arc--subscribe .arc-results .arc-prose section { margin-bottom: 2.8rem; }
+/* latest issue */
+.arc-issue { padding-bottom: 0.4rem; }
+.arc-issue .arc-snippet { margin-top: 0.4rem; }
+.arc-issue-list { margin: 0.9rem 0 0; border-top: 1px solid var(--rule); }
+.arc-issue-list > div { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 1rem; padding: 0.55rem 0; border-bottom: 1px solid var(--rule); }
+.arc-issue-list dt { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); padding-top: 0.2rem; }
+.arc-issue-list dd { font-size: 0.9rem; line-height: 1.55; color: var(--ink-2); }
+.arc-prose a.arc-issue-more {
+  display: inline-block; margin: 0.9rem 1.2rem 0 0; text-decoration: none;
+  font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
+}
+.arc-prose a.arc-issue-more:hover { color: var(--terracotta); }
+.arc-prose a.arc-issue-more--quiet { color: var(--ink-3); }
+.arc-faq > div { grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); }
+.arc-faq dt { font-size: 0.98rem; }
+/* compact sign-up: no box, just a line of input and a small button */
+.arc-sub-note { font-size: 0.86rem; line-height: 1.5; color: var(--ink-2); margin: 0 0 0.7rem; }
+.arc-sub-form { display: flex; border: 1px solid var(--rule); background: #fff; }
+.arc-sub-form:focus-within { border-color: var(--accent); }
+.arc-sub-form input { flex: 1; min-width: 0; border: none; outline: none; background: transparent; padding: 0.5rem 0.7rem; font-family: var(--serif); font-size: 0.95rem; color: var(--ink); }
+.arc-sub-btn {
+  flex-shrink: 0; padding: 0 0.9rem; border: none; background: var(--accent); color: var(--parchment); cursor: pointer;
+  font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+}
+.arc-sub-btn:hover { background: var(--accent-l); }
+.arc-sub-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.arc-sub-leave { margin-top: 0.6rem; padding: 0; border: none; background: none; cursor: pointer; font-size: 0.74rem; color: var(--ink-3); text-decoration: underline; text-underline-offset: 2px; }
+.arc-sub-leave:hover { color: var(--terracotta); }
+.arc-subscribe-panel .status-message { display: none; margin-bottom: 0.7rem; padding: 0.6rem 0.8rem; font-size: 0.82rem; line-height: 1.45; }
+.arc-subscribe-panel .status-message.show { display: block; }
+.arc-subscribe-panel .status-success { background: #E8F5E9; color: #1B5E20; border-left: 3px solid #4CAF50; }
+.arc-subscribe-panel .status-error { background: #FFEBEE; color: #B71C1C; border-left: 3px solid #F44336; }
+.arc-subscribe-panel .validation-error { display: none; margin-top: 0.4rem; font-size: 0.78rem; color: #B71C1C; }
+.arc-subscribe-panel .validation-error.show { display: block; }
+@media (max-width: 900px) {
+  .arc--subscribe .arc-panel { margin-top: 2rem; }
+  .arc-faq > div, .arc-issue-list > div { grid-template-columns: 1fr; gap: 0.2rem; }
+}
+/* start the centre column level with the right-hand "Subscribe" label, and
+   keep result-style titles un-underlined as on the category pages */
+.arc--subscribe .arc-results .arc-prose { margin-top: 0; }
+.arc--subscribe #latest-issue > .arc-panel-label { height: 1rem; line-height: 1rem; margin: 0 0 0.9rem; }
+.arc-prose a.arc-result-title { text-decoration: none; }
+.arc-prose a.arc-result-title:hover { color: var(--terracotta); }
+
+/* issues of The Brief in the reader */
+.brief-body .brief-dek { font-style: italic; color: var(--ink-2); }
+.brief-body h2 { margin-top: 2.2rem; padding-top: 1.2rem; border-top: 1px solid var(--rule); }
+.brief-body h3 { margin-top: 1.4rem; }
+.brief-body .brief-by { font-size: 0.85rem; color: var(--ink-3); }
+.brief-body .brief-note { font-size: 0.85rem; color: var(--ink-3); font-style: italic; }
+.brief-body .brief-foot { font-size: 0.82rem; line-height: 1.6; color: var(--ink-3); }
+.brief-body hr { border: none; border-top: 1px solid var(--rule); margin: 2rem 0 1rem; }
+.brief-table { width: 100%; border-collapse: collapse; margin: 0.6rem 0 1.4rem; font-size: 0.88rem; line-height: 1.5; }
+.brief-table th { text-align: left; font-weight: 500; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); background: var(--paper-2); }
+.brief-table th, .brief-table td { padding: 0.5rem 0.7rem; border: 1px solid var(--rule); vertical-align: top; }
+.brief-table td:first-child { width: 42%; }
+#past-issues .arc-result { padding-bottom: 1.3rem; }

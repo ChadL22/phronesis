@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="shared.css?v=20261021c" /><link rel="stylesheet" href="chat.css" />
-  <link rel="stylesheet" href="archive.css?v=20261024n" />
+  <link rel="stylesheet" href="archive.css?v=20261024p" />
 </head>
 <body>
   <header class="masthead">
@@ -114,24 +114,7 @@
       <p class="arc-stats" id="canonStats">&nbsp;</p>
       <div id="canonList"><p class="arc-empty">Loading&hellip;</p></div>
     </div>
-    <aside class="arc-panel" aria-label="Reading paths">
-      <div class="arc-panel-label">Reading paths</div>
-      <div class="arc-spot">
-        <span class="arc-spot-title">Reading paths for every audience</span>
-        <p class="arc-spot-text">Each canon offers curated reading sequences tailored to your background. Select your perspective and we&rsquo;ll suggest where to start and what to read next.</p>
-        <div class="arc-panel-label arc-spot-sublabel">Perspectives</div>
-        <div class="arc-tags">
-          <span class="arc-tag arc-tag--static">Student</span>
-          <span class="arc-tag arc-tag--static">General Reader</span>
-          <span class="arc-tag arc-tag--static">Policy Professional</span>
-          <span class="arc-tag arc-tag--static">Legal Professional</span>
-          <span class="arc-tag arc-tag--static">Economist</span>
-          <span class="arc-tag arc-tag--static">Technologist</span>
-        </div>
-        <div class="arc-panel-label arc-spot-sublabel">Draws from</div>
-        <p class="arc-spot-text">All six publication types: research papers, policy artifacts, legal analyses, essays, articles, and reports.</p>
-      </div>
-    </aside>
+    <aside class="arc-panel" id="canonPanel" aria-label="Recently added canons"></aside>
   </div>
 
   <section class="newsletter-band"><div class="newsletter-inner"><div class="newsletter-copy"><h3 class="serif">The Phronesis Brief</h3><p>Monthly insights delivered right to your inbox. Concise, considered, and consistent.</p></div><div class="newsletter-form"><input type="email" placeholder="your@email.com" /><button type="button">Subscribe</button></div></div></section>
@@ -158,8 +141,8 @@
     ];
     var TYPE_PLURAL = {}; TYPES.forEach(function (t) { TYPE_PLURAL[t[0]] = t[2]; });
     var PAGE_SIZE = { list: 4, cards: 6 };   // same page sizes as the category pages
-    var RECENT_DAYS = 30;   // canons updated within this many days get the "Recently updated" badge
-    var SORTS = { relevance: 'Relevance', updated: 'Recently updated', size: 'Most pieces', name: 'A–Z' };
+    var RECENT_COUNT = 4;   // canons in the "Recently added" grid on the right
+    var SORTS = { relevance: 'Relevance', updated: 'Last updated', size: 'Most pieces', name: 'A–Z' };
     var FACETS = [
       { key: 'type', label: 'Includes', any: 'Any publication type', values: function (c) { return c.types; }, display: function (v) { return TYPE_PLURAL[v] || v; } },
       { key: 'path', label: 'Guided path', any: 'Any perspective', values: function (c) { return c.guided; } }
@@ -190,7 +173,7 @@
 
     function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
     function parseDay(d) { var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(d || ''); return m ? new Date(+m[1], +m[2] - 1, +m[3]) : null; }
-    function fmtDay(d) { return d ? d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : ''; }
+    function fmtMonth(d) { return d ? d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) : ''; }
 
     function loadEntries() {
       return Promise.all(FILES.map(function (f) {
@@ -227,10 +210,9 @@
       var paths = topic.reading_paths || {};
       var guided = Object.keys(paths).filter(function (k) { return (paths[k].sequence || []).length; })
         .map(function (k) { return paths[k].label || k; });
-      var recent = latest ? (Date.now() - latest.getTime()) / 864e5 <= RECENT_DAYS : false;
       return { id: topic.id, name: topic.name, description: topic.description || '', counts: counts, total: total,
                types: TYPES.map(function (t) { return t[0]; }).filter(function (k) { return counts[k]; }),
-               paths: guided.length, guided: guided, updated: latest, recent: recent };   // only paths that have steps
+               paths: guided.length, guided: guided, updated: latest };   // only paths that have steps
     }
 
     // ── filtering, sorting ──
@@ -268,20 +250,18 @@
         '<a class="arc-result-title" href="' + url(c) + '">' + esc(c.name) + '</a>' +
         '<div class="arc-meta"><span class="arc-pub">' + c.total + (c.total === 1 ? ' piece' : ' pieces') + '</span>' +
           (c.paths ? '<span class="arc-sep">&middot;</span>' + c.paths + (c.paths === 1 ? ' guided reading path' : ' guided reading paths') : '') +
-          (c.updated ? '<span class="arc-sep">&middot;</span>Updated ' + esc(fmtDay(c.updated)) : '') +
-          (c.recent ? '<span class="arc-badge arc-badge--recent">Recently updated</span>' : '') + '</div>' +
+          (c.updated ? '<span class="arc-sep">&middot;</span>Last updated ' + esc(fmtMonth(c.updated)) : '') + '</div>' +
         '<a class="arc-snippet arc-body-link" href="' + url(c) + '" tabindex="-1">' + esc(c.description) + '</a>' +
         '<div class="arc-tags">' + typeTags(c) + '</div>' +
       '</article>';
     }
     function cardHTML(c) {
-      var chips = (c.recent ? '<span class="arc-chip arc-chip--recent">Recently updated</span>' : '') +
-        (c.paths ? '<span class="arc-chip">' + c.paths + (c.paths === 1 ? ' guided path' : ' guided paths') + '</span>' : '');
+      var chips = (c.paths ? '<span class="arc-chip">' + c.paths + (c.paths === 1 ? ' guided path' : ' guided paths') + '</span>' : '');
       return '<article class="arc-card">' +
         (chips ? '<div class="arc-card-chips">' + chips + '</div>' : '') +
         '<a class="arc-card-title" href="' + url(c) + '">' + esc(c.name) + '</a>' +
         '<a class="arc-card-text arc-body-link" href="' + url(c) + '" tabindex="-1">' + esc(c.description) + '</a>' +
-        '<div class="arc-card-foot"><span>' + (c.updated ? 'Updated ' + esc(fmtDay(c.updated)) : '') + '</span>' +
+        '<div class="arc-card-foot"><span>' + (c.updated ? 'Last updated ' + esc(fmtMonth(c.updated)) : '') + '</span>' +
           '<span class="arc-card-src">' + c.total + (c.total === 1 ? ' piece' : ' pieces') + '</span></div>' +
       '</article>';
     }
@@ -320,6 +300,21 @@
       advBtn.setAttribute('aria-expanded', state.advanced ? 'true' : 'false');
       advBtn.classList.toggle('open', state.advanced);
       advBtn.classList.toggle('is-set', anySet);
+    }
+
+    // right column: the canons most recently added to (newest piece first),
+    // as a grid of small cards like the category pages' "Recently added"
+    function renderPanel() {
+      var panel = document.getElementById('canonPanel');
+      var recent = canons.map(function (c, i) { return { c: c, i: i }; }).sort(function (a, b) {
+        return (b.c.updated ? b.c.updated.getTime() : 0) - (a.c.updated ? a.c.updated.getTime() : 0) || b.i - a.i;
+      }).slice(0, RECENT_COUNT).map(function (x) { return x.c; });
+      panel.innerHTML = recent.length ? '<div class="arc-panel-label">Recently added</div><div class="arc-mini-grid">' + recent.map(function (c) {
+        return '<article class="arc-mini"><span class="arc-mini-kicker">Canon</span>' +
+          '<a class="arc-mini-title" href="' + url(c) + '">' + esc(c.name) + '</a>' +
+          (c.updated ? '<span class="arc-mini-meta">Last updated ' + esc(fmtMonth(c.updated)) + '</span>' : '') +
+          '<span class="arc-mini-src">' + c.total + (c.total === 1 ? ' piece' : ' pieces') + '</span></article>';
+      }).join('') + '</div>' : '';
     }
 
     function syncURL() {
@@ -425,6 +420,7 @@
 
     Promise.all([fetch('/content/topics.json').then(function (r) { return r.json(); }), loadEntries()]).then(function (res) {
       canons = (res[0].topics || []).map(function (t) { return build(t, res[1]); });
+      renderPanel();
       update();
     }).catch(function () { listEl.innerHTML = '<p class="arc-empty">Canons could not be loaded.</p>'; });
   })();
