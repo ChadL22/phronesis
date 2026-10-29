@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="shared.css?v=20261021c" /><link rel="stylesheet" href="chat.css" />
   <link rel="stylesheet" href="archive.css?v=20261029s" />
-  <link rel="stylesheet" href="footer.css?v=20261029e" />
+  <link rel="stylesheet" href="footer.css?v=20261029f" />
 </head>
 <body>
   <header class="masthead">
@@ -73,23 +73,20 @@
   <!-- search, filters, results, and most-recent panel rendered by archive.js from /content/research.json -->
   <div id="archiveApp" data-category="research" data-description="Preprints, working papers, and peer-reviewed publications drawn from the fields of computer science, public policy, economics, mathematics, and philosophy. Selected for their relevance to technology, law, and governance."></div>
 
-  <!-- site footer (same on every page; styles in footer.css) -->
+  <!-- site footer (same on every page but the homepage; styles in footer.css) -->
   <div class="site-foot" role="contentinfo">
     <div class="site-foot-inner">
-      <div class="site-foot-brand">
-        <div class="site-foot-name">Phronesis</div>
-        <p>The Tech Policy Library: a curated research library for technologists, legal professionals, and policymakers exploring topics at the intersection of technology, policy, and law.</p>
-      </div>
+      <a class="site-foot-mark" href="/" aria-label="Phronesis home">Phronesis</a>
       <div class="site-foot-col" role="navigation" aria-label="Resource categories">
         <h4>Resource Categories</h4>
-        <ul class="site-foot-grid">
+        <ul class="site-foot-links">
           <li><a href="/research">Research Papers</a></li>
           <li><a href="/policy">Policy Artifacts</a></li>
           <li><a href="/legal">Legal Analyses</a></li>
           <li><a href="/essays">Essays</a></li>
           <li><a href="/articles">Articles</a></li>
           <li><a href="/reports">Reports</a></li>
-          <li class="is-centre"><a href="/corpus">Canons</a></li>
+          <li><a href="/corpus">Canons</a></li>
         </ul>
       </div>
       <div class="site-foot-col" aria-label="Engagement">
@@ -106,7 +103,6 @@
         </ul>
       </div>
     </div>
-    <div class="site-foot-rule"></div>
     <div class="site-foot-bottom">
       <p>&copy; 2026 Phronesis, The Tech Policy Library.</p>
       <span class="phronesis-greek">&#x03C6;&#x03C1;&#x03CC;&#x03BD;&#x03B7;&#x03C3;&#x03B9;&#x03C2;</span>
