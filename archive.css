@@ -1232,8 +1232,13 @@ a.arc-mini-title { text-decoration: none; }
   display: grid; grid-template-columns: minmax(0, 1fr) 320px; column-gap: 2.75rem;
   align-items: center;
 }
-.arc-tool-sub { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-width: 0; }
-.arc-tool-sub .arc-sub-social { margin: 0; gap: 1.1rem; justify-content: flex-end; }
+.arc-tool-sub { display: flex; align-items: center; justify-content: flex-start; gap: 1.6rem; min-width: 0; }
+/* the line under the row breaks between the columns: one under the search,
+   one under Subscribe and the icons, each the width of its column */
+.arc--subscribe .arc-tools { border-bottom: none; padding-bottom: 0; }
+.arc--subscribe .arc-tools > .arc-sitesearch,
+.arc--subscribe .arc-tools > .arc-tool-sub { align-self: stretch; align-items: center; padding-bottom: 0.7rem; border-bottom: 1px solid var(--rule); }
+.arc-tool-sub .arc-sub-social { margin: 0; gap: 1.1rem; justify-content: flex-start; }
 .arc-sub-menu { position: relative; }
 .arc-sub-trigger {
   display: inline-flex; align-items: center; gap: 0.5rem; height: 2.6rem; padding: 0 0.9rem 0 0.8rem;
@@ -1270,7 +1275,9 @@ a.arc-mini-title { text-decoration: none; }
   .arc--subscribe .arc-tools { grid-template-columns: minmax(0, 1fr) 270px; column-gap: 2rem; }
 }
 @media (max-width: 900px) {
-  .arc--subscribe .arc-tools { grid-template-columns: minmax(0, 1fr); row-gap: 0.9rem; }
+  .arc--subscribe .arc-tools { grid-template-columns: minmax(0, 1fr); row-gap: 0.9rem; padding-bottom: 0.7rem; border-bottom: 1px solid var(--rule); }
+  .arc--subscribe .arc-tools > .arc-sitesearch,
+  .arc--subscribe .arc-tools > .arc-tool-sub { padding-bottom: 0; border-bottom: none; }
 }
 @media (max-width: 600px) {
   .arc-sub-pop { width: min(18.5rem, calc(100vw - 40px)); }
