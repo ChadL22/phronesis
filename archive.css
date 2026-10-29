@@ -1296,3 +1296,19 @@ a.arc-mini-title { text-decoration: none; }
 .arc-cal-scroll a.arc-cal-title,
 .arc-cal-scroll .arc-meta { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
 .arc-cal-item--empty { background: var(--paper-2); }
+/* Previous Issues: blank squares keep the 2 x 2 grid; events fill the box the
+   page script sizes to end level with the Socials table */
+.arc-mini--empty, .arc-mini--empty:hover { background: var(--paper-2); }
+.arc-side .arc-cal-scroll .arc-cal-item { height: var(--cal-item, 5rem); padding-top: 0.75rem; }
+.arc-cal-scroll { height: calc(var(--cal-item, 5rem) * 3); }
+/* three rows in view: the date and place stay on one line */
+.arc-cal-scroll .arc-meta { -webkit-line-clamp: 1; }
+.arc-side .arc-cal-grid > span:not(.arc-cal-wd) { height: var(--cal-day, 2rem); }
+.arc-panel .arc-mini-grid { grid-auto-rows: 1fr; }
+/* right column a little tighter, so the latest issue keeps more reading room
+   while the FAQs still end level with the Socials table */
+.arc--subscribe .arc-panel .arc-col-heading--next { margin-top: 1.8rem; }
+.arc--subscribe .arc-panel .arc-mini { padding: 0.65rem 0.8rem 0.6rem; }
+.arc--subscribe .arc-faq-compact > div { padding: 0.6rem 0; }
+.arc--subscribe .arc-faq-compact > div:first-child { padding-top: 0; }
+.arc--subscribe .arc-faq-compact dd { line-height: 1.45; }

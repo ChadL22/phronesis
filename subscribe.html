@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="shared.css?v=20261021c" /><link rel="stylesheet" href="chat.css" />
-  <link rel="stylesheet" href="archive.css?v=20261029za" />
+  <link rel="stylesheet" href="archive.css?v=20261029zb" />
   <link rel="stylesheet" href="footer.css?v=20261029k" />
 </head>
 <body>
@@ -77,8 +77,8 @@
       <div class="arc-subscribe-panel arc-tool-sub" role="region" aria-label="Socials and subscription">
         <div class="arc-sub-menu" id="subMenu">
           <button type="button" class="arc-sub-trigger" id="subMenuBtn" aria-haspopup="true" aria-expanded="false" aria-controls="subMenuPanel"><svg class="arc-sub-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6.5 2 6.5H4S6 14 6 9"/><path d="M10 19a2 2 0 0 0 4 0"/></svg><span>Subscribe</span><svg class="arc-sub-chev" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
-          <div class="arc-sub-pop" id="subMenuPanel" role="dialog" aria-label="Manage your subscription to The Phronesis Brief" hidden>
-            <p class="arc-sub-pop-title">The Phronesis Brief</p>
+          <div class="arc-sub-pop" id="subMenuPanel" role="dialog" aria-label="Manage your subscription to The Tech Policy Brief" hidden>
+            <p class="arc-sub-pop-title">The Tech Policy Brief</p>
             <p class="arc-sub-pop-note">One email a month. Enter your address, then choose.</p>
             <div class="arc-search arc-sub-field">
               <input type="email" id="email" placeholder="your@email.com" aria-label="Email address" />
@@ -216,7 +216,7 @@
       </div>
     </div>
 
-    <aside class="arc-panel" id="issues" aria-label="Issues of The Phronesis Brief">
+    <aside class="arc-panel" id="issues" aria-label="Issues of The Tech Policy Brief">
       <h2 class="arc-col-heading">Latest Issue</h2>
       <div id="latestIssue"><p class="arc-empty">Loading&hellip;</p></div>
       <div id="pastIssues"></div>
@@ -225,8 +225,8 @@
         <dl class="arc-faq-compact">
           <div><dt>How often do you send The Brief?</dt><dd>One email per month, typically on the first Monday. Each issue covers the prior month&rsquo;s key developments in technology law and policy.</dd></div>
           <div><dt>What if I miss an issue?</dt><dd>Every past issue is collected on this page, so you can catch up on previous months at any time.</dd></div>
-          <div><dt>Who produces The Brief?</dt><dd>The Phronesis Brief is produced in collaboration with the University of Maryland&rsquo;s Tech Policy Hub, combining independent research with academic expertise.</dd></div>
-          <div><dt>Is my email private?</dt><dd>Your email address is stored securely and used only to send you The Phronesis Brief. We do not sell, trade, or share it with third parties.</dd></div>
+          <div><dt>Who produces The Brief?</dt><dd>The Tech Policy Brief is produced in collaboration with the University of Maryland&rsquo;s Tech Policy Hub, combining independent research with academic expertise.</dd></div>
+          <div><dt>Is my email private?</dt><dd>Your email address is stored securely and used only to send you The Tech Policy Brief. We do not sell, trade, or share it with third parties.</dd></div>
           <div><dt>How do I unsubscribe?</dt><dd>Enter your email address in the Subscribe box and choose &ldquo;Unsubscribe.&rdquo; You will be removed from the mailing list immediately.</dd></div>
         </dl>
       </section>
@@ -311,7 +311,7 @@
       const errEl = document.getElementById('emailError');
       errEl.classList.remove('show');
       if (!email || !validateEmail(email)) { errEl.textContent = 'Please enter your email to unsubscribe'; errEl.classList.add('show'); return; }
-      if (!confirm('Are you sure you want to unsubscribe ' + email + ' from The Phronesis Brief?')) return;
+      if (!confirm('Are you sure you want to unsubscribe ' + email + ' from The Tech Policy Brief?')) return;
       const btn = document.getElementById('unsubscribeBtn');
       btn.disabled = true; btn.textContent = 'Removing...';
       try {
@@ -353,11 +353,14 @@
         link(i, 'arc-issue-more', 'Open full screen &rarr;') + '</div>';
       // the rest as a grid of small cards
       var past = issues.slice(1);
-      pastEl.innerHTML = past.length ? '<h2 class="arc-col-heading arc-col-heading--next">Past Issues</h2><div class="arc-mini-grid">' + past.map(function (p) {
-        var month = p.title.replace(/^The Phronesis Brief,?\s*/, '');
+      // a 2 x 2 grid: blank squares fill any cells the issues don't
+      var blanks = '';
+      for (var k = past.length; k < Math.max(4, past.length + past.length % 2); k++) blanks += '<div class="arc-mini arc-mini--empty" aria-hidden="true"></div>';
+      pastEl.innerHTML = past.length ? '<h2 class="arc-col-heading arc-col-heading--next">Previous Issues</h2><div class="arc-mini-grid">' + past.map(function (p) {
+        var month = p.title.replace(/^The (Tech Policy|Phronesis) Brief,?\s*/, '');
         return '<article class="arc-mini"><span class="arc-mini-kicker">The Brief</span>' + link(p, 'arc-mini-title', esc(month)) +
           '<span class="arc-mini-meta">Sent ' + esc(sentOn(p)) + '</span></article>';
-      }).join('') + '</div>' : '';
+      }).join('') + blanks + '</div>' : '';
     }
 
     // the same reader the Essays page uses
@@ -367,13 +370,13 @@
       if (!reader) {
         reader = document.createElement('div');
         reader.className = 'arc-reader';
-        reader.innerHTML = '<div class="arc-reader-panel" role="dialog" aria-modal="true" aria-label="Issue of The Phronesis Brief">' +
+        reader.innerHTML = '<div class="arc-reader-panel" role="dialog" aria-modal="true" aria-label="Issue of The Tech Policy Brief">' +
           '<div class="arc-reader-bar"><span class="arc-reader-label"></span><button type="button" class="arc-reader-close">Close</button></div>' +
           '<div class="arc-reader-scroll"><article class="arc-reader-body brief-body"></article></div></div>';
         document.body.appendChild(reader);
         reader.addEventListener('click', function (e) { if (e.target === reader || e.target.closest('.arc-reader-close')) close(); });
       }
-      reader.querySelector('.arc-reader-label').textContent = 'The Phronesis Brief · Sent ' + sentOn(i);
+      reader.querySelector('.arc-reader-label').textContent = 'The Tech Policy Brief · Sent ' + sentOn(i);
       reader.querySelector('.arc-reader-body').innerHTML = '<h1>' + esc(i.title) + '</h1>' + i.html;
       reader.querySelector('.arc-reader-scroll').scrollTop = 0;
       reader.classList.add('open');
@@ -451,15 +454,15 @@
       var mEnd = new Date(view.getFullYear(), view.getMonth(), days);
       var inMonth = events.filter(function (e) { return e.e >= first && e.s <= mEnd; });
       var shown = inMonth.length ? inMonth : events.filter(function (e) { return e.e >= today; });
-      // two events in view at a time; the rest scroll. Blank boxes fill the
-      // second slot (or both) when there are fewer than two.
+      // three events in view at a time; the rest scroll. Blank boxes fill any
+      // of the three slots the events don't.
       var pads = '';
-      for (var k = shown.length; k < 2; k++) pads += '<div class="arc-cal-item arc-cal-item--empty" aria-hidden="true"></div>';
+      for (var k = shown.length; k < 3; k++) pads += '<div class="arc-cal-item arc-cal-item--empty" aria-hidden="true"></div>';
       listEl.innerHTML = (inMonth.length ? '' : '<div class="arc-panel-label">' + (shown.length ? 'Coming up' : 'Nothing scheduled yet') + '</div>') +
         '<div class="arc-cal-scroll" tabindex="0" aria-label="Events">' + shown.map(function (e) {
           return '<article class="arc-cal-item"><span class="arc-cal-dot arc-cal-dot--' + esc(e.type) + '"></span><div>' +
             '<a class="arc-cal-title" href="' + esc(e.url) + '" target="_blank" rel="noopener">' + esc(e.title) + '</a>' +
-            '<div class="arc-meta">' + esc(LABEL[e.type] || e.type) + '<span class="arc-sep">&middot;</span>' + esc(when(e)) +
+            '<div class="arc-meta">' + esc(when(e)) + '<span class="arc-sep">&middot;</span>' + esc(LABEL[e.type] || e.type) +
             (e.location ? '<span class="arc-sep">&middot;</span>' + esc(e.location) : '') + '</div>' +
             (e.note ? '<p class="arc-cal-note">' + esc(e.note) + '</p>' : '') + '</div></article>';
         }).join('') + pads + '</div>';
@@ -477,23 +480,6 @@
   })();
   </script>
   <script>
-  // end the Socials Overview table level with the bottom of the FAQs (desktop)
-  (function () {
-    var table = document.querySelector('#about-our-socials .arc-navbox'), faq = document.getElementById('faq');
-    function fit() {
-      table.style.height = '';
-      if (window.innerWidth <= 900) return;
-      var gap = faq.getBoundingClientRect().bottom - table.getBoundingClientRect().bottom;
-      if (gap <= 0) return;
-      // a table's set height excludes its caption, so take the caption off
-      var cap = table.querySelector('caption');
-      table.style.height = (table.getBoundingClientRect().height + gap - (cap ? cap.getBoundingClientRect().height : 0)) + 'px';
-    }
-    window.addEventListener('load', fit); window.addEventListener('resize', fit);
-    new MutationObserver(fit).observe(document.getElementById('pastIssues'), { childList: true });
-  })();
-  </script>
-  <script>
   // Subscribe menu: opens under the button; closes on a click outside or Escape
   (function () {
     var wrap = document.getElementById('subMenu'), btn = document.getElementById('subMenuBtn'), pop = document.getElementById('subMenuPanel');
@@ -505,6 +491,47 @@
     btn.addEventListener('click', function () { set(pop.hidden); });
     document.addEventListener('click', function (e) { if (!pop.hidden && !wrap.contains(e.target)) set(false); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !pop.hidden) { set(false); btn.focus(); } });
+  })();
+  </script>
+  <script>
+  // desktop: the left column (calendar and events) and the right column
+  // (FAQs) end level with the bottom of the Socials Overview table. On the
+  // left the extra height is shared between taller calendar days and taller
+  // event rows (the events box still shows two at a time); on the right the
+  // latest issue's reading box takes it, so Previous Issues keeps its 2 x 2
+  // grid. Each has a cap, so a very narrow centre column can't stretch them.
+  (function () {
+    var table = document.querySelector('#about-our-socials .arc-navbox'), cal = document.getElementById('calendar-app');
+    function fit() {
+      var box = document.querySelector('.arc-cal-scroll'), spot = document.querySelector('.arc-spot--issue'), faq = document.getElementById('faq');
+      cal.style.removeProperty('--cal-day'); cal.style.removeProperty('--cal-item');
+      if (spot) spot.style.height = '';
+      if (window.innerWidth <= 900) return;
+      var end = table.getBoundingClientRect().bottom;
+      if (box) {
+        // the box is three event rows tall; grow the rows (and the calendar
+        // days a little) or shrink the rows, so its bottom meets the table's
+        var need = end - box.getBoundingClientRect().bottom, row = box.getBoundingClientRect().height / 3;
+        if (need > 0) {
+          var rows = Math.ceil((document.querySelectorAll('#calGrid > span').length - 7) / 7) || 5;
+          var day = Math.min(16, need * 0.35 / rows);
+          var item = Math.min(40, (need - day * rows) / 3);
+          var base = document.querySelector('#calGrid > .arc-cal-day, #calGrid > .arc-cal-pad').getBoundingClientRect().height;
+          cal.style.setProperty('--cal-day', (base + day) + 'px');
+          cal.style.setProperty('--cal-item', (row + item) + 'px');
+        } else if (need < 0) {
+          cal.style.setProperty('--cal-item', Math.max(row + need / 3, 68) + 'px');
+        }
+      }
+      if (spot && faq) {
+        var s = spot.getBoundingClientRect().height + (end - faq.getBoundingClientRect().bottom);
+        spot.style.height = Math.min(Math.max(s, 200), 640) + 'px';
+      }
+    }
+    window.addEventListener('load', fit); window.addEventListener('resize', fit);
+    ['calList', 'calGrid', 'latestIssue', 'pastIssues'].forEach(function (id) {
+      var el = document.getElementById(id); if (el) new MutationObserver(fit).observe(el, { childList: true });
+    });
   })();
   </script>
 </body>
