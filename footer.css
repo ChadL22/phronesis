@@ -68,9 +68,10 @@
 
 /* ── homepage: one line on the page colour, no band ── */
 .site-foot.site-foot--home { margin-top: 0; background: transparent; border-top: none; }
+/* full width, edge to edge like Google: the sides line up with the
+   dice and menu icons in the masthead (28px in) */
 .site-foot-home {
-  max-width: 1160px; margin: 0 auto;
-  padding: 1.2rem clamp(1.5rem, 5vw, 5rem) 1.4rem;
+  padding: 1.2rem 28px 1.4rem;
   display: flex; justify-content: space-between; align-items: center; gap: 1.5rem;
 }
 .site-foot-home p { font-size: 0.8rem; letter-spacing: 0.04em; color: #8A8880; }
