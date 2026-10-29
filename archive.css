@@ -1224,32 +1224,56 @@ a.arc-mini-title { text-decoration: none; }
 /* centre column: About Our Socials is stretched by a small script so its
    table ends level with the bottom of the FAQs */
 
-/* ── Subscribe page: search over the centre column, sign-up over the right
-   column. The row uses the page's own column widths so each control lines up
-   with the column beneath it. The email box reuses the search box styles. */
+/* ── Subscribe page: search over the centre column; over the right column the
+   social icons and a Subscribe button whose menu holds the email field and
+   Subscribe / Unsubscribe (after YouTube's and GitHub's subscribe menus).
+   The row uses the page's own column widths so each part lines up below. */
 .arc--subscribe .arc-tools {
   display: grid; grid-template-columns: minmax(0, 1fr) 320px; column-gap: 2.75rem;
-  align-items: start;
+  align-items: center;
 }
-.arc-tool-sub { position: relative; min-width: 0; }
-.arc-sub-field { height: 2.6rem; }
-.arc-sub-field .arc-sub-go {
-  width: auto; padding: 0 1rem; font-family: var(--serif);
-  font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+.arc-tool-sub { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-width: 0; }
+.arc-tool-sub .arc-sub-social { margin: 0; gap: 1.1rem; justify-content: flex-start; }
+.arc-sub-menu { position: relative; }
+.arc-sub-trigger {
+  display: inline-flex; align-items: center; gap: 0.5rem; height: 2.6rem; padding: 0 0.9rem 0 0.8rem;
+  border: none; background: var(--accent); color: var(--parchment); cursor: pointer;
+  font-family: var(--serif); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
 }
-.arc-sub-field .arc-sub-go:disabled { opacity: 0.6; cursor: not-allowed; }
-.arc-sub-row { display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem; }
-.arc-sub-row .arc-sub-leave { margin: 0; }
-.arc-tool-sub .arc-sub-row .arc-sub-social { margin: 0; gap: 1rem; justify-content: flex-end; }
-.arc-tool-sub .arc-sub-social img { width: 16px; height: 16px; }
-.arc-tool-sub .status-message.show,
-.arc-tool-sub .validation-error.show { position: absolute; top: calc(100% + 0.4rem); left: 0; right: 0; z-index: 20; }
-.arc-tool-sub .validation-error.show { margin-top: 0; }
+.arc-sub-trigger:hover, .arc-sub-menu.is-open .arc-sub-trigger { background: var(--accent-l); }
+.arc-sub-trigger svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.arc-sub-ico { width: 15px; height: 15px; }
+.arc-sub-chev { width: 13px; height: 13px; transition: transform 0.18s; }
+.arc-sub-menu.is-open .arc-sub-chev { transform: rotate(180deg); }
+.arc-sub-pop {
+  position: absolute; top: calc(100% + 6px); right: 0; z-index: 30; width: 18.5rem;
+  padding: 1rem 1.1rem 1.1rem; background: #fff; border: 1px solid var(--rule);
+  box-shadow: 0 20px 45px rgba(26, 25, 22, 0.16);
+}
+.arc-sub-pop[hidden] { display: none; }
+.arc-sub-pop-title { margin: 0; font-family: var(--serif); font-size: 1.05rem; color: var(--ink); }
+.arc-sub-pop-note { margin: 0.2rem 0 0.8rem; font-size: 0.78rem; line-height: 1.45; color: var(--ink-3); }
+.arc-sub-field { height: 2.5rem; }
+.arc-sub-field input { font-size: 0.98rem; }
+.arc-sub-pop-actions { display: flex; gap: 0.6rem; margin-top: 0.7rem; }
+.arc-sub-pop-btn {
+  flex: 1; height: 2.3rem; border: 1px solid var(--rule); background: #fff; color: var(--ink-2); cursor: pointer;
+  font-family: var(--serif); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase;
+}
+.arc-sub-pop-btn:hover { color: var(--terracotta); border-color: var(--terracotta); }
+.arc-sub-pop-btn.is-primary { background: var(--accent); border-color: var(--accent); color: var(--parchment); }
+.arc-sub-pop-btn.is-primary:hover { background: var(--accent-l); color: var(--parchment); }
+.arc-sub-pop-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.arc-sub-pop .validation-error { margin: 0.4rem 0 0; }
+.arc-sub-pop .status-message.show { margin: 0.8rem 0 0; }
 @media (max-width: 1100px) {
   .arc--subscribe .arc-tools { grid-template-columns: minmax(0, 1fr) 270px; column-gap: 2rem; }
 }
 @media (max-width: 900px) {
-  .arc--subscribe .arc-tools { grid-template-columns: minmax(0, 1fr); row-gap: 1rem; }
+  .arc--subscribe .arc-tools { grid-template-columns: minmax(0, 1fr); row-gap: 0.9rem; }
+}
+@media (max-width: 600px) {
+  .arc-sub-pop { width: min(18.5rem, calc(100vw - 40px)); }
 }
 
 /* calendar events: a box two events tall that scrolls one event at a time;
