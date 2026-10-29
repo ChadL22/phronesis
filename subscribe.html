@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="shared.css?v=20261021c" /><link rel="stylesheet" href="chat.css" />
-  <link rel="stylesheet" href="archive.css?v=20261029i" />
+  <link rel="stylesheet" href="archive.css?v=20261029l" />
 </head>
 <body>
   <header class="masthead">
@@ -98,10 +98,12 @@
           <div id="statusMessage" class="status-message"></div>
           <div class="arc-sub-form">
             <input type="email" id="email" placeholder="your@email.com" aria-label="Email address" />
-            <button type="button" class="arc-sub-btn" id="subscribeBtn">Subscribe</button>
           </div>
           <div class="validation-error" id="emailError"></div>
-          <button type="button" class="arc-sub-leave" id="unsubscribeBtn">Unsubscribe</button>
+          <div class="arc-sub-actions">
+            <button type="button" class="arc-sub-leave arc-sub-join" id="subscribeBtn">Subscribe</button>
+            <button type="button" class="arc-sub-leave" id="unsubscribeBtn">Unsubscribe</button>
+          </div>
         </div>
         <!-- social profiles as small monochrome icons (Simple Icons, CC0,
              loaded from jsDelivr); each icon's alt text names the platform -->

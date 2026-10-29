@@ -1037,7 +1037,14 @@ a.arc-kicker:hover { color: var(--terracotta); }
 .arc-side .arc-subscribe-panel .arc-sub-leave,
 .arc-side .arc-subscribe-panel .status-message,
 .arc-side .arc-subscribe-panel .validation-error { margin-left: 0.85rem; }
-.arc-side .arc-subscribe-panel .arc-sub-leave { display: block; }
+/* email field full width; Subscribe and Unsubscribe as small underlined
+   links beneath it, Subscribe in the site's green */
+.arc-sub-actions { display: flex; gap: 1.1rem; align-items: baseline; }
+.arc-side .arc-subscribe-panel .arc-sub-actions { margin-left: 0.85rem; }
+.arc-sub-actions .arc-sub-leave { margin-top: 0.55rem; }
+.arc-sub-join { color: var(--accent); font-weight: 500; }
+.arc-sub-join:hover { color: var(--terracotta); }
+.arc-sub-join:disabled { opacity: 0.6; cursor: not-allowed; }
 @media (max-width: 900px) {
   .arc-side .arc-subscribe-panel { grid-area: auto; display: block; overflow: visible; border-bottom: none; margin: 1.4rem 0 2rem; }
   .arc-side .arc-subscribe-panel .arc-rail-label { display: block; padding-left: 0; }
@@ -1045,7 +1052,8 @@ a.arc-kicker:hover { color: var(--terracotta); }
   .arc-side .arc-subscribe-panel .arc-sub-form,
   .arc-side .arc-subscribe-panel .arc-sub-leave,
   .arc-side .arc-subscribe-panel .status-message,
-  .arc-side .arc-subscribe-panel .validation-error { margin-left: 0; }
+  .arc-side .arc-subscribe-panel .validation-error,
+  .arc-side .arc-subscribe-panel .arc-sub-actions { margin-left: 0; }
 }
 .arc-spot-list { margin: 0.9rem 0 0; border-top: 1px solid var(--rule); }
 .arc-spot-list > div { padding: 0.5rem 0; border-bottom: 1px solid var(--rule); }
@@ -1084,3 +1092,9 @@ a.arc-mini-title { text-decoration: none; }
 .brief-body--compact .brief-table { font-size: 0.76rem; }
 .brief-body--compact .brief-table th, .brief-body--compact .brief-table td { padding: 0.35rem 0.45rem; }
 .brief-body--compact .brief-table td:first-child { width: 48%; }
+.arc-side .arc-subscribe-panel .arc-sub-actions .arc-sub-leave { margin-left: 0; }
+/* latest issue: same height as the "Recently added" box on the category
+   pages (Legal Analyses, ~420px at desktop width); the issue scrolls inside */
+.arc-spot--issue { display: flex; flex-direction: column; height: 26.25rem; }
+.arc-spot--issue .arc-spot-scroll { flex: 1 1 auto; min-height: 0; max-height: none; }
+.arc-spot--issue .arc-issue-more { flex-shrink: 0; }
